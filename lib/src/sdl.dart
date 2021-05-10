@@ -254,4 +254,23 @@ class Sdl {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
   void setLogPriority(LogCategory category, LogPriority priority) =>
       _sdl.SDL_LogSetPriority(categoryToInt(category), priorityToInt(priority));
+
+  /// Get the compiled version.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_COMPILEDVERSION)
+  int get compiledVersion => SDL_COMPILEDVERSION;
+
+  /// Get SDL version.
+  String get version {
+    final ptr = calloc<SDL_version>();
+    _sdl.SDL_GetVersion(ptr);
+    final v = ptr.ref;
+    calloc.free(ptr);
+    return '${v.major}.${v.minor}.${v.patch}';
+  }
+
+  /// Get the SDL revision.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_REVISION)
+  String get revision => SDL_REVISION;
 }

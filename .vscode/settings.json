@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
+    "COMPILEDVERSION",
     "analyzer",
     "calloc",
     "ffi",
     "ffigen",
     "formals",
+    "ptr",
     "retval",
     "sdl"
   ],

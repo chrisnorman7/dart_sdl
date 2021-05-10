@@ -21443,7 +21443,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 596;
+const int SDL_LINE = 598;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 
@@ -22124,6 +22124,10 @@ const int SDL_INIT_SENSOR = 32768;
 const int SDL_INIT_NOPARACHUTE = 1048576;
 
 const int SDL_INIT_EVERYTHING = 62001;
+
+const String SDL_REVISION = 'hg-14525:e52d96ea04fc';
+
+const int SDL_REVISION_NUMBER = 14525;
 
 typedef _c_SDL_GetPlatform = ffi.Pointer<ffi.Int8> Function();
 

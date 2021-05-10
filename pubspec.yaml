@@ -25,3 +25,5 @@ ffigen:
       - "SDL2-2.0.14/include/SDL_error.h"
       - "SDL2-2.0.14/include/SDL_log.h"
       - "SDL2-2.0.14/include/SDL_assert.h"
+      - "SDL2-2.0.14/include/SDL_version.h"
+      - "SDL2-2.0.14/include/SDL_revision.h"
