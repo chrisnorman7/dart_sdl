@@ -1,11 +1,23 @@
 {
   "cSpell.words": [
+    "CENTERED",
     "COMPILEDVERSION",
+    "ESCAPEKEY",
+    "FULLSCREEN",
+    "MESSAGEBOX",
+    "RETURNKEY",
+    "RGBA",
+    "WINDOWPOS",
     "analyzer",
+    "buttonid",
     "calloc",
+    "color",
+    "dialog",
     "ffi",
     "ffigen",
     "formals",
+    "nullptr",
+    "numbuttons",
     "ptr",
     "retval",
     "sdl"

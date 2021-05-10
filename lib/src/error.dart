@@ -1,9 +1,9 @@
-/// Provides the [SDLException] class.
+/// Provides the [SdlError] class.
 
 /// The base class for all exceptions.
-class SDLException implements Exception {
+class SdlError implements Exception {
   /// Create an exception.
-  SDLException(this.code, this.message);
+  SdlError(this.code, this.message);
 
   /// The error code.
   final int code;

@@ -18,7 +18,9 @@ library dart_sdl;
 
 import 'src/sdl.dart';
 
+export 'src/button.dart';
 export 'src/enumerations.dart';
 export 'src/error.dart';
 export 'src/sdl.dart';
 export 'src/sdl_bindings.dart';
+export 'src/window.dart';

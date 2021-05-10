@@ -1,6 +1,8 @@
 /// Provides various enumerations for use with SDL.
 
 /// Hint priorities.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_HintPriority)
 enum HintPriority {
   /// low priority, used for default values
   defaultPriority,
@@ -13,6 +15,8 @@ enum HintPriority {
 }
 
 /// Log categories.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_LOG_CATEGORY)
 enum LogCategory {
   /// application log
   applicationCategory,
@@ -42,7 +46,9 @@ enum LogCategory {
   testCategory,
 }
 
-/// Various log priorities.
+/// Log priorities.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_LogPriority)
 enum LogPriority {
   /// Verbose
   verbosePriority,
@@ -61,4 +67,61 @@ enum LogPriority {
 
   /// Critical
   criticalPriority,
+}
+
+/// Blend mode.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_BlendMode)
+enum BlendMode {
+  /// no blending
+  ///
+  /// dstRGBA = srcRGBA
+  /// none,
+  /// alpha blending
+  ///
+  /// dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
+  ///
+  /// dstA = srcA + (dstA * (1-srcA))
+  blend,
+
+  /// additive blending
+  ///
+  /// dstRGB = (srcRGB * srcA) + dstRGB
+  ///
+  /// dstA = dstA
+  add,
+
+  /// color modulate
+  ///
+  /// dstRGB = srcRGB * dstRGB
+  ///
+  /// dstA = dstA
+  mod,
+}
+
+/// Button flags.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_MessageBoxButtonFlags)
+enum ButtonFlags {
+  /// no flags
+  noDefaults,
+
+  /// marks the default button when return is hit
+  returnKeyDefault,
+
+  /// marks the default button when escape is hit
+  escapeKeyDefault,
+}
+
+/// Message box flags.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_MessageBoxFlags)
+enum MessageBoxFlags {
+  /// error dialog
+  ///error,
+  /// warning dialog
+  warning,
+
+  /// informational dialog
+  information,
 }
