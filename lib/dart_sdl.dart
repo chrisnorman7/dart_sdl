@@ -1,8 +1,24 @@
-/// Support for doing something awesome.
+/// Dart bindings for sdl.
 ///
-/// More dartdocs go here.
+/// Start by creating an [Sdl] instance:
+///
+/// ```
+/// final sdl = Sdl(DynamicLibrary.open('sdl2.dll'));
+/// ```
+///
+/// Next, you need to initialise the library:
+///
+/// ```
+/// sdl.init();
+/// ```
+///
+/// For more information, see the
+/// [SDL API docs](https://wiki.libsdl.org/APIByCategory).
 library dart_sdl;
 
-export 'src/dart_sdl_base.dart';
+import 'src/sdl.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+export 'src/enumerations.dart';
+export 'src/error.dart';
+export 'src/sdl.dart';
+export 'src/sdl_bindings.dart';

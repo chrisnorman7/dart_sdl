@@ -28,6 +28,68 @@ class Sdl {
   /// Get a Dart boolean from an SDL one.
   bool _getBool(int value) => value == SDL_bool.SDL_TRUE;
 
+  /// Convert a [LogCategory] instance to an integer.
+  int categoryToInt(LogCategory category) {
+    switch (category) {
+      case LogCategory.applicationCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_APPLICATION;
+      case LogCategory.errorCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_ERROR;
+      case LogCategory.assertCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
+      case LogCategory.systemCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_SYSTEM;
+      case LogCategory.audioCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_AUDIO;
+      case LogCategory.videoCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_VIDEO;
+      case LogCategory.renderCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_RENDER;
+      case LogCategory.inputCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_INPUT;
+      case LogCategory.testCategory:
+        return SDL_LogCategory.SDL_LOG_CATEGORY_TEST;
+    }
+  }
+
+  /// Convert a priority to an integer.
+  int priorityToInt(LogPriority priority) {
+    switch (priority) {
+      case LogPriority.verbosePriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE;
+      case LogPriority.debugPriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_DEBUG;
+      case LogPriority.infoPriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_INFO;
+      case LogPriority.warnPriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_WARN;
+      case LogPriority.errorPriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_ERROR;
+      case LogPriority.criticalPriority:
+        return SDL_LogPriority.SDL_LOG_PRIORITY_CRITICAL;
+    }
+  }
+
+  /// Convert an integer to a log priority.
+  LogPriority intToPriority(int value) {
+    switch (value) {
+      case SDL_LogPriority.SDL_LOG_PRIORITY_CRITICAL:
+        return LogPriority.criticalPriority;
+      case SDL_LogPriority.SDL_LOG_PRIORITY_DEBUG:
+        return LogPriority.debugPriority;
+      case SDL_LogPriority.SDL_LOG_PRIORITY_ERROR:
+        return LogPriority.errorPriority;
+      case SDL_LogPriority.SDL_LOG_PRIORITY_INFO:
+        return LogPriority.infoPriority;
+      case SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE:
+        return LogPriority.verbosePriority;
+      case SDL_LogPriority.SDL_LOG_PRIORITY_WARN:
+        return LogPriority.warnPriority;
+      default:
+        throw SDLException(value, 'Invalid log priority.');
+    }
+  }
+
   /// Throw an error if return value is non-null.
   void _check(int value) {
     if (value != 0) {
@@ -75,18 +137,18 @@ class Sdl {
   /// Set hint with priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHintWithPriority)
-  bool setHintPriority(String hint, String value, HintPriorities priority) {
+  bool setHintPriority(String hint, String value, HintPriority priority) {
     final hintPointer = hint.toNativeUtf8().cast<Int8>();
     final valuePointer = value.toNativeUtf8().cast<Int8>();
     int p;
     switch (priority) {
-      case HintPriorities.defaultPriority:
+      case HintPriority.defaultPriority:
         p = SDL_HintPriority.SDL_HINT_DEFAULT;
         break;
-      case HintPriorities.normalPriority:
+      case HintPriority.normalPriority:
         p = SDL_HintPriority.SDL_HINT_NORMAL;
         break;
-      case HintPriorities.overridePriority:
+      case HintPriority.overridePriority:
         p = SDL_HintPriority.SDL_HINT_OVERRIDE;
         break;
     }
@@ -108,4 +170,88 @@ class Sdl {
     _sdl.SDL_SetError(messagePointer);
     calloc.free(messagePointer);
   }
+
+  /// Log a message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_Log)
+  void log(String message) {
+    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    _sdl.SDL_Log(messagePointer);
+    calloc.free(messagePointer);
+  }
+
+  /// Log anything.
+  void _log(LogCategory category, String message,
+      void Function(int, Pointer<Int8>) func) {
+    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    func(categoryToInt(category), messagePointer);
+    calloc.free(messagePointer);
+  }
+
+  /// Log a critical message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogCritical)
+  void logCritical(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogCritical);
+
+  /// Log a debug message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogDebug)
+  void logDebug(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogDebug);
+
+  /// Log an error message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogError)
+  void logError(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogError);
+
+  /// Log an informational message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogInfo)
+  void logInfo(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogInfo);
+
+  /// Log a message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogMessage)
+  void logMessage(LogCategory category, LogPriority priority, String message) {
+    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    _sdl.SDL_LogMessage(
+        categoryToInt(category), priorityToInt(priority), messagePointer);
+    calloc.free(messagePointer);
+  }
+
+  /// Log a verbose message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogVerbose)
+  void logVerbose(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogVerbose);
+
+  /// Log a warning message.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogWarn)
+  void logWarn(LogCategory category, String message) =>
+      _log(category, message, _sdl.SDL_LogWarn);
+
+  /// Get log priority.
+  LogPriority getLogPriority(LogCategory category) =>
+      intToPriority(_sdl.SDL_LogGetPriority(categoryToInt(category)));
+
+  /// Reset log priorities.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogResetPriorities)
+  void resetLogPriorities() => _sdl.SDL_LogResetPriorities();
+
+  /// Set the priority of all log categories.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetAllPriority)
+  void setAllLogPriorities(LogPriority priority) =>
+      _sdl.SDL_LogSetAllPriority(priorityToInt(priority));
+
+  /// Set log priority.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
+  void setLogPriority(LogCategory category, LogPriority priority) =>
+      _sdl.SDL_LogSetPriority(categoryToInt(category), priorityToInt(priority));
 }

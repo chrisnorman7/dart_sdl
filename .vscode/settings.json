@@ -1,7 +1,12 @@
 {
   "cSpell.words": [
     "analyzer",
-    "formals"
+    "calloc",
+    "ffi",
+    "ffigen",
+    "formals",
+    "retval",
+    "sdl"
   ],
-  "cSpell.enabled": false
+  "cSpell.enabled": true
 }
