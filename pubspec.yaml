@@ -1,0 +1,26 @@
+name: dart_sdl
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  ffi: ^1.0.0
+
+dev_dependencies:
+  ffigen: ^2.4.2
+  pedantic: ^1.10.0
+  test: ^1.16.0
+
+ffigen:
+  output: "lib/src/sdl_bindings.dart"
+  name: "DartSdl"
+  description: "Bindings for SDL"
+  headers:
+    entry-points:
+      - "SDL2-2.0.14/include/SDL.h"
+      - "SDL2-2.0.14/include/SDL_hints.h"
+      - "SDL2-2.0.14/include/SDL_error.h"
+      - "SDL2-2.0.14/include/SDL_log.h"
