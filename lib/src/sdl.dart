@@ -5,9 +5,11 @@ import 'dart:io';
 import 'package:ffi/ffi.dart';
 
 import 'button.dart';
+import 'display.dart';
 import 'enumerations.dart';
 import 'error.dart';
 import 'sdl_bindings.dart';
+import 'version.dart';
 import 'window.dart';
 
 /// The main SDL class.
@@ -29,6 +31,9 @@ class Sdl {
 
   /// Get a Dart boolean from an SDL one.
   bool getBool(int value) => value == SDL_bool.SDL_TRUE;
+
+  /// Convert a boolean to one of the members of [SDL_bool].
+  int boolToValue(bool value) => value ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE;
 
   /// Convert a [LogCategory] instance to an integer.
   int categoryToInt(LogCategory category) {
@@ -93,11 +98,14 @@ class Sdl {
   }
 
   /// Throw an error if return value is non-null.
-  void checkReturnValue(int value) {
-    if (value != 0) {
-      final message = getError();
-      throw SdlError(value, message);
+  ///
+  /// If [value] is >= 0, it will be returned.
+  int checkReturnValue(int value) {
+    if (value >= 0) {
+      return value;
     }
+    final message = getError();
+    throw SdlError(value, message);
   }
 
   /// Initialise SDL.
@@ -268,18 +276,25 @@ class Sdl {
   int get compiledVersion => SDL_COMPILEDVERSION;
 
   /// Get SDL version.
-  String get version {
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetVersion)
+  SdlVersion get version {
     final ptr = calloc<SDL_version>();
     sdl.SDL_GetVersion(ptr);
     final v = ptr.ref;
     calloc.free(ptr);
-    return '${v.major}.${v.minor}.${v.patch}';
+    return SdlVersion(v.major, v.minor, v.patch);
   }
 
   /// Get the SDL revision.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_REVISION)
   String get revision => SDL_REVISION;
+
+  /// Get revision number.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetRevisionNumber)
+  int get revisionNumber => sdl.SDL_GetRevisionNumber();
 
   /// Create a window.
   ///
@@ -302,8 +317,57 @@ class Sdl {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_DestroyWindow)
   void destroyWindow(Window window) => sdl.SDL_DestroyWindow(window.handle);
 
+  /// Get the current window.
+  ///
+  /// *Note*: the value returned by this method is not cached.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GL_GetCurrentWindow)
+  Window get currentWindow {
+    final ptr = sdl.SDL_GL_GetCurrentWindow();
+    if (ptr == nullptr) {
+      calloc.free(ptr);
+      throw SdlError(0, getError());
+    }
+    return Window(this, ptr);
+  }
+
   /// Return whether or not the screen saver is currently enabled.
   bool get screenSaverEnabled => getBool(sdl.SDL_IsScreenSaverEnabled());
+
+  /// Set whether or not the screen saver is enabled.
+  ///
+  /// SDL Links:
+  /// [SDL_EnableScreenSaver](https://wiki.libsdl.org/SDL_EnableScreenSaver)
+  /// [SDL_DisableScreenSaver](https://wiki.libsdl.org/SDL_DisableScreenSaver)
+  set screenSaverEnabled(bool value) {
+    if (value) {
+      sdl.SDL_EnableScreenSaver();
+    } else {
+      sdl.SDL_DisableScreenSaver();
+    }
+  }
+
+  /// Get the number of video displays.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetNumVideoDisplays)
+  int get numVideoDisplays => checkReturnValue(sdl.SDL_GetNumVideoDisplays());
+
+  /// Get the number of video drivers compiled into SDL.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetNumVideoDrivers)
+  int get numVideoDrivers => checkReturnValue(sdl.SDL_GetNumVideoDrivers());
+
+  /// Get the name of a video driver.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetVideoDriver)
+  String getVideoDriver(int index) =>
+      sdl.SDL_GetVideoDriver(index).cast<Utf8>().toDartString();
+
+  /// Create a display.
+  Display createDisplay(int index) => Display(this, index);
+
+  /// Create a display with index 0.
+  Display createFirstDisplay() => createDisplay(0);
 
   /// Show a message box.
   ///
@@ -392,9 +456,7 @@ class Sdl {
       return null;
     }
     final ptr = sdl.SDL_GetClipboardText();
-    if (ptr.value == 0) {
-      throw SdlError(0, getError());
-    }
+    checkReturnValue(ptr.value);
     final s = ptr.cast<Utf8>().toDartString();
     sdl.SDL_free(ptr.cast<Void>());
     return s;

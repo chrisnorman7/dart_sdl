@@ -5,6 +5,7 @@ void main() {
   final sdl = Sdl()..init();
   print('SDL version ${sdl.version}.');
   final window = sdl.createWindow('Test Window');
+  print(window.displayMode);
   sdl.showSimpleMessageBox(MessageBoxFlags.information, 'Window Creation',
       'Created window ${window.title}.',
       window: window);
@@ -23,7 +24,7 @@ void main() {
   } else {
     print('Suit yourself.');
   }
-  sdl.setClipboardText(sdl.version);
+  sdl.setClipboardText(sdl.version.toString());
   window.destroy();
   sdl.quit();
 }

@@ -125,3 +125,15 @@ enum MessageBoxFlags {
   /// informational dialog
   information,
 }
+
+/// Full screen modes.
+enum FullScreenMode {
+  /// Real fullscreen with a videomode change.
+  real,
+
+  /// Desktop fullscreen that takes the size of the desktop.
+  desktop,
+
+  /// Windowed mode.
+  windowed,
+}
