@@ -194,3 +194,5 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 * [SDL_GetClipboardText](https://wiki.libsdl.org/SDL_GetClipboardText)
 * [SDL_HasClipboardText](https://wiki.libsdl.org/SDL_HasClipboardText)
 * [SDL_SetClipboardText](https://wiki.libsdl.org/SDL_SetClipboardText)
+
+### [Event Handling](https://wiki.libsdl.org/CategoryEvents)

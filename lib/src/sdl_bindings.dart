@@ -21443,7 +21443,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 600;
+const int SDL_LINE = 601;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 

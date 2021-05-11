@@ -30,3 +30,4 @@ ffigen:
       - "SDL2-2.0.14/include/SDL_revision.h"
       - "SDL2-2.0.14/include/SDL_video.h"
       - "SDL2-2.0.14/include/SDL_clipboard.h"
+      - "SDL2-2.0.14/include/SDL_events.h"
