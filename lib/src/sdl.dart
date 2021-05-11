@@ -95,7 +95,7 @@ class Sdl {
   /// Throw an error if return value is non-null.
   void checkReturnValue(int value) {
     if (value != 0) {
-      final message = sdl.SDL_GetError().cast<Utf8>().toDartString();
+      final message = getError();
       throw SdlError(value, message);
     }
   }
@@ -120,6 +120,10 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_WasInit)
   int wasInit({int flags = 0}) => sdl.SDL_WasInit(flags);
+
+  /// Get the most recent SDL error for this thread.
+  ///
+  String getError() => sdl.SDL_GetError().cast<Utf8>().toDartString();
 
   /// Clear all hints.
   ///
@@ -373,5 +377,35 @@ class Sdl {
     checkReturnValue(sdl.SDL_ShowSimpleMessageBox(
         flags, titlePointer, messagePointer, window?.handle ?? nullptr));
     [titlePointer, messagePointer].forEach(calloc.free);
+  }
+
+  /// Returns `true` if the clipboard contains text.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HasClipboardText)
+  bool hasClipboardText() => getBool(sdl.SDL_HasClipboardText());
+
+  /// Get clipboard text.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetClipboardText)
+  String? getClipboardText() {
+    if (hasClipboardText() == false) {
+      return null;
+    }
+    final ptr = sdl.SDL_GetClipboardText();
+    if (ptr.value == 0) {
+      throw SdlError(0, getError());
+    }
+    final s = ptr.cast<Utf8>().toDartString();
+    sdl.SDL_free(ptr.cast<Void>());
+    return s;
+  }
+
+  /// Set clipboard text.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_SetClipboardText)
+  void setClipboardText(String value) {
+    final valuePointer = value.toNativeUtf8().cast<Int8>();
+    checkReturnValue(sdl.SDL_SetClipboardText(valuePointer));
+    calloc.free(valuePointer);
   }
 }

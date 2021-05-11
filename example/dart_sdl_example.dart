@@ -8,18 +8,22 @@ void main() {
   sdl.showSimpleMessageBox(MessageBoxFlags.information, 'Window Creation',
       'Created window ${window.title}.',
       window: window);
-  const okButtonId = 1;
-  const cancelButtonId = 2;
+  const yesButtonId = 1;
+  const noButtonId = 2;
   final id = sdl.showMessageBox(
       'SDL Example',
-      'This is hello from dart.',
+      'See the clipboard contents?',
       [
-        Button('OK', id: okButtonId, flags: ButtonFlags.returnKeyDefault),
-        Button('Cancel',
-            id: cancelButtonId, flags: ButtonFlags.escapeKeyDefault)
+        Button('Yes', id: yesButtonId, flags: ButtonFlags.returnKeyDefault),
+        Button('No', id: noButtonId, flags: ButtonFlags.escapeKeyDefault)
       ],
       window: window);
+  if (id == yesButtonId) {
+    print('The clipboard contains: ${sdl.getClipboardText()}');
+  } else {
+    print('Suit yourself.');
+  }
+  sdl.setClipboardText(sdl.version);
   window.destroy();
   sdl.quit();
-  print('You pressed ${id == okButtonId ? "OK" : "Cancel"}.');
 }
