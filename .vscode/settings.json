@@ -22,6 +22,7 @@
     "ptr",
     "retval",
     "sdl",
+    "structs",
     "videomode"
   ],
   "cSpell.enabled": true

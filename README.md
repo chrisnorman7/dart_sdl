@@ -6,43 +6,93 @@ I have been implementing functions as I needed them. As such, this library is
 not complete. I of course welcome
 [issues](https://github.com/chrisnorman7/dart_sdl/issues/new).
 
-Below is a list of what has been done so far.
+## Reading this document
+
+Since most names in Dart are camelCase translations from their SDL equivalents,
+only links to SDL functions are included.
+
+For each section of the [API](https://wiki.libsdl.org/APIByCategory), a link to
+the category is provided, followed by a few sections:
+
+### Classes
+
+In some cases it is necessary to create Dart-side classes to replace SDL
+structs. Links to the SDL originals should be listed in this section.
+
+### Enumerations
+
+Where an SDL enum has been translated to dart, a link to the original enum
+should be placed in this section.
+
+### Functions
+
+This section should contain subsections for each Dart class that methods are
+attached to.
+
+Each section heading should be a link to the Dart class the method is attached
+to, and each entry in the function list should be a link to the original SDL
+function.
 
 ## Progress
 
 ### [Initialization and Shutdown](https://wiki.libsdl.org/CategoryInit)
 
-Done except for:
+#### Functions
 
-* [SDL_InitSubSystem](https://wiki.libsdl.org/SDL_InitSubSystem)
-* [SDL_QuitSubSystem](https://wiki.libsdl.org/SDL_QuitSubSystem)
-* [SDL_WinRTRunApp](https://wiki.libsdl.org/SDL_WinRTRunApp)
+##### `Sdl` class
+
+* [SDL_Init](https://wiki.libsdl.org/SDL_Init)
+* [SDL_Quit](https://wiki.libsdl.org/SDL_Quit)
+* [SDL_SetMainReady](https://wiki.libsdl.org/SDL_SetMainReady)
+* [SDL_WasInit](https://wiki.libsdl.org/SDL_WasInit)
 
 ### [Configuration Variables](https://wiki.libsdl.org/CategoryHints)
 
-Partly done. I haven't implemented any of the functions requiring callbacks.
+#### Enumerations
 
-I have made [SDL_HintPriority](https://wiki.libsdl.org/SDL_HintPriority) an
-enum, and implemented:
+* [SDL_HintPriority](https://wiki.libsdl.org/SDL_HintPriority)
+
+#### Functions
+
+##### `Sdl` class
 
 * [SDL_SetHint](https://wiki.libsdl.org/SDL_SetHint)
 * [SDL_SetHintWithPriority](https://wiki.libsdl.org/SDL_SetHintWithPriority)
+* [SDL_ClearHints](https://wiki.libsdl.org/SDL_ClearHints)
 
-## [Error Handling](https://wiki.libsdl.org/CategoryError)
+### [Error Handling](https://wiki.libsdl.org/CategoryError)
 
-Completely done.
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_ClearError](https://wiki.libsdl.org/SDL_ClearError)
+* [SDL_GetError](https://wiki.libsdl.org/SDL_GetError)
+* [SDL_SetError](https://wiki.libsdl.org/SDL_SetError)
 
 ### [Log Handling](https://wiki.libsdl.org/CategoryLog)
 
-I have created enumerations for
-[SDL_LOG_CATEGORY](https://wiki.libsdl.org/SDL_LOG_CATEGORY), and
-[SDL_LogPriority](https://wiki.libsdl.org/SDL_LogPriority).
+#### Enumerations
 
-I haven't wrapped the following functions:
+* [SDL_LOG_CATEGORY](https://wiki.libsdl.org/SDL_LOG_CATEGORY)
+* [SDL_LogPriority](https://wiki.libsdl.org/SDL_LogPriority).
 
-* [SDL_LogGetOutputFunction](https://wiki.libsdl.org/SDL_LogGetOutputFunction)
-* [SDL_LogMessageV](https://wiki.libsdl.org/SDL_LogMessageV)
-* [SDL_LogSetOutputFunction](https://wiki.libsdl.org/SDL_LogSetOutputFunction)
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_Log](https://wiki.libsdl.org/SDL_Log)
+* [SDL_LogCritical](https://wiki.libsdl.org/SDL_LogCritical)
+* [SDL_LogDebug](https://wiki.libsdl.org/SDL_LogDebug)
+* [SDL_LogError](https://wiki.libsdl.org/SDL_LogError)
+* [SDL_LogGetPriority](https://wiki.libsdl.org/SDL_LogGetPriority)
+* [SDL_LogInfo](https://wiki.libsdl.org/SDL_LogInfo)
+* [SDL_LogMessage](https://wiki.libsdl.org/SDL_LogMessage)
+* [SDL_LogResetPriorities](https://wiki.libsdl.org/SDL_LogResetPriorities)
+* [SDL_LogSetAllPriority](https://wiki.libsdl.org/SDL_LogSetAllPriority)
+* [SDL_LogSetPriority](https://wiki.libsdl.org/SDL_LogSetPriority)
+* [SDL_LogVerbose](https://wiki.libsdl.org/SDL_LogVerbose)
+* [SDL_LogWarn](https://wiki.libsdl.org/SDL_LogWarn)
 
 ### [Assertions](https://wiki.libsdl.org/CategoryAssertions)
 
@@ -50,21 +100,23 @@ Not implemented.
 
 ### [Querying SDL Version](https://wiki.libsdl.org/CategoryVersion)
 
-I have added the following getters on the `Sdl` class:
+#### Classes
 
-* [SDL_GetRevision](https://wiki.libsdl.org/SDL_GetRevision) as `revision`.
-* [SDL_GetRevisionNumber](https://wiki.libsdl.org/SDL_GetRevisionNumber) as
-`revisionNumber`.
-* [SDL_GetVersion](https://wiki.libsdl.org/SDL_GetVersion) as `version`.
+* [SDL_version](https://wiki.libsdl.org/SDL_version)
 
-I have added the `SdlVersion` class to wrap
-[SDL_version](https://wiki.libsdl.org/SDL_version).
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_GetRevision](https://wiki.libsdl.org/SDL_GetRevision)
+* [SDL_GetRevisionNumber](https://wiki.libsdl.org/SDL_GetRevisionNumber)
+* [SDL_GetVersion](https://wiki.libsdl.org/SDL_GetVersion)
 
 ### [Display and Window Management](https://wiki.libsdl.org/CategoryVideo)
 
-Many of the functions from this category I farmed out to a `Window` class. You
-can create windows with the `Sdl.createWindow` method, which wraps the
-[SDL_CreateWindow](https://wiki.libsdl.org/SDL_CreateWindow) method.
+#### Classes
+
+* [SDL_MessageBoxButtonData](https://wiki.libsdl.org/SDL_MessageBoxButtonData).
 
 #### Enumerations
 
@@ -74,7 +126,7 @@ can create windows with the `Sdl.createWindow` method, which wraps the
 
 #### Functions
 
-The following functions are wrapped by methods on the `Sdl` class:
+##### `Sdl` class
 
 * [SDL_CreateWindow](https://wiki.libsdl.org/SDL_CreateWindow)
 * [SDL_DestroyWindow](https://wiki.libsdl.org/SDL_DestroyWindow)
@@ -84,21 +136,11 @@ The following functions are wrapped by methods on the `Sdl` class:
 * [SDL_GL_GetCurrentWindow](https://wiki.libsdl.org/SDL_GL_GetCurrentWindow)
 * [SDL_ShowMessageBox](https://wiki.libsdl.org/SDL_ShowMessageBox)
 * [SDL_ShowSimpleMessageBox](https://wiki.libsdl.org/SDL_ShowSimpleMessageBox)
-
-I have created the `Button` class to wrap
-[SDL_MessageBoxButtonData](https://wiki.libsdl.org/SDL_MessageBoxButtonData).
-
-The following methods are wrapped by the `Sdl.screenSaverEnabled` getter /
-setter:
-
 * [SDL_IsScreenSaverEnabled](https://wiki.libsdl.org/SDL_IsScreenSaverEnabled)
-(getter)
 * [SDL_DisableScreenSaver](https://wiki.libsdl.org/SDL_DisableScreenSaver)
-(`screenSaverEnabled = false`)
 * [SDL_EnableScreenSaver](https://wiki.libsdl.org/SDL_EnableScreenSaver)
-(`screenSaverEnabled = true`)
 
-The following functions are wrapped by getters on the `Display` class:
+##### `Display` class
 
 * [SDL_GetDisplayName](https://wiki.libsdl.org/SDL_GetDisplayName)
 * [SDL_GetDisplayBounds](https://wiki.libsdl.org/SDL_GetDisplayBounds)
@@ -108,7 +150,7 @@ The following functions are wrapped by getters on the `Display` class:
   https://wiki.libsdl.org/SDL_GetDesktopDisplayMode)
 * [SDL_GetDisplayMode](https://wiki.libsdl.org/SDL_GetDisplayMode)
 
-The following functions are wrapped by getters on the `Window` class:
+##### `Window` class
 
 * [SDL_GetWindowBordersSize](https://wiki.libsdl.org/SDL_GetWindowBordersSize)
   * [SDL_GetWindowBrightness](https://wiki.libsdl.org/SDL_GetWindowBrightness)
