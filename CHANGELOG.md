@@ -1,4 +1,11 @@
-## [0.0.2] - 2021-05-11
+## [0.0.4] 
+### Added
+- Added clipboard functions to readme.
+
+### Fixed
+- Fixed the package description.
+
+## [0.0.2]
 ### Added
 - Added proper documentation.
 - Added initialisation, window and logging functions.
