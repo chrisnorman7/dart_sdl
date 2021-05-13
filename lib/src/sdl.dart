@@ -470,4 +470,9 @@ class Sdl {
     checkReturnValue(sdl.SDL_SetClipboardText(valuePointer));
     calloc.free(valuePointer);
   }
+
+  /// Pump events.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_PumpEvents)
+  void pumpEvents() => sdl.SDL_PumpEvents();
 }

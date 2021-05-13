@@ -22,6 +22,7 @@ export 'src/button.dart';
 export 'src/display.dart';
 export 'src/enumerations.dart';
 export 'src/error.dart';
+export 'src/events/base.dart';
 export 'src/sdl.dart';
 export 'src/sdl_bindings.dart';
 export 'src/window.dart';

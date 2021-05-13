@@ -31,3 +31,6 @@ ffigen:
       - "SDL2-2.0.14/include/SDL_video.h"
       - "SDL2-2.0.14/include/SDL_clipboard.h"
       - "SDL2-2.0.14/include/SDL_events.h"
+      - "SDL2-2.0.14/include/SDL_keyboard.h"
+      - "SDL2-2.0.14/include/SDL_keycode.h"
+      - "SDL2-2.0.14/include/SDL_scancode.h"
