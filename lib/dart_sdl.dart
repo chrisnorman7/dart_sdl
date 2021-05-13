@@ -18,6 +18,10 @@ library dart_sdl;
 
 import 'src/sdl.dart';
 
+export 'src/audio/device.dart';
+export 'src/audio/driver.dart';
+export 'src/audio/spec.dart';
+export 'src/audio/wave_file.dart';
 export 'src/button.dart';
 export 'src/display.dart';
 export 'src/enumerations.dart';

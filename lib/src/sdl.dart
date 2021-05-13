@@ -4,6 +4,9 @@ import 'dart:io';
 
 import 'package:ffi/ffi.dart';
 
+import 'audio/device.dart';
+import 'audio/driver.dart';
+import 'audio/spec.dart';
 import 'button.dart';
 import 'display.dart';
 import 'enumerations.dart';
@@ -475,4 +478,93 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PumpEvents)
   void pumpEvents() => sdl.SDL_PumpEvents();
+
+  /// Get the audio drivers on the system.
+  ///
+  /// Under the hood, uses the
+  /// [SDL_GetNumAudioDrivers](https://wiki.libsdl.org/SDL_GetNumAudioDrivers)
+  /// method.
+  List<AudioDriver> get audioDrivers {
+    final numDrivers = sdl.SDL_GetNumAudioDrivers();
+    final l = <AudioDriver>[];
+    for (var i = 0; i < numDrivers; i++) {
+      l.add(AudioDriver(this, i));
+    }
+    return l;
+  }
+
+  /// Get the current audio driver.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetCurrentAudioDriver)
+  AudioDriver get audioDriver {
+    final name = sdl.SDL_GetCurrentAudioDriver().cast<Utf8>().toDartString();
+    return audioDrivers.firstWhere((element) => element.name == name);
+  }
+
+  /// Get all the audio devices on this system.
+  ///
+  /// Under the hood, uses the
+  ///[SDL_GetNumAudioDevices](https://wiki.libsdl.org/SDL_GetNumAudioDevices)
+  ///function.
+  List<AudioDevice> getAudioDevices(bool isCapture) {
+    final numDevices = sdl.SDL_GetNumAudioDevices(boolToValue(isCapture));
+    final l = <AudioDevice>[];
+    for (var i = 0; i < numDevices; i++) {
+      l.add(AudioDevice(this, i, isCapture));
+    }
+    return l;
+  }
+
+  /// Get all audio devices suitable for output.
+  List<AudioDevice> get outputAudioDevices => getAudioDevices(false);
+
+  /// Get all audio devices suitable for input.
+  List<AudioDevice> get inputAudioDevices => getAudioDevices(true);
+
+  /// Open an audio device.
+  ///
+  /// If [device] is `null`, then the default device will be opened,.
+  ///
+  /// If [isCapture] is `null`, then `device.isCapture` will be used.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_OpenAudioDevice)
+  OpenAudioDevice openAudioDevice(
+      {AudioDevice? device, bool? isCapture, AudioSpec? settings}) {
+    Pointer<Int8> namePointer;
+    if (device != null) {
+      if (isCapture == null) {
+        isCapture = device.isCapture;
+        namePointer = device.name.toNativeUtf8().cast<Int8>();
+      } else {
+        throw SdlError(-1,
+            'You must specify either `device` or `isCapture`, but not both.');
+      }
+    } else {
+      if (isCapture == null) {
+        throw SdlError(
+            -1, 'When `device == null`, `isCapture` must be specified.');
+      } else {
+        namePointer = nullptr;
+      }
+    }
+    final desiredPointer = calloc<SDL_AudioSpec>();
+    if (settings != null) {
+      desiredPointer.ref
+        ..channels = settings.channels
+        ..format = settings.audioFormat
+        ..freq = settings.freq
+        ..samples = settings.samples
+        ..silence = settings.silence
+        ..size = settings.size;
+    }
+    final obtainedPointer = calloc<SDL_AudioSpec>();
+    final id = checkReturnValue(sdl.SDL_OpenAudioDevice(namePointer,
+        boolToValue(isCapture), desiredPointer, obtainedPointer, 0));
+    if (id <= 0) {
+      throw SdlError(id, getError());
+    }
+    final spec = AudioSpec.fromPointer(obtainedPointer);
+    [namePointer, desiredPointer, obtainedPointer].forEach(calloc.free);
+    return OpenAudioDevice(this, device, id, spec);
+  }
 }

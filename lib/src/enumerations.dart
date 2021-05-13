@@ -137,3 +137,17 @@ enum FullScreenMode {
   /// Windowed mode.
   windowed,
 }
+
+/// Audio status.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_AudioStatus)
+enum AudioStatus {
+  /// Audio device is stopped.
+  stopped,
+
+  /// Audio device is playing.
+  playing,
+
+  /// Audio device is paused.
+  paused,
+}
