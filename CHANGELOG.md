@@ -1,3 +1,7 @@
+## [0.0.5]
+### Added
+- Added audio functions.
+
 ## [0.0.4] 
 ### Added
 - Added clipboard functions to readme.
