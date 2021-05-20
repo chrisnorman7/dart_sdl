@@ -2914,6 +2914,101 @@ class DartSdl {
   late final __fdsin_ptr = _lookup<ffi.NativeFunction<_c__fdsin>>('_fdsin');
   late final _dart__fdsin __fdsin = __fdsin_ptr.asFunction<_dart__fdsin>();
 
+  late final ffi.Pointer<_float_const> __Denorm_C =
+      _lookup<_float_const>('_Denorm_C');
+
+  ffi.Pointer<_float_const> get _Denorm_C => __Denorm_C;
+
+  late final ffi.Pointer<_float_const> __Inf_C =
+      _lookup<_float_const>('_Inf_C');
+
+  ffi.Pointer<_float_const> get _Inf_C => __Inf_C;
+
+  late final ffi.Pointer<_float_const> __Nan_C =
+      _lookup<_float_const>('_Nan_C');
+
+  ffi.Pointer<_float_const> get _Nan_C => __Nan_C;
+
+  late final ffi.Pointer<_float_const> __Snan_C =
+      _lookup<_float_const>('_Snan_C');
+
+  ffi.Pointer<_float_const> get _Snan_C => __Snan_C;
+
+  late final ffi.Pointer<_float_const> __Hugeval_C =
+      _lookup<_float_const>('_Hugeval_C');
+
+  ffi.Pointer<_float_const> get _Hugeval_C => __Hugeval_C;
+
+  late final ffi.Pointer<_float_const> __FDenorm_C =
+      _lookup<_float_const>('_FDenorm_C');
+
+  ffi.Pointer<_float_const> get _FDenorm_C => __FDenorm_C;
+
+  late final ffi.Pointer<_float_const> __FInf_C =
+      _lookup<_float_const>('_FInf_C');
+
+  ffi.Pointer<_float_const> get _FInf_C => __FInf_C;
+
+  late final ffi.Pointer<_float_const> __FNan_C =
+      _lookup<_float_const>('_FNan_C');
+
+  ffi.Pointer<_float_const> get _FNan_C => __FNan_C;
+
+  late final ffi.Pointer<_float_const> __FSnan_C =
+      _lookup<_float_const>('_FSnan_C');
+
+  ffi.Pointer<_float_const> get _FSnan_C => __FSnan_C;
+
+  late final ffi.Pointer<_float_const> __LDenorm_C =
+      _lookup<_float_const>('_LDenorm_C');
+
+  ffi.Pointer<_float_const> get _LDenorm_C => __LDenorm_C;
+
+  late final ffi.Pointer<_float_const> __LInf_C =
+      _lookup<_float_const>('_LInf_C');
+
+  ffi.Pointer<_float_const> get _LInf_C => __LInf_C;
+
+  late final ffi.Pointer<_float_const> __LNan_C =
+      _lookup<_float_const>('_LNan_C');
+
+  ffi.Pointer<_float_const> get _LNan_C => __LNan_C;
+
+  late final ffi.Pointer<_float_const> __LSnan_C =
+      _lookup<_float_const>('_LSnan_C');
+
+  ffi.Pointer<_float_const> get _LSnan_C => __LSnan_C;
+
+  late final ffi.Pointer<_float_const> __Eps_C =
+      _lookup<_float_const>('_Eps_C');
+
+  ffi.Pointer<_float_const> get _Eps_C => __Eps_C;
+
+  late final ffi.Pointer<_float_const> __Rteps_C =
+      _lookup<_float_const>('_Rteps_C');
+
+  ffi.Pointer<_float_const> get _Rteps_C => __Rteps_C;
+
+  late final ffi.Pointer<_float_const> __FEps_C =
+      _lookup<_float_const>('_FEps_C');
+
+  ffi.Pointer<_float_const> get _FEps_C => __FEps_C;
+
+  late final ffi.Pointer<_float_const> __FRteps_C =
+      _lookup<_float_const>('_FRteps_C');
+
+  ffi.Pointer<_float_const> get _FRteps_C => __FRteps_C;
+
+  late final ffi.Pointer<_float_const> __LEps_C =
+      _lookup<_float_const>('_LEps_C');
+
+  ffi.Pointer<_float_const> get _LEps_C => __LEps_C;
+
+  late final ffi.Pointer<_float_const> __LRteps_C =
+      _lookup<_float_const>('_LRteps_C');
+
+  ffi.Pointer<_float_const> get _LRteps_C => __LRteps_C;
+
   late final ffi.Pointer<ffi.Double> __Zero_C = _lookup<ffi.Double>('_Zero_C');
 
   double get _Zero_C => __Zero_C.value;
@@ -11849,6 +11944,23 @@ class DartSdl {
       _SDL_JoystickGetDevicePlayerIndex = _SDL_JoystickGetDevicePlayerIndex_ptr
           .asFunction<_dart_SDL_JoystickGetDevicePlayerIndex>();
 
+  /// Return the GUID for the joystick at this index
+  /// This can be called before any joysticks are opened.
+  SDL_JoystickGUID SDL_JoystickGetDeviceGUID(
+    int device_index,
+  ) {
+    return _SDL_JoystickGetDeviceGUID(
+      device_index,
+    );
+  }
+
+  late final _SDL_JoystickGetDeviceGUID_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceGUID>>(
+          'SDL_JoystickGetDeviceGUID');
+  late final _dart_SDL_JoystickGetDeviceGUID _SDL_JoystickGetDeviceGUID =
+      _SDL_JoystickGetDeviceGUID_ptr.asFunction<
+          _dart_SDL_JoystickGetDeviceGUID>();
+
   /// Get the USB vendor ID of a joystick, if available.
   /// This can be called before any joysticks are opened.
   /// If the vendor ID isn't available this function returns 0.
@@ -12162,6 +12274,21 @@ class DartSdl {
       _SDL_JoystickSetPlayerIndex_ptr.asFunction<
           _dart_SDL_JoystickSetPlayerIndex>();
 
+  /// Return the GUID for this opened joystick
+  SDL_JoystickGUID SDL_JoystickGetGUID(
+    ffi.Pointer<_SDL_Joystick> joystick,
+  ) {
+    return _SDL_JoystickGetGUID(
+      joystick,
+    );
+  }
+
+  late final _SDL_JoystickGetGUID_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUID>>(
+          'SDL_JoystickGetGUID');
+  late final _dart_SDL_JoystickGetGUID _SDL_JoystickGetGUID =
+      _SDL_JoystickGetGUID_ptr.asFunction<_dart_SDL_JoystickGetGUID>();
+
   /// Get the USB vendor ID of an opened joystick, if available.
   /// If the vendor ID isn't available this function returns 0.
   int SDL_JoystickGetVendor(
@@ -12242,6 +12369,43 @@ class DartSdl {
           'SDL_JoystickGetType');
   late final _dart_SDL_JoystickGetType _SDL_JoystickGetType =
       _SDL_JoystickGetType_ptr.asFunction<_dart_SDL_JoystickGetType>();
+
+  /// Return a string representation for this guid. pszGUID must point to at least 33 bytes
+  /// (32 for the string plus a NULL terminator).
+  void SDL_JoystickGetGUIDString(
+    SDL_JoystickGUID guid,
+    ffi.Pointer<ffi.Int8> pszGUID,
+    int cbGUID,
+  ) {
+    return _SDL_JoystickGetGUIDString(
+      guid,
+      pszGUID,
+      cbGUID,
+    );
+  }
+
+  late final _SDL_JoystickGetGUIDString_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUIDString>>(
+          'SDL_JoystickGetGUIDString');
+  late final _dart_SDL_JoystickGetGUIDString _SDL_JoystickGetGUIDString =
+      _SDL_JoystickGetGUIDString_ptr.asFunction<
+          _dart_SDL_JoystickGetGUIDString>();
+
+  /// Convert a string into a joystick guid
+  SDL_JoystickGUID SDL_JoystickGetGUIDFromString(
+    ffi.Pointer<ffi.Int8> pchGUID,
+  ) {
+    return _SDL_JoystickGetGUIDFromString(
+      pchGUID,
+    );
+  }
+
+  late final _SDL_JoystickGetGUIDFromString_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUIDFromString>>(
+          'SDL_JoystickGetGUIDFromString');
+  late final _dart_SDL_JoystickGetGUIDFromString
+      _SDL_JoystickGetGUIDFromString = _SDL_JoystickGetGUIDFromString_ptr
+          .asFunction<_dart_SDL_JoystickGetGUIDFromString>();
 
   /// Returns SDL_TRUE if the joystick has been opened and currently connected, or SDL_FALSE if it has not.
   int SDL_JoystickGetAttached(
@@ -12974,6 +13138,24 @@ class DartSdl {
       _SDL_GameControllerMappingForIndex_ptr.asFunction<
           _dart_SDL_GameControllerMappingForIndex>();
 
+  /// Get a mapping string for a GUID
+  ///
+  /// \return the mapping string.  Must be freed with SDL_free().  Returns NULL if no mapping is available
+  ffi.Pointer<ffi.Int8> SDL_GameControllerMappingForGUID(
+    SDL_JoystickGUID guid,
+  ) {
+    return _SDL_GameControllerMappingForGUID(
+      guid,
+    );
+  }
+
+  late final _SDL_GameControllerMappingForGUID_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_GameControllerMappingForGUID>>(
+          'SDL_GameControllerMappingForGUID');
+  late final _dart_SDL_GameControllerMappingForGUID
+      _SDL_GameControllerMappingForGUID = _SDL_GameControllerMappingForGUID_ptr
+          .asFunction<_dart_SDL_GameControllerMappingForGUID>();
+
   /// Get a mapping string for an open GameController
   ///
   /// \return the mapping string.  Must be freed with SDL_free().  Returns NULL if no mapping is available
@@ -13357,6 +13539,24 @@ class DartSdl {
       _SDL_GameControllerGetStringForAxis_ptr.asFunction<
           _dart_SDL_GameControllerGetStringForAxis>();
 
+  /// Get the SDL joystick layer binding for this controller button mapping
+  SDL_GameControllerButtonBind SDL_GameControllerGetBindForAxis(
+    ffi.Pointer<_SDL_GameController> gamecontroller,
+    int axis,
+  ) {
+    return _SDL_GameControllerGetBindForAxis(
+      gamecontroller,
+      axis,
+    );
+  }
+
+  late final _SDL_GameControllerGetBindForAxis_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetBindForAxis>>(
+          'SDL_GameControllerGetBindForAxis');
+  late final _dart_SDL_GameControllerGetBindForAxis
+      _SDL_GameControllerGetBindForAxis = _SDL_GameControllerGetBindForAxis_ptr
+          .asFunction<_dart_SDL_GameControllerGetBindForAxis>();
+
   /// Return whether a game controller has a given axis
   int SDL_GameControllerHasAxis(
     ffi.Pointer<_SDL_GameController> gamecontroller,
@@ -13431,6 +13631,25 @@ class DartSdl {
       _SDL_GameControllerGetStringForButton =
       _SDL_GameControllerGetStringForButton_ptr.asFunction<
           _dart_SDL_GameControllerGetStringForButton>();
+
+  /// Get the SDL joystick layer binding for this controller button mapping
+  SDL_GameControllerButtonBind SDL_GameControllerGetBindForButton(
+    ffi.Pointer<_SDL_GameController> gamecontroller,
+    int button,
+  ) {
+    return _SDL_GameControllerGetBindForButton(
+      gamecontroller,
+      button,
+    );
+  }
+
+  late final _SDL_GameControllerGetBindForButton_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetBindForButton>>(
+          'SDL_GameControllerGetBindForButton');
+  late final _dart_SDL_GameControllerGetBindForButton
+      _SDL_GameControllerGetBindForButton =
+      _SDL_GameControllerGetBindForButton_ptr.asFunction<
+          _dart_SDL_GameControllerGetBindForButton>();
 
   /// Return whether a game controller has a given button
   int SDL_GameControllerHasButton(
@@ -13914,6 +14133,43 @@ class DartSdl {
   late final _dart_SDL_PumpEvents _SDL_PumpEvents =
       _SDL_PumpEvents_ptr.asFunction<_dart_SDL_PumpEvents>();
 
+  /// Checks the event queue for messages and optionally returns them.
+  ///
+  /// If \c action is ::SDL_ADDEVENT, up to \c numevents events will be added to
+  /// the back of the event queue.
+  ///
+  /// If \c action is ::SDL_PEEKEVENT, up to \c numevents events at the front
+  /// of the event queue, within the specified minimum and maximum type,
+  /// will be returned and will not be removed from the queue.
+  ///
+  /// If \c action is ::SDL_GETEVENT, up to \c numevents events at the front
+  /// of the event queue, within the specified minimum and maximum type,
+  /// will be returned and will be removed from the queue.
+  ///
+  /// \return The number of events actually stored, or -1 if there was an error.
+  ///
+  /// This function is thread-safe.
+  int SDL_PeepEvents(
+    ffi.Pointer<SDL_Event> events,
+    int numevents,
+    int action,
+    int minType,
+    int maxType,
+  ) {
+    return _SDL_PeepEvents(
+      events,
+      numevents,
+      action,
+      minType,
+      maxType,
+    );
+  }
+
+  late final _SDL_PeepEvents_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_PeepEvents>>('SDL_PeepEvents');
+  late final _dart_SDL_PeepEvents _SDL_PeepEvents =
+      _SDL_PeepEvents_ptr.asFunction<_dart_SDL_PeepEvents>();
+
   /// Checks to see if certain event types are in the event queue.
   int SDL_HasEvent(
     int type,
@@ -13974,6 +14230,189 @@ class DartSdl {
       _lookup<ffi.NativeFunction<_c_SDL_FlushEvents>>('SDL_FlushEvents');
   late final _dart_SDL_FlushEvents _SDL_FlushEvents =
       _SDL_FlushEvents_ptr.asFunction<_dart_SDL_FlushEvents>();
+
+  /// \brief Polls for currently pending events.
+  ///
+  /// \return 1 if there are any pending events, or 0 if there are none available.
+  ///
+  /// \param event If not NULL, the next event is removed from the queue and
+  /// stored in that area.
+  int SDL_PollEvent(
+    ffi.Pointer<SDL_Event> event,
+  ) {
+    return _SDL_PollEvent(
+      event,
+    );
+  }
+
+  late final _SDL_PollEvent_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_PollEvent>>('SDL_PollEvent');
+  late final _dart_SDL_PollEvent _SDL_PollEvent =
+      _SDL_PollEvent_ptr.asFunction<_dart_SDL_PollEvent>();
+
+  /// \brief Waits indefinitely for the next available event.
+  ///
+  /// \return 1, or 0 if there was an error while waiting for events.
+  ///
+  /// \param event If not NULL, the next event is removed from the queue and
+  /// stored in that area.
+  int SDL_WaitEvent(
+    ffi.Pointer<SDL_Event> event,
+  ) {
+    return _SDL_WaitEvent(
+      event,
+    );
+  }
+
+  late final _SDL_WaitEvent_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_WaitEvent>>('SDL_WaitEvent');
+  late final _dart_SDL_WaitEvent _SDL_WaitEvent =
+      _SDL_WaitEvent_ptr.asFunction<_dart_SDL_WaitEvent>();
+
+  /// \brief Waits until the specified timeout (in milliseconds) for the next
+  /// available event.
+  ///
+  /// \return 1, or 0 if there was an error while waiting for events.
+  ///
+  /// \param event If not NULL, the next event is removed from the queue and
+  /// stored in that area.
+  /// \param timeout The timeout (in milliseconds) to wait for next event.
+  int SDL_WaitEventTimeout(
+    ffi.Pointer<SDL_Event> event,
+    int timeout,
+  ) {
+    return _SDL_WaitEventTimeout(
+      event,
+      timeout,
+    );
+  }
+
+  late final _SDL_WaitEventTimeout_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_WaitEventTimeout>>(
+          'SDL_WaitEventTimeout');
+  late final _dart_SDL_WaitEventTimeout _SDL_WaitEventTimeout =
+      _SDL_WaitEventTimeout_ptr.asFunction<_dart_SDL_WaitEventTimeout>();
+
+  /// \brief Add an event to the event queue.
+  ///
+  /// \return 1 on success, 0 if the event was filtered, or -1 if the event queue
+  /// was full or there was some other error.
+  int SDL_PushEvent(
+    ffi.Pointer<SDL_Event> event,
+  ) {
+    return _SDL_PushEvent(
+      event,
+    );
+  }
+
+  late final _SDL_PushEvent_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_PushEvent>>('SDL_PushEvent');
+  late final _dart_SDL_PushEvent _SDL_PushEvent =
+      _SDL_PushEvent_ptr.asFunction<_dart_SDL_PushEvent>();
+
+  /// Sets up a filter to process all events before they change internal state and
+  /// are posted to the internal event queue.
+  ///
+  /// The filter is prototyped as:
+  /// \code
+  /// int SDL_EventFilter(void *userdata, SDL_Event * event);
+  /// \endcode
+  ///
+  /// If the filter returns 1, then the event will be added to the internal queue.
+  /// If it returns 0, then the event will be dropped from the queue, but the
+  /// internal state will still be updated.  This allows selective filtering of
+  /// dynamically arriving events.
+  ///
+  /// \warning  Be very careful of what you do in the event filter function, as
+  /// it may run in a different thread!
+  ///
+  /// There is one caveat when dealing with the ::SDL_QuitEvent event type.  The
+  /// event filter is only called when the window manager desires to close the
+  /// application window.  If the event filter returns 1, then the window will
+  /// be closed, otherwise the window will remain open if possible.
+  ///
+  /// If the quit event is generated by an interrupt signal, it will bypass the
+  /// internal queue and be delivered to the application at the next event poll.
+  void SDL_SetEventFilter(
+    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    ffi.Pointer<ffi.Void> userdata,
+  ) {
+    return _SDL_SetEventFilter(
+      filter,
+      userdata,
+    );
+  }
+
+  late final _SDL_SetEventFilter_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_SetEventFilter>>('SDL_SetEventFilter');
+  late final _dart_SDL_SetEventFilter _SDL_SetEventFilter =
+      _SDL_SetEventFilter_ptr.asFunction<_dart_SDL_SetEventFilter>();
+
+  /// Return the current event filter - can be used to "chain" filters.
+  /// If there is no event filter set, this function returns SDL_FALSE.
+  int SDL_GetEventFilter(
+    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
+    ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
+  ) {
+    return _SDL_GetEventFilter(
+      filter,
+      userdata,
+    );
+  }
+
+  late final _SDL_GetEventFilter_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_GetEventFilter>>('SDL_GetEventFilter');
+  late final _dart_SDL_GetEventFilter _SDL_GetEventFilter =
+      _SDL_GetEventFilter_ptr.asFunction<_dart_SDL_GetEventFilter>();
+
+  /// Add a function which is called when an event is added to the queue.
+  void SDL_AddEventWatch(
+    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    ffi.Pointer<ffi.Void> userdata,
+  ) {
+    return _SDL_AddEventWatch(
+      filter,
+      userdata,
+    );
+  }
+
+  late final _SDL_AddEventWatch_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_AddEventWatch>>('SDL_AddEventWatch');
+  late final _dart_SDL_AddEventWatch _SDL_AddEventWatch =
+      _SDL_AddEventWatch_ptr.asFunction<_dart_SDL_AddEventWatch>();
+
+  /// Remove an event watch function added with SDL_AddEventWatch()
+  void SDL_DelEventWatch(
+    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    ffi.Pointer<ffi.Void> userdata,
+  ) {
+    return _SDL_DelEventWatch(
+      filter,
+      userdata,
+    );
+  }
+
+  late final _SDL_DelEventWatch_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_DelEventWatch>>('SDL_DelEventWatch');
+  late final _dart_SDL_DelEventWatch _SDL_DelEventWatch =
+      _SDL_DelEventWatch_ptr.asFunction<_dart_SDL_DelEventWatch>();
+
+  /// Run the filter function on the current event queue, removing any
+  /// events for which the filter returns 0.
+  void SDL_FilterEvents(
+    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    ffi.Pointer<ffi.Void> userdata,
+  ) {
+    return _SDL_FilterEvents(
+      filter,
+      userdata,
+    );
+  }
+
+  late final _SDL_FilterEvents_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_FilterEvents>>('SDL_FilterEvents');
+  late final _dart_SDL_FilterEvents _SDL_FilterEvents =
+      _SDL_FilterEvents_ptr.asFunction<_dart_SDL_FilterEvents>();
 
   /// This function allows you to set the state of processing certain events.
   /// - If \c state is set to ::SDL_IGNORE, that event will be automatically
@@ -14418,6 +14857,89 @@ class DartSdl {
       _lookup<ffi.NativeFunction<_c_SDL_HapticNumAxes>>('SDL_HapticNumAxes');
   late final _dart_SDL_HapticNumAxes _SDL_HapticNumAxes =
       _SDL_HapticNumAxes_ptr.asFunction<_dart_SDL_HapticNumAxes>();
+
+  /// \brief Checks to see if effect is supported by haptic.
+  ///
+  /// \param haptic Haptic device to check on.
+  /// \param effect Effect to check to see if it is supported.
+  /// \return SDL_TRUE if effect is supported, SDL_FALSE if it isn't or -1 on error.
+  ///
+  /// \sa SDL_HapticQuery
+  /// \sa SDL_HapticNewEffect
+  int SDL_HapticEffectSupported(
+    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_HapticEffect> effect,
+  ) {
+    return _SDL_HapticEffectSupported(
+      haptic,
+      effect,
+    );
+  }
+
+  late final _SDL_HapticEffectSupported_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_HapticEffectSupported>>(
+          'SDL_HapticEffectSupported');
+  late final _dart_SDL_HapticEffectSupported _SDL_HapticEffectSupported =
+      _SDL_HapticEffectSupported_ptr.asFunction<
+          _dart_SDL_HapticEffectSupported>();
+
+  /// \brief Creates a new haptic effect on the device.
+  ///
+  /// \param haptic Haptic device to create the effect on.
+  /// \param effect Properties of the effect to create.
+  /// \return The identifier of the effect on success or -1 on error.
+  ///
+  /// \sa SDL_HapticUpdateEffect
+  /// \sa SDL_HapticRunEffect
+  /// \sa SDL_HapticDestroyEffect
+  int SDL_HapticNewEffect(
+    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_HapticEffect> effect,
+  ) {
+    return _SDL_HapticNewEffect(
+      haptic,
+      effect,
+    );
+  }
+
+  late final _SDL_HapticNewEffect_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_HapticNewEffect>>(
+          'SDL_HapticNewEffect');
+  late final _dart_SDL_HapticNewEffect _SDL_HapticNewEffect =
+      _SDL_HapticNewEffect_ptr.asFunction<_dart_SDL_HapticNewEffect>();
+
+  /// \brief Updates the properties of an effect.
+  ///
+  /// Can be used dynamically, although behavior when dynamically changing
+  /// direction may be strange.  Specifically the effect may reupload itself
+  /// and start playing from the start.  You cannot change the type either when
+  /// running SDL_HapticUpdateEffect().
+  ///
+  /// \param haptic Haptic device that has the effect.
+  /// \param effect Identifier of the effect to update.
+  /// \param data New effect properties to use.
+  /// \return 0 on success or -1 on error.
+  ///
+  /// \sa SDL_HapticNewEffect
+  /// \sa SDL_HapticRunEffect
+  /// \sa SDL_HapticDestroyEffect
+  int SDL_HapticUpdateEffect(
+    ffi.Pointer<_SDL_Haptic> haptic,
+    int effect,
+    ffi.Pointer<SDL_HapticEffect> data,
+  ) {
+    return _SDL_HapticUpdateEffect(
+      haptic,
+      effect,
+      data,
+    );
+  }
+
+  late final _SDL_HapticUpdateEffect_ptr =
+      _lookup<ffi.NativeFunction<_c_SDL_HapticUpdateEffect>>(
+          'SDL_HapticUpdateEffect');
+  late final _dart_SDL_HapticUpdateEffect _SDL_HapticUpdateEffect =
+      _SDL_HapticUpdateEffect_ptr.asFunction<_dart_SDL_HapticUpdateEffect>();
 
   /// \brief Runs the haptic effect on its associated haptic device.
   ///
@@ -17954,6 +18476,26 @@ class _complex extends ffi.Struct {
   external double y;
 }
 
+class _double_val extends ffi.Union {
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Uint16> _Sh;
+
+  @ffi.Double()
+  external double _Val;
+}
+
+class _float_val extends ffi.Union {
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.Uint16> _Sh;
+
+  @ffi.Float()
+  external double _Val;
+}
+
+class _ldouble_val extends ffi.Opaque {}
+
+class _float_const extends ffi.Opaque {}
+
 abstract class _crt_argv_mode {
   static const int _crt_argv_no_arguments = 0;
   static const int _crt_argv_unexpanded_arguments = 1;
@@ -17987,8 +18529,80 @@ class _onexit_table_t extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _end;
 }
 
+class unnamedStruct_2 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> data;
+
+  @ffi.Uint64()
+  external int size;
+
+  @ffi.Uint64()
+  external int left;
+}
+
+class unnamedStruct_1 extends ffi.Struct {
+  @ffi.Int32()
+  external int append;
+
+  external ffi.Pointer<ffi.Void> h;
+
+  external unnamedStruct_2 buffer;
+}
+
+class unnamedStruct_3 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> base;
+
+  external ffi.Pointer<ffi.Uint8> here;
+
+  external ffi.Pointer<ffi.Uint8> stop;
+}
+
+class unnamedStruct_4 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> data1;
+
+  external ffi.Pointer<ffi.Void> data2;
+}
+
+class unnamedUnion_1 extends ffi.Union {
+  external unnamedStruct_1 windowsio;
+
+  external unnamedStruct_3 mem;
+
+  external unnamedStruct_4 unknown;
+}
+
 /// This is the read/write operation structure -- very basic.
-class SDL_RWops extends ffi.Opaque {}
+class SDL_RWops extends ffi.Struct {
+  /// Return the size of the file in this rwops, or -1 if unknown
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_6>> size;
+
+  /// Seek to \c offset relative to \c whence, one of stdio's whence values:
+  /// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END
+  ///
+  /// \return the final offset in the data stream, or -1 on error.
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_7>> seek;
+
+  /// Read up to \c maxnum objects each of size \c size from the data
+  /// stream to the area pointed at by \c ptr.
+  ///
+  /// \return the number of objects read, or 0 at error or end of file.
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_8>> read;
+
+  /// Write exactly \c num objects each of size \c size from the area
+  /// pointed at by \c ptr to data stream.
+  ///
+  /// \return the number of objects written, or 0 at error or end of file.
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_9>> write;
+
+  /// Close and free an allocated SDL_RWops structure.
+  ///
+  /// \return 0 if successful or -1 on write error when flushing data.
+  external ffi.Pointer<ffi.NativeFunction<_typedefC_10>> close;
+
+  @ffi.Uint32()
+  external int type;
+
+  external unnamedUnion_1 hidden;
+}
 
 /// The calculated values in this structure are calculated by SDL_OpenAudio().
 ///
@@ -18036,7 +18650,49 @@ class SDL_AudioSpec extends ffi.Struct {
   external ffi.Pointer<ffi.Void> userdata;
 }
 
-class SDL_AudioCVT extends ffi.Opaque {}
+class SDL_AudioCVT extends ffi.Struct {
+  /// < Set to 1 if conversion possible
+  @ffi.Int32()
+  external int needed;
+
+  /// < Source audio format
+  @ffi.Uint16()
+  external int src_format;
+
+  /// < Target audio format
+  @ffi.Uint16()
+  external int dst_format;
+
+  /// < Rate conversion increment
+  @ffi.Double()
+  external double rate_incr;
+
+  /// < Buffer to hold entire audio data
+  external ffi.Pointer<ffi.Uint8> buf;
+
+  /// < Length of original audio buffer
+  @ffi.Int32()
+  external int len;
+
+  /// < Length of converted audio buffer
+  @ffi.Int32()
+  external int len_cvt;
+
+  /// < buffer must be len*len_mult big
+  @ffi.Int32()
+  external int len_mult;
+
+  /// < Given len, final size is len*len_ratio
+  @ffi.Double()
+  external double len_ratio;
+
+  @ffi.Array.multi([10])
+  external ffi.Array<ffi.Pointer<ffi.NativeFunction<SDL_AudioFilter>>> filters;
+
+  /// < Current audio conversion function
+  @ffi.Int32()
+  external int filter_index;
+}
 
 abstract class SDL_AudioStatus {
   static const int SDL_AUDIO_STOPPED = 0;
@@ -18203,7 +18859,62 @@ class SDL_Palette extends ffi.Struct {
 }
 
 /// \note Everything in the pixel format structure is read-only.
-class SDL_PixelFormat extends ffi.Opaque {}
+class SDL_PixelFormat extends ffi.Struct {
+  @ffi.Uint32()
+  external int format;
+
+  external ffi.Pointer<SDL_Palette> palette;
+
+  @ffi.Uint8()
+  external int BitsPerPixel;
+
+  @ffi.Uint8()
+  external int BytesPerPixel;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.Uint8> padding;
+
+  @ffi.Uint32()
+  external int Rmask;
+
+  @ffi.Uint32()
+  external int Gmask;
+
+  @ffi.Uint32()
+  external int Bmask;
+
+  @ffi.Uint32()
+  external int Amask;
+
+  @ffi.Uint8()
+  external int Rloss;
+
+  @ffi.Uint8()
+  external int Gloss;
+
+  @ffi.Uint8()
+  external int Bloss;
+
+  @ffi.Uint8()
+  external int Aloss;
+
+  @ffi.Uint8()
+  external int Rshift;
+
+  @ffi.Uint8()
+  external int Gshift;
+
+  @ffi.Uint8()
+  external int Bshift;
+
+  @ffi.Uint8()
+  external int Ashift;
+
+  @ffi.Int32()
+  external int refcount;
+
+  external ffi.Pointer<SDL_PixelFormat> next;
+}
 
 /// \brief  The structure that defines a point (integer)
 ///
@@ -19380,7 +20091,10 @@ abstract class SDL_MouseWheelDirection {
 /// The joystick structure used to identify an SDL joystick
 class _SDL_Joystick extends ffi.Opaque {}
 
-class SDL_JoystickGUID extends ffi.Opaque {}
+class SDL_JoystickGUID extends ffi.Struct {
+  @ffi.Array.multi([16])
+  external ffi.Array<ffi.Uint8> data;
+}
 
 abstract class SDL_JoystickType {
   static const int SDL_JOYSTICK_TYPE_UNKNOWN = 0;
@@ -19447,8 +20161,31 @@ abstract class SDL_GameControllerBindType {
   static const int SDL_CONTROLLER_BINDTYPE_HAT = 3;
 }
 
+class unnamedStruct_5 extends ffi.Struct {
+  @ffi.Int32()
+  external int hat;
+
+  @ffi.Int32()
+  external int hat_mask;
+}
+
+class unnamedUnion_2 extends ffi.Union {
+  @ffi.Int32()
+  external int button;
+
+  @ffi.Int32()
+  external int axis;
+
+  external unnamedStruct_5 hat;
+}
+
 /// Get the SDL joystick layer binding for this controller button/axis mapping
-class SDL_GameControllerButtonBind extends ffi.Opaque {}
+class SDL_GameControllerButtonBind extends ffi.Struct {
+  @ffi.Int32()
+  external int bindType;
+
+  external unnamedUnion_2 value;
+}
 
 /// The list of axes available from a controller
 ///
@@ -19800,10 +20537,48 @@ class SDL_KeyboardEvent extends ffi.Struct {
 }
 
 /// \brief Keyboard text editing event structure (event.edit.*)
-class SDL_TextEditingEvent extends ffi.Opaque {}
+class SDL_TextEditingEvent extends ffi.Struct {
+  /// < ::SDL_TEXTEDITING
+  @ffi.Uint32()
+  external int type;
+
+  /// < In milliseconds, populated using SDL_GetTicks()
+  @ffi.Uint32()
+  external int timestamp;
+
+  /// < The window with keyboard focus, if any
+  @ffi.Uint32()
+  external int windowID;
+
+  @ffi.Array.multi([32])
+  external ffi.Array<ffi.Int8> text;
+
+  /// < The start cursor of selected editing text
+  @ffi.Int32()
+  external int start;
+
+  /// < The length of selected editing text
+  @ffi.Int32()
+  external int length;
+}
 
 /// \brief Keyboard text input event structure (event.text.*)
-class SDL_TextInputEvent extends ffi.Opaque {}
+class SDL_TextInputEvent extends ffi.Struct {
+  /// < ::SDL_TEXTINPUT
+  @ffi.Uint32()
+  external int type;
+
+  /// < In milliseconds, populated using SDL_GetTicks()
+  @ffi.Uint32()
+  external int timestamp;
+
+  /// < The window with keyboard focus, if any
+  @ffi.Uint32()
+  external int windowID;
+
+  @ffi.Array.multi([32])
+  external ffi.Array<ffi.Int8> text;
+}
 
 /// \brief Mouse motion event structure (event.motion.*)
 class SDL_MouseMotionEvent extends ffi.Struct {
@@ -20181,7 +20956,26 @@ class SDL_ControllerTouchpadEvent extends ffi.Struct {
 }
 
 /// \brief Game controller sensor event structure (event.csensor.*)
-class SDL_ControllerSensorEvent extends ffi.Opaque {}
+class SDL_ControllerSensorEvent extends ffi.Struct {
+  /// < ::SDL_CONTROLLERSENSORUPDATE
+  @ffi.Uint32()
+  external int type;
+
+  /// < In milliseconds, populated using SDL_GetTicks()
+  @ffi.Uint32()
+  external int timestamp;
+
+  /// < The joystick instance id
+  @ffi.Int32()
+  external int which;
+
+  /// < The type of the sensor, one of the values of ::SDL_SensorType
+  @ffi.Int32()
+  external int sensor;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Float> data;
+}
 
 /// \brief Audio device event structure (event.adevice.*)
 class SDL_AudioDeviceEvent extends ffi.Struct {
@@ -20339,7 +21133,22 @@ class SDL_DropEvent extends ffi.Struct {
 }
 
 /// \brief Sensor event structure (event.sensor.*)
-class SDL_SensorEvent extends ffi.Opaque {}
+class SDL_SensorEvent extends ffi.Struct {
+  /// < ::SDL_SENSORUPDATE
+  @ffi.Uint32()
+  external int type;
+
+  /// < In milliseconds, populated using SDL_GetTicks()
+  @ffi.Uint32()
+  external int timestamp;
+
+  /// < The instance ID of the sensor
+  @ffi.Int32()
+  external int which;
+
+  @ffi.Array.multi([6])
+  external ffi.Array<ffi.Float> data;
+}
 
 /// \brief The "quit requested" event
 class SDL_QuitEvent extends ffi.Struct {
@@ -20405,6 +21214,100 @@ class SDL_SysWMEvent extends ffi.Struct {
 
   /// < driver dependent data, defined in SDL_syswm.h
   external ffi.Pointer<SDL_SysWMmsg> msg;
+}
+
+/// \brief General event structure
+class SDL_Event extends ffi.Union {
+  /// < Event type, shared with all events
+  @ffi.Uint32()
+  external int type;
+
+  /// < Common event data
+  external SDL_CommonEvent common;
+
+  /// < Display event data
+  external SDL_DisplayEvent display;
+
+  /// < Window event data
+  external SDL_WindowEvent window;
+
+  /// < Keyboard event data
+  external SDL_KeyboardEvent key;
+
+  /// < Text editing event data
+  external SDL_TextEditingEvent edit;
+
+  /// < Text input event data
+  external SDL_TextInputEvent text;
+
+  /// < Mouse motion event data
+  external SDL_MouseMotionEvent motion;
+
+  /// < Mouse button event data
+  external SDL_MouseButtonEvent button;
+
+  /// < Mouse wheel event data
+  external SDL_MouseWheelEvent wheel;
+
+  /// < Joystick axis event data
+  external SDL_JoyAxisEvent jaxis;
+
+  /// < Joystick ball event data
+  external SDL_JoyBallEvent jball;
+
+  /// < Joystick hat event data
+  external SDL_JoyHatEvent jhat;
+
+  /// < Joystick button event data
+  external SDL_JoyButtonEvent jbutton;
+
+  /// < Joystick device change event data
+  external SDL_JoyDeviceEvent jdevice;
+
+  /// < Game Controller axis event data
+  external SDL_ControllerAxisEvent caxis;
+
+  /// < Game Controller button event data
+  external SDL_ControllerButtonEvent cbutton;
+
+  /// < Game Controller device event data
+  external SDL_ControllerDeviceEvent cdevice;
+
+  /// < Game Controller touchpad event data
+  external SDL_ControllerTouchpadEvent ctouchpad;
+
+  /// < Game Controller sensor event data
+  external SDL_ControllerSensorEvent csensor;
+
+  /// < Audio device event data
+  external SDL_AudioDeviceEvent adevice;
+
+  /// < Sensor event data
+  external SDL_SensorEvent sensor;
+
+  /// < Quit request event data
+  external SDL_QuitEvent quit;
+
+  /// < Custom event data
+  external SDL_UserEvent user;
+
+  /// < System dependent window event data
+  external SDL_SysWMEvent syswm;
+
+  /// < Touch finger event data
+  external SDL_TouchFingerEvent tfinger;
+
+  /// < Gesture event data
+  external SDL_MultiGestureEvent mgesture;
+
+  /// < Gesture event data
+  external SDL_DollarGestureEvent dgesture;
+
+  /// < Drag and drop event data
+  external SDL_DropEvent drop;
+
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Uint8> padding;
 }
 
 abstract class SDL_eventaction {
@@ -20516,7 +21419,14 @@ class _SDL_Haptic extends ffi.Opaque {}
 /// \sa SDL_HAPTIC_STEERING_AXIS
 /// \sa SDL_HapticEffect
 /// \sa SDL_HapticNumAxes
-class SDL_HapticDirection extends ffi.Opaque {}
+class SDL_HapticDirection extends ffi.Struct {
+  /// < The type of encoding.
+  @ffi.Uint8()
+  external int type;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Int32> dir;
+}
 
 /// \brief A structure containing a template for a Constant effect.
 ///
@@ -20527,7 +21437,50 @@ class SDL_HapticDirection extends ffi.Opaque {}
 ///
 /// \sa SDL_HAPTIC_CONSTANT
 /// \sa SDL_HapticEffect
-class SDL_HapticConstant extends ffi.Opaque {}
+class SDL_HapticConstant extends ffi.Struct {
+  /// < ::SDL_HAPTIC_CONSTANT
+  @ffi.Uint16()
+  external int type;
+
+  /// < Direction of the effect.
+  external SDL_HapticDirection direction;
+
+  /// < Duration of the effect.
+  @ffi.Uint32()
+  external int length;
+
+  /// < Delay before starting the effect.
+  @ffi.Uint16()
+  external int delay;
+
+  /// < Button that triggers the effect.
+  @ffi.Uint16()
+  external int button;
+
+  /// < How soon it can be triggered again after button.
+  @ffi.Uint16()
+  external int interval;
+
+  /// < Strength of the constant effect.
+  @ffi.Int16()
+  external int level;
+
+  /// < Duration of the attack.
+  @ffi.Uint16()
+  external int attack_length;
+
+  /// < Level at the start of the attack.
+  @ffi.Uint16()
+  external int attack_level;
+
+  /// < Duration of the fade.
+  @ffi.Uint16()
+  external int fade_length;
+
+  /// < Level at the end of the fade.
+  @ffi.Uint16()
+  external int fade_level;
+}
 
 /// \brief A structure containing a template for a Periodic effect.
 ///
@@ -20584,7 +21537,64 @@ class SDL_HapticConstant extends ffi.Opaque {}
 /// \sa SDL_HAPTIC_SAWTOOTHUP
 /// \sa SDL_HAPTIC_SAWTOOTHDOWN
 /// \sa SDL_HapticEffect
-class SDL_HapticPeriodic extends ffi.Opaque {}
+class SDL_HapticPeriodic extends ffi.Struct {
+  /// < ::SDL_HAPTIC_SINE, ::SDL_HAPTIC_LEFTRIGHT,
+  /// ::SDL_HAPTIC_TRIANGLE, ::SDL_HAPTIC_SAWTOOTHUP or
+  /// ::SDL_HAPTIC_SAWTOOTHDOWN
+  @ffi.Uint16()
+  external int type;
+
+  /// < Direction of the effect.
+  external SDL_HapticDirection direction;
+
+  /// < Duration of the effect.
+  @ffi.Uint32()
+  external int length;
+
+  /// < Delay before starting the effect.
+  @ffi.Uint16()
+  external int delay;
+
+  /// < Button that triggers the effect.
+  @ffi.Uint16()
+  external int button;
+
+  /// < How soon it can be triggered again after button.
+  @ffi.Uint16()
+  external int interval;
+
+  /// < Period of the wave.
+  @ffi.Uint16()
+  external int period;
+
+  /// < Peak value; if negative, equivalent to 180 degrees extra phase shift.
+  @ffi.Int16()
+  external int magnitude;
+
+  /// < Mean value of the wave.
+  @ffi.Int16()
+  external int offset;
+
+  /// < Positive phase shift given by hundredth of a degree.
+  @ffi.Uint16()
+  external int phase;
+
+  /// < Duration of the attack.
+  @ffi.Uint16()
+  external int attack_length;
+
+  /// < Level at the start of the attack.
+  @ffi.Uint16()
+  external int attack_level;
+
+  /// < Duration of the fade.
+  @ffi.Uint16()
+  external int fade_length;
+
+  /// < Level at the end of the fade.
+  @ffi.Uint16()
+  external int fade_level;
+}
 
 /// \brief A structure containing a template for a Condition effect.
 ///
@@ -20608,7 +21618,49 @@ class SDL_HapticPeriodic extends ffi.Opaque {}
 /// \sa SDL_HAPTIC_INERTIA
 /// \sa SDL_HAPTIC_FRICTION
 /// \sa SDL_HapticEffect
-class SDL_HapticCondition extends ffi.Opaque {}
+class SDL_HapticCondition extends ffi.Struct {
+  /// < ::SDL_HAPTIC_SPRING, ::SDL_HAPTIC_DAMPER,
+  /// ::SDL_HAPTIC_INERTIA or ::SDL_HAPTIC_FRICTION
+  @ffi.Uint16()
+  external int type;
+
+  /// < Direction of the effect - Not used ATM.
+  external SDL_HapticDirection direction;
+
+  /// < Duration of the effect.
+  @ffi.Uint32()
+  external int length;
+
+  /// < Delay before starting the effect.
+  @ffi.Uint16()
+  external int delay;
+
+  /// < Button that triggers the effect.
+  @ffi.Uint16()
+  external int button;
+
+  /// < How soon it can be triggered again after button.
+  @ffi.Uint16()
+  external int interval;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Uint16> right_sat;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Uint16> left_sat;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Int16> right_coeff;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Int16> left_coeff;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Uint16> deadband;
+
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.Int16> center;
+}
 
 /// \brief A structure containing a template for a Ramp effect.
 ///
@@ -20621,7 +21673,54 @@ class SDL_HapticCondition extends ffi.Opaque {}
 ///
 /// \sa SDL_HAPTIC_RAMP
 /// \sa SDL_HapticEffect
-class SDL_HapticRamp extends ffi.Opaque {}
+class SDL_HapticRamp extends ffi.Struct {
+  /// < ::SDL_HAPTIC_RAMP
+  @ffi.Uint16()
+  external int type;
+
+  /// < Direction of the effect.
+  external SDL_HapticDirection direction;
+
+  /// < Duration of the effect.
+  @ffi.Uint32()
+  external int length;
+
+  /// < Delay before starting the effect.
+  @ffi.Uint16()
+  external int delay;
+
+  /// < Button that triggers the effect.
+  @ffi.Uint16()
+  external int button;
+
+  /// < How soon it can be triggered again after button.
+  @ffi.Uint16()
+  external int interval;
+
+  /// < Beginning strength level.
+  @ffi.Int16()
+  external int start;
+
+  /// < Ending strength level.
+  @ffi.Int16()
+  external int end;
+
+  /// < Duration of the attack.
+  @ffi.Uint16()
+  external int attack_length;
+
+  /// < Level at the start of the attack.
+  @ffi.Uint16()
+  external int attack_level;
+
+  /// < Duration of the fade.
+  @ffi.Uint16()
+  external int fade_length;
+
+  /// < Level at the end of the fade.
+  @ffi.Uint16()
+  external int fade_level;
+}
 
 /// \brief A structure containing a template for a Left/Right effect.
 ///
@@ -20664,7 +21763,152 @@ class SDL_HapticLeftRight extends ffi.Struct {
 ///
 /// \sa SDL_HAPTIC_CUSTOM
 /// \sa SDL_HapticEffect
-class SDL_HapticCustom extends ffi.Opaque {}
+class SDL_HapticCustom extends ffi.Struct {
+  /// < ::SDL_HAPTIC_CUSTOM
+  @ffi.Uint16()
+  external int type;
+
+  /// < Direction of the effect.
+  external SDL_HapticDirection direction;
+
+  /// < Duration of the effect.
+  @ffi.Uint32()
+  external int length;
+
+  /// < Delay before starting the effect.
+  @ffi.Uint16()
+  external int delay;
+
+  /// < Button that triggers the effect.
+  @ffi.Uint16()
+  external int button;
+
+  /// < How soon it can be triggered again after button.
+  @ffi.Uint16()
+  external int interval;
+
+  /// < Axes to use, minimum of one.
+  @ffi.Uint8()
+  external int channels;
+
+  /// < Sample periods.
+  @ffi.Uint16()
+  external int period;
+
+  /// < Amount of samples.
+  @ffi.Uint16()
+  external int samples;
+
+  /// < Should contain channels*samples items.
+  external ffi.Pointer<ffi.Uint16> data;
+
+  /// < Duration of the attack.
+  @ffi.Uint16()
+  external int attack_length;
+
+  /// < Level at the start of the attack.
+  @ffi.Uint16()
+  external int attack_level;
+
+  /// < Duration of the fade.
+  @ffi.Uint16()
+  external int fade_length;
+
+  /// < Level at the end of the fade.
+  @ffi.Uint16()
+  external int fade_level;
+}
+
+/// \brief The generic template for any haptic effect.
+///
+/// All values max at 32767 (0x7FFF).  Signed values also can be negative.
+/// Time values unless specified otherwise are in milliseconds.
+///
+/// You can also pass ::SDL_HAPTIC_INFINITY to length instead of a 0-32767
+/// value.  Neither delay, interval, attack_length nor fade_length support
+/// ::SDL_HAPTIC_INFINITY.  Fade will also not be used since effect never ends.
+///
+/// Additionally, the ::SDL_HAPTIC_RAMP effect does not support a duration of
+/// ::SDL_HAPTIC_INFINITY.
+///
+/// Button triggers may not be supported on all devices, it is advised to not
+/// use them if possible.  Buttons start at index 1 instead of index 0 like
+/// the joystick.
+///
+/// If both attack_length and fade_level are 0, the envelope is not used,
+/// otherwise both values are used.
+///
+/// Common parts:
+/// \code
+/// // Replay - All effects have this
+/// Uint32 length;        // Duration of effect (ms).
+/// Uint16 delay;         // Delay before starting effect.
+///
+/// // Trigger - All effects have this
+/// Uint16 button;        // Button that triggers effect.
+/// Uint16 interval;      // How soon before effect can be triggered again.
+///
+/// // Envelope - All effects except condition effects have this
+/// Uint16 attack_length; // Duration of the attack (ms).
+/// Uint16 attack_level;  // Level at the start of the attack.
+/// Uint16 fade_length;   // Duration of the fade out (ms).
+/// Uint16 fade_level;    // Level at the end of the fade.
+/// \endcode
+///
+///
+/// Here we have an example of a constant effect evolution in time:
+/// \verbatim
+/// Strength
+/// ^
+/// |
+/// |    effect level -->  _________________
+/// |                     /                 \
+/// |                    /                   \
+/// |                   /                     \
+/// |                  /                       \
+/// | attack_level --> |                        \
+/// |                  |                        |  <---  fade_level
+/// |
+/// +--------------------------------------------------> Time
+/// [--]                 [---]
+/// attack_length        fade_length
+///
+/// [------------------][-----------------------]
+/// delay               length
+/// \endverbatim
+///
+/// Note either the attack_level or the fade_level may be above the actual
+/// effect level.
+///
+/// \sa SDL_HapticConstant
+/// \sa SDL_HapticPeriodic
+/// \sa SDL_HapticCondition
+/// \sa SDL_HapticRamp
+/// \sa SDL_HapticLeftRight
+/// \sa SDL_HapticCustom
+class SDL_HapticEffect extends ffi.Union {
+  /// < Effect type.
+  @ffi.Uint16()
+  external int type;
+
+  /// < Constant effect.
+  external SDL_HapticConstant constant;
+
+  /// < Periodic effect.
+  external SDL_HapticPeriodic periodic;
+
+  /// < Condition effect.
+  external SDL_HapticCondition condition;
+
+  /// < Ramp effect.
+  external SDL_HapticRamp ramp;
+
+  /// < Left/Right effect.
+  external SDL_HapticLeftRight leftright;
+
+  /// < Custom effect.
+  external SDL_HapticCustom custom;
+}
 
 /// \brief  An enumeration of hint priorities
 abstract class SDL_HintPriority {
@@ -20776,7 +22020,10 @@ abstract class SDL_MessageBoxColorType {
 }
 
 /// \brief A set of colors to use for message box dialogs
-class SDL_MessageBoxColorScheme extends ffi.Opaque {}
+class SDL_MessageBoxColorScheme extends ffi.Struct {
+  @ffi.Array.multi([5])
+  external ffi.Array<SDL_MessageBoxColor> colors;
+}
 
 /// \brief MessageBox structure containing title, text, window, etc.
 class SDL_MessageBoxData extends ffi.Struct {
@@ -20839,7 +22086,29 @@ abstract class SDL_RendererFlags {
 }
 
 /// \brief Information on the capabilities of a render driver or context.
-class SDL_RendererInfo extends ffi.Opaque {}
+class SDL_RendererInfo extends ffi.Struct {
+  /// < The name of the renderer
+  external ffi.Pointer<ffi.Int8> name;
+
+  /// < Supported ::SDL_RendererFlags
+  @ffi.Uint32()
+  external int flags;
+
+  /// < The number of available texture formats
+  @ffi.Uint32()
+  external int num_texture_formats;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<ffi.Uint32> texture_formats;
+
+  /// < The maximum texture width
+  @ffi.Int32()
+  external int max_texture_width;
+
+  /// < The maximum texture height
+  @ffi.Int32()
+  external int max_texture_height;
+}
 
 /// \brief The scaling mode for a texture.
 abstract class SDL_ScaleMode {
@@ -20910,8 +22179,24 @@ abstract class WindowShapeMode {
   static const int ShapeModeColorKey = 3;
 }
 
+/// \brief A union containing parameters for shaped windows.
+class SDL_WindowShapeParams extends ffi.Union {
+  /// \brief A cutoff alpha value for binarization of the window shape's alpha channel.
+  @ffi.Uint8()
+  external int binarizationCutoff;
+
+  external SDL_Color colorKey;
+}
+
 /// \brief A struct that tags the SDL_WindowShapeParams union with an enum describing the type of its contents.
-class SDL_WindowShapeMode extends ffi.Opaque {}
+class SDL_WindowShapeMode extends ffi.Struct {
+  /// \brief The mode of these window-shape parameters.
+  @ffi.Int32()
+  external int mode;
+
+  /// \brief Window-shape parameters.
+  external SDL_WindowShapeParams parameters;
+}
 
 class IDirect3DDevice9 extends ffi.Opaque {}
 
@@ -21443,7 +22728,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 604;
+const int SDL_LINE = 605;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 
@@ -28643,6 +29928,14 @@ typedef _dart_SDL_JoystickGetDevicePlayerIndex = int Function(
   int device_index,
 );
 
+typedef _c_SDL_JoystickGetDeviceGUID = SDL_JoystickGUID Function(
+  ffi.Int32 device_index,
+);
+
+typedef _dart_SDL_JoystickGetDeviceGUID = SDL_JoystickGUID Function(
+  int device_index,
+);
+
 typedef _c_SDL_JoystickGetDeviceVendor = ffi.Uint16 Function(
   ffi.Int32 device_index,
 );
@@ -28799,6 +30092,14 @@ typedef _dart_SDL_JoystickSetPlayerIndex = void Function(
   int player_index,
 );
 
+typedef _c_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
+  ffi.Pointer<_SDL_Joystick> joystick,
+);
+
+typedef _dart_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
+  ffi.Pointer<_SDL_Joystick> joystick,
+);
+
 typedef _c_SDL_JoystickGetVendor = ffi.Uint16 Function(
   ffi.Pointer<_SDL_Joystick> joystick,
 );
@@ -28837,6 +30138,26 @@ typedef _c_SDL_JoystickGetType = ffi.Int32 Function(
 
 typedef _dart_SDL_JoystickGetType = int Function(
   ffi.Pointer<_SDL_Joystick> joystick,
+);
+
+typedef _c_SDL_JoystickGetGUIDString = ffi.Void Function(
+  SDL_JoystickGUID guid,
+  ffi.Pointer<ffi.Int8> pszGUID,
+  ffi.Int32 cbGUID,
+);
+
+typedef _dart_SDL_JoystickGetGUIDString = void Function(
+  SDL_JoystickGUID guid,
+  ffi.Pointer<ffi.Int8> pszGUID,
+  int cbGUID,
+);
+
+typedef _c_SDL_JoystickGetGUIDFromString = SDL_JoystickGUID Function(
+  ffi.Pointer<ffi.Int8> pchGUID,
+);
+
+typedef _dart_SDL_JoystickGetGUIDFromString = SDL_JoystickGUID Function(
+  ffi.Pointer<ffi.Int8> pchGUID,
 );
 
 typedef _c_SDL_JoystickGetAttached = ffi.Int32 Function(
@@ -29168,6 +30489,14 @@ typedef _dart_SDL_GameControllerMappingForIndex = ffi.Pointer<ffi.Int8>
   int mapping_index,
 );
 
+typedef _c_SDL_GameControllerMappingForGUID = ffi.Pointer<ffi.Int8> Function(
+  SDL_JoystickGUID guid,
+);
+
+typedef _dart_SDL_GameControllerMappingForGUID = ffi.Pointer<ffi.Int8> Function(
+  SDL_JoystickGUID guid,
+);
+
 typedef _c_SDL_GameControllerMapping = ffi.Pointer<ffi.Int8> Function(
   ffi.Pointer<_SDL_GameController> gamecontroller,
 );
@@ -29351,6 +30680,18 @@ typedef _dart_SDL_GameControllerGetStringForAxis = ffi.Pointer<ffi.Int8>
   int axis,
 );
 
+typedef _c_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
+    Function(
+  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Int32 axis,
+);
+
+typedef _dart_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
+    Function(
+  ffi.Pointer<_SDL_GameController> gamecontroller,
+  int axis,
+);
+
 typedef _c_SDL_GameControllerHasAxis = ffi.Int32 Function(
   ffi.Pointer<_SDL_GameController> gamecontroller,
   ffi.Int32 axis,
@@ -29386,6 +30727,18 @@ typedef _c_SDL_GameControllerGetStringForButton = ffi.Pointer<ffi.Int8>
 
 typedef _dart_SDL_GameControllerGetStringForButton = ffi.Pointer<ffi.Int8>
     Function(
+  int button,
+);
+
+typedef _c_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
+    Function(
+  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Int32 button,
+);
+
+typedef _dart_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
+    Function(
+  ffi.Pointer<_SDL_GameController> gamecontroller,
   int button,
 );
 
@@ -29629,6 +30982,22 @@ typedef _c_SDL_PumpEvents = ffi.Void Function();
 
 typedef _dart_SDL_PumpEvents = void Function();
 
+typedef _c_SDL_PeepEvents = ffi.Int32 Function(
+  ffi.Pointer<SDL_Event> events,
+  ffi.Int32 numevents,
+  ffi.Int32 action,
+  ffi.Uint32 minType,
+  ffi.Uint32 maxType,
+);
+
+typedef _dart_SDL_PeepEvents = int Function(
+  ffi.Pointer<SDL_Event> events,
+  int numevents,
+  int action,
+  int minType,
+  int maxType,
+);
+
 typedef _c_SDL_HasEvent = ffi.Int32 Function(
   ffi.Uint32 type,
 );
@@ -29663,6 +31032,95 @@ typedef _c_SDL_FlushEvents = ffi.Void Function(
 typedef _dart_SDL_FlushEvents = void Function(
   int minType,
   int maxType,
+);
+
+typedef _c_SDL_PollEvent = ffi.Int32 Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef _dart_SDL_PollEvent = int Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef _c_SDL_WaitEvent = ffi.Int32 Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef _dart_SDL_WaitEvent = int Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef _c_SDL_WaitEventTimeout = ffi.Int32 Function(
+  ffi.Pointer<SDL_Event> event,
+  ffi.Int32 timeout,
+);
+
+typedef _dart_SDL_WaitEventTimeout = int Function(
+  ffi.Pointer<SDL_Event> event,
+  int timeout,
+);
+
+typedef _c_SDL_PushEvent = ffi.Int32 Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef _dart_SDL_PushEvent = int Function(
+  ffi.Pointer<SDL_Event> event,
+);
+
+typedef SDL_EventFilter = ffi.Int32 Function(
+  ffi.Pointer<ffi.Void>,
+  ffi.Pointer<SDL_Event>,
+);
+
+typedef _c_SDL_SetEventFilter = ffi.Void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _dart_SDL_SetEventFilter = void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _c_SDL_GetEventFilter = ffi.Int32 Function(
+  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
+  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
+);
+
+typedef _dart_SDL_GetEventFilter = int Function(
+  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
+  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
+);
+
+typedef _c_SDL_AddEventWatch = ffi.Void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _dart_SDL_AddEventWatch = void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _c_SDL_DelEventWatch = ffi.Void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _dart_SDL_DelEventWatch = void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _c_SDL_FilterEvents = ffi.Void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
+);
+
+typedef _dart_SDL_FilterEvents = void Function(
+  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+  ffi.Pointer<ffi.Void> userdata,
 );
 
 typedef _c_SDL_EventState = ffi.Uint8 Function(
@@ -29795,6 +31253,38 @@ typedef _c_SDL_HapticNumAxes = ffi.Int32 Function(
 
 typedef _dart_SDL_HapticNumAxes = int Function(
   ffi.Pointer<_SDL_Haptic> haptic,
+);
+
+typedef _c_SDL_HapticEffectSupported = ffi.Int32 Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_HapticEffect> effect,
+);
+
+typedef _dart_SDL_HapticEffectSupported = int Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_HapticEffect> effect,
+);
+
+typedef _c_SDL_HapticNewEffect = ffi.Int32 Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_HapticEffect> effect,
+);
+
+typedef _dart_SDL_HapticNewEffect = int Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_HapticEffect> effect,
+);
+
+typedef _c_SDL_HapticUpdateEffect = ffi.Int32 Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Int32 effect,
+  ffi.Pointer<SDL_HapticEffect> data,
+);
+
+typedef _dart_SDL_HapticUpdateEffect = int Function(
+  ffi.Pointer<_SDL_Haptic> haptic,
+  int effect,
+  ffi.Pointer<SDL_HapticEffect> data,
 );
 
 typedef _c_SDL_HapticRunEffect = ffi.Int32 Function(
@@ -31296,8 +32786,41 @@ typedef _c_SDL_Quit = ffi.Void Function();
 
 typedef _dart_SDL_Quit = void Function();
 
+typedef _typedefC_6 = ffi.Int64 Function(
+  ffi.Pointer<SDL_RWops>,
+);
+
+typedef _typedefC_7 = ffi.Int64 Function(
+  ffi.Pointer<SDL_RWops>,
+  ffi.Int64,
+  ffi.Int32,
+);
+
+typedef _typedefC_8 = ffi.Uint64 Function(
+  ffi.Pointer<SDL_RWops>,
+  ffi.Pointer<ffi.Void>,
+  ffi.Uint64,
+  ffi.Uint64,
+);
+
+typedef _typedefC_9 = ffi.Uint64 Function(
+  ffi.Pointer<SDL_RWops>,
+  ffi.Pointer<ffi.Void>,
+  ffi.Uint64,
+  ffi.Uint64,
+);
+
+typedef _typedefC_10 = ffi.Int32 Function(
+  ffi.Pointer<SDL_RWops>,
+);
+
 typedef SDL_AudioCallback = ffi.Void Function(
   ffi.Pointer<ffi.Void>,
   ffi.Pointer<ffi.Uint8>,
   ffi.Int32,
+);
+
+typedef SDL_AudioFilter = ffi.Void Function(
+  ffi.Pointer<SDL_AudioCVT>,
+  ffi.Uint16,
 );

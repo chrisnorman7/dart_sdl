@@ -197,11 +197,16 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 
 ### [Event Handling](https://wiki.libsdl.org/CategoryEvents)
 
+#### Enumerations
+
+* [SDL_EventType](https://wiki.libsdl.org/SDL_EventType)
+
 #### Functions
 
 ##### `Sdl` class
 
 * [SDL_PumpEvents](https://wiki.libsdl.org/SDL_PumpEvents)
+* [SDL_RegisterEvents](https://wiki.libsdl.org/SDL_RegisterEvents)
 
 ### [Audio Device Management, Playing and Recording](https://wiki.libsdl.org/CategoryAudio)
 
@@ -251,3 +256,5 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 ##### `WaveFile` class
 
 * [SDL_LoadWAV_RW](https://wiki.libsdl.org/SDL_LoadWAV_RW)
+
+### [Force Feedback Support](https://wiki.libsdl.org/CategoryForceFeedback)

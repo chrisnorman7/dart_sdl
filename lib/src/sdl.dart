@@ -1,6 +1,7 @@
 /// Provides the main [Sdl] class.
 import 'dart:ffi';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:ffi/ffi.dart';
 
@@ -11,6 +12,11 @@ import 'button.dart';
 import 'display.dart';
 import 'enumerations.dart';
 import 'error.dart';
+import 'events/application.dart';
+import 'events/base.dart';
+import 'events/keyboard.dart';
+import 'events/platform.dart';
+import 'events/window.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
 import 'window.dart';
@@ -18,7 +24,7 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl() {
+  Sdl() : windows = <int, Window>{} {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -31,6 +37,9 @@ class Sdl {
 
   /// The SDL bindings to use.
   late final DartSdl sdl;
+
+  /// All the created windows.
+  final Map<int, Window> windows;
 
   /// Get a Dart boolean from an SDL one.
   bool getBool(int value) => value == SDL_bool.SDL_TRUE;
@@ -312,6 +321,7 @@ class Sdl {
     final window = Window(
         this, sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags));
     calloc.free(titlePtr);
+    windows[window.id] = window;
     return window;
   }
 
@@ -566,5 +576,123 @@ class Sdl {
     final spec = AudioSpec.fromPointer(obtainedPointer);
     [namePointer, desiredPointer, obtainedPointer].forEach(calloc.free);
     return OpenAudioDevice(this, device, id, spec);
+  }
+
+  /// Poll events.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_PollEvent)
+  Event? pollEvent() {
+    final ptr = calloc<SDL_Event>();
+    final n = sdl.SDL_PollEvent(ptr);
+    if (n != 0) {
+      final e = ptr.ref;
+      Event event;
+      switch (e.type) {
+        case SDL_EventType.SDL_QUIT:
+          event = QuitEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_TERMINATING:
+          event = AppTerminatingEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_LOWMEMORY:
+          event = AppLowMemoryEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_WILLENTERBACKGROUND:
+          event = AppWillEnterBackgroundEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_DIDENTERBACKGROUND:
+          event = AppDidEnterBackgroundEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_WILLENTERFOREGROUND:
+          event = AppWillEnterForegroundEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_APP_DIDENTERFOREGROUND:
+          event = AppDidEnterForegroundEvent(this, e.common.timestamp);
+          break;
+        case SDL_EventType.SDL_WINDOWEVENT:
+          final windowEvent = e.window;
+          final timestamp = windowEvent.timestamp;
+          final windowId = windowEvent.windowID;
+          switch (windowEvent.type) {
+            case SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
+              event = WindowShownEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_HIDDEN:
+              event = WindowHiddenEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_EXPOSED:
+              event = WindowExposedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_MOVED:
+              event = WindowMovedEvent(this, timestamp, windowId,
+                  Point<int>(windowEvent.data1, windowEvent.data2));
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
+              event = WindowResizedEvent(this, timestamp, windowId,
+                  WindowSize(windowEvent.data1, windowEvent.data2));
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
+              event = WindowSizeChangedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_MINIMIZED:
+              event = WindowMinimizedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_MAXIMIZED:
+              event = WindowMaximizedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_RESTORED:
+              event = WindowRestoredEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_ENTER:
+              event = WindowEnterEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_LEAVE:
+              event = WindowLeaveEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+              event = WindowFocusGainedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+              event = WindowFocusLostEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
+              event = WindowClosedEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS:
+              event = WindowTakeFocusEvent(this, timestamp, windowId);
+              break;
+            case SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
+              event = WindowHitTestEvent(this, timestamp, windowId);
+              break;
+            default:
+              throw SdlError(windowEvent.type, 'Unknown window event type.');
+          }
+          break;
+        case SDL_EventType.SDL_SYSWMEVENT:
+          final msg = e.syswm.msg;
+          event = SysWmEvent(this, e.syswm.timestamp, msg);
+          break;
+        case SDL_EventType.SDL_KEYDOWN:
+          event = KeyboardEvent.fromSdlEvent(this, e.key);
+          break;
+        case SDL_EventType.SDL_KEYUP:
+          event = KeyboardEvent.fromSdlEvent(this, e.key);
+          break;
+        default:
+          throw SdlError(e.type, 'Unrecognised event type.');
+      }
+      return event;
+    }
+  }
+
+  /// Register user-defined event types.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_PumpEvents)
+  int registerEvents(int n) {
+    final r = sdl.SDL_RegisterEvents(n);
+    if (r == 0xFFFFFFFF) {
+      throw SdlError(r, 'Not enough user-defined events left.');
+    }
+    return r;
   }
 }

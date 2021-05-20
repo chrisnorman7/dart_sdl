@@ -53,7 +53,10 @@ class Window {
 
   /// Destroy this window.
   @mustCallSuper
-  void destroy() => sdl.destroyWindow(this);
+  void destroy() {
+    sdl.destroyWindow(this);
+    sdl.windows.remove(id);
+  }
 
   /// The title of this window.
   ///

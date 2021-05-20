@@ -20,5 +20,17 @@
 		"description": "Insert a markdown link to SDL docs.",
 		"scope": "dart",
 		"body": "[SDL Docs](${URL})"
+	},
+	"Create new window event": {
+		"prefix": "createWindowEvent",
+		"description": "Create a new subclass of `WindowEvent`.",
+		"scope": "dart",
+		"body": [
+			"class Window${1:EventName}Event extends WindowEvent {",
+			"  /// Create a new event.",
+			"  Window${1}Event(int timestamp, Sdl sdl, int windowId): ",
+			"    super(timestamp, sdl, windowId);",
+			"}"
+		]
 	}
 }
