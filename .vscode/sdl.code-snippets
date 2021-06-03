@@ -32,5 +32,15 @@
 			"    super(timestamp, sdl, windowId);",
 			"}"
 		]
+	},
+	"SDL Event case": {
+		"prefix": "ec",
+		"description": "Add a new SDL event case.",
+		"scope": "dart",
+		"body": [
+			"case SDL_EventType.SDL_${1:ShortType}:",
+			"  ${2:body}",
+			"  break;"
+		]
 	}
 }
