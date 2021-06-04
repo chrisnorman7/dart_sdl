@@ -12,6 +12,7 @@ void main() {
       print('Opening failed.');
       continue;
     }
+    print('Power level: ${j.powerLevel}.');
   }
   sdl.quit();
 }
