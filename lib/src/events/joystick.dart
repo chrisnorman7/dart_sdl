@@ -115,6 +115,22 @@ class JoyButtonEvent extends JoystickEvent {
       Sdl sdl, int timestamp, int joystickId, this.button, this.state)
       : super(sdl, timestamp, joystickId);
 
+  /// Create an instance from an event.
+  factory JoyButtonEvent.fromSdlEvent(Sdl sdl, SDL_JoyButtonEvent e) {
+    PressedState s;
+    switch (e.state) {
+      case SDL_PRESSED:
+        s = PressedState.pressed;
+        break;
+      case SDL_RELEASED:
+        s = PressedState.released;
+        break;
+      default:
+        throw SdlError(e.state, 'Unknown button state.');
+    }
+    return JoyButtonEvent(sdl, e.timestamp, e.which, e.button, s);
+  }
+
   /// The button that was pressed.
   final int button;
 
