@@ -1692,7 +1692,7 @@ class DartSdl {
   late final _dart_SDL_tanf _SDL_tanf =
       _SDL_tanf_ptr.asFunction<_dart_SDL_tanf>();
 
-  ffi.Pointer<_SDL_iconv_t> SDL_iconv_open(
+  ffi.Pointer<SDL_iconv_t> SDL_iconv_open(
     ffi.Pointer<ffi.Int8> tocode,
     ffi.Pointer<ffi.Int8> fromcode,
   ) {
@@ -1708,7 +1708,7 @@ class DartSdl {
       _SDL_iconv_open_ptr.asFunction<_dart_SDL_iconv_open>();
 
   int SDL_iconv_close(
-    ffi.Pointer<_SDL_iconv_t> cd,
+    ffi.Pointer<SDL_iconv_t> cd,
   ) {
     return _SDL_iconv_close(
       cd,
@@ -1721,7 +1721,7 @@ class DartSdl {
       _SDL_iconv_close_ptr.asFunction<_dart_SDL_iconv_close>();
 
   int SDL_iconv(
-    ffi.Pointer<_SDL_iconv_t> cd,
+    ffi.Pointer<SDL_iconv_t> cd,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
     ffi.Pointer<ffi.Uint64> inbytesleft,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
@@ -3305,7 +3305,7 @@ class DartSdl {
 
   double _atof_l(
     ffi.Pointer<ffi.Int8> _String,
-    ffi.Pointer<__crt_locale_pointers> _Locale,
+    ffi.Pointer<_crt_locale_pointers> _Locale,
   ) {
     return __atof_l(
       _String,
@@ -3317,7 +3317,7 @@ class DartSdl {
   late final _dart__atof_l __atof_l = __atof_l_ptr.asFunction<_dart__atof_l>();
 
   double _cabs(
-    _complex _Complex_value,
+    complex _Complex_value,
   ) {
     return __cabs(
       _Complex_value,
@@ -3653,7 +3653,7 @@ class DartSdl {
   late final _dart_lround _lround = _lround_ptr.asFunction<_dart_lround>();
 
   int _matherr(
-    ffi.Pointer<_exception> _Except,
+    ffi.Pointer<exception> _Except,
   ) {
     return __matherr(
       _Except,
@@ -4790,7 +4790,7 @@ class DartSdl {
 
   int _seh_filter_dll(
     int _ExceptionNum,
-    ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+    ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
   ) {
     return __seh_filter_dll(
       _ExceptionNum,
@@ -4805,7 +4805,7 @@ class DartSdl {
 
   int _seh_filter_exe(
     int _ExceptionNum,
-    ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+    ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
   ) {
     return __seh_filter_exe(
       _ExceptionNum,
@@ -5008,7 +5008,7 @@ class DartSdl {
       __initterm_e_ptr.asFunction<_dart__initterm_e>();
 
   int _initialize_onexit_table(
-    ffi.Pointer<_onexit_table_t> _Table,
+    ffi.Pointer<onexit_table_t> _Table,
   ) {
     return __initialize_onexit_table(
       _Table,
@@ -5023,7 +5023,7 @@ class DartSdl {
           .asFunction<_dart__initialize_onexit_table>();
 
   int _register_onexit_function(
-    ffi.Pointer<_onexit_table_t> _Table,
+    ffi.Pointer<onexit_table_t> _Table,
     ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
   ) {
     return __register_onexit_function(
@@ -5040,7 +5040,7 @@ class DartSdl {
           .asFunction<_dart__register_onexit_function>();
 
   int _execute_onexit_table(
-    ffi.Pointer<_onexit_table_t> _Table,
+    ffi.Pointer<onexit_table_t> _Table,
   ) {
     return __execute_onexit_table(
       _Table,
@@ -7256,7 +7256,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
-  ffi.Pointer<_SDL_AudioStream> SDL_NewAudioStream(
+  ffi.Pointer<SDL_AudioStream> SDL_NewAudioStream(
     int src_format,
     int src_channels,
     int src_rate,
@@ -7293,7 +7293,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamPut(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
     ffi.Pointer<ffi.Void> buf,
     int len,
   ) {
@@ -7323,7 +7323,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamGet(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
     ffi.Pointer<ffi.Void> buf,
     int len,
   ) {
@@ -7351,7 +7351,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamAvailable(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
   ) {
     return _SDL_AudioStreamAvailable(
       stream,
@@ -7379,7 +7379,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamFlush(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
   ) {
     return _SDL_AudioStreamFlush(
       stream,
@@ -7401,7 +7401,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_FreeAudioStream
   void SDL_AudioStreamClear(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
   ) {
     return _SDL_AudioStreamClear(
       stream,
@@ -7423,7 +7423,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_AudioStreamClear
   void SDL_FreeAudioStream(
-    ffi.Pointer<_SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream> stream,
   ) {
     return _SDL_FreeAudioStream(
       stream,
@@ -12058,7 +12058,7 @@ class DartSdl {
   /// there instead.
   ///
   /// \return A joystick identifier, or NULL if an error occurred.
-  ffi.Pointer<_SDL_Joystick> SDL_JoystickOpen(
+  ffi.Pointer<SDL_Joystick> SDL_JoystickOpen(
     int device_index,
   ) {
     return _SDL_JoystickOpen(
@@ -12072,7 +12072,7 @@ class DartSdl {
       _SDL_JoystickOpen_ptr.asFunction<_dart_SDL_JoystickOpen>();
 
   /// Return the SDL_Joystick associated with an instance id.
-  ffi.Pointer<_SDL_Joystick> SDL_JoystickFromInstanceID(
+  ffi.Pointer<SDL_Joystick> SDL_JoystickFromInstanceID(
     int instance_id,
   ) {
     return _SDL_JoystickFromInstanceID(
@@ -12088,7 +12088,7 @@ class DartSdl {
           _dart_SDL_JoystickFromInstanceID>();
 
   /// Return the SDL_Joystick associated with a player index.
-  ffi.Pointer<_SDL_Joystick> SDL_JoystickFromPlayerIndex(
+  ffi.Pointer<SDL_Joystick> SDL_JoystickFromPlayerIndex(
     int player_index,
   ) {
     return _SDL_JoystickFromPlayerIndex(
@@ -12167,7 +12167,7 @@ class DartSdl {
   ///
   /// Returns 0 on success, -1 on error.
   int SDL_JoystickSetVirtualAxis(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int axis,
     int value,
   ) {
@@ -12186,7 +12186,7 @@ class DartSdl {
           _dart_SDL_JoystickSetVirtualAxis>();
 
   int SDL_JoystickSetVirtualButton(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int button,
     int value,
   ) {
@@ -12205,7 +12205,7 @@ class DartSdl {
           _dart_SDL_JoystickSetVirtualButton>();
 
   int SDL_JoystickSetVirtualHat(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int hat,
     int value,
   ) {
@@ -12226,7 +12226,7 @@ class DartSdl {
   /// Return the name for this currently opened joystick.
   /// If no name can be found, this function returns NULL.
   ffi.Pointer<ffi.Int8> SDL_JoystickName(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickName(
       joystick,
@@ -12242,7 +12242,7 @@ class DartSdl {
   ///
   /// For XInput controllers this returns the XInput user index.
   int SDL_JoystickGetPlayerIndex(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetPlayerIndex(
       joystick,
@@ -12258,7 +12258,7 @@ class DartSdl {
 
   /// Set the player index of an opened joystick
   void SDL_JoystickSetPlayerIndex(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int player_index,
   ) {
     return _SDL_JoystickSetPlayerIndex(
@@ -12276,7 +12276,7 @@ class DartSdl {
 
   /// Return the GUID for this opened joystick
   SDL_JoystickGUID SDL_JoystickGetGUID(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetGUID(
       joystick,
@@ -12292,7 +12292,7 @@ class DartSdl {
   /// Get the USB vendor ID of an opened joystick, if available.
   /// If the vendor ID isn't available this function returns 0.
   int SDL_JoystickGetVendor(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetVendor(
       joystick,
@@ -12308,7 +12308,7 @@ class DartSdl {
   /// Get the USB product ID of an opened joystick, if available.
   /// If the product ID isn't available this function returns 0.
   int SDL_JoystickGetProduct(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetProduct(
       joystick,
@@ -12324,7 +12324,7 @@ class DartSdl {
   /// Get the product version of an opened joystick, if available.
   /// If the product version isn't available this function returns 0.
   int SDL_JoystickGetProductVersion(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetProductVersion(
       joystick,
@@ -12342,7 +12342,7 @@ class DartSdl {
   ///
   /// Returns the serial number of the joystick, or NULL if it is not available.
   ffi.Pointer<ffi.Int8> SDL_JoystickGetSerial(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetSerial(
       joystick,
@@ -12357,7 +12357,7 @@ class DartSdl {
 
   /// Get the type of an opened joystick.
   int SDL_JoystickGetType(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetType(
       joystick,
@@ -12409,7 +12409,7 @@ class DartSdl {
 
   /// Returns SDL_TRUE if the joystick has been opened and currently connected, or SDL_FALSE if it has not.
   int SDL_JoystickGetAttached(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickGetAttached(
       joystick,
@@ -12424,7 +12424,7 @@ class DartSdl {
 
   /// Get the instance ID of an opened joystick or -1 if the joystick is invalid.
   int SDL_JoystickInstanceID(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickInstanceID(
       joystick,
@@ -12439,7 +12439,7 @@ class DartSdl {
 
   /// Get the number of general axis controls on a joystick.
   int SDL_JoystickNumAxes(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickNumAxes(
       joystick,
@@ -12457,7 +12457,7 @@ class DartSdl {
   /// Joystick trackballs have only relative motion events associated
   /// with them and their state cannot be polled.
   int SDL_JoystickNumBalls(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickNumBalls(
       joystick,
@@ -12472,7 +12472,7 @@ class DartSdl {
 
   /// Get the number of POV hats on a joystick.
   int SDL_JoystickNumHats(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickNumHats(
       joystick,
@@ -12487,7 +12487,7 @@ class DartSdl {
 
   /// Get the number of buttons on a joystick.
   int SDL_JoystickNumButtons(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickNumButtons(
       joystick,
@@ -12540,7 +12540,7 @@ class DartSdl {
   ///
   /// The axis indices start at index 0.
   int SDL_JoystickGetAxis(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int axis,
   ) {
     return _SDL_JoystickGetAxis(
@@ -12563,7 +12563,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if this axis has any initial value, or SDL_FALSE if not.
   int SDL_JoystickGetAxisInitialState(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int axis,
     ffi.Pointer<ffi.Int16> state,
   ) {
@@ -12596,7 +12596,7 @@ class DartSdl {
   /// - ::SDL_HAT_LEFTUP
   /// - ::SDL_HAT_LEFTDOWN
   int SDL_JoystickGetHat(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int hat,
   ) {
     return _SDL_JoystickGetHat(
@@ -12616,7 +12616,7 @@ class DartSdl {
   ///
   /// The ball indices start at index 0.
   int SDL_JoystickGetBall(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int ball,
     ffi.Pointer<ffi.Int32> dx,
     ffi.Pointer<ffi.Int32> dy,
@@ -12639,7 +12639,7 @@ class DartSdl {
   ///
   /// The button indices start at index 0.
   int SDL_JoystickGetButton(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int button,
   ) {
     return _SDL_JoystickGetButton(
@@ -12664,7 +12664,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this joystick
   int SDL_JoystickRumble(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int low_frequency_rumble,
     int high_frequency_rumble,
     int duration_ms,
@@ -12692,7 +12692,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if trigger rumble isn't supported on this joystick
   int SDL_JoystickRumbleTriggers(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int left_rumble,
     int right_rumble,
     int duration_ms,
@@ -12718,7 +12718,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE, or SDL_FALSE if this joystick does not have a modifiable LED
   int SDL_JoystickHasLED(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickHasLED(
       joystick,
@@ -12739,7 +12739,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if this joystick does not have a modifiable LED
   int SDL_JoystickSetLED(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
     int red,
     int green,
     int blue,
@@ -12759,7 +12759,7 @@ class DartSdl {
 
   /// Close a joystick previously opened with SDL_JoystickOpen().
   void SDL_JoystickClose(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickClose(
       joystick,
@@ -12773,7 +12773,7 @@ class DartSdl {
 
   /// Return the battery level of this joystick
   int SDL_JoystickCurrentPowerLevel(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickCurrentPowerLevel(
       joystick,
@@ -12907,7 +12907,7 @@ class DartSdl {
   /// The index passed as an argument refers to the N'th sensor on the system.
   ///
   /// \return A sensor identifier, or NULL if an error occurred.
-  ffi.Pointer<_SDL_Sensor> SDL_SensorOpen(
+  ffi.Pointer<SDL_Sensor> SDL_SensorOpen(
     int device_index,
   ) {
     return _SDL_SensorOpen(
@@ -12921,7 +12921,7 @@ class DartSdl {
       _SDL_SensorOpen_ptr.asFunction<_dart_SDL_SensorOpen>();
 
   /// Return the SDL_Sensor associated with an instance id.
-  ffi.Pointer<_SDL_Sensor> SDL_SensorFromInstanceID(
+  ffi.Pointer<SDL_Sensor> SDL_SensorFromInstanceID(
     int instance_id,
   ) {
     return _SDL_SensorFromInstanceID(
@@ -12940,7 +12940,7 @@ class DartSdl {
   ///
   /// \return The sensor name, or NULL if the sensor is NULL.
   ffi.Pointer<ffi.Int8> SDL_SensorGetName(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
   ) {
     return _SDL_SensorGetName(
       sensor,
@@ -12958,7 +12958,7 @@ class DartSdl {
   ///
   /// \return The sensor type, or SDL_SENSOR_INVALID if the sensor is NULL.
   int SDL_SensorGetType(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
   ) {
     return _SDL_SensorGetType(
       sensor,
@@ -12976,7 +12976,7 @@ class DartSdl {
   ///
   /// \return The sensor platform dependent type, or -1 if the sensor is NULL.
   int SDL_SensorGetNonPortableType(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
   ) {
     return _SDL_SensorGetNonPortableType(
       sensor,
@@ -12996,7 +12996,7 @@ class DartSdl {
   ///
   /// \return The sensor instance ID, or -1 if the sensor is NULL.
   int SDL_SensorGetInstanceID(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
   ) {
     return _SDL_SensorGetInstanceID(
       sensor,
@@ -13019,7 +13019,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_SensorGetData(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
     ffi.Pointer<ffi.Float> data,
     int num_values,
   ) {
@@ -13037,7 +13037,7 @@ class DartSdl {
 
   /// Close a sensor previously opened with SDL_SensorOpen()
   void SDL_SensorClose(
-    ffi.Pointer<_SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor> sensor,
   ) {
     return _SDL_SensorClose(
       sensor,
@@ -13160,7 +13160,7 @@ class DartSdl {
   ///
   /// \return the mapping string.  Must be freed with SDL_free().  Returns NULL if no mapping is available
   ffi.Pointer<ffi.Int8> SDL_GameControllerMapping(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerMapping(
       gamecontroller,
@@ -13251,7 +13251,7 @@ class DartSdl {
   /// used there instead.
   ///
   /// \return A controller identifier, or NULL if an error occurred.
-  ffi.Pointer<_SDL_GameController> SDL_GameControllerOpen(
+  ffi.Pointer<SDL_GameController> SDL_GameControllerOpen(
     int joystick_index,
   ) {
     return _SDL_GameControllerOpen(
@@ -13266,7 +13266,7 @@ class DartSdl {
       _SDL_GameControllerOpen_ptr.asFunction<_dart_SDL_GameControllerOpen>();
 
   /// Return the SDL_GameController associated with an instance id.
-  ffi.Pointer<_SDL_GameController> SDL_GameControllerFromInstanceID(
+  ffi.Pointer<SDL_GameController> SDL_GameControllerFromInstanceID(
     int joyid,
   ) {
     return _SDL_GameControllerFromInstanceID(
@@ -13282,7 +13282,7 @@ class DartSdl {
           .asFunction<_dart_SDL_GameControllerFromInstanceID>();
 
   /// Return the SDL_GameController associated with a player index.
-  ffi.Pointer<_SDL_GameController> SDL_GameControllerFromPlayerIndex(
+  ffi.Pointer<SDL_GameController> SDL_GameControllerFromPlayerIndex(
     int player_index,
   ) {
     return _SDL_GameControllerFromPlayerIndex(
@@ -13300,7 +13300,7 @@ class DartSdl {
 
   /// Return the name for this currently opened controller
   ffi.Pointer<ffi.Int8> SDL_GameControllerName(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerName(
       gamecontroller,
@@ -13315,7 +13315,7 @@ class DartSdl {
 
   /// Return the type of this currently opened controller
   int SDL_GameControllerGetType(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetType(
       gamecontroller,
@@ -13333,7 +13333,7 @@ class DartSdl {
   ///
   /// For XInput controllers this returns the XInput user index.
   int SDL_GameControllerGetPlayerIndex(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetPlayerIndex(
       gamecontroller,
@@ -13349,7 +13349,7 @@ class DartSdl {
 
   /// Set the player index of an opened game controller
   void SDL_GameControllerSetPlayerIndex(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int player_index,
   ) {
     return _SDL_GameControllerSetPlayerIndex(
@@ -13368,7 +13368,7 @@ class DartSdl {
   /// Get the USB vendor ID of an opened controller, if available.
   /// If the vendor ID isn't available this function returns 0.
   int SDL_GameControllerGetVendor(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetVendor(
       gamecontroller,
@@ -13385,7 +13385,7 @@ class DartSdl {
   /// Get the USB product ID of an opened controller, if available.
   /// If the product ID isn't available this function returns 0.
   int SDL_GameControllerGetProduct(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetProduct(
       gamecontroller,
@@ -13402,7 +13402,7 @@ class DartSdl {
   /// Get the product version of an opened controller, if available.
   /// If the product version isn't available this function returns 0.
   int SDL_GameControllerGetProductVersion(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetProductVersion(
       gamecontroller,
@@ -13421,7 +13421,7 @@ class DartSdl {
   ///
   /// Returns the serial number of the controller, or NULL if it is not available.
   ffi.Pointer<ffi.Int8> SDL_GameControllerGetSerial(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetSerial(
       gamecontroller,
@@ -13438,7 +13438,7 @@ class DartSdl {
   /// Returns SDL_TRUE if the controller has been opened and currently connected,
   /// or SDL_FALSE if it has not.
   int SDL_GameControllerGetAttached(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetAttached(
       gamecontroller,
@@ -13453,8 +13453,8 @@ class DartSdl {
           .asFunction<_dart_SDL_GameControllerGetAttached>();
 
   /// Get the underlying joystick object used by a controller
-  ffi.Pointer<_SDL_Joystick> SDL_GameControllerGetJoystick(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_Joystick> SDL_GameControllerGetJoystick(
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetJoystick(
       gamecontroller,
@@ -13541,7 +13541,7 @@ class DartSdl {
 
   /// Get the SDL joystick layer binding for this controller button mapping
   SDL_GameControllerButtonBind SDL_GameControllerGetBindForAxis(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerGetBindForAxis(
@@ -13559,7 +13559,7 @@ class DartSdl {
 
   /// Return whether a game controller has a given axis
   int SDL_GameControllerHasAxis(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerHasAxis(
@@ -13582,7 +13582,7 @@ class DartSdl {
   ///
   /// The axis indices start at index 0.
   int SDL_GameControllerGetAxis(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerGetAxis(
@@ -13634,7 +13634,7 @@ class DartSdl {
 
   /// Get the SDL joystick layer binding for this controller button mapping
   SDL_GameControllerButtonBind SDL_GameControllerGetBindForButton(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerGetBindForButton(
@@ -13653,7 +13653,7 @@ class DartSdl {
 
   /// Return whether a game controller has a given button
   int SDL_GameControllerHasButton(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerHasButton(
@@ -13673,7 +13673,7 @@ class DartSdl {
   ///
   /// The button indices start at index 0.
   int SDL_GameControllerGetButton(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerGetButton(
@@ -13691,7 +13691,7 @@ class DartSdl {
 
   /// Get the number of touchpads on a game controller.
   int SDL_GameControllerGetNumTouchpads(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerGetNumTouchpads(
       gamecontroller,
@@ -13708,7 +13708,7 @@ class DartSdl {
 
   /// Get the number of supported simultaneous fingers on a touchpad on a game controller.
   int SDL_GameControllerGetNumTouchpadFingers(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int touchpad,
   ) {
     return _SDL_GameControllerGetNumTouchpadFingers(
@@ -13727,7 +13727,7 @@ class DartSdl {
 
   /// Get the current state of a finger on a touchpad on a game controller.
   int SDL_GameControllerGetTouchpadFinger(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int touchpad,
     int finger,
     ffi.Pointer<ffi.Uint8> state,
@@ -13761,7 +13761,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if the sensor exists, SDL_FALSE otherwise.
   int SDL_GameControllerHasSensor(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int type,
   ) {
     return _SDL_GameControllerHasSensor(
@@ -13785,7 +13785,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_GameControllerSetSensorEnabled(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int type,
     int enabled,
   ) {
@@ -13811,7 +13811,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if the sensor is enabled, SDL_FALSE otherwise.
   int SDL_GameControllerIsSensorEnabled(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int type,
   ) {
     return _SDL_GameControllerIsSensorEnabled(
@@ -13840,7 +13840,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_GameControllerGetSensorData(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int type,
     ffi.Pointer<ffi.Float> data,
     int num_values,
@@ -13870,7 +13870,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this controller
   int SDL_GameControllerRumble(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int low_frequency_rumble,
     int high_frequency_rumble,
     int duration_ms,
@@ -13900,7 +13900,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this controller
   int SDL_GameControllerRumbleTriggers(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int left_rumble,
     int right_rumble,
     int duration_ms,
@@ -13926,7 +13926,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE, or SDL_FALSE if this controller does not have a modifiable LED
   int SDL_GameControllerHasLED(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerHasLED(
       gamecontroller,
@@ -13949,7 +13949,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if this controller does not have a modifiable LED
   int SDL_GameControllerSetLED(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
     int red,
     int green,
     int blue,
@@ -13971,7 +13971,7 @@ class DartSdl {
 
   /// Close a controller previously opened with SDL_GameControllerOpen().
   void SDL_GameControllerClose(
-    ffi.Pointer<_SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController> gamecontroller,
   ) {
     return _SDL_GameControllerClose(
       gamecontroller,
@@ -14612,7 +14612,7 @@ class DartSdl {
   /// \sa SDL_HapticSetAutocenter
   /// \sa SDL_HapticPause
   /// \sa SDL_HapticStopAll
-  ffi.Pointer<_SDL_Haptic> SDL_HapticOpen(
+  ffi.Pointer<SDL_Haptic> SDL_HapticOpen(
     int device_index,
   ) {
     return _SDL_HapticOpen(
@@ -14653,7 +14653,7 @@ class DartSdl {
   /// \sa SDL_HapticOpen
   /// \sa SDL_HapticOpened
   int SDL_HapticIndex(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticIndex(
       haptic,
@@ -14685,7 +14685,7 @@ class DartSdl {
   ///
   /// \sa SDL_MouseIsHaptic
   /// \sa SDL_HapticOpen
-  ffi.Pointer<_SDL_Haptic> SDL_HapticOpenFromMouse() {
+  ffi.Pointer<SDL_Haptic> SDL_HapticOpenFromMouse() {
     return _SDL_HapticOpenFromMouse();
   }
 
@@ -14703,7 +14703,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticOpenFromJoystick
   int SDL_JoystickIsHaptic(
-    ffi.Pointer<_SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_JoystickIsHaptic(
       joystick,
@@ -14731,8 +14731,8 @@ class DartSdl {
   ///
   /// \sa SDL_HapticOpen
   /// \sa SDL_HapticClose
-  ffi.Pointer<_SDL_Haptic> SDL_HapticOpenFromJoystick(
-    ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Haptic> SDL_HapticOpenFromJoystick(
+    ffi.Pointer<SDL_Joystick> joystick,
   ) {
     return _SDL_HapticOpenFromJoystick(
       joystick,
@@ -14750,7 +14750,7 @@ class DartSdl {
   ///
   /// \param haptic Haptic device to close.
   void SDL_HapticClose(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticClose(
       haptic,
@@ -14775,7 +14775,7 @@ class DartSdl {
   /// \sa SDL_HapticNumEffectsPlaying
   /// \sa SDL_HapticQuery
   int SDL_HapticNumEffects(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticNumEffects(
       haptic,
@@ -14801,7 +14801,7 @@ class DartSdl {
   /// \sa SDL_HapticNumEffects
   /// \sa SDL_HapticQuery
   int SDL_HapticNumEffectsPlaying(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticNumEffectsPlaying(
       haptic,
@@ -14830,7 +14830,7 @@ class DartSdl {
   /// \sa SDL_HapticNumEffects
   /// \sa SDL_HapticEffectSupported
   int SDL_HapticQuery(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticQuery(
       haptic,
@@ -14846,7 +14846,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticDirection
   int SDL_HapticNumAxes(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticNumAxes(
       haptic,
@@ -14867,7 +14867,7 @@ class DartSdl {
   /// \sa SDL_HapticQuery
   /// \sa SDL_HapticNewEffect
   int SDL_HapticEffectSupported(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     ffi.Pointer<SDL_HapticEffect> effect,
   ) {
     return _SDL_HapticEffectSupported(
@@ -14893,7 +14893,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticNewEffect(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     ffi.Pointer<SDL_HapticEffect> effect,
   ) {
     return _SDL_HapticNewEffect(
@@ -14924,7 +14924,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticUpdateEffect(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int effect,
     ffi.Pointer<SDL_HapticEffect> data,
   ) {
@@ -14958,7 +14958,7 @@ class DartSdl {
   /// \sa SDL_HapticDestroyEffect
   /// \sa SDL_HapticGetEffectStatus
   int SDL_HapticRunEffect(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int effect,
     int iterations,
   ) {
@@ -14984,7 +14984,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticStopEffect(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int effect,
   ) {
     return _SDL_HapticStopEffect(
@@ -15009,7 +15009,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticNewEffect
   void SDL_HapticDestroyEffect(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int effect,
   ) {
     return _SDL_HapticDestroyEffect(
@@ -15035,7 +15035,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticStopEffect
   int SDL_HapticGetEffectStatus(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int effect,
   ) {
     return _SDL_HapticGetEffectStatus(
@@ -15066,7 +15066,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticQuery
   int SDL_HapticSetGain(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int gain,
   ) {
     return _SDL_HapticSetGain(
@@ -15093,7 +15093,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticQuery
   int SDL_HapticSetAutocenter(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     int autocenter,
   ) {
     return _SDL_HapticSetAutocenter(
@@ -15121,7 +15121,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticUnpause
   int SDL_HapticPause(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticPause(
       haptic,
@@ -15142,7 +15142,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticPause
   int SDL_HapticUnpause(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticUnpause(
       haptic,
@@ -15159,7 +15159,7 @@ class DartSdl {
   /// \param haptic Haptic device to stop.
   /// \return 0 on success or -1 on error.
   int SDL_HapticStopAll(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticStopAll(
       haptic,
@@ -15180,7 +15180,7 @@ class DartSdl {
   /// \sa SDL_HapticRumblePlay
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumbleSupported(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticRumbleSupported(
       haptic,
@@ -15204,7 +15204,7 @@ class DartSdl {
   /// \sa SDL_HapticRumblePlay
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumbleInit(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticRumbleInit(
       haptic,
@@ -15228,7 +15228,7 @@ class DartSdl {
   /// \sa SDL_HapticRumbleInit
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumblePlay(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
     double strength,
     int length,
   ) {
@@ -15254,7 +15254,7 @@ class DartSdl {
   /// \sa SDL_HapticRumbleInit
   /// \sa SDL_HapticRumblePlay
   int SDL_HapticRumbleStop(
-    ffi.Pointer<_SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic> haptic,
   ) {
     return _SDL_HapticRumbleStop(
       haptic,
@@ -18335,35 +18335,35 @@ class DartSdl {
       _SDL_Quit_ptr.asFunction<_dart_SDL_Quit>();
 }
 
-class __crt_locale_data_public extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint16> _locale_pctype;
+class _crt_locale_data_public extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint16> locale_pctype;
 
   @ffi.Int32()
-  external int _locale_mb_cur_max;
+  external int locale_mb_cur_max;
 
   @ffi.Uint32()
-  external int _locale_lc_codepage;
+  external int locale_lc_codepage;
 }
 
-class __crt_locale_data extends ffi.Opaque {}
+class _crt_locale_data extends ffi.Opaque {}
 
-class __crt_multibyte_data extends ffi.Opaque {}
+class _crt_multibyte_data extends ffi.Opaque {}
 
-class __crt_locale_pointers extends ffi.Struct {
-  external ffi.Pointer<__crt_locale_data> locinfo;
+class _crt_locale_pointers extends ffi.Struct {
+  external ffi.Pointer<_crt_locale_data> locinfo;
 
-  external ffi.Pointer<__crt_multibyte_data> mbcinfo;
+  external ffi.Pointer<_crt_multibyte_data> mbcinfo;
 }
 
-class _Mbstatet extends ffi.Struct {
+class Mbstatet extends ffi.Struct {
   @ffi.Uint64()
-  external int _Wchar;
+  external int Wchar;
 
   @ffi.Uint16()
-  external int _Byte;
+  external int Byte;
 
   @ffi.Uint16()
-  external int _State;
+  external int State;
 }
 
 abstract class SDL_bool {
@@ -18375,7 +18375,7 @@ abstract class SDL_DUMMY_ENUM {
   static const int DUMMY_ENUM_VALUE = 0;
 }
 
-class _SDL_iconv_t extends ffi.Opaque {}
+class SDL_iconv_t extends ffi.Opaque {}
 
 abstract class SDL_AssertState {
   /// < Retry the assert immediately.
@@ -18452,7 +18452,7 @@ abstract class SDL_ThreadPriority {
   static const int SDL_THREAD_PRIORITY_TIME_CRITICAL = 3;
 }
 
-class _exception extends ffi.Struct {
+class exception extends ffi.Struct {
   @ffi.Int32()
   external int type;
 
@@ -18468,7 +18468,7 @@ class _exception extends ffi.Struct {
   external double retval;
 }
 
-class _complex extends ffi.Struct {
+class complex extends ffi.Struct {
   @ffi.Double()
   external double x;
 
@@ -18478,18 +18478,18 @@ class _complex extends ffi.Struct {
 
 class _double_val extends ffi.Union {
   @ffi.Array.multi([4])
-  external ffi.Array<ffi.Uint16> _Sh;
+  external ffi.Array<ffi.Uint16> Sh;
 
   @ffi.Double()
-  external double _Val;
+  external double Val;
 }
 
 class _float_val extends ffi.Union {
   @ffi.Array.multi([2])
-  external ffi.Array<ffi.Uint16> _Sh;
+  external ffi.Array<ffi.Uint16> Sh;
 
   @ffi.Float()
-  external double _Val;
+  external double Val;
 }
 
 class _ldouble_val extends ffi.Opaque {}
@@ -18513,7 +18513,7 @@ abstract class _crt_exit_cleanup_mode {
   static const int _crt_exit_no_cleanup = 2;
 }
 
-class _EXCEPTION_POINTERS extends ffi.Opaque {}
+class EXCEPTION_POINTERS extends ffi.Opaque {}
 
 abstract class _crt_app_type {
   static const int _crt_unknown_app = 0;
@@ -18521,12 +18521,12 @@ abstract class _crt_app_type {
   static const int _crt_gui_app = 2;
 }
 
-class _onexit_table_t extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _first;
+class onexit_table_t extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> first;
 
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _last;
+  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> last;
 
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _end;
+  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> end;
 }
 
 class unnamedStruct_2 extends ffi.Struct {
@@ -18700,7 +18700,7 @@ abstract class SDL_AudioStatus {
   static const int SDL_AUDIO_PAUSED = 2;
 }
 
-class _SDL_AudioStream extends ffi.Opaque {}
+class SDL_AudioStream extends ffi.Opaque {}
 
 /// Pixel type.
 abstract class SDL_PixelType {
@@ -20089,7 +20089,7 @@ abstract class SDL_MouseWheelDirection {
 }
 
 /// The joystick structure used to identify an SDL joystick
-class _SDL_Joystick extends ffi.Opaque {}
+class SDL_Joystick extends ffi.Opaque {}
 
 class SDL_JoystickGUID extends ffi.Struct {
   @ffi.Array.multi([16])
@@ -20124,7 +20124,7 @@ abstract class SDL_JoystickPowerLevel {
 /// In order to use these functions, SDL_Init() must have been called
 /// with the ::SDL_INIT_SENSOR flag.  This causes SDL to scan the system
 /// for sensors, and load appropriate drivers.
-class _SDL_Sensor extends ffi.Opaque {}
+class SDL_Sensor extends ffi.Opaque {}
 
 abstract class SDL_SensorType {
   /// < Returned for an invalid sensor
@@ -20141,7 +20141,7 @@ abstract class SDL_SensorType {
 }
 
 /// The gamecontroller structure used to identify an SDL game controller
-class _SDL_GameController extends ffi.Opaque {}
+class SDL_GameController extends ffi.Opaque {}
 
 abstract class SDL_GameControllerType {
   static const int SDL_CONTROLLER_TYPE_UNKNOWN = 0;
@@ -21323,7 +21323,7 @@ abstract class SDL_eventaction {
 /// \sa SDL_HapticOpen
 /// \sa SDL_HapticOpenFromJoystick
 /// \sa SDL_HapticClose
-class _SDL_Haptic extends ffi.Opaque {}
+class SDL_Haptic extends ffi.Opaque {}
 
 /// \brief Structure that represents a haptic direction.
 ///
@@ -22728,7 +22728,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 605;
+const int SDL_LINE = 606;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 
@@ -24521,26 +24521,26 @@ typedef _dart_SDL_tanf = double Function(
   double x,
 );
 
-typedef _c_SDL_iconv_open = ffi.Pointer<_SDL_iconv_t> Function(
+typedef _c_SDL_iconv_open = ffi.Pointer<SDL_iconv_t> Function(
   ffi.Pointer<ffi.Int8> tocode,
   ffi.Pointer<ffi.Int8> fromcode,
 );
 
-typedef _dart_SDL_iconv_open = ffi.Pointer<_SDL_iconv_t> Function(
+typedef _dart_SDL_iconv_open = ffi.Pointer<SDL_iconv_t> Function(
   ffi.Pointer<ffi.Int8> tocode,
   ffi.Pointer<ffi.Int8> fromcode,
 );
 
 typedef _c_SDL_iconv_close = ffi.Int32 Function(
-  ffi.Pointer<_SDL_iconv_t> cd,
+  ffi.Pointer<SDL_iconv_t> cd,
 );
 
 typedef _dart_SDL_iconv_close = int Function(
-  ffi.Pointer<_SDL_iconv_t> cd,
+  ffi.Pointer<SDL_iconv_t> cd,
 );
 
 typedef _c_SDL_iconv = ffi.Uint64 Function(
-  ffi.Pointer<_SDL_iconv_t> cd,
+  ffi.Pointer<SDL_iconv_t> cd,
   ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
   ffi.Pointer<ffi.Uint64> inbytesleft,
   ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
@@ -24548,7 +24548,7 @@ typedef _c_SDL_iconv = ffi.Uint64 Function(
 );
 
 typedef _dart_SDL_iconv = int Function(
-  ffi.Pointer<_SDL_iconv_t> cd,
+  ffi.Pointer<SDL_iconv_t> cd,
   ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
   ffi.Pointer<ffi.Uint64> inbytesleft,
   ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
@@ -25376,20 +25376,20 @@ typedef _dart_atof = double Function(
 
 typedef _c__atof_l = ffi.Double Function(
   ffi.Pointer<ffi.Int8> _String,
-  ffi.Pointer<__crt_locale_pointers> _Locale,
+  ffi.Pointer<_crt_locale_pointers> _Locale,
 );
 
 typedef _dart__atof_l = double Function(
   ffi.Pointer<ffi.Int8> _String,
-  ffi.Pointer<__crt_locale_pointers> _Locale,
+  ffi.Pointer<_crt_locale_pointers> _Locale,
 );
 
 typedef _c__cabs = ffi.Double Function(
-  _complex _Complex_value,
+  complex _Complex_value,
 );
 
 typedef _dart__cabs = double Function(
-  _complex _Complex_value,
+  complex _Complex_value,
 );
 
 typedef _c_cbrt = ffi.Double Function(
@@ -25631,11 +25631,11 @@ typedef _dart_lround = int Function(
 );
 
 typedef _c__matherr = ffi.Int32 Function(
-  ffi.Pointer<_exception> _Except,
+  ffi.Pointer<exception> _Except,
 );
 
 typedef _dart__matherr = int Function(
-  ffi.Pointer<_exception> _Except,
+  ffi.Pointer<exception> _Except,
 );
 
 typedef _c_modf = ffi.Double Function(
@@ -26416,22 +26416,22 @@ typedef _dart__get_startup_argv_mode = int Function();
 
 typedef _c__seh_filter_dll = ffi.Int32 Function(
   ffi.Uint64 _ExceptionNum,
-  ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
 );
 
 typedef _dart__seh_filter_dll = int Function(
   int _ExceptionNum,
-  ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
 );
 
 typedef _c__seh_filter_exe = ffi.Int32 Function(
   ffi.Uint64 _ExceptionNum,
-  ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
 );
 
 typedef _dart__seh_filter_exe = int Function(
   int _ExceptionNum,
-  ffi.Pointer<_EXCEPTION_POINTERS> _ExceptionPtr,
+  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
 );
 
 typedef _c__query_app_type = ffi.Int32 Function();
@@ -26447,7 +26447,7 @@ typedef _dart__set_app_type = void Function(
 );
 
 typedef _UserMathErrorFunctionPointer = ffi.Int32 Function(
-  ffi.Pointer<_exception>,
+  ffi.Pointer<exception>,
 );
 
 typedef _c___setusermatherr = ffi.Void Function(
@@ -26543,31 +26543,31 @@ typedef _dart__initterm_e = int Function(
 );
 
 typedef _c__initialize_onexit_table = ffi.Int32 Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
 );
 
 typedef _dart__initialize_onexit_table = int Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
 );
 
 typedef _onexit_t = ffi.Int32 Function();
 
 typedef _c__register_onexit_function = ffi.Int32 Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
   ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
 );
 
 typedef _dart__register_onexit_function = int Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
   ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
 );
 
 typedef _c__execute_onexit_table = ffi.Int32 Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
 );
 
 typedef _dart__execute_onexit_table = int Function(
-  ffi.Pointer<_onexit_table_t> _Table,
+  ffi.Pointer<onexit_table_t> _Table,
 );
 
 typedef _c__crt_atexit = ffi.Int32 Function(
@@ -27905,7 +27905,7 @@ typedef _dart_SDL_ConvertAudio = int Function(
   ffi.Pointer<SDL_AudioCVT> cvt,
 );
 
-typedef _c_SDL_NewAudioStream = ffi.Pointer<_SDL_AudioStream> Function(
+typedef _c_SDL_NewAudioStream = ffi.Pointer<SDL_AudioStream> Function(
   ffi.Uint16 src_format,
   ffi.Uint8 src_channels,
   ffi.Int32 src_rate,
@@ -27914,7 +27914,7 @@ typedef _c_SDL_NewAudioStream = ffi.Pointer<_SDL_AudioStream> Function(
   ffi.Int32 dst_rate,
 );
 
-typedef _dart_SDL_NewAudioStream = ffi.Pointer<_SDL_AudioStream> Function(
+typedef _dart_SDL_NewAudioStream = ffi.Pointer<SDL_AudioStream> Function(
   int src_format,
   int src_channels,
   int src_rate,
@@ -27924,59 +27924,59 @@ typedef _dart_SDL_NewAudioStream = ffi.Pointer<_SDL_AudioStream> Function(
 );
 
 typedef _c_SDL_AudioStreamPut = ffi.Int32 Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
   ffi.Pointer<ffi.Void> buf,
   ffi.Int32 len,
 );
 
 typedef _dart_SDL_AudioStreamPut = int Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
   ffi.Pointer<ffi.Void> buf,
   int len,
 );
 
 typedef _c_SDL_AudioStreamGet = ffi.Int32 Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
   ffi.Pointer<ffi.Void> buf,
   ffi.Int32 len,
 );
 
 typedef _dart_SDL_AudioStreamGet = int Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
   ffi.Pointer<ffi.Void> buf,
   int len,
 );
 
 typedef _c_SDL_AudioStreamAvailable = ffi.Int32 Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _dart_SDL_AudioStreamAvailable = int Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _c_SDL_AudioStreamFlush = ffi.Int32 Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _dart_SDL_AudioStreamFlush = int Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _c_SDL_AudioStreamClear = ffi.Void Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _dart_SDL_AudioStreamClear = void Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _c_SDL_FreeAudioStream = ffi.Void Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _dart_SDL_FreeAudioStream = void Function(
-  ffi.Pointer<_SDL_AudioStream> stream,
+  ffi.Pointer<SDL_AudioStream> stream,
 );
 
 typedef _c_SDL_MixAudio = ffi.Void Function(
@@ -29976,27 +29976,27 @@ typedef _dart_SDL_JoystickGetDeviceInstanceID = int Function(
   int device_index,
 );
 
-typedef _c_SDL_JoystickOpen = ffi.Pointer<_SDL_Joystick> Function(
+typedef _c_SDL_JoystickOpen = ffi.Pointer<SDL_Joystick> Function(
   ffi.Int32 device_index,
 );
 
-typedef _dart_SDL_JoystickOpen = ffi.Pointer<_SDL_Joystick> Function(
+typedef _dart_SDL_JoystickOpen = ffi.Pointer<SDL_Joystick> Function(
   int device_index,
 );
 
-typedef _c_SDL_JoystickFromInstanceID = ffi.Pointer<_SDL_Joystick> Function(
+typedef _c_SDL_JoystickFromInstanceID = ffi.Pointer<SDL_Joystick> Function(
   ffi.Int32 instance_id,
 );
 
-typedef _dart_SDL_JoystickFromInstanceID = ffi.Pointer<_SDL_Joystick> Function(
+typedef _dart_SDL_JoystickFromInstanceID = ffi.Pointer<SDL_Joystick> Function(
   int instance_id,
 );
 
-typedef _c_SDL_JoystickFromPlayerIndex = ffi.Pointer<_SDL_Joystick> Function(
+typedef _c_SDL_JoystickFromPlayerIndex = ffi.Pointer<SDL_Joystick> Function(
   ffi.Int32 player_index,
 );
 
-typedef _dart_SDL_JoystickFromPlayerIndex = ffi.Pointer<_SDL_Joystick> Function(
+typedef _dart_SDL_JoystickFromPlayerIndex = ffi.Pointer<SDL_Joystick> Function(
   int player_index,
 );
 
@@ -30031,113 +30031,113 @@ typedef _dart_SDL_JoystickIsVirtual = int Function(
 );
 
 typedef _c_SDL_JoystickSetVirtualAxis = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 axis,
   ffi.Int16 value,
 );
 
 typedef _dart_SDL_JoystickSetVirtualAxis = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int axis,
   int value,
 );
 
 typedef _c_SDL_JoystickSetVirtualButton = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 button,
   ffi.Uint8 value,
 );
 
 typedef _dart_SDL_JoystickSetVirtualButton = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int button,
   int value,
 );
 
 typedef _c_SDL_JoystickSetVirtualHat = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 hat,
   ffi.Uint8 value,
 );
 
 typedef _dart_SDL_JoystickSetVirtualHat = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int hat,
   int value,
 );
 
 typedef _c_SDL_JoystickName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetPlayerIndex = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetPlayerIndex = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickSetPlayerIndex = ffi.Void Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 player_index,
 );
 
 typedef _dart_SDL_JoystickSetPlayerIndex = void Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int player_index,
 );
 
 typedef _c_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetVendor = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetVendor = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetProduct = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetProduct = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetProductVersion = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetProductVersion = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetType = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetType = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickGetGUIDString = ffi.Void Function(
@@ -30161,51 +30161,51 @@ typedef _dart_SDL_JoystickGetGUIDFromString = SDL_JoystickGUID Function(
 );
 
 typedef _c_SDL_JoystickGetAttached = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickGetAttached = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickInstanceID = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickInstanceID = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickNumAxes = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickNumAxes = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickNumBalls = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickNumBalls = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickNumHats = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickNumHats = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickNumButtons = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickNumButtons = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickUpdate = ffi.Void Function();
@@ -30221,125 +30221,125 @@ typedef _dart_SDL_JoystickEventState = int Function(
 );
 
 typedef _c_SDL_JoystickGetAxis = ffi.Int16 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 axis,
 );
 
 typedef _dart_SDL_JoystickGetAxis = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int axis,
 );
 
 typedef _c_SDL_JoystickGetAxisInitialState = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 axis,
   ffi.Pointer<ffi.Int16> state,
 );
 
 typedef _dart_SDL_JoystickGetAxisInitialState = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int axis,
   ffi.Pointer<ffi.Int16> state,
 );
 
 typedef _c_SDL_JoystickGetHat = ffi.Uint8 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 hat,
 );
 
 typedef _dart_SDL_JoystickGetHat = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int hat,
 );
 
 typedef _c_SDL_JoystickGetBall = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 ball,
   ffi.Pointer<ffi.Int32> dx,
   ffi.Pointer<ffi.Int32> dy,
 );
 
 typedef _dart_SDL_JoystickGetBall = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int ball,
   ffi.Pointer<ffi.Int32> dx,
   ffi.Pointer<ffi.Int32> dy,
 );
 
 typedef _c_SDL_JoystickGetButton = ffi.Uint8 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Int32 button,
 );
 
 typedef _dart_SDL_JoystickGetButton = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int button,
 );
 
 typedef _c_SDL_JoystickRumble = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Uint16 low_frequency_rumble,
   ffi.Uint16 high_frequency_rumble,
   ffi.Uint32 duration_ms,
 );
 
 typedef _dart_SDL_JoystickRumble = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int low_frequency_rumble,
   int high_frequency_rumble,
   int duration_ms,
 );
 
 typedef _c_SDL_JoystickRumbleTriggers = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Uint16 left_rumble,
   ffi.Uint16 right_rumble,
   ffi.Uint32 duration_ms,
 );
 
 typedef _dart_SDL_JoystickRumbleTriggers = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int left_rumble,
   int right_rumble,
   int duration_ms,
 );
 
 typedef _c_SDL_JoystickHasLED = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickHasLED = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickSetLED = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   ffi.Uint8 red,
   ffi.Uint8 green,
   ffi.Uint8 blue,
 );
 
 typedef _dart_SDL_JoystickSetLED = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
   int red,
   int green,
   int blue,
 );
 
 typedef _c_SDL_JoystickClose = ffi.Void Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickClose = void Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_JoystickCurrentPowerLevel = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickCurrentPowerLevel = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_LockSensors = ffi.Void Function();
@@ -30386,72 +30386,72 @@ typedef _dart_SDL_SensorGetDeviceInstanceID = int Function(
   int device_index,
 );
 
-typedef _c_SDL_SensorOpen = ffi.Pointer<_SDL_Sensor> Function(
+typedef _c_SDL_SensorOpen = ffi.Pointer<SDL_Sensor> Function(
   ffi.Int32 device_index,
 );
 
-typedef _dart_SDL_SensorOpen = ffi.Pointer<_SDL_Sensor> Function(
+typedef _dart_SDL_SensorOpen = ffi.Pointer<SDL_Sensor> Function(
   int device_index,
 );
 
-typedef _c_SDL_SensorFromInstanceID = ffi.Pointer<_SDL_Sensor> Function(
+typedef _c_SDL_SensorFromInstanceID = ffi.Pointer<SDL_Sensor> Function(
   ffi.Int32 instance_id,
 );
 
-typedef _dart_SDL_SensorFromInstanceID = ffi.Pointer<_SDL_Sensor> Function(
+typedef _dart_SDL_SensorFromInstanceID = ffi.Pointer<SDL_Sensor> Function(
   int instance_id,
 );
 
 typedef _c_SDL_SensorGetName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _dart_SDL_SensorGetName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _c_SDL_SensorGetType = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _dart_SDL_SensorGetType = int Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _c_SDL_SensorGetNonPortableType = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _dart_SDL_SensorGetNonPortableType = int Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _c_SDL_SensorGetInstanceID = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _dart_SDL_SensorGetInstanceID = int Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _c_SDL_SensorGetData = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
   ffi.Pointer<ffi.Float> data,
   ffi.Int32 num_values,
 );
 
 typedef _dart_SDL_SensorGetData = int Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
   ffi.Pointer<ffi.Float> data,
   int num_values,
 );
 
 typedef _c_SDL_SensorClose = ffi.Void Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _dart_SDL_SensorClose = void Function(
-  ffi.Pointer<_SDL_Sensor> sensor,
+  ffi.Pointer<SDL_Sensor> sensor,
 );
 
 typedef _c_SDL_SensorUpdate = ffi.Void Function();
@@ -30498,11 +30498,11 @@ typedef _dart_SDL_GameControllerMappingForGUID = ffi.Pointer<ffi.Int8> Function(
 );
 
 typedef _c_SDL_GameControllerMapping = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerMapping = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_IsGameController = ffi.Int32 Function(
@@ -30539,116 +30539,115 @@ typedef _dart_SDL_GameControllerMappingForDeviceIndex = ffi.Pointer<ffi.Int8>
   int joystick_index,
 );
 
-typedef _c_SDL_GameControllerOpen = ffi.Pointer<_SDL_GameController> Function(
+typedef _c_SDL_GameControllerOpen = ffi.Pointer<SDL_GameController> Function(
   ffi.Int32 joystick_index,
 );
 
-typedef _dart_SDL_GameControllerOpen = ffi.Pointer<_SDL_GameController>
-    Function(
+typedef _dart_SDL_GameControllerOpen = ffi.Pointer<SDL_GameController> Function(
   int joystick_index,
 );
 
-typedef _c_SDL_GameControllerFromInstanceID = ffi.Pointer<_SDL_GameController>
+typedef _c_SDL_GameControllerFromInstanceID = ffi.Pointer<SDL_GameController>
     Function(
   ffi.Int32 joyid,
 );
 
-typedef _dart_SDL_GameControllerFromInstanceID
-    = ffi.Pointer<_SDL_GameController> Function(
+typedef _dart_SDL_GameControllerFromInstanceID = ffi.Pointer<SDL_GameController>
+    Function(
   int joyid,
 );
 
-typedef _c_SDL_GameControllerFromPlayerIndex = ffi.Pointer<_SDL_GameController>
+typedef _c_SDL_GameControllerFromPlayerIndex = ffi.Pointer<SDL_GameController>
     Function(
   ffi.Int32 player_index,
 );
 
 typedef _dart_SDL_GameControllerFromPlayerIndex
-    = ffi.Pointer<_SDL_GameController> Function(
+    = ffi.Pointer<SDL_GameController> Function(
   int player_index,
 );
 
 typedef _c_SDL_GameControllerName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetType = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetType = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetPlayerIndex = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetPlayerIndex = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerSetPlayerIndex = ffi.Void Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 player_index,
 );
 
 typedef _dart_SDL_GameControllerSetPlayerIndex = void Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int player_index,
 );
 
 typedef _c_SDL_GameControllerGetVendor = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetVendor = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetProduct = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetProduct = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetProductVersion = ffi.Uint16 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetProductVersion = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetAttached = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetAttached = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
-typedef _c_SDL_GameControllerGetJoystick = ffi.Pointer<_SDL_Joystick> Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+typedef _c_SDL_GameControllerGetJoystick = ffi.Pointer<SDL_Joystick> Function(
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
-typedef _dart_SDL_GameControllerGetJoystick = ffi.Pointer<_SDL_Joystick>
+typedef _dart_SDL_GameControllerGetJoystick = ffi.Pointer<SDL_Joystick>
     Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerEventState = ffi.Int32 Function(
@@ -30682,33 +30681,33 @@ typedef _dart_SDL_GameControllerGetStringForAxis = ffi.Pointer<ffi.Int8>
 
 typedef _c_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
     Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 axis,
 );
 
 typedef _dart_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
     Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int axis,
 );
 
 typedef _c_SDL_GameControllerHasAxis = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 axis,
 );
 
 typedef _dart_SDL_GameControllerHasAxis = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int axis,
 );
 
 typedef _c_SDL_GameControllerGetAxis = ffi.Int16 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 axis,
 );
 
 typedef _dart_SDL_GameControllerGetAxis = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int axis,
 );
 
@@ -30732,56 +30731,56 @@ typedef _dart_SDL_GameControllerGetStringForButton = ffi.Pointer<ffi.Int8>
 
 typedef _c_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
     Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 button,
 );
 
 typedef _dart_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
     Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int button,
 );
 
 typedef _c_SDL_GameControllerHasButton = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 button,
 );
 
 typedef _dart_SDL_GameControllerHasButton = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int button,
 );
 
 typedef _c_SDL_GameControllerGetButton = ffi.Uint8 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 button,
 );
 
 typedef _dart_SDL_GameControllerGetButton = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int button,
 );
 
 typedef _c_SDL_GameControllerGetNumTouchpads = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerGetNumTouchpads = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerGetNumTouchpadFingers = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 touchpad,
 );
 
 typedef _dart_SDL_GameControllerGetNumTouchpadFingers = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int touchpad,
 );
 
 typedef _c_SDL_GameControllerGetTouchpadFinger = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 touchpad,
   ffi.Int32 finger,
   ffi.Pointer<ffi.Uint8> state,
@@ -30791,7 +30790,7 @@ typedef _c_SDL_GameControllerGetTouchpadFinger = ffi.Int32 Function(
 );
 
 typedef _dart_SDL_GameControllerGetTouchpadFinger = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int touchpad,
   int finger,
   ffi.Pointer<ffi.Uint8> state,
@@ -30801,107 +30800,107 @@ typedef _dart_SDL_GameControllerGetTouchpadFinger = int Function(
 );
 
 typedef _c_SDL_GameControllerHasSensor = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 type,
 );
 
 typedef _dart_SDL_GameControllerHasSensor = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int type,
 );
 
 typedef _c_SDL_GameControllerSetSensorEnabled = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 type,
   ffi.Int32 enabled,
 );
 
 typedef _dart_SDL_GameControllerSetSensorEnabled = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int type,
   int enabled,
 );
 
 typedef _c_SDL_GameControllerIsSensorEnabled = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 type,
 );
 
 typedef _dart_SDL_GameControllerIsSensorEnabled = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int type,
 );
 
 typedef _c_SDL_GameControllerGetSensorData = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Int32 type,
   ffi.Pointer<ffi.Float> data,
   ffi.Int32 num_values,
 );
 
 typedef _dart_SDL_GameControllerGetSensorData = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int type,
   ffi.Pointer<ffi.Float> data,
   int num_values,
 );
 
 typedef _c_SDL_GameControllerRumble = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Uint16 low_frequency_rumble,
   ffi.Uint16 high_frequency_rumble,
   ffi.Uint32 duration_ms,
 );
 
 typedef _dart_SDL_GameControllerRumble = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int low_frequency_rumble,
   int high_frequency_rumble,
   int duration_ms,
 );
 
 typedef _c_SDL_GameControllerRumbleTriggers = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Uint16 left_rumble,
   ffi.Uint16 right_rumble,
   ffi.Uint32 duration_ms,
 );
 
 typedef _dart_SDL_GameControllerRumbleTriggers = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int left_rumble,
   int right_rumble,
   int duration_ms,
 );
 
 typedef _c_SDL_GameControllerHasLED = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerHasLED = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GameControllerSetLED = ffi.Int32 Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   ffi.Uint8 red,
   ffi.Uint8 green,
   ffi.Uint8 blue,
 );
 
 typedef _dart_SDL_GameControllerSetLED = int Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
   int red,
   int green,
   int blue,
 );
 
 typedef _c_SDL_GameControllerClose = ffi.Void Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _dart_SDL_GameControllerClose = void Function(
-  ffi.Pointer<_SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_GameController> gamecontroller,
 );
 
 typedef _c_SDL_GetNumTouchDevices = ffi.Int32 Function();
@@ -31167,11 +31166,11 @@ typedef _dart_SDL_HapticName = ffi.Pointer<ffi.Int8> Function(
   int device_index,
 );
 
-typedef _c_SDL_HapticOpen = ffi.Pointer<_SDL_Haptic> Function(
+typedef _c_SDL_HapticOpen = ffi.Pointer<SDL_Haptic> Function(
   ffi.Int32 device_index,
 );
 
-typedef _dart_SDL_HapticOpen = ffi.Pointer<_SDL_Haptic> Function(
+typedef _dart_SDL_HapticOpen = ffi.Pointer<SDL_Haptic> Function(
   int device_index,
 );
 
@@ -31184,229 +31183,229 @@ typedef _dart_SDL_HapticOpened = int Function(
 );
 
 typedef _c_SDL_HapticIndex = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticIndex = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_MouseIsHaptic = ffi.Int32 Function();
 
 typedef _dart_SDL_MouseIsHaptic = int Function();
 
-typedef _c_SDL_HapticOpenFromMouse = ffi.Pointer<_SDL_Haptic> Function();
+typedef _c_SDL_HapticOpenFromMouse = ffi.Pointer<SDL_Haptic> Function();
 
-typedef _dart_SDL_HapticOpenFromMouse = ffi.Pointer<_SDL_Haptic> Function();
+typedef _dart_SDL_HapticOpenFromMouse = ffi.Pointer<SDL_Haptic> Function();
 
 typedef _c_SDL_JoystickIsHaptic = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _dart_SDL_JoystickIsHaptic = int Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
-typedef _c_SDL_HapticOpenFromJoystick = ffi.Pointer<_SDL_Haptic> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+typedef _c_SDL_HapticOpenFromJoystick = ffi.Pointer<SDL_Haptic> Function(
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
-typedef _dart_SDL_HapticOpenFromJoystick = ffi.Pointer<_SDL_Haptic> Function(
-  ffi.Pointer<_SDL_Joystick> joystick,
+typedef _dart_SDL_HapticOpenFromJoystick = ffi.Pointer<SDL_Haptic> Function(
+  ffi.Pointer<SDL_Joystick> joystick,
 );
 
 typedef _c_SDL_HapticClose = ffi.Void Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticClose = void Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticNumEffects = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticNumEffects = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticNumEffectsPlaying = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticNumEffectsPlaying = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticQuery = ffi.Uint32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticQuery = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticNumAxes = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticNumAxes = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticEffectSupported = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Pointer<SDL_HapticEffect> effect,
 );
 
 typedef _dart_SDL_HapticEffectSupported = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Pointer<SDL_HapticEffect> effect,
 );
 
 typedef _c_SDL_HapticNewEffect = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Pointer<SDL_HapticEffect> effect,
 );
 
 typedef _dart_SDL_HapticNewEffect = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Pointer<SDL_HapticEffect> effect,
 );
 
 typedef _c_SDL_HapticUpdateEffect = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 effect,
   ffi.Pointer<SDL_HapticEffect> data,
 );
 
 typedef _dart_SDL_HapticUpdateEffect = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int effect,
   ffi.Pointer<SDL_HapticEffect> data,
 );
 
 typedef _c_SDL_HapticRunEffect = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 effect,
   ffi.Uint32 iterations,
 );
 
 typedef _dart_SDL_HapticRunEffect = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int effect,
   int iterations,
 );
 
 typedef _c_SDL_HapticStopEffect = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 effect,
 );
 
 typedef _dart_SDL_HapticStopEffect = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int effect,
 );
 
 typedef _c_SDL_HapticDestroyEffect = ffi.Void Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 effect,
 );
 
 typedef _dart_SDL_HapticDestroyEffect = void Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int effect,
 );
 
 typedef _c_SDL_HapticGetEffectStatus = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 effect,
 );
 
 typedef _dart_SDL_HapticGetEffectStatus = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int effect,
 );
 
 typedef _c_SDL_HapticSetGain = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 gain,
 );
 
 typedef _dart_SDL_HapticSetGain = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int gain,
 );
 
 typedef _c_SDL_HapticSetAutocenter = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Int32 autocenter,
 );
 
 typedef _dart_SDL_HapticSetAutocenter = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   int autocenter,
 );
 
 typedef _c_SDL_HapticPause = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticPause = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticUnpause = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticUnpause = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticStopAll = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticStopAll = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticRumbleSupported = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticRumbleSupported = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticRumbleInit = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticRumbleInit = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_HapticRumblePlay = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   ffi.Float strength,
   ffi.Uint32 length,
 );
 
 typedef _dart_SDL_HapticRumblePlay = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
   double strength,
   int length,
 );
 
 typedef _c_SDL_HapticRumbleStop = ffi.Int32 Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _dart_SDL_HapticRumbleStop = int Function(
-  ffi.Pointer<_SDL_Haptic> haptic,
+  ffi.Pointer<SDL_Haptic> haptic,
 );
 
 typedef _c_SDL_SetHintWithPriority = ffi.Int32 Function(

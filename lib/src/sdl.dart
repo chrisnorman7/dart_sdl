@@ -20,6 +20,7 @@ import 'events/mouse.dart';
 import 'events/platform.dart';
 import 'events/text.dart';
 import 'events/window.dart';
+import 'joystick.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
 import 'window.dart';
@@ -581,6 +582,45 @@ class Sdl {
     return OpenAudioDevice(this, device, id, spec);
   }
 
+  /// Get the number of joysticks on the system.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_NumJoysticks)
+  int get numJoysticks => checkReturnValue(sdl.SDL_NumJoysticks());
+
+  /// Get the implementation-dependent GUID for the joystick at a given device
+  /// [index].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetDeviceGUID)
+  SDL_JoystickGUID getJoystickDeviceGuid(int index) {
+    final g = sdl.SDL_JoystickGetDeviceGUID(index);
+    if (g.data[0] == 0) {
+      throw SdlError(0, getError());
+    }
+    return g;
+  }
+
+  /// Get the implementation dependent name of a joystick.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickNameForIndex)
+  String getJoystickName(int index) {
+    final name = sdl.SDL_JoystickNameForIndex(index);
+    if (name == nullptr) {
+      throw SdlError(0, getError());
+    }
+    return name.cast<Utf8>().toDartString();
+  }
+
+  /// Open a joystick with the given [index] for use.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickOpen)
+  Joystick openJoystick(int index) {
+    final handle = sdl.SDL_JoystickOpen(index);
+    if (handle == nullptr) {
+      throw SdlError(0, getError());
+    }
+    return Joystick(this, handle);
+  }
+
   /// Poll events.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PollEvent)
@@ -773,6 +813,8 @@ class Sdl {
         case SDL_EventType.SDL_JOYDEVICEREMOVED:
           event = JoyDeviceEvent.fromSdlEvent(this, e.jdevice);
           break;
+
+        // Controller events
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }

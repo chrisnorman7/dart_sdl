@@ -226,3 +226,29 @@ enum JoyHatValues {
   /// SDL_HAT_RIGHTDOWN
   rightDown,
 }
+
+/// The possible power levels of a joystick.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickPowerLevel)
+enum JoystickPowerLevel {
+  /// SDL_JOYSTICK_POWER_UNKNOWN
+  unknown,
+
+  /// SDL_JOYSTICK_POWER_EMPTY
+  empty,
+
+  /// SDL_JOYSTICK_POWER_LOW
+  low,
+
+  /// SDL_JOYSTICK_POWER_MEDIUM
+  medium,
+
+  /// SDL_JOYSTICK_POWER_FULL
+  full,
+
+  /// SDL_JOYSTICK_POWER_WIRED
+  wired,
+
+  /// SDL_JOYSTICK_POWER_MAX
+  max,
+}

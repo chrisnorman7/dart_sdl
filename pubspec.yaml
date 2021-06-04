@@ -19,6 +19,12 @@ ffigen:
   output: "lib/src/sdl_bindings.dart"
   name: "DartSdl"
   description: "Bindings for SDL"
+  structs:
+    rename:
+      '_(.*)': '$1' # Removes prefix underscores from all structures.
+    member-rename:
+      '.*': # Matches any struct.
+        '_(.*)': '$1' # Removes prefix underscores from members.
   headers:
     entry-points:
       - "SDL2-2.0.14/include/SDL.h"
@@ -35,3 +41,4 @@ ffigen:
       - "SDL2-2.0.14/include/SDL_keycode.h"
       - "SDL2-2.0.14/include/SDL_scancode.h"
       - "SDL2-2.0.14/include/SDL_haptic.h"
+      - "SDL2-2.0.14/include/SDL_joystick.h"

@@ -263,3 +263,25 @@ Classes have been created to reflect every member of the
 * [SDL_LoadWAV_RW](https://wiki.libsdl.org/SDL_LoadWAV_RW)
 
 ### [Force Feedback Support](https://wiki.libsdl.org/CategoryForceFeedback)
+
+### [Joystick Support](https://wiki.libsdl.org/CategoryJoystick)
+
+#### Classes
+
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_JoystickGetDeviceGUID](https://wiki.libsdl.org/SDL_JoystickGetDeviceGUID)
+* [SDL_JoystickNameForIndex](https://wiki.libsdl.org/SDL_JoystickNameForIndex)
+* [SDL_JoystickOpen](https://wiki.libsdl.org/SDL_JoystickOpen)
+
+##### `Joystick` class
+
+* [SDL_JoystickClose](https://wiki.libsdl.org/SDL_JoystickClose)
+* [SDL_JoystickCurrentPowerLevel](https://wiki.libsdl.org/SDL_JoystickCurrentPowerLevel)
+* [SDL_JoystickGetAttached](https://wiki.libsdl.org/SDL_JoystickGetAttached)
+* [SDL_JoystickGetAxis](https://wiki.libsdl.org/SDL_JoystickGetAxis)
+* [SDL_JoystickGetBall](https://wiki.libsdl.org/SDL_JoystickGetBall)
+* [SDL_JoystickGetButton](https://wiki.libsdl.org/SDL_JoystickGetButton)
+* [SDL_JoystickGetHat](https://wiki.libsdl.org/SDL_JoystickGetHat)
