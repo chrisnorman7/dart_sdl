@@ -6,6 +6,7 @@
 /// To implement a new event, add it to the relevant file, and inherit from the
 /// [Event] class.
 import '../sdl.dart';
+import '../window.dart';
 
 /// The base event class.
 ///
@@ -19,4 +20,13 @@ class Event {
 
   /// The time this event was emitted.
   final int timestamp;
+}
+
+/// For events which have window IDs.
+mixin WindowedEvent on Event {
+  /// The ID of the window that emitted this event.
+  late final int windowId;
+
+  /// The window that emitted this event.
+  Window? get window => sdl.windows[windowId];
 }

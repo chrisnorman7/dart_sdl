@@ -1,8 +1,8 @@
 /// Keyboard events:
 import '../enumerations.dart';
+import '../error.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
-import '../window.dart';
 import 'base.dart';
 
 /// A keyboard key.
@@ -65,91 +65,44 @@ class KeyboardKey {
   bool get gui => modifiers & SDL_Keymod.KMOD_GUI != 0;
 }
 
-/// A generic keyboard event.
-class KeyboardEvent extends Event {
+/// A keyboard event.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_KeyboardEvent)
+class KeyboardEvent extends Event with WindowedEvent {
   /// Create an event.
-  KeyboardEvent(Sdl sdl, int timestamp, this.type, this.windowId, this.state,
-      this.repeat, this.key)
-      : super(sdl, timestamp);
+  KeyboardEvent(
+      Sdl sdl, int timestamp, int wndId, this.state, this.repeat, this.key)
+      : super(sdl, timestamp) {
+    windowId = wndId;
+  }
 
   /// Create an instance from an SDL event.
   factory KeyboardEvent.fromSdlEvent(Sdl sdl, SDL_KeyboardEvent event) {
     final sim = event.keysym;
     final key = KeyboardKey(sim.scancode, sim.sym, sim.mod);
-    if (event.type == SDL_EventType.SDL_KEYDOWN) {
-      return KeyDownEvent(
-          sdl,
-          event.timestamp,
-          event.windowID,
-          event.state == SDL_PRESSED ? KeyState.pressed : KeyState.released,
-          event.repeat,
-          key);
-    } else {
-      return KeyUpEvent(
-          sdl,
-          event.timestamp,
-          event.windowID,
-          event.state == SDL_PRESSED ? KeyState.pressed : KeyState.released,
-          event.repeat,
-          key);
+    PressedState s;
+    switch (event.type) {
+      case SDL_PRESSED:
+        s = PressedState.pressed;
+        break;
+      case SDL_RELEASED:
+        s = PressedState.released;
+        break;
+      default:
+        throw SdlError(event.type, 'Unknown key state.');
     }
+    return KeyboardEvent(
+        sdl, event.timestamp, event.windowID, s, event.repeat, key);
   }
 
-  /// The type of this event.
-  KeyboardEventType type;
-
-  /// The ID of the window that emitted this event.
-  final int windowId;
-
-  /// The window that emitted this event.
-  Window? get window => sdl.windows[windowId];
-
-  /// Whether [key] is pressed or released.
-  final KeyState state;
+  /// Whether [key] has been pressed or released.
+  final PressedState state;
 
   /// Non-0 if this is a repeated key.
   final int repeat;
 
   /// The keyboard key that was pressed or released.
   final KeyboardKey key;
-}
-
-/// A key was pressed.
-///
-/// [SDL_KEYDOWN](https://wiki.libsdl.org/SDL_KeyboardEvent)
-class KeyDownEvent extends KeyboardEvent {
-  /// Create an event.
-  KeyDownEvent(Sdl sdl, int timestamp, int windowId, KeyState state, int repeat,
-      KeyboardKey key)
-      : super(sdl, timestamp, KeyboardEventType.down, windowId, state, repeat,
-            key);
-}
-
-/// A key was released.
-///
-/// [SDL_KEYUP](https://wiki.libsdl.org/SDL_KeyboardEvent)
-class KeyUpEvent extends KeyboardEvent {
-  /// Create an event.
-  KeyUpEvent(Sdl sdl, int timestamp, int windowId, KeyState state, int repeat,
-      KeyboardKey key)
-      : super(
-            sdl, timestamp, KeyboardEventType.up, windowId, state, repeat, key);
-}
-
-/// Keyboard text editing (composition).
-///
-/// [SDL_TEXTEDITING](https://wiki.libsdl.org/SDL_TextEditingEvent)
-class TextEditingEvent extends Event {
-  /// Create an event.
-  TextEditingEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
-}
-
-/// Keyboard text input.
-///
-/// [SDL_TEXTINPUT](https://wiki.libsdl.org/SDL_TextInputEvent)
-class TextInputEvent extends Event {
-  /// Create an event.
-  TextInputEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
 }
 
 /// The keymap changed due to a system event such as an input language or

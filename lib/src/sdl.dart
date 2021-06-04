@@ -14,8 +14,11 @@ import 'enumerations.dart';
 import 'error.dart';
 import 'events/application.dart';
 import 'events/base.dart';
+import 'events/joystick.dart';
 import 'events/keyboard.dart';
+import 'events/mouse.dart';
 import 'events/platform.dart';
+import 'events/text.dart';
 import 'events/window.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
@@ -588,9 +591,13 @@ class Sdl {
       final e = ptr.ref;
       Event event;
       switch (e.type) {
+
+        // Application events
         case SDL_EventType.SDL_QUIT:
           event = QuitEvent(this, e.common.timestamp);
           break;
+
+        // Android, iOS and WinRT events
         case SDL_EventType.SDL_APP_TERMINATING:
           event = AppTerminatingEvent(this, e.common.timestamp);
           break;
@@ -609,6 +616,8 @@ class Sdl {
         case SDL_EventType.SDL_APP_DIDENTERFOREGROUND:
           event = AppDidEnterForegroundEvent(this, e.common.timestamp);
           break;
+
+        // Window events
         case SDL_EventType.SDL_WINDOWEVENT:
           final windowEvent = e.window;
           final timestamp = windowEvent.timestamp;
@@ -672,11 +681,85 @@ class Sdl {
           final msg = e.syswm.msg;
           event = SysWmEvent(this, e.syswm.timestamp, msg);
           break;
+
+        // Keyboard events
         case SDL_EventType.SDL_KEYDOWN:
           event = KeyboardEvent.fromSdlEvent(this, e.key);
           break;
         case SDL_EventType.SDL_KEYUP:
           event = KeyboardEvent.fromSdlEvent(this, e.key);
+          break;
+        case SDL_EventType.SDL_TEXTEDITING:
+          final s = String.fromCharCodes(
+              [for (var i = 0; i < e.edit.length; i++) e.edit.text[i]]);
+          event = TextEditingEvent(this, e.edit.timestamp, e.edit.windowID, s,
+              e.edit.start, e.edit.length);
+          break;
+        case SDL_EventType.SDL_TEXTINPUT:
+          var s = '';
+          var i = 0;
+          while (true) {
+            final c = e.text.text[i];
+            if (c == 0) {
+              break;
+            } else {
+              s += String.fromCharCode(c);
+              i++;
+            }
+          }
+          event = TextInputEvent(this, e.text.timestamp, s);
+          break;
+        case SDL_EventType.SDL_KEYMAPCHANGED:
+          event = KeymapChangedEvent(this, e.common.timestamp);
+          break;
+
+        // Mouse events
+        case SDL_EventType.SDL_MOUSEMOTION:
+          event = MouseMotionEvent(
+              this,
+              e.motion.timestamp,
+              e.motion.windowID,
+              e.motion.which,
+              e.motion.state,
+              e.motion.x,
+              e.motion.y,
+              e.motion.xrel,
+              e.motion.yrel);
+          break;
+        case SDL_EventType.SDL_MOUSEBUTTONDOWN:
+          event = MouseButtonEvent.fromSdlEvent(this, e.button);
+          break;
+        case SDL_EventType.SDL_MOUSEBUTTONUP:
+          event = MouseButtonEvent.fromSdlEvent(this, e.button);
+          break;
+        case SDL_EventType.SDL_MOUSEWHEEL:
+          MouseWheelDirection direction;
+          switch (e.wheel.direction) {
+            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_NORMAL:
+              direction = MouseWheelDirection.normal;
+              break;
+            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED:
+              direction = MouseWheelDirection.flipped;
+              break;
+            default:
+              throw SdlError(
+                  e.wheel.direction, 'Invalid mouse wheel direction.');
+          }
+          event = MouseWheelEvent(this, e.wheel.timestamp, e.wheel.windowID,
+              e.wheel.which, e.wheel.x, e.wheel.y, direction);
+          break;
+
+        // Joystick events
+        case SDL_EventType.SDL_JOYAXISMOTION:
+          event = JoyAxisEvent(this, e.jaxis.timestamp, e.jaxis.which,
+              e.jaxis.axis, e.jaxis.value);
+          break;
+        case SDL_EventType.SDL_JOYBALLMOTION:
+          event = JoyBallEvent(this, e.jball.timestamp, e.jball.which,
+              e.jball.ball, e.jball.xrel, e.jball.yrel);
+          break;
+        case SDL_EventType.SDL_JOYHATMOTION:
+          event = JoyHatEvent.fromSdlEvent(this, e.jhat);
           break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');

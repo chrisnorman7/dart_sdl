@@ -197,6 +197,11 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 
 ### [Event Handling](https://wiki.libsdl.org/CategoryEvents)
 
+#### Classes
+
+Classes have been created to reflect every member of the
+[SDL_EventType](https://wiki.libsdl.org/SDL_EventType) enumeration.
+
 #### Enumerations
 
 * [SDL_EventType](https://wiki.libsdl.org/SDL_EventType)
