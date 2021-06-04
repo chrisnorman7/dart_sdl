@@ -137,3 +137,31 @@ class JoyButtonEvent extends JoystickEvent {
   /// The state of the button.
   final PressedState state;
 }
+
+/// A joystick device was connected or disconnected.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_JoyDeviceEvent)
+class JoyDeviceEvent extends JoystickEvent {
+  /// Create an event.
+  JoyDeviceEvent(Sdl sdl, int timestamp, int joystickId, this.state)
+      : super(sdl, timestamp, joystickId);
+
+  /// Create an instance from an event.
+  factory JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e) {
+    DeviceState s;
+    switch (e.type) {
+      case SDL_EventType.SDL_JOYDEVICEADDED:
+        s = DeviceState.added;
+        break;
+      case SDL_EventType.SDL_JOYDEVICEREMOVED:
+        s = DeviceState.removed;
+        break;
+      default:
+        throw SdlError(e.type, 'Unknown device state.');
+    }
+    return JoyDeviceEvent(sdl, e.timestamp, e.which, s);
+  }
+
+  /// Whether or not the device was added ore removed.
+  final DeviceState state;
+}

@@ -767,6 +767,12 @@ class Sdl {
         case SDL_EventType.SDL_JOYBUTTONUP:
           event = JoyButtonEvent.fromSdlEvent(this, e.jbutton);
           break;
+        case SDL_EventType.SDL_JOYDEVICEADDED:
+          event = JoyDeviceEvent.fromSdlEvent(this, e.jdevice);
+          break;
+        case SDL_EventType.SDL_JOYDEVICEREMOVED:
+          event = JoyDeviceEvent.fromSdlEvent(this, e.jdevice);
+          break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }

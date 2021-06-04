@@ -161,6 +161,15 @@ enum PressedState {
   released,
 }
 
+/// Whether a device was added or removed.
+enum DeviceState {
+  /// A device was added.
+  added,
+
+  /// A device was removed.
+  removed,
+}
+
 /// Which mouse button was pressed.
 enum MouseButton {
   /// Left mouse button,
