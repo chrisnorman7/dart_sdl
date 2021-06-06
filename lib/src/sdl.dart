@@ -28,7 +28,9 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl() : windows = <int, Window>{} {
+  Sdl()
+      : windows = <int, Window>{},
+        joysticks = <Pointer<SDL_Joystick>, Joystick>{} {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -44,6 +46,9 @@ class Sdl {
 
   /// All the created windows.
   final Map<int, Window> windows;
+
+  /// All the opened joysticks.
+  final Map<Pointer<SDL_Joystick>, Joystick> joysticks;
 
   /// Get a Dart boolean from an SDL one.
   bool getBool(int value) => value == SDL_bool.SDL_TRUE;
@@ -624,7 +629,9 @@ class Sdl {
     if (handle == nullptr) {
       throw SdlError(0, getError());
     }
-    return Joystick(this, handle);
+    final j = Joystick(this, handle);
+    joysticks[handle] = j;
+    return j;
   }
 
   /// Poll events.

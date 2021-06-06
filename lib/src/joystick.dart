@@ -144,5 +144,8 @@ class Joystick {
   int get numHats => sdl.checkReturnValue(sdl.sdl.SDL_JoystickNumHats(handle));
 
   /// Close this joystick.
-  void close() => sdl.sdl.SDL_JoystickClose(handle);
+  void close() {
+    sdl.sdl.SDL_JoystickClose(handle);
+    sdl.joysticks.remove(handle);
+  }
 }
