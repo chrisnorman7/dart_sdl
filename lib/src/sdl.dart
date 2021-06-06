@@ -610,6 +610,12 @@ class Sdl {
     return name.cast<Utf8>().toDartString();
   }
 
+  /// Get the instance ID of the joystick at index [index].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickInstanceID)
+  int getJoystickInstanceId(int index) =>
+      checkReturnValue(sdl.SDL_JoystickGetDeviceInstanceID(index));
+
   /// Open a joystick with the given [index] for use.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickOpen)

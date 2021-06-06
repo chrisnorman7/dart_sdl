@@ -275,6 +275,7 @@ Classes have been created to reflect every member of the
 * [SDL_JoystickGetDeviceGUID](https://wiki.libsdl.org/SDL_JoystickGetDeviceGUID)
 * [SDL_JoystickNameForIndex](https://wiki.libsdl.org/SDL_JoystickNameForIndex)
 * [SDL_JoystickOpen](https://wiki.libsdl.org/SDL_JoystickOpen)
+* [SDL_JoystickInstanceID](https://wiki.libsdl.org/SDL_JoystickInstanceID)
 
 ##### `Joystick` class
 
@@ -285,3 +286,8 @@ Classes have been created to reflect every member of the
 * [SDL_JoystickGetBall](https://wiki.libsdl.org/SDL_JoystickGetBall)
 * [SDL_JoystickGetButton](https://wiki.libsdl.org/SDL_JoystickGetButton)
 * [SDL_JoystickGetHat](https://wiki.libsdl.org/SDL_JoystickGetHat)
+* [SDL_JoystickName](https://wiki.libsdl.org/SDL_JoystickName)
+* [SDL_JoystickNumAxes](https://wiki.libsdl.org/SDL_JoystickNumAxes)
+* [SDL_JoystickNumBalls](https://wiki.libsdl.org/SDL_JoystickNumBalls)
+* [SDL_JoystickNumButtons](https://wiki.libsdl.org/SDL_JoystickNumButtons)
+* [SDL_JoystickNumHats](https://wiki.libsdl.org/SDL_JoystickNumHats)

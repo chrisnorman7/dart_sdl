@@ -6,13 +6,17 @@ void main() {
   final sdl = Sdl()..init();
   print('Joysticks: ${sdl.numJoysticks}.');
   for (var i = 0; i < sdl.numJoysticks; i++) {
-    print('Opening joystick #$i.');
     final j = sdl.openJoystick(i);
     if (j.attached == false) {
-      print('Opening failed.');
+      print('Failed to open joystick #$i.');
       continue;
     }
+    print('#$i: ${j.name}.');
     print('Power level: ${j.powerLevel}.');
+    print('Number of axes: ${j.numAxes}.');
+    print('Number of balls: ${j.numBalls}.');
+    print('Number of buttons: ${j.numButtons}.');
+    print('Number of hats: ${j.numHats}.');
   }
   sdl.quit();
 }
