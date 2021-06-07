@@ -308,7 +308,16 @@ Classes have been created to reflect every member of the
 * [SDL_IsGameController](https://wiki.libsdl.org/SDL_IsGameController)
 * [SDL_GameControllerOpen](https://wiki.libsdl.org/SDL_GameControllerOpen)
 
+##### `SdlGameControllerAxisValues` extension
+
+* [SDL_GameControllerGetStringForAxis](https://wiki.libsdl.org/SDL_GameControllerGetStringForAxis)
+
+##### `SdlGameControllerButtonValues` extension
+
+* [SDL_GameControllerGetStringForButton](https://wiki.libsdl.org/SDL_GameControllerGetStringForButton)
+
 ##### `GameController` class
 
 * [SDL_GameControllerClose](https://wiki.libsdl.org/SDL_GameControllerClose)
 * [SDL_GameControllerGetAttached](https://wiki.libsdl.org/SDL_GameControllerGetAttached)
+* [SDL_GameControllerGetAxis](https://wiki.libsdl.org/SDL_GameControllerGetAxis)

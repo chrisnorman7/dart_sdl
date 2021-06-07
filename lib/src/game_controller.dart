@@ -1,6 +1,7 @@
 /// Provides the [GameController] class.
 import 'dart:ffi';
 
+import 'enumerations.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 
@@ -20,6 +21,12 @@ class GameController {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetAttached)
   bool get attached =>
       sdl.getBool(sdl.sdl.SDL_GameControllerGetAttached(handle));
+
+  /// Get the current state of an axis control on this game controller.
+  ///
+  /// [SDL Docs]([SDL_GameControllerAxis](https://wiki.libsdl.org/SDL_GameControllerAxis))
+  int getAxis(GameControllerAxis axis) =>
+      sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlValue());
 
   /// Close this controller.
   ///
