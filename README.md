@@ -291,11 +291,24 @@ Classes have been created to reflect every member of the
 * [SDL_JoystickNumBalls](https://wiki.libsdl.org/SDL_JoystickNumBalls)
 * [SDL_JoystickNumButtons](https://wiki.libsdl.org/SDL_JoystickNumButtons)
 * [SDL_JoystickNumHats](https://wiki.libsdl.org/SDL_JoystickNumHats)
+* [SDL_JoystickInstanceID](https://wiki.libsdl.org/SDL_JoystickInstanceID)
+* [SDL_GameControllerFromInstanceID](https://wiki.libsdl.org/SDL_GameControllerFromInstanceID)
 
 ### [Game Controller Support](https://wiki.libsdl.org/CategoryGameController)
+
+### Enumerations
+
+* [SDL_GameControllerAxis](https://wiki.libsdl.org/SDL_GameControllerAxis)
+* [SDL_GameControllerButton](https://wiki.libsdl.org/SDL_GameControllerButton)
 
 #### Functions
 
 ##### `Sdl` class
 
 * [SDL_IsGameController](https://wiki.libsdl.org/SDL_IsGameController)
+* [SDL_GameControllerOpen](https://wiki.libsdl.org/SDL_GameControllerOpen)
+
+##### `GameController` class
+
+* [SDL_GameControllerClose](https://wiki.libsdl.org/SDL_GameControllerClose)
+* [SDL_GameControllerGetAttached](https://wiki.libsdl.org/SDL_GameControllerGetAttached)

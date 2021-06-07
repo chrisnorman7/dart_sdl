@@ -20,6 +20,7 @@ import 'events/mouse.dart';
 import 'events/platform.dart';
 import 'events/text.dart';
 import 'events/window.dart';
+import 'game_controller.dart';
 import 'joystick.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
@@ -30,7 +31,8 @@ class Sdl {
   /// Create an object.
   Sdl()
       : windows = <int, Window>{},
-        joysticks = <Pointer<SDL_Joystick>, Joystick>{} {
+        joysticks = <Pointer<SDL_Joystick>, Joystick>{},
+        gameControllers = <Pointer<SDL_GameController>, GameController>{} {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -49,6 +51,9 @@ class Sdl {
 
   /// All the opened joysticks.
   final Map<Pointer<SDL_Joystick>, Joystick> joysticks;
+
+  /// All the open game controllers.
+  final Map<Pointer<SDL_GameController>, GameController> gameControllers;
 
   /// Get a Dart boolean from an SDL one.
   bool getBool(int value) => value == SDL_bool.SDL_TRUE;
@@ -638,6 +643,19 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_IsGameController)
   bool isGameController(int index) => getBool(sdl.SDL_IsGameController(index));
+
+  /// Open a game controller.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerOpen)
+  GameController openGameController(int index) {
+    final handle = sdl.SDL_GameControllerOpen(index);
+    if (handle == nullptr) {
+      throw SdlError(0, getError());
+    }
+    final controller = GameController(this, handle);
+    gameControllers[handle] = controller;
+    return controller;
+  }
 
   /// Poll events.
   ///

@@ -252,3 +252,88 @@ enum JoystickPowerLevel {
   /// SDL_JOYSTICK_POWER_MAX
   max,
 }
+
+/// An enumeration of axes available from a controller.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerAxis)
+enum GameControllerAxis {
+  /// SDL_CONTROLLER_AXIS_INVALID
+  invalid,
+
+  /// SDL_CONTROLLER_AXIS_LEFTX
+  leftX,
+
+  /// SDL_CONTROLLER_AXIS_LEFTY
+  leftY,
+
+  /// SDL_CONTROLLER_AXIS_RIGHTX
+  rightX,
+
+  /// SDL_CONTROLLER_AXIS_RIGHTY
+  rightY,
+
+  /// SDL_CONTROLLER_AXIS_TRIGGERLEFT
+  triggerLeft,
+
+  /// SDL_CONTROLLER_AXIS_TRIGGERRIGHT
+  triggerRight,
+
+  /// SDL_CONTROLLER_AXIS_MAX
+  max
+}
+
+/// An enumeration of buttons available from a controller.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerButton)
+enum GameControllerButton {
+  /// SDL_CONTROLLER_BUTTON_INVALID
+  invalid,
+
+  /// SDL_CONTROLLER_BUTTON_A
+  a,
+
+  /// SDL_CONTROLLER_BUTTON_B
+  b,
+
+  /// SDL_CONTROLLER_BUTTON_X
+  x,
+
+  /// SDL_CONTROLLER_BUTTON_Y
+  y,
+
+  /// SDL_CONTROLLER_BUTTON_BACK
+  back,
+
+  /// SDL_CONTROLLER_BUTTON_GUIDE
+  guide,
+
+  /// SDL_CONTROLLER_BUTTON_START
+  start,
+
+  /// SDL_CONTROLLER_BUTTON_LEFTSTICK
+  leftStick,
+
+  /// SDL_CONTROLLER_BUTTON_RIGHTSTICK
+  rightStick,
+
+  /// SDL_CONTROLLER_BUTTON_LEFTSHOULDER
+  leftShoulder,
+
+  /// SDL_CONTROLLER_BUTTON_RIGHTSHOULDER
+  rightShoulder,
+
+  /// SDL_CONTROLLER_BUTTON_DPAD_UP
+  dpadUp,
+
+  /// SDL_CONTROLLER_BUTTON_DPAD_DOWN
+  dpadDown,
+
+  /// SDL_CONTROLLER_BUTTON_DPAD_LEFT
+  dpadLeft,
+
+  /// SDL_CONTROLLER_BUTTON_DPAD_RIGHT
+  dpadRight,
+
+  /// SDL_CONTROLLER_BUTTON_MAX
+  max,
+}

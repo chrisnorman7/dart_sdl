@@ -6,6 +6,7 @@ import 'package:ffi/ffi.dart';
 
 import 'enumerations.dart';
 import 'error.dart';
+import 'game_controller.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 
@@ -142,6 +143,28 @@ class Joystick {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickNumHats)
   int get numHats => sdl.checkReturnValue(sdl.sdl.SDL_JoystickNumHats(handle));
+
+  /// Get the ID of this joystick.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickInstanceID)
+  int get instanceId =>
+      sdl.checkReturnValue(sdl.sdl.SDL_JoystickInstanceID(handle));
+
+  /// Get a controller associated with this joystick.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerFromInstanceID)
+  GameController get controller {
+    final handle = sdl.sdl.SDL_GameControllerFromInstanceID(instanceId);
+    if (handle == nullptr) {
+      throw SdlError(instanceId, sdl.getError());
+    }
+    var controller = sdl.gameControllers[handle];
+    if (controller == null) {
+      controller = GameController(sdl, handle);
+      sdl.gameControllers[handle] = controller;
+    }
+    return controller;
+  }
 
   /// Close this joystick.
   void close() {

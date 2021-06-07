@@ -35,6 +35,7 @@ export 'src/events/mouse.dart';
 export 'src/events/platform.dart';
 export 'src/events/text.dart';
 export 'src/events/window.dart';
+export 'src/game_controller.dart';
 export 'src/joystick.dart';
 export 'src/sdl.dart';
 export 'src/sdl_bindings.dart';
