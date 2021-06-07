@@ -634,6 +634,11 @@ class Sdl {
     return j;
   }
 
+  /// Returns `true` if the joystick at [index] is a game controller.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_IsGameController)
+  bool isGameController(int index) => getBool(sdl.SDL_IsGameController(index));
+
   /// Poll events.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PollEvent)

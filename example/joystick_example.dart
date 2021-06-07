@@ -12,6 +12,7 @@ void main() {
       continue;
     }
     print('#$i: ${j.name}.');
+    print('Is a game controller: ${sdl.isGameController(i)}.');
     print('Power level: ${j.powerLevel}.');
     print('Number of axes: ${j.numAxes}.');
     print('Number of balls: ${j.numBalls}.');
