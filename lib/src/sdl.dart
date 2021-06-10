@@ -14,6 +14,7 @@ import 'enumerations.dart';
 import 'error.dart';
 import 'events/application.dart';
 import 'events/base.dart';
+import 'events/game_controller.dart';
 import 'events/joystick.dart';
 import 'events/keyboard.dart';
 import 'events/mouse.dart';
@@ -760,6 +761,27 @@ class Sdl {
           break;
 
         // Controller events
+        case SDL_EventType.SDL_CONTROLLERAXISMOTION:
+          event = ControllerAxisEvent(this, e.caxis.timestamp, e.caxis.which,
+              e.caxis.axis.toGameControllerAxis(), e.caxis.value);
+          break;
+        case SDL_EventType.SDL_CONTROLLERBUTTONDOWN:
+          event = ControllerButtonEvent.fromSdlEvent(this, e.cbutton);
+          break;
+        case SDL_EventType.SDL_CONTROLLERBUTTONUP:
+          event = ControllerButtonEvent.fromSdlEvent(this, e.cbutton);
+          break;
+        case SDL_EventType.SDL_CONTROLLERDEVICEADDED:
+          event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
+          break;
+        case SDL_EventType.SDL_CONTROLLERDEVICEREMOVED:
+          event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
+          break;
+        case SDL_EventType.SDL_CONTROLLERDEVICEREMAPPED:
+          event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
+          break;
+
+        // Touch events
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }

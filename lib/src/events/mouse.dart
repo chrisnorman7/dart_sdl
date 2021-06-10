@@ -61,8 +61,16 @@ class MouseButtonEvent extends MouseEvent {
 
   /// Create an instance from an event.
   factory MouseButtonEvent.fromSdlEvent(Sdl sdl, SDL_MouseButtonEvent e) =>
-      MouseButtonEvent(sdl, e.timestamp, e.windowID, e.which,
-          e.button.toMouseButton(), e.type.toPressedState(), e.x, e.x, e.y);
+      MouseButtonEvent(
+          sdl,
+          e.timestamp,
+          e.windowID,
+          e.which,
+          e.button.toMouseButton(),
+          e.type.toMouseButtonPressedState(),
+          e.x,
+          e.x,
+          e.y);
 
   /// The button which was pressed.
   final MouseButton button;

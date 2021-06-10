@@ -283,7 +283,7 @@ extension DartSdlValues on int {
   }
 
   /// Convert to a pressed state.
-  PressedState toPressedState() {
+  PressedState toMouseButtonPressedState() {
     switch (this) {
       case SDL_EventType.SDL_MOUSEBUTTONDOWN:
         return PressedState.pressed;
@@ -291,6 +291,18 @@ extension DartSdlValues on int {
         return PressedState.released;
       default:
         throw SdlError(this, 'Unknown mouse button event type.');
+    }
+  }
+
+  /// Convert [SDL_PRESSED] or [SDL_RELEASED] to a proper pressed state.
+  PressedState toPressedState() {
+    switch (this) {
+      case SDL_PRESSED:
+        return PressedState.pressed;
+      case SDL_RELEASED:
+        return PressedState.released;
+      default:
+        throw SdlError(this, 'Invalid pressed state.');
     }
   }
 
@@ -326,19 +338,33 @@ extension DartSdlValues on int {
     }
   }
 
-  /// Convert to a device state.
-  DeviceState toDeviceState() {
+  /// Convert to a joystick device state.
+  DeviceState toJoystickDeviceState() {
     switch (this) {
       case SDL_EventType.SDL_JOYDEVICEADDED:
         return DeviceState.added;
       case SDL_EventType.SDL_JOYDEVICEREMOVED:
         return DeviceState.removed;
       default:
-        throw SdlError(this, 'Unknown device state.');
+        throw SdlError(this, 'Unknown joystick device state.');
     }
   }
 
-  /// Convert to a games controller axis.
+  /// Convert to a game controller device state.
+  DeviceState toGameControllerDeviceState() {
+    switch (this) {
+      case SDL_EventType.SDL_CONTROLLERDEVICEADDED:
+        return DeviceState.added;
+      case SDL_EventType.SDL_CONTROLLERDEVICEREMOVED:
+        return DeviceState.removed;
+      case SDL_EventType.SDL_CONTROLLERDEVICEREMAPPED:
+        return DeviceState.remapped;
+      default:
+        throw SdlError(this, 'Invalid controller device state.');
+    }
+  }
+
+  /// Convert to a game controller axis.
   GameControllerAxis toGameControllerAxis() {
     switch (this) {
       case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_INVALID:

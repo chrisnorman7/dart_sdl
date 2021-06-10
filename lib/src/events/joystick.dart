@@ -104,7 +104,7 @@ class JoyDeviceEvent extends JoystickEvent {
 
   /// Create an instance from an event.
   factory JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e) =>
-      JoyDeviceEvent(sdl, e.timestamp, e.which, e.type.toDeviceState());
+      JoyDeviceEvent(sdl, e.timestamp, e.which, e.type.toJoystickDeviceState());
 
   /// Whether or not the device was added ore removed.
   final DeviceState state;

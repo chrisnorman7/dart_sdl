@@ -168,6 +168,9 @@ enum DeviceState {
 
   /// A device was removed.
   removed,
+
+  /// A controller device was remapped.
+  remapped,
 }
 
 /// Which mouse button was pressed.

@@ -202,10 +202,6 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 Classes have been created to reflect every member of the
 [SDL_EventType](https://wiki.libsdl.org/SDL_EventType) enumeration.
 
-#### Enumerations
-
-* [SDL_EventType](https://wiki.libsdl.org/SDL_EventType)
-
 #### Functions
 
 ##### `Sdl` class
