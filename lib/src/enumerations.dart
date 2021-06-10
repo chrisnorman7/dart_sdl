@@ -1,8 +1,4 @@
 /// Provides various enumerations for use with SDL.
-import 'package:ffi/ffi.dart';
-
-import 'sdl.dart';
-import 'sdl_bindings.dart';
 
 /// Hint priorities.
 ///
@@ -202,7 +198,7 @@ enum MouseWheelDirection {
 }
 
 /// The various positions possible with joystick hats.
-enum JoyHatValues {
+enum JoyHatValue {
   /// SDL_HAT_LEFTUP
   leftUp,
 
@@ -286,39 +282,6 @@ enum GameControllerAxis {
   max
 }
 
-/// Add a [toSdlValue] method.
-extension SdlGameControllerAxisValues on GameControllerAxis {
-  /// Return a suitable SDL value.
-  int toSdlValue() {
-    switch (this) {
-      case GameControllerAxis.invalid:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_INVALID;
-      case GameControllerAxis.leftX:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_LEFTX;
-      case GameControllerAxis.leftY:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_LEFTY;
-      case GameControllerAxis.rightX:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_RIGHTX;
-      case GameControllerAxis.rightY:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_RIGHTY;
-      case GameControllerAxis.triggerLeft:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_TRIGGERLEFT;
-      case GameControllerAxis.triggerRight:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_TRIGGERRIGHT;
-      case GameControllerAxis.max:
-        return SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_MAX;
-    }
-  }
-
-  /// Return a string representing this axis.
-  ///
-  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetStringForAxis)
-  String getAxisString(Sdl sdl) => sdl.sdl
-      .SDL_GameControllerGetStringForAxis(toSdlValue())
-      .cast<Utf8>()
-      .toDartString();
-}
-
 /// An enumeration of buttons available from a controller.
 ///
 /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerButton)
@@ -373,55 +336,4 @@ enum GameControllerButton {
 
   /// SDL_CONTROLLER_BUTTON_MAX
   max,
-}
-
-/// Get SDL values.
-extension SdlGameControllerButtonValues on GameControllerButton {
-  /// Return a suitable SDL value.
-  int toSdlValue() {
-    switch (this) {
-      case GameControllerButton.invalid:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_INVALID;
-      case GameControllerButton.a:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A;
-      case GameControllerButton.b:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_B;
-      case GameControllerButton.x:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_X;
-      case GameControllerButton.y:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y;
-      case GameControllerButton.back:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_BACK;
-      case GameControllerButton.guide:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_GUIDE;
-      case GameControllerButton.start:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_START;
-      case GameControllerButton.leftStick:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_LEFTSTICK;
-      case GameControllerButton.rightStick:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_RIGHTSTICK;
-      case GameControllerButton.leftShoulder:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_LEFTSHOULDER;
-      case GameControllerButton.rightShoulder:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_RIGHTSHOULDER;
-      case GameControllerButton.dpadUp:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_UP;
-      case GameControllerButton.dpadDown:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_DOWN;
-      case GameControllerButton.dpadLeft:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_LEFT;
-      case GameControllerButton.dpadRight:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
-      case GameControllerButton.max:
-        return SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_MAX;
-    }
-  }
-
-  /// Get a string representing this button.
-  ///
-  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetStringForButton)
-  String getButtonString(Sdl sdl) => sdl.sdl
-      .SDL_GameControllerGetStringForButton(toSdlValue())
-      .cast<Utf8>()
-      .toDartString();
 }

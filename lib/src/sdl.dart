@@ -20,6 +20,7 @@ import 'events/mouse.dart';
 import 'events/platform.dart';
 import 'events/text.dart';
 import 'events/window.dart';
+import 'extensions.dart';
 import 'game_controller.dart';
 import 'joystick.dart';
 import 'sdl_bindings.dart';
@@ -60,68 +61,6 @@ class Sdl {
 
   /// Convert a boolean to one of the members of [SDL_bool].
   int boolToValue(bool value) => value ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE;
-
-  /// Convert a [LogCategory] instance to an integer.
-  int categoryToInt(LogCategory category) {
-    switch (category) {
-      case LogCategory.applicationCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_APPLICATION;
-      case LogCategory.errorCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_ERROR;
-      case LogCategory.assertCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
-      case LogCategory.systemCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_SYSTEM;
-      case LogCategory.audioCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_AUDIO;
-      case LogCategory.videoCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_VIDEO;
-      case LogCategory.renderCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_RENDER;
-      case LogCategory.inputCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_INPUT;
-      case LogCategory.testCategory:
-        return SDL_LogCategory.SDL_LOG_CATEGORY_TEST;
-    }
-  }
-
-  /// Convert a priority to an integer.
-  int priorityToInt(LogPriority priority) {
-    switch (priority) {
-      case LogPriority.verbosePriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE;
-      case LogPriority.debugPriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_DEBUG;
-      case LogPriority.infoPriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_INFO;
-      case LogPriority.warnPriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_WARN;
-      case LogPriority.errorPriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_ERROR;
-      case LogPriority.criticalPriority:
-        return SDL_LogPriority.SDL_LOG_PRIORITY_CRITICAL;
-    }
-  }
-
-  /// Convert an integer to a log priority.
-  LogPriority intToPriority(int value) {
-    switch (value) {
-      case SDL_LogPriority.SDL_LOG_PRIORITY_CRITICAL:
-        return LogPriority.criticalPriority;
-      case SDL_LogPriority.SDL_LOG_PRIORITY_DEBUG:
-        return LogPriority.debugPriority;
-      case SDL_LogPriority.SDL_LOG_PRIORITY_ERROR:
-        return LogPriority.errorPriority;
-      case SDL_LogPriority.SDL_LOG_PRIORITY_INFO:
-        return LogPriority.infoPriority;
-      case SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE:
-        return LogPriority.verbosePriority;
-      case SDL_LogPriority.SDL_LOG_PRIORITY_WARN:
-        return LogPriority.warnPriority;
-      default:
-        throw SdlError(value, 'Invalid log priority.');
-    }
-  }
 
   /// Throw an error if return value is non-null.
   ///
@@ -181,19 +120,8 @@ class Sdl {
   bool setHintPriority(String hint, String value, HintPriority priority) {
     final hintPointer = hint.toNativeUtf8().cast<Int8>();
     final valuePointer = value.toNativeUtf8().cast<Int8>();
-    int p;
-    switch (priority) {
-      case HintPriority.defaultPriority:
-        p = SDL_HintPriority.SDL_HINT_DEFAULT;
-        break;
-      case HintPriority.normalPriority:
-        p = SDL_HintPriority.SDL_HINT_NORMAL;
-        break;
-      case HintPriority.overridePriority:
-        p = SDL_HintPriority.SDL_HINT_OVERRIDE;
-        break;
-    }
-    final retval = sdl.SDL_SetHintWithPriority(hintPointer, valuePointer, p);
+    final retval = sdl.SDL_SetHintWithPriority(
+        hintPointer, valuePointer, priority.toSdlValue());
     [hintPointer, valuePointer].forEach(calloc.free);
     return getBool(retval);
   }
@@ -225,7 +153,7 @@ class Sdl {
   void _log(LogCategory category, String message,
       void Function(int, Pointer<Int8>) func) {
     final messagePointer = message.toNativeUtf8().cast<Int8>();
-    func(categoryToInt(category), messagePointer);
+    func(category.toSdlValue(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -259,7 +187,7 @@ class Sdl {
   void logMessage(LogCategory category, LogPriority priority, String message) {
     final messagePointer = message.toNativeUtf8().cast<Int8>();
     sdl.SDL_LogMessage(
-        categoryToInt(category), priorityToInt(priority), messagePointer);
+        category.toSdlValue(), priority.toSdlValue(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -277,7 +205,7 @@ class Sdl {
 
   /// Get log priority.
   LogPriority getLogPriority(LogCategory category) =>
-      intToPriority(sdl.SDL_LogGetPriority(categoryToInt(category)));
+      sdl.SDL_LogGetPriority(category.toSdlValue()).toLogPriority();
 
   /// Reset log priorities.
   ///
@@ -288,13 +216,13 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetAllPriority)
   void setAllLogPriorities(LogPriority priority) =>
-      sdl.SDL_LogSetAllPriority(priorityToInt(priority));
+      sdl.SDL_LogSetAllPriority(priority.toSdlValue());
 
   /// Set log priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
   void setLogPriority(LogCategory category, LogPriority priority) =>
-      sdl.SDL_LogSetPriority(categoryToInt(category), priorityToInt(priority));
+      sdl.SDL_LogSetPriority(category.toSdlValue(), priority.toSdlValue());
 
   /// Get the compiled version.
   ///
@@ -412,24 +340,10 @@ class Sdl {
     final a = calloc<SDL_MessageBoxButtonData>(buttons.length);
     for (var i = 0; i < buttons.length; i++) {
       final button = buttons[i];
-      int buttonFlags;
-      switch (button.flags) {
-        case ButtonFlags.noDefaults:
-          buttonFlags = 0;
-          break;
-        case ButtonFlags.returnKeyDefault:
-          buttonFlags =
-              SDL_MessageBoxButtonFlags.SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
-          break;
-        case ButtonFlags.escapeKeyDefault:
-          buttonFlags =
-              SDL_MessageBoxButtonFlags.SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-          break;
-      }
       final textPointer = button.text.toNativeUtf8().cast<Int8>();
       a[i]
         ..buttonid = button.id
-        ..flags = buttonFlags
+        ..flags = button.flags.toSdlValue()
         ..text = textPointer;
     }
     data.ref
@@ -454,19 +368,10 @@ class Sdl {
     String message, {
     Window? window,
   }) {
-    int flags;
-    switch (type) {
-      case MessageBoxFlags.warning:
-        flags = SDL_MessageBoxFlags.SDL_MESSAGEBOX_WARNING;
-        break;
-      case MessageBoxFlags.information:
-        flags = SDL_MessageBoxFlags.SDL_MESSAGEBOX_INFORMATION;
-        break;
-    }
     final titlePointer = title.toNativeUtf8().cast<Int8>();
     final messagePointer = message.toNativeUtf8().cast<Int8>();
-    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(
-        flags, titlePointer, messagePointer, window?.handle ?? nullptr));
+    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(type.toSdlValue(),
+        titlePointer, messagePointer, window?.handle ?? nullptr));
     [titlePointer, messagePointer].forEach(calloc.free);
   }
 
@@ -809,20 +714,14 @@ class Sdl {
           event = MouseButtonEvent.fromSdlEvent(this, e.button);
           break;
         case SDL_EventType.SDL_MOUSEWHEEL:
-          MouseWheelDirection direction;
-          switch (e.wheel.direction) {
-            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_NORMAL:
-              direction = MouseWheelDirection.normal;
-              break;
-            case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED:
-              direction = MouseWheelDirection.flipped;
-              break;
-            default:
-              throw SdlError(
-                  e.wheel.direction, 'Invalid mouse wheel direction.');
-          }
-          event = MouseWheelEvent(this, e.wheel.timestamp, e.wheel.windowID,
-              e.wheel.which, e.wheel.x, e.wheel.y, direction);
+          event = MouseWheelEvent(
+              this,
+              e.wheel.timestamp,
+              e.wheel.windowID,
+              e.wheel.which,
+              e.wheel.x,
+              e.wheel.y,
+              e.wheel.direction.toMouseWheelDirection());
           break;
 
         // Joystick events

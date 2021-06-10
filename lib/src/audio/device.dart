@@ -4,9 +4,8 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
 import '../enumerations.dart';
-import '../error.dart';
+import '../extensions.dart';
 import '../sdl.dart';
-import '../sdl_bindings.dart';
 import 'spec.dart';
 import 'wave_file.dart';
 
@@ -80,19 +79,8 @@ class OpenAudioDevice {
   /// The status of this device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetAudioDeviceStatus)
-  AudioStatus get status {
-    final i = sdl.sdl.SDL_GetAudioDeviceStatus(id);
-    switch (i) {
-      case SDL_AudioStatus.SDL_AUDIO_PAUSED:
-        return AudioStatus.paused;
-      case SDL_AudioStatus.SDL_AUDIO_PLAYING:
-        return AudioStatus.playing;
-      case SDL_AudioStatus.SDL_AUDIO_STOPPED:
-        return AudioStatus.stopped;
-      default:
-        throw SdlError(i, 'Invalid audio status.');
-    }
-  }
+  AudioStatus get status =>
+      sdl.sdl.SDL_GetAudioDeviceStatus(id).toAudioStatus();
 
   /// Get the number of bytes of still-queued audio.
   ///

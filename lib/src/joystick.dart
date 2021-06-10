@@ -6,6 +6,7 @@ import 'package:ffi/ffi.dart';
 
 import 'enumerations.dart';
 import 'error.dart';
+import 'extensions.dart';
 import 'game_controller.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
@@ -24,27 +25,8 @@ class Joystick {
   final Pointer<SDL_Joystick> handle;
 
   /// Get the power level for this joystick.
-  JoystickPowerLevel get powerLevel {
-    final level = sdl.sdl.SDL_JoystickCurrentPowerLevel(handle);
-    switch (level) {
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_UNKNOWN:
-        return JoystickPowerLevel.unknown;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_EMPTY:
-        return JoystickPowerLevel.empty;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_LOW:
-        return JoystickPowerLevel.low;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_MEDIUM:
-        return JoystickPowerLevel.medium;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_FULL:
-        return JoystickPowerLevel.full;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_WIRED:
-        return JoystickPowerLevel.wired;
-      case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_MAX:
-        return JoystickPowerLevel.max;
-      default:
-        throw SdlError(level, 'Unknown power level.');
-    }
-  }
+  JoystickPowerLevel get powerLevel =>
+      sdl.sdl.SDL_JoystickCurrentPowerLevel(handle).toJoystickPowerLevel();
 
   /// Returns `true` if this joystick has been opened.
   bool get attached => sdl.getBool(sdl.sdl.SDL_JoystickGetAttached(handle));
@@ -85,31 +67,8 @@ class Joystick {
   /// Get the position of a hat.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetHat)
-  JoyHatValues getHat(int hat) {
-    final value = sdl.sdl.SDL_JoystickGetHat(handle, hat);
-    switch (value) {
-      case SDL_HAT_LEFTUP:
-        return JoyHatValues.leftUp;
-      case SDL_HAT_UP:
-        return JoyHatValues.up;
-      case SDL_HAT_RIGHTUP:
-        return JoyHatValues.rightUp;
-      case SDL_HAT_LEFT:
-        return JoyHatValues.left;
-      case SDL_HAT_CENTERED:
-        return JoyHatValues.centered;
-      case SDL_HAT_RIGHT:
-        return JoyHatValues.right;
-      case SDL_HAT_LEFTDOWN:
-        return JoyHatValues.leftDown;
-      case SDL_HAT_DOWN:
-        return JoyHatValues.down;
-      case SDL_HAT_RIGHTDOWN:
-        return JoyHatValues.rightDown;
-      default:
-        throw SdlError(value, 'Unknown hat value.');
-    }
-  }
+  JoyHatValue getHat(int hat) =>
+      sdl.sdl.SDL_JoystickGetHat(handle, hat).toJoyHatValue();
 
   /// Get the name of this joystick.
   ///

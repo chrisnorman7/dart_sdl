@@ -2,6 +2,7 @@
 import 'dart:ffi';
 
 import 'enumerations.dart';
+import 'extensions.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 

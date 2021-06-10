@@ -2,7 +2,7 @@
 import 'dart:math';
 
 import '../enumerations.dart';
-import '../error.dart';
+import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
@@ -60,41 +60,9 @@ class MouseButtonEvent extends MouseEvent {
       : super(sdl, timestamp, wndId, which, x, y);
 
   /// Create an instance from an event.
-  factory MouseButtonEvent.fromSdlEvent(Sdl sdl, SDL_MouseButtonEvent e) {
-    MouseButton b;
-    switch (e.button) {
-      case SDL_BUTTON_LEFT:
-        b = MouseButton.left;
-        break;
-      case SDL_BUTTON_MIDDLE:
-        b = MouseButton.middle;
-        break;
-      case SDL_BUTTON_RIGHT:
-        b = MouseButton.right;
-        break;
-      case SDL_BUTTON_X1:
-        b = MouseButton.x1;
-        break;
-      case SDL_BUTTON_X2:
-        b = MouseButton.x2;
-        break;
-      default:
-        throw SdlError(e.button, 'Invalid mouse button.');
-    }
-    PressedState s;
-    switch (e.type) {
-      case SDL_EventType.SDL_MOUSEBUTTONDOWN:
-        s = PressedState.pressed;
-        break;
-      case SDL_EventType.SDL_MOUSEBUTTONUP:
-        s = PressedState.released;
-        break;
-      default:
-        throw SdlError(e.type, 'Unknown mouse button event type.');
-    }
-    return MouseButtonEvent(
-        sdl, e.timestamp, e.windowID, e.which, b, s, e.x, e.x, e.y);
-  }
+  factory MouseButtonEvent.fromSdlEvent(Sdl sdl, SDL_MouseButtonEvent e) =>
+      MouseButtonEvent(sdl, e.timestamp, e.windowID, e.which,
+          e.button.toMouseButton(), e.type.toPressedState(), e.x, e.x, e.y);
 
   /// The button which was pressed.
   final MouseButton button;

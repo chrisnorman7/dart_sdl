@@ -2,7 +2,7 @@
 import 'dart:math';
 
 import '../enumerations.dart';
-import '../error.dart';
+import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
@@ -63,47 +63,14 @@ class JoyHatEvent extends JoystickEvent {
       : super(sdl, timestamp, joystickId);
 
   /// Create an instance from an event.
-  factory JoyHatEvent.fromSdlEvent(Sdl sdl, SDL_JoyHatEvent e) {
-    JoyHatValues v;
-    switch (e.value) {
-      case SDL_HAT_LEFTUP:
-        v = JoyHatValues.leftUp;
-        break;
-      case SDL_HAT_UP:
-        v = JoyHatValues.up;
-        break;
-      case SDL_HAT_RIGHTUP:
-        v = JoyHatValues.rightUp;
-        break;
-      case SDL_HAT_LEFT:
-        v = JoyHatValues.left;
-        break;
-      case SDL_HAT_CENTERED:
-        v = JoyHatValues.centered;
-        break;
-      case SDL_HAT_RIGHT:
-        v = JoyHatValues.right;
-        break;
-      case SDL_HAT_LEFTDOWN:
-        v = JoyHatValues.leftDown;
-        break;
-      case SDL_HAT_DOWN:
-        v = JoyHatValues.down;
-        break;
-      case SDL_HAT_RIGHTDOWN:
-        v = JoyHatValues.rightDown;
-        break;
-      default:
-        throw SdlError(e.value, 'Unknown hat value.');
-    }
-    return JoyHatEvent(sdl, e.timestamp, e.which, e.hat, v);
-  }
+  factory JoyHatEvent.fromSdlEvent(Sdl sdl, SDL_JoyHatEvent e) =>
+      JoyHatEvent(sdl, e.timestamp, e.which, e.hat, e.value.toJoyHatValue());
 
   /// The hat that has changed.
   final int hat;
 
   /// The value of the hat.
-  final JoyHatValues value;
+  final JoyHatValue value;
 }
 
 /// A button was pressed or released.
@@ -116,20 +83,9 @@ class JoyButtonEvent extends JoystickEvent {
       : super(sdl, timestamp, joystickId);
 
   /// Create an instance from an event.
-  factory JoyButtonEvent.fromSdlEvent(Sdl sdl, SDL_JoyButtonEvent e) {
-    PressedState s;
-    switch (e.state) {
-      case SDL_PRESSED:
-        s = PressedState.pressed;
-        break;
-      case SDL_RELEASED:
-        s = PressedState.released;
-        break;
-      default:
-        throw SdlError(e.state, 'Unknown button state.');
-    }
-    return JoyButtonEvent(sdl, e.timestamp, e.which, e.button, s);
-  }
+  factory JoyButtonEvent.fromSdlEvent(Sdl sdl, SDL_JoyButtonEvent e) =>
+      JoyButtonEvent(
+          sdl, e.timestamp, e.which, e.button, e.state.toPressedState());
 
   /// The button that was pressed.
   final int button;
@@ -147,20 +103,8 @@ class JoyDeviceEvent extends JoystickEvent {
       : super(sdl, timestamp, joystickId);
 
   /// Create an instance from an event.
-  factory JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e) {
-    DeviceState s;
-    switch (e.type) {
-      case SDL_EventType.SDL_JOYDEVICEADDED:
-        s = DeviceState.added;
-        break;
-      case SDL_EventType.SDL_JOYDEVICEREMOVED:
-        s = DeviceState.removed;
-        break;
-      default:
-        throw SdlError(e.type, 'Unknown device state.');
-    }
-    return JoyDeviceEvent(sdl, e.timestamp, e.which, s);
-  }
+  factory JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e) =>
+      JoyDeviceEvent(sdl, e.timestamp, e.which, e.type.toDeviceState());
 
   /// Whether or not the device was added ore removed.
   final DeviceState state;

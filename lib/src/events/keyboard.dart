@@ -1,6 +1,6 @@
 /// Keyboard events:
 import '../enumerations.dart';
-import '../error.dart';
+import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
@@ -80,19 +80,8 @@ class KeyboardEvent extends Event with WindowedEvent {
   factory KeyboardEvent.fromSdlEvent(Sdl sdl, SDL_KeyboardEvent event) {
     final sim = event.keysym;
     final key = KeyboardKey(sim.scancode, sim.sym, sim.mod);
-    PressedState s;
-    switch (event.type) {
-      case SDL_PRESSED:
-        s = PressedState.pressed;
-        break;
-      case SDL_RELEASED:
-        s = PressedState.released;
-        break;
-      default:
-        throw SdlError(event.type, 'Unknown key state.');
-    }
-    return KeyboardEvent(
-        sdl, event.timestamp, event.windowID, s, event.repeat, key);
+    return KeyboardEvent(sdl, event.timestamp, event.windowID,
+        event.type.toPressedState(), event.repeat, key);
   }
 
   /// Whether [key] has been pressed or released.

@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import 'display.dart';
 import 'enumerations.dart';
+import 'extensions.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 
@@ -291,21 +292,8 @@ class Window {
   /// Set this window full screen.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowFullscreen)
-  set fullscreen(FullScreenMode mode) {
-    int i;
-    switch (mode) {
-      case FullScreenMode.real:
-        i = SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
-        break;
-      case FullScreenMode.desktop:
-        i = SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP;
-        break;
-      case FullScreenMode.windowed:
-        i = 0;
-        break;
-    }
-    sdl.checkReturnValue(sdl.sdl.SDL_SetWindowFullscreen(handle, i));
-  }
+  set fullscreen(FullScreenMode mode) => sdl.checkReturnValue(
+      sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toSdlValue()));
 
   /// Set input focus.
   ///
