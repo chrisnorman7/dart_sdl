@@ -35,7 +35,7 @@ extension SdlGameControllerAxisValues on GameControllerAxis {
   /// Return a string representing this axis.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetStringForAxis)
-  String getAxisString(Sdl sdl) => sdl.sdl
+  String toAxisString(Sdl sdl) => sdl.sdl
       .SDL_GameControllerGetStringForAxis(toSdlFlag())
       .cast<Utf8>()
       .toDartString();
@@ -86,7 +86,7 @@ extension SdlGameControllerButtonValues on GameControllerButton {
   /// Get a string representing this button.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetStringForButton)
-  String getButtonString(Sdl sdl) => sdl.sdl
+  String toButtonString(Sdl sdl) => sdl.sdl
       .SDL_GameControllerGetStringForButton(toSdlFlag())
       .cast<Utf8>()
       .toDartString();
@@ -337,10 +337,104 @@ extension DartSdlValues on int {
         throw SdlError(this, 'Unknown device state.');
     }
   }
+
+  /// Convert to a games controller axis.
+  GameControllerAxis toGameControllerAxis() {
+    switch (this) {
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_INVALID:
+        return GameControllerAxis.invalid;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_LEFTX:
+        return GameControllerAxis.leftX;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_LEFTY:
+        return GameControllerAxis.leftY;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_RIGHTX:
+        return GameControllerAxis.rightX;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_RIGHTY:
+        return GameControllerAxis.rightY;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_TRIGGERLEFT:
+        return GameControllerAxis.triggerLeft;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+        return GameControllerAxis.triggerRight;
+      case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_MAX:
+        return GameControllerAxis.max;
+      default:
+        throw SdlError(this, 'Unknown game controller axis.');
+    }
+  }
+
+  /// Convert to a game controller button.
+  GameControllerButton toGameControllerButton() {
+    switch (this) {
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_INVALID:
+        return GameControllerButton.invalid;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
+        return GameControllerButton.a;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_B:
+        return GameControllerButton.b;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_X:
+        return GameControllerButton.x;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
+        return GameControllerButton.y;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_BACK:
+        return GameControllerButton.back;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_GUIDE:
+        return GameControllerButton.guide;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_START:
+        return GameControllerButton.start;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_LEFTSTICK:
+        return GameControllerButton.leftStick;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_RIGHTSTICK:
+        return GameControllerButton.rightStick;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
+        return GameControllerButton.leftShoulder;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
+        return GameControllerButton.rightShoulder;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_UP:
+        return GameControllerButton.dpadUp;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        return GameControllerButton.dpadDown;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        return GameControllerButton.dpadLeft;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        return GameControllerButton.dpadRight;
+      case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_MAX:
+        return GameControllerButton.max;
+      default:
+        throw SdlError(this, 'Unknown game controller button.');
+    }
+  }
 }
 
 /// An extension for converting strings to `dart_sdl` values.
 extension SdlStringValues on String {
   /// Return a pointer.
   Pointer<Int8> toInt8Pointer() => toNativeUtf8().cast<Int8>();
+
+  /// Convert to a game controller axis.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetAxisFromString)
+  GameControllerAxis toGameControllerAxis(Sdl sdl) {
+    final ptr = toInt8Pointer();
+    final i = sdl.sdl.SDL_GameControllerGetAxisFromString(ptr);
+    calloc.free(ptr);
+    final v = i.toGameControllerAxis();
+    if (v == GameControllerAxis.invalid) {
+      throw SdlError(0, 'Invalid axis string "$this".');
+    }
+    return v;
+  }
+
+  /// Get a game controller button.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButtonFromString)
+  GameControllerButton toGameControllerButton(Sdl sdl) {
+    final ptr = toInt8Pointer();
+    final i = sdl.sdl.SDL_GameControllerGetButtonFromString(ptr);
+    calloc.free(ptr);
+    final v = i.toGameControllerButton();
+    if (v == GameControllerButton.invalid) {
+      throw SdlError(0, 'Invalid game controller button "$this".');
+    }
+    return v;
+  }
 }

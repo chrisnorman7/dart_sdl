@@ -316,6 +316,11 @@ Classes have been created to reflect every member of the
 
 * [SDL_GameControllerGetStringForButton](https://wiki.libsdl.org/SDL_GameControllerGetStringForButton)
 
+##### `SdlStringValues` extension
+
+* [SDL_GameControllerGetAxisFromString](https://wiki.libsdl.org/SDL_GameControllerGetAxisFromString)
+* [SDL_GameControllerGetButtonFromString](https://wiki.libsdl.org/SDL_GameControllerGetButtonFromString)
+
 ##### `GameController` class
 
 * [SDL_GameControllerClose](https://wiki.libsdl.org/SDL_GameControllerClose)
