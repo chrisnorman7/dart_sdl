@@ -69,7 +69,7 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowTitle)
   set title(String value) {
-    final ptr = value.toNativeUtf8().cast<Int8>();
+    final ptr = value.toInt8Pointer();
     sdl.sdl.SDL_SetWindowTitle(handle, ptr);
     calloc.free(ptr);
   }

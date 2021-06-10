@@ -107,8 +107,8 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHint)
   bool setHint(String hint, String value) {
-    final hintPointer = hint.toNativeUtf8().cast<Int8>();
-    final valuePointer = value.toNativeUtf8().cast<Int8>();
+    final hintPointer = hint.toInt8Pointer();
+    final valuePointer = value.toInt8Pointer();
     final retval = sdl.SDL_SetHint(hintPointer, valuePointer);
     [hintPointer, valuePointer].forEach(calloc.free);
     return getBool(retval);
@@ -118,8 +118,8 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHintWithPriority)
   bool setHintPriority(String hint, String value, HintPriority priority) {
-    final hintPointer = hint.toNativeUtf8().cast<Int8>();
-    final valuePointer = value.toNativeUtf8().cast<Int8>();
+    final hintPointer = hint.toInt8Pointer();
+    final valuePointer = value.toInt8Pointer();
     final retval = sdl.SDL_SetHintWithPriority(
         hintPointer, valuePointer, priority.toSdlFlag());
     [hintPointer, valuePointer].forEach(calloc.free);
@@ -135,7 +135,7 @@ class Sdl {
   ///
   ///[SDL Docs](https://wiki.libsdl.org/SDL_SetError)
   void setError(String message) {
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final messagePointer = message.toInt8Pointer();
     sdl.SDL_SetError(messagePointer);
     calloc.free(messagePointer);
   }
@@ -144,7 +144,7 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Log)
   void log(String message) {
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final messagePointer = message.toInt8Pointer();
     sdl.SDL_Log(messagePointer);
     calloc.free(messagePointer);
   }
@@ -152,7 +152,7 @@ class Sdl {
   /// Log anything.
   void _log(LogCategory category, String message,
       void Function(int, Pointer<Int8>) func) {
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final messagePointer = message.toInt8Pointer();
     func(category.toSdlFlag(), messagePointer);
     calloc.free(messagePointer);
   }
@@ -185,7 +185,7 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogMessage)
   void logMessage(LogCategory category, LogPriority priority, String message) {
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final messagePointer = message.toInt8Pointer();
     sdl.SDL_LogMessage(
         category.toSdlFlag(), priority.toSdlFlag(), messagePointer);
     calloc.free(messagePointer);
@@ -259,7 +259,7 @@ class Sdl {
       int width = 1024,
       int height = 648,
       int flags = 0}) {
-    final titlePtr = title.toNativeUtf8().cast<Int8>();
+    final titlePtr = title.toInt8Pointer();
     final window = Window(
         this, sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags));
     calloc.free(titlePtr);
@@ -335,12 +335,12 @@ class Sdl {
     int? flags,
   }) {
     final data = calloc<SDL_MessageBoxData>();
-    final titlePointer = title.toNativeUtf8().cast<Int8>();
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final titlePointer = title.toInt8Pointer();
+    final messagePointer = message.toInt8Pointer();
     final a = calloc<SDL_MessageBoxButtonData>(buttons.length);
     for (var i = 0; i < buttons.length; i++) {
       final button = buttons[i];
-      final textPointer = button.text.toNativeUtf8().cast<Int8>();
+      final textPointer = button.text.toInt8Pointer();
       a[i]
         ..buttonid = button.id
         ..flags = button.flags.toSdlFlag()
@@ -368,8 +368,8 @@ class Sdl {
     String message, {
     Window? window,
   }) {
-    final titlePointer = title.toNativeUtf8().cast<Int8>();
-    final messagePointer = message.toNativeUtf8().cast<Int8>();
+    final titlePointer = title.toInt8Pointer();
+    final messagePointer = message.toInt8Pointer();
     checkReturnValue(sdl.SDL_ShowSimpleMessageBox(type.toSdlFlag(),
         titlePointer, messagePointer, window?.handle ?? nullptr));
     [titlePointer, messagePointer].forEach(calloc.free);
@@ -398,7 +398,7 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetClipboardText)
   void setClipboardText(String value) {
-    final valuePointer = value.toNativeUtf8().cast<Int8>();
+    final valuePointer = value.toInt8Pointer();
     checkReturnValue(sdl.SDL_SetClipboardText(valuePointer));
     calloc.free(valuePointer);
   }
@@ -463,7 +463,7 @@ class Sdl {
     if (device != null) {
       if (isCapture == null) {
         isCapture = device.isCapture;
-        namePointer = device.name.toNativeUtf8().cast<Int8>();
+        namePointer = device.name.toInt8Pointer();
       } else {
         throw SdlError(-1,
             'You must specify either `device` or `isCapture`, but not both.');

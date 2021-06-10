@@ -1,4 +1,6 @@
 /// Provides extensions.
+import 'dart:ffi';
+
 import 'package:ffi/ffi.dart';
 
 import 'enumerations.dart';
@@ -335,4 +337,10 @@ extension DartSdlValues on int {
         throw SdlError(this, 'Unknown device state.');
     }
   }
+}
+
+/// An extension for converting strings to `dart_sdl` values.
+extension SdlStringValues on String {
+  /// Return a pointer.
+  Pointer<Int8> toInt8Pointer() => toNativeUtf8().cast<Int8>();
 }

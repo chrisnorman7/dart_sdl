@@ -3,6 +3,7 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 
+import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 
@@ -14,8 +15,7 @@ class WaveFile {
         bufferPointer = calloc<Pointer<Uint8>>(),
         lengthPointer = calloc<Uint32>() {
     sdl.sdl.SDL_LoadWAV_RW(
-        sdl.sdl.SDL_RWFromFile(filename.toNativeUtf8().cast<Int8>(),
-            'rb'.toNativeUtf8().cast<Int8>()),
+        sdl.sdl.SDL_RWFromFile(filename.toInt8Pointer(), 'rb'.toInt8Pointer()),
         1,
         specPointer,
         bufferPointer,
