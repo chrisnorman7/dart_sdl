@@ -121,7 +121,7 @@ class Sdl {
     final hintPointer = hint.toNativeUtf8().cast<Int8>();
     final valuePointer = value.toNativeUtf8().cast<Int8>();
     final retval = sdl.SDL_SetHintWithPriority(
-        hintPointer, valuePointer, priority.toSdlValue());
+        hintPointer, valuePointer, priority.toSdlFlag());
     [hintPointer, valuePointer].forEach(calloc.free);
     return getBool(retval);
   }
@@ -153,7 +153,7 @@ class Sdl {
   void _log(LogCategory category, String message,
       void Function(int, Pointer<Int8>) func) {
     final messagePointer = message.toNativeUtf8().cast<Int8>();
-    func(category.toSdlValue(), messagePointer);
+    func(category.toSdlFlag(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -187,7 +187,7 @@ class Sdl {
   void logMessage(LogCategory category, LogPriority priority, String message) {
     final messagePointer = message.toNativeUtf8().cast<Int8>();
     sdl.SDL_LogMessage(
-        category.toSdlValue(), priority.toSdlValue(), messagePointer);
+        category.toSdlFlag(), priority.toSdlFlag(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -205,7 +205,7 @@ class Sdl {
 
   /// Get log priority.
   LogPriority getLogPriority(LogCategory category) =>
-      sdl.SDL_LogGetPriority(category.toSdlValue()).toLogPriority();
+      sdl.SDL_LogGetPriority(category.toSdlFlag()).toLogPriority();
 
   /// Reset log priorities.
   ///
@@ -216,13 +216,13 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetAllPriority)
   void setAllLogPriorities(LogPriority priority) =>
-      sdl.SDL_LogSetAllPriority(priority.toSdlValue());
+      sdl.SDL_LogSetAllPriority(priority.toSdlFlag());
 
   /// Set log priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
   void setLogPriority(LogCategory category, LogPriority priority) =>
-      sdl.SDL_LogSetPriority(category.toSdlValue(), priority.toSdlValue());
+      sdl.SDL_LogSetPriority(category.toSdlFlag(), priority.toSdlFlag());
 
   /// Get the compiled version.
   ///
@@ -343,7 +343,7 @@ class Sdl {
       final textPointer = button.text.toNativeUtf8().cast<Int8>();
       a[i]
         ..buttonid = button.id
-        ..flags = button.flags.toSdlValue()
+        ..flags = button.flags.toSdlFlag()
         ..text = textPointer;
     }
     data.ref
@@ -370,7 +370,7 @@ class Sdl {
   }) {
     final titlePointer = title.toNativeUtf8().cast<Int8>();
     final messagePointer = message.toNativeUtf8().cast<Int8>();
-    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(type.toSdlValue(),
+    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(type.toSdlFlag(),
         titlePointer, messagePointer, window?.handle ?? nullptr));
     [titlePointer, messagePointer].forEach(calloc.free);
   }

@@ -293,7 +293,7 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowFullscreen)
   set fullscreen(FullScreenMode mode) => sdl.checkReturnValue(
-      sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toSdlValue()));
+      sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toSdlFlag()));
 
   /// Set input focus.
   ///

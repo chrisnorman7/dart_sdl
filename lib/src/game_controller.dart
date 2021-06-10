@@ -27,7 +27,7 @@ class GameController {
   ///
   /// [SDL Docs]([SDL_GameControllerAxis](https://wiki.libsdl.org/SDL_GameControllerAxis))
   int getAxis(GameControllerAxis axis) =>
-      sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlValue());
+      sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlFlag());
 
   /// Close this controller.
   ///
