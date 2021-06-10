@@ -516,6 +516,8 @@ class Sdl {
 
   /// Get the implementation dependent name of a joystick.
   ///
+  /// Returns the name of the joystick with the given [index].
+  ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickNameForIndex)
   String getJoystickName(int index) {
     final name = sdl.SDL_JoystickNameForIndex(index);
@@ -548,6 +550,14 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_IsGameController)
   bool isGameController(int index) => getBool(sdl.SDL_IsGameController(index));
+
+  /// Get the implementation dependent name for the game controller.
+  ///
+  /// Returns the name of the game controller with the given [index].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerNameForIndex)
+  String getGameControllerName(int index) =>
+      sdl.SDL_GameControllerNameForIndex(index).cast<Utf8>().toDartString();
 
   /// Open a game controller.
   ///

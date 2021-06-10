@@ -305,8 +305,9 @@ Classes have been created to reflect every member of the
 
 ##### `Sdl` class
 
-* [SDL_IsGameController](https://wiki.libsdl.org/SDL_IsGameController)
+* [SDL_GameControllerNameForIndex](https://wiki.libsdl.org/SDL_GameControllerNameForIndex)
 * [SDL_GameControllerOpen](https://wiki.libsdl.org/SDL_GameControllerOpen)
+* [SDL_IsGameController](https://wiki.libsdl.org/SDL_IsGameController)
 
 ##### `SdlGameControllerAxisValues` extension
 
@@ -326,3 +327,6 @@ Classes have been created to reflect every member of the
 * [SDL_GameControllerClose](https://wiki.libsdl.org/SDL_GameControllerClose)
 * [SDL_GameControllerGetAttached](https://wiki.libsdl.org/SDL_GameControllerGetAttached)
 * [SDL_GameControllerGetAxis](https://wiki.libsdl.org/SDL_GameControllerGetAxis)
+* [SDL_GameControllerGetButton](https://wiki.libsdl.org/SDL_GameControllerGetButton)
+* [SDL_GameControllerGetJoystick](https://wiki.libsdl.org/SDL_GameControllerGetJoystick)
+* [SDL_GameControllerName](https://wiki.libsdl.org/SDL_GameControllerName)

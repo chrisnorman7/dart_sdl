@@ -5,7 +5,7 @@ void main() {
   final sdl = Sdl()..init();
   for (var i = 0; i < sdl.numJoysticks; i++) {
     final controller = sdl.openGameController(i);
-    print('#$i: $controller.');
+    print('#$i: ${controller.name}.');
   }
   sdl.quit();
 }

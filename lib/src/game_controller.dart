@@ -1,8 +1,11 @@
 /// Provides the [GameController] class.
 import 'dart:ffi';
 
+import 'package:ffi/ffi.dart';
+
 import 'enumerations.dart';
 import 'extensions.dart';
+import 'joystick.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 
@@ -28,6 +31,30 @@ class GameController {
   /// [SDL Docs]([SDL_GameControllerAxis](https://wiki.libsdl.org/SDL_GameControllerAxis))
   int getAxis(GameControllerAxis axis) =>
       sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlFlag());
+
+  /// Return `true` if [button] is pressed.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButton)
+  bool getButton(GameControllerButton button) => sdl
+      .getBool(sdl.sdl.SDL_GameControllerGetButton(handle, button.toSdlFlag()));
+
+  /// Get the value of a joystick on this controller.
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetJoystick)
+  Joystick get joystick {
+    final ptr = sdl.sdl.SDL_GameControllerGetJoystick(handle);
+    var j = sdl.joysticks[ptr];
+    if (j == null) {
+      j = Joystick(sdl, ptr);
+      sdl.joysticks[ptr] = j;
+    }
+    return j;
+  }
+
+  /// Get the name of this controller.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerName)
+  String get name =>
+      sdl.sdl.SDL_GameControllerName(handle).cast<Utf8>().toDartString();
 
   /// Close this controller.
   ///
