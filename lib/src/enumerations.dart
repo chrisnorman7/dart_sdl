@@ -340,3 +340,15 @@ enum GameControllerButton {
   /// SDL_CONTROLLER_BUTTON_MAX
   max,
 }
+
+/// The type of a [TouchFingerEventType].
+enum TouchFingerEventType {
+  /// SDL_FINGERMOTION
+  motion,
+
+  /// SDL_FINGERDOWN
+  down,
+
+  /// SDL_FINGERUP
+  up,
+}

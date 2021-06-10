@@ -20,6 +20,7 @@ import 'events/keyboard.dart';
 import 'events/mouse.dart';
 import 'events/platform.dart';
 import 'events/text.dart';
+import 'events/touch_finger.dart';
 import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
@@ -782,6 +783,15 @@ class Sdl {
           break;
 
         // Touch events
+        case SDL_EventType.SDL_FINGERDOWN:
+          event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
+          break;
+        case SDL_EventType.SDL_FINGERUP:
+          event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
+          break;
+        case SDL_EventType.SDL_FINGERMOTION:
+          event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
+          break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }

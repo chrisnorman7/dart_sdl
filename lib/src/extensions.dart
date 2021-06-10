@@ -429,6 +429,20 @@ extension DartSdlValues on int {
         throw SdlError(this, 'Unknown game controller button.');
     }
   }
+
+  /// Convert to a touch event type.
+  TouchFingerEventType toTouchEventType() {
+    switch (this) {
+      case SDL_EventType.SDL_FINGERMOTION:
+        return TouchFingerEventType.motion;
+      case SDL_EventType.SDL_FINGERDOWN:
+        return TouchFingerEventType.down;
+      case SDL_EventType.SDL_FINGERUP:
+        return TouchFingerEventType.up;
+      default:
+        throw SdlError(this, 'Invalid touch event type.');
+    }
+  }
 }
 
 /// An extension for converting strings to `dart_sdl` values.
