@@ -42,5 +42,4 @@ export 'src/events/window.dart';
 export 'src/game_controller.dart';
 export 'src/joystick.dart';
 export 'src/sdl.dart';
-export 'src/sdl_bindings.dart';
 export 'src/window.dart';
