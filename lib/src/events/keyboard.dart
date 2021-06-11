@@ -68,7 +68,7 @@ class KeyboardKey {
 /// A keyboard event.
 ///
 /// [SDL Docs](https://wiki.libsdl.org/SDL_KeyboardEvent)
-class KeyboardEvent extends Event with WindowedEvent {
+class KeyboardEvent extends Event with WindowMixin {
   /// Create an event.
   KeyboardEvent(
       Sdl sdl, int timestamp, int wndId, this.state, this.repeat, this.key)

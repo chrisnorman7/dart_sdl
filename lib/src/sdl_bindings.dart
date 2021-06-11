@@ -23,33 +23,35 @@ class DartSdl {
     return _SDL_GetPlatform();
   }
 
-  late final _SDL_GetPlatform_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPlatform>>('SDL_GetPlatform');
-  late final _dart_SDL_GetPlatform _SDL_GetPlatform =
-      _SDL_GetPlatform_ptr.asFunction<_dart_SDL_GetPlatform>();
+  late final _SDL_GetPlatformPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+          'SDL_GetPlatform');
+  late final _SDL_GetPlatform =
+      _SDL_GetPlatformPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   void __va_start(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> arg0,
+    ffi.Pointer<va_list> arg0,
   ) {
     return ___va_start(
       arg0,
     );
   }
 
-  late final ___va_start_ptr =
-      _lookup<ffi.NativeFunction<_c___va_start>>('__va_start');
-  late final _dart___va_start ___va_start =
-      ___va_start_ptr.asFunction<_dart___va_start>();
+  late final ___va_startPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<va_list>)>>(
+          '__va_start');
+  late final ___va_start =
+      ___va_startPtr.asFunction<void Function(ffi.Pointer<va_list>)>();
 
   void __security_init_cookie() {
     return ___security_init_cookie();
   }
 
-  late final ___security_init_cookie_ptr =
-      _lookup<ffi.NativeFunction<_c___security_init_cookie>>(
+  late final ___security_init_cookiePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           '__security_init_cookie');
-  late final _dart___security_init_cookie ___security_init_cookie =
-      ___security_init_cookie_ptr.asFunction<_dart___security_init_cookie>();
+  late final ___security_init_cookie =
+      ___security_init_cookiePtr.asFunction<void Function()>();
 
   void __security_check_cookie(
     int _StackCookie,
@@ -59,11 +61,11 @@ class DartSdl {
     );
   }
 
-  late final ___security_check_cookie_ptr =
-      _lookup<ffi.NativeFunction<_c___security_check_cookie>>(
+  late final ___security_check_cookiePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
           '__security_check_cookie');
-  late final _dart___security_check_cookie ___security_check_cookie =
-      ___security_check_cookie_ptr.asFunction<_dart___security_check_cookie>();
+  late final ___security_check_cookie =
+      ___security_check_cookiePtr.asFunction<void Function(int)>();
 
   void __report_gsfailure(
     int _StackCookie,
@@ -73,13 +75,14 @@ class DartSdl {
     );
   }
 
-  late final ___report_gsfailure_ptr =
-      _lookup<ffi.NativeFunction<_c___report_gsfailure>>('__report_gsfailure');
-  late final _dart___report_gsfailure ___report_gsfailure =
-      ___report_gsfailure_ptr.asFunction<_dart___report_gsfailure>();
+  late final ___report_gsfailurePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
+          '__report_gsfailure');
+  late final ___report_gsfailure =
+      ___report_gsfailurePtr.asFunction<void Function(int)>();
 
-  late final ffi.Pointer<ffi.Uint64> ___security_cookie =
-      _lookup<ffi.Uint64>('__security_cookie');
+  late final ffi.Pointer<uintptr_t> ___security_cookie =
+      _lookup<uintptr_t>('__security_cookie');
 
   int get __security_cookie => ___security_cookie.value;
 
@@ -89,29 +92,26 @@ class DartSdl {
     return __invalid_parameter_noinfo();
   }
 
-  late final __invalid_parameter_noinfo_ptr =
-      _lookup<ffi.NativeFunction<_c__invalid_parameter_noinfo>>(
+  late final __invalid_parameter_noinfoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           '_invalid_parameter_noinfo');
-  late final _dart__invalid_parameter_noinfo __invalid_parameter_noinfo =
-      __invalid_parameter_noinfo_ptr
-          .asFunction<_dart__invalid_parameter_noinfo>();
+  late final __invalid_parameter_noinfo =
+      __invalid_parameter_noinfoPtr.asFunction<void Function()>();
 
   void _invalid_parameter_noinfo_noreturn() {
     return __invalid_parameter_noinfo_noreturn();
   }
 
-  late final __invalid_parameter_noinfo_noreturn_ptr =
-      _lookup<ffi.NativeFunction<_c__invalid_parameter_noinfo_noreturn>>(
+  late final __invalid_parameter_noinfo_noreturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           '_invalid_parameter_noinfo_noreturn');
-  late final _dart__invalid_parameter_noinfo_noreturn
-      __invalid_parameter_noinfo_noreturn =
-      __invalid_parameter_noinfo_noreturn_ptr
-          .asFunction<_dart__invalid_parameter_noinfo_noreturn>();
+  late final __invalid_parameter_noinfo_noreturn =
+      __invalid_parameter_noinfo_noreturnPtr.asFunction<void Function()>();
 
   void _invoke_watson(
-    ffi.Pointer<ffi.Uint16> _Expression,
-    ffi.Pointer<ffi.Uint16> _FunctionName,
-    ffi.Pointer<ffi.Uint16> _FileName,
+    ffi.Pointer<wchar_t> _Expression,
+    ffi.Pointer<wchar_t> _FunctionName,
+    ffi.Pointer<wchar_t> _FileName,
     int _LineNo,
     int _Reserved,
   ) {
@@ -124,17 +124,22 @@ class DartSdl {
     );
   }
 
-  late final __invoke_watson_ptr =
-      _lookup<ffi.NativeFunction<_c__invoke_watson>>('_invoke_watson');
-  late final _dart__invoke_watson __invoke_watson =
-      __invoke_watson_ptr.asFunction<_dart__invoke_watson>();
+  late final __invoke_watsonPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+              ffi.Pointer<wchar_t>, ffi.Uint32, uintptr_t)>>('_invoke_watson');
+  late final __invoke_watson = __invoke_watsonPtr.asFunction<
+      void Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+          ffi.Pointer<wchar_t>, int, int)>();
 
   ffi.Pointer<ffi.Int32> _errno() {
     return __errno();
   }
 
-  late final __errno_ptr = _lookup<ffi.NativeFunction<_c__errno>>('_errno');
-  late final _dart__errno __errno = __errno_ptr.asFunction<_dart__errno>();
+  late final __errnoPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function()>>('_errno');
+  late final __errno =
+      __errnoPtr.asFunction<ffi.Pointer<ffi.Int32> Function()>();
 
   int _set_errno(
     int _Value,
@@ -144,10 +149,9 @@ class DartSdl {
     );
   }
 
-  late final __set_errno_ptr =
-      _lookup<ffi.NativeFunction<_c__set_errno>>('_set_errno');
-  late final _dart__set_errno __set_errno =
-      __set_errno_ptr.asFunction<_dart__set_errno>();
+  late final __set_errnoPtr =
+      _lookup<ffi.NativeFunction<errno_t Function(ffi.Int32)>>('_set_errno');
+  late final __set_errno = __set_errnoPtr.asFunction<int Function(int)>();
 
   int _get_errno(
     ffi.Pointer<ffi.Int32> _Value,
@@ -157,28 +161,27 @@ class DartSdl {
     );
   }
 
-  late final __get_errno_ptr =
-      _lookup<ffi.NativeFunction<_c__get_errno>>('_get_errno');
-  late final _dart__get_errno __get_errno =
-      __get_errno_ptr.asFunction<_dart__get_errno>();
+  late final __get_errnoPtr =
+      _lookup<ffi.NativeFunction<errno_t Function(ffi.Pointer<ffi.Int32>)>>(
+          '_get_errno');
+  late final __get_errno =
+      __get_errnoPtr.asFunction<int Function(ffi.Pointer<ffi.Int32>)>();
 
   int __threadid() {
     return ___threadid();
   }
 
-  late final ___threadid_ptr =
-      _lookup<ffi.NativeFunction<_c___threadid>>('__threadid');
-  late final _dart___threadid ___threadid =
-      ___threadid_ptr.asFunction<_dart___threadid>();
+  late final ___threadidPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint64 Function()>>('__threadid');
+  late final ___threadid = ___threadidPtr.asFunction<int Function()>();
 
   int __threadhandle() {
     return ___threadhandle();
   }
 
-  late final ___threadhandle_ptr =
-      _lookup<ffi.NativeFunction<_c___threadhandle>>('__threadhandle');
-  late final _dart___threadhandle ___threadhandle =
-      ___threadhandle_ptr.asFunction<_dart___threadhandle>();
+  late final ___threadhandlePtr =
+      _lookup<ffi.NativeFunction<uintptr_t Function()>>('__threadhandle');
+  late final ___threadhandle = ___threadhandlePtr.asFunction<int Function()>();
 
   ffi.Pointer<ffi.Void> SDL_malloc(
     int size,
@@ -188,10 +191,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_malloc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_malloc>>('SDL_malloc');
-  late final _dart_SDL_malloc _SDL_malloc =
-      _SDL_malloc_ptr.asFunction<_dart_SDL_malloc>();
+  late final _SDL_mallocPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(size_t)>>(
+          'SDL_malloc');
+  late final _SDL_malloc =
+      _SDL_mallocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
 
   ffi.Pointer<ffi.Void> SDL_calloc(
     int nmemb,
@@ -203,10 +207,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_calloc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_calloc>>('SDL_calloc');
-  late final _dart_SDL_calloc _SDL_calloc =
-      _SDL_calloc_ptr.asFunction<_dart_SDL_calloc>();
+  late final _SDL_callocPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(size_t, size_t)>>(
+      'SDL_calloc');
+  late final _SDL_calloc =
+      _SDL_callocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int, int)>();
 
   ffi.Pointer<ffi.Void> SDL_realloc(
     ffi.Pointer<ffi.Void> mem,
@@ -218,10 +223,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_realloc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_realloc>>('SDL_realloc');
-  late final _dart_SDL_realloc _SDL_realloc =
-      _SDL_realloc_ptr.asFunction<_dart_SDL_realloc>();
+  late final _SDL_reallocPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, size_t)>>('SDL_realloc');
+  late final _SDL_realloc = _SDL_reallocPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int)>();
 
   void SDL_free(
     ffi.Pointer<ffi.Void> mem,
@@ -231,17 +238,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_free_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_free>>('SDL_free');
-  late final _dart_SDL_free _SDL_free =
-      _SDL_free_ptr.asFunction<_dart_SDL_free>();
+  late final _SDL_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'SDL_free');
+  late final _SDL_free =
+      _SDL_freePtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   /// \brief Get the current set of SDL memory functions
   void SDL_GetMemoryFunctions(
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>>> malloc_func,
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>>> calloc_func,
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>>> realloc_func,
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_free_func>>> free_func,
+    ffi.Pointer<SDL_malloc_func> malloc_func,
+    ffi.Pointer<SDL_calloc_func> calloc_func,
+    ffi.Pointer<SDL_realloc_func> realloc_func,
+    ffi.Pointer<SDL_free_func> free_func,
   ) {
     return _SDL_GetMemoryFunctions(
       malloc_func,
@@ -251,11 +259,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetMemoryFunctions_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetMemoryFunctions>>(
-          'SDL_GetMemoryFunctions');
-  late final _dart_SDL_GetMemoryFunctions _SDL_GetMemoryFunctions =
-      _SDL_GetMemoryFunctions_ptr.asFunction<_dart_SDL_GetMemoryFunctions>();
+  late final _SDL_GetMemoryFunctionsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_malloc_func>,
+              ffi.Pointer<SDL_calloc_func>,
+              ffi.Pointer<SDL_realloc_func>,
+              ffi.Pointer<SDL_free_func>)>>('SDL_GetMemoryFunctions');
+  late final _SDL_GetMemoryFunctions = _SDL_GetMemoryFunctionsPtr.asFunction<
+      void Function(ffi.Pointer<SDL_malloc_func>, ffi.Pointer<SDL_calloc_func>,
+          ffi.Pointer<SDL_realloc_func>, ffi.Pointer<SDL_free_func>)>();
 
   /// \brief Replace SDL's memory allocation functions with a custom set
   ///
@@ -264,10 +277,10 @@ class DartSdl {
   /// That means that your free function will be called with memory
   /// allocated by the previous memory allocation functions.
   int SDL_SetMemoryFunctions(
-    ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>> malloc_func,
-    ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>> calloc_func,
-    ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>> realloc_func,
-    ffi.Pointer<ffi.NativeFunction<SDL_free_func>> free_func,
+    SDL_malloc_func malloc_func,
+    SDL_calloc_func calloc_func,
+    SDL_realloc_func realloc_func,
+    SDL_free_func free_func,
   ) {
     return _SDL_SetMemoryFunctions(
       malloc_func,
@@ -277,22 +290,24 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetMemoryFunctions_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetMemoryFunctions>>(
-          'SDL_SetMemoryFunctions');
-  late final _dart_SDL_SetMemoryFunctions _SDL_SetMemoryFunctions =
-      _SDL_SetMemoryFunctions_ptr.asFunction<_dart_SDL_SetMemoryFunctions>();
+  late final _SDL_SetMemoryFunctionsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(SDL_malloc_func, SDL_calloc_func, SDL_realloc_func,
+              SDL_free_func)>>('SDL_SetMemoryFunctions');
+  late final _SDL_SetMemoryFunctions = _SDL_SetMemoryFunctionsPtr.asFunction<
+      int Function(
+          SDL_malloc_func, SDL_calloc_func, SDL_realloc_func, SDL_free_func)>();
 
   /// \brief Get the number of outstanding (unfreed) allocations
   int SDL_GetNumAllocations() {
     return _SDL_GetNumAllocations();
   }
 
-  late final _SDL_GetNumAllocations_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumAllocations>>(
+  late final _SDL_GetNumAllocationsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumAllocations');
-  late final _dart_SDL_GetNumAllocations _SDL_GetNumAllocations =
-      _SDL_GetNumAllocations_ptr.asFunction<_dart_SDL_GetNumAllocations>();
+  late final _SDL_GetNumAllocations =
+      _SDL_GetNumAllocationsPtr.asFunction<int Function()>();
 
   ffi.Pointer<ffi.Int8> SDL_getenv(
     ffi.Pointer<ffi.Int8> name,
@@ -302,10 +317,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_getenv_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_getenv>>('SDL_getenv');
-  late final _dart_SDL_getenv _SDL_getenv =
-      _SDL_getenv_ptr.asFunction<_dart_SDL_getenv>();
+  late final _SDL_getenvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('SDL_getenv');
+  late final _SDL_getenv = _SDL_getenvPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   int SDL_setenv(
     ffi.Pointer<ffi.Int8> name,
@@ -319,16 +335,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_setenv_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_setenv>>('SDL_setenv');
-  late final _dart_SDL_setenv _SDL_setenv =
-      _SDL_setenv_ptr.asFunction<_dart_SDL_setenv>();
+  late final _SDL_setenvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              ffi.Int32)>>('SDL_setenv');
+  late final _SDL_setenv = _SDL_setenvPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   void SDL_qsort(
     ffi.Pointer<ffi.Void> base,
     int nmemb,
     int size,
-    ffi.Pointer<ffi.NativeFunction<_typedefC_1>> compare,
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Int32 Function(
+                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>
+        compare,
   ) {
     return _SDL_qsort(
       base,
@@ -338,10 +360,25 @@ class DartSdl {
     );
   }
 
-  late final _SDL_qsort_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_qsort>>('SDL_qsort');
-  late final _dart_SDL_qsort _SDL_qsort =
-      _SDL_qsort_ptr.asFunction<_dart_SDL_qsort>();
+  late final _SDL_qsortPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Void>,
+              size_t,
+              size_t,
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Int32 Function(ffi.Pointer<ffi.Void>,
+                          ffi.Pointer<ffi.Void>)>>)>>('SDL_qsort');
+  late final _SDL_qsort = _SDL_qsortPtr.asFunction<
+      void Function(
+          ffi.Pointer<ffi.Void>,
+          int,
+          int,
+          ffi.Pointer<
+              ffi.NativeFunction<
+                  ffi.Int32 Function(
+                      ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)>();
 
   int SDL_abs(
     int x,
@@ -351,8 +388,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_abs_ptr = _lookup<ffi.NativeFunction<_c_SDL_abs>>('SDL_abs');
-  late final _dart_SDL_abs _SDL_abs = _SDL_abs_ptr.asFunction<_dart_SDL_abs>();
+  late final _SDL_absPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_abs');
+  late final _SDL_abs = _SDL_absPtr.asFunction<int Function(int)>();
 
   int SDL_isdigit(
     int x,
@@ -362,10 +400,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_isdigit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_isdigit>>('SDL_isdigit');
-  late final _dart_SDL_isdigit _SDL_isdigit =
-      _SDL_isdigit_ptr.asFunction<_dart_SDL_isdigit>();
+  late final _SDL_isdigitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_isdigit');
+  late final _SDL_isdigit = _SDL_isdigitPtr.asFunction<int Function(int)>();
 
   int SDL_isspace(
     int x,
@@ -375,10 +412,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_isspace_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_isspace>>('SDL_isspace');
-  late final _dart_SDL_isspace _SDL_isspace =
-      _SDL_isspace_ptr.asFunction<_dart_SDL_isspace>();
+  late final _SDL_isspacePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_isspace');
+  late final _SDL_isspace = _SDL_isspacePtr.asFunction<int Function(int)>();
 
   int SDL_isupper(
     int x,
@@ -388,10 +424,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_isupper_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_isupper>>('SDL_isupper');
-  late final _dart_SDL_isupper _SDL_isupper =
-      _SDL_isupper_ptr.asFunction<_dart_SDL_isupper>();
+  late final _SDL_isupperPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_isupper');
+  late final _SDL_isupper = _SDL_isupperPtr.asFunction<int Function(int)>();
 
   int SDL_islower(
     int x,
@@ -401,10 +436,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_islower_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_islower>>('SDL_islower');
-  late final _dart_SDL_islower _SDL_islower =
-      _SDL_islower_ptr.asFunction<_dart_SDL_islower>();
+  late final _SDL_islowerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_islower');
+  late final _SDL_islower = _SDL_islowerPtr.asFunction<int Function(int)>();
 
   int SDL_toupper(
     int x,
@@ -414,10 +448,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_toupper_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_toupper>>('SDL_toupper');
-  late final _dart_SDL_toupper _SDL_toupper =
-      _SDL_toupper_ptr.asFunction<_dart_SDL_toupper>();
+  late final _SDL_toupperPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_toupper');
+  late final _SDL_toupper = _SDL_toupperPtr.asFunction<int Function(int)>();
 
   int SDL_tolower(
     int x,
@@ -427,10 +460,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_tolower_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_tolower>>('SDL_tolower');
-  late final _dart_SDL_tolower _SDL_tolower =
-      _SDL_tolower_ptr.asFunction<_dart_SDL_tolower>();
+  late final _SDL_tolowerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_tolower');
+  late final _SDL_tolower = _SDL_tolowerPtr.asFunction<int Function(int)>();
 
   int SDL_crc32(
     int crc,
@@ -444,10 +476,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_crc32_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_crc32>>('SDL_crc32');
-  late final _dart_SDL_crc32 _SDL_crc32 =
-      _SDL_crc32_ptr.asFunction<_dart_SDL_crc32>();
+  late final _SDL_crc32Ptr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(Uint32, ffi.Pointer<ffi.Void>, size_t)>>('SDL_crc32');
+  late final _SDL_crc32 =
+      _SDL_crc32Ptr.asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<ffi.Void> SDL_memset(
     ffi.Pointer<ffi.Void> dst,
@@ -461,10 +494,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_memset_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_memset>>('SDL_memset');
-  late final _dart_SDL_memset _SDL_memset =
-      _SDL_memset_ptr.asFunction<_dart_SDL_memset>();
+  late final _SDL_memsetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int32, size_t)>>('SDL_memset');
+  late final _SDL_memset = _SDL_memsetPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
 
   ffi.Pointer<ffi.Void> SDL_memcpy(
     ffi.Pointer<ffi.Void> dst,
@@ -478,10 +513,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_memcpy_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_memcpy>>('SDL_memcpy');
-  late final _dart_SDL_memcpy _SDL_memcpy =
-      _SDL_memcpy_ptr.asFunction<_dart_SDL_memcpy>();
+  late final _SDL_memcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, size_t)>>('SDL_memcpy');
+  late final _SDL_memcpy = _SDL_memcpyPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<ffi.Void> SDL_memmove(
     ffi.Pointer<ffi.Void> dst,
@@ -495,10 +533,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_memmove_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_memmove>>('SDL_memmove');
-  late final _dart_SDL_memmove _SDL_memmove =
-      _SDL_memmove_ptr.asFunction<_dart_SDL_memmove>();
+  late final _SDL_memmovePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, size_t)>>('SDL_memmove');
+  late final _SDL_memmove = _SDL_memmovePtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   int SDL_memcmp(
     ffi.Pointer<ffi.Void> s1,
@@ -512,27 +553,30 @@ class DartSdl {
     );
   }
 
-  late final _SDL_memcmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_memcmp>>('SDL_memcmp');
-  late final _dart_SDL_memcmp _SDL_memcmp =
-      _SDL_memcmp_ptr.asFunction<_dart_SDL_memcmp>();
+  late final _SDL_memcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              size_t)>>('SDL_memcmp');
+  late final _SDL_memcmp = _SDL_memcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   int SDL_wcslen(
-    ffi.Pointer<ffi.Uint16> wstr,
+    ffi.Pointer<wchar_t> wstr,
   ) {
     return _SDL_wcslen(
       wstr,
     );
   }
 
-  late final _SDL_wcslen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcslen>>('SDL_wcslen');
-  late final _dart_SDL_wcslen _SDL_wcslen =
-      _SDL_wcslen_ptr.asFunction<_dart_SDL_wcslen>();
+  late final _SDL_wcslenPtr =
+      _lookup<ffi.NativeFunction<size_t Function(ffi.Pointer<wchar_t>)>>(
+          'SDL_wcslen');
+  late final _SDL_wcslen =
+      _SDL_wcslenPtr.asFunction<int Function(ffi.Pointer<wchar_t>)>();
 
   int SDL_wcslcpy(
-    ffi.Pointer<ffi.Uint16> dst,
-    ffi.Pointer<ffi.Uint16> src,
+    ffi.Pointer<wchar_t> dst,
+    ffi.Pointer<wchar_t> src,
     int maxlen,
   ) {
     return _SDL_wcslcpy(
@@ -542,14 +586,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcslcpy_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcslcpy>>('SDL_wcslcpy');
-  late final _dart_SDL_wcslcpy _SDL_wcslcpy =
-      _SDL_wcslcpy_ptr.asFunction<_dart_SDL_wcslcpy>();
+  late final _SDL_wcslcpyPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+              size_t)>>('SDL_wcslcpy');
+  late final _SDL_wcslcpy = _SDL_wcslcpyPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>, int)>();
 
   int SDL_wcslcat(
-    ffi.Pointer<ffi.Uint16> dst,
-    ffi.Pointer<ffi.Uint16> src,
+    ffi.Pointer<wchar_t> dst,
+    ffi.Pointer<wchar_t> src,
     int maxlen,
   ) {
     return _SDL_wcslcat(
@@ -559,27 +605,30 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcslcat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcslcat>>('SDL_wcslcat');
-  late final _dart_SDL_wcslcat _SDL_wcslcat =
-      _SDL_wcslcat_ptr.asFunction<_dart_SDL_wcslcat>();
+  late final _SDL_wcslcatPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+              size_t)>>('SDL_wcslcat');
+  late final _SDL_wcslcat = _SDL_wcslcatPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>, int)>();
 
-  ffi.Pointer<ffi.Uint16> SDL_wcsdup(
-    ffi.Pointer<ffi.Uint16> wstr,
+  ffi.Pointer<wchar_t> SDL_wcsdup(
+    ffi.Pointer<wchar_t> wstr,
   ) {
     return _SDL_wcsdup(
       wstr,
     );
   }
 
-  late final _SDL_wcsdup_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcsdup>>('SDL_wcsdup');
-  late final _dart_SDL_wcsdup _SDL_wcsdup =
-      _SDL_wcsdup_ptr.asFunction<_dart_SDL_wcsdup>();
+  late final _SDL_wcsdupPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wchar_t> Function(ffi.Pointer<wchar_t>)>>('SDL_wcsdup');
+  late final _SDL_wcsdup = _SDL_wcsdupPtr.asFunction<
+      ffi.Pointer<wchar_t> Function(ffi.Pointer<wchar_t>)>();
 
-  ffi.Pointer<ffi.Uint16> SDL_wcsstr(
-    ffi.Pointer<ffi.Uint16> haystack,
-    ffi.Pointer<ffi.Uint16> needle,
+  ffi.Pointer<wchar_t> SDL_wcsstr(
+    ffi.Pointer<wchar_t> haystack,
+    ffi.Pointer<wchar_t> needle,
   ) {
     return _SDL_wcsstr(
       haystack,
@@ -587,14 +636,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcsstr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcsstr>>('SDL_wcsstr');
-  late final _dart_SDL_wcsstr _SDL_wcsstr =
-      _SDL_wcsstr_ptr.asFunction<_dart_SDL_wcsstr>();
+  late final _SDL_wcsstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wchar_t> Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('SDL_wcsstr');
+  late final _SDL_wcsstr = _SDL_wcsstrPtr.asFunction<
+      ffi.Pointer<wchar_t> Function(
+          ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int SDL_wcscmp(
-    ffi.Pointer<ffi.Uint16> str1,
-    ffi.Pointer<ffi.Uint16> str2,
+    ffi.Pointer<wchar_t> str1,
+    ffi.Pointer<wchar_t> str2,
   ) {
     return _SDL_wcscmp(
       str1,
@@ -602,14 +654,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcscmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcscmp>>('SDL_wcscmp');
-  late final _dart_SDL_wcscmp _SDL_wcscmp =
-      _SDL_wcscmp_ptr.asFunction<_dart_SDL_wcscmp>();
+  late final _SDL_wcscmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('SDL_wcscmp');
+  late final _SDL_wcscmp = _SDL_wcscmpPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int SDL_wcsncmp(
-    ffi.Pointer<ffi.Uint16> str1,
-    ffi.Pointer<ffi.Uint16> str2,
+    ffi.Pointer<wchar_t> str1,
+    ffi.Pointer<wchar_t> str2,
     int maxlen,
   ) {
     return _SDL_wcsncmp(
@@ -619,14 +673,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcsncmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcsncmp>>('SDL_wcsncmp');
-  late final _dart_SDL_wcsncmp _SDL_wcsncmp =
-      _SDL_wcsncmp_ptr.asFunction<_dart_SDL_wcsncmp>();
+  late final _SDL_wcsncmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+              size_t)>>('SDL_wcsncmp');
+  late final _SDL_wcsncmp = _SDL_wcsncmpPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>, int)>();
 
   int SDL_wcscasecmp(
-    ffi.Pointer<ffi.Uint16> str1,
-    ffi.Pointer<ffi.Uint16> str2,
+    ffi.Pointer<wchar_t> str1,
+    ffi.Pointer<wchar_t> str2,
   ) {
     return _SDL_wcscasecmp(
       str1,
@@ -634,14 +690,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcscasecmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcscasecmp>>('SDL_wcscasecmp');
-  late final _dart_SDL_wcscasecmp _SDL_wcscasecmp =
-      _SDL_wcscasecmp_ptr.asFunction<_dart_SDL_wcscasecmp>();
+  late final _SDL_wcscasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('SDL_wcscasecmp');
+  late final _SDL_wcscasecmp = _SDL_wcscasecmpPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int SDL_wcsncasecmp(
-    ffi.Pointer<ffi.Uint16> str1,
-    ffi.Pointer<ffi.Uint16> str2,
+    ffi.Pointer<wchar_t> str1,
+    ffi.Pointer<wchar_t> str2,
     int len,
   ) {
     return _SDL_wcsncasecmp(
@@ -651,10 +709,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_wcsncasecmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_wcsncasecmp>>('SDL_wcsncasecmp');
-  late final _dart_SDL_wcsncasecmp _SDL_wcsncasecmp =
-      _SDL_wcsncasecmp_ptr.asFunction<_dart_SDL_wcsncasecmp>();
+  late final _SDL_wcsncasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>,
+              size_t)>>('SDL_wcsncasecmp');
+  late final _SDL_wcsncasecmp = _SDL_wcsncasecmpPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>, int)>();
 
   int SDL_strlen(
     ffi.Pointer<ffi.Int8> str,
@@ -664,10 +724,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strlen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strlen>>('SDL_strlen');
-  late final _dart_SDL_strlen _SDL_strlen =
-      _SDL_strlen_ptr.asFunction<_dart_SDL_strlen>();
+  late final _SDL_strlenPtr =
+      _lookup<ffi.NativeFunction<size_t Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_strlen');
+  late final _SDL_strlen =
+      _SDL_strlenPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   int SDL_strlcpy(
     ffi.Pointer<ffi.Int8> dst,
@@ -681,10 +742,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strlcpy_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strlcpy>>('SDL_strlcpy');
-  late final _dart_SDL_strlcpy _SDL_strlcpy =
-      _SDL_strlcpy_ptr.asFunction<_dart_SDL_strlcpy>();
+  late final _SDL_strlcpyPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_strlcpy');
+  late final _SDL_strlcpy = _SDL_strlcpyPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_utf8strlcpy(
     ffi.Pointer<ffi.Int8> dst,
@@ -698,10 +761,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_utf8strlcpy_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_utf8strlcpy>>('SDL_utf8strlcpy');
-  late final _dart_SDL_utf8strlcpy _SDL_utf8strlcpy =
-      _SDL_utf8strlcpy_ptr.asFunction<_dart_SDL_utf8strlcpy>();
+  late final _SDL_utf8strlcpyPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_utf8strlcpy');
+  late final _SDL_utf8strlcpy = _SDL_utf8strlcpyPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_strlcat(
     ffi.Pointer<ffi.Int8> dst,
@@ -715,10 +780,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strlcat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strlcat>>('SDL_strlcat');
-  late final _dart_SDL_strlcat _SDL_strlcat =
-      _SDL_strlcat_ptr.asFunction<_dart_SDL_strlcat>();
+  late final _SDL_strlcatPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_strlcat');
+  late final _SDL_strlcat = _SDL_strlcatPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_strdup(
     ffi.Pointer<ffi.Int8> str,
@@ -728,10 +795,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strdup_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strdup>>('SDL_strdup');
-  late final _dart_SDL_strdup _SDL_strdup =
-      _SDL_strdup_ptr.asFunction<_dart_SDL_strdup>();
+  late final _SDL_strdupPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('SDL_strdup');
+  late final _SDL_strdup = _SDL_strdupPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_strrev(
     ffi.Pointer<ffi.Int8> str,
@@ -741,10 +809,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strrev_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strrev>>('SDL_strrev');
-  late final _dart_SDL_strrev _SDL_strrev =
-      _SDL_strrev_ptr.asFunction<_dart_SDL_strrev>();
+  late final _SDL_strrevPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('SDL_strrev');
+  late final _SDL_strrev = _SDL_strrevPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_strupr(
     ffi.Pointer<ffi.Int8> str,
@@ -754,10 +823,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strupr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strupr>>('SDL_strupr');
-  late final _dart_SDL_strupr _SDL_strupr =
-      _SDL_strupr_ptr.asFunction<_dart_SDL_strupr>();
+  late final _SDL_struprPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('SDL_strupr');
+  late final _SDL_strupr = _SDL_struprPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_strlwr(
     ffi.Pointer<ffi.Int8> str,
@@ -767,10 +837,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strlwr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strlwr>>('SDL_strlwr');
-  late final _dart_SDL_strlwr _SDL_strlwr =
-      _SDL_strlwr_ptr.asFunction<_dart_SDL_strlwr>();
+  late final _SDL_strlwrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('SDL_strlwr');
+  late final _SDL_strlwr = _SDL_strlwrPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_strchr(
     ffi.Pointer<ffi.Int8> str,
@@ -782,10 +853,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strchr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strchr>>('SDL_strchr');
-  late final _dart_SDL_strchr _SDL_strchr =
-      _SDL_strchr_ptr.asFunction<_dart_SDL_strchr>();
+  late final _SDL_strchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_strchr');
+  late final _SDL_strchr = _SDL_strchrPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_strrchr(
     ffi.Pointer<ffi.Int8> str,
@@ -797,10 +870,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strrchr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strrchr>>('SDL_strrchr');
-  late final _dart_SDL_strrchr _SDL_strrchr =
-      _SDL_strrchr_ptr.asFunction<_dart_SDL_strrchr>();
+  late final _SDL_strrchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_strrchr');
+  late final _SDL_strrchr = _SDL_strrchrPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_strstr(
     ffi.Pointer<ffi.Int8> haystack,
@@ -812,10 +887,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strstr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strstr>>('SDL_strstr');
-  late final _dart_SDL_strstr _SDL_strstr =
-      _SDL_strstr_ptr.asFunction<_dart_SDL_strstr>();
+  late final _SDL_strstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_strstr');
+  late final _SDL_strstr = _SDL_strstrPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_strtokr(
     ffi.Pointer<ffi.Int8> s1,
@@ -829,10 +907,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtokr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtokr>>('SDL_strtokr');
-  late final _dart_SDL_strtokr _SDL_strtokr =
-      _SDL_strtokr_ptr.asFunction<_dart_SDL_strtokr>();
+  late final _SDL_strtokrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('SDL_strtokr');
+  late final _SDL_strtokr = _SDL_strtokrPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int SDL_utf8strlen(
     ffi.Pointer<ffi.Int8> str,
@@ -842,10 +925,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_utf8strlen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_utf8strlen>>('SDL_utf8strlen');
-  late final _dart_SDL_utf8strlen _SDL_utf8strlen =
-      _SDL_utf8strlen_ptr.asFunction<_dart_SDL_utf8strlen>();
+  late final _SDL_utf8strlenPtr =
+      _lookup<ffi.NativeFunction<size_t Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_utf8strlen');
+  late final _SDL_utf8strlen =
+      _SDL_utf8strlenPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<ffi.Int8> SDL_itoa(
     int value,
@@ -859,10 +943,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_itoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_itoa>>('SDL_itoa');
-  late final _dart_SDL_itoa _SDL_itoa =
-      _SDL_itoa_ptr.asFunction<_dart_SDL_itoa>();
+  late final _SDL_itoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_itoa');
+  late final _SDL_itoa = _SDL_itoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_uitoa(
     int value,
@@ -876,10 +962,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_uitoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_uitoa>>('SDL_uitoa');
-  late final _dart_SDL_uitoa _SDL_uitoa =
-      _SDL_uitoa_ptr.asFunction<_dart_SDL_uitoa>();
+  late final _SDL_uitoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Uint32, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_uitoa');
+  late final _SDL_uitoa = _SDL_uitoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_ltoa(
     int value,
@@ -893,10 +981,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ltoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ltoa>>('SDL_ltoa');
-  late final _dart_SDL_ltoa _SDL_ltoa =
-      _SDL_ltoa_ptr.asFunction<_dart_SDL_ltoa>();
+  late final _SDL_ltoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int64, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_ltoa');
+  late final _SDL_ltoa = _SDL_ltoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_ultoa(
     int value,
@@ -910,10 +1000,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ultoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ultoa>>('SDL_ultoa');
-  late final _dart_SDL_ultoa _SDL_ultoa =
-      _SDL_ultoa_ptr.asFunction<_dart_SDL_ultoa>();
+  late final _SDL_ultoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Uint64, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_ultoa');
+  late final _SDL_ultoa = _SDL_ultoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_lltoa(
     int value,
@@ -927,10 +1019,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_lltoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_lltoa>>('SDL_lltoa');
-  late final _dart_SDL_lltoa _SDL_lltoa =
-      _SDL_lltoa_ptr.asFunction<_dart_SDL_lltoa>();
+  late final _SDL_lltoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              Sint64, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_lltoa');
+  late final _SDL_lltoa = _SDL_lltoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   ffi.Pointer<ffi.Int8> SDL_ulltoa(
     int value,
@@ -944,10 +1038,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ulltoa_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ulltoa>>('SDL_ulltoa');
-  late final _dart_SDL_ulltoa _SDL_ulltoa =
-      _SDL_ulltoa_ptr.asFunction<_dart_SDL_ulltoa>();
+  late final _SDL_ulltoaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              Uint64, ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_ulltoa');
+  late final _SDL_ulltoa = _SDL_ulltoaPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_atoi(
     ffi.Pointer<ffi.Int8> str,
@@ -957,10 +1053,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atoi_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atoi>>('SDL_atoi');
-  late final _dart_SDL_atoi _SDL_atoi =
-      _SDL_atoi_ptr.asFunction<_dart_SDL_atoi>();
+  late final _SDL_atoiPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_atoi');
+  late final _SDL_atoi =
+      _SDL_atoiPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   double SDL_atof(
     ffi.Pointer<ffi.Int8> str,
@@ -970,10 +1067,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atof_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atof>>('SDL_atof');
-  late final _dart_SDL_atof _SDL_atof =
-      _SDL_atof_ptr.asFunction<_dart_SDL_atof>();
+  late final _SDL_atofPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_atof');
+  late final _SDL_atof =
+      _SDL_atofPtr.asFunction<double Function(ffi.Pointer<ffi.Int8>)>();
 
   int SDL_strtol(
     ffi.Pointer<ffi.Int8> str,
@@ -987,10 +1085,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtol_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtol>>('SDL_strtol');
-  late final _dart_SDL_strtol _SDL_strtol =
-      _SDL_strtol_ptr.asFunction<_dart_SDL_strtol>();
+  late final _SDL_strtolPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int64 Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Int32)>>('SDL_strtol');
+  late final _SDL_strtol = _SDL_strtolPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>, int)>();
 
   int SDL_strtoul(
     ffi.Pointer<ffi.Int8> str,
@@ -1004,10 +1105,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtoul_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtoul>>('SDL_strtoul');
-  late final _dart_SDL_strtoul _SDL_strtoul =
-      _SDL_strtoul_ptr.asFunction<_dart_SDL_strtoul>();
+  late final _SDL_strtoulPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint64 Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Int32)>>('SDL_strtoul');
+  late final _SDL_strtoul = _SDL_strtoulPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>, int)>();
 
   int SDL_strtoll(
     ffi.Pointer<ffi.Int8> str,
@@ -1021,10 +1125,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtoll_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtoll>>('SDL_strtoll');
-  late final _dart_SDL_strtoll _SDL_strtoll =
-      _SDL_strtoll_ptr.asFunction<_dart_SDL_strtoll>();
+  late final _SDL_strtollPtr = _lookup<
+      ffi.NativeFunction<
+          Sint64 Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Int32)>>('SDL_strtoll');
+  late final _SDL_strtoll = _SDL_strtollPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>, int)>();
 
   int SDL_strtoull(
     ffi.Pointer<ffi.Int8> str,
@@ -1038,10 +1145,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtoull_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtoull>>('SDL_strtoull');
-  late final _dart_SDL_strtoull _SDL_strtoull =
-      _SDL_strtoull_ptr.asFunction<_dart_SDL_strtoull>();
+  late final _SDL_strtoullPtr = _lookup<
+      ffi.NativeFunction<
+          Uint64 Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Int32)>>('SDL_strtoull');
+  late final _SDL_strtoull = _SDL_strtoullPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>, int)>();
 
   double SDL_strtod(
     ffi.Pointer<ffi.Int8> str,
@@ -1053,10 +1163,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strtod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strtod>>('SDL_strtod');
-  late final _dart_SDL_strtod _SDL_strtod =
-      _SDL_strtod_ptr.asFunction<_dart_SDL_strtod>();
+  late final _SDL_strtodPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('SDL_strtod');
+  late final _SDL_strtod = _SDL_strtodPtr.asFunction<
+      double Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int SDL_strcmp(
     ffi.Pointer<ffi.Int8> str1,
@@ -1068,10 +1181,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strcmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strcmp>>('SDL_strcmp');
-  late final _dart_SDL_strcmp _SDL_strcmp =
-      _SDL_strcmp_ptr.asFunction<_dart_SDL_strcmp>();
+  late final _SDL_strcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_strcmp');
+  late final _SDL_strcmp = _SDL_strcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int SDL_strncmp(
     ffi.Pointer<ffi.Int8> str1,
@@ -1085,10 +1200,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strncmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strncmp>>('SDL_strncmp');
-  late final _dart_SDL_strncmp _SDL_strncmp =
-      _SDL_strncmp_ptr.asFunction<_dart_SDL_strncmp>();
+  late final _SDL_strncmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_strncmp');
+  late final _SDL_strncmp = _SDL_strncmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_strcasecmp(
     ffi.Pointer<ffi.Int8> str1,
@@ -1100,10 +1217,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strcasecmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strcasecmp>>('SDL_strcasecmp');
-  late final _dart_SDL_strcasecmp _SDL_strcasecmp =
-      _SDL_strcasecmp_ptr.asFunction<_dart_SDL_strcasecmp>();
+  late final _SDL_strcasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_strcasecmp');
+  late final _SDL_strcasecmp = _SDL_strcasecmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int SDL_strncasecmp(
     ffi.Pointer<ffi.Int8> str1,
@@ -1117,10 +1236,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_strncasecmp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_strncasecmp>>('SDL_strncasecmp');
-  late final _dart_SDL_strncasecmp _SDL_strncasecmp =
-      _SDL_strncasecmp_ptr.asFunction<_dart_SDL_strncasecmp>();
+  late final _SDL_strncasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_strncasecmp');
+  late final _SDL_strncasecmp = _SDL_strncasecmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_sscanf(
     ffi.Pointer<ffi.Int8> text,
@@ -1132,15 +1253,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_sscanf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_sscanf>>('SDL_sscanf');
-  late final _dart_SDL_sscanf _SDL_sscanf =
-      _SDL_sscanf_ptr.asFunction<_dart_SDL_sscanf>();
+  late final _SDL_sscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_sscanf');
+  late final _SDL_sscanf = _SDL_sscanfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int SDL_vsscanf(
     ffi.Pointer<ffi.Int8> text,
     ffi.Pointer<ffi.Int8> fmt,
-    ffi.Pointer<ffi.Int8> ap,
+    va_list ap,
   ) {
     return _SDL_vsscanf(
       text,
@@ -1149,10 +1272,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_vsscanf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_vsscanf>>('SDL_vsscanf');
-  late final _dart_SDL_vsscanf _SDL_vsscanf =
-      _SDL_vsscanf_ptr.asFunction<_dart_SDL_vsscanf>();
+  late final _SDL_vsscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              va_list)>>('SDL_vsscanf');
+  late final _SDL_vsscanf = _SDL_vsscanfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, va_list)>();
 
   int SDL_snprintf(
     ffi.Pointer<ffi.Int8> text,
@@ -1166,16 +1291,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_snprintf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_snprintf>>('SDL_snprintf');
-  late final _dart_SDL_snprintf _SDL_snprintf =
-      _SDL_snprintf_ptr.asFunction<_dart_SDL_snprintf>();
+  late final _SDL_snprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, size_t,
+              ffi.Pointer<ffi.Int8>)>>('SDL_snprintf');
+  late final _SDL_snprintf = _SDL_snprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int8>)>();
 
   int SDL_vsnprintf(
     ffi.Pointer<ffi.Int8> text,
     int maxlen,
     ffi.Pointer<ffi.Int8> fmt,
-    ffi.Pointer<ffi.Int8> ap,
+    va_list ap,
   ) {
     return _SDL_vsnprintf(
       text,
@@ -1185,10 +1312,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_vsnprintf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_vsnprintf>>('SDL_vsnprintf');
-  late final _dart_SDL_vsnprintf _SDL_vsnprintf =
-      _SDL_vsnprintf_ptr.asFunction<_dart_SDL_vsnprintf>();
+  late final _SDL_vsnprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, size_t,
+              ffi.Pointer<ffi.Int8>, va_list)>>('SDL_vsnprintf');
+  late final _SDL_vsnprintf = _SDL_vsnprintfPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int8>, va_list)>();
 
   double SDL_acos(
     double x,
@@ -1198,10 +1328,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_acos_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_acos>>('SDL_acos');
-  late final _dart_SDL_acos _SDL_acos =
-      _SDL_acos_ptr.asFunction<_dart_SDL_acos>();
+  late final _SDL_acosPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_acos');
+  late final _SDL_acos = _SDL_acosPtr.asFunction<double Function(double)>();
 
   double SDL_acosf(
     double x,
@@ -1211,10 +1340,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_acosf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_acosf>>('SDL_acosf');
-  late final _dart_SDL_acosf _SDL_acosf =
-      _SDL_acosf_ptr.asFunction<_dart_SDL_acosf>();
+  late final _SDL_acosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_acosf');
+  late final _SDL_acosf = _SDL_acosfPtr.asFunction<double Function(double)>();
 
   double SDL_asin(
     double x,
@@ -1224,10 +1352,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_asin_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_asin>>('SDL_asin');
-  late final _dart_SDL_asin _SDL_asin =
-      _SDL_asin_ptr.asFunction<_dart_SDL_asin>();
+  late final _SDL_asinPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_asin');
+  late final _SDL_asin = _SDL_asinPtr.asFunction<double Function(double)>();
 
   double SDL_asinf(
     double x,
@@ -1237,10 +1364,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_asinf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_asinf>>('SDL_asinf');
-  late final _dart_SDL_asinf _SDL_asinf =
-      _SDL_asinf_ptr.asFunction<_dart_SDL_asinf>();
+  late final _SDL_asinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_asinf');
+  late final _SDL_asinf = _SDL_asinfPtr.asFunction<double Function(double)>();
 
   double SDL_atan(
     double x,
@@ -1250,10 +1376,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atan_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atan>>('SDL_atan');
-  late final _dart_SDL_atan _SDL_atan =
-      _SDL_atan_ptr.asFunction<_dart_SDL_atan>();
+  late final _SDL_atanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_atan');
+  late final _SDL_atan = _SDL_atanPtr.asFunction<double Function(double)>();
 
   double SDL_atanf(
     double x,
@@ -1263,10 +1388,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atanf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atanf>>('SDL_atanf');
-  late final _dart_SDL_atanf _SDL_atanf =
-      _SDL_atanf_ptr.asFunction<_dart_SDL_atanf>();
+  late final _SDL_atanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_atanf');
+  late final _SDL_atanf = _SDL_atanfPtr.asFunction<double Function(double)>();
 
   double SDL_atan2(
     double x,
@@ -1278,10 +1402,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atan2_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atan2>>('SDL_atan2');
-  late final _dart_SDL_atan2 _SDL_atan2 =
-      _SDL_atan2_ptr.asFunction<_dart_SDL_atan2>();
+  late final _SDL_atan2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'SDL_atan2');
+  late final _SDL_atan2 =
+      _SDL_atan2Ptr.asFunction<double Function(double, double)>();
 
   double SDL_atan2f(
     double x,
@@ -1293,10 +1418,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_atan2f_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_atan2f>>('SDL_atan2f');
-  late final _dart_SDL_atan2f _SDL_atan2f =
-      _SDL_atan2f_ptr.asFunction<_dart_SDL_atan2f>();
+  late final _SDL_atan2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'SDL_atan2f');
+  late final _SDL_atan2f =
+      _SDL_atan2fPtr.asFunction<double Function(double, double)>();
 
   double SDL_ceil(
     double x,
@@ -1306,10 +1432,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ceil_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ceil>>('SDL_ceil');
-  late final _dart_SDL_ceil _SDL_ceil =
-      _SDL_ceil_ptr.asFunction<_dart_SDL_ceil>();
+  late final _SDL_ceilPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_ceil');
+  late final _SDL_ceil = _SDL_ceilPtr.asFunction<double Function(double)>();
 
   double SDL_ceilf(
     double x,
@@ -1319,10 +1444,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ceilf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ceilf>>('SDL_ceilf');
-  late final _dart_SDL_ceilf _SDL_ceilf =
-      _SDL_ceilf_ptr.asFunction<_dart_SDL_ceilf>();
+  late final _SDL_ceilfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_ceilf');
+  late final _SDL_ceilf = _SDL_ceilfPtr.asFunction<double Function(double)>();
 
   double SDL_copysign(
     double x,
@@ -1334,10 +1458,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_copysign_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_copysign>>('SDL_copysign');
-  late final _dart_SDL_copysign _SDL_copysign =
-      _SDL_copysign_ptr.asFunction<_dart_SDL_copysign>();
+  late final _SDL_copysignPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'SDL_copysign');
+  late final _SDL_copysign =
+      _SDL_copysignPtr.asFunction<double Function(double, double)>();
 
   double SDL_copysignf(
     double x,
@@ -1349,10 +1474,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_copysignf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_copysignf>>('SDL_copysignf');
-  late final _dart_SDL_copysignf _SDL_copysignf =
-      _SDL_copysignf_ptr.asFunction<_dart_SDL_copysignf>();
+  late final _SDL_copysignfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'SDL_copysignf');
+  late final _SDL_copysignf =
+      _SDL_copysignfPtr.asFunction<double Function(double, double)>();
 
   double SDL_cos(
     double x,
@@ -1362,8 +1488,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_cos_ptr = _lookup<ffi.NativeFunction<_c_SDL_cos>>('SDL_cos');
-  late final _dart_SDL_cos _SDL_cos = _SDL_cos_ptr.asFunction<_dart_SDL_cos>();
+  late final _SDL_cosPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_cos');
+  late final _SDL_cos = _SDL_cosPtr.asFunction<double Function(double)>();
 
   double SDL_cosf(
     double x,
@@ -1373,10 +1500,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_cosf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_cosf>>('SDL_cosf');
-  late final _dart_SDL_cosf _SDL_cosf =
-      _SDL_cosf_ptr.asFunction<_dart_SDL_cosf>();
+  late final _SDL_cosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_cosf');
+  late final _SDL_cosf = _SDL_cosfPtr.asFunction<double Function(double)>();
 
   double SDL_exp(
     double x,
@@ -1386,8 +1512,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_exp_ptr = _lookup<ffi.NativeFunction<_c_SDL_exp>>('SDL_exp');
-  late final _dart_SDL_exp _SDL_exp = _SDL_exp_ptr.asFunction<_dart_SDL_exp>();
+  late final _SDL_expPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_exp');
+  late final _SDL_exp = _SDL_expPtr.asFunction<double Function(double)>();
 
   double SDL_expf(
     double x,
@@ -1397,10 +1524,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_expf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_expf>>('SDL_expf');
-  late final _dart_SDL_expf _SDL_expf =
-      _SDL_expf_ptr.asFunction<_dart_SDL_expf>();
+  late final _SDL_expfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_expf');
+  late final _SDL_expf = _SDL_expfPtr.asFunction<double Function(double)>();
 
   double SDL_fabs(
     double x,
@@ -1410,10 +1536,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_fabs_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_fabs>>('SDL_fabs');
-  late final _dart_SDL_fabs _SDL_fabs =
-      _SDL_fabs_ptr.asFunction<_dart_SDL_fabs>();
+  late final _SDL_fabsPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_fabs');
+  late final _SDL_fabs = _SDL_fabsPtr.asFunction<double Function(double)>();
 
   double SDL_fabsf(
     double x,
@@ -1423,10 +1548,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_fabsf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_fabsf>>('SDL_fabsf');
-  late final _dart_SDL_fabsf _SDL_fabsf =
-      _SDL_fabsf_ptr.asFunction<_dart_SDL_fabsf>();
+  late final _SDL_fabsfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_fabsf');
+  late final _SDL_fabsf = _SDL_fabsfPtr.asFunction<double Function(double)>();
 
   double SDL_floor(
     double x,
@@ -1436,10 +1560,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_floor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_floor>>('SDL_floor');
-  late final _dart_SDL_floor _SDL_floor =
-      _SDL_floor_ptr.asFunction<_dart_SDL_floor>();
+  late final _SDL_floorPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_floor');
+  late final _SDL_floor = _SDL_floorPtr.asFunction<double Function(double)>();
 
   double SDL_floorf(
     double x,
@@ -1449,10 +1572,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_floorf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_floorf>>('SDL_floorf');
-  late final _dart_SDL_floorf _SDL_floorf =
-      _SDL_floorf_ptr.asFunction<_dart_SDL_floorf>();
+  late final _SDL_floorfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_floorf');
+  late final _SDL_floorf = _SDL_floorfPtr.asFunction<double Function(double)>();
 
   double SDL_trunc(
     double x,
@@ -1462,10 +1584,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_trunc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_trunc>>('SDL_trunc');
-  late final _dart_SDL_trunc _SDL_trunc =
-      _SDL_trunc_ptr.asFunction<_dart_SDL_trunc>();
+  late final _SDL_truncPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_trunc');
+  late final _SDL_trunc = _SDL_truncPtr.asFunction<double Function(double)>();
 
   double SDL_truncf(
     double x,
@@ -1475,10 +1596,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_truncf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_truncf>>('SDL_truncf');
-  late final _dart_SDL_truncf _SDL_truncf =
-      _SDL_truncf_ptr.asFunction<_dart_SDL_truncf>();
+  late final _SDL_truncfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_truncf');
+  late final _SDL_truncf = _SDL_truncfPtr.asFunction<double Function(double)>();
 
   double SDL_fmod(
     double x,
@@ -1490,10 +1610,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_fmod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_fmod>>('SDL_fmod');
-  late final _dart_SDL_fmod _SDL_fmod =
-      _SDL_fmod_ptr.asFunction<_dart_SDL_fmod>();
+  late final _SDL_fmodPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'SDL_fmod');
+  late final _SDL_fmod =
+      _SDL_fmodPtr.asFunction<double Function(double, double)>();
 
   double SDL_fmodf(
     double x,
@@ -1505,10 +1626,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_fmodf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_fmodf>>('SDL_fmodf');
-  late final _dart_SDL_fmodf _SDL_fmodf =
-      _SDL_fmodf_ptr.asFunction<_dart_SDL_fmodf>();
+  late final _SDL_fmodfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'SDL_fmodf');
+  late final _SDL_fmodf =
+      _SDL_fmodfPtr.asFunction<double Function(double, double)>();
 
   double SDL_log(
     double x,
@@ -1518,8 +1640,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_log_ptr = _lookup<ffi.NativeFunction<_c_SDL_log>>('SDL_log');
-  late final _dart_SDL_log _SDL_log = _SDL_log_ptr.asFunction<_dart_SDL_log>();
+  late final _SDL_logPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_log');
+  late final _SDL_log = _SDL_logPtr.asFunction<double Function(double)>();
 
   double SDL_logf(
     double x,
@@ -1529,10 +1652,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_logf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_logf>>('SDL_logf');
-  late final _dart_SDL_logf _SDL_logf =
-      _SDL_logf_ptr.asFunction<_dart_SDL_logf>();
+  late final _SDL_logfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_logf');
+  late final _SDL_logf = _SDL_logfPtr.asFunction<double Function(double)>();
 
   double SDL_log10(
     double x,
@@ -1542,10 +1664,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_log10_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_log10>>('SDL_log10');
-  late final _dart_SDL_log10 _SDL_log10 =
-      _SDL_log10_ptr.asFunction<_dart_SDL_log10>();
+  late final _SDL_log10Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_log10');
+  late final _SDL_log10 = _SDL_log10Ptr.asFunction<double Function(double)>();
 
   double SDL_log10f(
     double x,
@@ -1555,10 +1676,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_log10f_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_log10f>>('SDL_log10f');
-  late final _dart_SDL_log10f _SDL_log10f =
-      _SDL_log10f_ptr.asFunction<_dart_SDL_log10f>();
+  late final _SDL_log10fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_log10f');
+  late final _SDL_log10f = _SDL_log10fPtr.asFunction<double Function(double)>();
 
   double SDL_pow(
     double x,
@@ -1570,8 +1690,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_pow_ptr = _lookup<ffi.NativeFunction<_c_SDL_pow>>('SDL_pow');
-  late final _dart_SDL_pow _SDL_pow = _SDL_pow_ptr.asFunction<_dart_SDL_pow>();
+  late final _SDL_powPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'SDL_pow');
+  late final _SDL_pow =
+      _SDL_powPtr.asFunction<double Function(double, double)>();
 
   double SDL_powf(
     double x,
@@ -1583,10 +1706,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_powf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_powf>>('SDL_powf');
-  late final _dart_SDL_powf _SDL_powf =
-      _SDL_powf_ptr.asFunction<_dart_SDL_powf>();
+  late final _SDL_powfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'SDL_powf');
+  late final _SDL_powf =
+      _SDL_powfPtr.asFunction<double Function(double, double)>();
 
   double SDL_scalbn(
     double x,
@@ -1598,10 +1722,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_scalbn_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_scalbn>>('SDL_scalbn');
-  late final _dart_SDL_scalbn _SDL_scalbn =
-      _SDL_scalbn_ptr.asFunction<_dart_SDL_scalbn>();
+  late final _SDL_scalbnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int32)>>(
+          'SDL_scalbn');
+  late final _SDL_scalbn =
+      _SDL_scalbnPtr.asFunction<double Function(double, int)>();
 
   double SDL_scalbnf(
     double x,
@@ -1613,10 +1738,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_scalbnf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_scalbnf>>('SDL_scalbnf');
-  late final _dart_SDL_scalbnf _SDL_scalbnf =
-      _SDL_scalbnf_ptr.asFunction<_dart_SDL_scalbnf>();
+  late final _SDL_scalbnfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int32)>>(
+          'SDL_scalbnf');
+  late final _SDL_scalbnf =
+      _SDL_scalbnfPtr.asFunction<double Function(double, int)>();
 
   double SDL_sin(
     double x,
@@ -1626,8 +1752,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_sin_ptr = _lookup<ffi.NativeFunction<_c_SDL_sin>>('SDL_sin');
-  late final _dart_SDL_sin _SDL_sin = _SDL_sin_ptr.asFunction<_dart_SDL_sin>();
+  late final _SDL_sinPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_sin');
+  late final _SDL_sin = _SDL_sinPtr.asFunction<double Function(double)>();
 
   double SDL_sinf(
     double x,
@@ -1637,10 +1764,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_sinf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_sinf>>('SDL_sinf');
-  late final _dart_SDL_sinf _SDL_sinf =
-      _SDL_sinf_ptr.asFunction<_dart_SDL_sinf>();
+  late final _SDL_sinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_sinf');
+  late final _SDL_sinf = _SDL_sinfPtr.asFunction<double Function(double)>();
 
   double SDL_sqrt(
     double x,
@@ -1650,10 +1776,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_sqrt_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_sqrt>>('SDL_sqrt');
-  late final _dart_SDL_sqrt _SDL_sqrt =
-      _SDL_sqrt_ptr.asFunction<_dart_SDL_sqrt>();
+  late final _SDL_sqrtPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_sqrt');
+  late final _SDL_sqrt = _SDL_sqrtPtr.asFunction<double Function(double)>();
 
   double SDL_sqrtf(
     double x,
@@ -1663,10 +1788,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_sqrtf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_sqrtf>>('SDL_sqrtf');
-  late final _dart_SDL_sqrtf _SDL_sqrtf =
-      _SDL_sqrtf_ptr.asFunction<_dart_SDL_sqrtf>();
+  late final _SDL_sqrtfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_sqrtf');
+  late final _SDL_sqrtf = _SDL_sqrtfPtr.asFunction<double Function(double)>();
 
   double SDL_tan(
     double x,
@@ -1676,8 +1800,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_tan_ptr = _lookup<ffi.NativeFunction<_c_SDL_tan>>('SDL_tan');
-  late final _dart_SDL_tan _SDL_tan = _SDL_tan_ptr.asFunction<_dart_SDL_tan>();
+  late final _SDL_tanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('SDL_tan');
+  late final _SDL_tan = _SDL_tanPtr.asFunction<double Function(double)>();
 
   double SDL_tanf(
     double x,
@@ -1687,12 +1812,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_tanf_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_tanf>>('SDL_tanf');
-  late final _dart_SDL_tanf _SDL_tanf =
-      _SDL_tanf_ptr.asFunction<_dart_SDL_tanf>();
+  late final _SDL_tanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('SDL_tanf');
+  late final _SDL_tanf = _SDL_tanfPtr.asFunction<double Function(double)>();
 
-  ffi.Pointer<SDL_iconv_t> SDL_iconv_open(
+  SDL_iconv_t1 SDL_iconv_open(
     ffi.Pointer<ffi.Int8> tocode,
     ffi.Pointer<ffi.Int8> fromcode,
   ) {
@@ -1702,30 +1826,33 @@ class DartSdl {
     );
   }
 
-  late final _SDL_iconv_open_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_iconv_open>>('SDL_iconv_open');
-  late final _dart_SDL_iconv_open _SDL_iconv_open =
-      _SDL_iconv_open_ptr.asFunction<_dart_SDL_iconv_open>();
+  late final _SDL_iconv_openPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_iconv_t1 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_iconv_open');
+  late final _SDL_iconv_open = _SDL_iconv_openPtr.asFunction<
+      SDL_iconv_t1 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int SDL_iconv_close(
-    ffi.Pointer<SDL_iconv_t> cd,
+    SDL_iconv_t1 cd,
   ) {
     return _SDL_iconv_close(
       cd,
     );
   }
 
-  late final _SDL_iconv_close_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_iconv_close>>('SDL_iconv_close');
-  late final _dart_SDL_iconv_close _SDL_iconv_close =
-      _SDL_iconv_close_ptr.asFunction<_dart_SDL_iconv_close>();
+  late final _SDL_iconv_closePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_iconv_t1)>>(
+          'SDL_iconv_close');
+  late final _SDL_iconv_close =
+      _SDL_iconv_closePtr.asFunction<int Function(SDL_iconv_t1)>();
 
   int SDL_iconv(
-    ffi.Pointer<SDL_iconv_t> cd,
+    SDL_iconv_t1 cd,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
-    ffi.Pointer<ffi.Uint64> inbytesleft,
+    ffi.Pointer<size_t> inbytesleft,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
-    ffi.Pointer<ffi.Uint64> outbytesleft,
+    ffi.Pointer<size_t> outbytesleft,
   ) {
     return _SDL_iconv(
       cd,
@@ -1736,10 +1863,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_iconv_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_iconv>>('SDL_iconv');
-  late final _dart_SDL_iconv _SDL_iconv =
-      _SDL_iconv_ptr.asFunction<_dart_SDL_iconv>();
+  late final _SDL_iconvPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(
+              SDL_iconv_t1,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<size_t>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<size_t>)>>('SDL_iconv');
+  late final _SDL_iconv = _SDL_iconvPtr.asFunction<
+      int Function(
+          SDL_iconv_t1,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<size_t>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<size_t>)>();
 
   /// This function converts a string between encodings in one pass, returning a
   /// string that must be freed with SDL_free() or NULL on error.
@@ -1757,10 +1895,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_iconv_string_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_iconv_string>>('SDL_iconv_string');
-  late final _dart_SDL_iconv_string _SDL_iconv_string =
-      _SDL_iconv_string_ptr.asFunction<_dart_SDL_iconv_string>();
+  late final _SDL_iconv_stringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>,
+              size_t)>>('SDL_iconv_string');
+  late final _SDL_iconv_string = _SDL_iconv_stringPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   int SDL_main(
     int argc,
@@ -1772,10 +1916,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_main_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_main>>('SDL_main');
-  late final _dart_SDL_main _SDL_main =
-      _SDL_main_ptr.asFunction<_dart_SDL_main>();
+  late final _SDL_mainPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('SDL_main');
+  late final _SDL_main = _SDL_mainPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   /// This is called by the real SDL main function to let the rest of the
   /// library know that initialization was done properly.
@@ -1786,10 +1932,10 @@ class DartSdl {
     return _SDL_SetMainReady();
   }
 
-  late final _SDL_SetMainReady_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetMainReady>>('SDL_SetMainReady');
-  late final _dart_SDL_SetMainReady _SDL_SetMainReady =
-      _SDL_SetMainReady_ptr.asFunction<_dart_SDL_SetMainReady>();
+  late final _SDL_SetMainReadyPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_SetMainReady');
+  late final _SDL_SetMainReady =
+      _SDL_SetMainReadyPtr.asFunction<void Function()>();
 
   /// This can be called to set the application class at startup
   int SDL_RegisterApp(
@@ -1804,28 +1950,29 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RegisterApp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RegisterApp>>('SDL_RegisterApp');
-  late final _dart_SDL_RegisterApp _SDL_RegisterApp =
-      _SDL_RegisterApp_ptr.asFunction<_dart_SDL_RegisterApp>();
+  late final _SDL_RegisterAppPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, Uint32,
+              ffi.Pointer<ffi.Void>)>>('SDL_RegisterApp');
+  late final _SDL_RegisterApp = _SDL_RegisterAppPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Void>)>();
 
   void SDL_UnregisterApp() {
     return _SDL_UnregisterApp();
   }
 
-  late final _SDL_UnregisterApp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnregisterApp>>('SDL_UnregisterApp');
-  late final _dart_SDL_UnregisterApp _SDL_UnregisterApp =
-      _SDL_UnregisterApp_ptr.asFunction<_dart_SDL_UnregisterApp>();
+  late final _SDL_UnregisterAppPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_UnregisterApp');
+  late final _SDL_UnregisterApp =
+      _SDL_UnregisterAppPtr.asFunction<void Function()>();
 
   void __debugbreak() {
     return ___debugbreak();
   }
 
-  late final ___debugbreak_ptr =
-      _lookup<ffi.NativeFunction<_c___debugbreak>>('__debugbreak');
-  late final _dart___debugbreak ___debugbreak =
-      ___debugbreak_ptr.asFunction<_dart___debugbreak>();
+  late final ___debugbreakPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('__debugbreak');
+  late final ___debugbreak = ___debugbreakPtr.asFunction<void Function()>();
 
   int SDL_ReportAssertion(
     ffi.Pointer<SDL_AssertData> arg0,
@@ -1841,11 +1988,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReportAssertion_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReportAssertion>>(
-          'SDL_ReportAssertion');
-  late final _dart_SDL_ReportAssertion _SDL_ReportAssertion =
-      _SDL_ReportAssertion_ptr.asFunction<_dart_SDL_ReportAssertion>();
+  late final _SDL_ReportAssertionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_AssertData>, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_ReportAssertion');
+  late final _SDL_ReportAssertion = _SDL_ReportAssertionPtr.asFunction<
+      int Function(ffi.Pointer<SDL_AssertData>, ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Int8>, int)>();
 
   /// \brief Set an application-defined assertion handler.
   ///
@@ -1866,7 +2015,7 @@ class DartSdl {
   /// \param handler Callback function, called when an assertion fails.
   /// \param userdata A pointer passed to the callback as-is.
   void SDL_SetAssertionHandler(
-    ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> handler,
+    SDL_AssertionHandler handler,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_SetAssertionHandler(
@@ -1875,11 +2024,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetAssertionHandler_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetAssertionHandler>>(
-          'SDL_SetAssertionHandler');
-  late final _dart_SDL_SetAssertionHandler _SDL_SetAssertionHandler =
-      _SDL_SetAssertionHandler_ptr.asFunction<_dart_SDL_SetAssertionHandler>();
+  late final _SDL_SetAssertionHandlerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(SDL_AssertionHandler,
+              ffi.Pointer<ffi.Void>)>>('SDL_SetAssertionHandler');
+  late final _SDL_SetAssertionHandler = _SDL_SetAssertionHandlerPtr.asFunction<
+      void Function(SDL_AssertionHandler, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Get the default assertion handler.
   ///
@@ -1889,17 +2039,16 @@ class DartSdl {
   /// used to provide a different function.
   ///
   /// \return The default SDL_AssertionHandler that is called when an assert triggers.
-  ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>>
-      SDL_GetDefaultAssertionHandler() {
+  SDL_AssertionHandler SDL_GetDefaultAssertionHandler() {
     return _SDL_GetDefaultAssertionHandler();
   }
 
-  late final _SDL_GetDefaultAssertionHandler_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDefaultAssertionHandler>>(
+  late final _SDL_GetDefaultAssertionHandlerPtr =
+      _lookup<ffi.NativeFunction<SDL_AssertionHandler Function()>>(
           'SDL_GetDefaultAssertionHandler');
-  late final _dart_SDL_GetDefaultAssertionHandler
-      _SDL_GetDefaultAssertionHandler = _SDL_GetDefaultAssertionHandler_ptr
-          .asFunction<_dart_SDL_GetDefaultAssertionHandler>();
+  late final _SDL_GetDefaultAssertionHandler =
+      _SDL_GetDefaultAssertionHandlerPtr.asFunction<
+          SDL_AssertionHandler Function()>();
 
   /// \brief Get the current assertion handler.
   ///
@@ -1914,7 +2063,7 @@ class DartSdl {
   /// If you don't care about this data, it is safe to pass
   /// a NULL pointer to this function to ignore it.
   /// \return The SDL_AssertionHandler that is called when an assert triggers.
-  ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> SDL_GetAssertionHandler(
+  SDL_AssertionHandler SDL_GetAssertionHandler(
     ffi.Pointer<ffi.Pointer<ffi.Void>> puserdata,
   ) {
     return _SDL_GetAssertionHandler(
@@ -1922,11 +2071,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetAssertionHandler_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAssertionHandler>>(
-          'SDL_GetAssertionHandler');
-  late final _dart_SDL_GetAssertionHandler _SDL_GetAssertionHandler =
-      _SDL_GetAssertionHandler_ptr.asFunction<_dart_SDL_GetAssertionHandler>();
+  late final _SDL_GetAssertionHandlerPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_AssertionHandler Function(
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('SDL_GetAssertionHandler');
+  late final _SDL_GetAssertionHandler = _SDL_GetAssertionHandlerPtr.asFunction<
+      SDL_AssertionHandler Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   /// \brief Get a list of all assertion failures.
   ///
@@ -1952,11 +2102,11 @@ class DartSdl {
     return _SDL_GetAssertionReport();
   }
 
-  late final _SDL_GetAssertionReport_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAssertionReport>>(
+  late final _SDL_GetAssertionReportPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_AssertData> Function()>>(
           'SDL_GetAssertionReport');
-  late final _dart_SDL_GetAssertionReport _SDL_GetAssertionReport =
-      _SDL_GetAssertionReport_ptr.asFunction<_dart_SDL_GetAssertionReport>();
+  late final _SDL_GetAssertionReport = _SDL_GetAssertionReportPtr.asFunction<
+      ffi.Pointer<SDL_AssertData> Function()>();
 
   /// \brief Reset the list of all assertion failures.
   ///
@@ -1967,12 +2117,11 @@ class DartSdl {
     return _SDL_ResetAssertionReport();
   }
 
-  late final _SDL_ResetAssertionReport_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ResetAssertionReport>>(
+  late final _SDL_ResetAssertionReportPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_ResetAssertionReport');
-  late final _dart_SDL_ResetAssertionReport _SDL_ResetAssertionReport =
-      _SDL_ResetAssertionReport_ptr.asFunction<
-          _dart_SDL_ResetAssertionReport>();
+  late final _SDL_ResetAssertionReport =
+      _SDL_ResetAssertionReportPtr.asFunction<void Function()>();
 
   /// \brief Try to lock a spin lock by setting it to a non-zero value.
   ///
@@ -1980,49 +2129,52 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if the lock succeeded, SDL_FALSE if the lock is already held.
   int SDL_AtomicTryLock(
-    ffi.Pointer<ffi.Int32> lock,
+    ffi.Pointer<SDL_SpinLock> lock,
   ) {
     return _SDL_AtomicTryLock(
       lock,
     );
   }
 
-  late final _SDL_AtomicTryLock_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicTryLock>>('SDL_AtomicTryLock');
-  late final _dart_SDL_AtomicTryLock _SDL_AtomicTryLock =
-      _SDL_AtomicTryLock_ptr.asFunction<_dart_SDL_AtomicTryLock>();
+  late final _SDL_AtomicTryLockPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_SpinLock>)>>(
+      'SDL_AtomicTryLock');
+  late final _SDL_AtomicTryLock = _SDL_AtomicTryLockPtr.asFunction<
+      int Function(ffi.Pointer<SDL_SpinLock>)>();
 
   /// \brief Lock a spin lock by setting it to a non-zero value.
   ///
   /// \param lock Points to the lock.
   void SDL_AtomicLock(
-    ffi.Pointer<ffi.Int32> lock,
+    ffi.Pointer<SDL_SpinLock> lock,
   ) {
     return _SDL_AtomicLock(
       lock,
     );
   }
 
-  late final _SDL_AtomicLock_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicLock>>('SDL_AtomicLock');
-  late final _dart_SDL_AtomicLock _SDL_AtomicLock =
-      _SDL_AtomicLock_ptr.asFunction<_dart_SDL_AtomicLock>();
+  late final _SDL_AtomicLockPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_SpinLock>)>>(
+          'SDL_AtomicLock');
+  late final _SDL_AtomicLock =
+      _SDL_AtomicLockPtr.asFunction<void Function(ffi.Pointer<SDL_SpinLock>)>();
 
   /// \brief Unlock a spin lock by setting it to 0. Always returns immediately
   ///
   /// \param lock Points to the lock.
   void SDL_AtomicUnlock(
-    ffi.Pointer<ffi.Int32> lock,
+    ffi.Pointer<SDL_SpinLock> lock,
   ) {
     return _SDL_AtomicUnlock(
       lock,
     );
   }
 
-  late final _SDL_AtomicUnlock_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicUnlock>>('SDL_AtomicUnlock');
-  late final _dart_SDL_AtomicUnlock _SDL_AtomicUnlock =
-      _SDL_AtomicUnlock_ptr.asFunction<_dart_SDL_AtomicUnlock>();
+  late final _SDL_AtomicUnlockPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_SpinLock>)>>(
+          'SDL_AtomicUnlock');
+  late final _SDL_AtomicUnlock = _SDL_AtomicUnlockPtr.asFunction<
+      void Function(ffi.Pointer<SDL_SpinLock>)>();
 
   /// Memory barriers are designed to prevent reads and writes from being
   /// reordered by the compiler and being seen out of order on multi-core CPUs.
@@ -2045,23 +2197,21 @@ class DartSdl {
     return _SDL_MemoryBarrierReleaseFunction();
   }
 
-  late final _SDL_MemoryBarrierReleaseFunction_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MemoryBarrierReleaseFunction>>(
+  late final _SDL_MemoryBarrierReleaseFunctionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_MemoryBarrierReleaseFunction');
-  late final _dart_SDL_MemoryBarrierReleaseFunction
-      _SDL_MemoryBarrierReleaseFunction = _SDL_MemoryBarrierReleaseFunction_ptr
-          .asFunction<_dart_SDL_MemoryBarrierReleaseFunction>();
+  late final _SDL_MemoryBarrierReleaseFunction =
+      _SDL_MemoryBarrierReleaseFunctionPtr.asFunction<void Function()>();
 
   void SDL_MemoryBarrierAcquireFunction() {
     return _SDL_MemoryBarrierAcquireFunction();
   }
 
-  late final _SDL_MemoryBarrierAcquireFunction_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MemoryBarrierAcquireFunction>>(
+  late final _SDL_MemoryBarrierAcquireFunctionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_MemoryBarrierAcquireFunction');
-  late final _dart_SDL_MemoryBarrierAcquireFunction
-      _SDL_MemoryBarrierAcquireFunction = _SDL_MemoryBarrierAcquireFunction_ptr
-          .asFunction<_dart_SDL_MemoryBarrierAcquireFunction>();
+  late final _SDL_MemoryBarrierAcquireFunction =
+      _SDL_MemoryBarrierAcquireFunctionPtr.asFunction<void Function()>();
 
   /// \brief Set an atomic variable to a new value if it is currently an old value.
   ///
@@ -2080,10 +2230,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AtomicCAS_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicCAS>>('SDL_AtomicCAS');
-  late final _dart_SDL_AtomicCAS _SDL_AtomicCAS =
-      _SDL_AtomicCAS_ptr.asFunction<_dart_SDL_AtomicCAS>();
+  late final _SDL_AtomicCASPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_atomic_t>, ffi.Int32,
+              ffi.Int32)>>('SDL_AtomicCAS');
+  late final _SDL_AtomicCAS = _SDL_AtomicCASPtr.asFunction<
+      int Function(ffi.Pointer<SDL_atomic_t>, int, int)>();
 
   /// \brief Set an atomic variable to a value.
   ///
@@ -2098,10 +2250,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AtomicSet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicSet>>('SDL_AtomicSet');
-  late final _dart_SDL_AtomicSet _SDL_AtomicSet =
-      _SDL_AtomicSet_ptr.asFunction<_dart_SDL_AtomicSet>();
+  late final _SDL_AtomicSetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_atomic_t>, ffi.Int32)>>('SDL_AtomicSet');
+  late final _SDL_AtomicSet = _SDL_AtomicSetPtr.asFunction<
+      int Function(ffi.Pointer<SDL_atomic_t>, int)>();
 
   /// \brief Get the value of an atomic variable
   int SDL_AtomicGet(
@@ -2112,10 +2266,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AtomicGet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicGet>>('SDL_AtomicGet');
-  late final _dart_SDL_AtomicGet _SDL_AtomicGet =
-      _SDL_AtomicGet_ptr.asFunction<_dart_SDL_AtomicGet>();
+  late final _SDL_AtomicGetPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_atomic_t>)>>(
+      'SDL_AtomicGet');
+  late final _SDL_AtomicGet =
+      _SDL_AtomicGetPtr.asFunction<int Function(ffi.Pointer<SDL_atomic_t>)>();
 
   /// \brief Add to an atomic variable.
   ///
@@ -2132,10 +2287,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AtomicAdd_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicAdd>>('SDL_AtomicAdd');
-  late final _dart_SDL_AtomicAdd _SDL_AtomicAdd =
-      _SDL_AtomicAdd_ptr.asFunction<_dart_SDL_AtomicAdd>();
+  late final _SDL_AtomicAddPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_atomic_t>, ffi.Int32)>>('SDL_AtomicAdd');
+  late final _SDL_AtomicAdd = _SDL_AtomicAddPtr.asFunction<
+      int Function(ffi.Pointer<SDL_atomic_t>, int)>();
 
   /// \brief Set a pointer to a new value if it is currently an old value.
   ///
@@ -2147,17 +2304,22 @@ class DartSdl {
     ffi.Pointer<ffi.Void> oldval,
     ffi.Pointer<ffi.Void> newval,
   ) {
-    return _SDL_AtomicCASPtr(
+    return _SDL_AtomicCASPtr1(
       a,
       oldval,
       newval,
     );
   }
 
-  late final _SDL_AtomicCASPtr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicCASPtr>>('SDL_AtomicCASPtr');
-  late final _dart_SDL_AtomicCASPtr _SDL_AtomicCASPtr =
-      _SDL_AtomicCASPtr_ptr.asFunction<_dart_SDL_AtomicCASPtr>();
+  late final _SDL_AtomicCASPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>)>>('SDL_AtomicCASPtr');
+  late final _SDL_AtomicCASPtr1 = _SDL_AtomicCASPtrPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Void>>, ffi.Pointer<ffi.Void>,
+          ffi.Pointer<ffi.Void>)>();
 
   /// \brief Set a pointer to a value atomically.
   ///
@@ -2166,30 +2328,35 @@ class DartSdl {
     ffi.Pointer<ffi.Pointer<ffi.Void>> a,
     ffi.Pointer<ffi.Void> v,
   ) {
-    return _SDL_AtomicSetPtr(
+    return _SDL_AtomicSetPtr1(
       a,
       v,
     );
   }
 
-  late final _SDL_AtomicSetPtr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicSetPtr>>('SDL_AtomicSetPtr');
-  late final _dart_SDL_AtomicSetPtr _SDL_AtomicSetPtr =
-      _SDL_AtomicSetPtr_ptr.asFunction<_dart_SDL_AtomicSetPtr>();
+  late final _SDL_AtomicSetPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Void>)>>('SDL_AtomicSetPtr');
+  late final _SDL_AtomicSetPtr1 = _SDL_AtomicSetPtrPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Pointer<ffi.Void>>, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Get the value of a pointer atomically.
   ffi.Pointer<ffi.Void> SDL_AtomicGetPtr(
     ffi.Pointer<ffi.Pointer<ffi.Void>> a,
   ) {
-    return _SDL_AtomicGetPtr(
+    return _SDL_AtomicGetPtr1(
       a,
     );
   }
 
-  late final _SDL_AtomicGetPtr_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AtomicGetPtr>>('SDL_AtomicGetPtr');
-  late final _dart_SDL_AtomicGetPtr _SDL_AtomicGetPtr =
-      _SDL_AtomicGetPtr_ptr.asFunction<_dart_SDL_AtomicGetPtr>();
+  late final _SDL_AtomicGetPtrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('SDL_AtomicGetPtr');
+  late final _SDL_AtomicGetPtr1 = _SDL_AtomicGetPtrPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   /// \brief Set the error message for the current thread
   ///
@@ -2202,10 +2369,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetError_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetError>>('SDL_SetError');
-  late final _dart_SDL_SetError _SDL_SetError =
-      _SDL_SetError_ptr.asFunction<_dart_SDL_SetError>();
+  late final _SDL_SetErrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_SetError');
+  late final _SDL_SetError =
+      _SDL_SetErrorPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get the last error message that was set
   ///
@@ -2220,10 +2388,11 @@ class DartSdl {
     return _SDL_GetError();
   }
 
-  late final _SDL_GetError_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetError>>('SDL_GetError');
-  late final _dart_SDL_GetError _SDL_GetError =
-      _SDL_GetError_ptr.asFunction<_dart_SDL_GetError>();
+  late final _SDL_GetErrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+          'SDL_GetError');
+  late final _SDL_GetError =
+      _SDL_GetErrorPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// \brief Get the last error message that was set for the current thread
   ///
@@ -2245,20 +2414,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetErrorMsg_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetErrorMsg>>('SDL_GetErrorMsg');
-  late final _dart_SDL_GetErrorMsg _SDL_GetErrorMsg =
-      _SDL_GetErrorMsg_ptr.asFunction<_dart_SDL_GetErrorMsg>();
+  late final _SDL_GetErrorMsgPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_GetErrorMsg');
+  late final _SDL_GetErrorMsg = _SDL_GetErrorMsgPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>, int)>();
 
   /// \brief Clear the error message for the current thread
   void SDL_ClearError() {
     return _SDL_ClearError();
   }
 
-  late final _SDL_ClearError_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ClearError>>('SDL_ClearError');
-  late final _dart_SDL_ClearError _SDL_ClearError =
-      _SDL_ClearError_ptr.asFunction<_dart_SDL_ClearError>();
+  late final _SDL_ClearErrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_ClearError');
+  late final _SDL_ClearError = _SDL_ClearErrorPtr.asFunction<void Function()>();
 
   int SDL_Error(
     int code,
@@ -2268,20 +2438,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Error_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Error>>('SDL_Error');
-  late final _dart_SDL_Error _SDL_Error =
-      _SDL_Error_ptr.asFunction<_dart_SDL_Error>();
+  late final _SDL_ErrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('SDL_Error');
+  late final _SDL_Error = _SDL_ErrorPtr.asFunction<int Function(int)>();
 
   /// Create a mutex, initialized unlocked.
   ffi.Pointer<SDL_mutex> SDL_CreateMutex() {
     return _SDL_CreateMutex();
   }
 
-  late final _SDL_CreateMutex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateMutex>>('SDL_CreateMutex');
-  late final _dart_SDL_CreateMutex _SDL_CreateMutex =
-      _SDL_CreateMutex_ptr.asFunction<_dart_SDL_CreateMutex>();
+  late final _SDL_CreateMutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_mutex> Function()>>(
+          'SDL_CreateMutex');
+  late final _SDL_CreateMutex =
+      _SDL_CreateMutexPtr.asFunction<ffi.Pointer<SDL_mutex> Function()>();
 
   int SDL_LockMutex(
     ffi.Pointer<SDL_mutex> mutex,
@@ -2291,10 +2461,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LockMutex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockMutex>>('SDL_LockMutex');
-  late final _dart_SDL_LockMutex _SDL_LockMutex =
-      _SDL_LockMutex_ptr.asFunction<_dart_SDL_LockMutex>();
+  late final _SDL_LockMutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_mutex>)>>(
+          'SDL_LockMutex');
+  late final _SDL_LockMutex =
+      _SDL_LockMutexPtr.asFunction<int Function(ffi.Pointer<SDL_mutex>)>();
 
   /// Try to lock the mutex
   ///
@@ -2307,10 +2478,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_TryLockMutex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_TryLockMutex>>('SDL_TryLockMutex');
-  late final _dart_SDL_TryLockMutex _SDL_TryLockMutex =
-      _SDL_TryLockMutex_ptr.asFunction<_dart_SDL_TryLockMutex>();
+  late final _SDL_TryLockMutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_mutex>)>>(
+          'SDL_TryLockMutex');
+  late final _SDL_TryLockMutex =
+      _SDL_TryLockMutexPtr.asFunction<int Function(ffi.Pointer<SDL_mutex>)>();
 
   int SDL_UnlockMutex(
     ffi.Pointer<SDL_mutex> mutex,
@@ -2320,10 +2492,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnlockMutex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockMutex>>('SDL_UnlockMutex');
-  late final _dart_SDL_UnlockMutex _SDL_UnlockMutex =
-      _SDL_UnlockMutex_ptr.asFunction<_dart_SDL_UnlockMutex>();
+  late final _SDL_UnlockMutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_mutex>)>>(
+          'SDL_UnlockMutex');
+  late final _SDL_UnlockMutex =
+      _SDL_UnlockMutexPtr.asFunction<int Function(ffi.Pointer<SDL_mutex>)>();
 
   /// Destroy a mutex.
   void SDL_DestroyMutex(
@@ -2334,13 +2507,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DestroyMutex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroyMutex>>('SDL_DestroyMutex');
-  late final _dart_SDL_DestroyMutex _SDL_DestroyMutex =
-      _SDL_DestroyMutex_ptr.asFunction<_dart_SDL_DestroyMutex>();
+  late final _SDL_DestroyMutexPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_mutex>)>>(
+          'SDL_DestroyMutex');
+  late final _SDL_DestroyMutex =
+      _SDL_DestroyMutexPtr.asFunction<void Function(ffi.Pointer<SDL_mutex>)>();
 
   /// Create a semaphore, initialized with value, returns NULL on failure.
-  ffi.Pointer<SDL_semaphore> SDL_CreateSemaphore(
+  ffi.Pointer<SDL_sem> SDL_CreateSemaphore(
     int initial_value,
   ) {
     return _SDL_CreateSemaphore(
@@ -2348,59 +2522,61 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateSemaphore_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateSemaphore>>(
+  late final _SDL_CreateSemaphorePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_sem> Function(Uint32)>>(
           'SDL_CreateSemaphore');
-  late final _dart_SDL_CreateSemaphore _SDL_CreateSemaphore =
-      _SDL_CreateSemaphore_ptr.asFunction<_dart_SDL_CreateSemaphore>();
+  late final _SDL_CreateSemaphore =
+      _SDL_CreateSemaphorePtr.asFunction<ffi.Pointer<SDL_sem> Function(int)>();
 
   /// Destroy a semaphore.
   void SDL_DestroySemaphore(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
   ) {
     return _SDL_DestroySemaphore(
       sem,
     );
   }
 
-  late final _SDL_DestroySemaphore_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroySemaphore>>(
+  late final _SDL_DestroySemaphorePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_sem>)>>(
           'SDL_DestroySemaphore');
-  late final _dart_SDL_DestroySemaphore _SDL_DestroySemaphore =
-      _SDL_DestroySemaphore_ptr.asFunction<_dart_SDL_DestroySemaphore>();
+  late final _SDL_DestroySemaphore = _SDL_DestroySemaphorePtr.asFunction<
+      void Function(ffi.Pointer<SDL_sem>)>();
 
   /// This function suspends the calling thread until the semaphore pointed
   /// to by \c sem has a positive count. It then atomically decreases the
   /// semaphore count.
   int SDL_SemWait(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
   ) {
     return _SDL_SemWait(
       sem,
     );
   }
 
-  late final _SDL_SemWait_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SemWait>>('SDL_SemWait');
-  late final _dart_SDL_SemWait _SDL_SemWait =
-      _SDL_SemWait_ptr.asFunction<_dart_SDL_SemWait>();
+  late final _SDL_SemWaitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_sem>)>>(
+          'SDL_SemWait');
+  late final _SDL_SemWait =
+      _SDL_SemWaitPtr.asFunction<int Function(ffi.Pointer<SDL_sem>)>();
 
   /// Non-blocking variant of SDL_SemWait().
   ///
   /// \return 0 if the wait succeeds, ::SDL_MUTEX_TIMEDOUT if the wait would
   /// block, and -1 on error.
   int SDL_SemTryWait(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
   ) {
     return _SDL_SemTryWait(
       sem,
     );
   }
 
-  late final _SDL_SemTryWait_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SemTryWait>>('SDL_SemTryWait');
-  late final _dart_SDL_SemTryWait _SDL_SemTryWait =
-      _SDL_SemTryWait_ptr.asFunction<_dart_SDL_SemTryWait>();
+  late final _SDL_SemTryWaitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_sem>)>>(
+          'SDL_SemTryWait');
+  late final _SDL_SemTryWait =
+      _SDL_SemTryWaitPtr.asFunction<int Function(ffi.Pointer<SDL_sem>)>();
 
   /// Variant of SDL_SemWait() with a timeout in milliseconds.
   ///
@@ -2410,7 +2586,7 @@ class DartSdl {
   /// \warning On some platforms this function is implemented by looping with a
   /// delay of 1 ms, and so should be avoided if possible.
   int SDL_SemWaitTimeout(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
     int ms,
   ) {
     return _SDL_SemWaitTimeout(
@@ -2419,40 +2595,43 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SemWaitTimeout_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SemWaitTimeout>>('SDL_SemWaitTimeout');
-  late final _dart_SDL_SemWaitTimeout _SDL_SemWaitTimeout =
-      _SDL_SemWaitTimeout_ptr.asFunction<_dart_SDL_SemWaitTimeout>();
+  late final _SDL_SemWaitTimeoutPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_sem>, Uint32)>>(
+      'SDL_SemWaitTimeout');
+  late final _SDL_SemWaitTimeout = _SDL_SemWaitTimeoutPtr.asFunction<
+      int Function(ffi.Pointer<SDL_sem>, int)>();
 
   /// Atomically increases the semaphore's count (not blocking).
   ///
   /// \return 0, or -1 on error.
   int SDL_SemPost(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
   ) {
     return _SDL_SemPost(
       sem,
     );
   }
 
-  late final _SDL_SemPost_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SemPost>>('SDL_SemPost');
-  late final _dart_SDL_SemPost _SDL_SemPost =
-      _SDL_SemPost_ptr.asFunction<_dart_SDL_SemPost>();
+  late final _SDL_SemPostPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_sem>)>>(
+          'SDL_SemPost');
+  late final _SDL_SemPost =
+      _SDL_SemPostPtr.asFunction<int Function(ffi.Pointer<SDL_sem>)>();
 
   /// Returns the current count of the semaphore.
   int SDL_SemValue(
-    ffi.Pointer<SDL_semaphore> sem,
+    ffi.Pointer<SDL_sem> sem,
   ) {
     return _SDL_SemValue(
       sem,
     );
   }
 
-  late final _SDL_SemValue_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SemValue>>('SDL_SemValue');
-  late final _dart_SDL_SemValue _SDL_SemValue =
-      _SDL_SemValue_ptr.asFunction<_dart_SDL_SemValue>();
+  late final _SDL_SemValuePtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_sem>)>>(
+          'SDL_SemValue');
+  late final _SDL_SemValue =
+      _SDL_SemValuePtr.asFunction<int Function(ffi.Pointer<SDL_sem>)>();
 
   /// Create a condition variable.
   ///
@@ -2484,10 +2663,11 @@ class DartSdl {
     return _SDL_CreateCond();
   }
 
-  late final _SDL_CreateCond_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateCond>>('SDL_CreateCond');
-  late final _dart_SDL_CreateCond _SDL_CreateCond =
-      _SDL_CreateCond_ptr.asFunction<_dart_SDL_CreateCond>();
+  late final _SDL_CreateCondPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_cond> Function()>>(
+          'SDL_CreateCond');
+  late final _SDL_CreateCond =
+      _SDL_CreateCondPtr.asFunction<ffi.Pointer<SDL_cond> Function()>();
 
   /// Destroy a condition variable.
   void SDL_DestroyCond(
@@ -2498,10 +2678,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DestroyCond_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroyCond>>('SDL_DestroyCond');
-  late final _dart_SDL_DestroyCond _SDL_DestroyCond =
-      _SDL_DestroyCond_ptr.asFunction<_dart_SDL_DestroyCond>();
+  late final _SDL_DestroyCondPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_cond>)>>(
+          'SDL_DestroyCond');
+  late final _SDL_DestroyCond =
+      _SDL_DestroyCondPtr.asFunction<void Function(ffi.Pointer<SDL_cond>)>();
 
   /// Restart one of the threads that are waiting on the condition variable.
   ///
@@ -2514,10 +2695,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CondSignal_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CondSignal>>('SDL_CondSignal');
-  late final _dart_SDL_CondSignal _SDL_CondSignal =
-      _SDL_CondSignal_ptr.asFunction<_dart_SDL_CondSignal>();
+  late final _SDL_CondSignalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_cond>)>>(
+          'SDL_CondSignal');
+  late final _SDL_CondSignal =
+      _SDL_CondSignalPtr.asFunction<int Function(ffi.Pointer<SDL_cond>)>();
 
   /// Restart all threads that are waiting on the condition variable.
   ///
@@ -2530,10 +2712,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CondBroadcast_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CondBroadcast>>('SDL_CondBroadcast');
-  late final _dart_SDL_CondBroadcast _SDL_CondBroadcast =
-      _SDL_CondBroadcast_ptr.asFunction<_dart_SDL_CondBroadcast>();
+  late final _SDL_CondBroadcastPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_cond>)>>(
+          'SDL_CondBroadcast');
+  late final _SDL_CondBroadcast =
+      _SDL_CondBroadcastPtr.asFunction<int Function(ffi.Pointer<SDL_cond>)>();
 
   /// Wait on the condition variable, unlocking the provided mutex.
   ///
@@ -2552,10 +2735,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CondWait_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CondWait>>('SDL_CondWait');
-  late final _dart_SDL_CondWait _SDL_CondWait =
-      _SDL_CondWait_ptr.asFunction<_dart_SDL_CondWait>();
+  late final _SDL_CondWaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_cond>, ffi.Pointer<SDL_mutex>)>>('SDL_CondWait');
+  late final _SDL_CondWait = _SDL_CondWaitPtr.asFunction<
+      int Function(ffi.Pointer<SDL_cond>, ffi.Pointer<SDL_mutex>)>();
 
   /// Waits for at most \c ms milliseconds, and returns 0 if the condition
   /// variable is signaled, ::SDL_MUTEX_TIMEDOUT if the condition is not
@@ -2575,11 +2760,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CondWaitTimeout_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CondWaitTimeout>>(
-          'SDL_CondWaitTimeout');
-  late final _dart_SDL_CondWaitTimeout _SDL_CondWaitTimeout =
-      _SDL_CondWaitTimeout_ptr.asFunction<_dart_SDL_CondWaitTimeout>();
+  late final _SDL_CondWaitTimeoutPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_cond>, ffi.Pointer<SDL_mutex>,
+              Uint32)>>('SDL_CondWaitTimeout');
+  late final _SDL_CondWaitTimeout = _SDL_CondWaitTimeoutPtr.asFunction<
+      int Function(ffi.Pointer<SDL_cond>, ffi.Pointer<SDL_mutex>, int)>();
 
   late final ffi.Pointer<ffi.Double> __HUGE = _lookup<ffi.Double>('_HUGE');
 
@@ -2595,10 +2781,9 @@ class DartSdl {
     );
   }
 
-  late final __fperrraise_ptr =
-      _lookup<ffi.NativeFunction<_c__fperrraise>>('_fperrraise');
-  late final _dart__fperrraise __fperrraise =
-      __fperrraise_ptr.asFunction<_dart__fperrraise>();
+  late final __fperrraisePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('_fperrraise');
+  late final __fperrraise = __fperrraisePtr.asFunction<void Function(int)>();
 
   int _dclass(
     double _X,
@@ -2608,8 +2793,9 @@ class DartSdl {
     );
   }
 
-  late final __dclass_ptr = _lookup<ffi.NativeFunction<_c__dclass>>('_dclass');
-  late final _dart__dclass __dclass = __dclass_ptr.asFunction<_dart__dclass>();
+  late final __dclassPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Double)>>('_dclass');
+  late final __dclass = __dclassPtr.asFunction<int Function(double)>();
 
   int _fdclass(
     double _X,
@@ -2619,10 +2805,9 @@ class DartSdl {
     );
   }
 
-  late final __fdclass_ptr =
-      _lookup<ffi.NativeFunction<_c__fdclass>>('_fdclass');
-  late final _dart__fdclass __fdclass =
-      __fdclass_ptr.asFunction<_dart__fdclass>();
+  late final __fdclassPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Float)>>('_fdclass');
+  late final __fdclass = __fdclassPtr.asFunction<int Function(double)>();
 
   int _dsign(
     double _X,
@@ -2632,8 +2817,9 @@ class DartSdl {
     );
   }
 
-  late final __dsign_ptr = _lookup<ffi.NativeFunction<_c__dsign>>('_dsign');
-  late final _dart__dsign __dsign = __dsign_ptr.asFunction<_dart__dsign>();
+  late final __dsignPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Double)>>('_dsign');
+  late final __dsign = __dsignPtr.asFunction<int Function(double)>();
 
   int _fdsign(
     double _X,
@@ -2643,8 +2829,9 @@ class DartSdl {
     );
   }
 
-  late final __fdsign_ptr = _lookup<ffi.NativeFunction<_c__fdsign>>('_fdsign');
-  late final _dart__fdsign __fdsign = __fdsign_ptr.asFunction<_dart__fdsign>();
+  late final __fdsignPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float)>>('_fdsign');
+  late final __fdsign = __fdsignPtr.asFunction<int Function(double)>();
 
   int _dpcomp(
     double _X,
@@ -2656,8 +2843,10 @@ class DartSdl {
     );
   }
 
-  late final __dpcomp_ptr = _lookup<ffi.NativeFunction<_c__dpcomp>>('_dpcomp');
-  late final _dart__dpcomp __dpcomp = __dpcomp_ptr.asFunction<_dart__dpcomp>();
+  late final __dpcompPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Double, ffi.Double)>>(
+          '_dpcomp');
+  late final __dpcomp = __dpcompPtr.asFunction<int Function(double, double)>();
 
   int _fdpcomp(
     double _X,
@@ -2669,10 +2858,11 @@ class DartSdl {
     );
   }
 
-  late final __fdpcomp_ptr =
-      _lookup<ffi.NativeFunction<_c__fdpcomp>>('_fdpcomp');
-  late final _dart__fdpcomp __fdpcomp =
-      __fdpcomp_ptr.asFunction<_dart__fdpcomp>();
+  late final __fdpcompPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float, ffi.Float)>>(
+          '_fdpcomp');
+  late final __fdpcomp =
+      __fdpcompPtr.asFunction<int Function(double, double)>();
 
   int _dtest(
     ffi.Pointer<ffi.Double> _Px,
@@ -2682,8 +2872,11 @@ class DartSdl {
     );
   }
 
-  late final __dtest_ptr = _lookup<ffi.NativeFunction<_c__dtest>>('_dtest');
-  late final _dart__dtest __dtest = __dtest_ptr.asFunction<_dart__dtest>();
+  late final __dtestPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Pointer<ffi.Double>)>>(
+          '_dtest');
+  late final __dtest =
+      __dtestPtr.asFunction<int Function(ffi.Pointer<ffi.Double>)>();
 
   int _fdtest(
     ffi.Pointer<ffi.Float> _Px,
@@ -2693,8 +2886,11 @@ class DartSdl {
     );
   }
 
-  late final __fdtest_ptr = _lookup<ffi.NativeFunction<_c__fdtest>>('_fdtest');
-  late final _dart__fdtest __fdtest = __fdtest_ptr.asFunction<_dart__fdtest>();
+  late final __fdtestPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Pointer<ffi.Float>)>>(
+          '_fdtest');
+  late final __fdtest =
+      __fdtestPtr.asFunction<int Function(ffi.Pointer<ffi.Float>)>();
 
   int _d_int(
     ffi.Pointer<ffi.Double> _Px,
@@ -2706,8 +2902,11 @@ class DartSdl {
     );
   }
 
-  late final __d_int_ptr = _lookup<ffi.NativeFunction<_c__d_int>>('_d_int');
-  late final _dart__d_int __d_int = __d_int_ptr.asFunction<_dart__d_int>();
+  late final __d_intPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(ffi.Pointer<ffi.Double>, ffi.Int16)>>('_d_int');
+  late final __d_int =
+      __d_intPtr.asFunction<int Function(ffi.Pointer<ffi.Double>, int)>();
 
   int _fd_int(
     ffi.Pointer<ffi.Float> _Px,
@@ -2719,8 +2918,11 @@ class DartSdl {
     );
   }
 
-  late final __fd_int_ptr = _lookup<ffi.NativeFunction<_c__fd_int>>('_fd_int');
-  late final _dart__fd_int __fd_int = __fd_int_ptr.asFunction<_dart__fd_int>();
+  late final __fd_intPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(ffi.Pointer<ffi.Float>, ffi.Int16)>>('_fd_int');
+  late final __fd_int =
+      __fd_intPtr.asFunction<int Function(ffi.Pointer<ffi.Float>, int)>();
 
   int _dscale(
     ffi.Pointer<ffi.Double> _Px,
@@ -2732,8 +2934,11 @@ class DartSdl {
     );
   }
 
-  late final __dscale_ptr = _lookup<ffi.NativeFunction<_c__dscale>>('_dscale');
-  late final _dart__dscale __dscale = __dscale_ptr.asFunction<_dart__dscale>();
+  late final __dscalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(ffi.Pointer<ffi.Double>, ffi.Int64)>>('_dscale');
+  late final __dscale =
+      __dscalePtr.asFunction<int Function(ffi.Pointer<ffi.Double>, int)>();
 
   int _fdscale(
     ffi.Pointer<ffi.Float> _Px,
@@ -2745,10 +2950,11 @@ class DartSdl {
     );
   }
 
-  late final __fdscale_ptr =
-      _lookup<ffi.NativeFunction<_c__fdscale>>('_fdscale');
-  late final _dart__fdscale __fdscale =
-      __fdscale_ptr.asFunction<_dart__fdscale>();
+  late final __fdscalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(ffi.Pointer<ffi.Float>, ffi.Int64)>>('_fdscale');
+  late final __fdscale =
+      __fdscalePtr.asFunction<int Function(ffi.Pointer<ffi.Float>, int)>();
 
   int _dunscale(
     ffi.Pointer<ffi.Int16> _Pex,
@@ -2760,10 +2966,12 @@ class DartSdl {
     );
   }
 
-  late final __dunscale_ptr =
-      _lookup<ffi.NativeFunction<_c__dunscale>>('_dunscale');
-  late final _dart__dunscale __dunscale =
-      __dunscale_ptr.asFunction<_dart__dunscale>();
+  late final __dunscalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(
+              ffi.Pointer<ffi.Int16>, ffi.Pointer<ffi.Double>)>>('_dunscale');
+  late final __dunscale = __dunscalePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int16>, ffi.Pointer<ffi.Double>)>();
 
   int _fdunscale(
     ffi.Pointer<ffi.Int16> _Pex,
@@ -2775,10 +2983,12 @@ class DartSdl {
     );
   }
 
-  late final __fdunscale_ptr =
-      _lookup<ffi.NativeFunction<_c__fdunscale>>('_fdunscale');
-  late final _dart__fdunscale __fdunscale =
-      __fdunscale_ptr.asFunction<_dart__fdunscale>();
+  late final __fdunscalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(
+              ffi.Pointer<ffi.Int16>, ffi.Pointer<ffi.Float>)>>('_fdunscale');
+  late final __fdunscale = __fdunscalePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int16>, ffi.Pointer<ffi.Float>)>();
 
   int _dexp(
     ffi.Pointer<ffi.Double> _Px,
@@ -2792,8 +3002,12 @@ class DartSdl {
     );
   }
 
-  late final __dexp_ptr = _lookup<ffi.NativeFunction<_c__dexp>>('_dexp');
-  late final _dart__dexp __dexp = __dexp_ptr.asFunction<_dart__dexp>();
+  late final __dexpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(
+              ffi.Pointer<ffi.Double>, ffi.Double, ffi.Int64)>>('_dexp');
+  late final __dexp = __dexpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Double>, double, int)>();
 
   int _fdexp(
     ffi.Pointer<ffi.Float> _Px,
@@ -2807,8 +3021,12 @@ class DartSdl {
     );
   }
 
-  late final __fdexp_ptr = _lookup<ffi.NativeFunction<_c__fdexp>>('_fdexp');
-  late final _dart__fdexp __fdexp = __fdexp_ptr.asFunction<_dart__fdexp>();
+  late final __fdexpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int16 Function(
+              ffi.Pointer<ffi.Float>, ffi.Float, ffi.Int64)>>('_fdexp');
+  late final __fdexp = __fdexpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Float>, double, int)>();
 
   int _dnorm(
     ffi.Pointer<ffi.Uint16> _Ps,
@@ -2818,8 +3036,11 @@ class DartSdl {
     );
   }
 
-  late final __dnorm_ptr = _lookup<ffi.NativeFunction<_c__dnorm>>('_dnorm');
-  late final _dart__dnorm __dnorm = __dnorm_ptr.asFunction<_dart__dnorm>();
+  late final __dnormPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Pointer<ffi.Uint16>)>>(
+          '_dnorm');
+  late final __dnorm =
+      __dnormPtr.asFunction<int Function(ffi.Pointer<ffi.Uint16>)>();
 
   int _fdnorm(
     ffi.Pointer<ffi.Uint16> _Ps,
@@ -2829,8 +3050,11 @@ class DartSdl {
     );
   }
 
-  late final __fdnorm_ptr = _lookup<ffi.NativeFunction<_c__fdnorm>>('_fdnorm');
-  late final _dart__fdnorm __fdnorm = __fdnorm_ptr.asFunction<_dart__fdnorm>();
+  late final __fdnormPtr =
+      _lookup<ffi.NativeFunction<ffi.Int16 Function(ffi.Pointer<ffi.Uint16>)>>(
+          '_fdnorm');
+  late final __fdnorm =
+      __fdnormPtr.asFunction<int Function(ffi.Pointer<ffi.Uint16>)>();
 
   double _dpoly(
     double _X,
@@ -2844,8 +3068,12 @@ class DartSdl {
     );
   }
 
-  late final __dpoly_ptr = _lookup<ffi.NativeFunction<_c__dpoly>>('_dpoly');
-  late final _dart__dpoly __dpoly = __dpoly_ptr.asFunction<_dart__dpoly>();
+  late final __dpolyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(
+              ffi.Double, ffi.Pointer<ffi.Double>, ffi.Int32)>>('_dpoly');
+  late final __dpoly = __dpolyPtr
+      .asFunction<double Function(double, ffi.Pointer<ffi.Double>, int)>();
 
   double _fdpoly(
     double _X,
@@ -2859,8 +3087,12 @@ class DartSdl {
     );
   }
 
-  late final __fdpoly_ptr = _lookup<ffi.NativeFunction<_c__fdpoly>>('_fdpoly');
-  late final _dart__fdpoly __fdpoly = __fdpoly_ptr.asFunction<_dart__fdpoly>();
+  late final __fdpolyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(
+              ffi.Float, ffi.Pointer<ffi.Float>, ffi.Int32)>>('_fdpoly');
+  late final __fdpoly = __fdpolyPtr
+      .asFunction<double Function(double, ffi.Pointer<ffi.Float>, int)>();
 
   double _dlog(
     double _X,
@@ -2872,8 +3104,10 @@ class DartSdl {
     );
   }
 
-  late final __dlog_ptr = _lookup<ffi.NativeFunction<_c__dlog>>('_dlog');
-  late final _dart__dlog __dlog = __dlog_ptr.asFunction<_dart__dlog>();
+  late final __dlogPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int32)>>(
+          '_dlog');
+  late final __dlog = __dlogPtr.asFunction<double Function(double, int)>();
 
   double _fdlog(
     double _X,
@@ -2885,8 +3119,10 @@ class DartSdl {
     );
   }
 
-  late final __fdlog_ptr = _lookup<ffi.NativeFunction<_c__fdlog>>('_fdlog');
-  late final _dart__fdlog __fdlog = __fdlog_ptr.asFunction<_dart__fdlog>();
+  late final __fdlogPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int32)>>(
+          '_fdlog');
+  late final __fdlog = __fdlogPtr.asFunction<double Function(double, int)>();
 
   double _dsin(
     double _X,
@@ -2898,8 +3134,10 @@ class DartSdl {
     );
   }
 
-  late final __dsin_ptr = _lookup<ffi.NativeFunction<_c__dsin>>('_dsin');
-  late final _dart__dsin __dsin = __dsin_ptr.asFunction<_dart__dsin>();
+  late final __dsinPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Uint32)>>(
+          '_dsin');
+  late final __dsin = __dsinPtr.asFunction<double Function(double, int)>();
 
   double _fdsin(
     double _X,
@@ -2911,8 +3149,10 @@ class DartSdl {
     );
   }
 
-  late final __fdsin_ptr = _lookup<ffi.NativeFunction<_c__fdsin>>('_fdsin');
-  late final _dart__fdsin __fdsin = __fdsin_ptr.asFunction<_dart__fdsin>();
+  late final __fdsinPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Uint32)>>(
+          '_fdsin');
+  late final __fdsin = __fdsinPtr.asFunction<double Function(double, int)>();
 
   late final ffi.Pointer<_float_const> __Denorm_C =
       _lookup<_float_const>('_Denorm_C');
@@ -3041,8 +3281,9 @@ class DartSdl {
     );
   }
 
-  late final _abs_ptr = _lookup<ffi.NativeFunction<_c_abs>>('abs');
-  late final _dart_abs _abs = _abs_ptr.asFunction<_dart_abs>();
+  late final _absPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('abs');
+  late final _abs = _absPtr.asFunction<int Function(int)>();
 
   int labs(
     int _X,
@@ -3052,8 +3293,9 @@ class DartSdl {
     );
   }
 
-  late final _labs_ptr = _lookup<ffi.NativeFunction<_c_labs>>('labs');
-  late final _dart_labs _labs = _labs_ptr.asFunction<_dart_labs>();
+  late final _labsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Int64)>>('labs');
+  late final _labs = _labsPtr.asFunction<int Function(int)>();
 
   int llabs(
     int _X,
@@ -3063,8 +3305,9 @@ class DartSdl {
     );
   }
 
-  late final _llabs_ptr = _lookup<ffi.NativeFunction<_c_llabs>>('llabs');
-  late final _dart_llabs _llabs = _llabs_ptr.asFunction<_dart_llabs>();
+  late final _llabsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Int64)>>('llabs');
+  late final _llabs = _llabsPtr.asFunction<int Function(int)>();
 
   double acos(
     double _X,
@@ -3074,8 +3317,9 @@ class DartSdl {
     );
   }
 
-  late final _acos_ptr = _lookup<ffi.NativeFunction<_c_acos>>('acos');
-  late final _dart_acos _acos = _acos_ptr.asFunction<_dart_acos>();
+  late final _acosPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('acos');
+  late final _acos = _acosPtr.asFunction<double Function(double)>();
 
   double asin(
     double _X,
@@ -3085,8 +3329,9 @@ class DartSdl {
     );
   }
 
-  late final _asin_ptr = _lookup<ffi.NativeFunction<_c_asin>>('asin');
-  late final _dart_asin _asin = _asin_ptr.asFunction<_dart_asin>();
+  late final _asinPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('asin');
+  late final _asin = _asinPtr.asFunction<double Function(double)>();
 
   double atan(
     double _X,
@@ -3096,8 +3341,9 @@ class DartSdl {
     );
   }
 
-  late final _atan_ptr = _lookup<ffi.NativeFunction<_c_atan>>('atan');
-  late final _dart_atan _atan = _atan_ptr.asFunction<_dart_atan>();
+  late final _atanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('atan');
+  late final _atan = _atanPtr.asFunction<double Function(double)>();
 
   double atan2(
     double _Y,
@@ -3109,8 +3355,10 @@ class DartSdl {
     );
   }
 
-  late final _atan2_ptr = _lookup<ffi.NativeFunction<_c_atan2>>('atan2');
-  late final _dart_atan2 _atan2 = _atan2_ptr.asFunction<_dart_atan2>();
+  late final _atan2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'atan2');
+  late final _atan2 = _atan2Ptr.asFunction<double Function(double, double)>();
 
   double cos(
     double _X,
@@ -3120,8 +3368,9 @@ class DartSdl {
     );
   }
 
-  late final _cos_ptr = _lookup<ffi.NativeFunction<_c_cos>>('cos');
-  late final _dart_cos _cos = _cos_ptr.asFunction<_dart_cos>();
+  late final _cosPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cos');
+  late final _cos = _cosPtr.asFunction<double Function(double)>();
 
   double cosh(
     double _X,
@@ -3131,8 +3380,9 @@ class DartSdl {
     );
   }
 
-  late final _cosh_ptr = _lookup<ffi.NativeFunction<_c_cosh>>('cosh');
-  late final _dart_cosh _cosh = _cosh_ptr.asFunction<_dart_cosh>();
+  late final _coshPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cosh');
+  late final _cosh = _coshPtr.asFunction<double Function(double)>();
 
   double exp(
     double _X,
@@ -3142,8 +3392,9 @@ class DartSdl {
     );
   }
 
-  late final _exp_ptr = _lookup<ffi.NativeFunction<_c_exp>>('exp');
-  late final _dart_exp _exp = _exp_ptr.asFunction<_dart_exp>();
+  late final _expPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('exp');
+  late final _exp = _expPtr.asFunction<double Function(double)>();
 
   double fabs(
     double _X,
@@ -3153,8 +3404,9 @@ class DartSdl {
     );
   }
 
-  late final _fabs_ptr = _lookup<ffi.NativeFunction<_c_fabs>>('fabs');
-  late final _dart_fabs _fabs = _fabs_ptr.asFunction<_dart_fabs>();
+  late final _fabsPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('fabs');
+  late final _fabs = _fabsPtr.asFunction<double Function(double)>();
 
   double fmod(
     double _X,
@@ -3166,8 +3418,10 @@ class DartSdl {
     );
   }
 
-  late final _fmod_ptr = _lookup<ffi.NativeFunction<_c_fmod>>('fmod');
-  late final _dart_fmod _fmod = _fmod_ptr.asFunction<_dart_fmod>();
+  late final _fmodPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmod');
+  late final _fmod = _fmodPtr.asFunction<double Function(double, double)>();
 
   double log(
     double _X,
@@ -3177,8 +3431,9 @@ class DartSdl {
     );
   }
 
-  late final _log_ptr = _lookup<ffi.NativeFunction<_c_log>>('log');
-  late final _dart_log _log = _log_ptr.asFunction<_dart_log>();
+  late final _logPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log');
+  late final _log = _logPtr.asFunction<double Function(double)>();
 
   double log10(
     double _X,
@@ -3188,8 +3443,9 @@ class DartSdl {
     );
   }
 
-  late final _log10_ptr = _lookup<ffi.NativeFunction<_c_log10>>('log10');
-  late final _dart_log10 _log10 = _log10_ptr.asFunction<_dart_log10>();
+  late final _log10Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log10');
+  late final _log10 = _log10Ptr.asFunction<double Function(double)>();
 
   double pow(
     double _X,
@@ -3201,8 +3457,10 @@ class DartSdl {
     );
   }
 
-  late final _pow_ptr = _lookup<ffi.NativeFunction<_c_pow>>('pow');
-  late final _dart_pow _pow = _pow_ptr.asFunction<_dart_pow>();
+  late final _powPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'pow');
+  late final _pow = _powPtr.asFunction<double Function(double, double)>();
 
   double sin(
     double _X,
@@ -3212,8 +3470,9 @@ class DartSdl {
     );
   }
 
-  late final _sin_ptr = _lookup<ffi.NativeFunction<_c_sin>>('sin');
-  late final _dart_sin _sin = _sin_ptr.asFunction<_dart_sin>();
+  late final _sinPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sin');
+  late final _sin = _sinPtr.asFunction<double Function(double)>();
 
   double sinh(
     double _X,
@@ -3223,8 +3482,9 @@ class DartSdl {
     );
   }
 
-  late final _sinh_ptr = _lookup<ffi.NativeFunction<_c_sinh>>('sinh');
-  late final _dart_sinh _sinh = _sinh_ptr.asFunction<_dart_sinh>();
+  late final _sinhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sinh');
+  late final _sinh = _sinhPtr.asFunction<double Function(double)>();
 
   double sqrt(
     double _X,
@@ -3234,8 +3494,9 @@ class DartSdl {
     );
   }
 
-  late final _sqrt_ptr = _lookup<ffi.NativeFunction<_c_sqrt>>('sqrt');
-  late final _dart_sqrt _sqrt = _sqrt_ptr.asFunction<_dart_sqrt>();
+  late final _sqrtPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sqrt');
+  late final _sqrt = _sqrtPtr.asFunction<double Function(double)>();
 
   double tan(
     double _X,
@@ -3245,8 +3506,9 @@ class DartSdl {
     );
   }
 
-  late final _tan_ptr = _lookup<ffi.NativeFunction<_c_tan>>('tan');
-  late final _dart_tan _tan = _tan_ptr.asFunction<_dart_tan>();
+  late final _tanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tan');
+  late final _tan = _tanPtr.asFunction<double Function(double)>();
 
   double tanh(
     double _X,
@@ -3256,8 +3518,9 @@ class DartSdl {
     );
   }
 
-  late final _tanh_ptr = _lookup<ffi.NativeFunction<_c_tanh>>('tanh');
-  late final _dart_tanh _tanh = _tanh_ptr.asFunction<_dart_tanh>();
+  late final _tanhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tanh');
+  late final _tanh = _tanhPtr.asFunction<double Function(double)>();
 
   double acosh(
     double _X,
@@ -3267,8 +3530,9 @@ class DartSdl {
     );
   }
 
-  late final _acosh_ptr = _lookup<ffi.NativeFunction<_c_acosh>>('acosh');
-  late final _dart_acosh _acosh = _acosh_ptr.asFunction<_dart_acosh>();
+  late final _acoshPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('acosh');
+  late final _acosh = _acoshPtr.asFunction<double Function(double)>();
 
   double asinh(
     double _X,
@@ -3278,8 +3542,9 @@ class DartSdl {
     );
   }
 
-  late final _asinh_ptr = _lookup<ffi.NativeFunction<_c_asinh>>('asinh');
-  late final _dart_asinh _asinh = _asinh_ptr.asFunction<_dart_asinh>();
+  late final _asinhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('asinh');
+  late final _asinh = _asinhPtr.asFunction<double Function(double)>();
 
   double atanh(
     double _X,
@@ -3289,8 +3554,9 @@ class DartSdl {
     );
   }
 
-  late final _atanh_ptr = _lookup<ffi.NativeFunction<_c_atanh>>('atanh');
-  late final _dart_atanh _atanh = _atanh_ptr.asFunction<_dart_atanh>();
+  late final _atanhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('atanh');
+  late final _atanh = _atanhPtr.asFunction<double Function(double)>();
 
   double atof(
     ffi.Pointer<ffi.Int8> _String,
@@ -3300,12 +3566,15 @@ class DartSdl {
     );
   }
 
-  late final _atof_ptr = _lookup<ffi.NativeFunction<_c_atof>>('atof');
-  late final _dart_atof _atof = _atof_ptr.asFunction<_dart_atof>();
+  late final _atofPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Int8>)>>(
+          'atof');
+  late final _atof =
+      _atofPtr.asFunction<double Function(ffi.Pointer<ffi.Int8>)>();
 
   double _atof_l(
     ffi.Pointer<ffi.Int8> _String,
-    ffi.Pointer<_crt_locale_pointers> _Locale,
+    _locale_t _Locale,
   ) {
     return __atof_l(
       _String,
@@ -3313,8 +3582,11 @@ class DartSdl {
     );
   }
 
-  late final __atof_l_ptr = _lookup<ffi.NativeFunction<_c__atof_l>>('_atof_l');
-  late final _dart__atof_l __atof_l = __atof_l_ptr.asFunction<_dart__atof_l>();
+  late final __atof_lPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Pointer<ffi.Int8>, _locale_t)>>('_atof_l');
+  late final __atof_l = __atof_lPtr
+      .asFunction<double Function(ffi.Pointer<ffi.Int8>, _locale_t)>();
 
   double _cabs(
     complex _Complex_value,
@@ -3324,8 +3596,9 @@ class DartSdl {
     );
   }
 
-  late final __cabs_ptr = _lookup<ffi.NativeFunction<_c__cabs>>('_cabs');
-  late final _dart__cabs __cabs = __cabs_ptr.asFunction<_dart__cabs>();
+  late final __cabsPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(complex)>>('_cabs');
+  late final __cabs = __cabsPtr.asFunction<double Function(complex)>();
 
   double cbrt(
     double _X,
@@ -3335,8 +3608,9 @@ class DartSdl {
     );
   }
 
-  late final _cbrt_ptr = _lookup<ffi.NativeFunction<_c_cbrt>>('cbrt');
-  late final _dart_cbrt _cbrt = _cbrt_ptr.asFunction<_dart_cbrt>();
+  late final _cbrtPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cbrt');
+  late final _cbrt = _cbrtPtr.asFunction<double Function(double)>();
 
   double ceil(
     double _X,
@@ -3346,8 +3620,9 @@ class DartSdl {
     );
   }
 
-  late final _ceil_ptr = _lookup<ffi.NativeFunction<_c_ceil>>('ceil');
-  late final _dart_ceil _ceil = _ceil_ptr.asFunction<_dart_ceil>();
+  late final _ceilPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('ceil');
+  late final _ceil = _ceilPtr.asFunction<double Function(double)>();
 
   double _chgsign(
     double _X,
@@ -3357,25 +3632,25 @@ class DartSdl {
     );
   }
 
-  late final __chgsign_ptr =
-      _lookup<ffi.NativeFunction<_c__chgsign>>('_chgsign');
-  late final _dart__chgsign __chgsign =
-      __chgsign_ptr.asFunction<_dart__chgsign>();
+  late final __chgsignPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_chgsign');
+  late final __chgsign = __chgsignPtr.asFunction<double Function(double)>();
 
   double copysign(
     double _Number,
     double _Sign,
   ) {
-    return _copysign_1(
+    return _copysign1(
       _Number,
       _Sign,
     );
   }
 
-  late final _copysign_ptr =
-      _lookup<ffi.NativeFunction<_c_copysign>>('copysign');
-  late final _dart_copysign _copysign_1 =
-      _copysign_ptr.asFunction<_dart_copysign>();
+  late final _copysignPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'copysign');
+  late final _copysign1 =
+      _copysignPtr.asFunction<double Function(double, double)>();
 
   double _copysign(
     double _Number,
@@ -3387,10 +3662,11 @@ class DartSdl {
     );
   }
 
-  late final __copysign_ptr =
-      _lookup<ffi.NativeFunction<_c__copysign>>('_copysign');
-  late final _dart__copysign __copysign =
-      __copysign_ptr.asFunction<_dart__copysign>();
+  late final __copysignPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          '_copysign');
+  late final __copysign =
+      __copysignPtr.asFunction<double Function(double, double)>();
 
   double erf(
     double _X,
@@ -3400,8 +3676,9 @@ class DartSdl {
     );
   }
 
-  late final _erf_ptr = _lookup<ffi.NativeFunction<_c_erf>>('erf');
-  late final _dart_erf _erf = _erf_ptr.asFunction<_dart_erf>();
+  late final _erfPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erf');
+  late final _erf = _erfPtr.asFunction<double Function(double)>();
 
   double erfc(
     double _X,
@@ -3411,8 +3688,9 @@ class DartSdl {
     );
   }
 
-  late final _erfc_ptr = _lookup<ffi.NativeFunction<_c_erfc>>('erfc');
-  late final _dart_erfc _erfc = _erfc_ptr.asFunction<_dart_erfc>();
+  late final _erfcPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erfc');
+  late final _erfc = _erfcPtr.asFunction<double Function(double)>();
 
   double exp2(
     double _X,
@@ -3422,8 +3700,9 @@ class DartSdl {
     );
   }
 
-  late final _exp2_ptr = _lookup<ffi.NativeFunction<_c_exp2>>('exp2');
-  late final _dart_exp2 _exp2 = _exp2_ptr.asFunction<_dart_exp2>();
+  late final _exp2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('exp2');
+  late final _exp2 = _exp2Ptr.asFunction<double Function(double)>();
 
   double expm1(
     double _X,
@@ -3433,8 +3712,9 @@ class DartSdl {
     );
   }
 
-  late final _expm1_ptr = _lookup<ffi.NativeFunction<_c_expm1>>('expm1');
-  late final _dart_expm1 _expm1 = _expm1_ptr.asFunction<_dart_expm1>();
+  late final _expm1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('expm1');
+  late final _expm1 = _expm1Ptr.asFunction<double Function(double)>();
 
   double fdim(
     double _X,
@@ -3446,8 +3726,10 @@ class DartSdl {
     );
   }
 
-  late final _fdim_ptr = _lookup<ffi.NativeFunction<_c_fdim>>('fdim');
-  late final _dart_fdim _fdim = _fdim_ptr.asFunction<_dart_fdim>();
+  late final _fdimPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fdim');
+  late final _fdim = _fdimPtr.asFunction<double Function(double, double)>();
 
   double floor(
     double _X,
@@ -3457,8 +3739,9 @@ class DartSdl {
     );
   }
 
-  late final _floor_ptr = _lookup<ffi.NativeFunction<_c_floor>>('floor');
-  late final _dart_floor _floor = _floor_ptr.asFunction<_dart_floor>();
+  late final _floorPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('floor');
+  late final _floor = _floorPtr.asFunction<double Function(double)>();
 
   double fma(
     double _X,
@@ -3472,8 +3755,11 @@ class DartSdl {
     );
   }
 
-  late final _fma_ptr = _lookup<ffi.NativeFunction<_c_fma>>('fma');
-  late final _dart_fma _fma = _fma_ptr.asFunction<_dart_fma>();
+  late final _fmaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Double, ffi.Double, ffi.Double)>>('fma');
+  late final _fma =
+      _fmaPtr.asFunction<double Function(double, double, double)>();
 
   double fmax(
     double _X,
@@ -3485,8 +3771,10 @@ class DartSdl {
     );
   }
 
-  late final _fmax_ptr = _lookup<ffi.NativeFunction<_c_fmax>>('fmax');
-  late final _dart_fmax _fmax = _fmax_ptr.asFunction<_dart_fmax>();
+  late final _fmaxPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmax');
+  late final _fmax = _fmaxPtr.asFunction<double Function(double, double)>();
 
   double fmin(
     double _X,
@@ -3498,8 +3786,10 @@ class DartSdl {
     );
   }
 
-  late final _fmin_ptr = _lookup<ffi.NativeFunction<_c_fmin>>('fmin');
-  late final _dart_fmin _fmin = _fmin_ptr.asFunction<_dart_fmin>();
+  late final _fminPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmin');
+  late final _fmin = _fminPtr.asFunction<double Function(double, double)>();
 
   double frexp(
     double _X,
@@ -3511,21 +3801,26 @@ class DartSdl {
     );
   }
 
-  late final _frexp_ptr = _lookup<ffi.NativeFunction<_c_frexp>>('frexp');
-  late final _dart_frexp _frexp = _frexp_ptr.asFunction<_dart_frexp>();
+  late final _frexpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Double, ffi.Pointer<ffi.Int32>)>>('frexp');
+  late final _frexp =
+      _frexpPtr.asFunction<double Function(double, ffi.Pointer<ffi.Int32>)>();
 
   double hypot(
     double _X,
     double _Y,
   ) {
-    return _hypot_1(
+    return _hypot1(
       _X,
       _Y,
     );
   }
 
-  late final _hypot_ptr = _lookup<ffi.NativeFunction<_c_hypot>>('hypot');
-  late final _dart_hypot _hypot_1 = _hypot_ptr.asFunction<_dart_hypot>();
+  late final _hypotPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'hypot');
+  late final _hypot1 = _hypotPtr.asFunction<double Function(double, double)>();
 
   double _hypot(
     double _X,
@@ -3537,8 +3832,10 @@ class DartSdl {
     );
   }
 
-  late final __hypot_ptr = _lookup<ffi.NativeFunction<_c__hypot>>('_hypot');
-  late final _dart__hypot __hypot = __hypot_ptr.asFunction<_dart__hypot>();
+  late final __hypotPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          '_hypot');
+  late final __hypot = __hypotPtr.asFunction<double Function(double, double)>();
 
   int ilogb(
     double _X,
@@ -3548,8 +3845,9 @@ class DartSdl {
     );
   }
 
-  late final _ilogb_ptr = _lookup<ffi.NativeFunction<_c_ilogb>>('ilogb');
-  late final _dart_ilogb _ilogb = _ilogb_ptr.asFunction<_dart_ilogb>();
+  late final _ilogbPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Double)>>('ilogb');
+  late final _ilogb = _ilogbPtr.asFunction<int Function(double)>();
 
   double ldexp(
     double _X,
@@ -3561,8 +3859,10 @@ class DartSdl {
     );
   }
 
-  late final _ldexp_ptr = _lookup<ffi.NativeFunction<_c_ldexp>>('ldexp');
-  late final _dart_ldexp _ldexp = _ldexp_ptr.asFunction<_dart_ldexp>();
+  late final _ldexpPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int32)>>(
+          'ldexp');
+  late final _ldexp = _ldexpPtr.asFunction<double Function(double, int)>();
 
   double lgamma(
     double _X,
@@ -3572,8 +3872,9 @@ class DartSdl {
     );
   }
 
-  late final _lgamma_ptr = _lookup<ffi.NativeFunction<_c_lgamma>>('lgamma');
-  late final _dart_lgamma _lgamma = _lgamma_ptr.asFunction<_dart_lgamma>();
+  late final _lgammaPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('lgamma');
+  late final _lgamma = _lgammaPtr.asFunction<double Function(double)>();
 
   int llrint(
     double _X,
@@ -3583,8 +3884,9 @@ class DartSdl {
     );
   }
 
-  late final _llrint_ptr = _lookup<ffi.NativeFunction<_c_llrint>>('llrint');
-  late final _dart_llrint _llrint = _llrint_ptr.asFunction<_dart_llrint>();
+  late final _llrintPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Double)>>('llrint');
+  late final _llrint = _llrintPtr.asFunction<int Function(double)>();
 
   int llround(
     double _X,
@@ -3594,8 +3896,9 @@ class DartSdl {
     );
   }
 
-  late final _llround_ptr = _lookup<ffi.NativeFunction<_c_llround>>('llround');
-  late final _dart_llround _llround = _llround_ptr.asFunction<_dart_llround>();
+  late final _llroundPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Double)>>('llround');
+  late final _llround = _llroundPtr.asFunction<int Function(double)>();
 
   double log1p(
     double _X,
@@ -3605,8 +3908,9 @@ class DartSdl {
     );
   }
 
-  late final _log1p_ptr = _lookup<ffi.NativeFunction<_c_log1p>>('log1p');
-  late final _dart_log1p _log1p = _log1p_ptr.asFunction<_dart_log1p>();
+  late final _log1pPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log1p');
+  late final _log1p = _log1pPtr.asFunction<double Function(double)>();
 
   double log2(
     double _X,
@@ -3616,8 +3920,9 @@ class DartSdl {
     );
   }
 
-  late final _log2_ptr = _lookup<ffi.NativeFunction<_c_log2>>('log2');
-  late final _dart_log2 _log2 = _log2_ptr.asFunction<_dart_log2>();
+  late final _log2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log2');
+  late final _log2 = _log2Ptr.asFunction<double Function(double)>();
 
   double logb(
     double _X,
@@ -3627,8 +3932,9 @@ class DartSdl {
     );
   }
 
-  late final _logb_ptr = _lookup<ffi.NativeFunction<_c_logb>>('logb');
-  late final _dart_logb _logb = _logb_ptr.asFunction<_dart_logb>();
+  late final _logbPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('logb');
+  late final _logb = _logbPtr.asFunction<double Function(double)>();
 
   int lrint(
     double _X,
@@ -3638,8 +3944,9 @@ class DartSdl {
     );
   }
 
-  late final _lrint_ptr = _lookup<ffi.NativeFunction<_c_lrint>>('lrint');
-  late final _dart_lrint _lrint = _lrint_ptr.asFunction<_dart_lrint>();
+  late final _lrintPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Double)>>('lrint');
+  late final _lrint = _lrintPtr.asFunction<int Function(double)>();
 
   int lround(
     double _X,
@@ -3649,8 +3956,9 @@ class DartSdl {
     );
   }
 
-  late final _lround_ptr = _lookup<ffi.NativeFunction<_c_lround>>('lround');
-  late final _dart_lround _lround = _lround_ptr.asFunction<_dart_lround>();
+  late final _lroundPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Double)>>('lround');
+  late final _lround = _lroundPtr.asFunction<int Function(double)>();
 
   int _matherr(
     ffi.Pointer<exception> _Except,
@@ -3660,10 +3968,11 @@ class DartSdl {
     );
   }
 
-  late final __matherr_ptr =
-      _lookup<ffi.NativeFunction<_c__matherr>>('_matherr');
-  late final _dart__matherr __matherr =
-      __matherr_ptr.asFunction<_dart__matherr>();
+  late final __matherrPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<exception>)>>(
+          '_matherr');
+  late final __matherr =
+      __matherrPtr.asFunction<int Function(ffi.Pointer<exception>)>();
 
   double modf(
     double _X,
@@ -3675,8 +3984,11 @@ class DartSdl {
     );
   }
 
-  late final _modf_ptr = _lookup<ffi.NativeFunction<_c_modf>>('modf');
-  late final _dart_modf _modf = _modf_ptr.asFunction<_dart_modf>();
+  late final _modfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Double, ffi.Pointer<ffi.Double>)>>('modf');
+  late final _modf =
+      _modfPtr.asFunction<double Function(double, ffi.Pointer<ffi.Double>)>();
 
   double nan(
     ffi.Pointer<ffi.Int8> _X,
@@ -3686,8 +3998,11 @@ class DartSdl {
     );
   }
 
-  late final _nan_ptr = _lookup<ffi.NativeFunction<_c_nan>>('nan');
-  late final _dart_nan _nan = _nan_ptr.asFunction<_dart_nan>();
+  late final _nanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Int8>)>>(
+          'nan');
+  late final _nan =
+      _nanPtr.asFunction<double Function(ffi.Pointer<ffi.Int8>)>();
 
   double nearbyint(
     double _X,
@@ -3697,10 +4012,9 @@ class DartSdl {
     );
   }
 
-  late final _nearbyint_ptr =
-      _lookup<ffi.NativeFunction<_c_nearbyint>>('nearbyint');
-  late final _dart_nearbyint _nearbyint =
-      _nearbyint_ptr.asFunction<_dart_nearbyint>();
+  late final _nearbyintPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('nearbyint');
+  late final _nearbyint = _nearbyintPtr.asFunction<double Function(double)>();
 
   double nextafter(
     double _X,
@@ -3712,10 +4026,11 @@ class DartSdl {
     );
   }
 
-  late final _nextafter_ptr =
-      _lookup<ffi.NativeFunction<_c_nextafter>>('nextafter');
-  late final _dart_nextafter _nextafter =
-      _nextafter_ptr.asFunction<_dart_nextafter>();
+  late final _nextafterPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'nextafter');
+  late final _nextafter =
+      _nextafterPtr.asFunction<double Function(double, double)>();
 
   double remainder(
     double _X,
@@ -3727,10 +4042,11 @@ class DartSdl {
     );
   }
 
-  late final _remainder_ptr =
-      _lookup<ffi.NativeFunction<_c_remainder>>('remainder');
-  late final _dart_remainder _remainder =
-      _remainder_ptr.asFunction<_dart_remainder>();
+  late final _remainderPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'remainder');
+  late final _remainder =
+      _remainderPtr.asFunction<double Function(double, double)>();
 
   double remquo(
     double _X,
@@ -3744,8 +4060,12 @@ class DartSdl {
     );
   }
 
-  late final _remquo_ptr = _lookup<ffi.NativeFunction<_c_remquo>>('remquo');
-  late final _dart_remquo _remquo = _remquo_ptr.asFunction<_dart_remquo>();
+  late final _remquoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(
+              ffi.Double, ffi.Double, ffi.Pointer<ffi.Int32>)>>('remquo');
+  late final _remquo = _remquoPtr
+      .asFunction<double Function(double, double, ffi.Pointer<ffi.Int32>)>();
 
   double rint(
     double _X,
@@ -3755,8 +4075,9 @@ class DartSdl {
     );
   }
 
-  late final _rint_ptr = _lookup<ffi.NativeFunction<_c_rint>>('rint');
-  late final _dart_rint _rint = _rint_ptr.asFunction<_dart_rint>();
+  late final _rintPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('rint');
+  late final _rint = _rintPtr.asFunction<double Function(double)>();
 
   double round(
     double _X,
@@ -3766,8 +4087,9 @@ class DartSdl {
     );
   }
 
-  late final _round_ptr = _lookup<ffi.NativeFunction<_c_round>>('round');
-  late final _dart_round _round = _round_ptr.asFunction<_dart_round>();
+  late final _roundPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('round');
+  late final _round = _roundPtr.asFunction<double Function(double)>();
 
   double scalbln(
     double _X,
@@ -3779,8 +4101,10 @@ class DartSdl {
     );
   }
 
-  late final _scalbln_ptr = _lookup<ffi.NativeFunction<_c_scalbln>>('scalbln');
-  late final _dart_scalbln _scalbln = _scalbln_ptr.asFunction<_dart_scalbln>();
+  late final _scalblnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int64)>>(
+          'scalbln');
+  late final _scalbln = _scalblnPtr.asFunction<double Function(double, int)>();
 
   double scalbn(
     double _X,
@@ -3792,8 +4116,10 @@ class DartSdl {
     );
   }
 
-  late final _scalbn_ptr = _lookup<ffi.NativeFunction<_c_scalbn>>('scalbn');
-  late final _dart_scalbn _scalbn = _scalbn_ptr.asFunction<_dart_scalbn>();
+  late final _scalbnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int32)>>(
+          'scalbn');
+  late final _scalbn = _scalbnPtr.asFunction<double Function(double, int)>();
 
   double tgamma(
     double _X,
@@ -3803,8 +4129,9 @@ class DartSdl {
     );
   }
 
-  late final _tgamma_ptr = _lookup<ffi.NativeFunction<_c_tgamma>>('tgamma');
-  late final _dart_tgamma _tgamma = _tgamma_ptr.asFunction<_dart_tgamma>();
+  late final _tgammaPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tgamma');
+  late final _tgamma = _tgammaPtr.asFunction<double Function(double)>();
 
   double trunc(
     double _X,
@@ -3814,8 +4141,9 @@ class DartSdl {
     );
   }
 
-  late final _trunc_ptr = _lookup<ffi.NativeFunction<_c_trunc>>('trunc');
-  late final _dart_trunc _trunc = _trunc_ptr.asFunction<_dart_trunc>();
+  late final _truncPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('trunc');
+  late final _trunc = _truncPtr.asFunction<double Function(double)>();
 
   double _j0(
     double _X,
@@ -3825,8 +4153,9 @@ class DartSdl {
     );
   }
 
-  late final __j0_ptr = _lookup<ffi.NativeFunction<_c__j0>>('_j0');
-  late final _dart__j0 __j0 = __j0_ptr.asFunction<_dart__j0>();
+  late final __j0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_j0');
+  late final __j0 = __j0Ptr.asFunction<double Function(double)>();
 
   double _j1(
     double _X,
@@ -3836,8 +4165,9 @@ class DartSdl {
     );
   }
 
-  late final __j1_ptr = _lookup<ffi.NativeFunction<_c__j1>>('_j1');
-  late final _dart__j1 __j1 = __j1_ptr.asFunction<_dart__j1>();
+  late final __j1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_j1');
+  late final __j1 = __j1Ptr.asFunction<double Function(double)>();
 
   double _jn(
     int _X,
@@ -3849,8 +4179,10 @@ class DartSdl {
     );
   }
 
-  late final __jn_ptr = _lookup<ffi.NativeFunction<_c__jn>>('_jn');
-  late final _dart__jn __jn = __jn_ptr.asFunction<_dart__jn>();
+  late final __jnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int32, ffi.Double)>>(
+          '_jn');
+  late final __jn = __jnPtr.asFunction<double Function(int, double)>();
 
   double _y0(
     double _X,
@@ -3860,8 +4192,9 @@ class DartSdl {
     );
   }
 
-  late final __y0_ptr = _lookup<ffi.NativeFunction<_c__y0>>('_y0');
-  late final _dart__y0 __y0 = __y0_ptr.asFunction<_dart__y0>();
+  late final __y0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_y0');
+  late final __y0 = __y0Ptr.asFunction<double Function(double)>();
 
   double _y1(
     double _X,
@@ -3871,8 +4204,9 @@ class DartSdl {
     );
   }
 
-  late final __y1_ptr = _lookup<ffi.NativeFunction<_c__y1>>('_y1');
-  late final _dart__y1 __y1 = __y1_ptr.asFunction<_dart__y1>();
+  late final __y1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_y1');
+  late final __y1 = __y1Ptr.asFunction<double Function(double)>();
 
   double _yn(
     int _X,
@@ -3884,8 +4218,10 @@ class DartSdl {
     );
   }
 
-  late final __yn_ptr = _lookup<ffi.NativeFunction<_c__yn>>('_yn');
-  late final _dart__yn __yn = __yn_ptr.asFunction<_dart__yn>();
+  late final __ynPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int32, ffi.Double)>>(
+          '_yn');
+  late final __yn = __ynPtr.asFunction<double Function(int, double)>();
 
   double acoshf(
     double _X,
@@ -3895,8 +4231,9 @@ class DartSdl {
     );
   }
 
-  late final _acoshf_ptr = _lookup<ffi.NativeFunction<_c_acoshf>>('acoshf');
-  late final _dart_acoshf _acoshf = _acoshf_ptr.asFunction<_dart_acoshf>();
+  late final _acoshfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acoshf');
+  late final _acoshf = _acoshfPtr.asFunction<double Function(double)>();
 
   double asinhf(
     double _X,
@@ -3906,8 +4243,9 @@ class DartSdl {
     );
   }
 
-  late final _asinhf_ptr = _lookup<ffi.NativeFunction<_c_asinhf>>('asinhf');
-  late final _dart_asinhf _asinhf = _asinhf_ptr.asFunction<_dart_asinhf>();
+  late final _asinhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinhf');
+  late final _asinhf = _asinhfPtr.asFunction<double Function(double)>();
 
   double atanhf(
     double _X,
@@ -3917,8 +4255,9 @@ class DartSdl {
     );
   }
 
-  late final _atanhf_ptr = _lookup<ffi.NativeFunction<_c_atanhf>>('atanhf');
-  late final _dart_atanhf _atanhf = _atanhf_ptr.asFunction<_dart_atanhf>();
+  late final _atanhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanhf');
+  late final _atanhf = _atanhfPtr.asFunction<double Function(double)>();
 
   double cbrtf(
     double _X,
@@ -3928,8 +4267,9 @@ class DartSdl {
     );
   }
 
-  late final _cbrtf_ptr = _lookup<ffi.NativeFunction<_c_cbrtf>>('cbrtf');
-  late final _dart_cbrtf _cbrtf = _cbrtf_ptr.asFunction<_dart_cbrtf>();
+  late final _cbrtfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('cbrtf');
+  late final _cbrtf = _cbrtfPtr.asFunction<double Function(double)>();
 
   double _chgsignf(
     double _X,
@@ -3939,25 +4279,25 @@ class DartSdl {
     );
   }
 
-  late final __chgsignf_ptr =
-      _lookup<ffi.NativeFunction<_c__chgsignf>>('_chgsignf');
-  late final _dart__chgsignf __chgsignf =
-      __chgsignf_ptr.asFunction<_dart__chgsignf>();
+  late final __chgsignfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('_chgsignf');
+  late final __chgsignf = __chgsignfPtr.asFunction<double Function(double)>();
 
   double copysignf(
     double _Number,
     double _Sign,
   ) {
-    return _copysignf_1(
+    return _copysignf1(
       _Number,
       _Sign,
     );
   }
 
-  late final _copysignf_ptr =
-      _lookup<ffi.NativeFunction<_c_copysignf>>('copysignf');
-  late final _dart_copysignf _copysignf_1 =
-      _copysignf_ptr.asFunction<_dart_copysignf>();
+  late final _copysignfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'copysignf');
+  late final _copysignf1 =
+      _copysignfPtr.asFunction<double Function(double, double)>();
 
   double _copysignf(
     double _Number,
@@ -3969,10 +4309,11 @@ class DartSdl {
     );
   }
 
-  late final __copysignf_ptr =
-      _lookup<ffi.NativeFunction<_c__copysignf>>('_copysignf');
-  late final _dart__copysignf __copysignf =
-      __copysignf_ptr.asFunction<_dart__copysignf>();
+  late final __copysignfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          '_copysignf');
+  late final __copysignf =
+      __copysignfPtr.asFunction<double Function(double, double)>();
 
   double erff(
     double _X,
@@ -3982,8 +4323,9 @@ class DartSdl {
     );
   }
 
-  late final _erff_ptr = _lookup<ffi.NativeFunction<_c_erff>>('erff');
-  late final _dart_erff _erff = _erff_ptr.asFunction<_dart_erff>();
+  late final _erffPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('erff');
+  late final _erff = _erffPtr.asFunction<double Function(double)>();
 
   double erfcf(
     double _X,
@@ -3993,8 +4335,9 @@ class DartSdl {
     );
   }
 
-  late final _erfcf_ptr = _lookup<ffi.NativeFunction<_c_erfcf>>('erfcf');
-  late final _dart_erfcf _erfcf = _erfcf_ptr.asFunction<_dart_erfcf>();
+  late final _erfcfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('erfcf');
+  late final _erfcf = _erfcfPtr.asFunction<double Function(double)>();
 
   double expm1f(
     double _X,
@@ -4004,8 +4347,9 @@ class DartSdl {
     );
   }
 
-  late final _expm1f_ptr = _lookup<ffi.NativeFunction<_c_expm1f>>('expm1f');
-  late final _dart_expm1f _expm1f = _expm1f_ptr.asFunction<_dart_expm1f>();
+  late final _expm1fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expm1f');
+  late final _expm1f = _expm1fPtr.asFunction<double Function(double)>();
 
   double exp2f(
     double _X,
@@ -4015,8 +4359,9 @@ class DartSdl {
     );
   }
 
-  late final _exp2f_ptr = _lookup<ffi.NativeFunction<_c_exp2f>>('exp2f');
-  late final _dart_exp2f _exp2f = _exp2f_ptr.asFunction<_dart_exp2f>();
+  late final _exp2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('exp2f');
+  late final _exp2f = _exp2fPtr.asFunction<double Function(double)>();
 
   double fdimf(
     double _X,
@@ -4028,8 +4373,10 @@ class DartSdl {
     );
   }
 
-  late final _fdimf_ptr = _lookup<ffi.NativeFunction<_c_fdimf>>('fdimf');
-  late final _dart_fdimf _fdimf = _fdimf_ptr.asFunction<_dart_fdimf>();
+  late final _fdimfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fdimf');
+  late final _fdimf = _fdimfPtr.asFunction<double Function(double, double)>();
 
   double fmaf(
     double _X,
@@ -4043,8 +4390,11 @@ class DartSdl {
     );
   }
 
-  late final _fmaf_ptr = _lookup<ffi.NativeFunction<_c_fmaf>>('fmaf');
-  late final _dart_fmaf _fmaf = _fmaf_ptr.asFunction<_dart_fmaf>();
+  late final _fmafPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(ffi.Float, ffi.Float, ffi.Float)>>('fmaf');
+  late final _fmaf =
+      _fmafPtr.asFunction<double Function(double, double, double)>();
 
   double fmaxf(
     double _X,
@@ -4056,8 +4406,10 @@ class DartSdl {
     );
   }
 
-  late final _fmaxf_ptr = _lookup<ffi.NativeFunction<_c_fmaxf>>('fmaxf');
-  late final _dart_fmaxf _fmaxf = _fmaxf_ptr.asFunction<_dart_fmaxf>();
+  late final _fmaxfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fmaxf');
+  late final _fmaxf = _fmaxfPtr.asFunction<double Function(double, double)>();
 
   double fminf(
     double _X,
@@ -4069,8 +4421,10 @@ class DartSdl {
     );
   }
 
-  late final _fminf_ptr = _lookup<ffi.NativeFunction<_c_fminf>>('fminf');
-  late final _dart_fminf _fminf = _fminf_ptr.asFunction<_dart_fminf>();
+  late final _fminfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fminf');
+  late final _fminf = _fminfPtr.asFunction<double Function(double, double)>();
 
   double _hypotf(
     double _X,
@@ -4082,8 +4436,11 @@ class DartSdl {
     );
   }
 
-  late final __hypotf_ptr = _lookup<ffi.NativeFunction<_c__hypotf>>('_hypotf');
-  late final _dart__hypotf __hypotf = __hypotf_ptr.asFunction<_dart__hypotf>();
+  late final __hypotfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          '_hypotf');
+  late final __hypotf =
+      __hypotfPtr.asFunction<double Function(double, double)>();
 
   int ilogbf(
     double _X,
@@ -4093,8 +4450,9 @@ class DartSdl {
     );
   }
 
-  late final _ilogbf_ptr = _lookup<ffi.NativeFunction<_c_ilogbf>>('ilogbf');
-  late final _dart_ilogbf _ilogbf = _ilogbf_ptr.asFunction<_dart_ilogbf>();
+  late final _ilogbfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float)>>('ilogbf');
+  late final _ilogbf = _ilogbfPtr.asFunction<int Function(double)>();
 
   double lgammaf(
     double _X,
@@ -4104,8 +4462,9 @@ class DartSdl {
     );
   }
 
-  late final _lgammaf_ptr = _lookup<ffi.NativeFunction<_c_lgammaf>>('lgammaf');
-  late final _dart_lgammaf _lgammaf = _lgammaf_ptr.asFunction<_dart_lgammaf>();
+  late final _lgammafPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('lgammaf');
+  late final _lgammaf = _lgammafPtr.asFunction<double Function(double)>();
 
   int llrintf(
     double _X,
@@ -4115,8 +4474,9 @@ class DartSdl {
     );
   }
 
-  late final _llrintf_ptr = _lookup<ffi.NativeFunction<_c_llrintf>>('llrintf');
-  late final _dart_llrintf _llrintf = _llrintf_ptr.asFunction<_dart_llrintf>();
+  late final _llrintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Float)>>('llrintf');
+  late final _llrintf = _llrintfPtr.asFunction<int Function(double)>();
 
   int llroundf(
     double _X,
@@ -4126,10 +4486,9 @@ class DartSdl {
     );
   }
 
-  late final _llroundf_ptr =
-      _lookup<ffi.NativeFunction<_c_llroundf>>('llroundf');
-  late final _dart_llroundf _llroundf =
-      _llroundf_ptr.asFunction<_dart_llroundf>();
+  late final _llroundfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Float)>>('llroundf');
+  late final _llroundf = _llroundfPtr.asFunction<int Function(double)>();
 
   double log1pf(
     double _X,
@@ -4139,8 +4498,9 @@ class DartSdl {
     );
   }
 
-  late final _log1pf_ptr = _lookup<ffi.NativeFunction<_c_log1pf>>('log1pf');
-  late final _dart_log1pf _log1pf = _log1pf_ptr.asFunction<_dart_log1pf>();
+  late final _log1pfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log1pf');
+  late final _log1pf = _log1pfPtr.asFunction<double Function(double)>();
 
   double log2f(
     double _X,
@@ -4150,19 +4510,21 @@ class DartSdl {
     );
   }
 
-  late final _log2f_ptr = _lookup<ffi.NativeFunction<_c_log2f>>('log2f');
-  late final _dart_log2f _log2f = _log2f_ptr.asFunction<_dart_log2f>();
+  late final _log2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log2f');
+  late final _log2f = _log2fPtr.asFunction<double Function(double)>();
 
   double logbf(
     double _X,
   ) {
-    return _logbf_1(
+    return _logbf1(
       _X,
     );
   }
 
-  late final _logbf_ptr = _lookup<ffi.NativeFunction<_c_logbf>>('logbf');
-  late final _dart_logbf _logbf_1 = _logbf_ptr.asFunction<_dart_logbf>();
+  late final _logbfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logbf');
+  late final _logbf1 = _logbfPtr.asFunction<double Function(double)>();
 
   int lrintf(
     double _X,
@@ -4172,8 +4534,9 @@ class DartSdl {
     );
   }
 
-  late final _lrintf_ptr = _lookup<ffi.NativeFunction<_c_lrintf>>('lrintf');
-  late final _dart_lrintf _lrintf = _lrintf_ptr.asFunction<_dart_lrintf>();
+  late final _lrintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Float)>>('lrintf');
+  late final _lrintf = _lrintfPtr.asFunction<int Function(double)>();
 
   int lroundf(
     double _X,
@@ -4183,8 +4546,9 @@ class DartSdl {
     );
   }
 
-  late final _lroundf_ptr = _lookup<ffi.NativeFunction<_c_lroundf>>('lroundf');
-  late final _dart_lroundf _lroundf = _lroundf_ptr.asFunction<_dart_lroundf>();
+  late final _lroundfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Float)>>('lroundf');
+  late final _lroundf = _lroundfPtr.asFunction<int Function(double)>();
 
   double nanf(
     ffi.Pointer<ffi.Int8> _X,
@@ -4194,8 +4558,11 @@ class DartSdl {
     );
   }
 
-  late final _nanf_ptr = _lookup<ffi.NativeFunction<_c_nanf>>('nanf');
-  late final _dart_nanf _nanf = _nanf_ptr.asFunction<_dart_nanf>();
+  late final _nanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<ffi.Int8>)>>(
+          'nanf');
+  late final _nanf =
+      _nanfPtr.asFunction<double Function(ffi.Pointer<ffi.Int8>)>();
 
   double nearbyintf(
     double _X,
@@ -4205,25 +4572,25 @@ class DartSdl {
     );
   }
 
-  late final _nearbyintf_ptr =
-      _lookup<ffi.NativeFunction<_c_nearbyintf>>('nearbyintf');
-  late final _dart_nearbyintf _nearbyintf =
-      _nearbyintf_ptr.asFunction<_dart_nearbyintf>();
+  late final _nearbyintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('nearbyintf');
+  late final _nearbyintf = _nearbyintfPtr.asFunction<double Function(double)>();
 
   double nextafterf(
     double _X,
     double _Y,
   ) {
-    return _nextafterf_1(
+    return _nextafterf1(
       _X,
       _Y,
     );
   }
 
-  late final _nextafterf_ptr =
-      _lookup<ffi.NativeFunction<_c_nextafterf>>('nextafterf');
-  late final _dart_nextafterf _nextafterf_1 =
-      _nextafterf_ptr.asFunction<_dart_nextafterf>();
+  late final _nextafterfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'nextafterf');
+  late final _nextafterf1 =
+      _nextafterfPtr.asFunction<double Function(double, double)>();
 
   double remainderf(
     double _X,
@@ -4235,10 +4602,11 @@ class DartSdl {
     );
   }
 
-  late final _remainderf_ptr =
-      _lookup<ffi.NativeFunction<_c_remainderf>>('remainderf');
-  late final _dart_remainderf _remainderf =
-      _remainderf_ptr.asFunction<_dart_remainderf>();
+  late final _remainderfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'remainderf');
+  late final _remainderf =
+      _remainderfPtr.asFunction<double Function(double, double)>();
 
   double remquof(
     double _X,
@@ -4252,8 +4620,12 @@ class DartSdl {
     );
   }
 
-  late final _remquof_ptr = _lookup<ffi.NativeFunction<_c_remquof>>('remquof');
-  late final _dart_remquof _remquof = _remquof_ptr.asFunction<_dart_remquof>();
+  late final _remquofPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(
+              ffi.Float, ffi.Float, ffi.Pointer<ffi.Int32>)>>('remquof');
+  late final _remquof = _remquofPtr
+      .asFunction<double Function(double, double, ffi.Pointer<ffi.Int32>)>();
 
   double rintf(
     double _X,
@@ -4263,8 +4635,9 @@ class DartSdl {
     );
   }
 
-  late final _rintf_ptr = _lookup<ffi.NativeFunction<_c_rintf>>('rintf');
-  late final _dart_rintf _rintf = _rintf_ptr.asFunction<_dart_rintf>();
+  late final _rintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('rintf');
+  late final _rintf = _rintfPtr.asFunction<double Function(double)>();
 
   double roundf(
     double _X,
@@ -4274,8 +4647,9 @@ class DartSdl {
     );
   }
 
-  late final _roundf_ptr = _lookup<ffi.NativeFunction<_c_roundf>>('roundf');
-  late final _dart_roundf _roundf = _roundf_ptr.asFunction<_dart_roundf>();
+  late final _roundfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('roundf');
+  late final _roundf = _roundfPtr.asFunction<double Function(double)>();
 
   double scalblnf(
     double _X,
@@ -4287,10 +4661,11 @@ class DartSdl {
     );
   }
 
-  late final _scalblnf_ptr =
-      _lookup<ffi.NativeFunction<_c_scalblnf>>('scalblnf');
-  late final _dart_scalblnf _scalblnf =
-      _scalblnf_ptr.asFunction<_dart_scalblnf>();
+  late final _scalblnfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int64)>>(
+          'scalblnf');
+  late final _scalblnf =
+      _scalblnfPtr.asFunction<double Function(double, int)>();
 
   double scalbnf(
     double _X,
@@ -4302,8 +4677,10 @@ class DartSdl {
     );
   }
 
-  late final _scalbnf_ptr = _lookup<ffi.NativeFunction<_c_scalbnf>>('scalbnf');
-  late final _dart_scalbnf _scalbnf = _scalbnf_ptr.asFunction<_dart_scalbnf>();
+  late final _scalbnfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int32)>>(
+          'scalbnf');
+  late final _scalbnf = _scalbnfPtr.asFunction<double Function(double, int)>();
 
   double tgammaf(
     double _X,
@@ -4313,8 +4690,9 @@ class DartSdl {
     );
   }
 
-  late final _tgammaf_ptr = _lookup<ffi.NativeFunction<_c_tgammaf>>('tgammaf');
-  late final _dart_tgammaf _tgammaf = _tgammaf_ptr.asFunction<_dart_tgammaf>();
+  late final _tgammafPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tgammaf');
+  late final _tgammaf = _tgammafPtr.asFunction<double Function(double)>();
 
   double truncf(
     double _X,
@@ -4324,8 +4702,9 @@ class DartSdl {
     );
   }
 
-  late final _truncf_ptr = _lookup<ffi.NativeFunction<_c_truncf>>('truncf');
-  late final _dart_truncf _truncf = _truncf_ptr.asFunction<_dart_truncf>();
+  late final _truncfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('truncf');
+  late final _truncf = _truncfPtr.asFunction<double Function(double)>();
 
   double _logbf(
     double _X,
@@ -4335,8 +4714,9 @@ class DartSdl {
     );
   }
 
-  late final __logbf_ptr = _lookup<ffi.NativeFunction<_c__logbf>>('_logbf');
-  late final _dart__logbf __logbf = __logbf_ptr.asFunction<_dart__logbf>();
+  late final __logbfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('_logbf');
+  late final __logbf = __logbfPtr.asFunction<double Function(double)>();
 
   double _nextafterf(
     double _X,
@@ -4348,10 +4728,11 @@ class DartSdl {
     );
   }
 
-  late final __nextafterf_ptr =
-      _lookup<ffi.NativeFunction<_c__nextafterf>>('_nextafterf');
-  late final _dart__nextafterf __nextafterf =
-      __nextafterf_ptr.asFunction<_dart__nextafterf>();
+  late final __nextafterfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          '_nextafterf');
+  late final __nextafterf =
+      __nextafterfPtr.asFunction<double Function(double, double)>();
 
   int _finitef(
     double _X,
@@ -4361,10 +4742,9 @@ class DartSdl {
     );
   }
 
-  late final __finitef_ptr =
-      _lookup<ffi.NativeFunction<_c__finitef>>('_finitef');
-  late final _dart__finitef __finitef =
-      __finitef_ptr.asFunction<_dart__finitef>();
+  late final __finitefPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float)>>('_finitef');
+  late final __finitef = __finitefPtr.asFunction<int Function(double)>();
 
   int _isnanf(
     double _X,
@@ -4374,8 +4754,9 @@ class DartSdl {
     );
   }
 
-  late final __isnanf_ptr = _lookup<ffi.NativeFunction<_c__isnanf>>('_isnanf');
-  late final _dart__isnanf __isnanf = __isnanf_ptr.asFunction<_dart__isnanf>();
+  late final __isnanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float)>>('_isnanf');
+  late final __isnanf = __isnanfPtr.asFunction<int Function(double)>();
 
   int _fpclassf(
     double _X,
@@ -4385,10 +4766,9 @@ class DartSdl {
     );
   }
 
-  late final __fpclassf_ptr =
-      _lookup<ffi.NativeFunction<_c__fpclassf>>('_fpclassf');
-  late final _dart__fpclassf __fpclassf =
-      __fpclassf_ptr.asFunction<_dart__fpclassf>();
+  late final __fpclassfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Float)>>('_fpclassf');
+  late final __fpclassf = __fpclassfPtr.asFunction<int Function(double)>();
 
   int _set_FMA3_enable(
     int _Flag,
@@ -4398,19 +4778,20 @@ class DartSdl {
     );
   }
 
-  late final __set_FMA3_enable_ptr =
-      _lookup<ffi.NativeFunction<_c__set_FMA3_enable>>('_set_FMA3_enable');
-  late final _dart__set_FMA3_enable __set_FMA3_enable =
-      __set_FMA3_enable_ptr.asFunction<_dart__set_FMA3_enable>();
+  late final __set_FMA3_enablePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          '_set_FMA3_enable');
+  late final __set_FMA3_enable =
+      __set_FMA3_enablePtr.asFunction<int Function(int)>();
 
   int _get_FMA3_enable() {
     return __get_FMA3_enable();
   }
 
-  late final __get_FMA3_enable_ptr =
-      _lookup<ffi.NativeFunction<_c__get_FMA3_enable>>('_get_FMA3_enable');
-  late final _dart__get_FMA3_enable __get_FMA3_enable =
-      __get_FMA3_enable_ptr.asFunction<_dart__get_FMA3_enable>();
+  late final __get_FMA3_enablePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('_get_FMA3_enable');
+  late final __get_FMA3_enable =
+      __get_FMA3_enablePtr.asFunction<int Function()>();
 
   double acosf(
     double _X,
@@ -4420,8 +4801,9 @@ class DartSdl {
     );
   }
 
-  late final _acosf_ptr = _lookup<ffi.NativeFunction<_c_acosf>>('acosf');
-  late final _dart_acosf _acosf = _acosf_ptr.asFunction<_dart_acosf>();
+  late final _acosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acosf');
+  late final _acosf = _acosfPtr.asFunction<double Function(double)>();
 
   double asinf(
     double _X,
@@ -4431,8 +4813,9 @@ class DartSdl {
     );
   }
 
-  late final _asinf_ptr = _lookup<ffi.NativeFunction<_c_asinf>>('asinf');
-  late final _dart_asinf _asinf = _asinf_ptr.asFunction<_dart_asinf>();
+  late final _asinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinf');
+  late final _asinf = _asinfPtr.asFunction<double Function(double)>();
 
   double atan2f(
     double _Y,
@@ -4444,8 +4827,10 @@ class DartSdl {
     );
   }
 
-  late final _atan2f_ptr = _lookup<ffi.NativeFunction<_c_atan2f>>('atan2f');
-  late final _dart_atan2f _atan2f = _atan2f_ptr.asFunction<_dart_atan2f>();
+  late final _atan2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'atan2f');
+  late final _atan2f = _atan2fPtr.asFunction<double Function(double, double)>();
 
   double atanf(
     double _X,
@@ -4455,8 +4840,9 @@ class DartSdl {
     );
   }
 
-  late final _atanf_ptr = _lookup<ffi.NativeFunction<_c_atanf>>('atanf');
-  late final _dart_atanf _atanf = _atanf_ptr.asFunction<_dart_atanf>();
+  late final _atanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanf');
+  late final _atanf = _atanfPtr.asFunction<double Function(double)>();
 
   double ceilf(
     double _X,
@@ -4466,8 +4852,9 @@ class DartSdl {
     );
   }
 
-  late final _ceilf_ptr = _lookup<ffi.NativeFunction<_c_ceilf>>('ceilf');
-  late final _dart_ceilf _ceilf = _ceilf_ptr.asFunction<_dart_ceilf>();
+  late final _ceilfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('ceilf');
+  late final _ceilf = _ceilfPtr.asFunction<double Function(double)>();
 
   double cosf(
     double _X,
@@ -4477,8 +4864,9 @@ class DartSdl {
     );
   }
 
-  late final _cosf_ptr = _lookup<ffi.NativeFunction<_c_cosf>>('cosf');
-  late final _dart_cosf _cosf = _cosf_ptr.asFunction<_dart_cosf>();
+  late final _cosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('cosf');
+  late final _cosf = _cosfPtr.asFunction<double Function(double)>();
 
   double coshf(
     double _X,
@@ -4488,8 +4876,9 @@ class DartSdl {
     );
   }
 
-  late final _coshf_ptr = _lookup<ffi.NativeFunction<_c_coshf>>('coshf');
-  late final _dart_coshf _coshf = _coshf_ptr.asFunction<_dart_coshf>();
+  late final _coshfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('coshf');
+  late final _coshf = _coshfPtr.asFunction<double Function(double)>();
 
   double expf(
     double _X,
@@ -4499,8 +4888,9 @@ class DartSdl {
     );
   }
 
-  late final _expf_ptr = _lookup<ffi.NativeFunction<_c_expf>>('expf');
-  late final _dart_expf _expf = _expf_ptr.asFunction<_dart_expf>();
+  late final _expfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expf');
+  late final _expf = _expfPtr.asFunction<double Function(double)>();
 
   double floorf(
     double _X,
@@ -4510,8 +4900,9 @@ class DartSdl {
     );
   }
 
-  late final _floorf_ptr = _lookup<ffi.NativeFunction<_c_floorf>>('floorf');
-  late final _dart_floorf _floorf = _floorf_ptr.asFunction<_dart_floorf>();
+  late final _floorfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('floorf');
+  late final _floorf = _floorfPtr.asFunction<double Function(double)>();
 
   double fmodf(
     double _X,
@@ -4523,8 +4914,10 @@ class DartSdl {
     );
   }
 
-  late final _fmodf_ptr = _lookup<ffi.NativeFunction<_c_fmodf>>('fmodf');
-  late final _dart_fmodf _fmodf = _fmodf_ptr.asFunction<_dart_fmodf>();
+  late final _fmodfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fmodf');
+  late final _fmodf = _fmodfPtr.asFunction<double Function(double, double)>();
 
   double log10f(
     double _X,
@@ -4534,8 +4927,9 @@ class DartSdl {
     );
   }
 
-  late final _log10f_ptr = _lookup<ffi.NativeFunction<_c_log10f>>('log10f');
-  late final _dart_log10f _log10f = _log10f_ptr.asFunction<_dart_log10f>();
+  late final _log10fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log10f');
+  late final _log10f = _log10fPtr.asFunction<double Function(double)>();
 
   double logf(
     double _X,
@@ -4545,8 +4939,9 @@ class DartSdl {
     );
   }
 
-  late final _logf_ptr = _lookup<ffi.NativeFunction<_c_logf>>('logf');
-  late final _dart_logf _logf = _logf_ptr.asFunction<_dart_logf>();
+  late final _logfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logf');
+  late final _logf = _logfPtr.asFunction<double Function(double)>();
 
   double modff(
     double _X,
@@ -4558,8 +4953,11 @@ class DartSdl {
     );
   }
 
-  late final _modff_ptr = _lookup<ffi.NativeFunction<_c_modff>>('modff');
-  late final _dart_modff _modff = _modff_ptr.asFunction<_dart_modff>();
+  late final _modffPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(ffi.Float, ffi.Pointer<ffi.Float>)>>('modff');
+  late final _modff =
+      _modffPtr.asFunction<double Function(double, ffi.Pointer<ffi.Float>)>();
 
   double powf(
     double _X,
@@ -4571,8 +4969,10 @@ class DartSdl {
     );
   }
 
-  late final _powf_ptr = _lookup<ffi.NativeFunction<_c_powf>>('powf');
-  late final _dart_powf _powf = _powf_ptr.asFunction<_dart_powf>();
+  late final _powfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'powf');
+  late final _powf = _powfPtr.asFunction<double Function(double, double)>();
 
   double sinf(
     double _X,
@@ -4582,8 +4982,9 @@ class DartSdl {
     );
   }
 
-  late final _sinf_ptr = _lookup<ffi.NativeFunction<_c_sinf>>('sinf');
-  late final _dart_sinf _sinf = _sinf_ptr.asFunction<_dart_sinf>();
+  late final _sinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinf');
+  late final _sinf = _sinfPtr.asFunction<double Function(double)>();
 
   double sinhf(
     double _X,
@@ -4593,8 +4994,9 @@ class DartSdl {
     );
   }
 
-  late final _sinhf_ptr = _lookup<ffi.NativeFunction<_c_sinhf>>('sinhf');
-  late final _dart_sinhf _sinhf = _sinhf_ptr.asFunction<_dart_sinhf>();
+  late final _sinhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinhf');
+  late final _sinhf = _sinhfPtr.asFunction<double Function(double)>();
 
   double sqrtf(
     double _X,
@@ -4604,8 +5006,9 @@ class DartSdl {
     );
   }
 
-  late final _sqrtf_ptr = _lookup<ffi.NativeFunction<_c_sqrtf>>('sqrtf');
-  late final _dart_sqrtf _sqrtf = _sqrtf_ptr.asFunction<_dart_sqrtf>();
+  late final _sqrtfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sqrtf');
+  late final _sqrtf = _sqrtfPtr.asFunction<double Function(double)>();
 
   double tanf(
     double _X,
@@ -4615,8 +5018,9 @@ class DartSdl {
     );
   }
 
-  late final _tanf_ptr = _lookup<ffi.NativeFunction<_c_tanf>>('tanf');
-  late final _dart_tanf _tanf = _tanf_ptr.asFunction<_dart_tanf>();
+  late final _tanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanf');
+  late final _tanf = _tanfPtr.asFunction<double Function(double)>();
 
   double tanhf(
     double _X,
@@ -4626,84 +5030,93 @@ class DartSdl {
     );
   }
 
-  late final _tanhf_ptr = _lookup<ffi.NativeFunction<_c_tanhf>>('tanhf');
-  late final _dart_tanhf _tanhf = _tanhf_ptr.asFunction<_dart_tanhf>();
+  late final _tanhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanhf');
+  late final _tanhf = _tanhfPtr.asFunction<double Function(double)>();
 
-  late final ffi.Pointer<ffi.Double> _HUGE_1 = _lookup<ffi.Double>('HUGE');
+  late final ffi.Pointer<ffi.Double> _HUGE1 = _lookup<ffi.Double>('HUGE');
 
-  double get HUGE => _HUGE_1.value;
+  double get HUGE => _HUGE1.value;
 
-  set HUGE(double value) => _HUGE_1.value = value;
+  set HUGE(double value) => _HUGE1.value = value;
 
   double j0(
     double _X,
   ) {
-    return _j0_1(
+    return _j01(
       _X,
     );
   }
 
-  late final _j0_ptr = _lookup<ffi.NativeFunction<_c_j0>>('j0');
-  late final _dart_j0 _j0_1 = _j0_ptr.asFunction<_dart_j0>();
+  late final _j0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j0');
+  late final _j01 = _j0Ptr.asFunction<double Function(double)>();
 
   double j1(
     double _X,
   ) {
-    return _j1_1(
+    return _j11(
       _X,
     );
   }
 
-  late final _j1_ptr = _lookup<ffi.NativeFunction<_c_j1>>('j1');
-  late final _dart_j1 _j1_1 = _j1_ptr.asFunction<_dart_j1>();
+  late final _j1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j1');
+  late final _j11 = _j1Ptr.asFunction<double Function(double)>();
 
   double jn(
     int _X,
     double _Y,
   ) {
-    return _jn_1(
+    return _jn1(
       _X,
       _Y,
     );
   }
 
-  late final _jn_ptr = _lookup<ffi.NativeFunction<_c_jn>>('jn');
-  late final _dart_jn _jn_1 = _jn_ptr.asFunction<_dart_jn>();
+  late final _jnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int32, ffi.Double)>>(
+          'jn');
+  late final _jn1 = _jnPtr.asFunction<double Function(int, double)>();
 
   double y0(
     double _X,
   ) {
-    return _y0_1(
+    return _y01(
       _X,
     );
   }
 
-  late final _y0_ptr = _lookup<ffi.NativeFunction<_c_y0>>('y0');
-  late final _dart_y0 _y0_1 = _y0_ptr.asFunction<_dart_y0>();
+  late final _y0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y0');
+  late final _y01 = _y0Ptr.asFunction<double Function(double)>();
 
   double y1(
     double _X,
   ) {
-    return _y1_1(
+    return _y11(
       _X,
     );
   }
 
-  late final _y1_ptr = _lookup<ffi.NativeFunction<_c_y1>>('y1');
-  late final _dart_y1 _y1_1 = _y1_ptr.asFunction<_dart_y1>();
+  late final _y1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y1');
+  late final _y11 = _y1Ptr.asFunction<double Function(double)>();
 
   double yn(
     int _X,
     double _Y,
   ) {
-    return _yn_1(
+    return _yn1(
       _X,
       _Y,
     );
   }
 
-  late final _yn_ptr = _lookup<ffi.NativeFunction<_c_yn>>('yn');
-  late final _dart_yn _yn_1 = _yn_ptr.asFunction<_dart_yn>();
+  late final _ynPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int32, ffi.Double)>>(
+          'yn');
+  late final _yn1 = _ynPtr.asFunction<double Function(int, double)>();
 
   late final ffi.Pointer<ffi.Int32> ___current_exit_return_mode =
       _lookup<ffi.Int32>('__current_exit_return_mode');
@@ -4717,10 +5130,10 @@ class DartSdl {
     return ___vcrt_initialize() != 0;
   }
 
-  late final ___vcrt_initialize_ptr =
-      _lookup<ffi.NativeFunction<_c___vcrt_initialize>>('__vcrt_initialize');
-  late final _dart___vcrt_initialize ___vcrt_initialize =
-      ___vcrt_initialize_ptr.asFunction<_dart___vcrt_initialize>();
+  late final ___vcrt_initializePtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__vcrt_initialize');
+  late final ___vcrt_initialize =
+      ___vcrt_initializePtr.asFunction<int Function()>();
 
   bool __vcrt_uninitialize(
     bool _Terminating,
@@ -4731,62 +5144,58 @@ class DartSdl {
         0;
   }
 
-  late final ___vcrt_uninitialize_ptr =
-      _lookup<ffi.NativeFunction<_c___vcrt_uninitialize>>(
+  late final ___vcrt_uninitializePtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Uint8)>>(
           '__vcrt_uninitialize');
-  late final _dart___vcrt_uninitialize ___vcrt_uninitialize =
-      ___vcrt_uninitialize_ptr.asFunction<_dart___vcrt_uninitialize>();
+  late final ___vcrt_uninitialize =
+      ___vcrt_uninitializePtr.asFunction<int Function(int)>();
 
   bool __vcrt_uninitialize_critical() {
     return ___vcrt_uninitialize_critical() != 0;
   }
 
-  late final ___vcrt_uninitialize_critical_ptr =
-      _lookup<ffi.NativeFunction<_c___vcrt_uninitialize_critical>>(
+  late final ___vcrt_uninitialize_criticalPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>(
           '__vcrt_uninitialize_critical');
-  late final _dart___vcrt_uninitialize_critical ___vcrt_uninitialize_critical =
-      ___vcrt_uninitialize_critical_ptr
-          .asFunction<_dart___vcrt_uninitialize_critical>();
+  late final ___vcrt_uninitialize_critical =
+      ___vcrt_uninitialize_criticalPtr.asFunction<int Function()>();
 
   bool __vcrt_thread_attach() {
     return ___vcrt_thread_attach() != 0;
   }
 
-  late final ___vcrt_thread_attach_ptr =
-      _lookup<ffi.NativeFunction<_c___vcrt_thread_attach>>(
-          '__vcrt_thread_attach');
-  late final _dart___vcrt_thread_attach ___vcrt_thread_attach =
-      ___vcrt_thread_attach_ptr.asFunction<_dart___vcrt_thread_attach>();
+  late final ___vcrt_thread_attachPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__vcrt_thread_attach');
+  late final ___vcrt_thread_attach =
+      ___vcrt_thread_attachPtr.asFunction<int Function()>();
 
   bool __vcrt_thread_detach() {
     return ___vcrt_thread_detach() != 0;
   }
 
-  late final ___vcrt_thread_detach_ptr =
-      _lookup<ffi.NativeFunction<_c___vcrt_thread_detach>>(
-          '__vcrt_thread_detach');
-  late final _dart___vcrt_thread_detach ___vcrt_thread_detach =
-      ___vcrt_thread_detach_ptr.asFunction<_dart___vcrt_thread_detach>();
+  late final ___vcrt_thread_detachPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__vcrt_thread_detach');
+  late final ___vcrt_thread_detach =
+      ___vcrt_thread_detachPtr.asFunction<int Function()>();
 
   int __isa_available_init() {
     return ___isa_available_init();
   }
 
-  late final ___isa_available_init_ptr =
-      _lookup<ffi.NativeFunction<_c___isa_available_init>>(
-          '__isa_available_init');
-  late final _dart___isa_available_init ___isa_available_init =
-      ___isa_available_init_ptr.asFunction<_dart___isa_available_init>();
+  late final ___isa_available_initPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('__isa_available_init');
+  late final ___isa_available_init =
+      ___isa_available_initPtr.asFunction<int Function()>();
 
   int _get_startup_argv_mode() {
     return __get_startup_argv_mode();
   }
 
-  late final __get_startup_argv_mode_ptr =
-      _lookup<ffi.NativeFunction<_c__get_startup_argv_mode>>(
+  late final __get_startup_argv_modePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           '_get_startup_argv_mode');
-  late final _dart__get_startup_argv_mode __get_startup_argv_mode =
-      __get_startup_argv_mode_ptr.asFunction<_dart__get_startup_argv_mode>();
+  late final __get_startup_argv_mode =
+      __get_startup_argv_modePtr.asFunction<int Function()>();
 
   int _seh_filter_dll(
     int _ExceptionNum,
@@ -4798,10 +5207,12 @@ class DartSdl {
     );
   }
 
-  late final __seh_filter_dll_ptr =
-      _lookup<ffi.NativeFunction<_c__seh_filter_dll>>('_seh_filter_dll');
-  late final _dart__seh_filter_dll __seh_filter_dll =
-      __seh_filter_dll_ptr.asFunction<_dart__seh_filter_dll>();
+  late final __seh_filter_dllPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Uint64, ffi.Pointer<EXCEPTION_POINTERS>)>>('_seh_filter_dll');
+  late final __seh_filter_dll = __seh_filter_dllPtr
+      .asFunction<int Function(int, ffi.Pointer<EXCEPTION_POINTERS>)>();
 
   int _seh_filter_exe(
     int _ExceptionNum,
@@ -4813,19 +5224,21 @@ class DartSdl {
     );
   }
 
-  late final __seh_filter_exe_ptr =
-      _lookup<ffi.NativeFunction<_c__seh_filter_exe>>('_seh_filter_exe');
-  late final _dart__seh_filter_exe __seh_filter_exe =
-      __seh_filter_exe_ptr.asFunction<_dart__seh_filter_exe>();
+  late final __seh_filter_exePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Uint64, ffi.Pointer<EXCEPTION_POINTERS>)>>('_seh_filter_exe');
+  late final __seh_filter_exe = __seh_filter_exePtr
+      .asFunction<int Function(int, ffi.Pointer<EXCEPTION_POINTERS>)>();
 
   int _query_app_type() {
     return __query_app_type();
   }
 
-  late final __query_app_type_ptr =
-      _lookup<ffi.NativeFunction<_c__query_app_type>>('_query_app_type');
-  late final _dart__query_app_type __query_app_type =
-      __query_app_type_ptr.asFunction<_dart__query_app_type>();
+  late final __query_app_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('_query_app_type');
+  late final __query_app_type =
+      __query_app_typePtr.asFunction<int Function()>();
 
   void _set_app_type(
     int _Type,
@@ -4835,35 +5248,35 @@ class DartSdl {
     );
   }
 
-  late final __set_app_type_ptr =
-      _lookup<ffi.NativeFunction<_c__set_app_type>>('_set_app_type');
-  late final _dart__set_app_type __set_app_type =
-      __set_app_type_ptr.asFunction<_dart__set_app_type>();
+  late final __set_app_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+          '_set_app_type');
+  late final __set_app_type =
+      __set_app_typePtr.asFunction<void Function(int)>();
 
   void __setusermatherr(
-    ffi.Pointer<ffi.NativeFunction<_UserMathErrorFunctionPointer>>
-        _UserMathErrorFunction,
+    _UserMathErrorFunctionPointer _UserMathErrorFunction,
   ) {
     return ___setusermatherr(
       _UserMathErrorFunction,
     );
   }
 
-  late final ___setusermatherr_ptr =
-      _lookup<ffi.NativeFunction<_c___setusermatherr>>('__setusermatherr');
-  late final _dart___setusermatherr ___setusermatherr =
-      ___setusermatherr_ptr.asFunction<_dart___setusermatherr>();
+  late final ___setusermatherrPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(_UserMathErrorFunctionPointer)>>(
+      '__setusermatherr');
+  late final ___setusermatherr = ___setusermatherrPtr
+      .asFunction<void Function(_UserMathErrorFunctionPointer)>();
 
   int _is_c_termination_complete() {
     return __is_c_termination_complete();
   }
 
-  late final __is_c_termination_complete_ptr =
-      _lookup<ffi.NativeFunction<_c__is_c_termination_complete>>(
+  late final __is_c_termination_completePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           '_is_c_termination_complete');
-  late final _dart__is_c_termination_complete __is_c_termination_complete =
-      __is_c_termination_complete_ptr
-          .asFunction<_dart__is_c_termination_complete>();
+  late final __is_c_termination_complete =
+      __is_c_termination_completePtr.asFunction<int Function()>();
 
   int _configure_narrow_argv(
     int mode,
@@ -4873,11 +5286,11 @@ class DartSdl {
     );
   }
 
-  late final __configure_narrow_argv_ptr =
-      _lookup<ffi.NativeFunction<_c__configure_narrow_argv>>(
+  late final __configure_narrow_argvPtr =
+      _lookup<ffi.NativeFunction<errno_t Function(ffi.Int32)>>(
           '_configure_narrow_argv');
-  late final _dart__configure_narrow_argv __configure_narrow_argv =
-      __configure_narrow_argv_ptr.asFunction<_dart__configure_narrow_argv>();
+  late final __configure_narrow_argv =
+      __configure_narrow_argvPtr.asFunction<int Function(int)>();
 
   int _configure_wide_argv(
     int mode,
@@ -4887,99 +5300,98 @@ class DartSdl {
     );
   }
 
-  late final __configure_wide_argv_ptr =
-      _lookup<ffi.NativeFunction<_c__configure_wide_argv>>(
+  late final __configure_wide_argvPtr =
+      _lookup<ffi.NativeFunction<errno_t Function(ffi.Int32)>>(
           '_configure_wide_argv');
-  late final _dart__configure_wide_argv __configure_wide_argv =
-      __configure_wide_argv_ptr.asFunction<_dart__configure_wide_argv>();
+  late final __configure_wide_argv =
+      __configure_wide_argvPtr.asFunction<int Function(int)>();
 
   int _initialize_narrow_environment() {
     return __initialize_narrow_environment();
   }
 
-  late final __initialize_narrow_environment_ptr =
-      _lookup<ffi.NativeFunction<_c__initialize_narrow_environment>>(
+  late final __initialize_narrow_environmentPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           '_initialize_narrow_environment');
-  late final _dart__initialize_narrow_environment
-      __initialize_narrow_environment = __initialize_narrow_environment_ptr
-          .asFunction<_dart__initialize_narrow_environment>();
+  late final __initialize_narrow_environment =
+      __initialize_narrow_environmentPtr.asFunction<int Function()>();
 
   int _initialize_wide_environment() {
     return __initialize_wide_environment();
   }
 
-  late final __initialize_wide_environment_ptr =
-      _lookup<ffi.NativeFunction<_c__initialize_wide_environment>>(
+  late final __initialize_wide_environmentPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           '_initialize_wide_environment');
-  late final _dart__initialize_wide_environment __initialize_wide_environment =
-      __initialize_wide_environment_ptr
-          .asFunction<_dart__initialize_wide_environment>();
+  late final __initialize_wide_environment =
+      __initialize_wide_environmentPtr.asFunction<int Function()>();
 
   ffi.Pointer<ffi.Pointer<ffi.Int8>> _get_initial_narrow_environment() {
     return __get_initial_narrow_environment();
   }
 
-  late final __get_initial_narrow_environment_ptr =
-      _lookup<ffi.NativeFunction<_c__get_initial_narrow_environment>>(
-          '_get_initial_narrow_environment');
-  late final _dart__get_initial_narrow_environment
-      __get_initial_narrow_environment = __get_initial_narrow_environment_ptr
-          .asFunction<_dart__get_initial_narrow_environment>();
+  late final __get_initial_narrow_environmentPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Pointer<ffi.Int8>> Function()>>(
+      '_get_initial_narrow_environment');
+  late final __get_initial_narrow_environment =
+      __get_initial_narrow_environmentPtr
+          .asFunction<ffi.Pointer<ffi.Pointer<ffi.Int8>> Function()>();
 
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _get_initial_wide_environment() {
+  ffi.Pointer<ffi.Pointer<wchar_t>> _get_initial_wide_environment() {
     return __get_initial_wide_environment();
   }
 
-  late final __get_initial_wide_environment_ptr =
-      _lookup<ffi.NativeFunction<_c__get_initial_wide_environment>>(
+  late final __get_initial_wide_environmentPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Pointer<wchar_t>> Function()>>(
           '_get_initial_wide_environment');
-  late final _dart__get_initial_wide_environment
-      __get_initial_wide_environment = __get_initial_wide_environment_ptr
-          .asFunction<_dart__get_initial_wide_environment>();
+  late final __get_initial_wide_environment = __get_initial_wide_environmentPtr
+      .asFunction<ffi.Pointer<ffi.Pointer<wchar_t>> Function()>();
 
   ffi.Pointer<ffi.Int8> _get_narrow_winmain_command_line() {
     return __get_narrow_winmain_command_line();
   }
 
-  late final __get_narrow_winmain_command_line_ptr =
-      _lookup<ffi.NativeFunction<_c__get_narrow_winmain_command_line>>(
+  late final __get_narrow_winmain_command_linePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
           '_get_narrow_winmain_command_line');
-  late final _dart__get_narrow_winmain_command_line
-      __get_narrow_winmain_command_line = __get_narrow_winmain_command_line_ptr
-          .asFunction<_dart__get_narrow_winmain_command_line>();
+  late final __get_narrow_winmain_command_line =
+      __get_narrow_winmain_command_linePtr
+          .asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
-  ffi.Pointer<ffi.Uint16> _get_wide_winmain_command_line() {
+  ffi.Pointer<wchar_t> _get_wide_winmain_command_line() {
     return __get_wide_winmain_command_line();
   }
 
-  late final __get_wide_winmain_command_line_ptr =
-      _lookup<ffi.NativeFunction<_c__get_wide_winmain_command_line>>(
+  late final __get_wide_winmain_command_linePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wchar_t> Function()>>(
           '_get_wide_winmain_command_line');
-  late final _dart__get_wide_winmain_command_line
-      __get_wide_winmain_command_line = __get_wide_winmain_command_line_ptr
-          .asFunction<_dart__get_wide_winmain_command_line>();
+  late final __get_wide_winmain_command_line =
+      __get_wide_winmain_command_linePtr
+          .asFunction<ffi.Pointer<wchar_t> Function()>();
 
   ffi.Pointer<ffi.Pointer<ffi.Int8>> __p__acmdln() {
     return ___p__acmdln();
   }
 
-  late final ___p__acmdln_ptr =
-      _lookup<ffi.NativeFunction<_c___p__acmdln>>('__p__acmdln');
-  late final _dart___p__acmdln ___p__acmdln =
-      ___p__acmdln_ptr.asFunction<_dart___p__acmdln>();
+  late final ___p__acmdlnPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Pointer<ffi.Int8>> Function()>>(
+      '__p__acmdln');
+  late final ___p__acmdln = ___p__acmdlnPtr
+      .asFunction<ffi.Pointer<ffi.Pointer<ffi.Int8>> Function()>();
 
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> __p__wcmdln() {
+  ffi.Pointer<ffi.Pointer<wchar_t>> __p__wcmdln() {
     return ___p__wcmdln();
   }
 
-  late final ___p__wcmdln_ptr =
-      _lookup<ffi.NativeFunction<_c___p__wcmdln>>('__p__wcmdln');
-  late final _dart___p__wcmdln ___p__wcmdln =
-      ___p__wcmdln_ptr.asFunction<_dart___p__wcmdln>();
+  late final ___p__wcmdlnPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Pointer<wchar_t>> Function()>>(
+          '__p__wcmdln');
+  late final ___p__wcmdln = ___p__wcmdlnPtr
+      .asFunction<ffi.Pointer<ffi.Pointer<wchar_t>> Function()>();
 
   void _initterm(
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _First,
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _Last,
+    ffi.Pointer<_PVFV> _First,
+    ffi.Pointer<_PVFV> _Last,
   ) {
     return __initterm(
       _First,
@@ -4987,14 +5399,16 @@ class DartSdl {
     );
   }
 
-  late final __initterm_ptr =
-      _lookup<ffi.NativeFunction<_c__initterm>>('_initterm');
-  late final _dart__initterm __initterm =
-      __initterm_ptr.asFunction<_dart__initterm>();
+  late final __inittermPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<_PVFV>, ffi.Pointer<_PVFV>)>>('_initterm');
+  late final __initterm = __inittermPtr
+      .asFunction<void Function(ffi.Pointer<_PVFV>, ffi.Pointer<_PVFV>)>();
 
   int _initterm_e(
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _First,
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _Last,
+    ffi.Pointer<_PIFV> _First,
+    ffi.Pointer<_PIFV> _Last,
   ) {
     return __initterm_e(
       _First,
@@ -5002,10 +5416,12 @@ class DartSdl {
     );
   }
 
-  late final __initterm_e_ptr =
-      _lookup<ffi.NativeFunction<_c__initterm_e>>('_initterm_e');
-  late final _dart__initterm_e __initterm_e =
-      __initterm_e_ptr.asFunction<_dart__initterm_e>();
+  late final __initterm_ePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<_PIFV>, ffi.Pointer<_PIFV>)>>('_initterm_e');
+  late final __initterm_e = __initterm_ePtr
+      .asFunction<int Function(ffi.Pointer<_PIFV>, ffi.Pointer<_PIFV>)>();
 
   int _initialize_onexit_table(
     ffi.Pointer<onexit_table_t> _Table,
@@ -5015,16 +5431,15 @@ class DartSdl {
     );
   }
 
-  late final __initialize_onexit_table_ptr =
-      _lookup<ffi.NativeFunction<_c__initialize_onexit_table>>(
-          '_initialize_onexit_table');
-  late final _dart__initialize_onexit_table __initialize_onexit_table =
-      __initialize_onexit_table_ptr
-          .asFunction<_dart__initialize_onexit_table>();
+  late final __initialize_onexit_tablePtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<onexit_table_t>)>>(
+      '_initialize_onexit_table');
+  late final __initialize_onexit_table = __initialize_onexit_tablePtr
+      .asFunction<int Function(ffi.Pointer<onexit_table_t>)>();
 
   int _register_onexit_function(
     ffi.Pointer<onexit_table_t> _Table,
-    ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
+    _onexit_t _Function,
   ) {
     return __register_onexit_function(
       _Table,
@@ -5032,12 +5447,12 @@ class DartSdl {
     );
   }
 
-  late final __register_onexit_function_ptr =
-      _lookup<ffi.NativeFunction<_c__register_onexit_function>>(
-          '_register_onexit_function');
-  late final _dart__register_onexit_function __register_onexit_function =
-      __register_onexit_function_ptr
-          .asFunction<_dart__register_onexit_function>();
+  late final __register_onexit_functionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<onexit_table_t>,
+              _onexit_t)>>('_register_onexit_function');
+  late final __register_onexit_function = __register_onexit_functionPtr
+      .asFunction<int Function(ffi.Pointer<onexit_table_t>, _onexit_t)>();
 
   int _execute_onexit_table(
     ffi.Pointer<onexit_table_t> _Table,
@@ -5047,46 +5462,46 @@ class DartSdl {
     );
   }
 
-  late final __execute_onexit_table_ptr =
-      _lookup<ffi.NativeFunction<_c__execute_onexit_table>>(
-          '_execute_onexit_table');
-  late final _dart__execute_onexit_table __execute_onexit_table =
-      __execute_onexit_table_ptr.asFunction<_dart__execute_onexit_table>();
+  late final __execute_onexit_tablePtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<onexit_table_t>)>>(
+      '_execute_onexit_table');
+  late final __execute_onexit_table = __execute_onexit_tablePtr
+      .asFunction<int Function(ffi.Pointer<onexit_table_t>)>();
 
   int _crt_atexit(
-    ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
+    _PVFV _Function,
   ) {
     return __crt_atexit(
       _Function,
     );
   }
 
-  late final __crt_atexit_ptr =
-      _lookup<ffi.NativeFunction<_c__crt_atexit>>('_crt_atexit');
-  late final _dart__crt_atexit __crt_atexit =
-      __crt_atexit_ptr.asFunction<_dart__crt_atexit>();
+  late final __crt_atexitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(_PVFV)>>('_crt_atexit');
+  late final __crt_atexit = __crt_atexitPtr.asFunction<int Function(_PVFV)>();
 
   int _crt_at_quick_exit(
-    ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
+    _PVFV _Function,
   ) {
     return __crt_at_quick_exit(
       _Function,
     );
   }
 
-  late final __crt_at_quick_exit_ptr =
-      _lookup<ffi.NativeFunction<_c__crt_at_quick_exit>>('_crt_at_quick_exit');
-  late final _dart__crt_at_quick_exit __crt_at_quick_exit =
-      __crt_at_quick_exit_ptr.asFunction<_dart__crt_at_quick_exit>();
+  late final __crt_at_quick_exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(_PVFV)>>(
+          '_crt_at_quick_exit');
+  late final __crt_at_quick_exit =
+      __crt_at_quick_exitPtr.asFunction<int Function(_PVFV)>();
 
   bool __acrt_initialize() {
     return ___acrt_initialize() != 0;
   }
 
-  late final ___acrt_initialize_ptr =
-      _lookup<ffi.NativeFunction<_c___acrt_initialize>>('__acrt_initialize');
-  late final _dart___acrt_initialize ___acrt_initialize =
-      ___acrt_initialize_ptr.asFunction<_dart___acrt_initialize>();
+  late final ___acrt_initializePtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__acrt_initialize');
+  late final ___acrt_initialize =
+      ___acrt_initializePtr.asFunction<int Function()>();
 
   bool __acrt_uninitialize(
     bool _Terminating,
@@ -5097,11 +5512,11 @@ class DartSdl {
         0;
   }
 
-  late final ___acrt_uninitialize_ptr =
-      _lookup<ffi.NativeFunction<_c___acrt_uninitialize>>(
+  late final ___acrt_uninitializePtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Uint8)>>(
           '__acrt_uninitialize');
-  late final _dart___acrt_uninitialize ___acrt_uninitialize =
-      ___acrt_uninitialize_ptr.asFunction<_dart___acrt_uninitialize>();
+  late final ___acrt_uninitialize =
+      ___acrt_uninitializePtr.asFunction<int Function(int)>();
 
   bool __acrt_uninitialize_critical(
     bool _Terminating,
@@ -5112,36 +5527,33 @@ class DartSdl {
         0;
   }
 
-  late final ___acrt_uninitialize_critical_ptr =
-      _lookup<ffi.NativeFunction<_c___acrt_uninitialize_critical>>(
+  late final ___acrt_uninitialize_criticalPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Uint8)>>(
           '__acrt_uninitialize_critical');
-  late final _dart___acrt_uninitialize_critical ___acrt_uninitialize_critical =
-      ___acrt_uninitialize_critical_ptr
-          .asFunction<_dart___acrt_uninitialize_critical>();
+  late final ___acrt_uninitialize_critical =
+      ___acrt_uninitialize_criticalPtr.asFunction<int Function(int)>();
 
   bool __acrt_thread_attach() {
     return ___acrt_thread_attach() != 0;
   }
 
-  late final ___acrt_thread_attach_ptr =
-      _lookup<ffi.NativeFunction<_c___acrt_thread_attach>>(
-          '__acrt_thread_attach');
-  late final _dart___acrt_thread_attach ___acrt_thread_attach =
-      ___acrt_thread_attach_ptr.asFunction<_dart___acrt_thread_attach>();
+  late final ___acrt_thread_attachPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__acrt_thread_attach');
+  late final ___acrt_thread_attach =
+      ___acrt_thread_attachPtr.asFunction<int Function()>();
 
   bool __acrt_thread_detach() {
     return ___acrt_thread_detach() != 0;
   }
 
-  late final ___acrt_thread_detach_ptr =
-      _lookup<ffi.NativeFunction<_c___acrt_thread_detach>>(
-          '__acrt_thread_detach');
-  late final _dart___acrt_thread_detach ___acrt_thread_detach =
-      ___acrt_thread_detach_ptr.asFunction<_dart___acrt_thread_detach>();
+  late final ___acrt_thread_detachPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('__acrt_thread_detach');
+  late final ___acrt_thread_detach =
+      ___acrt_thread_detachPtr.asFunction<int Function()>();
 
   int _wexecl(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wexecl(
       _FileName,
@@ -5149,12 +5561,16 @@ class DartSdl {
     );
   }
 
-  late final __wexecl_ptr = _lookup<ffi.NativeFunction<_c__wexecl>>('_wexecl');
-  late final _dart__wexecl __wexecl = __wexecl_ptr.asFunction<_dart__wexecl>();
+  late final __wexeclPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('_wexecl');
+  late final __wexecl = __wexeclPtr
+      .asFunction<int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wexecle(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wexecle(
       _FileName,
@@ -5162,14 +5578,16 @@ class DartSdl {
     );
   }
 
-  late final __wexecle_ptr =
-      _lookup<ffi.NativeFunction<_c__wexecle>>('_wexecle');
-  late final _dart__wexecle __wexecle =
-      __wexecle_ptr.asFunction<_dart__wexecle>();
+  late final __wexeclePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('_wexecle');
+  late final __wexecle = __wexeclePtr
+      .asFunction<int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wexeclp(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wexeclp(
       _FileName,
@@ -5177,14 +5595,16 @@ class DartSdl {
     );
   }
 
-  late final __wexeclp_ptr =
-      _lookup<ffi.NativeFunction<_c__wexeclp>>('_wexeclp');
-  late final _dart__wexeclp __wexeclp =
-      __wexeclp_ptr.asFunction<_dart__wexeclp>();
+  late final __wexeclpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('_wexeclp');
+  late final __wexeclp = __wexeclpPtr
+      .asFunction<int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wexeclpe(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wexeclpe(
       _FileName,
@@ -5192,14 +5612,16 @@ class DartSdl {
     );
   }
 
-  late final __wexeclpe_ptr =
-      _lookup<ffi.NativeFunction<_c__wexeclpe>>('_wexeclpe');
-  late final _dart__wexeclpe __wexeclpe =
-      __wexeclpe_ptr.asFunction<_dart__wexeclpe>();
+  late final __wexeclpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>>('_wexeclpe');
+  late final __wexeclpe = __wexeclpePtr
+      .asFunction<int Function(ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wexecv(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
   ) {
     return __wexecv(
       _FileName,
@@ -5207,13 +5629,17 @@ class DartSdl {
     );
   }
 
-  late final __wexecv_ptr = _lookup<ffi.NativeFunction<_c__wexecv>>('_wexecv');
-  late final _dart__wexecv __wexecv = __wexecv_ptr.asFunction<_dart__wexecv>();
+  late final __wexecvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wexecv');
+  late final __wexecv = __wexecvPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wexecve(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _Env,
   ) {
     return __wexecve(
       _FileName,
@@ -5222,14 +5648,19 @@ class DartSdl {
     );
   }
 
-  late final __wexecve_ptr =
-      _lookup<ffi.NativeFunction<_c__wexecve>>('_wexecve');
-  late final _dart__wexecve __wexecve =
-      __wexecve_ptr.asFunction<_dart__wexecve>();
+  late final __wexecvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wexecve');
+  late final __wexecve = __wexecvePtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>,
+          ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wexecvp(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
   ) {
     return __wexecvp(
       _FileName,
@@ -5237,15 +5668,17 @@ class DartSdl {
     );
   }
 
-  late final __wexecvp_ptr =
-      _lookup<ffi.NativeFunction<_c__wexecvp>>('_wexecvp');
-  late final _dart__wexecvp __wexecvp =
-      __wexecvp_ptr.asFunction<_dart__wexecvp>();
+  late final __wexecvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wexecvp');
+  late final __wexecvp = __wexecvpPtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wexecvpe(
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _Env,
   ) {
     return __wexecvpe(
       _FileName,
@@ -5254,15 +5687,20 @@ class DartSdl {
     );
   }
 
-  late final __wexecvpe_ptr =
-      _lookup<ffi.NativeFunction<_c__wexecvpe>>('_wexecvpe');
-  late final _dart__wexecvpe __wexecvpe =
-      __wexecvpe_ptr.asFunction<_dart__wexecvpe>();
+  late final __wexecvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wexecvpe');
+  late final __wexecvpe = __wexecvpePtr.asFunction<
+      int Function(ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>,
+          ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wspawnl(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wspawnl(
       _Mode,
@@ -5271,15 +5709,17 @@ class DartSdl {
     );
   }
 
-  late final __wspawnl_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnl>>('_wspawnl');
-  late final _dart__wspawnl __wspawnl =
-      __wspawnl_ptr.asFunction<_dart__wspawnl>();
+  late final __wspawnlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<wchar_t>)>>('_wspawnl');
+  late final __wspawnl = __wspawnlPtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wspawnle(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wspawnle(
       _Mode,
@@ -5288,15 +5728,17 @@ class DartSdl {
     );
   }
 
-  late final __wspawnle_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnle>>('_wspawnle');
-  late final _dart__wspawnle __wspawnle =
-      __wspawnle_ptr.asFunction<_dart__wspawnle>();
+  late final __wspawnlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<wchar_t>)>>('_wspawnle');
+  late final __wspawnle = __wspawnlePtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wspawnlp(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wspawnlp(
       _Mode,
@@ -5305,15 +5747,17 @@ class DartSdl {
     );
   }
 
-  late final __wspawnlp_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnlp>>('_wspawnlp');
-  late final _dart__wspawnlp __wspawnlp =
-      __wspawnlp_ptr.asFunction<_dart__wspawnlp>();
+  late final __wspawnlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<wchar_t>)>>('_wspawnlp');
+  late final __wspawnlp = __wspawnlpPtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wspawnlpe(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Uint16> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<wchar_t> _ArgList,
   ) {
     return __wspawnlpe(
       _Mode,
@@ -5322,15 +5766,17 @@ class DartSdl {
     );
   }
 
-  late final __wspawnlpe_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnlpe>>('_wspawnlpe');
-  late final _dart__wspawnlpe __wspawnlpe =
-      __wspawnlpe_ptr.asFunction<_dart__wspawnlpe>();
+  late final __wspawnlpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<wchar_t>)>>('_wspawnlpe');
+  late final __wspawnlpe = __wspawnlpePtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<wchar_t>)>();
 
   int _wspawnv(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
   ) {
     return __wspawnv(
       _Mode,
@@ -5339,16 +5785,19 @@ class DartSdl {
     );
   }
 
-  late final __wspawnv_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnv>>('_wspawnv');
-  late final _dart__wspawnv __wspawnv =
-      __wspawnv_ptr.asFunction<_dart__wspawnv>();
+  late final __wspawnvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wspawnv');
+  late final __wspawnv = __wspawnvPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wspawnve(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _Env,
   ) {
     return __wspawnve(
       _Mode,
@@ -5358,15 +5807,21 @@ class DartSdl {
     );
   }
 
-  late final __wspawnve_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnve>>('_wspawnve');
-  late final _dart__wspawnve __wspawnve =
-      __wspawnve_ptr.asFunction<_dart__wspawnve>();
+  late final __wspawnvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wspawnve');
+  late final __wspawnve = __wspawnvePtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>,
+          ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wspawnvp(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
   ) {
     return __wspawnvp(
       _Mode,
@@ -5375,16 +5830,19 @@ class DartSdl {
     );
   }
 
-  late final __wspawnvp_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnvp>>('_wspawnvp');
-  late final _dart__wspawnvp __wspawnvp =
-      __wspawnvp_ptr.asFunction<_dart__wspawnvp>();
+  late final __wspawnvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wspawnvp');
+  late final __wspawnvp = __wspawnvpPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wspawnvpe(
     int _Mode,
-    ffi.Pointer<ffi.Uint16> _FileName,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-    ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
+    ffi.Pointer<wchar_t> _FileName,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _ArgList,
+    ffi.Pointer<ffi.Pointer<wchar_t>> _Env,
   ) {
     return __wspawnvpe(
       _Mode,
@@ -5394,34 +5852,42 @@ class DartSdl {
     );
   }
 
-  late final __wspawnvpe_ptr =
-      _lookup<ffi.NativeFunction<_c__wspawnvpe>>('_wspawnvpe');
-  late final _dart__wspawnvpe __wspawnvpe =
-      __wspawnvpe_ptr.asFunction<_dart__wspawnvpe>();
+  late final __wspawnvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<wchar_t>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>,
+              ffi.Pointer<ffi.Pointer<wchar_t>>)>>('_wspawnvpe');
+  late final __wspawnvpe = __wspawnvpePtr.asFunction<
+      int Function(int, ffi.Pointer<wchar_t>, ffi.Pointer<ffi.Pointer<wchar_t>>,
+          ffi.Pointer<ffi.Pointer<wchar_t>>)>();
 
   int _wsystem(
-    ffi.Pointer<ffi.Uint16> _Command,
+    ffi.Pointer<wchar_t> _Command,
   ) {
     return __wsystem(
       _Command,
     );
   }
 
-  late final __wsystem_ptr =
-      _lookup<ffi.NativeFunction<_c__wsystem>>('_wsystem');
-  late final _dart__wsystem __wsystem =
-      __wsystem_ptr.asFunction<_dart__wsystem>();
+  late final __wsystemPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<wchar_t>)>>(
+          '_wsystem');
+  late final __wsystem =
+      __wsystemPtr.asFunction<int Function(ffi.Pointer<wchar_t>)>();
 
   void exit(
     int _Code,
   ) {
-    return _exit_1(
+    return _exit1(
       _Code,
     );
   }
 
-  late final _exit_ptr = _lookup<ffi.NativeFunction<_c_exit1>>('exit');
-  late final _dart_exit _exit_1 = _exit_ptr.asFunction<_dart_exit>();
+  late final _exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('exit');
+  late final _exit1 = _exitPtr.asFunction<void Function(int)>();
 
   void _exit(
     int _Code,
@@ -5431,8 +5897,9 @@ class DartSdl {
     );
   }
 
-  late final __exit_ptr = _lookup<ffi.NativeFunction<_c__exit>>('_exit');
-  late final _dart__exit __exit = __exit_ptr.asFunction<_dart__exit>();
+  late final __exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('_exit');
+  late final __exit = __exitPtr.asFunction<void Function(int)>();
 
   void _Exit(
     int _Code,
@@ -5442,8 +5909,9 @@ class DartSdl {
     );
   }
 
-  late final __Exit_ptr = _lookup<ffi.NativeFunction<_c__Exit>>('_Exit');
-  late final _dart__Exit __Exit = __Exit_ptr.asFunction<_dart__Exit>();
+  late final __ExitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('_Exit');
+  late final __Exit = __ExitPtr.asFunction<void Function(int)>();
 
   void quick_exit(
     int _Code,
@@ -5453,17 +5921,17 @@ class DartSdl {
     );
   }
 
-  late final _quick_exit_ptr =
-      _lookup<ffi.NativeFunction<_c_quick_exit>>('quick_exit');
-  late final _dart_quick_exit _quick_exit =
-      _quick_exit_ptr.asFunction<_dart_quick_exit>();
+  late final _quick_exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('quick_exit');
+  late final _quick_exit = _quick_exitPtr.asFunction<void Function(int)>();
 
   void abort() {
     return _abort();
   }
 
-  late final _abort_ptr = _lookup<ffi.NativeFunction<_c_abort>>('abort');
-  late final _dart_abort _abort = _abort_ptr.asFunction<_dart_abort>();
+  late final _abortPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('abort');
+  late final _abort = _abortPtr.asFunction<void Function()>();
 
   int system(
     ffi.Pointer<ffi.Int8> _Command,
@@ -5473,41 +5941,45 @@ class DartSdl {
     );
   }
 
-  late final _system_ptr = _lookup<ffi.NativeFunction<_c_system>>('system');
-  late final _dart_system _system = _system_ptr.asFunction<_dart_system>();
+  late final _systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'system');
+  late final _system =
+      _systemPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   void _cexit() {
     return __cexit();
   }
 
-  late final __cexit_ptr = _lookup<ffi.NativeFunction<_c__cexit>>('_cexit');
-  late final _dart__cexit __cexit = __cexit_ptr.asFunction<_dart__cexit>();
+  late final __cexitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('_cexit');
+  late final __cexit = __cexitPtr.asFunction<void Function()>();
 
   void _c_exit() {
     return __c_exit();
   }
 
-  late final __c_exit_ptr = _lookup<ffi.NativeFunction<_c__c_exit>>('_c_exit');
-  late final _dart__c_exit __c_exit = __c_exit_ptr.asFunction<_dart__c_exit>();
+  late final __c_exitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('_c_exit');
+  late final __c_exit = __c_exitPtr.asFunction<void Function()>();
 
   void _register_thread_local_exe_atexit_callback(
-    ffi.Pointer<ffi.NativeFunction<_tls_callback_type>> _Callback,
+    _tls_callback_type _Callback,
   ) {
     return __register_thread_local_exe_atexit_callback(
       _Callback,
     );
   }
 
-  late final __register_thread_local_exe_atexit_callback_ptr = _lookup<
-          ffi.NativeFunction<_c__register_thread_local_exe_atexit_callback>>(
-      '_register_thread_local_exe_atexit_callback');
-  late final _dart__register_thread_local_exe_atexit_callback
-      __register_thread_local_exe_atexit_callback =
-      __register_thread_local_exe_atexit_callback_ptr
-          .asFunction<_dart__register_thread_local_exe_atexit_callback>();
+  late final __register_thread_local_exe_atexit_callbackPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(_tls_callback_type)>>(
+          '_register_thread_local_exe_atexit_callback');
+  late final __register_thread_local_exe_atexit_callback =
+      __register_thread_local_exe_atexit_callbackPtr
+          .asFunction<void Function(_tls_callback_type)>();
 
   int _beginthread(
-    ffi.Pointer<ffi.NativeFunction<_beginthread_proc_type>> _StartAddress,
+    _beginthread_proc_type _StartAddress,
     int _StackSize,
     ffi.Pointer<ffi.Void> _ArgList,
   ) {
@@ -5518,24 +5990,25 @@ class DartSdl {
     );
   }
 
-  late final __beginthread_ptr =
-      _lookup<ffi.NativeFunction<_c__beginthread>>('_beginthread');
-  late final _dart__beginthread __beginthread =
-      __beginthread_ptr.asFunction<_dart__beginthread>();
+  late final __beginthreadPtr = _lookup<
+      ffi.NativeFunction<
+          uintptr_t Function(_beginthread_proc_type, ffi.Uint32,
+              ffi.Pointer<ffi.Void>)>>('_beginthread');
+  late final __beginthread = __beginthreadPtr.asFunction<
+      int Function(_beginthread_proc_type, int, ffi.Pointer<ffi.Void>)>();
 
   void _endthread() {
     return __endthread();
   }
 
-  late final __endthread_ptr =
-      _lookup<ffi.NativeFunction<_c__endthread>>('_endthread');
-  late final _dart__endthread __endthread =
-      __endthread_ptr.asFunction<_dart__endthread>();
+  late final __endthreadPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('_endthread');
+  late final __endthread = __endthreadPtr.asFunction<void Function()>();
 
   int _beginthreadex(
     ffi.Pointer<ffi.Void> _Security,
     int _StackSize,
-    ffi.Pointer<ffi.NativeFunction<_beginthreadex_proc_type>> _StartAddress,
+    _beginthreadex_proc_type _StartAddress,
     ffi.Pointer<ffi.Void> _ArgList,
     int _InitFlag,
     ffi.Pointer<ffi.Uint32> _ThrdAddr,
@@ -5550,10 +6023,18 @@ class DartSdl {
     );
   }
 
-  late final __beginthreadex_ptr =
-      _lookup<ffi.NativeFunction<_c__beginthreadex>>('_beginthreadex');
-  late final _dart__beginthreadex __beginthreadex =
-      __beginthreadex_ptr.asFunction<_dart__beginthreadex>();
+  late final __beginthreadexPtr = _lookup<
+      ffi.NativeFunction<
+          uintptr_t Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Uint32,
+              _beginthreadex_proc_type,
+              ffi.Pointer<ffi.Void>,
+              ffi.Uint32,
+              ffi.Pointer<ffi.Uint32>)>>('_beginthreadex');
+  late final __beginthreadex = __beginthreadexPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, _beginthreadex_proc_type,
+          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Uint32>)>();
 
   void _endthreadex(
     int _ReturnCode,
@@ -5563,17 +6044,18 @@ class DartSdl {
     );
   }
 
-  late final __endthreadex_ptr =
-      _lookup<ffi.NativeFunction<_c__endthreadex>>('_endthreadex');
-  late final _dart__endthreadex __endthreadex =
-      __endthreadex_ptr.asFunction<_dart__endthreadex>();
+  late final __endthreadexPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+          '_endthreadex');
+  late final __endthreadex = __endthreadexPtr.asFunction<void Function(int)>();
 
   int _getpid() {
     return __getpid();
   }
 
-  late final __getpid_ptr = _lookup<ffi.NativeFunction<_c__getpid>>('_getpid');
-  late final _dart__getpid __getpid = __getpid_ptr.asFunction<_dart__getpid>();
+  late final __getpidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('_getpid');
+  late final __getpid = __getpidPtr.asFunction<int Function()>();
 
   int _cwait(
     ffi.Pointer<ffi.Int32> _TermStat,
@@ -5587,8 +6069,12 @@ class DartSdl {
     );
   }
 
-  late final __cwait_ptr = _lookup<ffi.NativeFunction<_c__cwait>>('_cwait');
-  late final _dart__cwait __cwait = __cwait_ptr.asFunction<_dart__cwait>();
+  late final __cwaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int32>, ffi.IntPtr, ffi.Int32)>>('_cwait');
+  late final __cwait =
+      __cwaitPtr.asFunction<int Function(ffi.Pointer<ffi.Int32>, int, int)>();
 
   int _execl(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5600,8 +6086,12 @@ class DartSdl {
     );
   }
 
-  late final __execl_ptr = _lookup<ffi.NativeFunction<_c__execl>>('_execl');
-  late final _dart__execl __execl = __execl_ptr.asFunction<_dart__execl>();
+  late final __execlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('_execl');
+  late final __execl = __execlPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _execle(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5613,8 +6103,12 @@ class DartSdl {
     );
   }
 
-  late final __execle_ptr = _lookup<ffi.NativeFunction<_c__execle>>('_execle');
-  late final _dart__execle __execle = __execle_ptr.asFunction<_dart__execle>();
+  late final __execlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('_execle');
+  late final __execle = __execlePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _execlp(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5626,8 +6120,12 @@ class DartSdl {
     );
   }
 
-  late final __execlp_ptr = _lookup<ffi.NativeFunction<_c__execlp>>('_execlp');
-  late final _dart__execlp __execlp = __execlp_ptr.asFunction<_dart__execlp>();
+  late final __execlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('_execlp');
+  late final __execlp = __execlpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _execlpe(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5639,10 +6137,12 @@ class DartSdl {
     );
   }
 
-  late final __execlpe_ptr =
-      _lookup<ffi.NativeFunction<_c__execlpe>>('_execlpe');
-  late final _dart__execlpe __execlpe =
-      __execlpe_ptr.asFunction<_dart__execlpe>();
+  late final __execlpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('_execlpe');
+  late final __execlpe = __execlpePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _execv(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5654,8 +6154,13 @@ class DartSdl {
     );
   }
 
-  late final __execv_ptr = _lookup<ffi.NativeFunction<_c__execv>>('_execv');
-  late final _dart__execv __execv = __execv_ptr.asFunction<_dart__execv>();
+  late final __execvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_execv');
+  late final __execv = __execvPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _execve(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5669,8 +6174,15 @@ class DartSdl {
     );
   }
 
-  late final __execve_ptr = _lookup<ffi.NativeFunction<_c__execve>>('_execve');
-  late final _dart__execve __execve = __execve_ptr.asFunction<_dart__execve>();
+  late final __execvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_execve');
+  late final __execve = __execvePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _execvp(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5682,8 +6194,13 @@ class DartSdl {
     );
   }
 
-  late final __execvp_ptr = _lookup<ffi.NativeFunction<_c__execvp>>('_execvp');
-  late final _dart__execvp __execvp = __execvp_ptr.asFunction<_dart__execvp>();
+  late final __execvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_execvp');
+  late final __execvp = __execvpPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _execvpe(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5697,10 +6214,15 @@ class DartSdl {
     );
   }
 
-  late final __execvpe_ptr =
-      _lookup<ffi.NativeFunction<_c__execvpe>>('_execvpe');
-  late final _dart__execvpe __execvpe =
-      __execvpe_ptr.asFunction<_dart__execvpe>();
+  late final __execvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_execvpe');
+  late final __execvpe = __execvpePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _spawnl(
     int _Mode,
@@ -5714,8 +6236,12 @@ class DartSdl {
     );
   }
 
-  late final __spawnl_ptr = _lookup<ffi.NativeFunction<_c__spawnl>>('_spawnl');
-  late final _dart__spawnl __spawnl = __spawnl_ptr.asFunction<_dart__spawnl>();
+  late final __spawnlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('_spawnl');
+  late final __spawnl = __spawnlPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _spawnle(
     int _Mode,
@@ -5729,10 +6255,12 @@ class DartSdl {
     );
   }
 
-  late final __spawnle_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnle>>('_spawnle');
-  late final _dart__spawnle __spawnle =
-      __spawnle_ptr.asFunction<_dart__spawnle>();
+  late final __spawnlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('_spawnle');
+  late final __spawnle = __spawnlePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _spawnlp(
     int _Mode,
@@ -5746,10 +6274,12 @@ class DartSdl {
     );
   }
 
-  late final __spawnlp_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnlp>>('_spawnlp');
-  late final _dart__spawnlp __spawnlp =
-      __spawnlp_ptr.asFunction<_dart__spawnlp>();
+  late final __spawnlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('_spawnlp');
+  late final __spawnlp = __spawnlpPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _spawnlpe(
     int _Mode,
@@ -5763,10 +6293,12 @@ class DartSdl {
     );
   }
 
-  late final __spawnlpe_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnlpe>>('_spawnlpe');
-  late final _dart__spawnlpe __spawnlpe =
-      __spawnlpe_ptr.asFunction<_dart__spawnlpe>();
+  late final __spawnlpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('_spawnlpe');
+  late final __spawnlpe = __spawnlpePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int _spawnv(
     int _Mode,
@@ -5780,8 +6312,13 @@ class DartSdl {
     );
   }
 
-  late final __spawnv_ptr = _lookup<ffi.NativeFunction<_c__spawnv>>('_spawnv');
-  late final _dart__spawnv __spawnv = __spawnv_ptr.asFunction<_dart__spawnv>();
+  late final __spawnvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_spawnv');
+  late final __spawnv = __spawnvPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _spawnve(
     int _Mode,
@@ -5797,10 +6334,19 @@ class DartSdl {
     );
   }
 
-  late final __spawnve_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnve>>('_spawnve');
-  late final _dart__spawnve __spawnve =
-      __spawnve_ptr.asFunction<_dart__spawnve>();
+  late final __spawnvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_spawnve');
+  late final __spawnve = __spawnvePtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _spawnvp(
     int _Mode,
@@ -5814,10 +6360,13 @@ class DartSdl {
     );
   }
 
-  late final __spawnvp_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnvp>>('_spawnvp');
-  late final _dart__spawnvp __spawnvp =
-      __spawnvp_ptr.asFunction<_dart__spawnvp>();
+  late final __spawnvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_spawnvp');
+  late final __spawnvp = __spawnvpPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _spawnvpe(
     int _Mode,
@@ -5833,10 +6382,19 @@ class DartSdl {
     );
   }
 
-  late final __spawnvpe_ptr =
-      _lookup<ffi.NativeFunction<_c__spawnvpe>>('_spawnvpe');
-  late final _dart__spawnvpe __spawnvpe =
-      __spawnvpe_ptr.asFunction<_dart__spawnvpe>();
+  late final __spawnvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('_spawnvpe');
+  late final __spawnvpe = __spawnvpePtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int _loaddll(
     ffi.Pointer<ffi.Int8> _FileName,
@@ -5846,10 +6404,11 @@ class DartSdl {
     );
   }
 
-  late final __loaddll_ptr =
-      _lookup<ffi.NativeFunction<_c__loaddll>>('_loaddll');
-  late final _dart__loaddll __loaddll =
-      __loaddll_ptr.asFunction<_dart__loaddll>();
+  late final __loaddllPtr =
+      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Int8>)>>(
+          '_loaddll');
+  late final __loaddll =
+      __loaddllPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   int _unloaddll(
     int _Handle,
@@ -5859,12 +6418,11 @@ class DartSdl {
     );
   }
 
-  late final __unloaddll_ptr =
-      _lookup<ffi.NativeFunction<_c__unloaddll>>('_unloaddll');
-  late final _dart__unloaddll __unloaddll =
-      __unloaddll_ptr.asFunction<_dart__unloaddll>();
+  late final __unloaddllPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.IntPtr)>>('_unloaddll');
+  late final __unloaddll = __unloaddllPtr.asFunction<int Function(int)>();
 
-  ffi.Pointer<ffi.NativeFunction<_GetDllProcAddrProcType>> _getdllprocaddr(
+  _GetDllProcAddrProcType _getdllprocaddr(
     int _Handle,
     ffi.Pointer<ffi.Int8> _ProcedureName,
     int _Ordinal,
@@ -5876,214 +6434,275 @@ class DartSdl {
     );
   }
 
-  late final __getdllprocaddr_ptr =
-      _lookup<ffi.NativeFunction<_c__getdllprocaddr>>('_getdllprocaddr');
-  late final _dart__getdllprocaddr __getdllprocaddr =
-      __getdllprocaddr_ptr.asFunction<_dart__getdllprocaddr>();
+  late final __getdllprocaddrPtr = _lookup<
+      ffi.NativeFunction<
+          _GetDllProcAddrProcType Function(ffi.IntPtr, ffi.Pointer<ffi.Int8>,
+              ffi.IntPtr)>>('_getdllprocaddr');
+  late final __getdllprocaddr = __getdllprocaddrPtr.asFunction<
+      _GetDllProcAddrProcType Function(int, ffi.Pointer<ffi.Int8>, int)>();
 
   int cwait(
     ffi.Pointer<ffi.Int32> _TermStat,
     int _ProcHandle,
     int _Action,
   ) {
-    return _cwait_1(
+    return _cwait1(
       _TermStat,
       _ProcHandle,
       _Action,
     );
   }
 
-  late final _cwait_ptr = _lookup<ffi.NativeFunction<_c_cwait>>('cwait');
-  late final _dart_cwait _cwait_1 = _cwait_ptr.asFunction<_dart_cwait>();
+  late final _cwaitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int32>, ffi.IntPtr, ffi.Int32)>>('cwait');
+  late final _cwait1 =
+      _cwaitPtr.asFunction<int Function(ffi.Pointer<ffi.Int32>, int, int)>();
 
   int execl(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _execl_1(
+    return _execl1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execl_ptr = _lookup<ffi.NativeFunction<_c_execl>>('execl');
-  late final _dart_execl _execl_1 = _execl_ptr.asFunction<_dart_execl>();
+  late final _execlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('execl');
+  late final _execl1 = _execlPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int execle(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _execle_1(
+    return _execle1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execle_ptr = _lookup<ffi.NativeFunction<_c_execle>>('execle');
-  late final _dart_execle _execle_1 = _execle_ptr.asFunction<_dart_execle>();
+  late final _execlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('execle');
+  late final _execle1 = _execlePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int execlp(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _execlp_1(
+    return _execlp1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execlp_ptr = _lookup<ffi.NativeFunction<_c_execlp>>('execlp');
-  late final _dart_execlp _execlp_1 = _execlp_ptr.asFunction<_dart_execlp>();
+  late final _execlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('execlp');
+  late final _execlp1 = _execlpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int execlpe(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _execlpe_1(
+    return _execlpe1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execlpe_ptr = _lookup<ffi.NativeFunction<_c_execlpe>>('execlpe');
-  late final _dart_execlpe _execlpe_1 =
-      _execlpe_ptr.asFunction<_dart_execlpe>();
+  late final _execlpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('execlpe');
+  late final _execlpe1 = _execlpePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int execv(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
   ) {
-    return _execv_1(
+    return _execv1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execv_ptr = _lookup<ffi.NativeFunction<_c_execv>>('execv');
-  late final _dart_execv _execv_1 = _execv_ptr.asFunction<_dart_execv>();
+  late final _execvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('execv');
+  late final _execv1 = _execvPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int execve(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
   ) {
-    return _execve_1(
+    return _execve1(
       _FileName,
       _Arguments,
       _Environment,
     );
   }
 
-  late final _execve_ptr = _lookup<ffi.NativeFunction<_c_execve>>('execve');
-  late final _dart_execve _execve_1 = _execve_ptr.asFunction<_dart_execve>();
+  late final _execvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('execve');
+  late final _execve1 = _execvePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int execvp(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
   ) {
-    return _execvp_1(
+    return _execvp1(
       _FileName,
       _Arguments,
     );
   }
 
-  late final _execvp_ptr = _lookup<ffi.NativeFunction<_c_execvp>>('execvp');
-  late final _dart_execvp _execvp_1 = _execvp_ptr.asFunction<_dart_execvp>();
+  late final _execvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('execvp');
+  late final _execvp1 = _execvpPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int execvpe(
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
   ) {
-    return _execvpe_1(
+    return _execvpe1(
       _FileName,
       _Arguments,
       _Environment,
     );
   }
 
-  late final _execvpe_ptr = _lookup<ffi.NativeFunction<_c_execvpe>>('execvpe');
-  late final _dart_execvpe _execvpe_1 =
-      _execvpe_ptr.asFunction<_dart_execvpe>();
+  late final _execvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('execvpe');
+  late final _execvpe1 = _execvpePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int spawnl(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _spawnl_1(
+    return _spawnl1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnl_ptr = _lookup<ffi.NativeFunction<_c_spawnl>>('spawnl');
-  late final _dart_spawnl _spawnl_1 = _spawnl_ptr.asFunction<_dart_spawnl>();
+  late final _spawnlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('spawnl');
+  late final _spawnl1 = _spawnlPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int spawnle(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _spawnle_1(
+    return _spawnle1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnle_ptr = _lookup<ffi.NativeFunction<_c_spawnle>>('spawnle');
-  late final _dart_spawnle _spawnle_1 =
-      _spawnle_ptr.asFunction<_dart_spawnle>();
+  late final _spawnlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('spawnle');
+  late final _spawnle1 = _spawnlePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int spawnlp(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _spawnlp_1(
+    return _spawnlp1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnlp_ptr = _lookup<ffi.NativeFunction<_c_spawnlp>>('spawnlp');
-  late final _dart_spawnlp _spawnlp_1 =
-      _spawnlp_ptr.asFunction<_dart_spawnlp>();
+  late final _spawnlpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('spawnlp');
+  late final _spawnlp1 = _spawnlpPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int spawnlpe(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Int8> _Arguments,
   ) {
-    return _spawnlpe_1(
+    return _spawnlpe1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnlpe_ptr =
-      _lookup<ffi.NativeFunction<_c_spawnlpe>>('spawnlpe');
-  late final _dart_spawnlpe _spawnlpe_1 =
-      _spawnlpe_ptr.asFunction<_dart_spawnlpe>();
+  late final _spawnlpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('spawnlpe');
+  late final _spawnlpe1 = _spawnlpePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   int spawnv(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
   ) {
-    return _spawnv_1(
+    return _spawnv1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnv_ptr = _lookup<ffi.NativeFunction<_c_spawnv>>('spawnv');
-  late final _dart_spawnv _spawnv_1 = _spawnv_ptr.asFunction<_dart_spawnv>();
+  late final _spawnvPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('spawnv');
+  late final _spawnv1 = _spawnvPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int spawnve(
     int _Mode,
@@ -6091,7 +6710,7 @@ class DartSdl {
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
   ) {
-    return _spawnve_1(
+    return _spawnve1(
       _Mode,
       _FileName,
       _Arguments,
@@ -6099,25 +6718,39 @@ class DartSdl {
     );
   }
 
-  late final _spawnve_ptr = _lookup<ffi.NativeFunction<_c_spawnve>>('spawnve');
-  late final _dart_spawnve _spawnve_1 =
-      _spawnve_ptr.asFunction<_dart_spawnve>();
+  late final _spawnvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('spawnve');
+  late final _spawnve1 = _spawnvePtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int spawnvp(
     int _Mode,
     ffi.Pointer<ffi.Int8> _FileName,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
   ) {
-    return _spawnvp_1(
+    return _spawnvp1(
       _Mode,
       _FileName,
       _Arguments,
     );
   }
 
-  late final _spawnvp_ptr = _lookup<ffi.NativeFunction<_c_spawnvp>>('spawnvp');
-  late final _dart_spawnvp _spawnvp_1 =
-      _spawnvp_ptr.asFunction<_dart_spawnvp>();
+  late final _spawnvpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('spawnvp');
+  late final _spawnvp1 = _spawnvpPtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int spawnvpe(
     int _Mode,
@@ -6125,7 +6758,7 @@ class DartSdl {
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
     ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
   ) {
-    return _spawnvpe_1(
+    return _spawnvpe1(
       _Mode,
       _FileName,
       _Arguments,
@@ -6133,25 +6766,35 @@ class DartSdl {
     );
   }
 
-  late final _spawnvpe_ptr =
-      _lookup<ffi.NativeFunction<_c_spawnvpe>>('spawnvpe');
-  late final _dart_spawnvpe _spawnvpe_1 =
-      _spawnvpe_ptr.asFunction<_dart_spawnvpe>();
+  late final _spawnvpePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.IntPtr Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+              ffi.Pointer<ffi.Pointer<ffi.Int8>>)>>('spawnvpe');
+  late final _spawnvpe1 = _spawnvpePtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>,
+          ffi.Pointer<ffi.Pointer<ffi.Int8>>)>();
 
   int getpid() {
-    return _getpid_1();
+    return _getpid1();
   }
 
-  late final _getpid_ptr = _lookup<ffi.NativeFunction<_c_getpid>>('getpid');
-  late final _dart_getpid _getpid_1 = _getpid_ptr.asFunction<_dart_getpid>();
+  late final _getpidPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('getpid');
+  late final _getpid1 = _getpidPtr.asFunction<int Function()>();
 
   /// Create a thread.
   ffi.Pointer<SDL_Thread> SDL_CreateThread(
-    ffi.Pointer<ffi.NativeFunction<SDL_ThreadFunction>> fn,
+    SDL_ThreadFunction fn,
     ffi.Pointer<ffi.Int8> name,
     ffi.Pointer<ffi.Void> data,
-    ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-    ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
+    pfnSDL_CurrentBeginThread pfnBeginThread,
+    pfnSDL_CurrentEndThread pfnEndThread,
   ) {
     return _SDL_CreateThread(
       fn,
@@ -6162,18 +6805,30 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateThread_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateThread>>('SDL_CreateThread');
-  late final _dart_SDL_CreateThread _SDL_CreateThread =
-      _SDL_CreateThread_ptr.asFunction<_dart_SDL_CreateThread>();
+  late final _SDL_CreateThreadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Thread> Function(
+              SDL_ThreadFunction,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Void>,
+              pfnSDL_CurrentBeginThread,
+              pfnSDL_CurrentEndThread)>>('SDL_CreateThread');
+  late final _SDL_CreateThread = _SDL_CreateThreadPtr.asFunction<
+      ffi.Pointer<SDL_Thread> Function(
+          SDL_ThreadFunction,
+          ffi.Pointer<ffi.Int8>,
+          ffi.Pointer<ffi.Void>,
+          pfnSDL_CurrentBeginThread,
+          pfnSDL_CurrentEndThread)>();
 
   ffi.Pointer<SDL_Thread> SDL_CreateThreadWithStackSize(
-    ffi.Pointer<ffi.NativeFunction<_typedefC_3>> fn,
+    ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Void>)>>
+        fn,
     ffi.Pointer<ffi.Int8> name,
     int stacksize,
     ffi.Pointer<ffi.Void> data,
-    ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-    ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
+    pfnSDL_CurrentBeginThread pfnBeginThread,
+    pfnSDL_CurrentEndThread pfnEndThread,
   ) {
     return _SDL_CreateThreadWithStackSize(
       fn,
@@ -6185,12 +6840,28 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateThreadWithStackSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateThreadWithStackSize>>(
-          'SDL_CreateThreadWithStackSize');
-  late final _dart_SDL_CreateThreadWithStackSize
-      _SDL_CreateThreadWithStackSize = _SDL_CreateThreadWithStackSize_ptr
-          .asFunction<_dart_SDL_CreateThreadWithStackSize>();
+  late final _SDL_CreateThreadWithStackSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Thread> Function(
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Int32 Function(ffi.Pointer<ffi.Void>)>>,
+              ffi.Pointer<ffi.Int8>,
+              size_t,
+              ffi.Pointer<ffi.Void>,
+              pfnSDL_CurrentBeginThread,
+              pfnSDL_CurrentEndThread)>>('SDL_CreateThreadWithStackSize');
+  late final _SDL_CreateThreadWithStackSize =
+      _SDL_CreateThreadWithStackSizePtr.asFunction<
+          ffi.Pointer<SDL_Thread> Function(
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Int32 Function(ffi.Pointer<ffi.Void>)>>,
+              ffi.Pointer<ffi.Int8>,
+              int,
+              ffi.Pointer<ffi.Void>,
+              pfnSDL_CurrentBeginThread,
+              pfnSDL_CurrentEndThread)>();
 
   /// Get the thread name, as it was specified in SDL_CreateThread().
   /// This function returns a pointer to a UTF-8 string that names the
@@ -6205,20 +6876,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetThreadName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetThreadName>>('SDL_GetThreadName');
-  late final _dart_SDL_GetThreadName _SDL_GetThreadName =
-      _SDL_GetThreadName_ptr.asFunction<_dart_SDL_GetThreadName>();
+  late final _SDL_GetThreadNamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_Thread>)>>('SDL_GetThreadName');
+  late final _SDL_GetThreadName = _SDL_GetThreadNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_Thread>)>();
 
   /// Get the thread identifier for the current thread.
   int SDL_ThreadID() {
     return _SDL_ThreadID();
   }
 
-  late final _SDL_ThreadID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ThreadID>>('SDL_ThreadID');
-  late final _dart_SDL_ThreadID _SDL_ThreadID =
-      _SDL_ThreadID_ptr.asFunction<_dart_SDL_ThreadID>();
+  late final _SDL_ThreadIDPtr =
+      _lookup<ffi.NativeFunction<SDL_threadID Function()>>('SDL_ThreadID');
+  late final _SDL_ThreadID = _SDL_ThreadIDPtr.asFunction<int Function()>();
 
   /// Get the thread identifier for the specified thread.
   ///
@@ -6231,10 +6903,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetThreadID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetThreadID>>('SDL_GetThreadID');
-  late final _dart_SDL_GetThreadID _SDL_GetThreadID =
-      _SDL_GetThreadID_ptr.asFunction<_dart_SDL_GetThreadID>();
+  late final _SDL_GetThreadIDPtr = _lookup<
+          ffi.NativeFunction<SDL_threadID Function(ffi.Pointer<SDL_Thread>)>>(
+      'SDL_GetThreadID');
+  late final _SDL_GetThreadID =
+      _SDL_GetThreadIDPtr.asFunction<int Function(ffi.Pointer<SDL_Thread>)>();
 
   /// Set the priority for the current thread
   int SDL_SetThreadPriority(
@@ -6245,11 +6918,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetThreadPriority_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetThreadPriority>>(
+  late final _SDL_SetThreadPriorityPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_SetThreadPriority');
-  late final _dart_SDL_SetThreadPriority _SDL_SetThreadPriority =
-      _SDL_SetThreadPriority_ptr.asFunction<_dart_SDL_SetThreadPriority>();
+  late final _SDL_SetThreadPriority =
+      _SDL_SetThreadPriorityPtr.asFunction<int Function(int)>();
 
   /// Wait for a thread to finish. Threads that haven't been detached will
   /// remain (as a "zombie") until this function cleans them up. Not doing so
@@ -6277,10 +6950,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WaitThread_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WaitThread>>('SDL_WaitThread');
-  late final _dart_SDL_WaitThread _SDL_WaitThread =
-      _SDL_WaitThread_ptr.asFunction<_dart_SDL_WaitThread>();
+  late final _SDL_WaitThreadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Thread>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_WaitThread');
+  late final _SDL_WaitThread = _SDL_WaitThreadPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Thread>, ffi.Pointer<ffi.Int32>)>();
 
   /// A thread may be "detached" to signify that it should not remain until
   /// another thread has called SDL_WaitThread() on it. Detaching a thread
@@ -6314,10 +6989,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DetachThread_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DetachThread>>('SDL_DetachThread');
-  late final _dart_SDL_DetachThread _SDL_DetachThread =
-      _SDL_DetachThread_ptr.asFunction<_dart_SDL_DetachThread>();
+  late final _SDL_DetachThreadPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Thread>)>>(
+          'SDL_DetachThread');
+  late final _SDL_DetachThread =
+      _SDL_DetachThreadPtr.asFunction<void Function(ffi.Pointer<SDL_Thread>)>();
 
   /// \brief Create an identifier that is globally visible to all threads but refers to data that is thread-specific.
   ///
@@ -6351,10 +7027,9 @@ class DartSdl {
     return _SDL_TLSCreate();
   }
 
-  late final _SDL_TLSCreate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_TLSCreate>>('SDL_TLSCreate');
-  late final _dart_SDL_TLSCreate _SDL_TLSCreate =
-      _SDL_TLSCreate_ptr.asFunction<_dart_SDL_TLSCreate>();
+  late final _SDL_TLSCreatePtr =
+      _lookup<ffi.NativeFunction<SDL_TLSID Function()>>('SDL_TLSCreate');
+  late final _SDL_TLSCreate = _SDL_TLSCreatePtr.asFunction<int Function()>();
 
   /// \brief Get the value associated with a thread local storage ID for the current thread.
   ///
@@ -6372,10 +7047,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_TLSGet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_TLSGet>>('SDL_TLSGet');
-  late final _dart_SDL_TLSGet _SDL_TLSGet =
-      _SDL_TLSGet_ptr.asFunction<_dart_SDL_TLSGet>();
+  late final _SDL_TLSGetPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(SDL_TLSID)>>(
+          'SDL_TLSGet');
+  late final _SDL_TLSGet =
+      _SDL_TLSGetPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
 
   /// \brief Set the value associated with a thread local storage ID for the current thread.
   ///
@@ -6390,7 +7066,8 @@ class DartSdl {
   int SDL_TLSSet(
     int id,
     ffi.Pointer<ffi.Void> value,
-    ffi.Pointer<ffi.NativeFunction<_typedefC_5>> destructor,
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+        destructor,
   ) {
     return _SDL_TLSSet(
       id,
@@ -6399,10 +7076,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_TLSSet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_TLSSet>>('SDL_TLSSet');
-  late final _dart_SDL_TLSSet _SDL_TLSSet =
-      _SDL_TLSSet_ptr.asFunction<_dart_SDL_TLSSet>();
+  late final _SDL_TLSSetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              SDL_TLSID,
+              ffi.Pointer<ffi.Void>,
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Void Function(
+                          ffi.Pointer<ffi.Void>)>>)>>('SDL_TLSSet');
+  late final _SDL_TLSSet = _SDL_TLSSetPtr.asFunction<
+      int Function(
+          int,
+          ffi.Pointer<ffi.Void>,
+          ffi.Pointer<
+              ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>)>();
 
   ffi.Pointer<SDL_RWops> SDL_RWFromFile(
     ffi.Pointer<ffi.Int8> file,
@@ -6414,10 +7102,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWFromFile_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWFromFile>>('SDL_RWFromFile');
-  late final _dart_SDL_RWFromFile _SDL_RWFromFile =
-      _SDL_RWFromFile_ptr.asFunction<_dart_SDL_RWFromFile>();
+  late final _SDL_RWFromFilePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_RWops> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_RWFromFile');
+  late final _SDL_RWFromFile = _SDL_RWFromFilePtr.asFunction<
+      ffi.Pointer<SDL_RWops> Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   ffi.Pointer<SDL_RWops> SDL_RWFromFP(
     ffi.Pointer<ffi.Void> fp,
@@ -6429,10 +7120,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWFromFP_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWFromFP>>('SDL_RWFromFP');
-  late final _dart_SDL_RWFromFP _SDL_RWFromFP =
-      _SDL_RWFromFP_ptr.asFunction<_dart_SDL_RWFromFP>();
+  late final _SDL_RWFromFPPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_RWops> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_RWFromFP');
+  late final _SDL_RWFromFP = _SDL_RWFromFPPtr.asFunction<
+      ffi.Pointer<SDL_RWops> Function(ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<SDL_RWops> SDL_RWFromMem(
     ffi.Pointer<ffi.Void> mem,
@@ -6444,10 +7137,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWFromMem_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWFromMem>>('SDL_RWFromMem');
-  late final _dart_SDL_RWFromMem _SDL_RWFromMem =
-      _SDL_RWFromMem_ptr.asFunction<_dart_SDL_RWFromMem>();
+  late final _SDL_RWFromMemPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_RWops> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_RWFromMem');
+  late final _SDL_RWFromMem = _SDL_RWFromMemPtr.asFunction<
+      ffi.Pointer<SDL_RWops> Function(ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<SDL_RWops> SDL_RWFromConstMem(
     ffi.Pointer<ffi.Void> mem,
@@ -6459,19 +7154,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWFromConstMem_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWFromConstMem>>('SDL_RWFromConstMem');
-  late final _dart_SDL_RWFromConstMem _SDL_RWFromConstMem =
-      _SDL_RWFromConstMem_ptr.asFunction<_dart_SDL_RWFromConstMem>();
+  late final _SDL_RWFromConstMemPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_RWops> Function(
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_RWFromConstMem');
+  late final _SDL_RWFromConstMem = _SDL_RWFromConstMemPtr.asFunction<
+      ffi.Pointer<SDL_RWops> Function(ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<SDL_RWops> SDL_AllocRW() {
     return _SDL_AllocRW();
   }
 
-  late final _SDL_AllocRW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AllocRW>>('SDL_AllocRW');
-  late final _dart_SDL_AllocRW _SDL_AllocRW =
-      _SDL_AllocRW_ptr.asFunction<_dart_SDL_AllocRW>();
+  late final _SDL_AllocRWPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_RWops> Function()>>(
+          'SDL_AllocRW');
+  late final _SDL_AllocRW =
+      _SDL_AllocRWPtr.asFunction<ffi.Pointer<SDL_RWops> Function()>();
 
   void SDL_FreeRW(
     ffi.Pointer<SDL_RWops> area,
@@ -6481,10 +7179,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FreeRW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeRW>>('SDL_FreeRW');
-  late final _dart_SDL_FreeRW _SDL_FreeRW =
-      _SDL_FreeRW_ptr.asFunction<_dart_SDL_FreeRW>();
+  late final _SDL_FreeRWPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_FreeRW');
+  late final _SDL_FreeRW =
+      _SDL_FreeRWPtr.asFunction<void Function(ffi.Pointer<SDL_RWops>)>();
 
   /// Return the size of the file in this rwops, or -1 if unknown
   int SDL_RWsize(
@@ -6495,10 +7194,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWsize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWsize>>('SDL_RWsize');
-  late final _dart_SDL_RWsize _SDL_RWsize =
-      _SDL_RWsize_ptr.asFunction<_dart_SDL_RWsize>();
+  late final _SDL_RWsizePtr =
+      _lookup<ffi.NativeFunction<Sint64 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_RWsize');
+  late final _SDL_RWsize =
+      _SDL_RWsizePtr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   /// Seek to \c offset relative to \c whence, one of stdio's whence values:
   /// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END
@@ -6516,10 +7216,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWseek_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWseek>>('SDL_RWseek');
-  late final _dart_SDL_RWseek _SDL_RWseek =
-      _SDL_RWseek_ptr.asFunction<_dart_SDL_RWseek>();
+  late final _SDL_RWseekPtr = _lookup<
+      ffi.NativeFunction<
+          Sint64 Function(
+              ffi.Pointer<SDL_RWops>, Sint64, ffi.Int32)>>('SDL_RWseek');
+  late final _SDL_RWseek = _SDL_RWseekPtr.asFunction<
+      int Function(ffi.Pointer<SDL_RWops>, int, int)>();
 
   /// Return the current offset in the data stream, or -1 on error.
   int SDL_RWtell(
@@ -6530,10 +7232,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWtell_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWtell>>('SDL_RWtell');
-  late final _dart_SDL_RWtell _SDL_RWtell =
-      _SDL_RWtell_ptr.asFunction<_dart_SDL_RWtell>();
+  late final _SDL_RWtellPtr =
+      _lookup<ffi.NativeFunction<Sint64 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_RWtell');
+  late final _SDL_RWtell =
+      _SDL_RWtellPtr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   /// Read up to \c maxnum objects each of size \c size from the data
   /// stream to the area pointed at by \c ptr.
@@ -6553,10 +7256,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWread_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWread>>('SDL_RWread');
-  late final _dart_SDL_RWread _SDL_RWread =
-      _SDL_RWread_ptr.asFunction<_dart_SDL_RWread>();
+  late final _SDL_RWreadPtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, size_t,
+              size_t)>>('SDL_RWread');
+  late final _SDL_RWread = _SDL_RWreadPtr.asFunction<
+      int Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, int, int)>();
 
   /// Write exactly \c num objects each of size \c size from the area
   /// pointed at by \c ptr to data stream.
@@ -6576,10 +7281,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWwrite_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWwrite>>('SDL_RWwrite');
-  late final _dart_SDL_RWwrite _SDL_RWwrite =
-      _SDL_RWwrite_ptr.asFunction<_dart_SDL_RWwrite>();
+  late final _SDL_RWwritePtr = _lookup<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, size_t,
+              size_t)>>('SDL_RWwrite');
+  late final _SDL_RWwrite = _SDL_RWwritePtr.asFunction<
+      int Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, int, int)>();
 
   /// Close and free an allocated SDL_RWops structure.
   ///
@@ -6592,10 +7299,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RWclose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RWclose>>('SDL_RWclose');
-  late final _dart_SDL_RWclose _SDL_RWclose =
-      _SDL_RWclose_ptr.asFunction<_dart_SDL_RWclose>();
+  late final _SDL_RWclosePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_RWclose');
+  late final _SDL_RWclose =
+      _SDL_RWclosePtr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   /// Load all the data from an SDL data stream.
   ///
@@ -6610,7 +7318,7 @@ class DartSdl {
   /// \return the data, or NULL if there was an error.
   ffi.Pointer<ffi.Void> SDL_LoadFile_RW(
     ffi.Pointer<SDL_RWops> src,
-    ffi.Pointer<ffi.Uint64> datasize,
+    ffi.Pointer<size_t> datasize,
     int freesrc,
   ) {
     return _SDL_LoadFile_RW(
@@ -6620,10 +7328,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadFile_RW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadFile_RW>>('SDL_LoadFile_RW');
-  late final _dart_SDL_LoadFile_RW _SDL_LoadFile_RW =
-      _SDL_LoadFile_RW_ptr.asFunction<_dart_SDL_LoadFile_RW>();
+  late final _SDL_LoadFile_RWPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<SDL_RWops>,
+              ffi.Pointer<size_t>, ffi.Int32)>>('SDL_LoadFile_RW');
+  late final _SDL_LoadFile_RW = _SDL_LoadFile_RWPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<SDL_RWops>, ffi.Pointer<size_t>, int)>();
 
   /// Load an entire file.
   ///
@@ -6638,7 +7349,7 @@ class DartSdl {
   /// \return the data, or NULL if there was an error.
   ffi.Pointer<ffi.Void> SDL_LoadFile(
     ffi.Pointer<ffi.Int8> file,
-    ffi.Pointer<ffi.Uint64> datasize,
+    ffi.Pointer<size_t> datasize,
   ) {
     return _SDL_LoadFile(
       file,
@@ -6646,10 +7357,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadFile_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadFile>>('SDL_LoadFile');
-  late final _dart_SDL_LoadFile _SDL_LoadFile =
-      _SDL_LoadFile_ptr.asFunction<_dart_SDL_LoadFile>();
+  late final _SDL_LoadFilePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<size_t>)>>('SDL_LoadFile');
+  late final _SDL_LoadFile = _SDL_LoadFilePtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<size_t>)>();
 
   int SDL_ReadU8(
     ffi.Pointer<SDL_RWops> src,
@@ -6659,10 +7373,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadU8_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadU8>>('SDL_ReadU8');
-  late final _dart_SDL_ReadU8 _SDL_ReadU8 =
-      _SDL_ReadU8_ptr.asFunction<_dart_SDL_ReadU8>();
+  late final _SDL_ReadU8Ptr =
+      _lookup<ffi.NativeFunction<Uint8 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadU8');
+  late final _SDL_ReadU8 =
+      _SDL_ReadU8Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadLE16(
     ffi.Pointer<SDL_RWops> src,
@@ -6672,10 +7387,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadLE16_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadLE16>>('SDL_ReadLE16');
-  late final _dart_SDL_ReadLE16 _SDL_ReadLE16 =
-      _SDL_ReadLE16_ptr.asFunction<_dart_SDL_ReadLE16>();
+  late final _SDL_ReadLE16Ptr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadLE16');
+  late final _SDL_ReadLE16 =
+      _SDL_ReadLE16Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadBE16(
     ffi.Pointer<SDL_RWops> src,
@@ -6685,10 +7401,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadBE16_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadBE16>>('SDL_ReadBE16');
-  late final _dart_SDL_ReadBE16 _SDL_ReadBE16 =
-      _SDL_ReadBE16_ptr.asFunction<_dart_SDL_ReadBE16>();
+  late final _SDL_ReadBE16Ptr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadBE16');
+  late final _SDL_ReadBE16 =
+      _SDL_ReadBE16Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadLE32(
     ffi.Pointer<SDL_RWops> src,
@@ -6698,10 +7415,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadLE32_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadLE32>>('SDL_ReadLE32');
-  late final _dart_SDL_ReadLE32 _SDL_ReadLE32 =
-      _SDL_ReadLE32_ptr.asFunction<_dart_SDL_ReadLE32>();
+  late final _SDL_ReadLE32Ptr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadLE32');
+  late final _SDL_ReadLE32 =
+      _SDL_ReadLE32Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadBE32(
     ffi.Pointer<SDL_RWops> src,
@@ -6711,10 +7429,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadBE32_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadBE32>>('SDL_ReadBE32');
-  late final _dart_SDL_ReadBE32 _SDL_ReadBE32 =
-      _SDL_ReadBE32_ptr.asFunction<_dart_SDL_ReadBE32>();
+  late final _SDL_ReadBE32Ptr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadBE32');
+  late final _SDL_ReadBE32 =
+      _SDL_ReadBE32Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadLE64(
     ffi.Pointer<SDL_RWops> src,
@@ -6724,10 +7443,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadLE64_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadLE64>>('SDL_ReadLE64');
-  late final _dart_SDL_ReadLE64 _SDL_ReadLE64 =
-      _SDL_ReadLE64_ptr.asFunction<_dart_SDL_ReadLE64>();
+  late final _SDL_ReadLE64Ptr =
+      _lookup<ffi.NativeFunction<Uint64 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadLE64');
+  late final _SDL_ReadLE64 =
+      _SDL_ReadLE64Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_ReadBE64(
     ffi.Pointer<SDL_RWops> src,
@@ -6737,10 +7457,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ReadBE64_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ReadBE64>>('SDL_ReadBE64');
-  late final _dart_SDL_ReadBE64 _SDL_ReadBE64 =
-      _SDL_ReadBE64_ptr.asFunction<_dart_SDL_ReadBE64>();
+  late final _SDL_ReadBE64Ptr =
+      _lookup<ffi.NativeFunction<Uint64 Function(ffi.Pointer<SDL_RWops>)>>(
+          'SDL_ReadBE64');
+  late final _SDL_ReadBE64 =
+      _SDL_ReadBE64Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   int SDL_WriteU8(
     ffi.Pointer<SDL_RWops> dst,
@@ -6752,10 +7473,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteU8_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteU8>>('SDL_WriteU8');
-  late final _dart_SDL_WriteU8 _SDL_WriteU8 =
-      _SDL_WriteU8_ptr.asFunction<_dart_SDL_WriteU8>();
+  late final _SDL_WriteU8Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint8)>>(
+      'SDL_WriteU8');
+  late final _SDL_WriteU8 =
+      _SDL_WriteU8Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteLE16(
     ffi.Pointer<SDL_RWops> dst,
@@ -6767,10 +7489,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteLE16_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteLE16>>('SDL_WriteLE16');
-  late final _dart_SDL_WriteLE16 _SDL_WriteLE16 =
-      _SDL_WriteLE16_ptr.asFunction<_dart_SDL_WriteLE16>();
+  late final _SDL_WriteLE16Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint16)>>(
+      'SDL_WriteLE16');
+  late final _SDL_WriteLE16 =
+      _SDL_WriteLE16Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteBE16(
     ffi.Pointer<SDL_RWops> dst,
@@ -6782,10 +7505,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteBE16_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteBE16>>('SDL_WriteBE16');
-  late final _dart_SDL_WriteBE16 _SDL_WriteBE16 =
-      _SDL_WriteBE16_ptr.asFunction<_dart_SDL_WriteBE16>();
+  late final _SDL_WriteBE16Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint16)>>(
+      'SDL_WriteBE16');
+  late final _SDL_WriteBE16 =
+      _SDL_WriteBE16Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteLE32(
     ffi.Pointer<SDL_RWops> dst,
@@ -6797,10 +7521,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteLE32_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteLE32>>('SDL_WriteLE32');
-  late final _dart_SDL_WriteLE32 _SDL_WriteLE32 =
-      _SDL_WriteLE32_ptr.asFunction<_dart_SDL_WriteLE32>();
+  late final _SDL_WriteLE32Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint32)>>(
+      'SDL_WriteLE32');
+  late final _SDL_WriteLE32 =
+      _SDL_WriteLE32Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteBE32(
     ffi.Pointer<SDL_RWops> dst,
@@ -6812,10 +7537,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteBE32_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteBE32>>('SDL_WriteBE32');
-  late final _dart_SDL_WriteBE32 _SDL_WriteBE32 =
-      _SDL_WriteBE32_ptr.asFunction<_dart_SDL_WriteBE32>();
+  late final _SDL_WriteBE32Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint32)>>(
+      'SDL_WriteBE32');
+  late final _SDL_WriteBE32 =
+      _SDL_WriteBE32Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteLE64(
     ffi.Pointer<SDL_RWops> dst,
@@ -6827,10 +7553,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteLE64_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteLE64>>('SDL_WriteLE64');
-  late final _dart_SDL_WriteLE64 _SDL_WriteLE64 =
-      _SDL_WriteLE64_ptr.asFunction<_dart_SDL_WriteLE64>();
+  late final _SDL_WriteLE64Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint64)>>(
+      'SDL_WriteLE64');
+  late final _SDL_WriteLE64 =
+      _SDL_WriteLE64Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_WriteBE64(
     ffi.Pointer<SDL_RWops> dst,
@@ -6842,20 +7569,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WriteBE64_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WriteBE64>>('SDL_WriteBE64');
-  late final _dart_SDL_WriteBE64 _SDL_WriteBE64 =
-      _SDL_WriteBE64_ptr.asFunction<_dart_SDL_WriteBE64>();
+  late final _SDL_WriteBE64Ptr = _lookup<
+          ffi.NativeFunction<size_t Function(ffi.Pointer<SDL_RWops>, Uint64)>>(
+      'SDL_WriteBE64');
+  late final _SDL_WriteBE64 =
+      _SDL_WriteBE64Ptr.asFunction<int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   int SDL_GetNumAudioDrivers() {
     return _SDL_GetNumAudioDrivers();
   }
 
-  late final _SDL_GetNumAudioDrivers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumAudioDrivers>>(
+  late final _SDL_GetNumAudioDriversPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumAudioDrivers');
-  late final _dart_SDL_GetNumAudioDrivers _SDL_GetNumAudioDrivers =
-      _SDL_GetNumAudioDrivers_ptr.asFunction<_dart_SDL_GetNumAudioDrivers>();
+  late final _SDL_GetNumAudioDrivers =
+      _SDL_GetNumAudioDriversPtr.asFunction<int Function()>();
 
   ffi.Pointer<ffi.Int8> SDL_GetAudioDriver(
     int index,
@@ -6865,10 +7593,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetAudioDriver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAudioDriver>>('SDL_GetAudioDriver');
-  late final _dart_SDL_GetAudioDriver _SDL_GetAudioDriver =
-      _SDL_GetAudioDriver_ptr.asFunction<_dart_SDL_GetAudioDriver>();
+  late final _SDL_GetAudioDriverPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'SDL_GetAudioDriver');
+  late final _SDL_GetAudioDriver =
+      _SDL_GetAudioDriverPtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   int SDL_AudioInit(
     ffi.Pointer<ffi.Int8> driver_name,
@@ -6878,19 +7607,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AudioInit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioInit>>('SDL_AudioInit');
-  late final _dart_SDL_AudioInit _SDL_AudioInit =
-      _SDL_AudioInit_ptr.asFunction<_dart_SDL_AudioInit>();
+  late final _SDL_AudioInitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_AudioInit');
+  late final _SDL_AudioInit =
+      _SDL_AudioInitPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   void SDL_AudioQuit() {
     return _SDL_AudioQuit();
   }
 
-  late final _SDL_AudioQuit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioQuit>>('SDL_AudioQuit');
-  late final _dart_SDL_AudioQuit _SDL_AudioQuit =
-      _SDL_AudioQuit_ptr.asFunction<_dart_SDL_AudioQuit>();
+  late final _SDL_AudioQuitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_AudioQuit');
+  late final _SDL_AudioQuit = _SDL_AudioQuitPtr.asFunction<void Function()>();
 
   /// This function returns the name of the current audio driver, or NULL
   /// if no driver has been initialized.
@@ -6898,12 +7627,11 @@ class DartSdl {
     return _SDL_GetCurrentAudioDriver();
   }
 
-  late final _SDL_GetCurrentAudioDriver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCurrentAudioDriver>>(
+  late final _SDL_GetCurrentAudioDriverPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
           'SDL_GetCurrentAudioDriver');
-  late final _dart_SDL_GetCurrentAudioDriver _SDL_GetCurrentAudioDriver =
-      _SDL_GetCurrentAudioDriver_ptr.asFunction<
-          _dart_SDL_GetCurrentAudioDriver>();
+  late final _SDL_GetCurrentAudioDriver = _SDL_GetCurrentAudioDriverPtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// This function opens the audio device with the desired parameters, and
   /// returns 0 if successful, placing the actual hardware parameters in the
@@ -6958,10 +7686,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_OpenAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OpenAudio>>('SDL_OpenAudio');
-  late final _dart_SDL_OpenAudio _SDL_OpenAudio =
-      _SDL_OpenAudio_ptr.asFunction<_dart_SDL_OpenAudio>();
+  late final _SDL_OpenAudioPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_AudioSpec>,
+              ffi.Pointer<SDL_AudioSpec>)>>('SDL_OpenAudio');
+  late final _SDL_OpenAudio = _SDL_OpenAudioPtr.asFunction<
+      int Function(ffi.Pointer<SDL_AudioSpec>, ffi.Pointer<SDL_AudioSpec>)>();
 
   /// Get the number of available devices exposed by the current driver.
   /// Only valid after a successfully initializing the audio subsystem.
@@ -6981,11 +7711,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetNumAudioDevices_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumAudioDevices>>(
+  late final _SDL_GetNumAudioDevicesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GetNumAudioDevices');
-  late final _dart_SDL_GetNumAudioDevices _SDL_GetNumAudioDevices =
-      _SDL_GetNumAudioDevices_ptr.asFunction<_dart_SDL_GetNumAudioDevices>();
+  late final _SDL_GetNumAudioDevices =
+      _SDL_GetNumAudioDevicesPtr.asFunction<int Function(int)>();
 
   /// Get the human-readable name of a specific audio device.
   /// Must be a value between 0 and (number of audio devices-1).
@@ -7008,11 +7738,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetAudioDeviceName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAudioDeviceName>>(
-          'SDL_GetAudioDeviceName');
-  late final _dart_SDL_GetAudioDeviceName _SDL_GetAudioDeviceName =
-      _SDL_GetAudioDeviceName_ptr.asFunction<_dart_SDL_GetAudioDeviceName>();
+  late final _SDL_GetAudioDeviceNamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int32, ffi.Int32)>>('SDL_GetAudioDeviceName');
+  late final _SDL_GetAudioDeviceName = _SDL_GetAudioDeviceNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int, int)>();
 
   /// Open a specific audio device. Passing in a device name of NULL requests
   /// the most reasonable default (and is equivalent to calling SDL_OpenAudio()).
@@ -7041,20 +7772,26 @@ class DartSdl {
     );
   }
 
-  late final _SDL_OpenAudioDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OpenAudioDevice>>(
-          'SDL_OpenAudioDevice');
-  late final _dart_SDL_OpenAudioDevice _SDL_OpenAudioDevice =
-      _SDL_OpenAudioDevice_ptr.asFunction<_dart_SDL_OpenAudioDevice>();
+  late final _SDL_OpenAudioDevicePtr = _lookup<
+      ffi.NativeFunction<
+          SDL_AudioDeviceID Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Int32,
+              ffi.Pointer<SDL_AudioSpec>,
+              ffi.Pointer<SDL_AudioSpec>,
+              ffi.Int32)>>('SDL_OpenAudioDevice');
+  late final _SDL_OpenAudioDevice = _SDL_OpenAudioDevicePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<SDL_AudioSpec>,
+          ffi.Pointer<SDL_AudioSpec>, int)>();
 
   int SDL_GetAudioStatus() {
     return _SDL_GetAudioStatus();
   }
 
-  late final _SDL_GetAudioStatus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAudioStatus>>('SDL_GetAudioStatus');
-  late final _dart_SDL_GetAudioStatus _SDL_GetAudioStatus =
-      _SDL_GetAudioStatus_ptr.asFunction<_dart_SDL_GetAudioStatus>();
+  late final _SDL_GetAudioStatusPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_GetAudioStatus');
+  late final _SDL_GetAudioStatus =
+      _SDL_GetAudioStatusPtr.asFunction<int Function()>();
 
   int SDL_GetAudioDeviceStatus(
     int dev,
@@ -7064,12 +7801,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetAudioDeviceStatus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetAudioDeviceStatus>>(
+  late final _SDL_GetAudioDeviceStatusPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_AudioDeviceID)>>(
           'SDL_GetAudioDeviceStatus');
-  late final _dart_SDL_GetAudioDeviceStatus _SDL_GetAudioDeviceStatus =
-      _SDL_GetAudioDeviceStatus_ptr.asFunction<
-          _dart_SDL_GetAudioDeviceStatus>();
+  late final _SDL_GetAudioDeviceStatus =
+      _SDL_GetAudioDeviceStatusPtr.asFunction<int Function(int)>();
 
   void SDL_PauseAudio(
     int pause_on,
@@ -7079,10 +7815,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PauseAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PauseAudio>>('SDL_PauseAudio');
-  late final _dart_SDL_PauseAudio _SDL_PauseAudio =
-      _SDL_PauseAudio_ptr.asFunction<_dart_SDL_PauseAudio>();
+  late final _SDL_PauseAudioPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+          'SDL_PauseAudio');
+  late final _SDL_PauseAudio =
+      _SDL_PauseAudioPtr.asFunction<void Function(int)>();
 
   void SDL_PauseAudioDevice(
     int dev,
@@ -7094,11 +7831,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PauseAudioDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PauseAudioDevice>>(
-          'SDL_PauseAudioDevice');
-  late final _dart_SDL_PauseAudioDevice _SDL_PauseAudioDevice =
-      _SDL_PauseAudioDevice_ptr.asFunction<_dart_SDL_PauseAudioDevice>();
+  late final _SDL_PauseAudioDevicePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(SDL_AudioDeviceID, ffi.Int32)>>(
+      'SDL_PauseAudioDevice');
+  late final _SDL_PauseAudioDevice =
+      _SDL_PauseAudioDevicePtr.asFunction<void Function(int, int)>();
 
   /// \brief Load the audio data of a WAVE file into memory
   ///
@@ -7154,8 +7891,8 @@ class DartSdl {
     ffi.Pointer<SDL_RWops> src,
     int freesrc,
     ffi.Pointer<SDL_AudioSpec> spec,
-    ffi.Pointer<ffi.Pointer<ffi.Uint8>> audio_buf,
-    ffi.Pointer<ffi.Uint32> audio_len,
+    ffi.Pointer<ffi.Pointer<Uint8>> audio_buf,
+    ffi.Pointer<Uint32> audio_len,
   ) {
     return _SDL_LoadWAV_RW(
       src,
@@ -7166,24 +7903,36 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadWAV_RW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadWAV_RW>>('SDL_LoadWAV_RW');
-  late final _dart_SDL_LoadWAV_RW _SDL_LoadWAV_RW =
-      _SDL_LoadWAV_RW_ptr.asFunction<_dart_SDL_LoadWAV_RW>();
+  late final _SDL_LoadWAV_RWPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_AudioSpec> Function(
+              ffi.Pointer<SDL_RWops>,
+              ffi.Int32,
+              ffi.Pointer<SDL_AudioSpec>,
+              ffi.Pointer<ffi.Pointer<Uint8>>,
+              ffi.Pointer<Uint32>)>>('SDL_LoadWAV_RW');
+  late final _SDL_LoadWAV_RW = _SDL_LoadWAV_RWPtr.asFunction<
+      ffi.Pointer<SDL_AudioSpec> Function(
+          ffi.Pointer<SDL_RWops>,
+          int,
+          ffi.Pointer<SDL_AudioSpec>,
+          ffi.Pointer<ffi.Pointer<Uint8>>,
+          ffi.Pointer<Uint32>)>();
 
   /// This function frees data previously allocated with SDL_LoadWAV_RW()
   void SDL_FreeWAV(
-    ffi.Pointer<ffi.Uint8> audio_buf,
+    ffi.Pointer<Uint8> audio_buf,
   ) {
     return _SDL_FreeWAV(
       audio_buf,
     );
   }
 
-  late final _SDL_FreeWAV_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeWAV>>('SDL_FreeWAV');
-  late final _dart_SDL_FreeWAV _SDL_FreeWAV =
-      _SDL_FreeWAV_ptr.asFunction<_dart_SDL_FreeWAV>();
+  late final _SDL_FreeWAVPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Uint8>)>>(
+          'SDL_FreeWAV');
+  late final _SDL_FreeWAV =
+      _SDL_FreeWAVPtr.asFunction<void Function(ffi.Pointer<Uint8>)>();
 
   /// This function takes a source format and rate and a destination format
   /// and rate, and initializes the \c cvt structure with information needed
@@ -7212,10 +7961,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_BuildAudioCVT_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_BuildAudioCVT>>('SDL_BuildAudioCVT');
-  late final _dart_SDL_BuildAudioCVT _SDL_BuildAudioCVT =
-      _SDL_BuildAudioCVT_ptr.asFunction<_dart_SDL_BuildAudioCVT>();
+  late final _SDL_BuildAudioCVTPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_AudioCVT>,
+              SDL_AudioFormat,
+              Uint8,
+              ffi.Int32,
+              SDL_AudioFormat,
+              Uint8,
+              ffi.Int32)>>('SDL_BuildAudioCVT');
+  late final _SDL_BuildAudioCVT = _SDL_BuildAudioCVTPtr.asFunction<
+      int Function(ffi.Pointer<SDL_AudioCVT>, int, int, int, int, int, int)>();
 
   /// Once you have initialized the \c cvt structure using SDL_BuildAudioCVT(),
   /// created an audio buffer \c cvt->buf, and filled it with \c cvt->len bytes of
@@ -7235,10 +7992,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ConvertAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ConvertAudio>>('SDL_ConvertAudio');
-  late final _dart_SDL_ConvertAudio _SDL_ConvertAudio =
-      _SDL_ConvertAudio_ptr.asFunction<_dart_SDL_ConvertAudio>();
+  late final _SDL_ConvertAudioPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_AudioCVT>)>>(
+      'SDL_ConvertAudio');
+  late final _SDL_ConvertAudio = _SDL_ConvertAudioPtr.asFunction<
+      int Function(ffi.Pointer<SDL_AudioCVT>)>();
 
   /// Create a new audio stream
   ///
@@ -7256,7 +8014,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
-  ffi.Pointer<SDL_AudioStream> SDL_NewAudioStream(
+  ffi.Pointer<SDL_AudioStream1> SDL_NewAudioStream(
     int src_format,
     int src_channels,
     int src_rate,
@@ -7274,10 +8032,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_NewAudioStream_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_NewAudioStream>>('SDL_NewAudioStream');
-  late final _dart_SDL_NewAudioStream _SDL_NewAudioStream =
-      _SDL_NewAudioStream_ptr.asFunction<_dart_SDL_NewAudioStream>();
+  late final _SDL_NewAudioStreamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_AudioStream1> Function(
+              SDL_AudioFormat,
+              Uint8,
+              ffi.Int32,
+              SDL_AudioFormat,
+              Uint8,
+              ffi.Int32)>>('SDL_NewAudioStream');
+  late final _SDL_NewAudioStream = _SDL_NewAudioStreamPtr.asFunction<
+      ffi.Pointer<SDL_AudioStream1> Function(int, int, int, int, int, int)>();
 
   /// Add data to be converted/resampled to the stream
   ///
@@ -7293,7 +8058,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamPut(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
     ffi.Pointer<ffi.Void> buf,
     int len,
   ) {
@@ -7304,10 +8069,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AudioStreamPut_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioStreamPut>>('SDL_AudioStreamPut');
-  late final _dart_SDL_AudioStreamPut _SDL_AudioStreamPut =
-      _SDL_AudioStreamPut_ptr.asFunction<_dart_SDL_AudioStreamPut>();
+  late final _SDL_AudioStreamPutPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_AudioStream1>,
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_AudioStreamPut');
+  late final _SDL_AudioStreamPut = _SDL_AudioStreamPutPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_AudioStream1>, ffi.Pointer<ffi.Void>, int)>();
 
   /// Get converted/resampled data from the stream
   ///
@@ -7323,7 +8091,7 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamGet(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
     ffi.Pointer<ffi.Void> buf,
     int len,
   ) {
@@ -7334,10 +8102,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AudioStreamGet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioStreamGet>>('SDL_AudioStreamGet');
-  late final _dart_SDL_AudioStreamGet _SDL_AudioStreamGet =
-      _SDL_AudioStreamGet_ptr.asFunction<_dart_SDL_AudioStreamGet>();
+  late final _SDL_AudioStreamGetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_AudioStream1>,
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_AudioStreamGet');
+  late final _SDL_AudioStreamGet = _SDL_AudioStreamGetPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_AudioStream1>, ffi.Pointer<ffi.Void>, int)>();
 
   /// Get the number of converted/resampled bytes available. The stream may be
   /// buffering data behind the scenes until it has enough to resample
@@ -7351,19 +8122,19 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamAvailable(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
   ) {
     return _SDL_AudioStreamAvailable(
       stream,
     );
   }
 
-  late final _SDL_AudioStreamAvailable_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioStreamAvailable>>(
-          'SDL_AudioStreamAvailable');
-  late final _dart_SDL_AudioStreamAvailable _SDL_AudioStreamAvailable =
-      _SDL_AudioStreamAvailable_ptr.asFunction<
-          _dart_SDL_AudioStreamAvailable>();
+  late final _SDL_AudioStreamAvailablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_AudioStream1>)>>('SDL_AudioStreamAvailable');
+  late final _SDL_AudioStreamAvailable = _SDL_AudioStreamAvailablePtr
+      .asFunction<int Function(ffi.Pointer<SDL_AudioStream1>)>();
 
   /// Tell the stream that you're done sending data, and anything being buffered
   /// should be converted/resampled and made available immediately.
@@ -7379,18 +8150,19 @@ class DartSdl {
   /// \sa SDL_AudioStreamClear
   /// \sa SDL_FreeAudioStream
   int SDL_AudioStreamFlush(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
   ) {
     return _SDL_AudioStreamFlush(
       stream,
     );
   }
 
-  late final _SDL_AudioStreamFlush_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioStreamFlush>>(
-          'SDL_AudioStreamFlush');
-  late final _dart_SDL_AudioStreamFlush _SDL_AudioStreamFlush =
-      _SDL_AudioStreamFlush_ptr.asFunction<_dart_SDL_AudioStreamFlush>();
+  late final _SDL_AudioStreamFlushPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_AudioStream1>)>>('SDL_AudioStreamFlush');
+  late final _SDL_AudioStreamFlush = _SDL_AudioStreamFlushPtr.asFunction<
+      int Function(ffi.Pointer<SDL_AudioStream1>)>();
 
   /// Clear any pending data in the stream without converting it
   ///
@@ -7401,18 +8173,18 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_FreeAudioStream
   void SDL_AudioStreamClear(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
   ) {
     return _SDL_AudioStreamClear(
       stream,
     );
   }
 
-  late final _SDL_AudioStreamClear_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AudioStreamClear>>(
-          'SDL_AudioStreamClear');
-  late final _dart_SDL_AudioStreamClear _SDL_AudioStreamClear =
-      _SDL_AudioStreamClear_ptr.asFunction<_dart_SDL_AudioStreamClear>();
+  late final _SDL_AudioStreamClearPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_AudioStream1>)>>(
+      'SDL_AudioStreamClear');
+  late final _SDL_AudioStreamClear = _SDL_AudioStreamClearPtr.asFunction<
+      void Function(ffi.Pointer<SDL_AudioStream1>)>();
 
   /// Free an audio stream
   ///
@@ -7423,18 +8195,18 @@ class DartSdl {
   /// \sa SDL_AudioStreamFlush
   /// \sa SDL_AudioStreamClear
   void SDL_FreeAudioStream(
-    ffi.Pointer<SDL_AudioStream> stream,
+    ffi.Pointer<SDL_AudioStream1> stream,
   ) {
     return _SDL_FreeAudioStream(
       stream,
     );
   }
 
-  late final _SDL_FreeAudioStream_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeAudioStream>>(
-          'SDL_FreeAudioStream');
-  late final _dart_SDL_FreeAudioStream _SDL_FreeAudioStream =
-      _SDL_FreeAudioStream_ptr.asFunction<_dart_SDL_FreeAudioStream>();
+  late final _SDL_FreeAudioStreamPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_AudioStream1>)>>(
+      'SDL_FreeAudioStream');
+  late final _SDL_FreeAudioStream = _SDL_FreeAudioStreamPtr.asFunction<
+      void Function(ffi.Pointer<SDL_AudioStream1>)>();
 
   /// This takes two audio buffers of the playing audio format and mixes
   /// them, performing addition, volume adjustment, and overflow clipping.
@@ -7442,8 +8214,8 @@ class DartSdl {
   /// for full audio volume.  Note this does not change hardware volume.
   /// This is provided for convenience -- you can mix your own audio data.
   void SDL_MixAudio(
-    ffi.Pointer<ffi.Uint8> dst,
-    ffi.Pointer<ffi.Uint8> src,
+    ffi.Pointer<Uint8> dst,
+    ffi.Pointer<Uint8> src,
     int len,
     int volume,
   ) {
@@ -7455,17 +8227,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MixAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MixAudio>>('SDL_MixAudio');
-  late final _dart_SDL_MixAudio _SDL_MixAudio =
-      _SDL_MixAudio_ptr.asFunction<_dart_SDL_MixAudio>();
+  late final _SDL_MixAudioPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, Uint32,
+              ffi.Int32)>>('SDL_MixAudio');
+  late final _SDL_MixAudio = _SDL_MixAudioPtr.asFunction<
+      void Function(ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, int, int)>();
 
   /// This works like SDL_MixAudio(), but you specify the audio format instead of
   /// using the format of audio device 1. Thus it can be used when no audio
   /// device is open at all.
   void SDL_MixAudioFormat(
-    ffi.Pointer<ffi.Uint8> dst,
-    ffi.Pointer<ffi.Uint8> src,
+    ffi.Pointer<Uint8> dst,
+    ffi.Pointer<Uint8> src,
     int format,
     int len,
     int volume,
@@ -7479,10 +8253,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MixAudioFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MixAudioFormat>>('SDL_MixAudioFormat');
-  late final _dart_SDL_MixAudioFormat _SDL_MixAudioFormat =
-      _SDL_MixAudioFormat_ptr.asFunction<_dart_SDL_MixAudioFormat>();
+  late final _SDL_MixAudioFormatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<Uint8>, ffi.Pointer<Uint8>,
+              SDL_AudioFormat, Uint32, ffi.Int32)>>('SDL_MixAudioFormat');
+  late final _SDL_MixAudioFormat = _SDL_MixAudioFormatPtr.asFunction<
+      void Function(ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, int, int, int)>();
 
   /// Queue more audio on non-callback devices.
   ///
@@ -7533,10 +8309,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_QueueAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_QueueAudio>>('SDL_QueueAudio');
-  late final _dart_SDL_QueueAudio _SDL_QueueAudio =
-      _SDL_QueueAudio_ptr.asFunction<_dart_SDL_QueueAudio>();
+  late final _SDL_QueueAudioPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(SDL_AudioDeviceID, ffi.Pointer<ffi.Void>,
+              Uint32)>>('SDL_QueueAudio');
+  late final _SDL_QueueAudio = _SDL_QueueAudioPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   /// Dequeue more audio on non-callback devices.
   ///
@@ -7592,10 +8370,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DequeueAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DequeueAudio>>('SDL_DequeueAudio');
-  late final _dart_SDL_DequeueAudio _SDL_DequeueAudio =
-      _SDL_DequeueAudio_ptr.asFunction<_dart_SDL_DequeueAudio>();
+  late final _SDL_DequeueAudioPtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(SDL_AudioDeviceID, ffi.Pointer<ffi.Void>,
+              Uint32)>>('SDL_DequeueAudio');
+  late final _SDL_DequeueAudio = _SDL_DequeueAudioPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   /// Get the number of bytes of still-queued audio.
   ///
@@ -7637,11 +8417,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetQueuedAudioSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetQueuedAudioSize>>(
+  late final _SDL_GetQueuedAudioSizePtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(SDL_AudioDeviceID)>>(
           'SDL_GetQueuedAudioSize');
-  late final _dart_SDL_GetQueuedAudioSize _SDL_GetQueuedAudioSize =
-      _SDL_GetQueuedAudioSize_ptr.asFunction<_dart_SDL_GetQueuedAudioSize>();
+  late final _SDL_GetQueuedAudioSize =
+      _SDL_GetQueuedAudioSizePtr.asFunction<int Function(int)>();
 
   /// Drop any queued audio data. For playback devices, this is any queued data
   /// still waiting to be submitted to the hardware. For capture devices, this
@@ -7683,20 +8463,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ClearQueuedAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ClearQueuedAudio>>(
+  late final _SDL_ClearQueuedAudioPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_AudioDeviceID)>>(
           'SDL_ClearQueuedAudio');
-  late final _dart_SDL_ClearQueuedAudio _SDL_ClearQueuedAudio =
-      _SDL_ClearQueuedAudio_ptr.asFunction<_dart_SDL_ClearQueuedAudio>();
+  late final _SDL_ClearQueuedAudio =
+      _SDL_ClearQueuedAudioPtr.asFunction<void Function(int)>();
 
   void SDL_LockAudio() {
     return _SDL_LockAudio();
   }
 
-  late final _SDL_LockAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockAudio>>('SDL_LockAudio');
-  late final _dart_SDL_LockAudio _SDL_LockAudio =
-      _SDL_LockAudio_ptr.asFunction<_dart_SDL_LockAudio>();
+  late final _SDL_LockAudioPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_LockAudio');
+  late final _SDL_LockAudio = _SDL_LockAudioPtr.asFunction<void Function()>();
 
   void SDL_LockAudioDevice(
     int dev,
@@ -7706,20 +8485,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LockAudioDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockAudioDevice>>(
+  late final _SDL_LockAudioDevicePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_AudioDeviceID)>>(
           'SDL_LockAudioDevice');
-  late final _dart_SDL_LockAudioDevice _SDL_LockAudioDevice =
-      _SDL_LockAudioDevice_ptr.asFunction<_dart_SDL_LockAudioDevice>();
+  late final _SDL_LockAudioDevice =
+      _SDL_LockAudioDevicePtr.asFunction<void Function(int)>();
 
   void SDL_UnlockAudio() {
     return _SDL_UnlockAudio();
   }
 
-  late final _SDL_UnlockAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockAudio>>('SDL_UnlockAudio');
-  late final _dart_SDL_UnlockAudio _SDL_UnlockAudio =
-      _SDL_UnlockAudio_ptr.asFunction<_dart_SDL_UnlockAudio>();
+  late final _SDL_UnlockAudioPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_UnlockAudio');
+  late final _SDL_UnlockAudio =
+      _SDL_UnlockAudioPtr.asFunction<void Function()>();
 
   void SDL_UnlockAudioDevice(
     int dev,
@@ -7729,21 +8508,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnlockAudioDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockAudioDevice>>(
+  late final _SDL_UnlockAudioDevicePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_AudioDeviceID)>>(
           'SDL_UnlockAudioDevice');
-  late final _dart_SDL_UnlockAudioDevice _SDL_UnlockAudioDevice =
-      _SDL_UnlockAudioDevice_ptr.asFunction<_dart_SDL_UnlockAudioDevice>();
+  late final _SDL_UnlockAudioDevice =
+      _SDL_UnlockAudioDevicePtr.asFunction<void Function(int)>();
 
   /// This function shuts down audio processing and closes the audio device.
   void SDL_CloseAudio() {
     return _SDL_CloseAudio();
   }
 
-  late final _SDL_CloseAudio_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CloseAudio>>('SDL_CloseAudio');
-  late final _dart_SDL_CloseAudio _SDL_CloseAudio =
-      _SDL_CloseAudio_ptr.asFunction<_dart_SDL_CloseAudio>();
+  late final _SDL_CloseAudioPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_CloseAudio');
+  late final _SDL_CloseAudio = _SDL_CloseAudioPtr.asFunction<void Function()>();
 
   void SDL_CloseAudioDevice(
     int dev,
@@ -7753,11 +8531,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CloseAudioDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CloseAudioDevice>>(
+  late final _SDL_CloseAudioDevicePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_AudioDeviceID)>>(
           'SDL_CloseAudioDevice');
-  late final _dart_SDL_CloseAudioDevice _SDL_CloseAudioDevice =
-      _SDL_CloseAudioDevice_ptr.asFunction<_dart_SDL_CloseAudioDevice>();
+  late final _SDL_CloseAudioDevice =
+      _SDL_CloseAudioDevicePtr.asFunction<void Function(int)>();
 
   /// \brief Put UTF-8 text into the clipboard
   ///
@@ -7770,11 +8548,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetClipboardText_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetClipboardText>>(
+  late final _SDL_SetClipboardTextPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_SetClipboardText');
-  late final _dart_SDL_SetClipboardText _SDL_SetClipboardText =
-      _SDL_SetClipboardText_ptr.asFunction<_dart_SDL_SetClipboardText>();
+  late final _SDL_SetClipboardText = _SDL_SetClipboardTextPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get UTF-8 text from the clipboard, which must be freed with SDL_free()
   ///
@@ -7783,11 +8561,11 @@ class DartSdl {
     return _SDL_GetClipboardText();
   }
 
-  late final _SDL_GetClipboardText_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetClipboardText>>(
+  late final _SDL_GetClipboardTextPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
           'SDL_GetClipboardText');
-  late final _dart_SDL_GetClipboardText _SDL_GetClipboardText =
-      _SDL_GetClipboardText_ptr.asFunction<_dart_SDL_GetClipboardText>();
+  late final _SDL_GetClipboardText =
+      _SDL_GetClipboardTextPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// \brief Returns a flag indicating whether the clipboard exists and contains a text string that is non-empty
   ///
@@ -7796,21 +8574,20 @@ class DartSdl {
     return _SDL_HasClipboardText();
   }
 
-  late final _SDL_HasClipboardText_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasClipboardText>>(
-          'SDL_HasClipboardText');
-  late final _dart_SDL_HasClipboardText _SDL_HasClipboardText =
-      _SDL_HasClipboardText_ptr.asFunction<_dart_SDL_HasClipboardText>();
+  late final _SDL_HasClipboardTextPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasClipboardText');
+  late final _SDL_HasClipboardText =
+      _SDL_HasClipboardTextPtr.asFunction<int Function()>();
 
   /// This function returns the number of CPU cores available.
   int SDL_GetCPUCount() {
     return _SDL_GetCPUCount();
   }
 
-  late final _SDL_GetCPUCount_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCPUCount>>('SDL_GetCPUCount');
-  late final _dart_SDL_GetCPUCount _SDL_GetCPUCount =
-      _SDL_GetCPUCount_ptr.asFunction<_dart_SDL_GetCPUCount>();
+  late final _SDL_GetCPUCountPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_GetCPUCount');
+  late final _SDL_GetCPUCount =
+      _SDL_GetCPUCountPtr.asFunction<int Function()>();
 
   /// This function returns the L1 cache line size of the CPU
   ///
@@ -7820,161 +8597,147 @@ class DartSdl {
     return _SDL_GetCPUCacheLineSize();
   }
 
-  late final _SDL_GetCPUCacheLineSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCPUCacheLineSize>>(
+  late final _SDL_GetCPUCacheLineSizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetCPUCacheLineSize');
-  late final _dart_SDL_GetCPUCacheLineSize _SDL_GetCPUCacheLineSize =
-      _SDL_GetCPUCacheLineSize_ptr.asFunction<_dart_SDL_GetCPUCacheLineSize>();
+  late final _SDL_GetCPUCacheLineSize =
+      _SDL_GetCPUCacheLineSizePtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has the RDTSC instruction.
   int SDL_HasRDTSC() {
     return _SDL_HasRDTSC();
   }
 
-  late final _SDL_HasRDTSC_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasRDTSC>>('SDL_HasRDTSC');
-  late final _dart_SDL_HasRDTSC _SDL_HasRDTSC =
-      _SDL_HasRDTSC_ptr.asFunction<_dart_SDL_HasRDTSC>();
+  late final _SDL_HasRDTSCPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasRDTSC');
+  late final _SDL_HasRDTSC = _SDL_HasRDTSCPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has AltiVec features.
   int SDL_HasAltiVec() {
     return _SDL_HasAltiVec();
   }
 
-  late final _SDL_HasAltiVec_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasAltiVec>>('SDL_HasAltiVec');
-  late final _dart_SDL_HasAltiVec _SDL_HasAltiVec =
-      _SDL_HasAltiVec_ptr.asFunction<_dart_SDL_HasAltiVec>();
+  late final _SDL_HasAltiVecPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasAltiVec');
+  late final _SDL_HasAltiVec = _SDL_HasAltiVecPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has MMX features.
   int SDL_HasMMX() {
     return _SDL_HasMMX();
   }
 
-  late final _SDL_HasMMX_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasMMX>>('SDL_HasMMX');
-  late final _dart_SDL_HasMMX _SDL_HasMMX =
-      _SDL_HasMMX_ptr.asFunction<_dart_SDL_HasMMX>();
+  late final _SDL_HasMMXPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasMMX');
+  late final _SDL_HasMMX = _SDL_HasMMXPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has 3DNow! features.
   int SDL_Has3DNow() {
     return _SDL_Has3DNow();
   }
 
-  late final _SDL_Has3DNow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Has3DNow>>('SDL_Has3DNow');
-  late final _dart_SDL_Has3DNow _SDL_Has3DNow =
-      _SDL_Has3DNow_ptr.asFunction<_dart_SDL_Has3DNow>();
+  late final _SDL_Has3DNowPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_Has3DNow');
+  late final _SDL_Has3DNow = _SDL_Has3DNowPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has SSE features.
   int SDL_HasSSE() {
     return _SDL_HasSSE();
   }
 
-  late final _SDL_HasSSE_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSSE>>('SDL_HasSSE');
-  late final _dart_SDL_HasSSE _SDL_HasSSE =
-      _SDL_HasSSE_ptr.asFunction<_dart_SDL_HasSSE>();
+  late final _SDL_HasSSEPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasSSE');
+  late final _SDL_HasSSE = _SDL_HasSSEPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has SSE2 features.
   int SDL_HasSSE2() {
     return _SDL_HasSSE2();
   }
 
-  late final _SDL_HasSSE2_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSSE2>>('SDL_HasSSE2');
-  late final _dart_SDL_HasSSE2 _SDL_HasSSE2 =
-      _SDL_HasSSE2_ptr.asFunction<_dart_SDL_HasSSE2>();
+  late final _SDL_HasSSE2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasSSE2');
+  late final _SDL_HasSSE2 = _SDL_HasSSE2Ptr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has SSE3 features.
   int SDL_HasSSE3() {
     return _SDL_HasSSE3();
   }
 
-  late final _SDL_HasSSE3_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSSE3>>('SDL_HasSSE3');
-  late final _dart_SDL_HasSSE3 _SDL_HasSSE3 =
-      _SDL_HasSSE3_ptr.asFunction<_dart_SDL_HasSSE3>();
+  late final _SDL_HasSSE3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasSSE3');
+  late final _SDL_HasSSE3 = _SDL_HasSSE3Ptr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has SSE4.1 features.
   int SDL_HasSSE41() {
     return _SDL_HasSSE41();
   }
 
-  late final _SDL_HasSSE41_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSSE41>>('SDL_HasSSE41');
-  late final _dart_SDL_HasSSE41 _SDL_HasSSE41 =
-      _SDL_HasSSE41_ptr.asFunction<_dart_SDL_HasSSE41>();
+  late final _SDL_HasSSE41Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasSSE41');
+  late final _SDL_HasSSE41 = _SDL_HasSSE41Ptr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has SSE4.2 features.
   int SDL_HasSSE42() {
     return _SDL_HasSSE42();
   }
 
-  late final _SDL_HasSSE42_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSSE42>>('SDL_HasSSE42');
-  late final _dart_SDL_HasSSE42 _SDL_HasSSE42 =
-      _SDL_HasSSE42_ptr.asFunction<_dart_SDL_HasSSE42>();
+  late final _SDL_HasSSE42Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasSSE42');
+  late final _SDL_HasSSE42 = _SDL_HasSSE42Ptr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has AVX features.
   int SDL_HasAVX() {
     return _SDL_HasAVX();
   }
 
-  late final _SDL_HasAVX_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasAVX>>('SDL_HasAVX');
-  late final _dart_SDL_HasAVX _SDL_HasAVX =
-      _SDL_HasAVX_ptr.asFunction<_dart_SDL_HasAVX>();
+  late final _SDL_HasAVXPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasAVX');
+  late final _SDL_HasAVX = _SDL_HasAVXPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has AVX2 features.
   int SDL_HasAVX2() {
     return _SDL_HasAVX2();
   }
 
-  late final _SDL_HasAVX2_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasAVX2>>('SDL_HasAVX2');
-  late final _dart_SDL_HasAVX2 _SDL_HasAVX2 =
-      _SDL_HasAVX2_ptr.asFunction<_dart_SDL_HasAVX2>();
+  late final _SDL_HasAVX2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasAVX2');
+  late final _SDL_HasAVX2 = _SDL_HasAVX2Ptr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has AVX-512F (foundation) features.
   int SDL_HasAVX512F() {
     return _SDL_HasAVX512F();
   }
 
-  late final _SDL_HasAVX512F_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasAVX512F>>('SDL_HasAVX512F');
-  late final _dart_SDL_HasAVX512F _SDL_HasAVX512F =
-      _SDL_HasAVX512F_ptr.asFunction<_dart_SDL_HasAVX512F>();
+  late final _SDL_HasAVX512FPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasAVX512F');
+  late final _SDL_HasAVX512F = _SDL_HasAVX512FPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has ARM SIMD (ARMv6) features.
   int SDL_HasARMSIMD() {
     return _SDL_HasARMSIMD();
   }
 
-  late final _SDL_HasARMSIMD_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasARMSIMD>>('SDL_HasARMSIMD');
-  late final _dart_SDL_HasARMSIMD _SDL_HasARMSIMD =
-      _SDL_HasARMSIMD_ptr.asFunction<_dart_SDL_HasARMSIMD>();
+  late final _SDL_HasARMSIMDPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasARMSIMD');
+  late final _SDL_HasARMSIMD = _SDL_HasARMSIMDPtr.asFunction<int Function()>();
 
   /// This function returns true if the CPU has NEON (ARM SIMD) features.
   int SDL_HasNEON() {
     return _SDL_HasNEON();
   }
 
-  late final _SDL_HasNEON_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasNEON>>('SDL_HasNEON');
-  late final _dart_SDL_HasNEON _SDL_HasNEON =
-      _SDL_HasNEON_ptr.asFunction<_dart_SDL_HasNEON>();
+  late final _SDL_HasNEONPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_HasNEON');
+  late final _SDL_HasNEON = _SDL_HasNEONPtr.asFunction<int Function()>();
 
   /// This function returns the amount of RAM configured in the system, in MB.
   int SDL_GetSystemRAM() {
     return _SDL_GetSystemRAM();
   }
 
-  late final _SDL_GetSystemRAM_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetSystemRAM>>('SDL_GetSystemRAM');
-  late final _dart_SDL_GetSystemRAM _SDL_GetSystemRAM =
-      _SDL_GetSystemRAM_ptr.asFunction<_dart_SDL_GetSystemRAM>();
+  late final _SDL_GetSystemRAMPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_GetSystemRAM');
+  late final _SDL_GetSystemRAM =
+      _SDL_GetSystemRAMPtr.asFunction<int Function()>();
 
   /// \brief Report the alignment this system needs for SIMD allocations.
   ///
@@ -7990,11 +8753,10 @@ class DartSdl {
     return _SDL_SIMDGetAlignment();
   }
 
-  late final _SDL_SIMDGetAlignment_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SIMDGetAlignment>>(
-          'SDL_SIMDGetAlignment');
-  late final _dart_SDL_SIMDGetAlignment _SDL_SIMDGetAlignment =
-      _SDL_SIMDGetAlignment_ptr.asFunction<_dart_SDL_SIMDGetAlignment>();
+  late final _SDL_SIMDGetAlignmentPtr =
+      _lookup<ffi.NativeFunction<size_t Function()>>('SDL_SIMDGetAlignment');
+  late final _SDL_SIMDGetAlignment =
+      _SDL_SIMDGetAlignmentPtr.asFunction<int Function()>();
 
   /// \brief Allocate memory in a SIMD-friendly way.
   ///
@@ -8036,10 +8798,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SIMDAlloc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SIMDAlloc>>('SDL_SIMDAlloc');
-  late final _dart_SDL_SIMDAlloc _SDL_SIMDAlloc =
-      _SDL_SIMDAlloc_ptr.asFunction<_dart_SDL_SIMDAlloc>();
+  late final _SDL_SIMDAllocPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(size_t)>>(
+          'SDL_SIMDAlloc');
+  late final _SDL_SIMDAlloc =
+      _SDL_SIMDAllocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
 
   /// \brief Reallocate memory obtained from SDL_SIMDAlloc
   ///
@@ -8069,10 +8832,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SIMDRealloc_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SIMDRealloc>>('SDL_SIMDRealloc');
-  late final _dart_SDL_SIMDRealloc _SDL_SIMDRealloc =
-      _SDL_SIMDRealloc_ptr.asFunction<_dart_SDL_SIMDRealloc>();
+  late final _SDL_SIMDReallocPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Void>, size_t)>>('SDL_SIMDRealloc');
+  late final _SDL_SIMDRealloc = _SDL_SIMDReallocPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int)>();
 
   /// \brief Deallocate memory obtained from SDL_SIMDAlloc
   ///
@@ -8092,10 +8857,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SIMDFree_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SIMDFree>>('SDL_SIMDFree');
-  late final _dart_SDL_SIMDFree _SDL_SIMDFree =
-      _SDL_SIMDFree_ptr.asFunction<_dart_SDL_SIMDFree>();
+  late final _SDL_SIMDFreePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'SDL_SIMDFree');
+  late final _SDL_SIMDFree =
+      _SDL_SIMDFreePtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   /// \brief Get the human readable name of a pixel format
   ffi.Pointer<ffi.Int8> SDL_GetPixelFormatName(
@@ -8106,11 +8872,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetPixelFormatName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPixelFormatName>>(
+  late final _SDL_GetPixelFormatNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(Uint32)>>(
           'SDL_GetPixelFormatName');
-  late final _dart_SDL_GetPixelFormatName _SDL_GetPixelFormatName =
-      _SDL_GetPixelFormatName_ptr.asFunction<_dart_SDL_GetPixelFormatName>();
+  late final _SDL_GetPixelFormatName = _SDL_GetPixelFormatNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Convert one of the enumerated pixel formats to a bpp and RGBA masks.
   ///
@@ -8120,10 +8886,10 @@ class DartSdl {
   int SDL_PixelFormatEnumToMasks(
     int format,
     ffi.Pointer<ffi.Int32> bpp,
-    ffi.Pointer<ffi.Uint32> Rmask,
-    ffi.Pointer<ffi.Uint32> Gmask,
-    ffi.Pointer<ffi.Uint32> Bmask,
-    ffi.Pointer<ffi.Uint32> Amask,
+    ffi.Pointer<Uint32> Rmask,
+    ffi.Pointer<Uint32> Gmask,
+    ffi.Pointer<Uint32> Bmask,
+    ffi.Pointer<Uint32> Amask,
   ) {
     return _SDL_PixelFormatEnumToMasks(
       format,
@@ -8135,12 +8901,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PixelFormatEnumToMasks_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PixelFormatEnumToMasks>>(
-          'SDL_PixelFormatEnumToMasks');
-  late final _dart_SDL_PixelFormatEnumToMasks _SDL_PixelFormatEnumToMasks =
-      _SDL_PixelFormatEnumToMasks_ptr.asFunction<
-          _dart_SDL_PixelFormatEnumToMasks>();
+  late final _SDL_PixelFormatEnumToMasksPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              Uint32,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<Uint32>,
+              ffi.Pointer<Uint32>,
+              ffi.Pointer<Uint32>,
+              ffi.Pointer<Uint32>)>>('SDL_PixelFormatEnumToMasks');
+  late final _SDL_PixelFormatEnumToMasks =
+      _SDL_PixelFormatEnumToMasksPtr.asFunction<
+          int Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<Uint32>,
+              ffi.Pointer<Uint32>, ffi.Pointer<Uint32>, ffi.Pointer<Uint32>)>();
 
   /// \brief Convert a bpp and RGBA masks to an enumerated pixel format.
   ///
@@ -8164,12 +8937,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MasksToPixelFormatEnum_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MasksToPixelFormatEnum>>(
-          'SDL_MasksToPixelFormatEnum');
-  late final _dart_SDL_MasksToPixelFormatEnum _SDL_MasksToPixelFormatEnum =
-      _SDL_MasksToPixelFormatEnum_ptr.asFunction<
-          _dart_SDL_MasksToPixelFormatEnum>();
+  late final _SDL_MasksToPixelFormatEnumPtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Int32, Uint32, Uint32, Uint32,
+              Uint32)>>('SDL_MasksToPixelFormatEnum');
+  late final _SDL_MasksToPixelFormatEnum = _SDL_MasksToPixelFormatEnumPtr
+      .asFunction<int Function(int, int, int, int, int)>();
 
   /// \brief Create an SDL_PixelFormat structure from a pixel format enum.
   ffi.Pointer<SDL_PixelFormat> SDL_AllocFormat(
@@ -8180,10 +8953,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AllocFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AllocFormat>>('SDL_AllocFormat');
-  late final _dart_SDL_AllocFormat _SDL_AllocFormat =
-      _SDL_AllocFormat_ptr.asFunction<_dart_SDL_AllocFormat>();
+  late final _SDL_AllocFormatPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<SDL_PixelFormat> Function(Uint32)>>(
+      'SDL_AllocFormat');
+  late final _SDL_AllocFormat = _SDL_AllocFormatPtr.asFunction<
+      ffi.Pointer<SDL_PixelFormat> Function(int)>();
 
   /// \brief Free an SDL_PixelFormat structure.
   void SDL_FreeFormat(
@@ -8194,10 +8968,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FreeFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeFormat>>('SDL_FreeFormat');
-  late final _dart_SDL_FreeFormat _SDL_FreeFormat =
-      _SDL_FreeFormat_ptr.asFunction<_dart_SDL_FreeFormat>();
+  late final _SDL_FreeFormatPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_PixelFormat>)>>(
+      'SDL_FreeFormat');
+  late final _SDL_FreeFormat = _SDL_FreeFormatPtr.asFunction<
+      void Function(ffi.Pointer<SDL_PixelFormat>)>();
 
   /// \brief Create a palette structure with the specified number of color
   /// entries.
@@ -8215,10 +8990,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AllocPalette_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AllocPalette>>('SDL_AllocPalette');
-  late final _dart_SDL_AllocPalette _SDL_AllocPalette =
-      _SDL_AllocPalette_ptr.asFunction<_dart_SDL_AllocPalette>();
+  late final _SDL_AllocPalettePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Palette> Function(ffi.Int32)>>(
+          'SDL_AllocPalette');
+  late final _SDL_AllocPalette =
+      _SDL_AllocPalettePtr.asFunction<ffi.Pointer<SDL_Palette> Function(int)>();
 
   /// \brief Set the palette for a pixel format structure.
   int SDL_SetPixelFormatPalette(
@@ -8231,12 +9007,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetPixelFormatPalette_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetPixelFormatPalette>>(
-          'SDL_SetPixelFormatPalette');
-  late final _dart_SDL_SetPixelFormatPalette _SDL_SetPixelFormatPalette =
-      _SDL_SetPixelFormatPalette_ptr.asFunction<
-          _dart_SDL_SetPixelFormatPalette>();
+  late final _SDL_SetPixelFormatPalettePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_PixelFormat>,
+              ffi.Pointer<SDL_Palette>)>>('SDL_SetPixelFormatPalette');
+  late final _SDL_SetPixelFormatPalette =
+      _SDL_SetPixelFormatPalettePtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_PixelFormat>, ffi.Pointer<SDL_Palette>)>();
 
   /// \brief Set a range of colors in a palette.
   ///
@@ -8260,11 +9038,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetPaletteColors_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetPaletteColors>>(
-          'SDL_SetPaletteColors');
-  late final _dart_SDL_SetPaletteColors _SDL_SetPaletteColors =
-      _SDL_SetPaletteColors_ptr.asFunction<_dart_SDL_SetPaletteColors>();
+  late final _SDL_SetPaletteColorsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Palette>, ffi.Pointer<SDL_Color>,
+              ffi.Int32, ffi.Int32)>>('SDL_SetPaletteColors');
+  late final _SDL_SetPaletteColors = _SDL_SetPaletteColorsPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Palette>, ffi.Pointer<SDL_Color>, int, int)>();
 
   /// \brief Free a palette created with SDL_AllocPalette().
   ///
@@ -8277,10 +9057,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FreePalette_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreePalette>>('SDL_FreePalette');
-  late final _dart_SDL_FreePalette _SDL_FreePalette =
-      _SDL_FreePalette_ptr.asFunction<_dart_SDL_FreePalette>();
+  late final _SDL_FreePalettePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Palette>)>>(
+          'SDL_FreePalette');
+  late final _SDL_FreePalette =
+      _SDL_FreePalettePtr.asFunction<void Function(ffi.Pointer<SDL_Palette>)>();
 
   /// \brief Maps an RGB triple to an opaque pixel value for a given pixel format.
   ///
@@ -8299,10 +9080,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MapRGB_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MapRGB>>('SDL_MapRGB');
-  late final _dart_SDL_MapRGB _SDL_MapRGB =
-      _SDL_MapRGB_ptr.asFunction<_dart_SDL_MapRGB>();
+  late final _SDL_MapRGBPtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Pointer<SDL_PixelFormat>, Uint8, Uint8,
+              Uint8)>>('SDL_MapRGB');
+  late final _SDL_MapRGB = _SDL_MapRGBPtr.asFunction<
+      int Function(ffi.Pointer<SDL_PixelFormat>, int, int, int)>();
 
   /// \brief Maps an RGBA quadruple to a pixel value for a given pixel format.
   ///
@@ -8323,10 +9106,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MapRGBA_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MapRGBA>>('SDL_MapRGBA');
-  late final _dart_SDL_MapRGBA _SDL_MapRGBA =
-      _SDL_MapRGBA_ptr.asFunction<_dart_SDL_MapRGBA>();
+  late final _SDL_MapRGBAPtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Pointer<SDL_PixelFormat>, Uint8, Uint8, Uint8,
+              Uint8)>>('SDL_MapRGBA');
+  late final _SDL_MapRGBA = _SDL_MapRGBAPtr.asFunction<
+      int Function(ffi.Pointer<SDL_PixelFormat>, int, int, int, int)>();
 
   /// \brief Get the RGB components from a pixel of the specified format.
   ///
@@ -8334,9 +9119,9 @@ class DartSdl {
   void SDL_GetRGB(
     int pixel,
     ffi.Pointer<SDL_PixelFormat> format,
-    ffi.Pointer<ffi.Uint8> r,
-    ffi.Pointer<ffi.Uint8> g,
-    ffi.Pointer<ffi.Uint8> b,
+    ffi.Pointer<Uint8> r,
+    ffi.Pointer<Uint8> g,
+    ffi.Pointer<Uint8> b,
   ) {
     return _SDL_GetRGB(
       pixel,
@@ -8347,10 +9132,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRGB_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRGB>>('SDL_GetRGB');
-  late final _dart_SDL_GetRGB _SDL_GetRGB =
-      _SDL_GetRGB_ptr.asFunction<_dart_SDL_GetRGB>();
+  late final _SDL_GetRGBPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              Uint32,
+              ffi.Pointer<SDL_PixelFormat>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>)>>('SDL_GetRGB');
+  late final _SDL_GetRGB = _SDL_GetRGBPtr.asFunction<
+      void Function(int, ffi.Pointer<SDL_PixelFormat>, ffi.Pointer<Uint8>,
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>)>();
 
   /// \brief Get the RGBA components from a pixel of the specified format.
   ///
@@ -8358,10 +9150,10 @@ class DartSdl {
   void SDL_GetRGBA(
     int pixel,
     ffi.Pointer<SDL_PixelFormat> format,
-    ffi.Pointer<ffi.Uint8> r,
-    ffi.Pointer<ffi.Uint8> g,
-    ffi.Pointer<ffi.Uint8> b,
-    ffi.Pointer<ffi.Uint8> a,
+    ffi.Pointer<Uint8> r,
+    ffi.Pointer<Uint8> g,
+    ffi.Pointer<Uint8> b,
+    ffi.Pointer<Uint8> a,
   ) {
     return _SDL_GetRGBA(
       pixel,
@@ -8373,15 +9165,23 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRGBA_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRGBA>>('SDL_GetRGBA');
-  late final _dart_SDL_GetRGBA _SDL_GetRGBA =
-      _SDL_GetRGBA_ptr.asFunction<_dart_SDL_GetRGBA>();
+  late final _SDL_GetRGBAPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              Uint32,
+              ffi.Pointer<SDL_PixelFormat>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>)>>('SDL_GetRGBA');
+  late final _SDL_GetRGBA = _SDL_GetRGBAPtr.asFunction<
+      void Function(int, ffi.Pointer<SDL_PixelFormat>, ffi.Pointer<Uint8>,
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, ffi.Pointer<Uint8>)>();
 
   /// \brief Calculate a 256 entry gamma ramp for a gamma value.
   void SDL_CalculateGammaRamp(
     double gamma,
-    ffi.Pointer<ffi.Uint16> ramp,
+    ffi.Pointer<Uint16> ramp,
   ) {
     return _SDL_CalculateGammaRamp(
       gamma,
@@ -8389,11 +9189,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CalculateGammaRamp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CalculateGammaRamp>>(
-          'SDL_CalculateGammaRamp');
-  late final _dart_SDL_CalculateGammaRamp _SDL_CalculateGammaRamp =
-      _SDL_CalculateGammaRamp_ptr.asFunction<_dart_SDL_CalculateGammaRamp>();
+  late final _SDL_CalculateGammaRampPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Float, ffi.Pointer<Uint16>)>>('SDL_CalculateGammaRamp');
+  late final _SDL_CalculateGammaRamp = _SDL_CalculateGammaRampPtr.asFunction<
+      void Function(double, ffi.Pointer<Uint16>)>();
 
   /// \brief Determine whether two rectangles intersect.
   ///
@@ -8408,11 +9209,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HasIntersection_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasIntersection>>(
-          'SDL_HasIntersection');
-  late final _dart_SDL_HasIntersection _SDL_HasIntersection =
-      _SDL_HasIntersection_ptr.asFunction<_dart_SDL_HasIntersection>();
+  late final _SDL_HasIntersectionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_HasIntersection');
+  late final _SDL_HasIntersection = _SDL_HasIntersectionPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Calculate the intersection of two rectangles.
   ///
@@ -8429,10 +9231,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_IntersectRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IntersectRect>>('SDL_IntersectRect');
-  late final _dart_SDL_IntersectRect _SDL_IntersectRect =
-      _SDL_IntersectRect_ptr.asFunction<_dart_SDL_IntersectRect>();
+  late final _SDL_IntersectRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_IntersectRect');
+  late final _SDL_IntersectRect = _SDL_IntersectRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Calculate the union of two rectangles.
   void SDL_UnionRect(
@@ -8447,10 +9252,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnionRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnionRect>>('SDL_UnionRect');
-  late final _dart_SDL_UnionRect _SDL_UnionRect =
-      _SDL_UnionRect_ptr.asFunction<_dart_SDL_UnionRect>();
+  late final _SDL_UnionRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_UnionRect');
+  late final _SDL_UnionRect = _SDL_UnionRectPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Calculate a minimal rectangle enclosing a set of points
   ///
@@ -8469,10 +9277,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_EnclosePoints_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_EnclosePoints>>('SDL_EnclosePoints');
-  late final _dart_SDL_EnclosePoints _SDL_EnclosePoints =
-      _SDL_EnclosePoints_ptr.asFunction<_dart_SDL_EnclosePoints>();
+  late final _SDL_EnclosePointsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Point>,
+              ffi.Int32,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_EnclosePoints');
+  late final _SDL_EnclosePoints = _SDL_EnclosePointsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Point>, int, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Calculate the intersection of a rectangle and line segment.
   ///
@@ -8493,12 +9307,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_IntersectRectAndLine_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IntersectRectAndLine>>(
-          'SDL_IntersectRectAndLine');
-  late final _dart_SDL_IntersectRectAndLine _SDL_IntersectRectAndLine =
-      _SDL_IntersectRectAndLine_ptr.asFunction<
-          _dart_SDL_IntersectRectAndLine>();
+  late final _SDL_IntersectRectAndLinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_IntersectRectAndLine');
+  late final _SDL_IntersectRectAndLine =
+      _SDL_IntersectRectAndLinePtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Create a custom blend mode, which may or may not be supported by a given renderer
   ///
@@ -8531,12 +9355,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ComposeCustomBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ComposeCustomBlendMode>>(
-          'SDL_ComposeCustomBlendMode');
-  late final _dart_SDL_ComposeCustomBlendMode _SDL_ComposeCustomBlendMode =
-      _SDL_ComposeCustomBlendMode_ptr.asFunction<
-          _dart_SDL_ComposeCustomBlendMode>();
+  late final _SDL_ComposeCustomBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Int32, ffi.Int32)>>('SDL_ComposeCustomBlendMode');
+  late final _SDL_ComposeCustomBlendMode = _SDL_ComposeCustomBlendModePtr
+      .asFunction<int Function(int, int, int, int, int, int)>();
 
   /// Allocate and free an RGB surface.
   ///
@@ -8576,11 +9400,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateRGBSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateRGBSurface>>(
-          'SDL_CreateRGBSurface');
-  late final _dart_SDL_CreateRGBSurface _SDL_CreateRGBSurface =
-      _SDL_CreateRGBSurface_ptr.asFunction<_dart_SDL_CreateRGBSurface>();
+  late final _SDL_CreateRGBSurfacePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              Uint32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              Uint32,
+              Uint32,
+              Uint32,
+              Uint32)>>('SDL_CreateRGBSurface');
+  late final _SDL_CreateRGBSurface = _SDL_CreateRGBSurfacePtr.asFunction<
+      ffi.Pointer<SDL_Surface> Function(
+          int, int, int, int, int, int, int, int)>();
 
   ffi.Pointer<SDL_Surface> SDL_CreateRGBSurfaceWithFormat(
     int flags,
@@ -8598,12 +9431,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateRGBSurfaceWithFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateRGBSurfaceWithFormat>>(
-          'SDL_CreateRGBSurfaceWithFormat');
-  late final _dart_SDL_CreateRGBSurfaceWithFormat
-      _SDL_CreateRGBSurfaceWithFormat = _SDL_CreateRGBSurfaceWithFormat_ptr
-          .asFunction<_dart_SDL_CreateRGBSurfaceWithFormat>();
+  late final _SDL_CreateRGBSurfaceWithFormatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(Uint32, ffi.Int32, ffi.Int32,
+              ffi.Int32, Uint32)>>('SDL_CreateRGBSurfaceWithFormat');
+  late final _SDL_CreateRGBSurfaceWithFormat =
+      _SDL_CreateRGBSurfaceWithFormatPtr.asFunction<
+          ffi.Pointer<SDL_Surface> Function(int, int, int, int, int)>();
 
   ffi.Pointer<SDL_Surface> SDL_CreateRGBSurfaceFrom(
     ffi.Pointer<ffi.Void> pixels,
@@ -8629,12 +9463,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateRGBSurfaceFrom_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateRGBSurfaceFrom>>(
-          'SDL_CreateRGBSurfaceFrom');
-  late final _dart_SDL_CreateRGBSurfaceFrom _SDL_CreateRGBSurfaceFrom =
-      _SDL_CreateRGBSurfaceFrom_ptr.asFunction<
-          _dart_SDL_CreateRGBSurfaceFrom>();
+  late final _SDL_CreateRGBSurfaceFromPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              Uint32,
+              Uint32,
+              Uint32,
+              Uint32)>>('SDL_CreateRGBSurfaceFrom');
+  late final _SDL_CreateRGBSurfaceFrom =
+      _SDL_CreateRGBSurfaceFromPtr.asFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<ffi.Void>, int, int, int, int, int, int, int, int)>();
 
   ffi.Pointer<SDL_Surface> SDL_CreateRGBSurfaceWithFormatFrom(
     ffi.Pointer<ffi.Void> pixels,
@@ -8654,13 +9498,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateRGBSurfaceWithFormatFrom_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateRGBSurfaceWithFormatFrom>>(
-          'SDL_CreateRGBSurfaceWithFormatFrom');
-  late final _dart_SDL_CreateRGBSurfaceWithFormatFrom
-      _SDL_CreateRGBSurfaceWithFormatFrom =
-      _SDL_CreateRGBSurfaceWithFormatFrom_ptr.asFunction<
-          _dart_SDL_CreateRGBSurfaceWithFormatFrom>();
+  late final _SDL_CreateRGBSurfaceWithFormatFromPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              Uint32)>>('SDL_CreateRGBSurfaceWithFormatFrom');
+  late final _SDL_CreateRGBSurfaceWithFormatFrom =
+      _SDL_CreateRGBSurfaceWithFormatFromPtr.asFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<ffi.Void>, int, int, int, int, int)>();
 
   void SDL_FreeSurface(
     ffi.Pointer<SDL_Surface> surface,
@@ -8670,10 +9520,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FreeSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeSurface>>('SDL_FreeSurface');
-  late final _dart_SDL_FreeSurface _SDL_FreeSurface =
-      _SDL_FreeSurface_ptr.asFunction<_dart_SDL_FreeSurface>();
+  late final _SDL_FreeSurfacePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Surface>)>>(
+          'SDL_FreeSurface');
+  late final _SDL_FreeSurface =
+      _SDL_FreeSurfacePtr.asFunction<void Function(ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Set the palette used by a surface.
   ///
@@ -8690,11 +9541,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetSurfacePalette_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetSurfacePalette>>(
-          'SDL_SetSurfacePalette');
-  late final _dart_SDL_SetSurfacePalette _SDL_SetSurfacePalette =
-      _SDL_SetSurfacePalette_ptr.asFunction<_dart_SDL_SetSurfacePalette>();
+  late final _SDL_SetSurfacePalettePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Palette>)>>('SDL_SetSurfacePalette');
+  late final _SDL_SetSurfacePalette = _SDL_SetSurfacePalettePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Palette>)>();
 
   /// \brief Sets up a surface for directly accessing the pixels.
   ///
@@ -8721,10 +9573,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LockSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockSurface>>('SDL_LockSurface');
-  late final _dart_SDL_LockSurface _SDL_LockSurface =
-      _SDL_LockSurface_ptr.asFunction<_dart_SDL_LockSurface>();
+  late final _SDL_LockSurfacePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Surface>)>>(
+          'SDL_LockSurface');
+  late final _SDL_LockSurface =
+      _SDL_LockSurfacePtr.asFunction<int Function(ffi.Pointer<SDL_Surface>)>();
 
   /// \sa SDL_LockSurface()
   void SDL_UnlockSurface(
@@ -8735,10 +9588,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnlockSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockSurface>>('SDL_UnlockSurface');
-  late final _dart_SDL_UnlockSurface _SDL_UnlockSurface =
-      _SDL_UnlockSurface_ptr.asFunction<_dart_SDL_UnlockSurface>();
+  late final _SDL_UnlockSurfacePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Surface>)>>(
+          'SDL_UnlockSurface');
+  late final _SDL_UnlockSurface = _SDL_UnlockSurfacePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Surface>)>();
 
   /// Load a surface from a seekable SDL data stream (memory or file).
   ///
@@ -8757,10 +9611,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadBMP_RW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadBMP_RW>>('SDL_LoadBMP_RW');
-  late final _dart_SDL_LoadBMP_RW _SDL_LoadBMP_RW =
-      _SDL_LoadBMP_RW_ptr.asFunction<_dart_SDL_LoadBMP_RW>();
+  late final _SDL_LoadBMP_RWPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<SDL_RWops>, ffi.Int32)>>('SDL_LoadBMP_RW');
+  late final _SDL_LoadBMP_RW = _SDL_LoadBMP_RWPtr.asFunction<
+      ffi.Pointer<SDL_Surface> Function(ffi.Pointer<SDL_RWops>, int)>();
 
   /// Save a surface to a seekable SDL data stream (memory or file).
   ///
@@ -8785,10 +9641,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SaveBMP_RW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SaveBMP_RW>>('SDL_SaveBMP_RW');
-  late final _dart_SDL_SaveBMP_RW _SDL_SaveBMP_RW =
-      _SDL_SaveBMP_RW_ptr.asFunction<_dart_SDL_SaveBMP_RW>();
+  late final _SDL_SaveBMP_RWPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_RWops>,
+              ffi.Int32)>>('SDL_SaveBMP_RW');
+  late final _SDL_SaveBMP_RW = _SDL_SaveBMP_RWPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_RWops>, int)>();
 
   /// \brief Sets the RLE acceleration hint for a surface.
   ///
@@ -8806,10 +9664,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetSurfaceRLE_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetSurfaceRLE>>('SDL_SetSurfaceRLE');
-  late final _dart_SDL_SetSurfaceRLE _SDL_SetSurfaceRLE =
-      _SDL_SetSurfaceRLE_ptr.asFunction<_dart_SDL_SetSurfaceRLE>();
+  late final _SDL_SetSurfaceRLEPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>, ffi.Int32)>>('SDL_SetSurfaceRLE');
+  late final _SDL_SetSurfaceRLE = _SDL_SetSurfaceRLEPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, int)>();
 
   /// \brief Returns whether the surface is RLE enabled
   ///
@@ -8822,10 +9682,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HasSurfaceRLE_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasSurfaceRLE>>('SDL_HasSurfaceRLE');
-  late final _dart_SDL_HasSurfaceRLE _SDL_HasSurfaceRLE =
-      _SDL_HasSurfaceRLE_ptr.asFunction<_dart_SDL_HasSurfaceRLE>();
+  late final _SDL_HasSurfaceRLEPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Surface>)>>(
+          'SDL_HasSurfaceRLE');
+  late final _SDL_HasSurfaceRLE = _SDL_HasSurfaceRLEPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Sets the color key (transparent pixel) in a blittable surface.
   ///
@@ -8848,10 +9709,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetColorKey_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetColorKey>>('SDL_SetColorKey');
-  late final _dart_SDL_SetColorKey _SDL_SetColorKey =
-      _SDL_SetColorKey_ptr.asFunction<_dart_SDL_SetColorKey>();
+  late final _SDL_SetColorKeyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>, ffi.Int32, Uint32)>>('SDL_SetColorKey');
+  late final _SDL_SetColorKey = _SDL_SetColorKeyPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, int, int)>();
 
   /// \brief Returns whether the surface has a color key
   ///
@@ -8864,10 +9727,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HasColorKey_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasColorKey>>('SDL_HasColorKey');
-  late final _dart_SDL_HasColorKey _SDL_HasColorKey =
-      _SDL_HasColorKey_ptr.asFunction<_dart_SDL_HasColorKey>();
+  late final _SDL_HasColorKeyPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Surface>)>>(
+          'SDL_HasColorKey');
+  late final _SDL_HasColorKey =
+      _SDL_HasColorKeyPtr.asFunction<int Function(ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Gets the color key (transparent pixel) in a blittable surface.
   ///
@@ -8879,7 +9743,7 @@ class DartSdl {
   /// enabled.
   int SDL_GetColorKey(
     ffi.Pointer<SDL_Surface> surface,
-    ffi.Pointer<ffi.Uint32> key,
+    ffi.Pointer<Uint32> key,
   ) {
     return _SDL_GetColorKey(
       surface,
@@ -8887,10 +9751,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetColorKey_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetColorKey>>('SDL_GetColorKey');
-  late final _dart_SDL_GetColorKey _SDL_GetColorKey =
-      _SDL_GetColorKey_ptr.asFunction<_dart_SDL_GetColorKey>();
+  late final _SDL_GetColorKeyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<Uint32>)>>('SDL_GetColorKey');
+  late final _SDL_GetColorKey = _SDL_GetColorKeyPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<Uint32>)>();
 
   /// \brief Set an additional color value used in blit operations.
   ///
@@ -8916,11 +9782,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetSurfaceColorMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetSurfaceColorMod>>(
-          'SDL_SetSurfaceColorMod');
-  late final _dart_SDL_SetSurfaceColorMod _SDL_SetSurfaceColorMod =
-      _SDL_SetSurfaceColorMod_ptr.asFunction<_dart_SDL_SetSurfaceColorMod>();
+  late final _SDL_SetSurfaceColorModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>, Uint8, Uint8,
+              Uint8)>>('SDL_SetSurfaceColorMod');
+  late final _SDL_SetSurfaceColorMod = _SDL_SetSurfaceColorModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, int, int, int)>();
 
   /// \brief Get the additional color value used in blit operations.
   ///
@@ -8934,9 +9801,9 @@ class DartSdl {
   /// \sa SDL_SetSurfaceColorMod()
   int SDL_GetSurfaceColorMod(
     ffi.Pointer<SDL_Surface> surface,
-    ffi.Pointer<ffi.Uint8> r,
-    ffi.Pointer<ffi.Uint8> g,
-    ffi.Pointer<ffi.Uint8> b,
+    ffi.Pointer<Uint8> r,
+    ffi.Pointer<Uint8> g,
+    ffi.Pointer<Uint8> b,
   ) {
     return _SDL_GetSurfaceColorMod(
       surface,
@@ -8946,11 +9813,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetSurfaceColorMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetSurfaceColorMod>>(
-          'SDL_GetSurfaceColorMod');
-  late final _dart_SDL_GetSurfaceColorMod _SDL_GetSurfaceColorMod =
-      _SDL_GetSurfaceColorMod_ptr.asFunction<_dart_SDL_GetSurfaceColorMod>();
+  late final _SDL_GetSurfaceColorModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>)>>('SDL_GetSurfaceColorMod');
+  late final _SDL_GetSurfaceColorMod = _SDL_GetSurfaceColorModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<Uint8>,
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>)>();
 
   /// \brief Set an additional alpha value used in blit operations.
   ///
@@ -8970,11 +9842,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetSurfaceAlphaMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetSurfaceAlphaMod>>(
-          'SDL_SetSurfaceAlphaMod');
-  late final _dart_SDL_SetSurfaceAlphaMod _SDL_SetSurfaceAlphaMod =
-      _SDL_SetSurfaceAlphaMod_ptr.asFunction<_dart_SDL_SetSurfaceAlphaMod>();
+  late final _SDL_SetSurfaceAlphaModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>, Uint8)>>('SDL_SetSurfaceAlphaMod');
+  late final _SDL_SetSurfaceAlphaMod = _SDL_SetSurfaceAlphaModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, int)>();
 
   /// \brief Get the additional alpha value used in blit operations.
   ///
@@ -8986,7 +9859,7 @@ class DartSdl {
   /// \sa SDL_SetSurfaceAlphaMod()
   int SDL_GetSurfaceAlphaMod(
     ffi.Pointer<SDL_Surface> surface,
-    ffi.Pointer<ffi.Uint8> alpha,
+    ffi.Pointer<Uint8> alpha,
   ) {
     return _SDL_GetSurfaceAlphaMod(
       surface,
@@ -8994,11 +9867,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetSurfaceAlphaMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetSurfaceAlphaMod>>(
-          'SDL_GetSurfaceAlphaMod');
-  late final _dart_SDL_GetSurfaceAlphaMod _SDL_GetSurfaceAlphaMod =
-      _SDL_GetSurfaceAlphaMod_ptr.asFunction<_dart_SDL_GetSurfaceAlphaMod>();
+  late final _SDL_GetSurfaceAlphaModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<Uint8>)>>('SDL_GetSurfaceAlphaMod');
+  late final _SDL_GetSurfaceAlphaMod = _SDL_GetSurfaceAlphaModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<Uint8>)>();
 
   /// \brief Set the blend mode used for blit operations.
   ///
@@ -9018,11 +9892,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetSurfaceBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetSurfaceBlendMode>>(
-          'SDL_SetSurfaceBlendMode');
-  late final _dart_SDL_SetSurfaceBlendMode _SDL_SetSurfaceBlendMode =
-      _SDL_SetSurfaceBlendMode_ptr.asFunction<_dart_SDL_SetSurfaceBlendMode>();
+  late final _SDL_SetSurfaceBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>, ffi.Int32)>>('SDL_SetSurfaceBlendMode');
+  late final _SDL_SetSurfaceBlendMode = _SDL_SetSurfaceBlendModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, int)>();
 
   /// \brief Get the blend mode used for blit operations.
   ///
@@ -9042,11 +9917,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetSurfaceBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetSurfaceBlendMode>>(
-          'SDL_GetSurfaceBlendMode');
-  late final _dart_SDL_GetSurfaceBlendMode _SDL_GetSurfaceBlendMode =
-      _SDL_GetSurfaceBlendMode_ptr.asFunction<_dart_SDL_GetSurfaceBlendMode>();
+  late final _SDL_GetSurfaceBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetSurfaceBlendMode');
+  late final _SDL_GetSurfaceBlendMode = _SDL_GetSurfaceBlendModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<ffi.Int32>)>();
 
   /// Sets the clipping rectangle for the destination surface in a blit.
   ///
@@ -9069,10 +9945,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetClipRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetClipRect>>('SDL_SetClipRect');
-  late final _dart_SDL_SetClipRect _SDL_SetClipRect =
-      _SDL_SetClipRect_ptr.asFunction<_dart_SDL_SetClipRect>();
+  late final _SDL_SetClipRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_SetClipRect');
+  late final _SDL_SetClipRect = _SDL_SetClipRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// Gets the clipping rectangle for the destination surface in a blit.
   ///
@@ -9088,10 +9966,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetClipRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetClipRect>>('SDL_GetClipRect');
-  late final _dart_SDL_GetClipRect _SDL_GetClipRect =
-      _SDL_GetClipRect_ptr.asFunction<_dart_SDL_GetClipRect>();
+  late final _SDL_GetClipRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_GetClipRect');
+  late final _SDL_GetClipRect = _SDL_GetClipRectPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   ffi.Pointer<SDL_Surface> SDL_DuplicateSurface(
     ffi.Pointer<SDL_Surface> surface,
@@ -9101,11 +9981,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DuplicateSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DuplicateSurface>>(
-          'SDL_DuplicateSurface');
-  late final _dart_SDL_DuplicateSurface _SDL_DuplicateSurface =
-      _SDL_DuplicateSurface_ptr.asFunction<_dart_SDL_DuplicateSurface>();
+  late final _SDL_DuplicateSurfacePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<SDL_Surface>)>>('SDL_DuplicateSurface');
+  late final _SDL_DuplicateSurface = _SDL_DuplicateSurfacePtr.asFunction<
+      ffi.Pointer<SDL_Surface> Function(ffi.Pointer<SDL_Surface>)>();
 
   /// Creates a new surface of the specified format, and then copies and maps
   /// the given surface to it so the blit of the converted surface will be as
@@ -9127,10 +10008,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ConvertSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ConvertSurface>>('SDL_ConvertSurface');
-  late final _dart_SDL_ConvertSurface _SDL_ConvertSurface =
-      _SDL_ConvertSurface_ptr.asFunction<_dart_SDL_ConvertSurface>();
+  late final _SDL_ConvertSurfacePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_PixelFormat>, Uint32)>>('SDL_ConvertSurface');
+  late final _SDL_ConvertSurface = _SDL_ConvertSurfacePtr.asFunction<
+      ffi.Pointer<SDL_Surface> Function(
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_PixelFormat>, int)>();
 
   ffi.Pointer<SDL_Surface> SDL_ConvertSurfaceFormat(
     ffi.Pointer<SDL_Surface> src,
@@ -9144,12 +10028,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ConvertSurfaceFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ConvertSurfaceFormat>>(
-          'SDL_ConvertSurfaceFormat');
-  late final _dart_SDL_ConvertSurfaceFormat _SDL_ConvertSurfaceFormat =
-      _SDL_ConvertSurfaceFormat_ptr.asFunction<
-          _dart_SDL_ConvertSurfaceFormat>();
+  late final _SDL_ConvertSurfaceFormatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(ffi.Pointer<SDL_Surface>, Uint32,
+              Uint32)>>('SDL_ConvertSurfaceFormat');
+  late final _SDL_ConvertSurfaceFormat =
+      _SDL_ConvertSurfaceFormatPtr.asFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<SDL_Surface>, int, int)>();
 
   /// \brief Copy a block of pixels of one format to another format
   ///
@@ -9176,10 +10062,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ConvertPixels_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ConvertPixels>>('SDL_ConvertPixels');
-  late final _dart_SDL_ConvertPixels _SDL_ConvertPixels =
-      _SDL_ConvertPixels_ptr.asFunction<_dart_SDL_ConvertPixels>();
+  late final _SDL_ConvertPixelsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32,
+              ffi.Int32,
+              Uint32,
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32,
+              Uint32,
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32)>>('SDL_ConvertPixels');
+  late final _SDL_ConvertPixels = _SDL_ConvertPixelsPtr.asFunction<
+      int Function(int, int, int, ffi.Pointer<ffi.Void>, int, int,
+          ffi.Pointer<ffi.Void>, int)>();
 
   /// Performs a fast fill of the given rectangle with \c color.
   ///
@@ -9201,10 +10097,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FillRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FillRect>>('SDL_FillRect');
-  late final _dart_SDL_FillRect _SDL_FillRect =
-      _SDL_FillRect_ptr.asFunction<_dart_SDL_FillRect>();
+  late final _SDL_FillRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+              Uint32)>>('SDL_FillRect');
+  late final _SDL_FillRect = _SDL_FillRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>, int)>();
 
   int SDL_FillRects(
     ffi.Pointer<SDL_Surface> dst,
@@ -9220,10 +10118,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FillRects_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FillRects>>('SDL_FillRects');
-  late final _dart_SDL_FillRects _SDL_FillRects =
-      _SDL_FillRects_ptr.asFunction<_dart_SDL_FillRects>();
+  late final _SDL_FillRectsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+              ffi.Int32, Uint32)>>('SDL_FillRects');
+  late final _SDL_FillRects = _SDL_FillRectsPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>, int, int)>();
 
   /// This is the public blit function, SDL_BlitSurface(), and it performs
   /// rectangle validation and clipping before passing it to SDL_LowerBlit()
@@ -9241,10 +10142,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpperBlit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpperBlit>>('SDL_UpperBlit');
-  late final _dart_SDL_UpperBlit _SDL_UpperBlit =
-      _SDL_UpperBlit_ptr.asFunction<_dart_SDL_UpperBlit>();
+  late final _SDL_UpperBlitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_UpperBlit');
+  late final _SDL_UpperBlit = _SDL_UpperBlitPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// This is a semi-private blit function and it performs low-level surface
   /// blitting only.
@@ -9262,10 +10169,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LowerBlit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LowerBlit>>('SDL_LowerBlit');
-  late final _dart_SDL_LowerBlit _SDL_LowerBlit =
-      _SDL_LowerBlit_ptr.asFunction<_dart_SDL_LowerBlit>();
+  late final _SDL_LowerBlitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_LowerBlit');
+  late final _SDL_LowerBlit = _SDL_LowerBlitPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Perform a fast, low quality, stretch blit between two surfaces of the
   /// same pixel format.
@@ -9285,10 +10198,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SoftStretch_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SoftStretch>>('SDL_SoftStretch');
-  late final _dart_SDL_SoftStretch _SDL_SoftStretch =
-      _SDL_SoftStretch_ptr.asFunction<_dart_SDL_SoftStretch>();
+  late final _SDL_SoftStretchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_SoftStretch');
+  late final _SDL_SoftStretch = _SDL_SoftStretchPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// This is the public scaled blit function, SDL_BlitScaled(), and it performs
   /// rectangle validation and clipping before passing it to SDL_LowerBlitScaled()
@@ -9306,11 +10225,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpperBlitScaled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpperBlitScaled>>(
-          'SDL_UpperBlitScaled');
-  late final _dart_SDL_UpperBlitScaled _SDL_UpperBlitScaled =
-      _SDL_UpperBlitScaled_ptr.asFunction<_dart_SDL_UpperBlitScaled>();
+  late final _SDL_UpperBlitScaledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_UpperBlitScaled');
+  late final _SDL_UpperBlitScaled = _SDL_UpperBlitScaledPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// This is a semi-private blit function and it performs low-level surface
   /// scaled blitting only.
@@ -9328,11 +10252,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LowerBlitScaled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LowerBlitScaled>>(
-          'SDL_LowerBlitScaled');
-  late final _dart_SDL_LowerBlitScaled _SDL_LowerBlitScaled =
-      _SDL_LowerBlitScaled_ptr.asFunction<_dart_SDL_LowerBlitScaled>();
+  late final _SDL_LowerBlitScaledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_LowerBlitScaled');
+  late final _SDL_LowerBlitScaled = _SDL_LowerBlitScaledPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Surface>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Set the YUV conversion mode
   void SDL_SetYUVConversionMode(
@@ -9343,24 +10272,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetYUVConversionMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetYUVConversionMode>>(
+  late final _SDL_SetYUVConversionModePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
           'SDL_SetYUVConversionMode');
-  late final _dart_SDL_SetYUVConversionMode _SDL_SetYUVConversionMode =
-      _SDL_SetYUVConversionMode_ptr.asFunction<
-          _dart_SDL_SetYUVConversionMode>();
+  late final _SDL_SetYUVConversionMode =
+      _SDL_SetYUVConversionModePtr.asFunction<void Function(int)>();
 
   /// \brief Get the YUV conversion mode
   int SDL_GetYUVConversionMode() {
     return _SDL_GetYUVConversionMode();
   }
 
-  late final _SDL_GetYUVConversionMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetYUVConversionMode>>(
+  late final _SDL_GetYUVConversionModePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetYUVConversionMode');
-  late final _dart_SDL_GetYUVConversionMode _SDL_GetYUVConversionMode =
-      _SDL_GetYUVConversionMode_ptr.asFunction<
-          _dart_SDL_GetYUVConversionMode>();
+  late final _SDL_GetYUVConversionMode =
+      _SDL_GetYUVConversionModePtr.asFunction<int Function()>();
 
   /// \brief Get the YUV conversion mode, returning the correct mode for the resolution when the current conversion mode is SDL_YUV_CONVERSION_AUTOMATIC
   int SDL_GetYUVConversionModeForResolution(
@@ -9373,13 +10300,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetYUVConversionModeForResolution_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetYUVConversionModeForResolution>>(
+  late final _SDL_GetYUVConversionModeForResolutionPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
           'SDL_GetYUVConversionModeForResolution');
-  late final _dart_SDL_GetYUVConversionModeForResolution
-      _SDL_GetYUVConversionModeForResolution =
-      _SDL_GetYUVConversionModeForResolution_ptr.asFunction<
-          _dart_SDL_GetYUVConversionModeForResolution>();
+  late final _SDL_GetYUVConversionModeForResolution =
+      _SDL_GetYUVConversionModeForResolutionPtr.asFunction<
+          int Function(int, int)>();
 
   /// \brief Get the number of video drivers compiled into SDL
   ///
@@ -9388,11 +10314,11 @@ class DartSdl {
     return _SDL_GetNumVideoDrivers();
   }
 
-  late final _SDL_GetNumVideoDrivers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumVideoDrivers>>(
+  late final _SDL_GetNumVideoDriversPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumVideoDrivers');
-  late final _dart_SDL_GetNumVideoDrivers _SDL_GetNumVideoDrivers =
-      _SDL_GetNumVideoDrivers_ptr.asFunction<_dart_SDL_GetNumVideoDrivers>();
+  late final _SDL_GetNumVideoDrivers =
+      _SDL_GetNumVideoDriversPtr.asFunction<int Function()>();
 
   /// \brief Get the name of a built in video driver.
   ///
@@ -9408,10 +10334,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetVideoDriver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetVideoDriver>>('SDL_GetVideoDriver');
-  late final _dart_SDL_GetVideoDriver _SDL_GetVideoDriver =
-      _SDL_GetVideoDriver_ptr.asFunction<_dart_SDL_GetVideoDriver>();
+  late final _SDL_GetVideoDriverPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'SDL_GetVideoDriver');
+  late final _SDL_GetVideoDriver =
+      _SDL_GetVideoDriverPtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Initialize the video subsystem, optionally specifying a video driver.
   ///
@@ -9433,10 +10360,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_VideoInit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_VideoInit>>('SDL_VideoInit');
-  late final _dart_SDL_VideoInit _SDL_VideoInit =
-      _SDL_VideoInit_ptr.asFunction<_dart_SDL_VideoInit>();
+  late final _SDL_VideoInitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_VideoInit');
+  late final _SDL_VideoInit =
+      _SDL_VideoInitPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Shuts down the video subsystem.
   ///
@@ -9447,10 +10375,9 @@ class DartSdl {
     return _SDL_VideoQuit();
   }
 
-  late final _SDL_VideoQuit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_VideoQuit>>('SDL_VideoQuit');
-  late final _dart_SDL_VideoQuit _SDL_VideoQuit =
-      _SDL_VideoQuit_ptr.asFunction<_dart_SDL_VideoQuit>();
+  late final _SDL_VideoQuitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_VideoQuit');
+  late final _SDL_VideoQuit = _SDL_VideoQuitPtr.asFunction<void Function()>();
 
   /// \brief Returns the name of the currently initialized video driver.
   ///
@@ -9463,12 +10390,11 @@ class DartSdl {
     return _SDL_GetCurrentVideoDriver();
   }
 
-  late final _SDL_GetCurrentVideoDriver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCurrentVideoDriver>>(
+  late final _SDL_GetCurrentVideoDriverPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
           'SDL_GetCurrentVideoDriver');
-  late final _dart_SDL_GetCurrentVideoDriver _SDL_GetCurrentVideoDriver =
-      _SDL_GetCurrentVideoDriver_ptr.asFunction<
-          _dart_SDL_GetCurrentVideoDriver>();
+  late final _SDL_GetCurrentVideoDriver = _SDL_GetCurrentVideoDriverPtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// \brief Returns the number of available video displays.
   ///
@@ -9477,11 +10403,11 @@ class DartSdl {
     return _SDL_GetNumVideoDisplays();
   }
 
-  late final _SDL_GetNumVideoDisplays_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumVideoDisplays>>(
+  late final _SDL_GetNumVideoDisplaysPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumVideoDisplays');
-  late final _dart_SDL_GetNumVideoDisplays _SDL_GetNumVideoDisplays =
-      _SDL_GetNumVideoDisplays_ptr.asFunction<_dart_SDL_GetNumVideoDisplays>();
+  late final _SDL_GetNumVideoDisplays =
+      _SDL_GetNumVideoDisplaysPtr.asFunction<int Function()>();
 
   /// \brief Get the name of a display in UTF-8 encoding
   ///
@@ -9496,10 +10422,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayName>>('SDL_GetDisplayName');
-  late final _dart_SDL_GetDisplayName _SDL_GetDisplayName =
-      _SDL_GetDisplayName_ptr.asFunction<_dart_SDL_GetDisplayName>();
+  late final _SDL_GetDisplayNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'SDL_GetDisplayName');
+  late final _SDL_GetDisplayName =
+      _SDL_GetDisplayNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Get the desktop area represented by a display, with the primary
   /// display located at 0,0
@@ -9517,11 +10444,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayBounds_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayBounds>>(
-          'SDL_GetDisplayBounds');
-  late final _dart_SDL_GetDisplayBounds _SDL_GetDisplayBounds =
-      _SDL_GetDisplayBounds_ptr.asFunction<_dart_SDL_GetDisplayBounds>();
+  late final _SDL_GetDisplayBoundsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<SDL_Rect>)>>('SDL_GetDisplayBounds');
+  late final _SDL_GetDisplayBounds = _SDL_GetDisplayBoundsPtr.asFunction<
+      int Function(int, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Get the usable desktop area represented by a display, with the
   /// primary display located at 0,0
@@ -9548,12 +10476,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayUsableBounds_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayUsableBounds>>(
-          'SDL_GetDisplayUsableBounds');
-  late final _dart_SDL_GetDisplayUsableBounds _SDL_GetDisplayUsableBounds =
-      _SDL_GetDisplayUsableBounds_ptr.asFunction<
-          _dart_SDL_GetDisplayUsableBounds>();
+  late final _SDL_GetDisplayUsableBoundsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<SDL_Rect>)>>('SDL_GetDisplayUsableBounds');
+  late final _SDL_GetDisplayUsableBounds = _SDL_GetDisplayUsableBoundsPtr
+      .asFunction<int Function(int, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Get the dots/pixels-per-inch for a display
   ///
@@ -9577,10 +10505,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayDPI_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayDPI>>('SDL_GetDisplayDPI');
-  late final _dart_SDL_GetDisplayDPI _SDL_GetDisplayDPI =
-      _SDL_GetDisplayDPI_ptr.asFunction<_dart_SDL_GetDisplayDPI>();
+  late final _SDL_GetDisplayDPIPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>)>>('SDL_GetDisplayDPI');
+  late final _SDL_GetDisplayDPI = _SDL_GetDisplayDPIPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Float>, ffi.Pointer<ffi.Float>,
+          ffi.Pointer<ffi.Float>)>();
 
   /// \brief Get the orientation of a display
   ///
@@ -9595,12 +10529,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayOrientation_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayOrientation>>(
+  late final _SDL_GetDisplayOrientationPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GetDisplayOrientation');
-  late final _dart_SDL_GetDisplayOrientation _SDL_GetDisplayOrientation =
-      _SDL_GetDisplayOrientation_ptr.asFunction<
-          _dart_SDL_GetDisplayOrientation>();
+  late final _SDL_GetDisplayOrientation =
+      _SDL_GetDisplayOrientationPtr.asFunction<int Function(int)>();
 
   /// \brief Returns the number of available display modes.
   ///
@@ -9613,11 +10546,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetNumDisplayModes_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumDisplayModes>>(
+  late final _SDL_GetNumDisplayModesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GetNumDisplayModes');
-  late final _dart_SDL_GetNumDisplayModes _SDL_GetNumDisplayModes =
-      _SDL_GetNumDisplayModes_ptr.asFunction<_dart_SDL_GetNumDisplayModes>();
+  late final _SDL_GetNumDisplayModes =
+      _SDL_GetNumDisplayModesPtr.asFunction<int Function(int)>();
 
   /// \brief Fill in information about a specific display mode.
   ///
@@ -9640,10 +10573,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDisplayMode>>('SDL_GetDisplayMode');
-  late final _dart_SDL_GetDisplayMode _SDL_GetDisplayMode =
-      _SDL_GetDisplayMode_ptr.asFunction<_dart_SDL_GetDisplayMode>();
+  late final _SDL_GetDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_GetDisplayMode');
+  late final _SDL_GetDisplayMode = _SDL_GetDisplayModePtr.asFunction<
+      int Function(int, int, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Fill in information about the desktop display mode.
   int SDL_GetDesktopDisplayMode(
@@ -9656,12 +10591,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetDesktopDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDesktopDisplayMode>>(
-          'SDL_GetDesktopDisplayMode');
-  late final _dart_SDL_GetDesktopDisplayMode _SDL_GetDesktopDisplayMode =
-      _SDL_GetDesktopDisplayMode_ptr.asFunction<
-          _dart_SDL_GetDesktopDisplayMode>();
+  late final _SDL_GetDesktopDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_GetDesktopDisplayMode');
+  late final _SDL_GetDesktopDisplayMode = _SDL_GetDesktopDisplayModePtr
+      .asFunction<int Function(int, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Fill in information about the current display mode.
   int SDL_GetCurrentDisplayMode(
@@ -9674,12 +10609,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetCurrentDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCurrentDisplayMode>>(
-          'SDL_GetCurrentDisplayMode');
-  late final _dart_SDL_GetCurrentDisplayMode _SDL_GetCurrentDisplayMode =
-      _SDL_GetCurrentDisplayMode_ptr.asFunction<
-          _dart_SDL_GetCurrentDisplayMode>();
+  late final _SDL_GetCurrentDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_GetCurrentDisplayMode');
+  late final _SDL_GetCurrentDisplayMode = _SDL_GetCurrentDisplayModePtr
+      .asFunction<int Function(int, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Get the closest match to the requested display mode.
   ///
@@ -9712,12 +10647,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetClosestDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetClosestDisplayMode>>(
-          'SDL_GetClosestDisplayMode');
-  late final _dart_SDL_GetClosestDisplayMode _SDL_GetClosestDisplayMode =
-      _SDL_GetClosestDisplayMode_ptr.asFunction<
-          _dart_SDL_GetClosestDisplayMode>();
+  late final _SDL_GetClosestDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_DisplayMode> Function(
+              ffi.Int32,
+              ffi.Pointer<SDL_DisplayMode>,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_GetClosestDisplayMode');
+  late final _SDL_GetClosestDisplayMode =
+      _SDL_GetClosestDisplayModePtr.asFunction<
+          ffi.Pointer<SDL_DisplayMode> Function(int,
+              ffi.Pointer<SDL_DisplayMode>, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Get the display index associated with a window.
   ///
@@ -9731,12 +10670,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowDisplayIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowDisplayIndex>>(
+  late final _SDL_GetWindowDisplayIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_GetWindowDisplayIndex');
-  late final _dart_SDL_GetWindowDisplayIndex _SDL_GetWindowDisplayIndex =
-      _SDL_GetWindowDisplayIndex_ptr.asFunction<
-          _dart_SDL_GetWindowDisplayIndex>();
+  late final _SDL_GetWindowDisplayIndex = _SDL_GetWindowDisplayIndexPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the display mode used when a fullscreen window is visible.
   ///
@@ -9760,12 +10698,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowDisplayMode>>(
-          'SDL_SetWindowDisplayMode');
-  late final _dart_SDL_SetWindowDisplayMode _SDL_SetWindowDisplayMode =
-      _SDL_SetWindowDisplayMode_ptr.asFunction<
-          _dart_SDL_SetWindowDisplayMode>();
+  late final _SDL_SetWindowDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_SetWindowDisplayMode');
+  late final _SDL_SetWindowDisplayMode =
+      _SDL_SetWindowDisplayModePtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Fill in information about the display mode used when a fullscreen
   /// window is visible.
@@ -9782,12 +10722,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowDisplayMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowDisplayMode>>(
-          'SDL_GetWindowDisplayMode');
-  late final _dart_SDL_GetWindowDisplayMode _SDL_GetWindowDisplayMode =
-      _SDL_GetWindowDisplayMode_ptr.asFunction<
-          _dart_SDL_GetWindowDisplayMode>();
+  late final _SDL_GetWindowDisplayModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<SDL_DisplayMode>)>>('SDL_GetWindowDisplayMode');
+  late final _SDL_GetWindowDisplayMode =
+      _SDL_GetWindowDisplayModePtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_DisplayMode>)>();
 
   /// \brief Get the pixel format associated with the window.
   int SDL_GetWindowPixelFormat(
@@ -9798,12 +10740,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowPixelFormat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowPixelFormat>>(
+  late final _SDL_GetWindowPixelFormatPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_GetWindowPixelFormat');
-  late final _dart_SDL_GetWindowPixelFormat _SDL_GetWindowPixelFormat =
-      _SDL_GetWindowPixelFormat_ptr.asFunction<
-          _dart_SDL_GetWindowPixelFormat>();
+  late final _SDL_GetWindowPixelFormat = _SDL_GetWindowPixelFormatPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Create a window with the specified position, dimensions, and flags.
   ///
@@ -9867,10 +10808,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateWindow>>('SDL_CreateWindow');
-  late final _dart_SDL_CreateWindow _SDL_CreateWindow =
-      _SDL_CreateWindow_ptr.asFunction<_dart_SDL_CreateWindow>();
+  late final _SDL_CreateWindowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Window> Function(ffi.Pointer<ffi.Int8>, ffi.Int32,
+              ffi.Int32, ffi.Int32, ffi.Int32, Uint32)>>('SDL_CreateWindow');
+  late final _SDL_CreateWindow = _SDL_CreateWindowPtr.asFunction<
+      ffi.Pointer<SDL_Window> Function(
+          ffi.Pointer<ffi.Int8>, int, int, int, int, int)>();
 
   /// \brief Create an SDL window from an existing native window.
   ///
@@ -9887,11 +10831,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateWindowFrom_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateWindowFrom>>(
-          'SDL_CreateWindowFrom');
-  late final _dart_SDL_CreateWindowFrom _SDL_CreateWindowFrom =
-      _SDL_CreateWindowFrom_ptr.asFunction<_dart_SDL_CreateWindowFrom>();
+  late final _SDL_CreateWindowFromPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Window> Function(
+              ffi.Pointer<ffi.Void>)>>('SDL_CreateWindowFrom');
+  late final _SDL_CreateWindowFrom = _SDL_CreateWindowFromPtr.asFunction<
+      ffi.Pointer<SDL_Window> Function(ffi.Pointer<ffi.Void>)>();
 
   /// \brief Get the numeric ID of a window, for logging purposes.
   int SDL_GetWindowID(
@@ -9902,10 +10847,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowID>>('SDL_GetWindowID');
-  late final _dart_SDL_GetWindowID _SDL_GetWindowID =
-      _SDL_GetWindowID_ptr.asFunction<_dart_SDL_GetWindowID>();
+  late final _SDL_GetWindowIDPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_GetWindowID');
+  late final _SDL_GetWindowID =
+      _SDL_GetWindowIDPtr.asFunction<int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Get a window from a stored ID, or NULL if it doesn't exist.
   ffi.Pointer<SDL_Window> SDL_GetWindowFromID(
@@ -9916,11 +10862,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowFromID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowFromID>>(
+  late final _SDL_GetWindowFromIDPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Window> Function(Uint32)>>(
           'SDL_GetWindowFromID');
-  late final _dart_SDL_GetWindowFromID _SDL_GetWindowFromID =
-      _SDL_GetWindowFromID_ptr.asFunction<_dart_SDL_GetWindowFromID>();
+  late final _SDL_GetWindowFromID = _SDL_GetWindowFromIDPtr.asFunction<
+      ffi.Pointer<SDL_Window> Function(int)>();
 
   /// \brief Get the window flags.
   int SDL_GetWindowFlags(
@@ -9931,10 +10877,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowFlags_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowFlags>>('SDL_GetWindowFlags');
-  late final _dart_SDL_GetWindowFlags _SDL_GetWindowFlags =
-      _SDL_GetWindowFlags_ptr.asFunction<_dart_SDL_GetWindowFlags>();
+  late final _SDL_GetWindowFlagsPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_GetWindowFlags');
+  late final _SDL_GetWindowFlags = _SDL_GetWindowFlagsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the title of a window, in UTF-8 format.
   ///
@@ -9949,10 +10896,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowTitle_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowTitle>>('SDL_SetWindowTitle');
-  late final _dart_SDL_SetWindowTitle _SDL_SetWindowTitle =
-      _SDL_SetWindowTitle_ptr.asFunction<_dart_SDL_SetWindowTitle>();
+  late final _SDL_SetWindowTitlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Int8>)>>('SDL_SetWindowTitle');
+  late final _SDL_SetWindowTitle = _SDL_SetWindowTitlePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get the title of a window, in UTF-8 format.
   ///
@@ -9965,10 +10914,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowTitle_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowTitle>>('SDL_GetWindowTitle');
-  late final _dart_SDL_GetWindowTitle _SDL_GetWindowTitle =
-      _SDL_GetWindowTitle_ptr.asFunction<_dart_SDL_GetWindowTitle>();
+  late final _SDL_GetWindowTitlePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_Window>)>>('SDL_GetWindowTitle');
+  late final _SDL_GetWindowTitle = _SDL_GetWindowTitlePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the icon for a window.
   ///
@@ -9984,10 +10935,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowIcon_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowIcon>>('SDL_SetWindowIcon');
-  late final _dart_SDL_SetWindowIcon _SDL_SetWindowIcon =
-      _SDL_SetWindowIcon_ptr.asFunction<_dart_SDL_SetWindowIcon>();
+  late final _SDL_SetWindowIconPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<SDL_Surface>)>>('SDL_SetWindowIcon');
+  late final _SDL_SetWindowIcon = _SDL_SetWindowIconPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Associate an arbitrary named pointer with a window.
   ///
@@ -10012,10 +10965,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowData_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowData>>('SDL_SetWindowData');
-  late final _dart_SDL_SetWindowData _SDL_SetWindowData =
-      _SDL_SetWindowData_ptr.asFunction<_dart_SDL_SetWindowData>();
+  late final _SDL_SetWindowDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Void>)>>('SDL_SetWindowData');
+  late final _SDL_SetWindowData = _SDL_SetWindowDataPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<SDL_Window>,
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Retrieve the data pointer associated with a window.
   ///
@@ -10035,10 +10993,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowData_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowData>>('SDL_GetWindowData');
-  late final _dart_SDL_GetWindowData _SDL_GetWindowData =
-      _SDL_GetWindowData_ptr.asFunction<_dart_SDL_GetWindowData>();
+  late final _SDL_GetWindowDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Int8>)>>('SDL_GetWindowData');
+  late final _SDL_GetWindowData = _SDL_GetWindowDataPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Set the position of a window.
   ///
@@ -10063,11 +11024,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowPosition_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowPosition>>(
-          'SDL_SetWindowPosition');
-  late final _dart_SDL_SetWindowPosition _SDL_SetWindowPosition =
-      _SDL_SetWindowPosition_ptr.asFunction<_dart_SDL_SetWindowPosition>();
+  late final _SDL_SetWindowPositionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              ffi.Int32)>>('SDL_SetWindowPosition');
+  late final _SDL_SetWindowPosition = _SDL_SetWindowPositionPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Get the position of a window.
   ///
@@ -10090,11 +11052,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowPosition_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowPosition>>(
-          'SDL_GetWindowPosition');
-  late final _dart_SDL_GetWindowPosition _SDL_GetWindowPosition =
-      _SDL_GetWindowPosition_ptr.asFunction<_dart_SDL_GetWindowPosition>();
+  late final _SDL_GetWindowPositionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetWindowPosition');
+  late final _SDL_GetWindowPosition = _SDL_GetWindowPositionPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the size of a window's client area.
   ///
@@ -10124,10 +11088,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowSize>>('SDL_SetWindowSize');
-  late final _dart_SDL_SetWindowSize _SDL_SetWindowSize =
-      _SDL_SetWindowSize_ptr.asFunction<_dart_SDL_SetWindowSize>();
+  late final _SDL_SetWindowSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              ffi.Int32)>>('SDL_SetWindowSize');
+  late final _SDL_SetWindowSize = _SDL_SetWindowSizePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Get the size of a window's client area.
   ///
@@ -10155,10 +11121,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowSize>>('SDL_GetWindowSize');
-  late final _dart_SDL_GetWindowSize _SDL_GetWindowSize =
-      _SDL_GetWindowSize_ptr.asFunction<_dart_SDL_GetWindowSize>();
+  late final _SDL_GetWindowSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetWindowSize');
+  late final _SDL_GetWindowSize = _SDL_GetWindowSizePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Get the size of a window's borders (decorations) around the client area.
   ///
@@ -10189,12 +11158,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowBordersSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowBordersSize>>(
-          'SDL_GetWindowBordersSize');
-  late final _dart_SDL_GetWindowBordersSize _SDL_GetWindowBordersSize =
-      _SDL_GetWindowBordersSize_ptr.asFunction<
-          _dart_SDL_GetWindowBordersSize>();
+  late final _SDL_GetWindowBordersSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetWindowBordersSize');
+  late final _SDL_GetWindowBordersSize =
+      _SDL_GetWindowBordersSizePtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the minimum size of a window's client area.
   ///
@@ -10219,12 +11198,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowMinimumSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowMinimumSize>>(
-          'SDL_SetWindowMinimumSize');
-  late final _dart_SDL_SetWindowMinimumSize _SDL_SetWindowMinimumSize =
-      _SDL_SetWindowMinimumSize_ptr.asFunction<
-          _dart_SDL_SetWindowMinimumSize>();
+  late final _SDL_SetWindowMinimumSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              ffi.Int32)>>('SDL_SetWindowMinimumSize');
+  late final _SDL_SetWindowMinimumSize = _SDL_SetWindowMinimumSizePtr
+      .asFunction<void Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Get the minimum size of a window's client area.
   ///
@@ -10246,12 +11225,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowMinimumSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowMinimumSize>>(
-          'SDL_GetWindowMinimumSize');
-  late final _dart_SDL_GetWindowMinimumSize _SDL_GetWindowMinimumSize =
-      _SDL_GetWindowMinimumSize_ptr.asFunction<
-          _dart_SDL_GetWindowMinimumSize>();
+  late final _SDL_GetWindowMinimumSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetWindowMinimumSize');
+  late final _SDL_GetWindowMinimumSize =
+      _SDL_GetWindowMinimumSizePtr.asFunction<
+          void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the maximum size of a window's client area.
   ///
@@ -10276,12 +11257,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowMaximumSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowMaximumSize>>(
-          'SDL_SetWindowMaximumSize');
-  late final _dart_SDL_SetWindowMaximumSize _SDL_SetWindowMaximumSize =
-      _SDL_SetWindowMaximumSize_ptr.asFunction<
-          _dart_SDL_SetWindowMaximumSize>();
+  late final _SDL_SetWindowMaximumSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              ffi.Int32)>>('SDL_SetWindowMaximumSize');
+  late final _SDL_SetWindowMaximumSize = _SDL_SetWindowMaximumSizePtr
+      .asFunction<void Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Get the maximum size of a window's client area.
   ///
@@ -10303,12 +11284,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowMaximumSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowMaximumSize>>(
-          'SDL_GetWindowMaximumSize');
-  late final _dart_SDL_GetWindowMaximumSize _SDL_GetWindowMaximumSize =
-      _SDL_GetWindowMaximumSize_ptr.asFunction<
-          _dart_SDL_GetWindowMaximumSize>();
+  late final _SDL_GetWindowMaximumSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetWindowMaximumSize');
+  late final _SDL_GetWindowMaximumSize =
+      _SDL_GetWindowMaximumSizePtr.asFunction<
+          void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the border state of a window.
   ///
@@ -10332,11 +11315,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowBordered_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowBordered>>(
-          'SDL_SetWindowBordered');
-  late final _dart_SDL_SetWindowBordered _SDL_SetWindowBordered =
-      _SDL_SetWindowBordered_ptr.asFunction<_dart_SDL_SetWindowBordered>();
+  late final _SDL_SetWindowBorderedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_Window>, ffi.Int32)>>('SDL_SetWindowBordered');
+  late final _SDL_SetWindowBordered = _SDL_SetWindowBorderedPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int)>();
 
   /// \brief Set the user-resizable state of a window.
   ///
@@ -10360,11 +11344,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowResizable_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowResizable>>(
-          'SDL_SetWindowResizable');
-  late final _dart_SDL_SetWindowResizable _SDL_SetWindowResizable =
-      _SDL_SetWindowResizable_ptr.asFunction<_dart_SDL_SetWindowResizable>();
+  late final _SDL_SetWindowResizablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_Window>, ffi.Int32)>>('SDL_SetWindowResizable');
+  late final _SDL_SetWindowResizable = _SDL_SetWindowResizablePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int)>();
 
   /// \brief Show a window.
   ///
@@ -10377,10 +11362,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ShowWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ShowWindow>>('SDL_ShowWindow');
-  late final _dart_SDL_ShowWindow _SDL_ShowWindow =
-      _SDL_ShowWindow_ptr.asFunction<_dart_SDL_ShowWindow>();
+  late final _SDL_ShowWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_ShowWindow');
+  late final _SDL_ShowWindow =
+      _SDL_ShowWindowPtr.asFunction<void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Hide a window.
   ///
@@ -10393,10 +11379,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HideWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HideWindow>>('SDL_HideWindow');
-  late final _dart_SDL_HideWindow _SDL_HideWindow =
-      _SDL_HideWindow_ptr.asFunction<_dart_SDL_HideWindow>();
+  late final _SDL_HideWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_HideWindow');
+  late final _SDL_HideWindow =
+      _SDL_HideWindowPtr.asFunction<void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Raise a window above other windows and set the input focus.
   void SDL_RaiseWindow(
@@ -10407,10 +11394,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RaiseWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RaiseWindow>>('SDL_RaiseWindow');
-  late final _dart_SDL_RaiseWindow _SDL_RaiseWindow =
-      _SDL_RaiseWindow_ptr.asFunction<_dart_SDL_RaiseWindow>();
+  late final _SDL_RaiseWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_RaiseWindow');
+  late final _SDL_RaiseWindow =
+      _SDL_RaiseWindowPtr.asFunction<void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Make a window as large as possible.
   ///
@@ -10423,10 +11411,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MaximizeWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MaximizeWindow>>('SDL_MaximizeWindow');
-  late final _dart_SDL_MaximizeWindow _SDL_MaximizeWindow =
-      _SDL_MaximizeWindow_ptr.asFunction<_dart_SDL_MaximizeWindow>();
+  late final _SDL_MaximizeWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_MaximizeWindow');
+  late final _SDL_MaximizeWindow = _SDL_MaximizeWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Minimize a window to an iconic representation.
   ///
@@ -10439,10 +11428,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_MinimizeWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MinimizeWindow>>('SDL_MinimizeWindow');
-  late final _dart_SDL_MinimizeWindow _SDL_MinimizeWindow =
-      _SDL_MinimizeWindow_ptr.asFunction<_dart_SDL_MinimizeWindow>();
+  late final _SDL_MinimizeWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_MinimizeWindow');
+  late final _SDL_MinimizeWindow = _SDL_MinimizeWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Restore the size and position of a minimized or maximized window.
   ///
@@ -10456,10 +11446,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RestoreWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RestoreWindow>>('SDL_RestoreWindow');
-  late final _dart_SDL_RestoreWindow _SDL_RestoreWindow =
-      _SDL_RestoreWindow_ptr.asFunction<_dart_SDL_RestoreWindow>();
+  late final _SDL_RestoreWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_RestoreWindow');
+  late final _SDL_RestoreWindow = _SDL_RestoreWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set a window's fullscreen state.
   ///
@@ -10477,11 +11468,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowFullscreen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowFullscreen>>(
-          'SDL_SetWindowFullscreen');
-  late final _dart_SDL_SetWindowFullscreen _SDL_SetWindowFullscreen =
-      _SDL_SetWindowFullscreen_ptr.asFunction<_dart_SDL_SetWindowFullscreen>();
+  late final _SDL_SetWindowFullscreenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>, Uint32)>>('SDL_SetWindowFullscreen');
+  late final _SDL_SetWindowFullscreen = _SDL_SetWindowFullscreenPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, int)>();
 
   /// \brief Get the SDL surface associated with the window.
   ///
@@ -10502,11 +11494,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowSurface>>(
-          'SDL_GetWindowSurface');
-  late final _dart_SDL_GetWindowSurface _SDL_GetWindowSurface =
-      _SDL_GetWindowSurface_ptr.asFunction<_dart_SDL_GetWindowSurface>();
+  late final _SDL_GetWindowSurfacePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Surface> Function(
+              ffi.Pointer<SDL_Window>)>>('SDL_GetWindowSurface');
+  late final _SDL_GetWindowSurface = _SDL_GetWindowSurfacePtr.asFunction<
+      ffi.Pointer<SDL_Surface> Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Copy the window surface to the screen.
   ///
@@ -10522,11 +11515,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpdateWindowSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpdateWindowSurface>>(
+  late final _SDL_UpdateWindowSurfacePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_UpdateWindowSurface');
-  late final _dart_SDL_UpdateWindowSurface _SDL_UpdateWindowSurface =
-      _SDL_UpdateWindowSurface_ptr.asFunction<_dart_SDL_UpdateWindowSurface>();
+  late final _SDL_UpdateWindowSurface = _SDL_UpdateWindowSurfacePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Copy a number of rectangles on the window surface to the screen.
   ///
@@ -10546,12 +11539,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpdateWindowSurfaceRects_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpdateWindowSurfaceRects>>(
-          'SDL_UpdateWindowSurfaceRects');
-  late final _dart_SDL_UpdateWindowSurfaceRects _SDL_UpdateWindowSurfaceRects =
-      _SDL_UpdateWindowSurfaceRects_ptr.asFunction<
-          _dart_SDL_UpdateWindowSurfaceRects>();
+  late final _SDL_UpdateWindowSurfaceRectsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Rect>,
+              ffi.Int32)>>('SDL_UpdateWindowSurfaceRects');
+  late final _SDL_UpdateWindowSurfaceRects =
+      _SDL_UpdateWindowSurfaceRectsPtr.asFunction<
+          int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Rect>, int)>();
 
   /// \brief Set a window's input grab mode.
   ///
@@ -10572,10 +11566,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowGrab_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowGrab>>('SDL_SetWindowGrab');
-  late final _dart_SDL_SetWindowGrab _SDL_SetWindowGrab =
-      _SDL_SetWindowGrab_ptr.asFunction<_dart_SDL_SetWindowGrab>();
+  late final _SDL_SetWindowGrabPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_Window>, ffi.Int32)>>('SDL_SetWindowGrab');
+  late final _SDL_SetWindowGrab = _SDL_SetWindowGrabPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int)>();
 
   /// \brief Get a window's input grab mode.
   ///
@@ -10590,10 +11586,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowGrab_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowGrab>>('SDL_GetWindowGrab');
-  late final _dart_SDL_GetWindowGrab _SDL_GetWindowGrab =
-      _SDL_GetWindowGrab_ptr.asFunction<_dart_SDL_GetWindowGrab>();
+  late final _SDL_GetWindowGrabPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_GetWindowGrab');
+  late final _SDL_GetWindowGrab =
+      _SDL_GetWindowGrabPtr.asFunction<int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Get the window that currently has an input grab enabled.
   ///
@@ -10604,11 +11601,11 @@ class DartSdl {
     return _SDL_GetGrabbedWindow();
   }
 
-  late final _SDL_GetGrabbedWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetGrabbedWindow>>(
+  late final _SDL_GetGrabbedWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Window> Function()>>(
           'SDL_GetGrabbedWindow');
-  late final _dart_SDL_GetGrabbedWindow _SDL_GetGrabbedWindow =
-      _SDL_GetGrabbedWindow_ptr.asFunction<_dart_SDL_GetGrabbedWindow>();
+  late final _SDL_GetGrabbedWindow =
+      _SDL_GetGrabbedWindowPtr.asFunction<ffi.Pointer<SDL_Window> Function()>();
 
   /// \brief Set the brightness (gamma correction) for a window.
   ///
@@ -10626,11 +11623,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowBrightness_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowBrightness>>(
-          'SDL_SetWindowBrightness');
-  late final _dart_SDL_SetWindowBrightness _SDL_SetWindowBrightness =
-      _SDL_SetWindowBrightness_ptr.asFunction<_dart_SDL_SetWindowBrightness>();
+  late final _SDL_SetWindowBrightnessPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>, ffi.Float)>>('SDL_SetWindowBrightness');
+  late final _SDL_SetWindowBrightness = _SDL_SetWindowBrightnessPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, double)>();
 
   /// \brief Get the brightness (gamma correction) for a window.
   ///
@@ -10645,11 +11643,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowBrightness_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowBrightness>>(
+  late final _SDL_GetWindowBrightnessPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_GetWindowBrightness');
-  late final _dart_SDL_GetWindowBrightness _SDL_GetWindowBrightness =
-      _SDL_GetWindowBrightness_ptr.asFunction<_dart_SDL_GetWindowBrightness>();
+  late final _SDL_GetWindowBrightness = _SDL_GetWindowBrightnessPtr.asFunction<
+      double Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the opacity for a window
   ///
@@ -10670,11 +11668,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowOpacity_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowOpacity>>(
-          'SDL_SetWindowOpacity');
-  late final _dart_SDL_SetWindowOpacity _SDL_SetWindowOpacity =
-      _SDL_SetWindowOpacity_ptr.asFunction<_dart_SDL_SetWindowOpacity>();
+  late final _SDL_SetWindowOpacityPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>, ffi.Float)>>('SDL_SetWindowOpacity');
+  late final _SDL_SetWindowOpacity = _SDL_SetWindowOpacityPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, double)>();
 
   /// \brief Get the opacity of a window.
   ///
@@ -10697,11 +11696,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowOpacity_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowOpacity>>(
-          'SDL_GetWindowOpacity');
-  late final _dart_SDL_GetWindowOpacity _SDL_GetWindowOpacity =
-      _SDL_GetWindowOpacity_ptr.asFunction<_dart_SDL_GetWindowOpacity>();
+  late final _SDL_GetWindowOpacityPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<ffi.Float>)>>('SDL_GetWindowOpacity');
+  late final _SDL_GetWindowOpacity = _SDL_GetWindowOpacityPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Float>)>();
 
   /// \brief Sets the window as a modal for another window (TODO: reconsider this function and/or its name)
   ///
@@ -10719,11 +11719,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowModalFor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowModalFor>>(
-          'SDL_SetWindowModalFor');
-  late final _dart_SDL_SetWindowModalFor _SDL_SetWindowModalFor =
-      _SDL_SetWindowModalFor_ptr.asFunction<_dart_SDL_SetWindowModalFor>();
+  late final _SDL_SetWindowModalForPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<SDL_Window>)>>('SDL_SetWindowModalFor');
+  late final _SDL_SetWindowModalFor = _SDL_SetWindowModalForPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Window>)>();
 
   /// \brief Explicitly sets input focus to the window.
   ///
@@ -10743,11 +11744,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowInputFocus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowInputFocus>>(
+  late final _SDL_SetWindowInputFocusPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_SetWindowInputFocus');
-  late final _dart_SDL_SetWindowInputFocus _SDL_SetWindowInputFocus =
-      _SDL_SetWindowInputFocus_ptr.asFunction<_dart_SDL_SetWindowInputFocus>();
+  late final _SDL_SetWindowInputFocus = _SDL_SetWindowInputFocusPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the gamma ramp for a window.
   ///
@@ -10767,9 +11768,9 @@ class DartSdl {
   /// \sa SDL_GetWindowGammaRamp()
   int SDL_SetWindowGammaRamp(
     ffi.Pointer<SDL_Window> window,
-    ffi.Pointer<ffi.Uint16> red,
-    ffi.Pointer<ffi.Uint16> green,
-    ffi.Pointer<ffi.Uint16> blue,
+    ffi.Pointer<Uint16> red,
+    ffi.Pointer<Uint16> green,
+    ffi.Pointer<Uint16> blue,
   ) {
     return _SDL_SetWindowGammaRamp(
       window,
@@ -10779,11 +11780,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowGammaRamp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowGammaRamp>>(
-          'SDL_SetWindowGammaRamp');
-  late final _dart_SDL_SetWindowGammaRamp _SDL_SetWindowGammaRamp =
-      _SDL_SetWindowGammaRamp_ptr.asFunction<_dart_SDL_SetWindowGammaRamp>();
+  late final _SDL_SetWindowGammaRampPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>,
+              ffi.Pointer<Uint16>,
+              ffi.Pointer<Uint16>,
+              ffi.Pointer<Uint16>)>>('SDL_SetWindowGammaRamp');
+  late final _SDL_SetWindowGammaRamp = _SDL_SetWindowGammaRampPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<Uint16>,
+          ffi.Pointer<Uint16>, ffi.Pointer<Uint16>)>();
 
   /// \brief Get the gamma ramp for a window.
   ///
@@ -10800,9 +11806,9 @@ class DartSdl {
   /// \sa SDL_SetWindowGammaRamp()
   int SDL_GetWindowGammaRamp(
     ffi.Pointer<SDL_Window> window,
-    ffi.Pointer<ffi.Uint16> red,
-    ffi.Pointer<ffi.Uint16> green,
-    ffi.Pointer<ffi.Uint16> blue,
+    ffi.Pointer<Uint16> red,
+    ffi.Pointer<Uint16> green,
+    ffi.Pointer<Uint16> blue,
   ) {
     return _SDL_GetWindowGammaRamp(
       window,
@@ -10812,11 +11818,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetWindowGammaRamp_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetWindowGammaRamp>>(
-          'SDL_GetWindowGammaRamp');
-  late final _dart_SDL_GetWindowGammaRamp _SDL_GetWindowGammaRamp =
-      _SDL_GetWindowGammaRamp_ptr.asFunction<_dart_SDL_GetWindowGammaRamp>();
+  late final _SDL_GetWindowGammaRampPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>,
+              ffi.Pointer<Uint16>,
+              ffi.Pointer<Uint16>,
+              ffi.Pointer<Uint16>)>>('SDL_GetWindowGammaRamp');
+  late final _SDL_GetWindowGammaRamp = _SDL_GetWindowGammaRampPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<Uint16>,
+          ffi.Pointer<Uint16>, ffi.Pointer<Uint16>)>();
 
   /// \brief Provide a callback that decides if a window region has special properties.
   ///
@@ -10855,7 +11866,7 @@ class DartSdl {
   /// \return 0 on success, -1 on error (including unsupported).
   int SDL_SetWindowHitTest(
     ffi.Pointer<SDL_Window> window,
-    ffi.Pointer<ffi.NativeFunction<SDL_HitTest>> callback,
+    SDL_HitTest callback,
     ffi.Pointer<ffi.Void> callback_data,
   ) {
     return _SDL_SetWindowHitTest(
@@ -10865,11 +11876,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowHitTest_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowHitTest>>(
-          'SDL_SetWindowHitTest');
-  late final _dart_SDL_SetWindowHitTest _SDL_SetWindowHitTest =
-      _SDL_SetWindowHitTest_ptr.asFunction<_dart_SDL_SetWindowHitTest>();
+  late final _SDL_SetWindowHitTestPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>, SDL_HitTest,
+              ffi.Pointer<ffi.Void>)>>('SDL_SetWindowHitTest');
+  late final _SDL_SetWindowHitTest = _SDL_SetWindowHitTestPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Window>, SDL_HitTest, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Destroy a window.
   void SDL_DestroyWindow(
@@ -10880,10 +11893,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DestroyWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroyWindow>>('SDL_DestroyWindow');
-  late final _dart_SDL_DestroyWindow _SDL_DestroyWindow =
-      _SDL_DestroyWindow_ptr.asFunction<_dart_SDL_DestroyWindow>();
+  late final _SDL_DestroyWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_DestroyWindow');
+  late final _SDL_DestroyWindow = _SDL_DestroyWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Returns whether the screensaver is currently enabled (default off).
   ///
@@ -10893,12 +11907,11 @@ class DartSdl {
     return _SDL_IsScreenSaverEnabled();
   }
 
-  late final _SDL_IsScreenSaverEnabled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsScreenSaverEnabled>>(
+  late final _SDL_IsScreenSaverEnabledPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_IsScreenSaverEnabled');
-  late final _dart_SDL_IsScreenSaverEnabled _SDL_IsScreenSaverEnabled =
-      _SDL_IsScreenSaverEnabled_ptr.asFunction<
-          _dart_SDL_IsScreenSaverEnabled>();
+  late final _SDL_IsScreenSaverEnabled =
+      _SDL_IsScreenSaverEnabledPtr.asFunction<int Function()>();
 
   /// \brief Allow the screen to be blanked by a screensaver
   ///
@@ -10908,11 +11921,10 @@ class DartSdl {
     return _SDL_EnableScreenSaver();
   }
 
-  late final _SDL_EnableScreenSaver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_EnableScreenSaver>>(
-          'SDL_EnableScreenSaver');
-  late final _dart_SDL_EnableScreenSaver _SDL_EnableScreenSaver =
-      _SDL_EnableScreenSaver_ptr.asFunction<_dart_SDL_EnableScreenSaver>();
+  late final _SDL_EnableScreenSaverPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_EnableScreenSaver');
+  late final _SDL_EnableScreenSaver =
+      _SDL_EnableScreenSaverPtr.asFunction<void Function()>();
 
   /// \brief Prevent the screen from being blanked by a screensaver
   ///
@@ -10922,11 +11934,11 @@ class DartSdl {
     return _SDL_DisableScreenSaver();
   }
 
-  late final _SDL_DisableScreenSaver_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DisableScreenSaver>>(
+  late final _SDL_DisableScreenSaverPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_DisableScreenSaver');
-  late final _dart_SDL_DisableScreenSaver _SDL_DisableScreenSaver =
-      _SDL_DisableScreenSaver_ptr.asFunction<_dart_SDL_DisableScreenSaver>();
+  late final _SDL_DisableScreenSaver =
+      _SDL_DisableScreenSaverPtr.asFunction<void Function()>();
 
   /// \brief Dynamically load an OpenGL library.
   ///
@@ -10952,10 +11964,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_LoadLibrary_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_LoadLibrary>>('SDL_GL_LoadLibrary');
-  late final _dart_SDL_GL_LoadLibrary _SDL_GL_LoadLibrary =
-      _SDL_GL_LoadLibrary_ptr.asFunction<_dart_SDL_GL_LoadLibrary>();
+  late final _SDL_GL_LoadLibraryPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_GL_LoadLibrary');
+  late final _SDL_GL_LoadLibrary =
+      _SDL_GL_LoadLibraryPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get the address of an OpenGL function.
   ffi.Pointer<ffi.Void> SDL_GL_GetProcAddress(
@@ -10966,11 +11979,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_GetProcAddress_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetProcAddress>>(
-          'SDL_GL_GetProcAddress');
-  late final _dart_SDL_GL_GetProcAddress _SDL_GL_GetProcAddress =
-      _SDL_GL_GetProcAddress_ptr.asFunction<_dart_SDL_GL_GetProcAddress>();
+  late final _SDL_GL_GetProcAddressPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Int8>)>>('SDL_GL_GetProcAddress');
+  late final _SDL_GL_GetProcAddress = _SDL_GL_GetProcAddressPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Unload the OpenGL library previously loaded by SDL_GL_LoadLibrary().
   ///
@@ -10979,39 +11993,37 @@ class DartSdl {
     return _SDL_GL_UnloadLibrary();
   }
 
-  late final _SDL_GL_UnloadLibrary_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_UnloadLibrary>>(
-          'SDL_GL_UnloadLibrary');
-  late final _dart_SDL_GL_UnloadLibrary _SDL_GL_UnloadLibrary =
-      _SDL_GL_UnloadLibrary_ptr.asFunction<_dart_SDL_GL_UnloadLibrary>();
+  late final _SDL_GL_UnloadLibraryPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_GL_UnloadLibrary');
+  late final _SDL_GL_UnloadLibrary =
+      _SDL_GL_UnloadLibraryPtr.asFunction<void Function()>();
 
   /// \brief Return true if an OpenGL extension is supported for the current
   /// context.
   int SDL_GL_ExtensionSupported(
-    ffi.Pointer<ffi.Int8> extension_1,
+    ffi.Pointer<ffi.Int8> extension1,
   ) {
     return _SDL_GL_ExtensionSupported(
-      extension_1,
+      extension1,
     );
   }
 
-  late final _SDL_GL_ExtensionSupported_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_ExtensionSupported>>(
+  late final _SDL_GL_ExtensionSupportedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_GL_ExtensionSupported');
-  late final _dart_SDL_GL_ExtensionSupported _SDL_GL_ExtensionSupported =
-      _SDL_GL_ExtensionSupported_ptr.asFunction<
-          _dart_SDL_GL_ExtensionSupported>();
+  late final _SDL_GL_ExtensionSupported = _SDL_GL_ExtensionSupportedPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Reset all previously set OpenGL context attributes to their default values
   void SDL_GL_ResetAttributes() {
     return _SDL_GL_ResetAttributes();
   }
 
-  late final _SDL_GL_ResetAttributes_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_ResetAttributes>>(
+  late final _SDL_GL_ResetAttributesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_GL_ResetAttributes');
-  late final _dart_SDL_GL_ResetAttributes _SDL_GL_ResetAttributes =
-      _SDL_GL_ResetAttributes_ptr.asFunction<_dart_SDL_GL_ResetAttributes>();
+  late final _SDL_GL_ResetAttributes =
+      _SDL_GL_ResetAttributesPtr.asFunction<void Function()>();
 
   /// \brief Set an OpenGL window attribute before window creation.
   ///
@@ -11026,11 +12038,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_SetAttribute_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_SetAttribute>>(
+  late final _SDL_GL_SetAttributePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
           'SDL_GL_SetAttribute');
-  late final _dart_SDL_GL_SetAttribute _SDL_GL_SetAttribute =
-      _SDL_GL_SetAttribute_ptr.asFunction<_dart_SDL_GL_SetAttribute>();
+  late final _SDL_GL_SetAttribute =
+      _SDL_GL_SetAttributePtr.asFunction<int Function(int, int)>();
 
   /// \brief Get the actual value for an attribute from the current context.
   ///
@@ -11046,17 +12058,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_GetAttribute_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetAttribute>>(
-          'SDL_GL_GetAttribute');
-  late final _dart_SDL_GL_GetAttribute _SDL_GL_GetAttribute =
-      _SDL_GL_GetAttribute_ptr.asFunction<_dart_SDL_GL_GetAttribute>();
+  late final _SDL_GL_GetAttributePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<ffi.Int32>)>>('SDL_GL_GetAttribute');
+  late final _SDL_GL_GetAttribute = _SDL_GL_GetAttributePtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Create an OpenGL context for use with an OpenGL window, and make it
   /// current.
   ///
   /// \sa SDL_GL_DeleteContext()
-  ffi.Pointer<ffi.Void> SDL_GL_CreateContext(
+  SDL_GLContext SDL_GL_CreateContext(
     ffi.Pointer<SDL_Window> window,
   ) {
     return _SDL_GL_CreateContext(
@@ -11064,18 +12077,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_CreateContext_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_CreateContext>>(
-          'SDL_GL_CreateContext');
-  late final _dart_SDL_GL_CreateContext _SDL_GL_CreateContext =
-      _SDL_GL_CreateContext_ptr.asFunction<_dart_SDL_GL_CreateContext>();
+  late final _SDL_GL_CreateContextPtr = _lookup<
+          ffi.NativeFunction<SDL_GLContext Function(ffi.Pointer<SDL_Window>)>>(
+      'SDL_GL_CreateContext');
+  late final _SDL_GL_CreateContext = _SDL_GL_CreateContextPtr.asFunction<
+      SDL_GLContext Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set up an OpenGL context for rendering into an OpenGL window.
   ///
   /// \note The context must have been created with a compatible window.
   int SDL_GL_MakeCurrent(
     ffi.Pointer<SDL_Window> window,
-    ffi.Pointer<ffi.Void> context,
+    SDL_GLContext context,
   ) {
     return _SDL_GL_MakeCurrent(
       window,
@@ -11083,33 +12096,34 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_MakeCurrent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_MakeCurrent>>('SDL_GL_MakeCurrent');
-  late final _dart_SDL_GL_MakeCurrent _SDL_GL_MakeCurrent =
-      _SDL_GL_MakeCurrent_ptr.asFunction<_dart_SDL_GL_MakeCurrent>();
+  late final _SDL_GL_MakeCurrentPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Window>, SDL_GLContext)>>('SDL_GL_MakeCurrent');
+  late final _SDL_GL_MakeCurrent = _SDL_GL_MakeCurrentPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, SDL_GLContext)>();
 
   /// \brief Get the currently active OpenGL window.
   ffi.Pointer<SDL_Window> SDL_GL_GetCurrentWindow() {
     return _SDL_GL_GetCurrentWindow();
   }
 
-  late final _SDL_GL_GetCurrentWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetCurrentWindow>>(
+  late final _SDL_GL_GetCurrentWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Window> Function()>>(
           'SDL_GL_GetCurrentWindow');
-  late final _dart_SDL_GL_GetCurrentWindow _SDL_GL_GetCurrentWindow =
-      _SDL_GL_GetCurrentWindow_ptr.asFunction<_dart_SDL_GL_GetCurrentWindow>();
+  late final _SDL_GL_GetCurrentWindow = _SDL_GL_GetCurrentWindowPtr.asFunction<
+      ffi.Pointer<SDL_Window> Function()>();
 
   /// \brief Get the currently active OpenGL context.
-  ffi.Pointer<ffi.Void> SDL_GL_GetCurrentContext() {
+  SDL_GLContext SDL_GL_GetCurrentContext() {
     return _SDL_GL_GetCurrentContext();
   }
 
-  late final _SDL_GL_GetCurrentContext_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetCurrentContext>>(
+  late final _SDL_GL_GetCurrentContextPtr =
+      _lookup<ffi.NativeFunction<SDL_GLContext Function()>>(
           'SDL_GL_GetCurrentContext');
-  late final _dart_SDL_GL_GetCurrentContext _SDL_GL_GetCurrentContext =
-      _SDL_GL_GetCurrentContext_ptr.asFunction<
-          _dart_SDL_GL_GetCurrentContext>();
+  late final _SDL_GL_GetCurrentContext =
+      _SDL_GL_GetCurrentContextPtr.asFunction<SDL_GLContext Function()>();
 
   /// \brief Get the size of a window's underlying drawable in pixels (for use
   /// with glViewport).
@@ -11137,11 +12151,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_GetDrawableSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetDrawableSize>>(
-          'SDL_GL_GetDrawableSize');
-  late final _dart_SDL_GL_GetDrawableSize _SDL_GL_GetDrawableSize =
-      _SDL_GL_GetDrawableSize_ptr.asFunction<_dart_SDL_GL_GetDrawableSize>();
+  late final _SDL_GL_GetDrawableSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GL_GetDrawableSize');
+  late final _SDL_GL_GetDrawableSize = _SDL_GL_GetDrawableSizePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the swap interval for the current OpenGL context.
   ///
@@ -11161,11 +12177,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_SetSwapInterval_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_SetSwapInterval>>(
+  late final _SDL_GL_SetSwapIntervalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GL_SetSwapInterval');
-  late final _dart_SDL_GL_SetSwapInterval _SDL_GL_SetSwapInterval =
-      _SDL_GL_SetSwapInterval_ptr.asFunction<_dart_SDL_GL_SetSwapInterval>();
+  late final _SDL_GL_SetSwapInterval =
+      _SDL_GL_SetSwapIntervalPtr.asFunction<int Function(int)>();
 
   /// \brief Get the swap interval for the current OpenGL context.
   ///
@@ -11180,11 +12196,11 @@ class DartSdl {
     return _SDL_GL_GetSwapInterval();
   }
 
-  late final _SDL_GL_GetSwapInterval_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_GetSwapInterval>>(
+  late final _SDL_GL_GetSwapIntervalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GL_GetSwapInterval');
-  late final _dart_SDL_GL_GetSwapInterval _SDL_GL_GetSwapInterval =
-      _SDL_GL_GetSwapInterval_ptr.asFunction<_dart_SDL_GL_GetSwapInterval>();
+  late final _SDL_GL_GetSwapInterval =
+      _SDL_GL_GetSwapIntervalPtr.asFunction<int Function()>();
 
   /// \brief Swap the OpenGL buffers for a window, if double-buffering is
   /// supported.
@@ -11196,38 +12212,39 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_SwapWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_SwapWindow>>('SDL_GL_SwapWindow');
-  late final _dart_SDL_GL_SwapWindow _SDL_GL_SwapWindow =
-      _SDL_GL_SwapWindow_ptr.asFunction<_dart_SDL_GL_SwapWindow>();
+  late final _SDL_GL_SwapWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_GL_SwapWindow');
+  late final _SDL_GL_SwapWindow = _SDL_GL_SwapWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Delete an OpenGL context.
   ///
   /// \sa SDL_GL_CreateContext()
   void SDL_GL_DeleteContext(
-    ffi.Pointer<ffi.Void> context,
+    SDL_GLContext context,
   ) {
     return _SDL_GL_DeleteContext(
       context,
     );
   }
 
-  late final _SDL_GL_DeleteContext_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_DeleteContext>>(
+  late final _SDL_GL_DeleteContextPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_GLContext)>>(
           'SDL_GL_DeleteContext');
-  late final _dart_SDL_GL_DeleteContext _SDL_GL_DeleteContext =
-      _SDL_GL_DeleteContext_ptr.asFunction<_dart_SDL_GL_DeleteContext>();
+  late final _SDL_GL_DeleteContext =
+      _SDL_GL_DeleteContextPtr.asFunction<void Function(SDL_GLContext)>();
 
   /// \brief Get the window which currently has keyboard focus.
   ffi.Pointer<SDL_Window> SDL_GetKeyboardFocus() {
     return _SDL_GetKeyboardFocus();
   }
 
-  late final _SDL_GetKeyboardFocus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetKeyboardFocus>>(
+  late final _SDL_GetKeyboardFocusPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Window> Function()>>(
           'SDL_GetKeyboardFocus');
-  late final _dart_SDL_GetKeyboardFocus _SDL_GetKeyboardFocus =
-      _SDL_GetKeyboardFocus_ptr.asFunction<_dart_SDL_GetKeyboardFocus>();
+  late final _SDL_GetKeyboardFocus =
+      _SDL_GetKeyboardFocusPtr.asFunction<ffi.Pointer<SDL_Window> Function()>();
 
   /// \brief Get a snapshot of the current state of the keyboard.
   ///
@@ -11242,7 +12259,7 @@ class DartSdl {
   /// printf("<RETURN> is pressed.\n");
   /// }
   /// \endcode
-  ffi.Pointer<ffi.Uint8> SDL_GetKeyboardState(
+  ffi.Pointer<Uint8> SDL_GetKeyboardState(
     ffi.Pointer<ffi.Int32> numkeys,
   ) {
     return _SDL_GetKeyboardState(
@@ -11250,21 +12267,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetKeyboardState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetKeyboardState>>(
-          'SDL_GetKeyboardState');
-  late final _dart_SDL_GetKeyboardState _SDL_GetKeyboardState =
-      _SDL_GetKeyboardState_ptr.asFunction<_dart_SDL_GetKeyboardState>();
+  late final _SDL_GetKeyboardStatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<Uint8> Function(
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetKeyboardState');
+  late final _SDL_GetKeyboardState = _SDL_GetKeyboardStatePtr.asFunction<
+      ffi.Pointer<Uint8> Function(ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Get the current key modifier state for the keyboard.
   int SDL_GetModState() {
     return _SDL_GetModState();
   }
 
-  late final _SDL_GetModState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetModState>>('SDL_GetModState');
-  late final _dart_SDL_GetModState _SDL_GetModState =
-      _SDL_GetModState_ptr.asFunction<_dart_SDL_GetModState>();
+  late final _SDL_GetModStatePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_GetModState');
+  late final _SDL_GetModState =
+      _SDL_GetModStatePtr.asFunction<int Function()>();
 
   /// \brief Set the current key modifier state for the keyboard.
   ///
@@ -11277,10 +12295,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetModState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetModState>>('SDL_SetModState');
-  late final _dart_SDL_SetModState _SDL_SetModState =
-      _SDL_SetModState_ptr.asFunction<_dart_SDL_SetModState>();
+  late final _SDL_SetModStatePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+          'SDL_SetModState');
+  late final _SDL_SetModState =
+      _SDL_SetModStatePtr.asFunction<void Function(int)>();
 
   /// \brief Get the key code corresponding to the given scancode according
   /// to the current keyboard layout.
@@ -11296,11 +12315,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetKeyFromScancode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetKeyFromScancode>>(
+  late final _SDL_GetKeyFromScancodePtr =
+      _lookup<ffi.NativeFunction<SDL_Keycode Function(ffi.Int32)>>(
           'SDL_GetKeyFromScancode');
-  late final _dart_SDL_GetKeyFromScancode _SDL_GetKeyFromScancode =
-      _SDL_GetKeyFromScancode_ptr.asFunction<_dart_SDL_GetKeyFromScancode>();
+  late final _SDL_GetKeyFromScancode =
+      _SDL_GetKeyFromScancodePtr.asFunction<int Function(int)>();
 
   /// \brief Get the scancode corresponding to the given key code according to the
   /// current keyboard layout.
@@ -11316,11 +12335,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetScancodeFromKey_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetScancodeFromKey>>(
+  late final _SDL_GetScancodeFromKeyPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_Keycode)>>(
           'SDL_GetScancodeFromKey');
-  late final _dart_SDL_GetScancodeFromKey _SDL_GetScancodeFromKey =
-      _SDL_GetScancodeFromKey_ptr.asFunction<_dart_SDL_GetScancodeFromKey>();
+  late final _SDL_GetScancodeFromKey =
+      _SDL_GetScancodeFromKeyPtr.asFunction<int Function(int)>();
 
   /// \brief Get a human-readable name for a scancode.
   ///
@@ -11337,11 +12356,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetScancodeName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetScancodeName>>(
+  late final _SDL_GetScancodeNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GetScancodeName');
-  late final _dart_SDL_GetScancodeName _SDL_GetScancodeName =
-      _SDL_GetScancodeName_ptr.asFunction<_dart_SDL_GetScancodeName>();
+  late final _SDL_GetScancodeName =
+      _SDL_GetScancodeNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Get a scancode from a human-readable name
   ///
@@ -11356,11 +12375,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetScancodeFromName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetScancodeFromName>>(
+  late final _SDL_GetScancodeFromNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_GetScancodeFromName');
-  late final _dart_SDL_GetScancodeFromName _SDL_GetScancodeFromName =
-      _SDL_GetScancodeFromName_ptr.asFunction<_dart_SDL_GetScancodeFromName>();
+  late final _SDL_GetScancodeFromName = _SDL_GetScancodeFromNamePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get a human-readable name for a key.
   ///
@@ -11378,10 +12397,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetKeyName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetKeyName>>('SDL_GetKeyName');
-  late final _dart_SDL_GetKeyName _SDL_GetKeyName =
-      _SDL_GetKeyName_ptr.asFunction<_dart_SDL_GetKeyName>();
+  late final _SDL_GetKeyNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(SDL_Keycode)>>(
+          'SDL_GetKeyName');
+  late final _SDL_GetKeyName =
+      _SDL_GetKeyNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Get a key code from a human-readable name
   ///
@@ -11396,10 +12416,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetKeyFromName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetKeyFromName>>('SDL_GetKeyFromName');
-  late final _dart_SDL_GetKeyFromName _SDL_GetKeyFromName =
-      _SDL_GetKeyFromName_ptr.asFunction<_dart_SDL_GetKeyFromName>();
+  late final _SDL_GetKeyFromNamePtr =
+      _lookup<ffi.NativeFunction<SDL_Keycode Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_GetKeyFromName');
+  late final _SDL_GetKeyFromName =
+      _SDL_GetKeyFromNamePtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Start accepting Unicode text input events.
   /// This function will show the on-screen keyboard if supported.
@@ -11411,10 +12432,10 @@ class DartSdl {
     return _SDL_StartTextInput();
   }
 
-  late final _SDL_StartTextInput_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_StartTextInput>>('SDL_StartTextInput');
-  late final _dart_SDL_StartTextInput _SDL_StartTextInput =
-      _SDL_StartTextInput_ptr.asFunction<_dart_SDL_StartTextInput>();
+  late final _SDL_StartTextInputPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_StartTextInput');
+  late final _SDL_StartTextInput =
+      _SDL_StartTextInputPtr.asFunction<void Function()>();
 
   /// \brief Return whether or not Unicode text input events are enabled.
   ///
@@ -11424,11 +12445,11 @@ class DartSdl {
     return _SDL_IsTextInputActive();
   }
 
-  late final _SDL_IsTextInputActive_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsTextInputActive>>(
+  late final _SDL_IsTextInputActivePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_IsTextInputActive');
-  late final _dart_SDL_IsTextInputActive _SDL_IsTextInputActive =
-      _SDL_IsTextInputActive_ptr.asFunction<_dart_SDL_IsTextInputActive>();
+  late final _SDL_IsTextInputActive =
+      _SDL_IsTextInputActivePtr.asFunction<int Function()>();
 
   /// \brief Stop receiving any text input events.
   /// This function will hide the on-screen keyboard if supported.
@@ -11439,10 +12460,10 @@ class DartSdl {
     return _SDL_StopTextInput();
   }
 
-  late final _SDL_StopTextInput_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_StopTextInput>>('SDL_StopTextInput');
-  late final _dart_SDL_StopTextInput _SDL_StopTextInput =
-      _SDL_StopTextInput_ptr.asFunction<_dart_SDL_StopTextInput>();
+  late final _SDL_StopTextInputPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_StopTextInput');
+  late final _SDL_StopTextInput =
+      _SDL_StopTextInputPtr.asFunction<void Function()>();
 
   /// \brief Set the rectangle used to type Unicode text inputs.
   /// This is used as a hint for IME and on-screen keyboard placement.
@@ -11456,11 +12477,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetTextInputRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetTextInputRect>>(
+  late final _SDL_SetTextInputRectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Rect>)>>(
           'SDL_SetTextInputRect');
-  late final _dart_SDL_SetTextInputRect _SDL_SetTextInputRect =
-      _SDL_SetTextInputRect_ptr.asFunction<_dart_SDL_SetTextInputRect>();
+  late final _SDL_SetTextInputRect = _SDL_SetTextInputRectPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Returns whether the platform has some screen keyboard support.
   ///
@@ -11473,12 +12494,11 @@ class DartSdl {
     return _SDL_HasScreenKeyboardSupport();
   }
 
-  late final _SDL_HasScreenKeyboardSupport_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasScreenKeyboardSupport>>(
+  late final _SDL_HasScreenKeyboardSupportPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_HasScreenKeyboardSupport');
-  late final _dart_SDL_HasScreenKeyboardSupport _SDL_HasScreenKeyboardSupport =
-      _SDL_HasScreenKeyboardSupport_ptr.asFunction<
-          _dart_SDL_HasScreenKeyboardSupport>();
+  late final _SDL_HasScreenKeyboardSupport =
+      _SDL_HasScreenKeyboardSupportPtr.asFunction<int Function()>();
 
   /// \brief Returns whether the screen keyboard is shown for given window.
   ///
@@ -11495,22 +12515,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_IsScreenKeyboardShown_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsScreenKeyboardShown>>(
+  late final _SDL_IsScreenKeyboardShownPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
           'SDL_IsScreenKeyboardShown');
-  late final _dart_SDL_IsScreenKeyboardShown _SDL_IsScreenKeyboardShown =
-      _SDL_IsScreenKeyboardShown_ptr.asFunction<
-          _dart_SDL_IsScreenKeyboardShown>();
+  late final _SDL_IsScreenKeyboardShown = _SDL_IsScreenKeyboardShownPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Get the window which currently has mouse focus.
   ffi.Pointer<SDL_Window> SDL_GetMouseFocus() {
     return _SDL_GetMouseFocus();
   }
 
-  late final _SDL_GetMouseFocus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetMouseFocus>>('SDL_GetMouseFocus');
-  late final _dart_SDL_GetMouseFocus _SDL_GetMouseFocus =
-      _SDL_GetMouseFocus_ptr.asFunction<_dart_SDL_GetMouseFocus>();
+  late final _SDL_GetMouseFocusPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Window> Function()>>(
+          'SDL_GetMouseFocus');
+  late final _SDL_GetMouseFocus =
+      _SDL_GetMouseFocusPtr.asFunction<ffi.Pointer<SDL_Window> Function()>();
 
   /// \brief Retrieve the current state of the mouse.
   ///
@@ -11528,10 +12548,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetMouseState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetMouseState>>('SDL_GetMouseState');
-  late final _dart_SDL_GetMouseState _SDL_GetMouseState =
-      _SDL_GetMouseState_ptr.asFunction<_dart_SDL_GetMouseState>();
+  late final _SDL_GetMouseStatePtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetMouseState');
+  late final _SDL_GetMouseState = _SDL_GetMouseStatePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Get the current state of the mouse, in relation to the desktop
   ///
@@ -11564,11 +12586,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetGlobalMouseState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetGlobalMouseState>>(
-          'SDL_GetGlobalMouseState');
-  late final _dart_SDL_GetGlobalMouseState _SDL_GetGlobalMouseState =
-      _SDL_GetGlobalMouseState_ptr.asFunction<_dart_SDL_GetGlobalMouseState>();
+  late final _SDL_GetGlobalMouseStatePtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetGlobalMouseState');
+  late final _SDL_GetGlobalMouseState = _SDL_GetGlobalMouseStatePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Retrieve the relative state of the mouse.
   ///
@@ -11585,12 +12608,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRelativeMouseState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRelativeMouseState>>(
-          'SDL_GetRelativeMouseState');
-  late final _dart_SDL_GetRelativeMouseState _SDL_GetRelativeMouseState =
-      _SDL_GetRelativeMouseState_ptr.asFunction<
-          _dart_SDL_GetRelativeMouseState>();
+  late final _SDL_GetRelativeMouseStatePtr = _lookup<
+      ffi.NativeFunction<
+          Uint32 Function(ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetRelativeMouseState');
+  late final _SDL_GetRelativeMouseState =
+      _SDL_GetRelativeMouseStatePtr.asFunction<
+          int Function(ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Moves the mouse to the given position within the window.
   ///
@@ -11611,11 +12635,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WarpMouseInWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WarpMouseInWindow>>(
-          'SDL_WarpMouseInWindow');
-  late final _dart_SDL_WarpMouseInWindow _SDL_WarpMouseInWindow =
-      _SDL_WarpMouseInWindow_ptr.asFunction<_dart_SDL_WarpMouseInWindow>();
+  late final _SDL_WarpMouseInWindowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              ffi.Int32)>>('SDL_WarpMouseInWindow');
+  late final _SDL_WarpMouseInWindow = _SDL_WarpMouseInWindowPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Moves the mouse to the given position in global screen space.
   ///
@@ -11634,11 +12659,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WarpMouseGlobal_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WarpMouseGlobal>>(
+  late final _SDL_WarpMouseGlobalPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
           'SDL_WarpMouseGlobal');
-  late final _dart_SDL_WarpMouseGlobal _SDL_WarpMouseGlobal =
-      _SDL_WarpMouseGlobal_ptr.asFunction<_dart_SDL_WarpMouseGlobal>();
+  late final _SDL_WarpMouseGlobal =
+      _SDL_WarpMouseGlobalPtr.asFunction<int Function(int, int)>();
 
   /// \brief Set relative mouse mode.
   ///
@@ -11662,12 +12687,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetRelativeMouseMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetRelativeMouseMode>>(
+  late final _SDL_SetRelativeMouseModePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_SetRelativeMouseMode');
-  late final _dart_SDL_SetRelativeMouseMode _SDL_SetRelativeMouseMode =
-      _SDL_SetRelativeMouseMode_ptr.asFunction<
-          _dart_SDL_SetRelativeMouseMode>();
+  late final _SDL_SetRelativeMouseMode =
+      _SDL_SetRelativeMouseModePtr.asFunction<int Function(int)>();
 
   /// \brief Capture the mouse, to track input outside an SDL window.
   ///
@@ -11704,10 +12728,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CaptureMouse_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CaptureMouse>>('SDL_CaptureMouse');
-  late final _dart_SDL_CaptureMouse _SDL_CaptureMouse =
-      _SDL_CaptureMouse_ptr.asFunction<_dart_SDL_CaptureMouse>();
+  late final _SDL_CaptureMousePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'SDL_CaptureMouse');
+  late final _SDL_CaptureMouse =
+      _SDL_CaptureMousePtr.asFunction<int Function(int)>();
 
   /// \brief Query whether relative mouse mode is enabled.
   ///
@@ -11716,12 +12741,11 @@ class DartSdl {
     return _SDL_GetRelativeMouseMode();
   }
 
-  late final _SDL_GetRelativeMouseMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRelativeMouseMode>>(
+  late final _SDL_GetRelativeMouseModePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetRelativeMouseMode');
-  late final _dart_SDL_GetRelativeMouseMode _SDL_GetRelativeMouseMode =
-      _SDL_GetRelativeMouseMode_ptr.asFunction<
-          _dart_SDL_GetRelativeMouseMode>();
+  late final _SDL_GetRelativeMouseMode =
+      _SDL_GetRelativeMouseModePtr.asFunction<int Function()>();
 
   /// \brief Create a cursor, using the specified bitmap data and
   /// mask (in MSB format).
@@ -11740,8 +12764,8 @@ class DartSdl {
   ///
   /// \sa SDL_FreeCursor()
   ffi.Pointer<SDL_Cursor> SDL_CreateCursor(
-    ffi.Pointer<ffi.Uint8> data,
-    ffi.Pointer<ffi.Uint8> mask,
+    ffi.Pointer<Uint8> data,
+    ffi.Pointer<Uint8> mask,
     int w,
     int h,
     int hot_x,
@@ -11757,10 +12781,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateCursor>>('SDL_CreateCursor');
-  late final _dart_SDL_CreateCursor _SDL_CreateCursor =
-      _SDL_CreateCursor_ptr.asFunction<_dart_SDL_CreateCursor>();
+  late final _SDL_CreateCursorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Cursor> Function(
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32)>>('SDL_CreateCursor');
+  late final _SDL_CreateCursor = _SDL_CreateCursorPtr.asFunction<
+      ffi.Pointer<SDL_Cursor> Function(
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, int, int, int, int)>();
 
   /// \brief Create a color cursor.
   ///
@@ -11777,11 +12809,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateColorCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateColorCursor>>(
-          'SDL_CreateColorCursor');
-  late final _dart_SDL_CreateColorCursor _SDL_CreateColorCursor =
-      _SDL_CreateColorCursor_ptr.asFunction<_dart_SDL_CreateColorCursor>();
+  late final _SDL_CreateColorCursorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Cursor> Function(ffi.Pointer<SDL_Surface>, ffi.Int32,
+              ffi.Int32)>>('SDL_CreateColorCursor');
+  late final _SDL_CreateColorCursor = _SDL_CreateColorCursorPtr.asFunction<
+      ffi.Pointer<SDL_Cursor> Function(ffi.Pointer<SDL_Surface>, int, int)>();
 
   /// \brief Create a system cursor.
   ///
@@ -11794,11 +12827,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateSystemCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateSystemCursor>>(
+  late final _SDL_CreateSystemCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Cursor> Function(ffi.Int32)>>(
           'SDL_CreateSystemCursor');
-  late final _dart_SDL_CreateSystemCursor _SDL_CreateSystemCursor =
-      _SDL_CreateSystemCursor_ptr.asFunction<_dart_SDL_CreateSystemCursor>();
+  late final _SDL_CreateSystemCursor = _SDL_CreateSystemCursorPtr.asFunction<
+      ffi.Pointer<SDL_Cursor> Function(int)>();
 
   /// \brief Set the active cursor.
   void SDL_SetCursor(
@@ -11809,31 +12842,33 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetCursor>>('SDL_SetCursor');
-  late final _dart_SDL_SetCursor _SDL_SetCursor =
-      _SDL_SetCursor_ptr.asFunction<_dart_SDL_SetCursor>();
+  late final _SDL_SetCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Cursor>)>>(
+          'SDL_SetCursor');
+  late final _SDL_SetCursor =
+      _SDL_SetCursorPtr.asFunction<void Function(ffi.Pointer<SDL_Cursor>)>();
 
   /// \brief Return the active cursor.
   ffi.Pointer<SDL_Cursor> SDL_GetCursor() {
     return _SDL_GetCursor();
   }
 
-  late final _SDL_GetCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetCursor>>('SDL_GetCursor');
-  late final _dart_SDL_GetCursor _SDL_GetCursor =
-      _SDL_GetCursor_ptr.asFunction<_dart_SDL_GetCursor>();
+  late final _SDL_GetCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Cursor> Function()>>(
+          'SDL_GetCursor');
+  late final _SDL_GetCursor =
+      _SDL_GetCursorPtr.asFunction<ffi.Pointer<SDL_Cursor> Function()>();
 
   /// \brief Return the default cursor.
   ffi.Pointer<SDL_Cursor> SDL_GetDefaultCursor() {
     return _SDL_GetDefaultCursor();
   }
 
-  late final _SDL_GetDefaultCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetDefaultCursor>>(
+  late final _SDL_GetDefaultCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Cursor> Function()>>(
           'SDL_GetDefaultCursor');
-  late final _dart_SDL_GetDefaultCursor _SDL_GetDefaultCursor =
-      _SDL_GetDefaultCursor_ptr.asFunction<_dart_SDL_GetDefaultCursor>();
+  late final _SDL_GetDefaultCursor =
+      _SDL_GetDefaultCursorPtr.asFunction<ffi.Pointer<SDL_Cursor> Function()>();
 
   /// \brief Frees a cursor created with SDL_CreateCursor() or similar functions.
   ///
@@ -11848,10 +12883,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FreeCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FreeCursor>>('SDL_FreeCursor');
-  late final _dart_SDL_FreeCursor _SDL_FreeCursor =
-      _SDL_FreeCursor_ptr.asFunction<_dart_SDL_FreeCursor>();
+  late final _SDL_FreeCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Cursor>)>>(
+          'SDL_FreeCursor');
+  late final _SDL_FreeCursor =
+      _SDL_FreeCursorPtr.asFunction<void Function(ffi.Pointer<SDL_Cursor>)>();
 
   /// \brief Toggle whether or not the cursor is shown.
   ///
@@ -11867,10 +12903,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ShowCursor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ShowCursor>>('SDL_ShowCursor');
-  late final _dart_SDL_ShowCursor _SDL_ShowCursor =
-      _SDL_ShowCursor_ptr.asFunction<_dart_SDL_ShowCursor>();
+  late final _SDL_ShowCursorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'SDL_ShowCursor');
+  late final _SDL_ShowCursor =
+      _SDL_ShowCursorPtr.asFunction<int Function(int)>();
 
   /// Locking for multi-threaded access to the joystick API
   ///
@@ -11884,30 +12921,29 @@ class DartSdl {
     return _SDL_LockJoysticks();
   }
 
-  late final _SDL_LockJoysticks_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockJoysticks>>('SDL_LockJoysticks');
-  late final _dart_SDL_LockJoysticks _SDL_LockJoysticks =
-      _SDL_LockJoysticks_ptr.asFunction<_dart_SDL_LockJoysticks>();
+  late final _SDL_LockJoysticksPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_LockJoysticks');
+  late final _SDL_LockJoysticks =
+      _SDL_LockJoysticksPtr.asFunction<void Function()>();
 
   void SDL_UnlockJoysticks() {
     return _SDL_UnlockJoysticks();
   }
 
-  late final _SDL_UnlockJoysticks_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockJoysticks>>(
-          'SDL_UnlockJoysticks');
-  late final _dart_SDL_UnlockJoysticks _SDL_UnlockJoysticks =
-      _SDL_UnlockJoysticks_ptr.asFunction<_dart_SDL_UnlockJoysticks>();
+  late final _SDL_UnlockJoysticksPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_UnlockJoysticks');
+  late final _SDL_UnlockJoysticks =
+      _SDL_UnlockJoysticksPtr.asFunction<void Function()>();
 
   /// Count the number of joysticks attached to the system right now
   int SDL_NumJoysticks() {
     return _SDL_NumJoysticks();
   }
 
-  late final _SDL_NumJoysticks_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_NumJoysticks>>('SDL_NumJoysticks');
-  late final _dart_SDL_NumJoysticks _SDL_NumJoysticks =
-      _SDL_NumJoysticks_ptr.asFunction<_dart_SDL_NumJoysticks>();
+  late final _SDL_NumJoysticksPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_NumJoysticks');
+  late final _SDL_NumJoysticks =
+      _SDL_NumJoysticksPtr.asFunction<int Function()>();
 
   /// Get the implementation dependent name of a joystick.
   /// This can be called before any joysticks are opened.
@@ -11920,12 +12956,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickNameForIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickNameForIndex>>(
+  late final _SDL_JoystickNameForIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_JoystickNameForIndex');
-  late final _dart_SDL_JoystickNameForIndex _SDL_JoystickNameForIndex =
-      _SDL_JoystickNameForIndex_ptr.asFunction<
-          _dart_SDL_JoystickNameForIndex>();
+  late final _SDL_JoystickNameForIndex = _SDL_JoystickNameForIndexPtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Get the player index of a joystick, or -1 if it's not available
   /// This can be called before any joysticks are opened.
@@ -11937,12 +12972,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDevicePlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDevicePlayerIndex>>(
+  late final _SDL_JoystickGetDevicePlayerIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_JoystickGetDevicePlayerIndex');
-  late final _dart_SDL_JoystickGetDevicePlayerIndex
-      _SDL_JoystickGetDevicePlayerIndex = _SDL_JoystickGetDevicePlayerIndex_ptr
-          .asFunction<_dart_SDL_JoystickGetDevicePlayerIndex>();
+  late final _SDL_JoystickGetDevicePlayerIndex =
+      _SDL_JoystickGetDevicePlayerIndexPtr.asFunction<int Function(int)>();
 
   /// Return the GUID for the joystick at this index
   /// This can be called before any joysticks are opened.
@@ -11954,12 +12988,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceGUID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceGUID>>(
+  late final _SDL_JoystickGetDeviceGUIDPtr =
+      _lookup<ffi.NativeFunction<SDL_JoystickGUID Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceGUID');
-  late final _dart_SDL_JoystickGetDeviceGUID _SDL_JoystickGetDeviceGUID =
-      _SDL_JoystickGetDeviceGUID_ptr.asFunction<
-          _dart_SDL_JoystickGetDeviceGUID>();
+  late final _SDL_JoystickGetDeviceGUID = _SDL_JoystickGetDeviceGUIDPtr
+      .asFunction<SDL_JoystickGUID Function(int)>();
 
   /// Get the USB vendor ID of a joystick, if available.
   /// This can be called before any joysticks are opened.
@@ -11972,12 +13005,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceVendor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceVendor>>(
+  late final _SDL_JoystickGetDeviceVendorPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceVendor');
-  late final _dart_SDL_JoystickGetDeviceVendor _SDL_JoystickGetDeviceVendor =
-      _SDL_JoystickGetDeviceVendor_ptr.asFunction<
-          _dart_SDL_JoystickGetDeviceVendor>();
+  late final _SDL_JoystickGetDeviceVendor =
+      _SDL_JoystickGetDeviceVendorPtr.asFunction<int Function(int)>();
 
   /// Get the USB product ID of a joystick, if available.
   /// This can be called before any joysticks are opened.
@@ -11990,12 +13022,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceProduct_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceProduct>>(
+  late final _SDL_JoystickGetDeviceProductPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceProduct');
-  late final _dart_SDL_JoystickGetDeviceProduct _SDL_JoystickGetDeviceProduct =
-      _SDL_JoystickGetDeviceProduct_ptr.asFunction<
-          _dart_SDL_JoystickGetDeviceProduct>();
+  late final _SDL_JoystickGetDeviceProduct =
+      _SDL_JoystickGetDeviceProductPtr.asFunction<int Function(int)>();
 
   /// Get the product version of a joystick, if available.
   /// This can be called before any joysticks are opened.
@@ -12008,13 +13039,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceProductVersion_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceProductVersion>>(
+  late final _SDL_JoystickGetDeviceProductVersionPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceProductVersion');
-  late final _dart_SDL_JoystickGetDeviceProductVersion
-      _SDL_JoystickGetDeviceProductVersion =
-      _SDL_JoystickGetDeviceProductVersion_ptr.asFunction<
-          _dart_SDL_JoystickGetDeviceProductVersion>();
+  late final _SDL_JoystickGetDeviceProductVersion =
+      _SDL_JoystickGetDeviceProductVersionPtr.asFunction<int Function(int)>();
 
   /// Get the type of a joystick, if available.
   /// This can be called before any joysticks are opened.
@@ -12026,12 +13055,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceType>>(
+  late final _SDL_JoystickGetDeviceTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceType');
-  late final _dart_SDL_JoystickGetDeviceType _SDL_JoystickGetDeviceType =
-      _SDL_JoystickGetDeviceType_ptr.asFunction<
-          _dart_SDL_JoystickGetDeviceType>();
+  late final _SDL_JoystickGetDeviceType =
+      _SDL_JoystickGetDeviceTypePtr.asFunction<int Function(int)>();
 
   /// Get the instance ID of a joystick.
   /// This can be called before any joysticks are opened.
@@ -12044,12 +13072,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetDeviceInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetDeviceInstanceID>>(
+  late final _SDL_JoystickGetDeviceInstanceIDPtr =
+      _lookup<ffi.NativeFunction<SDL_JoystickID Function(ffi.Int32)>>(
           'SDL_JoystickGetDeviceInstanceID');
-  late final _dart_SDL_JoystickGetDeviceInstanceID
-      _SDL_JoystickGetDeviceInstanceID = _SDL_JoystickGetDeviceInstanceID_ptr
-          .asFunction<_dart_SDL_JoystickGetDeviceInstanceID>();
+  late final _SDL_JoystickGetDeviceInstanceID =
+      _SDL_JoystickGetDeviceInstanceIDPtr.asFunction<int Function(int)>();
 
   /// Open a joystick for use.
   /// The index passed as an argument refers to the N'th joystick on the system.
@@ -12058,7 +13085,7 @@ class DartSdl {
   /// there instead.
   ///
   /// \return A joystick identifier, or NULL if an error occurred.
-  ffi.Pointer<SDL_Joystick> SDL_JoystickOpen(
+  ffi.Pointer<SDL_Joystick1> SDL_JoystickOpen(
     int device_index,
   ) {
     return _SDL_JoystickOpen(
@@ -12066,13 +13093,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickOpen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickOpen>>('SDL_JoystickOpen');
-  late final _dart_SDL_JoystickOpen _SDL_JoystickOpen =
-      _SDL_JoystickOpen_ptr.asFunction<_dart_SDL_JoystickOpen>();
+  late final _SDL_JoystickOpenPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<SDL_Joystick1> Function(ffi.Int32)>>(
+      'SDL_JoystickOpen');
+  late final _SDL_JoystickOpen = _SDL_JoystickOpenPtr.asFunction<
+      ffi.Pointer<SDL_Joystick1> Function(int)>();
 
   /// Return the SDL_Joystick associated with an instance id.
-  ffi.Pointer<SDL_Joystick> SDL_JoystickFromInstanceID(
+  ffi.Pointer<SDL_Joystick1> SDL_JoystickFromInstanceID(
     int instance_id,
   ) {
     return _SDL_JoystickFromInstanceID(
@@ -12080,15 +13108,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickFromInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickFromInstanceID>>(
-          'SDL_JoystickFromInstanceID');
-  late final _dart_SDL_JoystickFromInstanceID _SDL_JoystickFromInstanceID =
-      _SDL_JoystickFromInstanceID_ptr.asFunction<
-          _dart_SDL_JoystickFromInstanceID>();
+  late final _SDL_JoystickFromInstanceIDPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Joystick1> Function(
+              SDL_JoystickID)>>('SDL_JoystickFromInstanceID');
+  late final _SDL_JoystickFromInstanceID = _SDL_JoystickFromInstanceIDPtr
+      .asFunction<ffi.Pointer<SDL_Joystick1> Function(int)>();
 
   /// Return the SDL_Joystick associated with a player index.
-  ffi.Pointer<SDL_Joystick> SDL_JoystickFromPlayerIndex(
+  ffi.Pointer<SDL_Joystick1> SDL_JoystickFromPlayerIndex(
     int player_index,
   ) {
     return _SDL_JoystickFromPlayerIndex(
@@ -12096,12 +13124,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickFromPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickFromPlayerIndex>>(
-          'SDL_JoystickFromPlayerIndex');
-  late final _dart_SDL_JoystickFromPlayerIndex _SDL_JoystickFromPlayerIndex =
-      _SDL_JoystickFromPlayerIndex_ptr.asFunction<
-          _dart_SDL_JoystickFromPlayerIndex>();
+  late final _SDL_JoystickFromPlayerIndexPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<SDL_Joystick1> Function(ffi.Int32)>>(
+      'SDL_JoystickFromPlayerIndex');
+  late final _SDL_JoystickFromPlayerIndex = _SDL_JoystickFromPlayerIndexPtr
+      .asFunction<ffi.Pointer<SDL_Joystick1> Function(int)>();
 
   /// Attaches a new virtual joystick.
   /// Returns the joystick's device index, or -1 if an error occurred.
@@ -12119,12 +13146,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickAttachVirtual_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickAttachVirtual>>(
-          'SDL_JoystickAttachVirtual');
-  late final _dart_SDL_JoystickAttachVirtual _SDL_JoystickAttachVirtual =
-      _SDL_JoystickAttachVirtual_ptr.asFunction<
-          _dart_SDL_JoystickAttachVirtual>();
+  late final _SDL_JoystickAttachVirtualPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Int32)>>('SDL_JoystickAttachVirtual');
+  late final _SDL_JoystickAttachVirtual = _SDL_JoystickAttachVirtualPtr
+      .asFunction<int Function(int, int, int, int)>();
 
   /// Detaches a virtual joystick
   /// Returns 0 on success, or -1 if an error occurred.
@@ -12136,12 +13163,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickDetachVirtual_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickDetachVirtual>>(
+  late final _SDL_JoystickDetachVirtualPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_JoystickDetachVirtual');
-  late final _dart_SDL_JoystickDetachVirtual _SDL_JoystickDetachVirtual =
-      _SDL_JoystickDetachVirtual_ptr.asFunction<
-          _dart_SDL_JoystickDetachVirtual>();
+  late final _SDL_JoystickDetachVirtual =
+      _SDL_JoystickDetachVirtualPtr.asFunction<int Function(int)>();
 
   /// Indicates whether or not a virtual-joystick is at a given device index.
   int SDL_JoystickIsVirtual(
@@ -12152,11 +13178,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickIsVirtual_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickIsVirtual>>(
+  late final _SDL_JoystickIsVirtualPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_JoystickIsVirtual');
-  late final _dart_SDL_JoystickIsVirtual _SDL_JoystickIsVirtual =
-      _SDL_JoystickIsVirtual_ptr.asFunction<_dart_SDL_JoystickIsVirtual>();
+  late final _SDL_JoystickIsVirtual =
+      _SDL_JoystickIsVirtualPtr.asFunction<int Function(int)>();
 
   /// Set values on an opened, virtual-joystick's controls.
   /// Please note that values set here will not be applied until the next
@@ -12167,7 +13193,7 @@ class DartSdl {
   ///
   /// Returns 0 on success, -1 on error.
   int SDL_JoystickSetVirtualAxis(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int axis,
     int value,
   ) {
@@ -12178,15 +13204,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickSetVirtualAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickSetVirtualAxis>>(
-          'SDL_JoystickSetVirtualAxis');
-  late final _dart_SDL_JoystickSetVirtualAxis _SDL_JoystickSetVirtualAxis =
-      _SDL_JoystickSetVirtualAxis_ptr.asFunction<
-          _dart_SDL_JoystickSetVirtualAxis>();
+  late final _SDL_JoystickSetVirtualAxisPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, ffi.Int32,
+              Sint16)>>('SDL_JoystickSetVirtualAxis');
+  late final _SDL_JoystickSetVirtualAxis = _SDL_JoystickSetVirtualAxisPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>, int, int)>();
 
   int SDL_JoystickSetVirtualButton(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int button,
     int value,
   ) {
@@ -12197,15 +13223,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickSetVirtualButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickSetVirtualButton>>(
-          'SDL_JoystickSetVirtualButton');
-  late final _dart_SDL_JoystickSetVirtualButton _SDL_JoystickSetVirtualButton =
-      _SDL_JoystickSetVirtualButton_ptr.asFunction<
-          _dart_SDL_JoystickSetVirtualButton>();
+  late final _SDL_JoystickSetVirtualButtonPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, ffi.Int32,
+              Uint8)>>('SDL_JoystickSetVirtualButton');
+  late final _SDL_JoystickSetVirtualButton = _SDL_JoystickSetVirtualButtonPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>, int, int)>();
 
   int SDL_JoystickSetVirtualHat(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int hat,
     int value,
   ) {
@@ -12216,49 +13242,50 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickSetVirtualHat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickSetVirtualHat>>(
-          'SDL_JoystickSetVirtualHat');
-  late final _dart_SDL_JoystickSetVirtualHat _SDL_JoystickSetVirtualHat =
-      _SDL_JoystickSetVirtualHat_ptr.asFunction<
-          _dart_SDL_JoystickSetVirtualHat>();
+  late final _SDL_JoystickSetVirtualHatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, ffi.Int32,
+              Uint8)>>('SDL_JoystickSetVirtualHat');
+  late final _SDL_JoystickSetVirtualHat = _SDL_JoystickSetVirtualHatPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>, int, int)>();
 
   /// Return the name for this currently opened joystick.
   /// If no name can be found, this function returns NULL.
   ffi.Pointer<ffi.Int8> SDL_JoystickName(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickName(
       joystick,
     );
   }
 
-  late final _SDL_JoystickName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickName>>('SDL_JoystickName');
-  late final _dart_SDL_JoystickName _SDL_JoystickName =
-      _SDL_JoystickName_ptr.asFunction<_dart_SDL_JoystickName>();
+  late final _SDL_JoystickNamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_Joystick1>)>>('SDL_JoystickName');
+  late final _SDL_JoystickName = _SDL_JoystickNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the player index of an opened joystick, or -1 if it's not available
   ///
   /// For XInput controllers this returns the XInput user index.
   int SDL_JoystickGetPlayerIndex(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetPlayerIndex(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetPlayerIndex>>(
-          'SDL_JoystickGetPlayerIndex');
-  late final _dart_SDL_JoystickGetPlayerIndex _SDL_JoystickGetPlayerIndex =
-      _SDL_JoystickGetPlayerIndex_ptr.asFunction<
-          _dart_SDL_JoystickGetPlayerIndex>();
+  late final _SDL_JoystickGetPlayerIndexPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickGetPlayerIndex');
+  late final _SDL_JoystickGetPlayerIndex = _SDL_JoystickGetPlayerIndexPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Set the player index of an opened joystick
   void SDL_JoystickSetPlayerIndex(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int player_index,
   ) {
     return _SDL_JoystickSetPlayerIndex(
@@ -12267,108 +13294,109 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickSetPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickSetPlayerIndex>>(
-          'SDL_JoystickSetPlayerIndex');
-  late final _dart_SDL_JoystickSetPlayerIndex _SDL_JoystickSetPlayerIndex =
-      _SDL_JoystickSetPlayerIndex_ptr.asFunction<
-          _dart_SDL_JoystickSetPlayerIndex>();
+  late final _SDL_JoystickSetPlayerIndexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Joystick1>,
+              ffi.Int32)>>('SDL_JoystickSetPlayerIndex');
+  late final _SDL_JoystickSetPlayerIndex = _SDL_JoystickSetPlayerIndexPtr
+      .asFunction<void Function(ffi.Pointer<SDL_Joystick1>, int)>();
 
   /// Return the GUID for this opened joystick
   SDL_JoystickGUID SDL_JoystickGetGUID(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetGUID(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetGUID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUID>>(
-          'SDL_JoystickGetGUID');
-  late final _dart_SDL_JoystickGetGUID _SDL_JoystickGetGUID =
-      _SDL_JoystickGetGUID_ptr.asFunction<_dart_SDL_JoystickGetGUID>();
+  late final _SDL_JoystickGetGUIDPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_JoystickGUID Function(
+              ffi.Pointer<SDL_Joystick1>)>>('SDL_JoystickGetGUID');
+  late final _SDL_JoystickGetGUID = _SDL_JoystickGetGUIDPtr.asFunction<
+      SDL_JoystickGUID Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the USB vendor ID of an opened joystick, if available.
   /// If the vendor ID isn't available this function returns 0.
   int SDL_JoystickGetVendor(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetVendor(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetVendor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetVendor>>(
+  late final _SDL_JoystickGetVendorPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Pointer<SDL_Joystick1>)>>(
           'SDL_JoystickGetVendor');
-  late final _dart_SDL_JoystickGetVendor _SDL_JoystickGetVendor =
-      _SDL_JoystickGetVendor_ptr.asFunction<_dart_SDL_JoystickGetVendor>();
+  late final _SDL_JoystickGetVendor = _SDL_JoystickGetVendorPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the USB product ID of an opened joystick, if available.
   /// If the product ID isn't available this function returns 0.
   int SDL_JoystickGetProduct(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetProduct(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetProduct_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetProduct>>(
+  late final _SDL_JoystickGetProductPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Pointer<SDL_Joystick1>)>>(
           'SDL_JoystickGetProduct');
-  late final _dart_SDL_JoystickGetProduct _SDL_JoystickGetProduct =
-      _SDL_JoystickGetProduct_ptr.asFunction<_dart_SDL_JoystickGetProduct>();
+  late final _SDL_JoystickGetProduct = _SDL_JoystickGetProductPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the product version of an opened joystick, if available.
   /// If the product version isn't available this function returns 0.
   int SDL_JoystickGetProductVersion(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetProductVersion(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetProductVersion_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetProductVersion>>(
+  late final _SDL_JoystickGetProductVersionPtr =
+      _lookup<ffi.NativeFunction<Uint16 Function(ffi.Pointer<SDL_Joystick1>)>>(
           'SDL_JoystickGetProductVersion');
-  late final _dart_SDL_JoystickGetProductVersion
-      _SDL_JoystickGetProductVersion = _SDL_JoystickGetProductVersion_ptr
-          .asFunction<_dart_SDL_JoystickGetProductVersion>();
+  late final _SDL_JoystickGetProductVersion = _SDL_JoystickGetProductVersionPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the serial number of an opened joystick, if available.
   ///
   /// Returns the serial number of the joystick, or NULL if it is not available.
   ffi.Pointer<ffi.Int8> SDL_JoystickGetSerial(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetSerial(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetSerial_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetSerial>>(
-          'SDL_JoystickGetSerial');
-  late final _dart_SDL_JoystickGetSerial _SDL_JoystickGetSerial =
-      _SDL_JoystickGetSerial_ptr.asFunction<_dart_SDL_JoystickGetSerial>();
+  late final _SDL_JoystickGetSerialPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_Joystick1>)>>('SDL_JoystickGetSerial');
+  late final _SDL_JoystickGetSerial = _SDL_JoystickGetSerialPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the type of an opened joystick.
   int SDL_JoystickGetType(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetType(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetType>>(
-          'SDL_JoystickGetType');
-  late final _dart_SDL_JoystickGetType _SDL_JoystickGetType =
-      _SDL_JoystickGetType_ptr.asFunction<_dart_SDL_JoystickGetType>();
+  late final _SDL_JoystickGetTypePtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickGetType');
+  late final _SDL_JoystickGetType = _SDL_JoystickGetTypePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Return a string representation for this guid. pszGUID must point to at least 33 bytes
   /// (32 for the string plus a NULL terminator).
@@ -12384,12 +13412,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetGUIDString_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUIDString>>(
-          'SDL_JoystickGetGUIDString');
-  late final _dart_SDL_JoystickGetGUIDString _SDL_JoystickGetGUIDString =
-      _SDL_JoystickGetGUIDString_ptr.asFunction<
-          _dart_SDL_JoystickGetGUIDString>();
+  late final _SDL_JoystickGetGUIDStringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(SDL_JoystickGUID, ffi.Pointer<ffi.Int8>,
+              ffi.Int32)>>('SDL_JoystickGetGUIDString');
+  late final _SDL_JoystickGetGUIDString =
+      _SDL_JoystickGetGUIDStringPtr.asFunction<
+          void Function(SDL_JoystickGUID, ffi.Pointer<ffi.Int8>, int)>();
 
   /// Convert a string into a joystick guid
   SDL_JoystickGUID SDL_JoystickGetGUIDFromString(
@@ -12400,105 +13429,105 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetGUIDFromString_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetGUIDFromString>>(
-          'SDL_JoystickGetGUIDFromString');
-  late final _dart_SDL_JoystickGetGUIDFromString
-      _SDL_JoystickGetGUIDFromString = _SDL_JoystickGetGUIDFromString_ptr
-          .asFunction<_dart_SDL_JoystickGetGUIDFromString>();
+  late final _SDL_JoystickGetGUIDFromStringPtr = _lookup<
+          ffi.NativeFunction<SDL_JoystickGUID Function(ffi.Pointer<ffi.Int8>)>>(
+      'SDL_JoystickGetGUIDFromString');
+  late final _SDL_JoystickGetGUIDFromString = _SDL_JoystickGetGUIDFromStringPtr
+      .asFunction<SDL_JoystickGUID Function(ffi.Pointer<ffi.Int8>)>();
 
   /// Returns SDL_TRUE if the joystick has been opened and currently connected, or SDL_FALSE if it has not.
   int SDL_JoystickGetAttached(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickGetAttached(
       joystick,
     );
   }
 
-  late final _SDL_JoystickGetAttached_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetAttached>>(
-          'SDL_JoystickGetAttached');
-  late final _dart_SDL_JoystickGetAttached _SDL_JoystickGetAttached =
-      _SDL_JoystickGetAttached_ptr.asFunction<_dart_SDL_JoystickGetAttached>();
+  late final _SDL_JoystickGetAttachedPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickGetAttached');
+  late final _SDL_JoystickGetAttached = _SDL_JoystickGetAttachedPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the instance ID of an opened joystick or -1 if the joystick is invalid.
   int SDL_JoystickInstanceID(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickInstanceID(
       joystick,
     );
   }
 
-  late final _SDL_JoystickInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickInstanceID>>(
-          'SDL_JoystickInstanceID');
-  late final _dart_SDL_JoystickInstanceID _SDL_JoystickInstanceID =
-      _SDL_JoystickInstanceID_ptr.asFunction<_dart_SDL_JoystickInstanceID>();
+  late final _SDL_JoystickInstanceIDPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_JoystickID Function(
+              ffi.Pointer<SDL_Joystick1>)>>('SDL_JoystickInstanceID');
+  late final _SDL_JoystickInstanceID = _SDL_JoystickInstanceIDPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the number of general axis controls on a joystick.
   int SDL_JoystickNumAxes(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickNumAxes(
       joystick,
     );
   }
 
-  late final _SDL_JoystickNumAxes_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickNumAxes>>(
-          'SDL_JoystickNumAxes');
-  late final _dart_SDL_JoystickNumAxes _SDL_JoystickNumAxes =
-      _SDL_JoystickNumAxes_ptr.asFunction<_dart_SDL_JoystickNumAxes>();
+  late final _SDL_JoystickNumAxesPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickNumAxes');
+  late final _SDL_JoystickNumAxes = _SDL_JoystickNumAxesPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the number of trackballs on a joystick.
   ///
   /// Joystick trackballs have only relative motion events associated
   /// with them and their state cannot be polled.
   int SDL_JoystickNumBalls(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickNumBalls(
       joystick,
     );
   }
 
-  late final _SDL_JoystickNumBalls_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickNumBalls>>(
-          'SDL_JoystickNumBalls');
-  late final _dart_SDL_JoystickNumBalls _SDL_JoystickNumBalls =
-      _SDL_JoystickNumBalls_ptr.asFunction<_dart_SDL_JoystickNumBalls>();
+  late final _SDL_JoystickNumBallsPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickNumBalls');
+  late final _SDL_JoystickNumBalls = _SDL_JoystickNumBallsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the number of POV hats on a joystick.
   int SDL_JoystickNumHats(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickNumHats(
       joystick,
     );
   }
 
-  late final _SDL_JoystickNumHats_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickNumHats>>(
-          'SDL_JoystickNumHats');
-  late final _dart_SDL_JoystickNumHats _SDL_JoystickNumHats =
-      _SDL_JoystickNumHats_ptr.asFunction<_dart_SDL_JoystickNumHats>();
+  late final _SDL_JoystickNumHatsPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickNumHats');
+  late final _SDL_JoystickNumHats = _SDL_JoystickNumHatsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Get the number of buttons on a joystick.
   int SDL_JoystickNumButtons(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickNumButtons(
       joystick,
     );
   }
 
-  late final _SDL_JoystickNumButtons_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickNumButtons>>(
-          'SDL_JoystickNumButtons');
-  late final _dart_SDL_JoystickNumButtons _SDL_JoystickNumButtons =
-      _SDL_JoystickNumButtons_ptr.asFunction<_dart_SDL_JoystickNumButtons>();
+  late final _SDL_JoystickNumButtonsPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickNumButtons');
+  late final _SDL_JoystickNumButtons = _SDL_JoystickNumButtonsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Update the current state of the open joysticks.
   ///
@@ -12508,10 +13537,10 @@ class DartSdl {
     return _SDL_JoystickUpdate();
   }
 
-  late final _SDL_JoystickUpdate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickUpdate>>('SDL_JoystickUpdate');
-  late final _dart_SDL_JoystickUpdate _SDL_JoystickUpdate =
-      _SDL_JoystickUpdate_ptr.asFunction<_dart_SDL_JoystickUpdate>();
+  late final _SDL_JoystickUpdatePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_JoystickUpdate');
+  late final _SDL_JoystickUpdate =
+      _SDL_JoystickUpdatePtr.asFunction<void Function()>();
 
   /// Enable/disable joystick event polling.
   ///
@@ -12528,11 +13557,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickEventState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickEventState>>(
+  late final _SDL_JoystickEventStatePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_JoystickEventState');
-  late final _dart_SDL_JoystickEventState _SDL_JoystickEventState =
-      _SDL_JoystickEventState_ptr.asFunction<_dart_SDL_JoystickEventState>();
+  late final _SDL_JoystickEventState =
+      _SDL_JoystickEventStatePtr.asFunction<int Function(int)>();
 
   /// Get the current state of an axis control on a joystick.
   ///
@@ -12540,7 +13569,7 @@ class DartSdl {
   ///
   /// The axis indices start at index 0.
   int SDL_JoystickGetAxis(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int axis,
   ) {
     return _SDL_JoystickGetAxis(
@@ -12549,11 +13578,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetAxis>>(
-          'SDL_JoystickGetAxis');
-  late final _dart_SDL_JoystickGetAxis _SDL_JoystickGetAxis =
-      _SDL_JoystickGetAxis_ptr.asFunction<_dart_SDL_JoystickGetAxis>();
+  late final _SDL_JoystickGetAxisPtr = _lookup<
+      ffi.NativeFunction<
+          Sint16 Function(
+              ffi.Pointer<SDL_Joystick1>, ffi.Int32)>>('SDL_JoystickGetAxis');
+  late final _SDL_JoystickGetAxis = _SDL_JoystickGetAxisPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int)>();
 
   /// Get the initial state of an axis control on a joystick.
   ///
@@ -12563,9 +13593,9 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if this axis has any initial value, or SDL_FALSE if not.
   int SDL_JoystickGetAxisInitialState(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int axis,
-    ffi.Pointer<ffi.Int16> state,
+    ffi.Pointer<Sint16> state,
   ) {
     return _SDL_JoystickGetAxisInitialState(
       joystick,
@@ -12574,12 +13604,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetAxisInitialState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetAxisInitialState>>(
-          'SDL_JoystickGetAxisInitialState');
-  late final _dart_SDL_JoystickGetAxisInitialState
-      _SDL_JoystickGetAxisInitialState = _SDL_JoystickGetAxisInitialState_ptr
-          .asFunction<_dart_SDL_JoystickGetAxisInitialState>();
+  late final _SDL_JoystickGetAxisInitialStatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, ffi.Int32,
+              ffi.Pointer<Sint16>)>>('SDL_JoystickGetAxisInitialState');
+  late final _SDL_JoystickGetAxisInitialState =
+      _SDL_JoystickGetAxisInitialStatePtr.asFunction<
+          int Function(ffi.Pointer<SDL_Joystick1>, int, ffi.Pointer<Sint16>)>();
 
   /// Get the current state of a POV hat on a joystick.
   ///
@@ -12596,7 +13627,7 @@ class DartSdl {
   /// - ::SDL_HAT_LEFTUP
   /// - ::SDL_HAT_LEFTDOWN
   int SDL_JoystickGetHat(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int hat,
   ) {
     return _SDL_JoystickGetHat(
@@ -12605,10 +13636,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetHat_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetHat>>('SDL_JoystickGetHat');
-  late final _dart_SDL_JoystickGetHat _SDL_JoystickGetHat =
-      _SDL_JoystickGetHat_ptr.asFunction<_dart_SDL_JoystickGetHat>();
+  late final _SDL_JoystickGetHatPtr = _lookup<
+      ffi.NativeFunction<
+          Uint8 Function(
+              ffi.Pointer<SDL_Joystick1>, ffi.Int32)>>('SDL_JoystickGetHat');
+  late final _SDL_JoystickGetHat = _SDL_JoystickGetHatPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int)>();
 
   /// Get the ball axis change since the last poll.
   ///
@@ -12616,7 +13649,7 @@ class DartSdl {
   ///
   /// The ball indices start at index 0.
   int SDL_JoystickGetBall(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int ball,
     ffi.Pointer<ffi.Int32> dx,
     ffi.Pointer<ffi.Int32> dy,
@@ -12629,17 +13662,22 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetBall_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetBall>>(
-          'SDL_JoystickGetBall');
-  late final _dart_SDL_JoystickGetBall _SDL_JoystickGetBall =
-      _SDL_JoystickGetBall_ptr.asFunction<_dart_SDL_JoystickGetBall>();
+  late final _SDL_JoystickGetBallPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Joystick1>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_JoystickGetBall');
+  late final _SDL_JoystickGetBall = _SDL_JoystickGetBallPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int, ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>)>();
 
   /// Get the current state of a button on a joystick.
   ///
   /// The button indices start at index 0.
   int SDL_JoystickGetButton(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int button,
   ) {
     return _SDL_JoystickGetButton(
@@ -12648,11 +13686,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickGetButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickGetButton>>(
-          'SDL_JoystickGetButton');
-  late final _dart_SDL_JoystickGetButton _SDL_JoystickGetButton =
-      _SDL_JoystickGetButton_ptr.asFunction<_dart_SDL_JoystickGetButton>();
+  late final _SDL_JoystickGetButtonPtr = _lookup<
+      ffi.NativeFunction<
+          Uint8 Function(
+              ffi.Pointer<SDL_Joystick1>, ffi.Int32)>>('SDL_JoystickGetButton');
+  late final _SDL_JoystickGetButton = _SDL_JoystickGetButtonPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int)>();
 
   /// Start a rumble effect
   /// Each call to this function cancels any previous rumble effect, and calling it with 0 intensity stops any rumbling.
@@ -12664,7 +13703,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this joystick
   int SDL_JoystickRumble(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int low_frequency_rumble,
     int high_frequency_rumble,
     int duration_ms,
@@ -12677,10 +13716,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickRumble_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickRumble>>('SDL_JoystickRumble');
-  late final _dart_SDL_JoystickRumble _SDL_JoystickRumble =
-      _SDL_JoystickRumble_ptr.asFunction<_dart_SDL_JoystickRumble>();
+  late final _SDL_JoystickRumblePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, Uint16, Uint16,
+              Uint32)>>('SDL_JoystickRumble');
+  late final _SDL_JoystickRumble = _SDL_JoystickRumblePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int, int, int)>();
 
   /// Start a rumble effect in the joystick's triggers
   /// Each call to this function cancels any previous trigger rumble effect, and calling it with 0 intensity stops any rumbling.
@@ -12692,7 +13733,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if trigger rumble isn't supported on this joystick
   int SDL_JoystickRumbleTriggers(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int left_rumble,
     int right_rumble,
     int duration_ms,
@@ -12705,12 +13746,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickRumbleTriggers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickRumbleTriggers>>(
-          'SDL_JoystickRumbleTriggers');
-  late final _dart_SDL_JoystickRumbleTriggers _SDL_JoystickRumbleTriggers =
-      _SDL_JoystickRumbleTriggers_ptr.asFunction<
-          _dart_SDL_JoystickRumbleTriggers>();
+  late final _SDL_JoystickRumbleTriggersPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, Uint16, Uint16,
+              Uint32)>>('SDL_JoystickRumbleTriggers');
+  late final _SDL_JoystickRumbleTriggers = _SDL_JoystickRumbleTriggersPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>, int, int, int)>();
 
   /// Return whether a joystick has an LED
   ///
@@ -12718,17 +13759,18 @@ class DartSdl {
   ///
   /// \return SDL_TRUE, or SDL_FALSE if this joystick does not have a modifiable LED
   int SDL_JoystickHasLED(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickHasLED(
       joystick,
     );
   }
 
-  late final _SDL_JoystickHasLED_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickHasLED>>('SDL_JoystickHasLED');
-  late final _dart_SDL_JoystickHasLED _SDL_JoystickHasLED =
-      _SDL_JoystickHasLED_ptr.asFunction<_dart_SDL_JoystickHasLED>();
+  late final _SDL_JoystickHasLEDPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickHasLED');
+  late final _SDL_JoystickHasLED = _SDL_JoystickHasLEDPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Update a joystick's LED color.
   ///
@@ -12739,7 +13781,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if this joystick does not have a modifiable LED
   int SDL_JoystickSetLED(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
     int red,
     int green,
     int blue,
@@ -12752,40 +13794,42 @@ class DartSdl {
     );
   }
 
-  late final _SDL_JoystickSetLED_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickSetLED>>('SDL_JoystickSetLED');
-  late final _dart_SDL_JoystickSetLED _SDL_JoystickSetLED =
-      _SDL_JoystickSetLED_ptr.asFunction<_dart_SDL_JoystickSetLED>();
+  late final _SDL_JoystickSetLEDPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>, Uint8, Uint8,
+              Uint8)>>('SDL_JoystickSetLED');
+  late final _SDL_JoystickSetLED = _SDL_JoystickSetLEDPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>, int, int, int)>();
 
   /// Close a joystick previously opened with SDL_JoystickOpen().
   void SDL_JoystickClose(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickClose(
       joystick,
     );
   }
 
-  late final _SDL_JoystickClose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickClose>>('SDL_JoystickClose');
-  late final _dart_SDL_JoystickClose _SDL_JoystickClose =
-      _SDL_JoystickClose_ptr.asFunction<_dart_SDL_JoystickClose>();
+  late final _SDL_JoystickClosePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickClose');
+  late final _SDL_JoystickClose = _SDL_JoystickClosePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Return the battery level of this joystick
   int SDL_JoystickCurrentPowerLevel(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickCurrentPowerLevel(
       joystick,
     );
   }
 
-  late final _SDL_JoystickCurrentPowerLevel_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickCurrentPowerLevel>>(
-          'SDL_JoystickCurrentPowerLevel');
-  late final _dart_SDL_JoystickCurrentPowerLevel
-      _SDL_JoystickCurrentPowerLevel = _SDL_JoystickCurrentPowerLevel_ptr
-          .asFunction<_dart_SDL_JoystickCurrentPowerLevel>();
+  late final _SDL_JoystickCurrentPowerLevelPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickCurrentPowerLevel');
+  late final _SDL_JoystickCurrentPowerLevel = _SDL_JoystickCurrentPowerLevelPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// Locking for multi-threaded access to the sensor API
   ///
@@ -12799,29 +13843,28 @@ class DartSdl {
     return _SDL_LockSensors();
   }
 
-  late final _SDL_LockSensors_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockSensors>>('SDL_LockSensors');
-  late final _dart_SDL_LockSensors _SDL_LockSensors =
-      _SDL_LockSensors_ptr.asFunction<_dart_SDL_LockSensors>();
+  late final _SDL_LockSensorsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_LockSensors');
+  late final _SDL_LockSensors =
+      _SDL_LockSensorsPtr.asFunction<void Function()>();
 
   void SDL_UnlockSensors() {
     return _SDL_UnlockSensors();
   }
 
-  late final _SDL_UnlockSensors_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockSensors>>('SDL_UnlockSensors');
-  late final _dart_SDL_UnlockSensors _SDL_UnlockSensors =
-      _SDL_UnlockSensors_ptr.asFunction<_dart_SDL_UnlockSensors>();
+  late final _SDL_UnlockSensorsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_UnlockSensors');
+  late final _SDL_UnlockSensors =
+      _SDL_UnlockSensorsPtr.asFunction<void Function()>();
 
   /// \brief Count the number of sensors attached to the system right now
   int SDL_NumSensors() {
     return _SDL_NumSensors();
   }
 
-  late final _SDL_NumSensors_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_NumSensors>>('SDL_NumSensors');
-  late final _dart_SDL_NumSensors _SDL_NumSensors =
-      _SDL_NumSensors_ptr.asFunction<_dart_SDL_NumSensors>();
+  late final _SDL_NumSensorsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_NumSensors');
+  late final _SDL_NumSensors = _SDL_NumSensorsPtr.asFunction<int Function()>();
 
   /// \brief Get the implementation dependent name of a sensor.
   ///
@@ -12836,11 +13879,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorGetDeviceName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetDeviceName>>(
+  late final _SDL_SensorGetDeviceNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_SensorGetDeviceName');
-  late final _dart_SDL_SensorGetDeviceName _SDL_SensorGetDeviceName =
-      _SDL_SensorGetDeviceName_ptr.asFunction<_dart_SDL_SensorGetDeviceName>();
+  late final _SDL_SensorGetDeviceName = _SDL_SensorGetDeviceNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Get the type of a sensor.
   ///
@@ -12855,11 +13898,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorGetDeviceType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetDeviceType>>(
+  late final _SDL_SensorGetDeviceTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_SensorGetDeviceType');
-  late final _dart_SDL_SensorGetDeviceType _SDL_SensorGetDeviceType =
-      _SDL_SensorGetDeviceType_ptr.asFunction<_dart_SDL_SensorGetDeviceType>();
+  late final _SDL_SensorGetDeviceType =
+      _SDL_SensorGetDeviceTypePtr.asFunction<int Function(int)>();
 
   /// \brief Get the platform dependent type of a sensor.
   ///
@@ -12874,13 +13917,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorGetDeviceNonPortableType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetDeviceNonPortableType>>(
+  late final _SDL_SensorGetDeviceNonPortableTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_SensorGetDeviceNonPortableType');
-  late final _dart_SDL_SensorGetDeviceNonPortableType
-      _SDL_SensorGetDeviceNonPortableType =
-      _SDL_SensorGetDeviceNonPortableType_ptr.asFunction<
-          _dart_SDL_SensorGetDeviceNonPortableType>();
+  late final _SDL_SensorGetDeviceNonPortableType =
+      _SDL_SensorGetDeviceNonPortableTypePtr.asFunction<int Function(int)>();
 
   /// \brief Get the instance ID of a sensor.
   ///
@@ -12895,19 +13936,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorGetDeviceInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetDeviceInstanceID>>(
+  late final _SDL_SensorGetDeviceInstanceIDPtr =
+      _lookup<ffi.NativeFunction<SDL_SensorID Function(ffi.Int32)>>(
           'SDL_SensorGetDeviceInstanceID');
-  late final _dart_SDL_SensorGetDeviceInstanceID
-      _SDL_SensorGetDeviceInstanceID = _SDL_SensorGetDeviceInstanceID_ptr
-          .asFunction<_dart_SDL_SensorGetDeviceInstanceID>();
+  late final _SDL_SensorGetDeviceInstanceID =
+      _SDL_SensorGetDeviceInstanceIDPtr.asFunction<int Function(int)>();
 
   /// \brief Open a sensor for use.
   ///
   /// The index passed as an argument refers to the N'th sensor on the system.
   ///
   /// \return A sensor identifier, or NULL if an error occurred.
-  ffi.Pointer<SDL_Sensor> SDL_SensorOpen(
+  ffi.Pointer<SDL_Sensor1> SDL_SensorOpen(
     int device_index,
   ) {
     return _SDL_SensorOpen(
@@ -12915,13 +13955,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorOpen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorOpen>>('SDL_SensorOpen');
-  late final _dart_SDL_SensorOpen _SDL_SensorOpen =
-      _SDL_SensorOpen_ptr.asFunction<_dart_SDL_SensorOpen>();
+  late final _SDL_SensorOpenPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Sensor1> Function(ffi.Int32)>>(
+          'SDL_SensorOpen');
+  late final _SDL_SensorOpen =
+      _SDL_SensorOpenPtr.asFunction<ffi.Pointer<SDL_Sensor1> Function(int)>();
 
   /// Return the SDL_Sensor associated with an instance id.
-  ffi.Pointer<SDL_Sensor> SDL_SensorFromInstanceID(
+  ffi.Pointer<SDL_Sensor1> SDL_SensorFromInstanceID(
     int instance_id,
   ) {
     return _SDL_SensorFromInstanceID(
@@ -12929,28 +13970,29 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorFromInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorFromInstanceID>>(
-          'SDL_SensorFromInstanceID');
-  late final _dart_SDL_SensorFromInstanceID _SDL_SensorFromInstanceID =
-      _SDL_SensorFromInstanceID_ptr.asFunction<
-          _dart_SDL_SensorFromInstanceID>();
+  late final _SDL_SensorFromInstanceIDPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<SDL_Sensor1> Function(SDL_SensorID)>>(
+      'SDL_SensorFromInstanceID');
+  late final _SDL_SensorFromInstanceID = _SDL_SensorFromInstanceIDPtr
+      .asFunction<ffi.Pointer<SDL_Sensor1> Function(int)>();
 
   /// \brief Get the implementation dependent name of a sensor.
   ///
   /// \return The sensor name, or NULL if the sensor is NULL.
   ffi.Pointer<ffi.Int8> SDL_SensorGetName(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
   ) {
     return _SDL_SensorGetName(
       sensor,
     );
   }
 
-  late final _SDL_SensorGetName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetName>>('SDL_SensorGetName');
-  late final _dart_SDL_SensorGetName _SDL_SensorGetName =
-      _SDL_SensorGetName_ptr.asFunction<_dart_SDL_SensorGetName>();
+  late final _SDL_SensorGetNamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_Sensor1>)>>('SDL_SensorGetName');
+  late final _SDL_SensorGetName = _SDL_SensorGetNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_Sensor1>)>();
 
   /// \brief Get the type of a sensor.
   ///
@@ -12958,17 +14000,18 @@ class DartSdl {
   ///
   /// \return The sensor type, or SDL_SENSOR_INVALID if the sensor is NULL.
   int SDL_SensorGetType(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
   ) {
     return _SDL_SensorGetType(
       sensor,
     );
   }
 
-  late final _SDL_SensorGetType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetType>>('SDL_SensorGetType');
-  late final _dart_SDL_SensorGetType _SDL_SensorGetType =
-      _SDL_SensorGetType_ptr.asFunction<_dart_SDL_SensorGetType>();
+  late final _SDL_SensorGetTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Sensor1>)>>(
+          'SDL_SensorGetType');
+  late final _SDL_SensorGetType = _SDL_SensorGetTypePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Sensor1>)>();
 
   /// \brief Get the platform dependent type of a sensor.
   ///
@@ -12976,19 +14019,18 @@ class DartSdl {
   ///
   /// \return The sensor platform dependent type, or -1 if the sensor is NULL.
   int SDL_SensorGetNonPortableType(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
   ) {
     return _SDL_SensorGetNonPortableType(
       sensor,
     );
   }
 
-  late final _SDL_SensorGetNonPortableType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetNonPortableType>>(
+  late final _SDL_SensorGetNonPortableTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Sensor1>)>>(
           'SDL_SensorGetNonPortableType');
-  late final _dart_SDL_SensorGetNonPortableType _SDL_SensorGetNonPortableType =
-      _SDL_SensorGetNonPortableType_ptr.asFunction<
-          _dart_SDL_SensorGetNonPortableType>();
+  late final _SDL_SensorGetNonPortableType = _SDL_SensorGetNonPortableTypePtr
+      .asFunction<int Function(ffi.Pointer<SDL_Sensor1>)>();
 
   /// \brief Get the instance ID of a sensor.
   ///
@@ -12996,18 +14038,18 @@ class DartSdl {
   ///
   /// \return The sensor instance ID, or -1 if the sensor is NULL.
   int SDL_SensorGetInstanceID(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
   ) {
     return _SDL_SensorGetInstanceID(
       sensor,
     );
   }
 
-  late final _SDL_SensorGetInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetInstanceID>>(
-          'SDL_SensorGetInstanceID');
-  late final _dart_SDL_SensorGetInstanceID _SDL_SensorGetInstanceID =
-      _SDL_SensorGetInstanceID_ptr.asFunction<_dart_SDL_SensorGetInstanceID>();
+  late final _SDL_SensorGetInstanceIDPtr = _lookup<
+          ffi.NativeFunction<SDL_SensorID Function(ffi.Pointer<SDL_Sensor1>)>>(
+      'SDL_SensorGetInstanceID');
+  late final _SDL_SensorGetInstanceID = _SDL_SensorGetInstanceIDPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Sensor1>)>();
 
   /// Get the current state of an opened sensor.
   ///
@@ -13019,7 +14061,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_SensorGetData(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
     ffi.Pointer<ffi.Float> data,
     int num_values,
   ) {
@@ -13030,24 +14072,27 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SensorGetData_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorGetData>>('SDL_SensorGetData');
-  late final _dart_SDL_SensorGetData _SDL_SensorGetData =
-      _SDL_SensorGetData_ptr.asFunction<_dart_SDL_SensorGetData>();
+  late final _SDL_SensorGetDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Sensor1>, ffi.Pointer<ffi.Float>,
+              ffi.Int32)>>('SDL_SensorGetData');
+  late final _SDL_SensorGetData = _SDL_SensorGetDataPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Sensor1>, ffi.Pointer<ffi.Float>, int)>();
 
   /// Close a sensor previously opened with SDL_SensorOpen()
   void SDL_SensorClose(
-    ffi.Pointer<SDL_Sensor> sensor,
+    ffi.Pointer<SDL_Sensor1> sensor,
   ) {
     return _SDL_SensorClose(
       sensor,
     );
   }
 
-  late final _SDL_SensorClose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorClose>>('SDL_SensorClose');
-  late final _dart_SDL_SensorClose _SDL_SensorClose =
-      _SDL_SensorClose_ptr.asFunction<_dart_SDL_SensorClose>();
+  late final _SDL_SensorClosePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Sensor1>)>>(
+          'SDL_SensorClose');
+  late final _SDL_SensorClose =
+      _SDL_SensorClosePtr.asFunction<void Function(ffi.Pointer<SDL_Sensor1>)>();
 
   /// Update the current state of the open sensors.
   ///
@@ -13058,10 +14103,10 @@ class DartSdl {
     return _SDL_SensorUpdate();
   }
 
-  late final _SDL_SensorUpdate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SensorUpdate>>('SDL_SensorUpdate');
-  late final _dart_SDL_SensorUpdate _SDL_SensorUpdate =
-      _SDL_SensorUpdate_ptr.asFunction<_dart_SDL_SensorUpdate>();
+  late final _SDL_SensorUpdatePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_SensorUpdate');
+  late final _SDL_SensorUpdate =
+      _SDL_SensorUpdatePtr.asFunction<void Function()>();
 
   /// Load a set of mappings from a seekable SDL data stream (memory or file), filtered by the current SDL_GetPlatform()
   /// A community sourced database of controllers is available at https://raw.github.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt
@@ -13079,13 +14124,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerAddMappingsFromRW_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerAddMappingsFromRW>>(
-          'SDL_GameControllerAddMappingsFromRW');
-  late final _dart_SDL_GameControllerAddMappingsFromRW
-      _SDL_GameControllerAddMappingsFromRW =
-      _SDL_GameControllerAddMappingsFromRW_ptr.asFunction<
-          _dart_SDL_GameControllerAddMappingsFromRW>();
+  late final _SDL_GameControllerAddMappingsFromRWPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_RWops>,
+              ffi.Int32)>>('SDL_GameControllerAddMappingsFromRW');
+  late final _SDL_GameControllerAddMappingsFromRW =
+      _SDL_GameControllerAddMappingsFromRWPtr.asFunction<
+          int Function(ffi.Pointer<SDL_RWops>, int)>();
 
   /// Add or update an existing mapping configuration
   ///
@@ -13098,12 +14143,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerAddMapping_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerAddMapping>>(
+  late final _SDL_GameControllerAddMappingPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_GameControllerAddMapping');
-  late final _dart_SDL_GameControllerAddMapping _SDL_GameControllerAddMapping =
-      _SDL_GameControllerAddMapping_ptr.asFunction<
-          _dart_SDL_GameControllerAddMapping>();
+  late final _SDL_GameControllerAddMapping = _SDL_GameControllerAddMappingPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// Get the number of mappings installed
   ///
@@ -13112,12 +14156,11 @@ class DartSdl {
     return _SDL_GameControllerNumMappings();
   }
 
-  late final _SDL_GameControllerNumMappings_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerNumMappings>>(
+  late final _SDL_GameControllerNumMappingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GameControllerNumMappings');
-  late final _dart_SDL_GameControllerNumMappings
-      _SDL_GameControllerNumMappings = _SDL_GameControllerNumMappings_ptr
-          .asFunction<_dart_SDL_GameControllerNumMappings>();
+  late final _SDL_GameControllerNumMappings =
+      _SDL_GameControllerNumMappingsPtr.asFunction<int Function()>();
 
   /// Get the mapping at a particular index.
   ///
@@ -13130,13 +14173,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerMappingForIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerMappingForIndex>>(
+  late final _SDL_GameControllerMappingForIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GameControllerMappingForIndex');
-  late final _dart_SDL_GameControllerMappingForIndex
-      _SDL_GameControllerMappingForIndex =
-      _SDL_GameControllerMappingForIndex_ptr.asFunction<
-          _dart_SDL_GameControllerMappingForIndex>();
+  late final _SDL_GameControllerMappingForIndex =
+      _SDL_GameControllerMappingForIndexPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Get a mapping string for a GUID
   ///
@@ -13149,30 +14191,31 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerMappingForGUID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerMappingForGUID>>(
-          'SDL_GameControllerMappingForGUID');
-  late final _dart_SDL_GameControllerMappingForGUID
-      _SDL_GameControllerMappingForGUID = _SDL_GameControllerMappingForGUID_ptr
-          .asFunction<_dart_SDL_GameControllerMappingForGUID>();
+  late final _SDL_GameControllerMappingForGUIDPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(SDL_JoystickGUID)>>(
+      'SDL_GameControllerMappingForGUID');
+  late final _SDL_GameControllerMappingForGUID =
+      _SDL_GameControllerMappingForGUIDPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(SDL_JoystickGUID)>();
 
   /// Get a mapping string for an open GameController
   ///
   /// \return the mapping string.  Must be freed with SDL_free().  Returns NULL if no mapping is available
   ffi.Pointer<ffi.Int8> SDL_GameControllerMapping(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerMapping(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerMapping_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerMapping>>(
-          'SDL_GameControllerMapping');
-  late final _dart_SDL_GameControllerMapping _SDL_GameControllerMapping =
-      _SDL_GameControllerMapping_ptr.asFunction<
-          _dart_SDL_GameControllerMapping>();
+  late final _SDL_GameControllerMappingPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_GameController1>)>>('SDL_GameControllerMapping');
+  late final _SDL_GameControllerMapping =
+      _SDL_GameControllerMappingPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Is the joystick on this index supported by the game controller interface?
   int SDL_IsGameController(
@@ -13183,11 +14226,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_IsGameController_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsGameController>>(
+  late final _SDL_IsGameControllerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_IsGameController');
-  late final _dart_SDL_IsGameController _SDL_IsGameController =
-      _SDL_IsGameController_ptr.asFunction<_dart_SDL_IsGameController>();
+  late final _SDL_IsGameController =
+      _SDL_IsGameControllerPtr.asFunction<int Function(int)>();
 
   /// Get the implementation dependent name of a game controller.
   /// This can be called before any controllers are opened.
@@ -13200,12 +14243,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerNameForIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerNameForIndex>>(
+  late final _SDL_GameControllerNameForIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GameControllerNameForIndex');
-  late final _dart_SDL_GameControllerNameForIndex
-      _SDL_GameControllerNameForIndex = _SDL_GameControllerNameForIndex_ptr
-          .asFunction<_dart_SDL_GameControllerNameForIndex>();
+  late final _SDL_GameControllerNameForIndex =
+      _SDL_GameControllerNameForIndexPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Get the type of a game controller.
   /// This can be called before any controllers are opened.
@@ -13217,12 +14260,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerTypeForIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerTypeForIndex>>(
+  late final _SDL_GameControllerTypeForIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GameControllerTypeForIndex');
-  late final _dart_SDL_GameControllerTypeForIndex
-      _SDL_GameControllerTypeForIndex = _SDL_GameControllerTypeForIndex_ptr
-          .asFunction<_dart_SDL_GameControllerTypeForIndex>();
+  late final _SDL_GameControllerTypeForIndex =
+      _SDL_GameControllerTypeForIndexPtr.asFunction<int Function(int)>();
 
   /// Get the mapping of a game controller.
   /// This can be called before any controllers are opened.
@@ -13236,13 +14278,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerMappingForDeviceIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerMappingForDeviceIndex>>(
+  late final _SDL_GameControllerMappingForDeviceIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GameControllerMappingForDeviceIndex');
-  late final _dart_SDL_GameControllerMappingForDeviceIndex
-      _SDL_GameControllerMappingForDeviceIndex =
-      _SDL_GameControllerMappingForDeviceIndex_ptr.asFunction<
-          _dart_SDL_GameControllerMappingForDeviceIndex>();
+  late final _SDL_GameControllerMappingForDeviceIndex =
+      _SDL_GameControllerMappingForDeviceIndexPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Open a game controller for use.
   /// The index passed as an argument refers to the N'th game controller on the system.
@@ -13251,7 +14292,7 @@ class DartSdl {
   /// used there instead.
   ///
   /// \return A controller identifier, or NULL if an error occurred.
-  ffi.Pointer<SDL_GameController> SDL_GameControllerOpen(
+  ffi.Pointer<SDL_GameController1> SDL_GameControllerOpen(
     int joystick_index,
   ) {
     return _SDL_GameControllerOpen(
@@ -13259,14 +14300,15 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerOpen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerOpen>>(
-          'SDL_GameControllerOpen');
-  late final _dart_SDL_GameControllerOpen _SDL_GameControllerOpen =
-      _SDL_GameControllerOpen_ptr.asFunction<_dart_SDL_GameControllerOpen>();
+  late final _SDL_GameControllerOpenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_GameController1> Function(
+              ffi.Int32)>>('SDL_GameControllerOpen');
+  late final _SDL_GameControllerOpen = _SDL_GameControllerOpenPtr.asFunction<
+      ffi.Pointer<SDL_GameController1> Function(int)>();
 
   /// Return the SDL_GameController associated with an instance id.
-  ffi.Pointer<SDL_GameController> SDL_GameControllerFromInstanceID(
+  ffi.Pointer<SDL_GameController1> SDL_GameControllerFromInstanceID(
     int joyid,
   ) {
     return _SDL_GameControllerFromInstanceID(
@@ -13274,15 +14316,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerFromInstanceID_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerFromInstanceID>>(
-          'SDL_GameControllerFromInstanceID');
-  late final _dart_SDL_GameControllerFromInstanceID
-      _SDL_GameControllerFromInstanceID = _SDL_GameControllerFromInstanceID_ptr
-          .asFunction<_dart_SDL_GameControllerFromInstanceID>();
+  late final _SDL_GameControllerFromInstanceIDPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_GameController1> Function(
+              SDL_JoystickID)>>('SDL_GameControllerFromInstanceID');
+  late final _SDL_GameControllerFromInstanceID =
+      _SDL_GameControllerFromInstanceIDPtr.asFunction<
+          ffi.Pointer<SDL_GameController1> Function(int)>();
 
   /// Return the SDL_GameController associated with a player index.
-  ffi.Pointer<SDL_GameController> SDL_GameControllerFromPlayerIndex(
+  ffi.Pointer<SDL_GameController1> SDL_GameControllerFromPlayerIndex(
     int player_index,
   ) {
     return _SDL_GameControllerFromPlayerIndex(
@@ -13290,66 +14333,68 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerFromPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerFromPlayerIndex>>(
-          'SDL_GameControllerFromPlayerIndex');
-  late final _dart_SDL_GameControllerFromPlayerIndex
-      _SDL_GameControllerFromPlayerIndex =
-      _SDL_GameControllerFromPlayerIndex_ptr.asFunction<
-          _dart_SDL_GameControllerFromPlayerIndex>();
+  late final _SDL_GameControllerFromPlayerIndexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_GameController1> Function(
+              ffi.Int32)>>('SDL_GameControllerFromPlayerIndex');
+  late final _SDL_GameControllerFromPlayerIndex =
+      _SDL_GameControllerFromPlayerIndexPtr.asFunction<
+          ffi.Pointer<SDL_GameController1> Function(int)>();
 
   /// Return the name for this currently opened controller
   ffi.Pointer<ffi.Int8> SDL_GameControllerName(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerName(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerName>>(
-          'SDL_GameControllerName');
-  late final _dart_SDL_GameControllerName _SDL_GameControllerName =
-      _SDL_GameControllerName_ptr.asFunction<_dart_SDL_GameControllerName>();
+  late final _SDL_GameControllerNamePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<SDL_GameController1>)>>('SDL_GameControllerName');
+  late final _SDL_GameControllerName = _SDL_GameControllerNamePtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Return the type of this currently opened controller
   int SDL_GameControllerGetType(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetType(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetType>>(
-          'SDL_GameControllerGetType');
-  late final _dart_SDL_GameControllerGetType _SDL_GameControllerGetType =
-      _SDL_GameControllerGetType_ptr.asFunction<
-          _dart_SDL_GameControllerGetType>();
+  late final _SDL_GameControllerGetTypePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_GameController1>)>>('SDL_GameControllerGetType');
+  late final _SDL_GameControllerGetType = _SDL_GameControllerGetTypePtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the player index of an opened game controller, or -1 if it's not available
   ///
   /// For XInput controllers this returns the XInput user index.
   int SDL_GameControllerGetPlayerIndex(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetPlayerIndex(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetPlayerIndex>>(
-          'SDL_GameControllerGetPlayerIndex');
-  late final _dart_SDL_GameControllerGetPlayerIndex
-      _SDL_GameControllerGetPlayerIndex = _SDL_GameControllerGetPlayerIndex_ptr
-          .asFunction<_dart_SDL_GameControllerGetPlayerIndex>();
+  late final _SDL_GameControllerGetPlayerIndexPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetPlayerIndex');
+  late final _SDL_GameControllerGetPlayerIndex =
+      _SDL_GameControllerGetPlayerIndexPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Set the player index of an opened game controller
   void SDL_GameControllerSetPlayerIndex(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int player_index,
   ) {
     return _SDL_GameControllerSetPlayerIndex(
@@ -13358,115 +14403,121 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerSetPlayerIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerSetPlayerIndex>>(
-          'SDL_GameControllerSetPlayerIndex');
-  late final _dart_SDL_GameControllerSetPlayerIndex
-      _SDL_GameControllerSetPlayerIndex = _SDL_GameControllerSetPlayerIndex_ptr
-          .asFunction<_dart_SDL_GameControllerSetPlayerIndex>();
+  late final _SDL_GameControllerSetPlayerIndexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerSetPlayerIndex');
+  late final _SDL_GameControllerSetPlayerIndex =
+      _SDL_GameControllerSetPlayerIndexPtr.asFunction<
+          void Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the USB vendor ID of an opened controller, if available.
   /// If the vendor ID isn't available this function returns 0.
   int SDL_GameControllerGetVendor(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetVendor(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetVendor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetVendor>>(
-          'SDL_GameControllerGetVendor');
-  late final _dart_SDL_GameControllerGetVendor _SDL_GameControllerGetVendor =
-      _SDL_GameControllerGetVendor_ptr.asFunction<
-          _dart_SDL_GameControllerGetVendor>();
+  late final _SDL_GameControllerGetVendorPtr = _lookup<
+          ffi.NativeFunction<
+              Uint16 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetVendor');
+  late final _SDL_GameControllerGetVendor = _SDL_GameControllerGetVendorPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the USB product ID of an opened controller, if available.
   /// If the product ID isn't available this function returns 0.
   int SDL_GameControllerGetProduct(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetProduct(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetProduct_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetProduct>>(
-          'SDL_GameControllerGetProduct');
-  late final _dart_SDL_GameControllerGetProduct _SDL_GameControllerGetProduct =
-      _SDL_GameControllerGetProduct_ptr.asFunction<
-          _dart_SDL_GameControllerGetProduct>();
+  late final _SDL_GameControllerGetProductPtr = _lookup<
+          ffi.NativeFunction<
+              Uint16 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetProduct');
+  late final _SDL_GameControllerGetProduct = _SDL_GameControllerGetProductPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the product version of an opened controller, if available.
   /// If the product version isn't available this function returns 0.
   int SDL_GameControllerGetProductVersion(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetProductVersion(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetProductVersion_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetProductVersion>>(
-          'SDL_GameControllerGetProductVersion');
-  late final _dart_SDL_GameControllerGetProductVersion
-      _SDL_GameControllerGetProductVersion =
-      _SDL_GameControllerGetProductVersion_ptr.asFunction<
-          _dart_SDL_GameControllerGetProductVersion>();
+  late final _SDL_GameControllerGetProductVersionPtr = _lookup<
+          ffi.NativeFunction<
+              Uint16 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetProductVersion');
+  late final _SDL_GameControllerGetProductVersion =
+      _SDL_GameControllerGetProductVersionPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the serial number of an opened controller, if available.
   ///
   /// Returns the serial number of the controller, or NULL if it is not available.
   ffi.Pointer<ffi.Int8> SDL_GameControllerGetSerial(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetSerial(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetSerial_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetSerial>>(
-          'SDL_GameControllerGetSerial');
-  late final _dart_SDL_GameControllerGetSerial _SDL_GameControllerGetSerial =
-      _SDL_GameControllerGetSerial_ptr.asFunction<
-          _dart_SDL_GameControllerGetSerial>();
+  late final _SDL_GameControllerGetSerialPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<ffi.Int8> Function(
+                  ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetSerial');
+  late final _SDL_GameControllerGetSerial =
+      _SDL_GameControllerGetSerialPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Returns SDL_TRUE if the controller has been opened and currently connected,
   /// or SDL_FALSE if it has not.
   int SDL_GameControllerGetAttached(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetAttached(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetAttached_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetAttached>>(
-          'SDL_GameControllerGetAttached');
-  late final _dart_SDL_GameControllerGetAttached
-      _SDL_GameControllerGetAttached = _SDL_GameControllerGetAttached_ptr
-          .asFunction<_dart_SDL_GameControllerGetAttached>();
+  late final _SDL_GameControllerGetAttachedPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetAttached');
+  late final _SDL_GameControllerGetAttached = _SDL_GameControllerGetAttachedPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the underlying joystick object used by a controller
-  ffi.Pointer<SDL_Joystick> SDL_GameControllerGetJoystick(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+  ffi.Pointer<SDL_Joystick1> SDL_GameControllerGetJoystick(
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetJoystick(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetJoystick_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetJoystick>>(
-          'SDL_GameControllerGetJoystick');
-  late final _dart_SDL_GameControllerGetJoystick
-      _SDL_GameControllerGetJoystick = _SDL_GameControllerGetJoystick_ptr
-          .asFunction<_dart_SDL_GameControllerGetJoystick>();
+  late final _SDL_GameControllerGetJoystickPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<SDL_Joystick1> Function(
+                  ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetJoystick');
+  late final _SDL_GameControllerGetJoystick =
+      _SDL_GameControllerGetJoystickPtr.asFunction<
+          ffi.Pointer<SDL_Joystick1> Function(
+              ffi.Pointer<SDL_GameController1>)>();
 
   /// Enable/disable controller event polling.
   ///
@@ -13483,12 +14534,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerEventState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerEventState>>(
+  late final _SDL_GameControllerEventStatePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_GameControllerEventState');
-  late final _dart_SDL_GameControllerEventState _SDL_GameControllerEventState =
-      _SDL_GameControllerEventState_ptr.asFunction<
-          _dart_SDL_GameControllerEventState>();
+  late final _SDL_GameControllerEventState =
+      _SDL_GameControllerEventStatePtr.asFunction<int Function(int)>();
 
   /// Update the current state of the open game controllers.
   ///
@@ -13498,12 +14548,11 @@ class DartSdl {
     return _SDL_GameControllerUpdate();
   }
 
-  late final _SDL_GameControllerUpdate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerUpdate>>(
+  late final _SDL_GameControllerUpdatePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_GameControllerUpdate');
-  late final _dart_SDL_GameControllerUpdate _SDL_GameControllerUpdate =
-      _SDL_GameControllerUpdate_ptr.asFunction<
-          _dart_SDL_GameControllerUpdate>();
+  late final _SDL_GameControllerUpdate =
+      _SDL_GameControllerUpdatePtr.asFunction<void Function()>();
 
   /// turn this string into a axis mapping
   int SDL_GameControllerGetAxisFromString(
@@ -13514,13 +14563,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetAxisFromString_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetAxisFromString>>(
+  late final _SDL_GameControllerGetAxisFromStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_GameControllerGetAxisFromString');
-  late final _dart_SDL_GameControllerGetAxisFromString
-      _SDL_GameControllerGetAxisFromString =
-      _SDL_GameControllerGetAxisFromString_ptr.asFunction<
-          _dart_SDL_GameControllerGetAxisFromString>();
+  late final _SDL_GameControllerGetAxisFromString =
+      _SDL_GameControllerGetAxisFromStringPtr.asFunction<
+          int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// turn this axis enum into a string mapping
   ffi.Pointer<ffi.Int8> SDL_GameControllerGetStringForAxis(
@@ -13531,17 +14579,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetStringForAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetStringForAxis>>(
+  late final _SDL_GameControllerGetStringForAxisPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GameControllerGetStringForAxis');
-  late final _dart_SDL_GameControllerGetStringForAxis
-      _SDL_GameControllerGetStringForAxis =
-      _SDL_GameControllerGetStringForAxis_ptr.asFunction<
-          _dart_SDL_GameControllerGetStringForAxis>();
+  late final _SDL_GameControllerGetStringForAxis =
+      _SDL_GameControllerGetStringForAxisPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Get the SDL joystick layer binding for this controller button mapping
   SDL_GameControllerButtonBind SDL_GameControllerGetBindForAxis(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerGetBindForAxis(
@@ -13550,16 +14597,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetBindForAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetBindForAxis>>(
-          'SDL_GameControllerGetBindForAxis');
-  late final _dart_SDL_GameControllerGetBindForAxis
-      _SDL_GameControllerGetBindForAxis = _SDL_GameControllerGetBindForAxis_ptr
-          .asFunction<_dart_SDL_GameControllerGetBindForAxis>();
+  late final _SDL_GameControllerGetBindForAxisPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_GameControllerButtonBind Function(
+              ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerGetBindForAxis');
+  late final _SDL_GameControllerGetBindForAxis =
+      _SDL_GameControllerGetBindForAxisPtr.asFunction<
+          SDL_GameControllerButtonBind Function(
+              ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Return whether a game controller has a given axis
   int SDL_GameControllerHasAxis(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerHasAxis(
@@ -13568,12 +14618,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerHasAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerHasAxis>>(
-          'SDL_GameControllerHasAxis');
-  late final _dart_SDL_GameControllerHasAxis _SDL_GameControllerHasAxis =
-      _SDL_GameControllerHasAxis_ptr.asFunction<
-          _dart_SDL_GameControllerHasAxis>();
+  late final _SDL_GameControllerHasAxisPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerHasAxis');
+  late final _SDL_GameControllerHasAxis = _SDL_GameControllerHasAxisPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the current state of an axis control on a game controller.
   ///
@@ -13582,7 +14632,7 @@ class DartSdl {
   ///
   /// The axis indices start at index 0.
   int SDL_GameControllerGetAxis(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int axis,
   ) {
     return _SDL_GameControllerGetAxis(
@@ -13591,12 +14641,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetAxis_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetAxis>>(
-          'SDL_GameControllerGetAxis');
-  late final _dart_SDL_GameControllerGetAxis _SDL_GameControllerGetAxis =
-      _SDL_GameControllerGetAxis_ptr.asFunction<
-          _dart_SDL_GameControllerGetAxis>();
+  late final _SDL_GameControllerGetAxisPtr = _lookup<
+      ffi.NativeFunction<
+          Sint16 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerGetAxis');
+  late final _SDL_GameControllerGetAxis = _SDL_GameControllerGetAxisPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// turn this string into a button mapping
   int SDL_GameControllerGetButtonFromString(
@@ -13607,13 +14657,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetButtonFromString_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetButtonFromString>>(
+  late final _SDL_GameControllerGetButtonFromStringPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
           'SDL_GameControllerGetButtonFromString');
-  late final _dart_SDL_GameControllerGetButtonFromString
-      _SDL_GameControllerGetButtonFromString =
-      _SDL_GameControllerGetButtonFromString_ptr.asFunction<
-          _dart_SDL_GameControllerGetButtonFromString>();
+  late final _SDL_GameControllerGetButtonFromString =
+      _SDL_GameControllerGetButtonFromStringPtr.asFunction<
+          int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// turn this button enum into a string mapping
   ffi.Pointer<ffi.Int8> SDL_GameControllerGetStringForButton(
@@ -13624,17 +14673,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetStringForButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetStringForButton>>(
+  late final _SDL_GameControllerGetStringForButtonPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
           'SDL_GameControllerGetStringForButton');
-  late final _dart_SDL_GameControllerGetStringForButton
-      _SDL_GameControllerGetStringForButton =
-      _SDL_GameControllerGetStringForButton_ptr.asFunction<
-          _dart_SDL_GameControllerGetStringForButton>();
+  late final _SDL_GameControllerGetStringForButton =
+      _SDL_GameControllerGetStringForButtonPtr.asFunction<
+          ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// Get the SDL joystick layer binding for this controller button mapping
   SDL_GameControllerButtonBind SDL_GameControllerGetBindForButton(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerGetBindForButton(
@@ -13643,17 +14691,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetBindForButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetBindForButton>>(
-          'SDL_GameControllerGetBindForButton');
-  late final _dart_SDL_GameControllerGetBindForButton
-      _SDL_GameControllerGetBindForButton =
-      _SDL_GameControllerGetBindForButton_ptr.asFunction<
-          _dart_SDL_GameControllerGetBindForButton>();
+  late final _SDL_GameControllerGetBindForButtonPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_GameControllerButtonBind Function(
+              ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerGetBindForButton');
+  late final _SDL_GameControllerGetBindForButton =
+      _SDL_GameControllerGetBindForButtonPtr.asFunction<
+          SDL_GameControllerButtonBind Function(
+              ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Return whether a game controller has a given button
   int SDL_GameControllerHasButton(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerHasButton(
@@ -13662,18 +14712,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerHasButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerHasButton>>(
-          'SDL_GameControllerHasButton');
-  late final _dart_SDL_GameControllerHasButton _SDL_GameControllerHasButton =
-      _SDL_GameControllerHasButton_ptr.asFunction<
-          _dart_SDL_GameControllerHasButton>();
+  late final _SDL_GameControllerHasButtonPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerHasButton');
+  late final _SDL_GameControllerHasButton = _SDL_GameControllerHasButtonPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the current state of a button on a game controller.
   ///
   /// The button indices start at index 0.
   int SDL_GameControllerGetButton(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int button,
   ) {
     return _SDL_GameControllerGetButton(
@@ -13682,33 +14732,33 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetButton_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetButton>>(
-          'SDL_GameControllerGetButton');
-  late final _dart_SDL_GameControllerGetButton _SDL_GameControllerGetButton =
-      _SDL_GameControllerGetButton_ptr.asFunction<
-          _dart_SDL_GameControllerGetButton>();
+  late final _SDL_GameControllerGetButtonPtr = _lookup<
+      ffi.NativeFunction<
+          Uint8 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerGetButton');
+  late final _SDL_GameControllerGetButton = _SDL_GameControllerGetButtonPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the number of touchpads on a game controller.
   int SDL_GameControllerGetNumTouchpads(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerGetNumTouchpads(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerGetNumTouchpads_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetNumTouchpads>>(
-          'SDL_GameControllerGetNumTouchpads');
-  late final _dart_SDL_GameControllerGetNumTouchpads
-      _SDL_GameControllerGetNumTouchpads =
-      _SDL_GameControllerGetNumTouchpads_ptr.asFunction<
-          _dart_SDL_GameControllerGetNumTouchpads>();
+  late final _SDL_GameControllerGetNumTouchpadsPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(ffi.Pointer<SDL_GameController1>)>>(
+      'SDL_GameControllerGetNumTouchpads');
+  late final _SDL_GameControllerGetNumTouchpads =
+      _SDL_GameControllerGetNumTouchpadsPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Get the number of supported simultaneous fingers on a touchpad on a game controller.
   int SDL_GameControllerGetNumTouchpadFingers(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int touchpad,
   ) {
     return _SDL_GameControllerGetNumTouchpadFingers(
@@ -13717,20 +14767,20 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetNumTouchpadFingers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetNumTouchpadFingers>>(
-          'SDL_GameControllerGetNumTouchpadFingers');
-  late final _dart_SDL_GameControllerGetNumTouchpadFingers
-      _SDL_GameControllerGetNumTouchpadFingers =
-      _SDL_GameControllerGetNumTouchpadFingers_ptr.asFunction<
-          _dart_SDL_GameControllerGetNumTouchpadFingers>();
+  late final _SDL_GameControllerGetNumTouchpadFingersPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerGetNumTouchpadFingers');
+  late final _SDL_GameControllerGetNumTouchpadFingers =
+      _SDL_GameControllerGetNumTouchpadFingersPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the current state of a finger on a touchpad on a game controller.
   int SDL_GameControllerGetTouchpadFinger(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int touchpad,
     int finger,
-    ffi.Pointer<ffi.Uint8> state,
+    ffi.Pointer<Uint8> state,
     ffi.Pointer<ffi.Float> x,
     ffi.Pointer<ffi.Float> y,
     ffi.Pointer<ffi.Float> pressure,
@@ -13746,13 +14796,26 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetTouchpadFinger_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetTouchpadFinger>>(
-          'SDL_GameControllerGetTouchpadFinger');
-  late final _dart_SDL_GameControllerGetTouchpadFinger
-      _SDL_GameControllerGetTouchpadFinger =
-      _SDL_GameControllerGetTouchpadFinger_ptr.asFunction<
-          _dart_SDL_GameControllerGetTouchpadFinger>();
+  late final _SDL_GameControllerGetTouchpadFingerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_GameController1>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>)>>('SDL_GameControllerGetTouchpadFinger');
+  late final _SDL_GameControllerGetTouchpadFinger =
+      _SDL_GameControllerGetTouchpadFingerPtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_GameController1>,
+              int,
+              int,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>)>();
 
   /// Return whether a game controller has a particular sensor.
   ///
@@ -13761,7 +14824,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if the sensor exists, SDL_FALSE otherwise.
   int SDL_GameControllerHasSensor(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int type,
   ) {
     return _SDL_GameControllerHasSensor(
@@ -13770,12 +14833,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerHasSensor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerHasSensor>>(
-          'SDL_GameControllerHasSensor');
-  late final _dart_SDL_GameControllerHasSensor _SDL_GameControllerHasSensor =
-      _SDL_GameControllerHasSensor_ptr.asFunction<
-          _dart_SDL_GameControllerHasSensor>();
+  late final _SDL_GameControllerHasSensorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerHasSensor');
+  late final _SDL_GameControllerHasSensor = _SDL_GameControllerHasSensorPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Set whether data reporting for a game controller sensor is enabled
   ///
@@ -13785,7 +14848,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_GameControllerSetSensorEnabled(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int type,
     int enabled,
   ) {
@@ -13796,13 +14859,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerSetSensorEnabled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerSetSensorEnabled>>(
-          'SDL_GameControllerSetSensorEnabled');
-  late final _dart_SDL_GameControllerSetSensorEnabled
-      _SDL_GameControllerSetSensorEnabled =
-      _SDL_GameControllerSetSensorEnabled_ptr.asFunction<
-          _dart_SDL_GameControllerSetSensorEnabled>();
+  late final _SDL_GameControllerSetSensorEnabledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>, ffi.Int32,
+              ffi.Int32)>>('SDL_GameControllerSetSensorEnabled');
+  late final _SDL_GameControllerSetSensorEnabled =
+      _SDL_GameControllerSetSensorEnabledPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int, int)>();
 
   /// Query whether sensor data reporting is enabled for a game controller
   ///
@@ -13811,7 +14874,7 @@ class DartSdl {
   ///
   /// \return SDL_TRUE if the sensor is enabled, SDL_FALSE otherwise.
   int SDL_GameControllerIsSensorEnabled(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int type,
   ) {
     return _SDL_GameControllerIsSensorEnabled(
@@ -13820,13 +14883,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerIsSensorEnabled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerIsSensorEnabled>>(
-          'SDL_GameControllerIsSensorEnabled');
-  late final _dart_SDL_GameControllerIsSensorEnabled
-      _SDL_GameControllerIsSensorEnabled =
-      _SDL_GameControllerIsSensorEnabled_ptr.asFunction<
-          _dart_SDL_GameControllerIsSensorEnabled>();
+  late final _SDL_GameControllerIsSensorEnabledPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>,
+              ffi.Int32)>>('SDL_GameControllerIsSensorEnabled');
+  late final _SDL_GameControllerIsSensorEnabled =
+      _SDL_GameControllerIsSensorEnabledPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int)>();
 
   /// Get the current state of a game controller sensor.
   ///
@@ -13840,7 +14903,7 @@ class DartSdl {
   ///
   /// \return 0 or -1 if an error occurred.
   int SDL_GameControllerGetSensorData(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int type,
     ffi.Pointer<ffi.Float> data,
     int num_values,
@@ -13853,12 +14916,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerGetSensorData_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerGetSensorData>>(
-          'SDL_GameControllerGetSensorData');
-  late final _dart_SDL_GameControllerGetSensorData
-      _SDL_GameControllerGetSensorData = _SDL_GameControllerGetSensorData_ptr
-          .asFunction<_dart_SDL_GameControllerGetSensorData>();
+  late final _SDL_GameControllerGetSensorDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_GameController1>,
+              ffi.Int32,
+              ffi.Pointer<ffi.Float>,
+              ffi.Int32)>>('SDL_GameControllerGetSensorData');
+  late final _SDL_GameControllerGetSensorData =
+      _SDL_GameControllerGetSensorDataPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int,
+              ffi.Pointer<ffi.Float>, int)>();
 
   /// Start a rumble effect
   /// Each call to this function cancels any previous rumble effect, and calling it with 0 intensity stops any rumbling.
@@ -13870,7 +14938,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this controller
   int SDL_GameControllerRumble(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int low_frequency_rumble,
     int high_frequency_rumble,
     int duration_ms,
@@ -13883,12 +14951,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerRumble_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerRumble>>(
-          'SDL_GameControllerRumble');
-  late final _dart_SDL_GameControllerRumble _SDL_GameControllerRumble =
-      _SDL_GameControllerRumble_ptr.asFunction<
-          _dart_SDL_GameControllerRumble>();
+  late final _SDL_GameControllerRumblePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>, Uint16, Uint16,
+              Uint32)>>('SDL_GameControllerRumble');
+  late final _SDL_GameControllerRumble =
+      _SDL_GameControllerRumblePtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int, int, int)>();
 
   /// Start a rumble effect in the game controller's triggers
   /// Each call to this function cancels any previous trigger rumble effect, and calling it with 0 intensity stops any rumbling.
@@ -13900,7 +14969,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if rumble isn't supported on this controller
   int SDL_GameControllerRumbleTriggers(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int left_rumble,
     int right_rumble,
     int duration_ms,
@@ -13913,12 +14982,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerRumbleTriggers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerRumbleTriggers>>(
-          'SDL_GameControllerRumbleTriggers');
-  late final _dart_SDL_GameControllerRumbleTriggers
-      _SDL_GameControllerRumbleTriggers = _SDL_GameControllerRumbleTriggers_ptr
-          .asFunction<_dart_SDL_GameControllerRumbleTriggers>();
+  late final _SDL_GameControllerRumbleTriggersPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>, Uint16, Uint16,
+              Uint32)>>('SDL_GameControllerRumbleTriggers');
+  late final _SDL_GameControllerRumbleTriggers =
+      _SDL_GameControllerRumbleTriggersPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int, int, int)>();
 
   /// Return whether a controller has an LED
   ///
@@ -13926,19 +14996,19 @@ class DartSdl {
   ///
   /// \return SDL_TRUE, or SDL_FALSE if this controller does not have a modifiable LED
   int SDL_GameControllerHasLED(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerHasLED(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerHasLED_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerHasLED>>(
-          'SDL_GameControllerHasLED');
-  late final _dart_SDL_GameControllerHasLED _SDL_GameControllerHasLED =
-      _SDL_GameControllerHasLED_ptr.asFunction<
-          _dart_SDL_GameControllerHasLED>();
+  late final _SDL_GameControllerHasLEDPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_GameController1>)>>('SDL_GameControllerHasLED');
+  late final _SDL_GameControllerHasLED = _SDL_GameControllerHasLEDPtr
+      .asFunction<int Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// Update a controller's LED color.
   ///
@@ -13949,7 +15019,7 @@ class DartSdl {
   ///
   /// \return 0, or -1 if this controller does not have a modifiable LED
   int SDL_GameControllerSetLED(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
     int red,
     int green,
     int blue,
@@ -13962,38 +15032,40 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GameControllerSetLED_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerSetLED>>(
-          'SDL_GameControllerSetLED');
-  late final _dart_SDL_GameControllerSetLED _SDL_GameControllerSetLED =
-      _SDL_GameControllerSetLED_ptr.asFunction<
-          _dart_SDL_GameControllerSetLED>();
+  late final _SDL_GameControllerSetLEDPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_GameController1>, Uint8, Uint8,
+              Uint8)>>('SDL_GameControllerSetLED');
+  late final _SDL_GameControllerSetLED =
+      _SDL_GameControllerSetLEDPtr.asFunction<
+          int Function(ffi.Pointer<SDL_GameController1>, int, int, int)>();
 
   /// Close a controller previously opened with SDL_GameControllerOpen().
   void SDL_GameControllerClose(
-    ffi.Pointer<SDL_GameController> gamecontroller,
+    ffi.Pointer<SDL_GameController1> gamecontroller,
   ) {
     return _SDL_GameControllerClose(
       gamecontroller,
     );
   }
 
-  late final _SDL_GameControllerClose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GameControllerClose>>(
-          'SDL_GameControllerClose');
-  late final _dart_SDL_GameControllerClose _SDL_GameControllerClose =
-      _SDL_GameControllerClose_ptr.asFunction<_dart_SDL_GameControllerClose>();
+  late final _SDL_GameControllerClosePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_GameController1>)>>('SDL_GameControllerClose');
+  late final _SDL_GameControllerClose = _SDL_GameControllerClosePtr.asFunction<
+      void Function(ffi.Pointer<SDL_GameController1>)>();
 
   /// \brief Get the number of registered touch devices.
   int SDL_GetNumTouchDevices() {
     return _SDL_GetNumTouchDevices();
   }
 
-  late final _SDL_GetNumTouchDevices_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumTouchDevices>>(
+  late final _SDL_GetNumTouchDevicesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumTouchDevices');
-  late final _dart_SDL_GetNumTouchDevices _SDL_GetNumTouchDevices =
-      _SDL_GetNumTouchDevices_ptr.asFunction<_dart_SDL_GetNumTouchDevices>();
+  late final _SDL_GetNumTouchDevices =
+      _SDL_GetNumTouchDevicesPtr.asFunction<int Function()>();
 
   /// \brief Get the touch ID with the given index, or 0 if the index is invalid.
   int SDL_GetTouchDevice(
@@ -14004,10 +15076,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTouchDevice_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTouchDevice>>('SDL_GetTouchDevice');
-  late final _dart_SDL_GetTouchDevice _SDL_GetTouchDevice =
-      _SDL_GetTouchDevice_ptr.asFunction<_dart_SDL_GetTouchDevice>();
+  late final _SDL_GetTouchDevicePtr =
+      _lookup<ffi.NativeFunction<SDL_TouchID Function(ffi.Int32)>>(
+          'SDL_GetTouchDevice');
+  late final _SDL_GetTouchDevice =
+      _SDL_GetTouchDevicePtr.asFunction<int Function(int)>();
 
   /// \brief Get the type of the given touch device.
   int SDL_GetTouchDeviceType(
@@ -14018,11 +15091,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTouchDeviceType_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTouchDeviceType>>(
+  late final _SDL_GetTouchDeviceTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_TouchID)>>(
           'SDL_GetTouchDeviceType');
-  late final _dart_SDL_GetTouchDeviceType _SDL_GetTouchDeviceType =
-      _SDL_GetTouchDeviceType_ptr.asFunction<_dart_SDL_GetTouchDeviceType>();
+  late final _SDL_GetTouchDeviceType =
+      _SDL_GetTouchDeviceTypePtr.asFunction<int Function(int)>();
 
   /// \brief Get the number of active fingers for a given touch device.
   int SDL_GetNumTouchFingers(
@@ -14033,11 +15106,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetNumTouchFingers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumTouchFingers>>(
+  late final _SDL_GetNumTouchFingersPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_TouchID)>>(
           'SDL_GetNumTouchFingers');
-  late final _dart_SDL_GetNumTouchFingers _SDL_GetNumTouchFingers =
-      _SDL_GetNumTouchFingers_ptr.asFunction<_dart_SDL_GetNumTouchFingers>();
+  late final _SDL_GetNumTouchFingers =
+      _SDL_GetNumTouchFingersPtr.asFunction<int Function(int)>();
 
   /// \brief Get the finger object of the given touch, with the given index.
   ffi.Pointer<SDL_Finger> SDL_GetTouchFinger(
@@ -14050,10 +15123,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTouchFinger_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTouchFinger>>('SDL_GetTouchFinger');
-  late final _dart_SDL_GetTouchFinger _SDL_GetTouchFinger =
-      _SDL_GetTouchFinger_ptr.asFunction<_dart_SDL_GetTouchFinger>();
+  late final _SDL_GetTouchFingerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Finger> Function(
+              SDL_TouchID, ffi.Int32)>>('SDL_GetTouchFinger');
+  late final _SDL_GetTouchFinger = _SDL_GetTouchFingerPtr.asFunction<
+      ffi.Pointer<SDL_Finger> Function(int, int)>();
 
   /// \brief Begin Recording a gesture on the specified touch, or all touches (-1)
   int SDL_RecordGesture(
@@ -14064,10 +15139,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RecordGesture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RecordGesture>>('SDL_RecordGesture');
-  late final _dart_SDL_RecordGesture _SDL_RecordGesture =
-      _SDL_RecordGesture_ptr.asFunction<_dart_SDL_RecordGesture>();
+  late final _SDL_RecordGesturePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_TouchID)>>(
+          'SDL_RecordGesture');
+  late final _SDL_RecordGesture =
+      _SDL_RecordGesturePtr.asFunction<int Function(int)>();
 
   /// \brief Save all currently loaded Dollar Gesture templates
   int SDL_SaveAllDollarTemplates(
@@ -14078,12 +15154,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SaveAllDollarTemplates_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SaveAllDollarTemplates>>(
+  late final _SDL_SaveAllDollarTemplatesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_RWops>)>>(
           'SDL_SaveAllDollarTemplates');
-  late final _dart_SDL_SaveAllDollarTemplates _SDL_SaveAllDollarTemplates =
-      _SDL_SaveAllDollarTemplates_ptr.asFunction<
-          _dart_SDL_SaveAllDollarTemplates>();
+  late final _SDL_SaveAllDollarTemplates = _SDL_SaveAllDollarTemplatesPtr
+      .asFunction<int Function(ffi.Pointer<SDL_RWops>)>();
 
   /// \brief Save a currently loaded Dollar Gesture template
   int SDL_SaveDollarTemplate(
@@ -14096,11 +15171,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SaveDollarTemplate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SaveDollarTemplate>>(
-          'SDL_SaveDollarTemplate');
-  late final _dart_SDL_SaveDollarTemplate _SDL_SaveDollarTemplate =
-      _SDL_SaveDollarTemplate_ptr.asFunction<_dart_SDL_SaveDollarTemplate>();
+  late final _SDL_SaveDollarTemplatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(SDL_GestureID,
+              ffi.Pointer<SDL_RWops>)>>('SDL_SaveDollarTemplate');
+  late final _SDL_SaveDollarTemplate = _SDL_SaveDollarTemplatePtr.asFunction<
+      int Function(int, ffi.Pointer<SDL_RWops>)>();
 
   /// \brief Load Dollar Gesture templates from a file
   int SDL_LoadDollarTemplates(
@@ -14113,11 +15189,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadDollarTemplates_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadDollarTemplates>>(
-          'SDL_LoadDollarTemplates');
-  late final _dart_SDL_LoadDollarTemplates _SDL_LoadDollarTemplates =
-      _SDL_LoadDollarTemplates_ptr.asFunction<_dart_SDL_LoadDollarTemplates>();
+  late final _SDL_LoadDollarTemplatesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              SDL_TouchID, ffi.Pointer<SDL_RWops>)>>('SDL_LoadDollarTemplates');
+  late final _SDL_LoadDollarTemplates = _SDL_LoadDollarTemplatesPtr.asFunction<
+      int Function(int, ffi.Pointer<SDL_RWops>)>();
 
   /// Pumps the event loop, gathering events from the input devices.
   ///
@@ -14128,10 +15205,9 @@ class DartSdl {
     return _SDL_PumpEvents();
   }
 
-  late final _SDL_PumpEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PumpEvents>>('SDL_PumpEvents');
-  late final _dart_SDL_PumpEvents _SDL_PumpEvents =
-      _SDL_PumpEvents_ptr.asFunction<_dart_SDL_PumpEvents>();
+  late final _SDL_PumpEventsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_PumpEvents');
+  late final _SDL_PumpEvents = _SDL_PumpEventsPtr.asFunction<void Function()>();
 
   /// Checks the event queue for messages and optionally returns them.
   ///
@@ -14165,10 +15241,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PeepEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PeepEvents>>('SDL_PeepEvents');
-  late final _dart_SDL_PeepEvents _SDL_PeepEvents =
-      _SDL_PeepEvents_ptr.asFunction<_dart_SDL_PeepEvents>();
+  late final _SDL_PeepEventsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Event>, ffi.Int32, ffi.Int32,
+              Uint32, Uint32)>>('SDL_PeepEvents');
+  late final _SDL_PeepEvents = _SDL_PeepEventsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Event>, int, int, int, int)>();
 
   /// Checks to see if certain event types are in the event queue.
   int SDL_HasEvent(
@@ -14179,10 +15257,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HasEvent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasEvent>>('SDL_HasEvent');
-  late final _dart_SDL_HasEvent _SDL_HasEvent =
-      _SDL_HasEvent_ptr.asFunction<_dart_SDL_HasEvent>();
+  late final _SDL_HasEventPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(Uint32)>>('SDL_HasEvent');
+  late final _SDL_HasEvent = _SDL_HasEventPtr.asFunction<int Function(int)>();
 
   int SDL_HasEvents(
     int minType,
@@ -14194,10 +15271,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HasEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HasEvents>>('SDL_HasEvents');
-  late final _dart_SDL_HasEvents _SDL_HasEvents =
-      _SDL_HasEvents_ptr.asFunction<_dart_SDL_HasEvents>();
+  late final _SDL_HasEventsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(Uint32, Uint32)>>(
+          'SDL_HasEvents');
+  late final _SDL_HasEvents =
+      _SDL_HasEventsPtr.asFunction<int Function(int, int)>();
 
   /// This function clears events from the event queue
   /// This function only affects currently queued events. If you want to make
@@ -14211,10 +15289,10 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FlushEvent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FlushEvent>>('SDL_FlushEvent');
-  late final _dart_SDL_FlushEvent _SDL_FlushEvent =
-      _SDL_FlushEvent_ptr.asFunction<_dart_SDL_FlushEvent>();
+  late final _SDL_FlushEventPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(Uint32)>>('SDL_FlushEvent');
+  late final _SDL_FlushEvent =
+      _SDL_FlushEventPtr.asFunction<void Function(int)>();
 
   void SDL_FlushEvents(
     int minType,
@@ -14226,10 +15304,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FlushEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FlushEvents>>('SDL_FlushEvents');
-  late final _dart_SDL_FlushEvents _SDL_FlushEvents =
-      _SDL_FlushEvents_ptr.asFunction<_dart_SDL_FlushEvents>();
+  late final _SDL_FlushEventsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(Uint32, Uint32)>>(
+          'SDL_FlushEvents');
+  late final _SDL_FlushEvents =
+      _SDL_FlushEventsPtr.asFunction<void Function(int, int)>();
 
   /// \brief Polls for currently pending events.
   ///
@@ -14245,10 +15324,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PollEvent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PollEvent>>('SDL_PollEvent');
-  late final _dart_SDL_PollEvent _SDL_PollEvent =
-      _SDL_PollEvent_ptr.asFunction<_dart_SDL_PollEvent>();
+  late final _SDL_PollEventPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Event>)>>(
+          'SDL_PollEvent');
+  late final _SDL_PollEvent =
+      _SDL_PollEventPtr.asFunction<int Function(ffi.Pointer<SDL_Event>)>();
 
   /// \brief Waits indefinitely for the next available event.
   ///
@@ -14264,10 +15344,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WaitEvent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WaitEvent>>('SDL_WaitEvent');
-  late final _dart_SDL_WaitEvent _SDL_WaitEvent =
-      _SDL_WaitEvent_ptr.asFunction<_dart_SDL_WaitEvent>();
+  late final _SDL_WaitEventPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Event>)>>(
+          'SDL_WaitEvent');
+  late final _SDL_WaitEvent =
+      _SDL_WaitEventPtr.asFunction<int Function(ffi.Pointer<SDL_Event>)>();
 
   /// \brief Waits until the specified timeout (in milliseconds) for the next
   /// available event.
@@ -14287,11 +15368,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WaitEventTimeout_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WaitEventTimeout>>(
-          'SDL_WaitEventTimeout');
-  late final _dart_SDL_WaitEventTimeout _SDL_WaitEventTimeout =
-      _SDL_WaitEventTimeout_ptr.asFunction<_dart_SDL_WaitEventTimeout>();
+  late final _SDL_WaitEventTimeoutPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Event>, ffi.Int32)>>('SDL_WaitEventTimeout');
+  late final _SDL_WaitEventTimeout = _SDL_WaitEventTimeoutPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Event>, int)>();
 
   /// \brief Add an event to the event queue.
   ///
@@ -14305,10 +15387,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_PushEvent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_PushEvent>>('SDL_PushEvent');
-  late final _dart_SDL_PushEvent _SDL_PushEvent =
-      _SDL_PushEvent_ptr.asFunction<_dart_SDL_PushEvent>();
+  late final _SDL_PushEventPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Event>)>>(
+          'SDL_PushEvent');
+  late final _SDL_PushEvent =
+      _SDL_PushEventPtr.asFunction<int Function(ffi.Pointer<SDL_Event>)>();
 
   /// Sets up a filter to process all events before they change internal state and
   /// are posted to the internal event queue.
@@ -14334,7 +15417,7 @@ class DartSdl {
   /// If the quit event is generated by an interrupt signal, it will bypass the
   /// internal queue and be delivered to the application at the next event poll.
   void SDL_SetEventFilter(
-    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    SDL_EventFilter filter,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_SetEventFilter(
@@ -14343,15 +15426,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetEventFilter_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetEventFilter>>('SDL_SetEventFilter');
-  late final _dart_SDL_SetEventFilter _SDL_SetEventFilter =
-      _SDL_SetEventFilter_ptr.asFunction<_dart_SDL_SetEventFilter>();
+  late final _SDL_SetEventFilterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              SDL_EventFilter, ffi.Pointer<ffi.Void>)>>('SDL_SetEventFilter');
+  late final _SDL_SetEventFilter = _SDL_SetEventFilterPtr.asFunction<
+      void Function(SDL_EventFilter, ffi.Pointer<ffi.Void>)>();
 
   /// Return the current event filter - can be used to "chain" filters.
   /// If there is no event filter set, this function returns SDL_FALSE.
   int SDL_GetEventFilter(
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
+    ffi.Pointer<SDL_EventFilter> filter,
     ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
   ) {
     return _SDL_GetEventFilter(
@@ -14360,14 +15445,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetEventFilter_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetEventFilter>>('SDL_GetEventFilter');
-  late final _dart_SDL_GetEventFilter _SDL_GetEventFilter =
-      _SDL_GetEventFilter_ptr.asFunction<_dart_SDL_GetEventFilter>();
+  late final _SDL_GetEventFilterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_EventFilter>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('SDL_GetEventFilter');
+  late final _SDL_GetEventFilter = _SDL_GetEventFilterPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_EventFilter>, ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   /// Add a function which is called when an event is added to the queue.
   void SDL_AddEventWatch(
-    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    SDL_EventFilter filter,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_AddEventWatch(
@@ -14376,14 +15464,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AddEventWatch_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AddEventWatch>>('SDL_AddEventWatch');
-  late final _dart_SDL_AddEventWatch _SDL_AddEventWatch =
-      _SDL_AddEventWatch_ptr.asFunction<_dart_SDL_AddEventWatch>();
+  late final _SDL_AddEventWatchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              SDL_EventFilter, ffi.Pointer<ffi.Void>)>>('SDL_AddEventWatch');
+  late final _SDL_AddEventWatch = _SDL_AddEventWatchPtr.asFunction<
+      void Function(SDL_EventFilter, ffi.Pointer<ffi.Void>)>();
 
   /// Remove an event watch function added with SDL_AddEventWatch()
   void SDL_DelEventWatch(
-    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    SDL_EventFilter filter,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_DelEventWatch(
@@ -14392,15 +15482,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DelEventWatch_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DelEventWatch>>('SDL_DelEventWatch');
-  late final _dart_SDL_DelEventWatch _SDL_DelEventWatch =
-      _SDL_DelEventWatch_ptr.asFunction<_dart_SDL_DelEventWatch>();
+  late final _SDL_DelEventWatchPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              SDL_EventFilter, ffi.Pointer<ffi.Void>)>>('SDL_DelEventWatch');
+  late final _SDL_DelEventWatch = _SDL_DelEventWatchPtr.asFunction<
+      void Function(SDL_EventFilter, ffi.Pointer<ffi.Void>)>();
 
   /// Run the filter function on the current event queue, removing any
   /// events for which the filter returns 0.
   void SDL_FilterEvents(
-    ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
+    SDL_EventFilter filter,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_FilterEvents(
@@ -14409,10 +15501,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_FilterEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_FilterEvents>>('SDL_FilterEvents');
-  late final _dart_SDL_FilterEvents _SDL_FilterEvents =
-      _SDL_FilterEvents_ptr.asFunction<_dart_SDL_FilterEvents>();
+  late final _SDL_FilterEventsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              SDL_EventFilter, ffi.Pointer<ffi.Void>)>>('SDL_FilterEvents');
+  late final _SDL_FilterEvents = _SDL_FilterEventsPtr.asFunction<
+      void Function(SDL_EventFilter, ffi.Pointer<ffi.Void>)>();
 
   /// This function allows you to set the state of processing certain events.
   /// - If \c state is set to ::SDL_IGNORE, that event will be automatically
@@ -14431,10 +15525,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_EventState_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_EventState>>('SDL_EventState');
-  late final _dart_SDL_EventState _SDL_EventState =
-      _SDL_EventState_ptr.asFunction<_dart_SDL_EventState>();
+  late final _SDL_EventStatePtr =
+      _lookup<ffi.NativeFunction<Uint8 Function(Uint32, ffi.Int32)>>(
+          'SDL_EventState');
+  late final _SDL_EventState =
+      _SDL_EventStatePtr.asFunction<int Function(int, int)>();
 
   /// This function allocates a set of user-defined events, and returns
   /// the beginning event number for that set of events.
@@ -14449,10 +15544,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RegisterEvents_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RegisterEvents>>('SDL_RegisterEvents');
-  late final _dart_SDL_RegisterEvents _SDL_RegisterEvents =
-      _SDL_RegisterEvents_ptr.asFunction<_dart_SDL_RegisterEvents>();
+  late final _SDL_RegisterEventsPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(ffi.Int32)>>(
+          'SDL_RegisterEvents');
+  late final _SDL_RegisterEvents =
+      _SDL_RegisterEventsPtr.asFunction<int Function(int)>();
 
   /// \brief Get the path where the application resides.
   ///
@@ -14479,10 +15575,11 @@ class DartSdl {
     return _SDL_GetBasePath();
   }
 
-  late final _SDL_GetBasePath_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetBasePath>>('SDL_GetBasePath');
-  late final _dart_SDL_GetBasePath _SDL_GetBasePath =
-      _SDL_GetBasePath_ptr.asFunction<_dart_SDL_GetBasePath>();
+  late final _SDL_GetBasePathPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+          'SDL_GetBasePath');
+  late final _SDL_GetBasePath =
+      _SDL_GetBasePathPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// \brief Get the user-and-app-specific path where files can be written.
   ///
@@ -14553,10 +15650,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetPrefPath_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPrefPath>>('SDL_GetPrefPath');
-  late final _dart_SDL_GetPrefPath _SDL_GetPrefPath =
-      _SDL_GetPrefPath_ptr.asFunction<_dart_SDL_GetPrefPath>();
+  late final _SDL_GetPrefPathPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>)>>('SDL_GetPrefPath');
+  late final _SDL_GetPrefPath = _SDL_GetPrefPathPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(
+          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Count the number of haptic devices attached to the system.
   ///
@@ -14565,10 +15665,9 @@ class DartSdl {
     return _SDL_NumHaptics();
   }
 
-  late final _SDL_NumHaptics_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_NumHaptics>>('SDL_NumHaptics');
-  late final _dart_SDL_NumHaptics _SDL_NumHaptics =
-      _SDL_NumHaptics_ptr.asFunction<_dart_SDL_NumHaptics>();
+  late final _SDL_NumHapticsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_NumHaptics');
+  late final _SDL_NumHaptics = _SDL_NumHapticsPtr.asFunction<int Function()>();
 
   /// \brief Get the implementation dependent name of a haptic device.
   ///
@@ -14587,10 +15686,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticName_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticName>>('SDL_HapticName');
-  late final _dart_SDL_HapticName _SDL_HapticName =
-      _SDL_HapticName_ptr.asFunction<_dart_SDL_HapticName>();
+  late final _SDL_HapticNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'SDL_HapticName');
+  late final _SDL_HapticName =
+      _SDL_HapticNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
   /// \brief Opens a haptic device for use.
   ///
@@ -14612,7 +15712,7 @@ class DartSdl {
   /// \sa SDL_HapticSetAutocenter
   /// \sa SDL_HapticPause
   /// \sa SDL_HapticStopAll
-  ffi.Pointer<SDL_Haptic> SDL_HapticOpen(
+  ffi.Pointer<SDL_Haptic1> SDL_HapticOpen(
     int device_index,
   ) {
     return _SDL_HapticOpen(
@@ -14620,10 +15720,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticOpen_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticOpen>>('SDL_HapticOpen');
-  late final _dart_SDL_HapticOpen _SDL_HapticOpen =
-      _SDL_HapticOpen_ptr.asFunction<_dart_SDL_HapticOpen>();
+  late final _SDL_HapticOpenPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Haptic1> Function(ffi.Int32)>>(
+          'SDL_HapticOpen');
+  late final _SDL_HapticOpen =
+      _SDL_HapticOpenPtr.asFunction<ffi.Pointer<SDL_Haptic1> Function(int)>();
 
   /// \brief Checks if the haptic device at index has been opened.
   ///
@@ -14640,10 +15741,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticOpened_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticOpened>>('SDL_HapticOpened');
-  late final _dart_SDL_HapticOpened _SDL_HapticOpened =
-      _SDL_HapticOpened_ptr.asFunction<_dart_SDL_HapticOpened>();
+  late final _SDL_HapticOpenedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'SDL_HapticOpened');
+  late final _SDL_HapticOpened =
+      _SDL_HapticOpenedPtr.asFunction<int Function(int)>();
 
   /// \brief Gets the index of a haptic device.
   ///
@@ -14653,17 +15755,18 @@ class DartSdl {
   /// \sa SDL_HapticOpen
   /// \sa SDL_HapticOpened
   int SDL_HapticIndex(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticIndex(
       haptic,
     );
   }
 
-  late final _SDL_HapticIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticIndex>>('SDL_HapticIndex');
-  late final _dart_SDL_HapticIndex _SDL_HapticIndex =
-      _SDL_HapticIndex_ptr.asFunction<_dart_SDL_HapticIndex>();
+  late final _SDL_HapticIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticIndex');
+  late final _SDL_HapticIndex =
+      _SDL_HapticIndexPtr.asFunction<int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Gets whether or not the current mouse has haptic capabilities.
   ///
@@ -14674,10 +15777,10 @@ class DartSdl {
     return _SDL_MouseIsHaptic();
   }
 
-  late final _SDL_MouseIsHaptic_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_MouseIsHaptic>>('SDL_MouseIsHaptic');
-  late final _dart_SDL_MouseIsHaptic _SDL_MouseIsHaptic =
-      _SDL_MouseIsHaptic_ptr.asFunction<_dart_SDL_MouseIsHaptic>();
+  late final _SDL_MouseIsHapticPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_MouseIsHaptic');
+  late final _SDL_MouseIsHaptic =
+      _SDL_MouseIsHapticPtr.asFunction<int Function()>();
 
   /// \brief Tries to open a haptic device from the current mouse.
   ///
@@ -14685,15 +15788,15 @@ class DartSdl {
   ///
   /// \sa SDL_MouseIsHaptic
   /// \sa SDL_HapticOpen
-  ffi.Pointer<SDL_Haptic> SDL_HapticOpenFromMouse() {
+  ffi.Pointer<SDL_Haptic1> SDL_HapticOpenFromMouse() {
     return _SDL_HapticOpenFromMouse();
   }
 
-  late final _SDL_HapticOpenFromMouse_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticOpenFromMouse>>(
+  late final _SDL_HapticOpenFromMousePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Haptic1> Function()>>(
           'SDL_HapticOpenFromMouse');
-  late final _dart_SDL_HapticOpenFromMouse _SDL_HapticOpenFromMouse =
-      _SDL_HapticOpenFromMouse_ptr.asFunction<_dart_SDL_HapticOpenFromMouse>();
+  late final _SDL_HapticOpenFromMouse = _SDL_HapticOpenFromMousePtr.asFunction<
+      ffi.Pointer<SDL_Haptic1> Function()>();
 
   /// \brief Checks to see if a joystick has haptic features.
   ///
@@ -14703,18 +15806,18 @@ class DartSdl {
   ///
   /// \sa SDL_HapticOpenFromJoystick
   int SDL_JoystickIsHaptic(
-    ffi.Pointer<SDL_Joystick> joystick,
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_JoystickIsHaptic(
       joystick,
     );
   }
 
-  late final _SDL_JoystickIsHaptic_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_JoystickIsHaptic>>(
-          'SDL_JoystickIsHaptic');
-  late final _dart_SDL_JoystickIsHaptic _SDL_JoystickIsHaptic =
-      _SDL_JoystickIsHaptic_ptr.asFunction<_dart_SDL_JoystickIsHaptic>();
+  late final _SDL_JoystickIsHapticPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Joystick1>)>>(
+      'SDL_JoystickIsHaptic');
+  late final _SDL_JoystickIsHaptic = _SDL_JoystickIsHapticPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// \brief Opens a haptic device for use from a joystick device.
   ///
@@ -14731,36 +15834,38 @@ class DartSdl {
   ///
   /// \sa SDL_HapticOpen
   /// \sa SDL_HapticClose
-  ffi.Pointer<SDL_Haptic> SDL_HapticOpenFromJoystick(
-    ffi.Pointer<SDL_Joystick> joystick,
+  ffi.Pointer<SDL_Haptic1> SDL_HapticOpenFromJoystick(
+    ffi.Pointer<SDL_Joystick1> joystick,
   ) {
     return _SDL_HapticOpenFromJoystick(
       joystick,
     );
   }
 
-  late final _SDL_HapticOpenFromJoystick_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticOpenFromJoystick>>(
-          'SDL_HapticOpenFromJoystick');
-  late final _dart_SDL_HapticOpenFromJoystick _SDL_HapticOpenFromJoystick =
-      _SDL_HapticOpenFromJoystick_ptr.asFunction<
-          _dart_SDL_HapticOpenFromJoystick>();
+  late final _SDL_HapticOpenFromJoystickPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Haptic1> Function(
+              ffi.Pointer<SDL_Joystick1>)>>('SDL_HapticOpenFromJoystick');
+  late final _SDL_HapticOpenFromJoystick =
+      _SDL_HapticOpenFromJoystickPtr.asFunction<
+          ffi.Pointer<SDL_Haptic1> Function(ffi.Pointer<SDL_Joystick1>)>();
 
   /// \brief Closes a haptic device previously opened with SDL_HapticOpen().
   ///
   /// \param haptic Haptic device to close.
   void SDL_HapticClose(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticClose(
       haptic,
     );
   }
 
-  late final _SDL_HapticClose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticClose>>('SDL_HapticClose');
-  late final _dart_SDL_HapticClose _SDL_HapticClose =
-      _SDL_HapticClose_ptr.asFunction<_dart_SDL_HapticClose>();
+  late final _SDL_HapticClosePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticClose');
+  late final _SDL_HapticClose =
+      _SDL_HapticClosePtr.asFunction<void Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Returns the number of effects a haptic device can store.
   ///
@@ -14775,18 +15880,18 @@ class DartSdl {
   /// \sa SDL_HapticNumEffectsPlaying
   /// \sa SDL_HapticQuery
   int SDL_HapticNumEffects(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticNumEffects(
       haptic,
     );
   }
 
-  late final _SDL_HapticNumEffects_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticNumEffects>>(
+  late final _SDL_HapticNumEffectsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
           'SDL_HapticNumEffects');
-  late final _dart_SDL_HapticNumEffects _SDL_HapticNumEffects =
-      _SDL_HapticNumEffects_ptr.asFunction<_dart_SDL_HapticNumEffects>();
+  late final _SDL_HapticNumEffects = _SDL_HapticNumEffectsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Returns the number of effects a haptic device can play at the same
   /// time.
@@ -14801,19 +15906,18 @@ class DartSdl {
   /// \sa SDL_HapticNumEffects
   /// \sa SDL_HapticQuery
   int SDL_HapticNumEffectsPlaying(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticNumEffectsPlaying(
       haptic,
     );
   }
 
-  late final _SDL_HapticNumEffectsPlaying_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticNumEffectsPlaying>>(
+  late final _SDL_HapticNumEffectsPlayingPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
           'SDL_HapticNumEffectsPlaying');
-  late final _dart_SDL_HapticNumEffectsPlaying _SDL_HapticNumEffectsPlaying =
-      _SDL_HapticNumEffectsPlaying_ptr.asFunction<
-          _dart_SDL_HapticNumEffectsPlaying>();
+  late final _SDL_HapticNumEffectsPlaying = _SDL_HapticNumEffectsPlayingPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Gets the haptic device's supported features in bitwise manner.
   ///
@@ -14830,33 +15934,35 @@ class DartSdl {
   /// \sa SDL_HapticNumEffects
   /// \sa SDL_HapticEffectSupported
   int SDL_HapticQuery(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticQuery(
       haptic,
     );
   }
 
-  late final _SDL_HapticQuery_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticQuery>>('SDL_HapticQuery');
-  late final _dart_SDL_HapticQuery _SDL_HapticQuery =
-      _SDL_HapticQuery_ptr.asFunction<_dart_SDL_HapticQuery>();
+  late final _SDL_HapticQueryPtr = _lookup<
+          ffi.NativeFunction<ffi.Uint32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+      'SDL_HapticQuery');
+  late final _SDL_HapticQuery =
+      _SDL_HapticQueryPtr.asFunction<int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Gets the number of haptic axes the device has.
   ///
   /// \sa SDL_HapticDirection
   int SDL_HapticNumAxes(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticNumAxes(
       haptic,
     );
   }
 
-  late final _SDL_HapticNumAxes_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticNumAxes>>('SDL_HapticNumAxes');
-  late final _dart_SDL_HapticNumAxes _SDL_HapticNumAxes =
-      _SDL_HapticNumAxes_ptr.asFunction<_dart_SDL_HapticNumAxes>();
+  late final _SDL_HapticNumAxesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticNumAxes');
+  late final _SDL_HapticNumAxes = _SDL_HapticNumAxesPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Checks to see if effect is supported by haptic.
   ///
@@ -14867,7 +15973,7 @@ class DartSdl {
   /// \sa SDL_HapticQuery
   /// \sa SDL_HapticNewEffect
   int SDL_HapticEffectSupported(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     ffi.Pointer<SDL_HapticEffect> effect,
   ) {
     return _SDL_HapticEffectSupported(
@@ -14876,12 +15982,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticEffectSupported_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticEffectSupported>>(
-          'SDL_HapticEffectSupported');
-  late final _dart_SDL_HapticEffectSupported _SDL_HapticEffectSupported =
-      _SDL_HapticEffectSupported_ptr.asFunction<
-          _dart_SDL_HapticEffectSupported>();
+  late final _SDL_HapticEffectSupportedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>,
+              ffi.Pointer<SDL_HapticEffect>)>>('SDL_HapticEffectSupported');
+  late final _SDL_HapticEffectSupported =
+      _SDL_HapticEffectSupportedPtr.asFunction<
+          int Function(
+              ffi.Pointer<SDL_Haptic1>, ffi.Pointer<SDL_HapticEffect>)>();
 
   /// \brief Creates a new haptic effect on the device.
   ///
@@ -14893,7 +16001,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticNewEffect(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     ffi.Pointer<SDL_HapticEffect> effect,
   ) {
     return _SDL_HapticNewEffect(
@@ -14902,11 +16010,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticNewEffect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticNewEffect>>(
-          'SDL_HapticNewEffect');
-  late final _dart_SDL_HapticNewEffect _SDL_HapticNewEffect =
-      _SDL_HapticNewEffect_ptr.asFunction<_dart_SDL_HapticNewEffect>();
+  late final _SDL_HapticNewEffectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>,
+              ffi.Pointer<SDL_HapticEffect>)>>('SDL_HapticNewEffect');
+  late final _SDL_HapticNewEffect = _SDL_HapticNewEffectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, ffi.Pointer<SDL_HapticEffect>)>();
 
   /// \brief Updates the properties of an effect.
   ///
@@ -14924,7 +16033,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticUpdateEffect(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int effect,
     ffi.Pointer<SDL_HapticEffect> data,
   ) {
@@ -14935,11 +16044,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticUpdateEffect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticUpdateEffect>>(
-          'SDL_HapticUpdateEffect');
-  late final _dart_SDL_HapticUpdateEffect _SDL_HapticUpdateEffect =
-      _SDL_HapticUpdateEffect_ptr.asFunction<_dart_SDL_HapticUpdateEffect>();
+  late final _SDL_HapticUpdateEffectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>, ffi.Int32,
+              ffi.Pointer<SDL_HapticEffect>)>>('SDL_HapticUpdateEffect');
+  late final _SDL_HapticUpdateEffect = _SDL_HapticUpdateEffectPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Haptic1>, int, ffi.Pointer<SDL_HapticEffect>)>();
 
   /// \brief Runs the haptic effect on its associated haptic device.
   ///
@@ -14958,7 +16069,7 @@ class DartSdl {
   /// \sa SDL_HapticDestroyEffect
   /// \sa SDL_HapticGetEffectStatus
   int SDL_HapticRunEffect(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int effect,
     int iterations,
   ) {
@@ -14969,11 +16080,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticRunEffect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticRunEffect>>(
-          'SDL_HapticRunEffect');
-  late final _dart_SDL_HapticRunEffect _SDL_HapticRunEffect =
-      _SDL_HapticRunEffect_ptr.asFunction<_dart_SDL_HapticRunEffect>();
+  late final _SDL_HapticRunEffectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>, ffi.Int32,
+              Uint32)>>('SDL_HapticRunEffect');
+  late final _SDL_HapticRunEffect = _SDL_HapticRunEffectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, int, int)>();
 
   /// \brief Stops the haptic effect on its associated haptic device.
   ///
@@ -14984,7 +16096,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticDestroyEffect
   int SDL_HapticStopEffect(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int effect,
   ) {
     return _SDL_HapticStopEffect(
@@ -14993,11 +16105,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticStopEffect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticStopEffect>>(
-          'SDL_HapticStopEffect');
-  late final _dart_SDL_HapticStopEffect _SDL_HapticStopEffect =
-      _SDL_HapticStopEffect_ptr.asFunction<_dart_SDL_HapticStopEffect>();
+  late final _SDL_HapticStopEffectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Haptic1>, ffi.Int32)>>('SDL_HapticStopEffect');
+  late final _SDL_HapticStopEffect = _SDL_HapticStopEffectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, int)>();
 
   /// \brief Destroys a haptic effect on the device.
   ///
@@ -15009,7 +16122,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticNewEffect
   void SDL_HapticDestroyEffect(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int effect,
   ) {
     return _SDL_HapticDestroyEffect(
@@ -15018,11 +16131,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticDestroyEffect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticDestroyEffect>>(
-          'SDL_HapticDestroyEffect');
-  late final _dart_SDL_HapticDestroyEffect _SDL_HapticDestroyEffect =
-      _SDL_HapticDestroyEffect_ptr.asFunction<_dart_SDL_HapticDestroyEffect>();
+  late final _SDL_HapticDestroyEffectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<SDL_Haptic1>, ffi.Int32)>>('SDL_HapticDestroyEffect');
+  late final _SDL_HapticDestroyEffect = _SDL_HapticDestroyEffectPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Haptic1>, int)>();
 
   /// \brief Gets the status of the current effect on the haptic device.
   ///
@@ -15035,7 +16149,7 @@ class DartSdl {
   /// \sa SDL_HapticRunEffect
   /// \sa SDL_HapticStopEffect
   int SDL_HapticGetEffectStatus(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int effect,
   ) {
     return _SDL_HapticGetEffectStatus(
@@ -15044,12 +16158,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticGetEffectStatus_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticGetEffectStatus>>(
-          'SDL_HapticGetEffectStatus');
-  late final _dart_SDL_HapticGetEffectStatus _SDL_HapticGetEffectStatus =
-      _SDL_HapticGetEffectStatus_ptr.asFunction<
-          _dart_SDL_HapticGetEffectStatus>();
+  late final _SDL_HapticGetEffectStatusPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>,
+              ffi.Int32)>>('SDL_HapticGetEffectStatus');
+  late final _SDL_HapticGetEffectStatus = _SDL_HapticGetEffectStatusPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Haptic1>, int)>();
 
   /// \brief Sets the global gain of the device.
   ///
@@ -15066,7 +16180,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticQuery
   int SDL_HapticSetGain(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int gain,
   ) {
     return _SDL_HapticSetGain(
@@ -15075,10 +16189,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticSetGain_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticSetGain>>('SDL_HapticSetGain');
-  late final _dart_SDL_HapticSetGain _SDL_HapticSetGain =
-      _SDL_HapticSetGain_ptr.asFunction<_dart_SDL_HapticSetGain>();
+  late final _SDL_HapticSetGainPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Haptic1>, ffi.Int32)>>('SDL_HapticSetGain');
+  late final _SDL_HapticSetGain = _SDL_HapticSetGainPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, int)>();
 
   /// \brief Sets the global autocenter of the device.
   ///
@@ -15093,7 +16209,7 @@ class DartSdl {
   ///
   /// \sa SDL_HapticQuery
   int SDL_HapticSetAutocenter(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     int autocenter,
   ) {
     return _SDL_HapticSetAutocenter(
@@ -15102,11 +16218,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticSetAutocenter_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticSetAutocenter>>(
-          'SDL_HapticSetAutocenter');
-  late final _dart_SDL_HapticSetAutocenter _SDL_HapticSetAutocenter =
-      _SDL_HapticSetAutocenter_ptr.asFunction<_dart_SDL_HapticSetAutocenter>();
+  late final _SDL_HapticSetAutocenterPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Haptic1>, ffi.Int32)>>('SDL_HapticSetAutocenter');
+  late final _SDL_HapticSetAutocenter = _SDL_HapticSetAutocenterPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, int)>();
 
   /// \brief Pauses a haptic device.
   ///
@@ -15121,17 +16238,18 @@ class DartSdl {
   ///
   /// \sa SDL_HapticUnpause
   int SDL_HapticPause(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticPause(
       haptic,
     );
   }
 
-  late final _SDL_HapticPause_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticPause>>('SDL_HapticPause');
-  late final _dart_SDL_HapticPause _SDL_HapticPause =
-      _SDL_HapticPause_ptr.asFunction<_dart_SDL_HapticPause>();
+  late final _SDL_HapticPausePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticPause');
+  late final _SDL_HapticPause =
+      _SDL_HapticPausePtr.asFunction<int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Unpauses a haptic device.
   ///
@@ -15142,34 +16260,36 @@ class DartSdl {
   ///
   /// \sa SDL_HapticPause
   int SDL_HapticUnpause(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticUnpause(
       haptic,
     );
   }
 
-  late final _SDL_HapticUnpause_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticUnpause>>('SDL_HapticUnpause');
-  late final _dart_SDL_HapticUnpause _SDL_HapticUnpause =
-      _SDL_HapticUnpause_ptr.asFunction<_dart_SDL_HapticUnpause>();
+  late final _SDL_HapticUnpausePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticUnpause');
+  late final _SDL_HapticUnpause = _SDL_HapticUnpausePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Stops all the currently playing effects on a haptic device.
   ///
   /// \param haptic Haptic device to stop.
   /// \return 0 on success or -1 on error.
   int SDL_HapticStopAll(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticStopAll(
       haptic,
     );
   }
 
-  late final _SDL_HapticStopAll_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticStopAll>>('SDL_HapticStopAll');
-  late final _dart_SDL_HapticStopAll _SDL_HapticStopAll =
-      _SDL_HapticStopAll_ptr.asFunction<_dart_SDL_HapticStopAll>();
+  late final _SDL_HapticStopAllPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
+          'SDL_HapticStopAll');
+  late final _SDL_HapticStopAll = _SDL_HapticStopAllPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Checks to see if rumble is supported on a haptic device.
   ///
@@ -15180,19 +16300,18 @@ class DartSdl {
   /// \sa SDL_HapticRumblePlay
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumbleSupported(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticRumbleSupported(
       haptic,
     );
   }
 
-  late final _SDL_HapticRumbleSupported_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticRumbleSupported>>(
+  late final _SDL_HapticRumbleSupportedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
           'SDL_HapticRumbleSupported');
-  late final _dart_SDL_HapticRumbleSupported _SDL_HapticRumbleSupported =
-      _SDL_HapticRumbleSupported_ptr.asFunction<
-          _dart_SDL_HapticRumbleSupported>();
+  late final _SDL_HapticRumbleSupported = _SDL_HapticRumbleSupportedPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Initializes the haptic device for simple rumble playback.
   ///
@@ -15204,18 +16323,18 @@ class DartSdl {
   /// \sa SDL_HapticRumblePlay
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumbleInit(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticRumbleInit(
       haptic,
     );
   }
 
-  late final _SDL_HapticRumbleInit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticRumbleInit>>(
+  late final _SDL_HapticRumbleInitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
           'SDL_HapticRumbleInit');
-  late final _dart_SDL_HapticRumbleInit _SDL_HapticRumbleInit =
-      _SDL_HapticRumbleInit_ptr.asFunction<_dart_SDL_HapticRumbleInit>();
+  late final _SDL_HapticRumbleInit = _SDL_HapticRumbleInitPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Runs simple rumble on a haptic device
   ///
@@ -15228,7 +16347,7 @@ class DartSdl {
   /// \sa SDL_HapticRumbleInit
   /// \sa SDL_HapticRumbleStop
   int SDL_HapticRumblePlay(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
     double strength,
     int length,
   ) {
@@ -15239,11 +16358,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_HapticRumblePlay_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticRumblePlay>>(
-          'SDL_HapticRumblePlay');
-  late final _dart_SDL_HapticRumblePlay _SDL_HapticRumblePlay =
-      _SDL_HapticRumblePlay_ptr.asFunction<_dart_SDL_HapticRumblePlay>();
+  late final _SDL_HapticRumblePlayPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>, ffi.Float,
+              Uint32)>>('SDL_HapticRumblePlay');
+  late final _SDL_HapticRumblePlay = _SDL_HapticRumblePlayPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>, double, int)>();
 
   /// \brief Stops the simple rumble on a haptic device.
   ///
@@ -15254,18 +16374,18 @@ class DartSdl {
   /// \sa SDL_HapticRumbleInit
   /// \sa SDL_HapticRumblePlay
   int SDL_HapticRumbleStop(
-    ffi.Pointer<SDL_Haptic> haptic,
+    ffi.Pointer<SDL_Haptic1> haptic,
   ) {
     return _SDL_HapticRumbleStop(
       haptic,
     );
   }
 
-  late final _SDL_HapticRumbleStop_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_HapticRumbleStop>>(
+  late final _SDL_HapticRumbleStopPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Haptic1>)>>(
           'SDL_HapticRumbleStop');
-  late final _dart_SDL_HapticRumbleStop _SDL_HapticRumbleStop =
-      _SDL_HapticRumbleStop_ptr.asFunction<_dart_SDL_HapticRumbleStop>();
+  late final _SDL_HapticRumbleStop = _SDL_HapticRumbleStopPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Haptic1>)>();
 
   /// \brief Set a hint with a specific priority
   ///
@@ -15286,11 +16406,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetHintWithPriority_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetHintWithPriority>>(
-          'SDL_SetHintWithPriority');
-  late final _dart_SDL_SetHintWithPriority _SDL_SetHintWithPriority =
-      _SDL_SetHintWithPriority_ptr.asFunction<_dart_SDL_SetHintWithPriority>();
+  late final _SDL_SetHintWithPriorityPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              ffi.Int32)>>('SDL_SetHintWithPriority');
+  late final _SDL_SetHintWithPriority = _SDL_SetHintWithPriorityPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
 
   /// \brief Set a hint with normal priority
   ///
@@ -15305,10 +16426,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetHint_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetHint>>('SDL_SetHint');
-  late final _dart_SDL_SetHint _SDL_SetHint =
-      _SDL_SetHint_ptr.asFunction<_dart_SDL_SetHint>();
+  late final _SDL_SetHintPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SDL_SetHint');
+  late final _SDL_SetHint = _SDL_SetHintPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get a hint
   ///
@@ -15321,10 +16444,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetHint_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetHint>>('SDL_GetHint');
-  late final _dart_SDL_GetHint _SDL_GetHint =
-      _SDL_GetHint_ptr.asFunction<_dart_SDL_GetHint>();
+  late final _SDL_GetHintPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Pointer<ffi.Int8>)>>('SDL_GetHint');
+  late final _SDL_GetHint = _SDL_GetHintPtr.asFunction<
+      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Get a hint
   ///
@@ -15339,10 +16464,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetHintBoolean_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetHintBoolean>>('SDL_GetHintBoolean');
-  late final _dart_SDL_GetHintBoolean _SDL_GetHintBoolean =
-      _SDL_GetHintBoolean_ptr.asFunction<_dart_SDL_GetHintBoolean>();
+  late final _SDL_GetHintBooleanPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('SDL_GetHintBoolean');
+  late final _SDL_GetHintBoolean = _SDL_GetHintBooleanPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int8>, int)>();
 
   /// \brief Add a function to watch a particular hint
   ///
@@ -15351,7 +16478,7 @@ class DartSdl {
   /// \param userdata A pointer to pass to the callback function
   void SDL_AddHintCallback(
     ffi.Pointer<ffi.Int8> name,
-    ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
+    SDL_HintCallback callback,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_AddHintCallback(
@@ -15361,11 +16488,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AddHintCallback_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AddHintCallback>>(
-          'SDL_AddHintCallback');
-  late final _dart_SDL_AddHintCallback _SDL_AddHintCallback =
-      _SDL_AddHintCallback_ptr.asFunction<_dart_SDL_AddHintCallback>();
+  late final _SDL_AddHintCallbackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Int8>, SDL_HintCallback,
+              ffi.Pointer<ffi.Void>)>>('SDL_AddHintCallback');
+  late final _SDL_AddHintCallback = _SDL_AddHintCallbackPtr.asFunction<
+      void Function(
+          ffi.Pointer<ffi.Int8>, SDL_HintCallback, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Remove a function watching a particular hint
   ///
@@ -15374,7 +16503,7 @@ class DartSdl {
   /// \param userdata A pointer being passed to the callback function
   void SDL_DelHintCallback(
     ffi.Pointer<ffi.Int8> name,
-    ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
+    SDL_HintCallback callback,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_DelHintCallback(
@@ -15384,11 +16513,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DelHintCallback_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DelHintCallback>>(
-          'SDL_DelHintCallback');
-  late final _dart_SDL_DelHintCallback _SDL_DelHintCallback =
-      _SDL_DelHintCallback_ptr.asFunction<_dart_SDL_DelHintCallback>();
+  late final _SDL_DelHintCallbackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Int8>, SDL_HintCallback,
+              ffi.Pointer<ffi.Void>)>>('SDL_DelHintCallback');
+  late final _SDL_DelHintCallback = _SDL_DelHintCallbackPtr.asFunction<
+      void Function(
+          ffi.Pointer<ffi.Int8>, SDL_HintCallback, ffi.Pointer<ffi.Void>)>();
 
   /// \brief  Clear all hints
   ///
@@ -15397,10 +16528,9 @@ class DartSdl {
     return _SDL_ClearHints();
   }
 
-  late final _SDL_ClearHints_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ClearHints>>('SDL_ClearHints');
-  late final _dart_SDL_ClearHints _SDL_ClearHints =
-      _SDL_ClearHints_ptr.asFunction<_dart_SDL_ClearHints>();
+  late final _SDL_ClearHintsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_ClearHints');
+  late final _SDL_ClearHints = _SDL_ClearHintsPtr.asFunction<void Function()>();
 
   /// This function dynamically loads a shared object and returns a pointer
   /// to the object handle (or NULL if there was an error).
@@ -15413,10 +16543,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadObject_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadObject>>('SDL_LoadObject');
-  late final _dart_SDL_LoadObject _SDL_LoadObject =
-      _SDL_LoadObject_ptr.asFunction<_dart_SDL_LoadObject>();
+  late final _SDL_LoadObjectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Int8>)>>('SDL_LoadObject');
+  late final _SDL_LoadObject = _SDL_LoadObjectPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Int8>)>();
 
   /// Given an object handle, this function looks up the address of the
   /// named function in the shared object and returns it.  This address
@@ -15431,10 +16563,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LoadFunction_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LoadFunction>>('SDL_LoadFunction');
-  late final _dart_SDL_LoadFunction _SDL_LoadFunction =
-      _SDL_LoadFunction_ptr.asFunction<_dart_SDL_LoadFunction>();
+  late final _SDL_LoadFunctionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Int8>)>>('SDL_LoadFunction');
+  late final _SDL_LoadFunction = _SDL_LoadFunctionPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Int8>)>();
 
   /// Unload a shared object from memory.
   void SDL_UnloadObject(
@@ -15445,10 +16580,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnloadObject_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnloadObject>>('SDL_UnloadObject');
-  late final _dart_SDL_UnloadObject _SDL_UnloadObject =
-      _SDL_UnloadObject_ptr.asFunction<_dart_SDL_UnloadObject>();
+  late final _SDL_UnloadObjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+          'SDL_UnloadObject');
+  late final _SDL_UnloadObject =
+      _SDL_UnloadObjectPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 
   /// \brief Set the priority of all log categories
   void SDL_LogSetAllPriority(
@@ -15459,11 +16595,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogSetAllPriority_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogSetAllPriority>>(
+  late final _SDL_LogSetAllPriorityPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
           'SDL_LogSetAllPriority');
-  late final _dart_SDL_LogSetAllPriority _SDL_LogSetAllPriority =
-      _SDL_LogSetAllPriority_ptr.asFunction<_dart_SDL_LogSetAllPriority>();
+  late final _SDL_LogSetAllPriority =
+      _SDL_LogSetAllPriorityPtr.asFunction<void Function(int)>();
 
   /// \brief Set the priority of a particular log category
   void SDL_LogSetPriority(
@@ -15476,10 +16612,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogSetPriority_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogSetPriority>>('SDL_LogSetPriority');
-  late final _dart_SDL_LogSetPriority _SDL_LogSetPriority =
-      _SDL_LogSetPriority_ptr.asFunction<_dart_SDL_LogSetPriority>();
+  late final _SDL_LogSetPriorityPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+          'SDL_LogSetPriority');
+  late final _SDL_LogSetPriority =
+      _SDL_LogSetPriorityPtr.asFunction<void Function(int, int)>();
 
   /// \brief Get the priority of a particular log category
   int SDL_LogGetPriority(
@@ -15490,10 +16627,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogGetPriority_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogGetPriority>>('SDL_LogGetPriority');
-  late final _dart_SDL_LogGetPriority _SDL_LogGetPriority =
-      _SDL_LogGetPriority_ptr.asFunction<_dart_SDL_LogGetPriority>();
+  late final _SDL_LogGetPriorityPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'SDL_LogGetPriority');
+  late final _SDL_LogGetPriority =
+      _SDL_LogGetPriorityPtr.asFunction<int Function(int)>();
 
   /// \brief Reset all priorities to default.
   ///
@@ -15502,11 +16640,11 @@ class DartSdl {
     return _SDL_LogResetPriorities();
   }
 
-  late final _SDL_LogResetPriorities_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogResetPriorities>>(
+  late final _SDL_LogResetPrioritiesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_LogResetPriorities');
-  late final _dart_SDL_LogResetPriorities _SDL_LogResetPriorities =
-      _SDL_LogResetPriorities_ptr.asFunction<_dart_SDL_LogResetPriorities>();
+  late final _SDL_LogResetPriorities =
+      _SDL_LogResetPrioritiesPtr.asFunction<void Function()>();
 
   /// \brief Log a message with SDL_LOG_CATEGORY_APPLICATION and SDL_LOG_PRIORITY_INFO
   void SDL_Log(
@@ -15517,8 +16655,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Log_ptr = _lookup<ffi.NativeFunction<_c_SDL_Log>>('SDL_Log');
-  late final _dart_SDL_Log _SDL_Log = _SDL_Log_ptr.asFunction<_dart_SDL_Log>();
+  late final _SDL_LogPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_Log');
+  late final _SDL_Log =
+      _SDL_LogPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_VERBOSE
   void SDL_LogVerbose(
@@ -15531,10 +16672,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogVerbose_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogVerbose>>('SDL_LogVerbose');
-  late final _dart_SDL_LogVerbose _SDL_LogVerbose =
-      _SDL_LogVerbose_ptr.asFunction<_dart_SDL_LogVerbose>();
+  late final _SDL_LogVerbosePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogVerbose');
+  late final _SDL_LogVerbose = _SDL_LogVerbosePtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_DEBUG
   void SDL_LogDebug(
@@ -15547,10 +16690,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogDebug_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogDebug>>('SDL_LogDebug');
-  late final _dart_SDL_LogDebug _SDL_LogDebug =
-      _SDL_LogDebug_ptr.asFunction<_dart_SDL_LogDebug>();
+  late final _SDL_LogDebugPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogDebug');
+  late final _SDL_LogDebug =
+      _SDL_LogDebugPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_INFO
   void SDL_LogInfo(
@@ -15563,10 +16707,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogInfo_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogInfo>>('SDL_LogInfo');
-  late final _dart_SDL_LogInfo _SDL_LogInfo =
-      _SDL_LogInfo_ptr.asFunction<_dart_SDL_LogInfo>();
+  late final _SDL_LogInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogInfo');
+  late final _SDL_LogInfo =
+      _SDL_LogInfoPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_WARN
   void SDL_LogWarn(
@@ -15579,10 +16724,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogWarn_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogWarn>>('SDL_LogWarn');
-  late final _dart_SDL_LogWarn _SDL_LogWarn =
-      _SDL_LogWarn_ptr.asFunction<_dart_SDL_LogWarn>();
+  late final _SDL_LogWarnPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogWarn');
+  late final _SDL_LogWarn =
+      _SDL_LogWarnPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_ERROR
   void SDL_LogError(
@@ -15595,10 +16741,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogError_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogError>>('SDL_LogError');
-  late final _dart_SDL_LogError _SDL_LogError =
-      _SDL_LogError_ptr.asFunction<_dart_SDL_LogError>();
+  late final _SDL_LogErrorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogError');
+  late final _SDL_LogError =
+      _SDL_LogErrorPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with SDL_LOG_PRIORITY_CRITICAL
   void SDL_LogCritical(
@@ -15611,10 +16758,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogCritical_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogCritical>>('SDL_LogCritical');
-  late final _dart_SDL_LogCritical _SDL_LogCritical =
-      _SDL_LogCritical_ptr.asFunction<_dart_SDL_LogCritical>();
+  late final _SDL_LogCriticalPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogCritical');
+  late final _SDL_LogCritical = _SDL_LogCriticalPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with the specified category and priority.
   void SDL_LogMessage(
@@ -15629,17 +16778,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogMessage_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogMessage>>('SDL_LogMessage');
-  late final _dart_SDL_LogMessage _SDL_LogMessage =
-      _SDL_LogMessage_ptr.asFunction<_dart_SDL_LogMessage>();
+  late final _SDL_LogMessagePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>)>>('SDL_LogMessage');
+  late final _SDL_LogMessage = _SDL_LogMessagePtr.asFunction<
+      void Function(int, int, ffi.Pointer<ffi.Int8>)>();
 
   /// \brief Log a message with the specified category and priority.
   void SDL_LogMessageV(
     int category,
     int priority,
     ffi.Pointer<ffi.Int8> fmt,
-    ffi.Pointer<ffi.Int8> ap,
+    va_list ap,
   ) {
     return _SDL_LogMessageV(
       category,
@@ -15649,15 +16800,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogMessageV_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogMessageV>>('SDL_LogMessageV');
-  late final _dart_SDL_LogMessageV _SDL_LogMessageV =
-      _SDL_LogMessageV_ptr.asFunction<_dart_SDL_LogMessageV>();
+  late final _SDL_LogMessageVPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>,
+              va_list)>>('SDL_LogMessageV');
+  late final _SDL_LogMessageV = _SDL_LogMessageVPtr.asFunction<
+      void Function(int, int, ffi.Pointer<ffi.Int8>, va_list)>();
 
   /// \brief Get the current log output function.
   void SDL_LogGetOutputFunction(
-    ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>>>
-        callback,
+    ffi.Pointer<SDL_LogOutputFunction> callback,
     ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
   ) {
     return _SDL_LogGetOutputFunction(
@@ -15666,17 +16818,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogGetOutputFunction_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogGetOutputFunction>>(
-          'SDL_LogGetOutputFunction');
-  late final _dart_SDL_LogGetOutputFunction _SDL_LogGetOutputFunction =
-      _SDL_LogGetOutputFunction_ptr.asFunction<
-          _dart_SDL_LogGetOutputFunction>();
+  late final _SDL_LogGetOutputFunctionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_LogOutputFunction>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>>('SDL_LogGetOutputFunction');
+  late final _SDL_LogGetOutputFunction =
+      _SDL_LogGetOutputFunctionPtr.asFunction<
+          void Function(ffi.Pointer<SDL_LogOutputFunction>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>)>();
 
   /// \brief This function allows you to replace the default log output
   /// function with one of your own.
   void SDL_LogSetOutputFunction(
-    ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>> callback,
+    SDL_LogOutputFunction callback,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_LogSetOutputFunction(
@@ -15685,12 +16839,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LogSetOutputFunction_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LogSetOutputFunction>>(
-          'SDL_LogSetOutputFunction');
-  late final _dart_SDL_LogSetOutputFunction _SDL_LogSetOutputFunction =
-      _SDL_LogSetOutputFunction_ptr.asFunction<
-          _dart_SDL_LogSetOutputFunction>();
+  late final _SDL_LogSetOutputFunctionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(SDL_LogOutputFunction,
+              ffi.Pointer<ffi.Void>)>>('SDL_LogSetOutputFunction');
+  late final _SDL_LogSetOutputFunction =
+      _SDL_LogSetOutputFunctionPtr.asFunction<
+          void Function(SDL_LogOutputFunction, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Create a modal message box.
   ///
@@ -15714,10 +16869,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ShowMessageBox_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ShowMessageBox>>('SDL_ShowMessageBox');
-  late final _dart_SDL_ShowMessageBox _SDL_ShowMessageBox =
-      _SDL_ShowMessageBox_ptr.asFunction<_dart_SDL_ShowMessageBox>();
+  late final _SDL_ShowMessageBoxPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_MessageBoxData>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_ShowMessageBox');
+  late final _SDL_ShowMessageBox = _SDL_ShowMessageBoxPtr.asFunction<
+      int Function(ffi.Pointer<SDL_MessageBoxData>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Create a simple modal message box
   ///
@@ -15743,12 +16900,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_ShowSimpleMessageBox_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_ShowSimpleMessageBox>>(
-          'SDL_ShowSimpleMessageBox');
-  late final _dart_SDL_ShowSimpleMessageBox _SDL_ShowSimpleMessageBox =
-      _SDL_ShowSimpleMessageBox_ptr.asFunction<
-          _dart_SDL_ShowSimpleMessageBox>();
+  late final _SDL_ShowSimpleMessageBoxPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              Uint32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<SDL_Window>)>>('SDL_ShowSimpleMessageBox');
+  late final _SDL_ShowSimpleMessageBox =
+      _SDL_ShowSimpleMessageBoxPtr.asFunction<
+          int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<SDL_Window>)>();
 
   /// \brief Create a CAMetalLayer-backed NSView/UIView and attach it to the
   /// specified window.
@@ -15763,7 +16925,7 @@ class DartSdl {
   ///
   /// \sa SDL_Metal_DestroyView
   /// \sa SDL_Metal_GetLayer
-  ffi.Pointer<ffi.Void> SDL_Metal_CreateView(
+  SDL_MetalView SDL_Metal_CreateView(
     ffi.Pointer<SDL_Window> window,
   ) {
     return _SDL_Metal_CreateView(
@@ -15771,11 +16933,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Metal_CreateView_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Metal_CreateView>>(
-          'SDL_Metal_CreateView');
-  late final _dart_SDL_Metal_CreateView _SDL_Metal_CreateView =
-      _SDL_Metal_CreateView_ptr.asFunction<_dart_SDL_Metal_CreateView>();
+  late final _SDL_Metal_CreateViewPtr = _lookup<
+          ffi.NativeFunction<SDL_MetalView Function(ffi.Pointer<SDL_Window>)>>(
+      'SDL_Metal_CreateView');
+  late final _SDL_Metal_CreateView = _SDL_Metal_CreateViewPtr.asFunction<
+      SDL_MetalView Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Destroy an existing SDL_MetalView object.
   ///
@@ -15784,34 +16946,35 @@ class DartSdl {
   ///
   /// \sa SDL_Metal_CreateView
   void SDL_Metal_DestroyView(
-    ffi.Pointer<ffi.Void> view,
+    SDL_MetalView view,
   ) {
     return _SDL_Metal_DestroyView(
       view,
     );
   }
 
-  late final _SDL_Metal_DestroyView_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Metal_DestroyView>>(
+  late final _SDL_Metal_DestroyViewPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(SDL_MetalView)>>(
           'SDL_Metal_DestroyView');
-  late final _dart_SDL_Metal_DestroyView _SDL_Metal_DestroyView =
-      _SDL_Metal_DestroyView_ptr.asFunction<_dart_SDL_Metal_DestroyView>();
+  late final _SDL_Metal_DestroyView =
+      _SDL_Metal_DestroyViewPtr.asFunction<void Function(SDL_MetalView)>();
 
   /// \brief Get a pointer to the backing CAMetalLayer for the given view.
   ///
   /// \sa SDL_MetalCreateView
   ffi.Pointer<ffi.Void> SDL_Metal_GetLayer(
-    ffi.Pointer<ffi.Void> view,
+    SDL_MetalView view,
   ) {
     return _SDL_Metal_GetLayer(
       view,
     );
   }
 
-  late final _SDL_Metal_GetLayer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Metal_GetLayer>>('SDL_Metal_GetLayer');
-  late final _dart_SDL_Metal_GetLayer _SDL_Metal_GetLayer =
-      _SDL_Metal_GetLayer_ptr.asFunction<_dart_SDL_Metal_GetLayer>();
+  late final _SDL_Metal_GetLayerPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(SDL_MetalView)>>(
+      'SDL_Metal_GetLayer');
+  late final _SDL_Metal_GetLayer = _SDL_Metal_GetLayerPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(SDL_MetalView)>();
 
   /// \brief Get the size of a window's underlying drawable in pixels (for use
   /// with setting viewport, scissor & etc).
@@ -15844,12 +17007,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Metal_GetDrawableSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Metal_GetDrawableSize>>(
-          'SDL_Metal_GetDrawableSize');
-  late final _dart_SDL_Metal_GetDrawableSize _SDL_Metal_GetDrawableSize =
-      _SDL_Metal_GetDrawableSize_ptr.asFunction<
-          _dart_SDL_Metal_GetDrawableSize>();
+  late final _SDL_Metal_GetDrawableSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_Metal_GetDrawableSize');
+  late final _SDL_Metal_GetDrawableSize =
+      _SDL_Metal_GetDrawableSizePtr.asFunction<
+          void Function(ffi.Pointer<SDL_Window>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Get the current power supply details.
   ///
@@ -15872,10 +17037,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetPowerInfo_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPowerInfo>>('SDL_GetPowerInfo');
-  late final _dart_SDL_GetPowerInfo _SDL_GetPowerInfo =
-      _SDL_GetPowerInfo_ptr.asFunction<_dart_SDL_GetPowerInfo>();
+  late final _SDL_GetPowerInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetPowerInfo');
+  late final _SDL_GetPowerInfo = _SDL_GetPowerInfoPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Get the number of 2D rendering drivers available for the current
   /// display.
@@ -15890,11 +17057,11 @@ class DartSdl {
     return _SDL_GetNumRenderDrivers();
   }
 
-  late final _SDL_GetNumRenderDrivers_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetNumRenderDrivers>>(
+  late final _SDL_GetNumRenderDriversPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetNumRenderDrivers');
-  late final _dart_SDL_GetNumRenderDrivers _SDL_GetNumRenderDrivers =
-      _SDL_GetNumRenderDrivers_ptr.asFunction<_dart_SDL_GetNumRenderDrivers>();
+  late final _SDL_GetNumRenderDrivers =
+      _SDL_GetNumRenderDriversPtr.asFunction<int Function()>();
 
   /// \brief Get information about a specific 2D rendering driver for the current
   /// display.
@@ -15916,11 +17083,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRenderDriverInfo_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRenderDriverInfo>>(
-          'SDL_GetRenderDriverInfo');
-  late final _dart_SDL_GetRenderDriverInfo _SDL_GetRenderDriverInfo =
-      _SDL_GetRenderDriverInfo_ptr.asFunction<_dart_SDL_GetRenderDriverInfo>();
+  late final _SDL_GetRenderDriverInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32,
+              ffi.Pointer<SDL_RendererInfo>)>>('SDL_GetRenderDriverInfo');
+  late final _SDL_GetRenderDriverInfo = _SDL_GetRenderDriverInfoPtr.asFunction<
+      int Function(int, ffi.Pointer<SDL_RendererInfo>)>();
 
   /// \brief Create a window and default renderer
   ///
@@ -15947,12 +17115,19 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateWindowAndRenderer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateWindowAndRenderer>>(
-          'SDL_CreateWindowAndRenderer');
-  late final _dart_SDL_CreateWindowAndRenderer _SDL_CreateWindowAndRenderer =
-      _SDL_CreateWindowAndRenderer_ptr.asFunction<
-          _dart_SDL_CreateWindowAndRenderer>();
+  late final _SDL_CreateWindowAndRendererPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(
+                  ffi.Int32,
+                  ffi.Int32,
+                  Uint32,
+                  ffi.Pointer<ffi.Pointer<SDL_Window>>,
+                  ffi.Pointer<ffi.Pointer<SDL_Renderer>>)>>(
+      'SDL_CreateWindowAndRenderer');
+  late final _SDL_CreateWindowAndRenderer =
+      _SDL_CreateWindowAndRendererPtr.asFunction<
+          int Function(int, int, int, ffi.Pointer<ffi.Pointer<SDL_Window>>,
+              ffi.Pointer<ffi.Pointer<SDL_Renderer>>)>();
 
   /// \brief Create a 2D rendering context for a window.
   ///
@@ -15978,10 +17153,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateRenderer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateRenderer>>('SDL_CreateRenderer');
-  late final _dart_SDL_CreateRenderer _SDL_CreateRenderer =
-      _SDL_CreateRenderer_ptr.asFunction<_dart_SDL_CreateRenderer>();
+  late final _SDL_CreateRendererPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Renderer> Function(ffi.Pointer<SDL_Window>, ffi.Int32,
+              Uint32)>>('SDL_CreateRenderer');
+  late final _SDL_CreateRenderer = _SDL_CreateRendererPtr.asFunction<
+      ffi.Pointer<SDL_Renderer> Function(ffi.Pointer<SDL_Window>, int, int)>();
 
   /// \brief Create a 2D software rendering context for a surface.
   ///
@@ -15999,12 +17176,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateSoftwareRenderer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateSoftwareRenderer>>(
-          'SDL_CreateSoftwareRenderer');
-  late final _dart_SDL_CreateSoftwareRenderer _SDL_CreateSoftwareRenderer =
-      _SDL_CreateSoftwareRenderer_ptr.asFunction<
-          _dart_SDL_CreateSoftwareRenderer>();
+  late final _SDL_CreateSoftwareRendererPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Renderer> Function(
+              ffi.Pointer<SDL_Surface>)>>('SDL_CreateSoftwareRenderer');
+  late final _SDL_CreateSoftwareRenderer =
+      _SDL_CreateSoftwareRendererPtr.asFunction<
+          ffi.Pointer<SDL_Renderer> Function(ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Get the renderer associated with a window.
   ffi.Pointer<SDL_Renderer> SDL_GetRenderer(
@@ -16015,10 +17193,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRenderer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRenderer>>('SDL_GetRenderer');
-  late final _dart_SDL_GetRenderer _SDL_GetRenderer =
-      _SDL_GetRenderer_ptr.asFunction<_dart_SDL_GetRenderer>();
+  late final _SDL_GetRendererPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Renderer> Function(
+              ffi.Pointer<SDL_Window>)>>('SDL_GetRenderer');
+  late final _SDL_GetRenderer = _SDL_GetRendererPtr.asFunction<
+      ffi.Pointer<SDL_Renderer> Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Get information about a rendering context.
   int SDL_GetRendererInfo(
@@ -16031,11 +17211,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRendererInfo_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRendererInfo>>(
-          'SDL_GetRendererInfo');
-  late final _dart_SDL_GetRendererInfo _SDL_GetRendererInfo =
-      _SDL_GetRendererInfo_ptr.asFunction<_dart_SDL_GetRendererInfo>();
+  late final _SDL_GetRendererInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_RendererInfo>)>>('SDL_GetRendererInfo');
+  late final _SDL_GetRendererInfo = _SDL_GetRendererInfoPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_RendererInfo>)>();
 
   /// \brief Get the output size in pixels of a rendering context.
   int SDL_GetRendererOutputSize(
@@ -16050,12 +17231,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRendererOutputSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRendererOutputSize>>(
-          'SDL_GetRendererOutputSize');
-  late final _dart_SDL_GetRendererOutputSize _SDL_GetRendererOutputSize =
-      _SDL_GetRendererOutputSize_ptr.asFunction<
-          _dart_SDL_GetRendererOutputSize>();
+  late final _SDL_GetRendererOutputSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetRendererOutputSize');
+  late final _SDL_GetRendererOutputSize =
+      _SDL_GetRendererOutputSizePtr.asFunction<
+          int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Create a texture for a rendering context.
   ///
@@ -16090,10 +17273,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateTexture>>('SDL_CreateTexture');
-  late final _dart_SDL_CreateTexture _SDL_CreateTexture =
-      _SDL_CreateTexture_ptr.asFunction<_dart_SDL_CreateTexture>();
+  late final _SDL_CreateTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Texture> Function(ffi.Pointer<SDL_Renderer>, Uint32,
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('SDL_CreateTexture');
+  late final _SDL_CreateTexture = _SDL_CreateTexturePtr.asFunction<
+      ffi.Pointer<SDL_Texture> Function(
+          ffi.Pointer<SDL_Renderer>, int, int, int, int)>();
 
   /// \brief Create a texture from an existing surface.
   ///
@@ -16116,12 +17302,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateTextureFromSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateTextureFromSurface>>(
-          'SDL_CreateTextureFromSurface');
-  late final _dart_SDL_CreateTextureFromSurface _SDL_CreateTextureFromSurface =
-      _SDL_CreateTextureFromSurface_ptr.asFunction<
-          _dart_SDL_CreateTextureFromSurface>();
+  late final _SDL_CreateTextureFromSurfacePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Texture> Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Surface>)>>('SDL_CreateTextureFromSurface');
+  late final _SDL_CreateTextureFromSurface =
+      _SDL_CreateTextureFromSurfacePtr.asFunction<
+          ffi.Pointer<SDL_Texture> Function(
+              ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Surface>)>();
 
   /// \brief Query the attributes of a texture
   ///
@@ -16136,7 +17324,7 @@ class DartSdl {
   /// \return 0 on success, or -1 if the texture is not valid.
   int SDL_QueryTexture(
     ffi.Pointer<SDL_Texture> texture,
-    ffi.Pointer<ffi.Uint32> format,
+    ffi.Pointer<Uint32> format,
     ffi.Pointer<ffi.Int32> access,
     ffi.Pointer<ffi.Int32> w,
     ffi.Pointer<ffi.Int32> h,
@@ -16150,10 +17338,21 @@ class DartSdl {
     );
   }
 
-  late final _SDL_QueryTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_QueryTexture>>('SDL_QueryTexture');
-  late final _dart_SDL_QueryTexture _SDL_QueryTexture =
-      _SDL_QueryTexture_ptr.asFunction<_dart_SDL_QueryTexture>();
+  late final _SDL_QueryTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<Uint32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_QueryTexture');
+  late final _SDL_QueryTexture = _SDL_QueryTexturePtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<Uint32>,
+          ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>,
+          ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set an additional color value used in render copy operations.
   ///
@@ -16180,11 +17379,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetTextureColorMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetTextureColorMod>>(
-          'SDL_SetTextureColorMod');
-  late final _dart_SDL_SetTextureColorMod _SDL_SetTextureColorMod =
-      _SDL_SetTextureColorMod_ptr.asFunction<_dart_SDL_SetTextureColorMod>();
+  late final _SDL_SetTextureColorModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>, Uint8, Uint8,
+              Uint8)>>('SDL_SetTextureColorMod');
+  late final _SDL_SetTextureColorMod = _SDL_SetTextureColorModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, int, int, int)>();
 
   /// \brief Get the additional color value used in render copy operations.
   ///
@@ -16198,9 +17398,9 @@ class DartSdl {
   /// \sa SDL_SetTextureColorMod()
   int SDL_GetTextureColorMod(
     ffi.Pointer<SDL_Texture> texture,
-    ffi.Pointer<ffi.Uint8> r,
-    ffi.Pointer<ffi.Uint8> g,
-    ffi.Pointer<ffi.Uint8> b,
+    ffi.Pointer<Uint8> r,
+    ffi.Pointer<Uint8> g,
+    ffi.Pointer<Uint8> b,
   ) {
     return _SDL_GetTextureColorMod(
       texture,
@@ -16210,11 +17410,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTextureColorMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTextureColorMod>>(
-          'SDL_GetTextureColorMod');
-  late final _dart_SDL_GetTextureColorMod _SDL_GetTextureColorMod =
-      _SDL_GetTextureColorMod_ptr.asFunction<_dart_SDL_GetTextureColorMod>();
+  late final _SDL_GetTextureColorModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>)>>('SDL_GetTextureColorMod');
+  late final _SDL_GetTextureColorMod = _SDL_GetTextureColorModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<Uint8>,
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>)>();
 
   /// \brief Set an additional alpha value used in render copy operations.
   ///
@@ -16235,11 +17440,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetTextureAlphaMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetTextureAlphaMod>>(
-          'SDL_SetTextureAlphaMod');
-  late final _dart_SDL_SetTextureAlphaMod _SDL_SetTextureAlphaMod =
-      _SDL_SetTextureAlphaMod_ptr.asFunction<_dart_SDL_SetTextureAlphaMod>();
+  late final _SDL_SetTextureAlphaModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>, Uint8)>>('SDL_SetTextureAlphaMod');
+  late final _SDL_SetTextureAlphaMod = _SDL_SetTextureAlphaModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, int)>();
 
   /// \brief Get the additional alpha value used in render copy operations.
   ///
@@ -16251,7 +17457,7 @@ class DartSdl {
   /// \sa SDL_SetTextureAlphaMod()
   int SDL_GetTextureAlphaMod(
     ffi.Pointer<SDL_Texture> texture,
-    ffi.Pointer<ffi.Uint8> alpha,
+    ffi.Pointer<Uint8> alpha,
   ) {
     return _SDL_GetTextureAlphaMod(
       texture,
@@ -16259,11 +17465,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTextureAlphaMod_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTextureAlphaMod>>(
-          'SDL_GetTextureAlphaMod');
-  late final _dart_SDL_GetTextureAlphaMod _SDL_GetTextureAlphaMod =
-      _SDL_GetTextureAlphaMod_ptr.asFunction<_dart_SDL_GetTextureAlphaMod>();
+  late final _SDL_GetTextureAlphaModPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<Uint8>)>>('SDL_GetTextureAlphaMod');
+  late final _SDL_GetTextureAlphaMod = _SDL_GetTextureAlphaModPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<Uint8>)>();
 
   /// \brief Set the blend mode used for texture copy operations.
   ///
@@ -16287,11 +17494,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetTextureBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetTextureBlendMode>>(
-          'SDL_SetTextureBlendMode');
-  late final _dart_SDL_SetTextureBlendMode _SDL_SetTextureBlendMode =
-      _SDL_SetTextureBlendMode_ptr.asFunction<_dart_SDL_SetTextureBlendMode>();
+  late final _SDL_SetTextureBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>, ffi.Int32)>>('SDL_SetTextureBlendMode');
+  late final _SDL_SetTextureBlendMode = _SDL_SetTextureBlendModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, int)>();
 
   /// \brief Get the blend mode used for texture copy operations.
   ///
@@ -16311,11 +17519,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTextureBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTextureBlendMode>>(
-          'SDL_GetTextureBlendMode');
-  late final _dart_SDL_GetTextureBlendMode _SDL_GetTextureBlendMode =
-      _SDL_GetTextureBlendMode_ptr.asFunction<_dart_SDL_GetTextureBlendMode>();
+  late final _SDL_GetTextureBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetTextureBlendMode');
+  late final _SDL_GetTextureBlendMode = _SDL_GetTextureBlendModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set the scale mode used for texture scale operations.
   ///
@@ -16338,11 +17547,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetTextureScaleMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetTextureScaleMode>>(
-          'SDL_SetTextureScaleMode');
-  late final _dart_SDL_SetTextureScaleMode _SDL_SetTextureScaleMode =
-      _SDL_SetTextureScaleMode_ptr.asFunction<_dart_SDL_SetTextureScaleMode>();
+  late final _SDL_SetTextureScaleModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>, ffi.Int32)>>('SDL_SetTextureScaleMode');
+  late final _SDL_SetTextureScaleMode = _SDL_SetTextureScaleModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, int)>();
 
   /// \brief Get the scale mode used for texture scale operations.
   ///
@@ -16362,11 +17572,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetTextureScaleMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTextureScaleMode>>(
-          'SDL_GetTextureScaleMode');
-  late final _dart_SDL_GetTextureScaleMode _SDL_GetTextureScaleMode =
-      _SDL_GetTextureScaleMode_ptr.asFunction<_dart_SDL_GetTextureScaleMode>();
+  late final _SDL_GetTextureScaleModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetTextureScaleMode');
+  late final _SDL_GetTextureScaleMode = _SDL_GetTextureScaleModePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Update the given texture rectangle with new pixel data.
   ///
@@ -16396,10 +17607,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpdateTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpdateTexture>>('SDL_UpdateTexture');
-  late final _dart_SDL_UpdateTexture _SDL_UpdateTexture =
-      _SDL_UpdateTexture_ptr.asFunction<_dart_SDL_UpdateTexture>();
+  late final _SDL_UpdateTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<ffi.Void>, ffi.Int32)>>('SDL_UpdateTexture');
+  late final _SDL_UpdateTexture = _SDL_UpdateTexturePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<ffi.Void>, int)>();
 
   /// \brief Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
   ///
@@ -16421,11 +17635,11 @@ class DartSdl {
   int SDL_UpdateYUVTexture(
     ffi.Pointer<SDL_Texture> texture,
     ffi.Pointer<SDL_Rect> rect,
-    ffi.Pointer<ffi.Uint8> Yplane,
+    ffi.Pointer<Uint8> Yplane,
     int Ypitch,
-    ffi.Pointer<ffi.Uint8> Uplane,
+    ffi.Pointer<Uint8> Uplane,
     int Upitch,
-    ffi.Pointer<ffi.Uint8> Vplane,
+    ffi.Pointer<Uint8> Vplane,
     int Vpitch,
   ) {
     return _SDL_UpdateYUVTexture(
@@ -16440,11 +17654,27 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UpdateYUVTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UpdateYUVTexture>>(
-          'SDL_UpdateYUVTexture');
-  late final _dart_SDL_UpdateYUVTexture _SDL_UpdateYUVTexture =
-      _SDL_UpdateYUVTexture_ptr.asFunction<_dart_SDL_UpdateYUVTexture>();
+  late final _SDL_UpdateYUVTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<Uint8>,
+              ffi.Int32,
+              ffi.Pointer<Uint8>,
+              ffi.Int32,
+              ffi.Pointer<Uint8>,
+              ffi.Int32)>>('SDL_UpdateYUVTexture');
+  late final _SDL_UpdateYUVTexture = _SDL_UpdateYUVTexturePtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<Uint8>,
+          int,
+          ffi.Pointer<Uint8>,
+          int,
+          ffi.Pointer<Uint8>,
+          int)>();
 
   /// \brief Lock a portion of the texture for write-only pixel access.
   ///
@@ -16473,10 +17703,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LockTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockTexture>>('SDL_LockTexture');
-  late final _dart_SDL_LockTexture _SDL_LockTexture =
-      _SDL_LockTexture_ptr.asFunction<_dart_SDL_LockTexture>();
+  late final _SDL_LockTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<ffi.Pointer<ffi.Void>>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_LockTexture');
+  late final _SDL_LockTexture = _SDL_LockTexturePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<ffi.Pointer<ffi.Void>>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Lock a portion of the texture for write-only pixel access.
   /// Expose it as a SDL surface.
@@ -16503,12 +17739,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_LockTextureToSurface_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_LockTextureToSurface>>(
-          'SDL_LockTextureToSurface');
-  late final _dart_SDL_LockTextureToSurface _SDL_LockTextureToSurface =
-      _SDL_LockTextureToSurface_ptr.asFunction<
-          _dart_SDL_LockTextureToSurface>();
+  late final _SDL_LockTextureToSurfacePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int32 Function(
+                  ffi.Pointer<SDL_Texture>,
+                  ffi.Pointer<SDL_Rect>,
+                  ffi.Pointer<ffi.Pointer<SDL_Surface>>)>>(
+      'SDL_LockTextureToSurface');
+  late final _SDL_LockTextureToSurface =
+      _SDL_LockTextureToSurfacePtr.asFunction<
+          int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<ffi.Pointer<SDL_Surface>>)>();
 
   /// \brief Unlock a texture, uploading the changes to video memory, if needed.
   /// If SDL_LockTextureToSurface() was called for locking, the SDL surface is freed.
@@ -16523,10 +17764,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_UnlockTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_UnlockTexture>>('SDL_UnlockTexture');
-  late final _dart_SDL_UnlockTexture _SDL_UnlockTexture =
-      _SDL_UnlockTexture_ptr.asFunction<_dart_SDL_UnlockTexture>();
+  late final _SDL_UnlockTexturePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Texture>)>>(
+          'SDL_UnlockTexture');
+  late final _SDL_UnlockTexture = _SDL_UnlockTexturePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Texture>)>();
 
   /// \brief Determines whether a window supports the use of render targets
   ///
@@ -16541,12 +17783,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderTargetSupported_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderTargetSupported>>(
-          'SDL_RenderTargetSupported');
-  late final _dart_SDL_RenderTargetSupported _SDL_RenderTargetSupported =
-      _SDL_RenderTargetSupported_ptr.asFunction<
-          _dart_SDL_RenderTargetSupported>();
+  late final _SDL_RenderTargetSupportedPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Renderer>)>>(
+      'SDL_RenderTargetSupported');
+  late final _SDL_RenderTargetSupported = _SDL_RenderTargetSupportedPtr
+      .asFunction<int Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Set a texture as the current rendering target.
   ///
@@ -16566,11 +17807,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetRenderTarget_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetRenderTarget>>(
-          'SDL_SetRenderTarget');
-  late final _dart_SDL_SetRenderTarget _SDL_SetRenderTarget =
-      _SDL_SetRenderTarget_ptr.asFunction<_dart_SDL_SetRenderTarget>();
+  late final _SDL_SetRenderTargetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Texture>)>>('SDL_SetRenderTarget');
+  late final _SDL_SetRenderTarget = _SDL_SetRenderTargetPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Texture>)>();
 
   /// \brief Get the current render target or NULL for the default render target.
   ///
@@ -16585,11 +17827,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRenderTarget_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRenderTarget>>(
-          'SDL_GetRenderTarget');
-  late final _dart_SDL_GetRenderTarget _SDL_GetRenderTarget =
-      _SDL_GetRenderTarget_ptr.asFunction<_dart_SDL_GetRenderTarget>();
+  late final _SDL_GetRenderTargetPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Texture> Function(
+              ffi.Pointer<SDL_Renderer>)>>('SDL_GetRenderTarget');
+  late final _SDL_GetRenderTarget = _SDL_GetRenderTargetPtr.asFunction<
+      ffi.Pointer<SDL_Texture> Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Set device independent resolution for rendering
   ///
@@ -16624,12 +17867,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderSetLogicalSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderSetLogicalSize>>(
-          'SDL_RenderSetLogicalSize');
-  late final _dart_SDL_RenderSetLogicalSize _SDL_RenderSetLogicalSize =
-      _SDL_RenderSetLogicalSize_ptr.asFunction<
-          _dart_SDL_RenderSetLogicalSize>();
+  late final _SDL_RenderSetLogicalSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Int32,
+              ffi.Int32)>>('SDL_RenderSetLogicalSize');
+  late final _SDL_RenderSetLogicalSize = _SDL_RenderSetLogicalSizePtr
+      .asFunction<int Function(ffi.Pointer<SDL_Renderer>, int, int)>();
 
   /// \brief Get device independent resolution for rendering
   ///
@@ -16650,12 +17893,14 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetLogicalSize_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetLogicalSize>>(
-          'SDL_RenderGetLogicalSize');
-  late final _dart_SDL_RenderGetLogicalSize _SDL_RenderGetLogicalSize =
-      _SDL_RenderGetLogicalSize_ptr.asFunction<
-          _dart_SDL_RenderGetLogicalSize>();
+  late final _SDL_RenderGetLogicalSizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_RenderGetLogicalSize');
+  late final _SDL_RenderGetLogicalSize =
+      _SDL_RenderGetLogicalSizePtr.asFunction<
+          void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Set whether to force integer scales for resolution-independent rendering
   ///
@@ -16677,12 +17922,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderSetIntegerScale_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderSetIntegerScale>>(
-          'SDL_RenderSetIntegerScale');
-  late final _dart_SDL_RenderSetIntegerScale _SDL_RenderSetIntegerScale =
-      _SDL_RenderSetIntegerScale_ptr.asFunction<
-          _dart_SDL_RenderSetIntegerScale>();
+  late final _SDL_RenderSetIntegerScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Int32)>>('SDL_RenderSetIntegerScale');
+  late final _SDL_RenderSetIntegerScale = _SDL_RenderSetIntegerScalePtr
+      .asFunction<int Function(ffi.Pointer<SDL_Renderer>, int)>();
 
   /// \brief Get whether integer scales are forced for resolution-independent rendering
   ///
@@ -16697,12 +17942,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetIntegerScale_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetIntegerScale>>(
-          'SDL_RenderGetIntegerScale');
-  late final _dart_SDL_RenderGetIntegerScale _SDL_RenderGetIntegerScale =
-      _SDL_RenderGetIntegerScale_ptr.asFunction<
-          _dart_SDL_RenderGetIntegerScale>();
+  late final _SDL_RenderGetIntegerScalePtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Renderer>)>>(
+      'SDL_RenderGetIntegerScale');
+  late final _SDL_RenderGetIntegerScale = _SDL_RenderGetIntegerScalePtr
+      .asFunction<int Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Set the drawing area for rendering on the current target.
   ///
@@ -16727,11 +17971,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderSetViewport_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderSetViewport>>(
-          'SDL_RenderSetViewport');
-  late final _dart_SDL_RenderSetViewport _SDL_RenderSetViewport =
-      _SDL_RenderSetViewport_ptr.asFunction<_dart_SDL_RenderSetViewport>();
+  late final _SDL_RenderSetViewportPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderSetViewport');
+  late final _SDL_RenderSetViewport = _SDL_RenderSetViewportPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Get the drawing area for the current target.
   ///
@@ -16746,11 +17991,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetViewport_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetViewport>>(
-          'SDL_RenderGetViewport');
-  late final _dart_SDL_RenderGetViewport _SDL_RenderGetViewport =
-      _SDL_RenderGetViewport_ptr.asFunction<_dart_SDL_RenderGetViewport>();
+  late final _SDL_RenderGetViewportPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderGetViewport');
+  late final _SDL_RenderGetViewport = _SDL_RenderGetViewportPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Set the clip rectangle for the current target.
   ///
@@ -16771,11 +18017,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderSetClipRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderSetClipRect>>(
-          'SDL_RenderSetClipRect');
-  late final _dart_SDL_RenderSetClipRect _SDL_RenderSetClipRect =
-      _SDL_RenderSetClipRect_ptr.asFunction<_dart_SDL_RenderSetClipRect>();
+  late final _SDL_RenderSetClipRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderSetClipRect');
+  late final _SDL_RenderSetClipRect = _SDL_RenderSetClipRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Get the clip rectangle for the current target.
   ///
@@ -16794,11 +18041,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetClipRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetClipRect>>(
-          'SDL_RenderGetClipRect');
-  late final _dart_SDL_RenderGetClipRect _SDL_RenderGetClipRect =
-      _SDL_RenderGetClipRect_ptr.asFunction<_dart_SDL_RenderGetClipRect>();
+  late final _SDL_RenderGetClipRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderGetClipRect');
+  late final _SDL_RenderGetClipRect = _SDL_RenderGetClipRectPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Get whether clipping is enabled on the given renderer.
   ///
@@ -16813,11 +18061,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderIsClipEnabled_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderIsClipEnabled>>(
-          'SDL_RenderIsClipEnabled');
-  late final _dart_SDL_RenderIsClipEnabled _SDL_RenderIsClipEnabled =
-      _SDL_RenderIsClipEnabled_ptr.asFunction<_dart_SDL_RenderIsClipEnabled>();
+  late final _SDL_RenderIsClipEnabledPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Renderer>)>>(
+      'SDL_RenderIsClipEnabled');
+  late final _SDL_RenderIsClipEnabled = _SDL_RenderIsClipEnabledPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Set the drawing scale for rendering on the current target.
   ///
@@ -16847,10 +18095,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderSetScale_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderSetScale>>('SDL_RenderSetScale');
-  late final _dart_SDL_RenderSetScale _SDL_RenderSetScale =
-      _SDL_RenderSetScale_ptr.asFunction<_dart_SDL_RenderSetScale>();
+  late final _SDL_RenderSetScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Float,
+              ffi.Float)>>('SDL_RenderSetScale');
+  late final _SDL_RenderSetScale = _SDL_RenderSetScalePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, double, double)>();
 
   /// \brief Get the drawing scale for the current target.
   ///
@@ -16871,10 +18121,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetScale_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetScale>>('SDL_RenderGetScale');
-  late final _dart_SDL_RenderGetScale _SDL_RenderGetScale =
-      _SDL_RenderGetScale_ptr.asFunction<_dart_SDL_RenderGetScale>();
+  late final _SDL_RenderGetScalePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>)>>('SDL_RenderGetScale');
+  late final _SDL_RenderGetScale = _SDL_RenderGetScalePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Float>,
+          ffi.Pointer<ffi.Float>)>();
 
   /// \brief Set the color used for drawing operations (Rect, Line and Clear).
   ///
@@ -16902,11 +18155,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetRenderDrawColor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetRenderDrawColor>>(
-          'SDL_SetRenderDrawColor');
-  late final _dart_SDL_SetRenderDrawColor _SDL_SetRenderDrawColor =
-      _SDL_SetRenderDrawColor_ptr.asFunction<_dart_SDL_SetRenderDrawColor>();
+  late final _SDL_SetRenderDrawColorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, Uint8, Uint8, Uint8,
+              Uint8)>>('SDL_SetRenderDrawColor');
+  late final _SDL_SetRenderDrawColor = _SDL_SetRenderDrawColorPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, int, int, int, int)>();
 
   /// \brief Get the color used for drawing operations (Rect, Line and Clear).
   ///
@@ -16920,10 +18174,10 @@ class DartSdl {
   /// \return 0 on success, or -1 on error
   int SDL_GetRenderDrawColor(
     ffi.Pointer<SDL_Renderer> renderer,
-    ffi.Pointer<ffi.Uint8> r,
-    ffi.Pointer<ffi.Uint8> g,
-    ffi.Pointer<ffi.Uint8> b,
-    ffi.Pointer<ffi.Uint8> a,
+    ffi.Pointer<Uint8> r,
+    ffi.Pointer<Uint8> g,
+    ffi.Pointer<Uint8> b,
+    ffi.Pointer<Uint8> a,
   ) {
     return _SDL_GetRenderDrawColor(
       renderer,
@@ -16934,11 +18188,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRenderDrawColor_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRenderDrawColor>>(
-          'SDL_GetRenderDrawColor');
-  late final _dart_SDL_GetRenderDrawColor _SDL_GetRenderDrawColor =
-      _SDL_GetRenderDrawColor_ptr.asFunction<_dart_SDL_GetRenderDrawColor>();
+  late final _SDL_GetRenderDrawColorPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>,
+              ffi.Pointer<Uint8>)>>('SDL_GetRenderDrawColor');
+  late final _SDL_GetRenderDrawColor = _SDL_GetRenderDrawColorPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<Uint8>,
+          ffi.Pointer<Uint8>, ffi.Pointer<Uint8>, ffi.Pointer<Uint8>)>();
 
   /// \brief Set the blend mode used for drawing operations (Fill and Line).
   ///
@@ -16961,12 +18221,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetRenderDrawBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetRenderDrawBlendMode>>(
-          'SDL_SetRenderDrawBlendMode');
-  late final _dart_SDL_SetRenderDrawBlendMode _SDL_SetRenderDrawBlendMode =
-      _SDL_SetRenderDrawBlendMode_ptr.asFunction<
-          _dart_SDL_SetRenderDrawBlendMode>();
+  late final _SDL_SetRenderDrawBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Int32)>>('SDL_SetRenderDrawBlendMode');
+  late final _SDL_SetRenderDrawBlendMode = _SDL_SetRenderDrawBlendModePtr
+      .asFunction<int Function(ffi.Pointer<SDL_Renderer>, int)>();
 
   /// \brief Get the blend mode used for drawing operations.
   ///
@@ -16986,12 +18246,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetRenderDrawBlendMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRenderDrawBlendMode>>(
-          'SDL_GetRenderDrawBlendMode');
-  late final _dart_SDL_GetRenderDrawBlendMode _SDL_GetRenderDrawBlendMode =
-      _SDL_GetRenderDrawBlendMode_ptr.asFunction<
-          _dart_SDL_GetRenderDrawBlendMode>();
+  late final _SDL_GetRenderDrawBlendModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_GetRenderDrawBlendMode');
+  late final _SDL_GetRenderDrawBlendMode =
+      _SDL_GetRenderDrawBlendModePtr.asFunction<
+          int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Clear the current rendering target with the drawing color
   ///
@@ -17007,10 +18268,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderClear_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderClear>>('SDL_RenderClear');
-  late final _dart_SDL_RenderClear _SDL_RenderClear =
-      _SDL_RenderClear_ptr.asFunction<_dart_SDL_RenderClear>();
+  late final _SDL_RenderClearPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Renderer>)>>(
+      'SDL_RenderClear');
+  late final _SDL_RenderClear =
+      _SDL_RenderClearPtr.asFunction<int Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Draw a point on the current rendering target.
   ///
@@ -17031,11 +18293,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawPoint_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawPoint>>(
-          'SDL_RenderDrawPoint');
-  late final _dart_SDL_RenderDrawPoint _SDL_RenderDrawPoint =
-      _SDL_RenderDrawPoint_ptr.asFunction<_dart_SDL_RenderDrawPoint>();
+  late final _SDL_RenderDrawPointPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Int32,
+              ffi.Int32)>>('SDL_RenderDrawPoint');
+  late final _SDL_RenderDrawPoint = _SDL_RenderDrawPointPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, int, int)>();
 
   /// \brief Draw multiple points on the current rendering target.
   ///
@@ -17056,11 +18319,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawPoints_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawPoints>>(
-          'SDL_RenderDrawPoints');
-  late final _dart_SDL_RenderDrawPoints _SDL_RenderDrawPoints =
-      _SDL_RenderDrawPoints_ptr.asFunction<_dart_SDL_RenderDrawPoints>();
+  late final _SDL_RenderDrawPointsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Point>,
+              ffi.Int32)>>('SDL_RenderDrawPoints');
+  late final _SDL_RenderDrawPoints = _SDL_RenderDrawPointsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Point>, int)>();
 
   /// \brief Draw a line on the current rendering target.
   ///
@@ -17087,10 +18351,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawLine_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawLine>>('SDL_RenderDrawLine');
-  late final _dart_SDL_RenderDrawLine _SDL_RenderDrawLine =
-      _SDL_RenderDrawLine_ptr.asFunction<_dart_SDL_RenderDrawLine>();
+  late final _SDL_RenderDrawLinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Int32, ffi.Int32,
+              ffi.Int32, ffi.Int32)>>('SDL_RenderDrawLine');
+  late final _SDL_RenderDrawLine = _SDL_RenderDrawLinePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, int, int, int, int)>();
 
   /// \brief Draw a series of connected lines on the current rendering target.
   ///
@@ -17111,11 +18377,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawLines_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawLines>>(
-          'SDL_RenderDrawLines');
-  late final _dart_SDL_RenderDrawLines _SDL_RenderDrawLines =
-      _SDL_RenderDrawLines_ptr.asFunction<_dart_SDL_RenderDrawLines>();
+  late final _SDL_RenderDrawLinesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Point>,
+              ffi.Int32)>>('SDL_RenderDrawLines');
+  late final _SDL_RenderDrawLines = _SDL_RenderDrawLinesPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Point>, int)>();
 
   /// \brief Draw a rectangle on the current rendering target.
   ///
@@ -17133,10 +18400,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawRect>>('SDL_RenderDrawRect');
-  late final _dart_SDL_RenderDrawRect _SDL_RenderDrawRect =
-      _SDL_RenderDrawRect_ptr.asFunction<_dart_SDL_RenderDrawRect>();
+  late final _SDL_RenderDrawRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderDrawRect');
+  late final _SDL_RenderDrawRect = _SDL_RenderDrawRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Draw some number of rectangles on the current rendering target.
   ///
@@ -17157,11 +18426,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawRects_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawRects>>(
-          'SDL_RenderDrawRects');
-  late final _dart_SDL_RenderDrawRects _SDL_RenderDrawRects =
-      _SDL_RenderDrawRects_ptr.asFunction<_dart_SDL_RenderDrawRects>();
+  late final _SDL_RenderDrawRectsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>,
+              ffi.Int32)>>('SDL_RenderDrawRects');
+  late final _SDL_RenderDrawRects = _SDL_RenderDrawRectsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>, int)>();
 
   /// \brief Fill a rectangle on the current rendering target with the drawing color.
   ///
@@ -17180,10 +18450,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderFillRect_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderFillRect>>('SDL_RenderFillRect');
-  late final _dart_SDL_RenderFillRect _SDL_RenderFillRect =
-      _SDL_RenderFillRect_ptr.asFunction<_dart_SDL_RenderFillRect>();
+  late final _SDL_RenderFillRectPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderFillRect');
+  late final _SDL_RenderFillRect = _SDL_RenderFillRectPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Fill some number of rectangles on the current rendering target with the drawing color.
   ///
@@ -17204,11 +18476,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderFillRects_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderFillRects>>(
-          'SDL_RenderFillRects');
-  late final _dart_SDL_RenderFillRects _SDL_RenderFillRects =
-      _SDL_RenderFillRects_ptr.asFunction<_dart_SDL_RenderFillRects>();
+  late final _SDL_RenderFillRectsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>,
+              ffi.Int32)>>('SDL_RenderFillRects');
+  late final _SDL_RenderFillRects = _SDL_RenderFillRectsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>, int)>();
 
   /// \brief Copy a portion of the texture to the current rendering target.
   ///
@@ -17234,10 +18507,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderCopy_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderCopy>>('SDL_RenderCopy');
-  late final _dart_SDL_RenderCopy _SDL_RenderCopy =
-      _SDL_RenderCopy_ptr.asFunction<_dart_SDL_RenderCopy>();
+  late final _SDL_RenderCopyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>)>>('SDL_RenderCopy');
+  late final _SDL_RenderCopy = _SDL_RenderCopyPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_Rect>)>();
 
   /// \brief Copy a portion of the source texture to the current rendering target, rotating it by angle around the given center
   ///
@@ -17272,10 +18551,25 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderCopyEx_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderCopyEx>>('SDL_RenderCopyEx');
-  late final _dart_SDL_RenderCopyEx _SDL_RenderCopyEx =
-      _SDL_RenderCopyEx_ptr.asFunction<_dart_SDL_RenderCopyEx>();
+  late final _SDL_RenderCopyExPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Double,
+              ffi.Pointer<SDL_Point>,
+              ffi.Int32)>>('SDL_RenderCopyEx');
+  late final _SDL_RenderCopyEx = _SDL_RenderCopyExPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Renderer>,
+          ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_Rect>,
+          double,
+          ffi.Pointer<SDL_Point>,
+          int)>();
 
   /// \brief Draw a point on the current rendering target.
   ///
@@ -17296,11 +18590,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawPointF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawPointF>>(
-          'SDL_RenderDrawPointF');
-  late final _dart_SDL_RenderDrawPointF _SDL_RenderDrawPointF =
-      _SDL_RenderDrawPointF_ptr.asFunction<_dart_SDL_RenderDrawPointF>();
+  late final _SDL_RenderDrawPointFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Float,
+              ffi.Float)>>('SDL_RenderDrawPointF');
+  late final _SDL_RenderDrawPointF = _SDL_RenderDrawPointFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, double, double)>();
 
   /// \brief Draw multiple points on the current rendering target.
   ///
@@ -17321,11 +18616,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawPointsF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawPointsF>>(
-          'SDL_RenderDrawPointsF');
-  late final _dart_SDL_RenderDrawPointsF _SDL_RenderDrawPointsF =
-      _SDL_RenderDrawPointsF_ptr.asFunction<_dart_SDL_RenderDrawPointsF>();
+  late final _SDL_RenderDrawPointsFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FPoint>,
+              ffi.Int32)>>('SDL_RenderDrawPointsF');
+  late final _SDL_RenderDrawPointsF = _SDL_RenderDrawPointsFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FPoint>, int)>();
 
   /// \brief Draw a line on the current rendering target.
   ///
@@ -17352,11 +18648,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawLineF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawLineF>>(
-          'SDL_RenderDrawLineF');
-  late final _dart_SDL_RenderDrawLineF _SDL_RenderDrawLineF =
-      _SDL_RenderDrawLineF_ptr.asFunction<_dart_SDL_RenderDrawLineF>();
+  late final _SDL_RenderDrawLineFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Float, ffi.Float,
+              ffi.Float, ffi.Float)>>('SDL_RenderDrawLineF');
+  late final _SDL_RenderDrawLineF = _SDL_RenderDrawLineFPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Renderer>, double, double, double, double)>();
 
   /// \brief Draw a series of connected lines on the current rendering target.
   ///
@@ -17377,11 +18675,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawLinesF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawLinesF>>(
-          'SDL_RenderDrawLinesF');
-  late final _dart_SDL_RenderDrawLinesF _SDL_RenderDrawLinesF =
-      _SDL_RenderDrawLinesF_ptr.asFunction<_dart_SDL_RenderDrawLinesF>();
+  late final _SDL_RenderDrawLinesFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FPoint>,
+              ffi.Int32)>>('SDL_RenderDrawLinesF');
+  late final _SDL_RenderDrawLinesF = _SDL_RenderDrawLinesFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FPoint>, int)>();
 
   /// \brief Draw a rectangle on the current rendering target.
   ///
@@ -17399,11 +18698,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawRectF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawRectF>>(
-          'SDL_RenderDrawRectF');
-  late final _dart_SDL_RenderDrawRectF _SDL_RenderDrawRectF =
-      _SDL_RenderDrawRectF_ptr.asFunction<_dart_SDL_RenderDrawRectF>();
+  late final _SDL_RenderDrawRectFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_FRect>)>>('SDL_RenderDrawRectF');
+  late final _SDL_RenderDrawRectF = _SDL_RenderDrawRectFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>)>();
 
   /// \brief Draw some number of rectangles on the current rendering target.
   ///
@@ -17424,11 +18724,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderDrawRectsF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderDrawRectsF>>(
-          'SDL_RenderDrawRectsF');
-  late final _dart_SDL_RenderDrawRectsF _SDL_RenderDrawRectsF =
-      _SDL_RenderDrawRectsF_ptr.asFunction<_dart_SDL_RenderDrawRectsF>();
+  late final _SDL_RenderDrawRectsFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>,
+              ffi.Int32)>>('SDL_RenderDrawRectsF');
+  late final _SDL_RenderDrawRectsF = _SDL_RenderDrawRectsFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>, int)>();
 
   /// \brief Fill a rectangle on the current rendering target with the drawing color.
   ///
@@ -17447,11 +18748,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderFillRectF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderFillRectF>>(
-          'SDL_RenderFillRectF');
-  late final _dart_SDL_RenderFillRectF _SDL_RenderFillRectF =
-      _SDL_RenderFillRectF_ptr.asFunction<_dart_SDL_RenderFillRectF>();
+  late final _SDL_RenderFillRectFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_FRect>)>>('SDL_RenderFillRectF');
+  late final _SDL_RenderFillRectF = _SDL_RenderFillRectFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>)>();
 
   /// \brief Fill some number of rectangles on the current rendering target with the drawing color.
   ///
@@ -17472,11 +18774,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderFillRectsF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderFillRectsF>>(
-          'SDL_RenderFillRectsF');
-  late final _dart_SDL_RenderFillRectsF _SDL_RenderFillRectsF =
-      _SDL_RenderFillRectsF_ptr.asFunction<_dart_SDL_RenderFillRectsF>();
+  late final _SDL_RenderFillRectsFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>,
+              ffi.Int32)>>('SDL_RenderFillRectsF');
+  late final _SDL_RenderFillRectsF = _SDL_RenderFillRectsFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_FRect>, int)>();
 
   /// \brief Copy a portion of the texture to the current rendering target.
   ///
@@ -17502,10 +18805,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderCopyF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderCopyF>>('SDL_RenderCopyF');
-  late final _dart_SDL_RenderCopyF _SDL_RenderCopyF =
-      _SDL_RenderCopyF_ptr.asFunction<_dart_SDL_RenderCopyF>();
+  late final _SDL_RenderCopyFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_FRect>)>>('SDL_RenderCopyF');
+  late final _SDL_RenderCopyF = _SDL_RenderCopyFPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<SDL_Rect>, ffi.Pointer<SDL_FRect>)>();
 
   /// \brief Copy a portion of the source texture to the current rendering target, rotating it by angle around the given center
   ///
@@ -17540,10 +18849,25 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderCopyExF_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderCopyExF>>('SDL_RenderCopyExF');
-  late final _dart_SDL_RenderCopyExF _SDL_RenderCopyExF =
-      _SDL_RenderCopyExF_ptr.asFunction<_dart_SDL_RenderCopyExF>();
+  late final _SDL_RenderCopyExFPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Texture>,
+              ffi.Pointer<SDL_Rect>,
+              ffi.Pointer<SDL_FRect>,
+              ffi.Double,
+              ffi.Pointer<SDL_FPoint>,
+              ffi.Int32)>>('SDL_RenderCopyExF');
+  late final _SDL_RenderCopyExF = _SDL_RenderCopyExFPtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Renderer>,
+          ffi.Pointer<SDL_Texture>,
+          ffi.Pointer<SDL_Rect>,
+          ffi.Pointer<SDL_FRect>,
+          double,
+          ffi.Pointer<SDL_FPoint>,
+          int)>();
 
   /// \brief Read pixels from the current rendering target.
   ///
@@ -17574,11 +18898,17 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderReadPixels_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderReadPixels>>(
-          'SDL_RenderReadPixels');
-  late final _dart_SDL_RenderReadPixels _SDL_RenderReadPixels =
-      _SDL_RenderReadPixels_ptr.asFunction<_dart_SDL_RenderReadPixels>();
+  late final _SDL_RenderReadPixelsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<SDL_Renderer>,
+              ffi.Pointer<SDL_Rect>,
+              Uint32,
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32)>>('SDL_RenderReadPixels');
+  late final _SDL_RenderReadPixels = _SDL_RenderReadPixelsPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Renderer>, ffi.Pointer<SDL_Rect>, int,
+          ffi.Pointer<ffi.Void>, int)>();
 
   /// \brief Update the screen with rendering performed.
   void SDL_RenderPresent(
@@ -17589,10 +18919,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderPresent_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderPresent>>('SDL_RenderPresent');
-  late final _dart_SDL_RenderPresent _SDL_RenderPresent =
-      _SDL_RenderPresent_ptr.asFunction<_dart_SDL_RenderPresent>();
+  late final _SDL_RenderPresentPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Renderer>)>>(
+          'SDL_RenderPresent');
+  late final _SDL_RenderPresent = _SDL_RenderPresentPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Destroy the specified texture.
   ///
@@ -17606,10 +18937,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DestroyTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroyTexture>>('SDL_DestroyTexture');
-  late final _dart_SDL_DestroyTexture _SDL_DestroyTexture =
-      _SDL_DestroyTexture_ptr.asFunction<_dart_SDL_DestroyTexture>();
+  late final _SDL_DestroyTexturePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Texture>)>>(
+          'SDL_DestroyTexture');
+  late final _SDL_DestroyTexture = _SDL_DestroyTexturePtr.asFunction<
+      void Function(ffi.Pointer<SDL_Texture>)>();
 
   /// \brief Destroy the rendering context for a window and free associated
   /// textures.
@@ -17623,11 +18955,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DestroyRenderer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DestroyRenderer>>(
+  late final _SDL_DestroyRendererPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_Renderer>)>>(
           'SDL_DestroyRenderer');
-  late final _dart_SDL_DestroyRenderer _SDL_DestroyRenderer =
-      _SDL_DestroyRenderer_ptr.asFunction<_dart_SDL_DestroyRenderer>();
+  late final _SDL_DestroyRenderer = _SDL_DestroyRendererPtr.asFunction<
+      void Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Force the rendering context to flush any pending commands to the
   /// underlying rendering API.
@@ -17658,10 +18990,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderFlush_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderFlush>>('SDL_RenderFlush');
-  late final _dart_SDL_RenderFlush _SDL_RenderFlush =
-      _SDL_RenderFlush_ptr.asFunction<_dart_SDL_RenderFlush>();
+  late final _SDL_RenderFlushPtr = _lookup<
+          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Renderer>)>>(
+      'SDL_RenderFlush');
+  late final _SDL_RenderFlush =
+      _SDL_RenderFlushPtr.asFunction<int Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Bind the texture to the current OpenGL/ES/ES2 context for use with
   /// OpenGL instructions.
@@ -17683,10 +19016,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_BindTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_BindTexture>>('SDL_GL_BindTexture');
-  late final _dart_SDL_GL_BindTexture _SDL_GL_BindTexture =
-      _SDL_GL_BindTexture_ptr.asFunction<_dart_SDL_GL_BindTexture>();
+  late final _SDL_GL_BindTexturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<ffi.Float>,
+              ffi.Pointer<ffi.Float>)>>('SDL_GL_BindTexture');
+  late final _SDL_GL_BindTexture = _SDL_GL_BindTexturePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>, ffi.Pointer<ffi.Float>,
+          ffi.Pointer<ffi.Float>)>();
 
   /// \brief Unbind a texture from the current OpenGL/ES/ES2 context.
   ///
@@ -17701,11 +19037,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GL_UnbindTexture_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GL_UnbindTexture>>(
+  late final _SDL_GL_UnbindTexturePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Texture>)>>(
           'SDL_GL_UnbindTexture');
-  late final _dart_SDL_GL_UnbindTexture _SDL_GL_UnbindTexture =
-      _SDL_GL_UnbindTexture_ptr.asFunction<_dart_SDL_GL_UnbindTexture>();
+  late final _SDL_GL_UnbindTexture = _SDL_GL_UnbindTexturePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Texture>)>();
 
   /// \brief Get the CAMetalLayer associated with the given Metal renderer
   ///
@@ -17722,11 +19058,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetMetalLayer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetMetalLayer>>(
-          'SDL_RenderGetMetalLayer');
-  late final _dart_SDL_RenderGetMetalLayer _SDL_RenderGetMetalLayer =
-      _SDL_RenderGetMetalLayer_ptr.asFunction<_dart_SDL_RenderGetMetalLayer>();
+  late final _SDL_RenderGetMetalLayerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<SDL_Renderer>)>>('SDL_RenderGetMetalLayer');
+  late final _SDL_RenderGetMetalLayer = _SDL_RenderGetMetalLayerPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Get the Metal command encoder for the current frame
   ///
@@ -17743,12 +19080,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetMetalCommandEncoder_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetMetalCommandEncoder>>(
-          'SDL_RenderGetMetalCommandEncoder');
-  late final _dart_SDL_RenderGetMetalCommandEncoder
-      _SDL_RenderGetMetalCommandEncoder = _SDL_RenderGetMetalCommandEncoder_ptr
-          .asFunction<_dart_SDL_RenderGetMetalCommandEncoder>();
+  late final _SDL_RenderGetMetalCommandEncoderPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<SDL_Renderer>)>>('SDL_RenderGetMetalCommandEncoder');
+  late final _SDL_RenderGetMetalCommandEncoder =
+      _SDL_RenderGetMetalCommandEncoderPtr.asFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Create a window that can be shaped with the specified position, dimensions, and flags.
   ///
@@ -17786,11 +19124,18 @@ class DartSdl {
     );
   }
 
-  late final _SDL_CreateShapedWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_CreateShapedWindow>>(
-          'SDL_CreateShapedWindow');
-  late final _dart_SDL_CreateShapedWindow _SDL_CreateShapedWindow =
-      _SDL_CreateShapedWindow_ptr.asFunction<_dart_SDL_CreateShapedWindow>();
+  late final _SDL_CreateShapedWindowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<SDL_Window> Function(
+              ffi.Pointer<ffi.Int8>,
+              ffi.Uint32,
+              ffi.Uint32,
+              ffi.Uint32,
+              ffi.Uint32,
+              Uint32)>>('SDL_CreateShapedWindow');
+  late final _SDL_CreateShapedWindow = _SDL_CreateShapedWindowPtr.asFunction<
+      ffi.Pointer<SDL_Window> Function(
+          ffi.Pointer<ffi.Int8>, int, int, int, int, int)>();
 
   /// \brief Return whether the given window is a shaped window.
   ///
@@ -17807,10 +19152,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_IsShapedWindow_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsShapedWindow>>('SDL_IsShapedWindow');
-  late final _dart_SDL_IsShapedWindow _SDL_IsShapedWindow =
-      _SDL_IsShapedWindow_ptr.asFunction<_dart_SDL_IsShapedWindow>();
+  late final _SDL_IsShapedWindowPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_Window>)>>(
+          'SDL_IsShapedWindow');
+  late final _SDL_IsShapedWindow = _SDL_IsShapedWindowPtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>)>();
 
   /// \brief Set the shape and parameters of a shaped window.
   ///
@@ -17835,10 +19181,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowShape_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowShape>>('SDL_SetWindowShape');
-  late final _dart_SDL_SetWindowShape _SDL_SetWindowShape =
-      _SDL_SetWindowShape_ptr.asFunction<_dart_SDL_SetWindowShape>();
+  late final _SDL_SetWindowShapePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Surface>,
+              ffi.Pointer<SDL_WindowShapeMode>)>>('SDL_SetWindowShape');
+  late final _SDL_SetWindowShape = _SDL_SetWindowShapePtr.asFunction<
+      int Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Surface>,
+          ffi.Pointer<SDL_WindowShapeMode>)>();
 
   /// \brief Get the shape parameters of a shaped window.
   ///
@@ -17861,14 +19210,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetShapedWindowMode_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetShapedWindowMode>>(
-          'SDL_GetShapedWindowMode');
-  late final _dart_SDL_GetShapedWindowMode _SDL_GetShapedWindowMode =
-      _SDL_GetShapedWindowMode_ptr.asFunction<_dart_SDL_GetShapedWindowMode>();
+  late final _SDL_GetShapedWindowModePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<SDL_Window>,
+              ffi.Pointer<SDL_WindowShapeMode>)>>('SDL_GetShapedWindowMode');
+  late final _SDL_GetShapedWindowMode = _SDL_GetShapedWindowModePtr.asFunction<
+      int Function(
+          ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_WindowShapeMode>)>();
 
   void SDL_SetWindowsMessageHook(
-    ffi.Pointer<ffi.NativeFunction<SDL_WindowsMessageHook>> callback,
+    SDL_WindowsMessageHook callback,
     ffi.Pointer<ffi.Void> userdata,
   ) {
     return _SDL_SetWindowsMessageHook(
@@ -17877,12 +19228,13 @@ class DartSdl {
     );
   }
 
-  late final _SDL_SetWindowsMessageHook_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_SetWindowsMessageHook>>(
-          'SDL_SetWindowsMessageHook');
-  late final _dart_SDL_SetWindowsMessageHook _SDL_SetWindowsMessageHook =
-      _SDL_SetWindowsMessageHook_ptr.asFunction<
-          _dart_SDL_SetWindowsMessageHook>();
+  late final _SDL_SetWindowsMessageHookPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(SDL_WindowsMessageHook,
+              ffi.Pointer<ffi.Void>)>>('SDL_SetWindowsMessageHook');
+  late final _SDL_SetWindowsMessageHook =
+      _SDL_SetWindowsMessageHookPtr.asFunction<
+          void Function(SDL_WindowsMessageHook, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Returns the D3D9 adapter index that matches the specified display index.
   ///
@@ -17896,12 +19248,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Direct3D9GetAdapterIndex_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Direct3D9GetAdapterIndex>>(
+  late final _SDL_Direct3D9GetAdapterIndexPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
           'SDL_Direct3D9GetAdapterIndex');
-  late final _dart_SDL_Direct3D9GetAdapterIndex _SDL_Direct3D9GetAdapterIndex =
-      _SDL_Direct3D9GetAdapterIndex_ptr.asFunction<
-          _dart_SDL_Direct3D9GetAdapterIndex>();
+  late final _SDL_Direct3D9GetAdapterIndex =
+      _SDL_Direct3D9GetAdapterIndexPtr.asFunction<int Function(int)>();
 
   /// \brief Returns the D3D device associated with a renderer, or NULL if it's not a D3D renderer.
   ///
@@ -17914,11 +19265,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RenderGetD3D9Device_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RenderGetD3D9Device>>(
-          'SDL_RenderGetD3D9Device');
-  late final _dart_SDL_RenderGetD3D9Device _SDL_RenderGetD3D9Device =
-      _SDL_RenderGetD3D9Device_ptr.asFunction<_dart_SDL_RenderGetD3D9Device>();
+  late final _SDL_RenderGetD3D9DevicePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<IDirect3DDevice9> Function(
+              ffi.Pointer<SDL_Renderer>)>>('SDL_RenderGetD3D9Device');
+  late final _SDL_RenderGetD3D9Device = _SDL_RenderGetD3D9DevicePtr.asFunction<
+      ffi.Pointer<IDirect3DDevice9> Function(ffi.Pointer<SDL_Renderer>)>();
 
   /// \brief Returns the DXGI Adapter and Output indices for the specified display index.
   ///
@@ -17936,91 +19288,82 @@ class DartSdl {
     );
   }
 
-  late final _SDL_DXGIGetOutputInfo_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_DXGIGetOutputInfo>>(
-          'SDL_DXGIGetOutputInfo');
-  late final _dart_SDL_DXGIGetOutputInfo _SDL_DXGIGetOutputInfo =
-      _SDL_DXGIGetOutputInfo_ptr.asFunction<_dart_SDL_DXGIGetOutputInfo>();
+  late final _SDL_DXGIGetOutputInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int32>,
+              ffi.Pointer<ffi.Int32>)>>('SDL_DXGIGetOutputInfo');
+  late final _SDL_DXGIGetOutputInfo = _SDL_DXGIGetOutputInfoPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int32>)>();
 
   /// \brief Return true if the current device is a tablet.
   int SDL_IsTablet() {
     return _SDL_IsTablet();
   }
 
-  late final _SDL_IsTablet_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_IsTablet>>('SDL_IsTablet');
-  late final _dart_SDL_IsTablet _SDL_IsTablet =
-      _SDL_IsTablet_ptr.asFunction<_dart_SDL_IsTablet>();
+  late final _SDL_IsTabletPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('SDL_IsTablet');
+  late final _SDL_IsTablet = _SDL_IsTabletPtr.asFunction<int Function()>();
 
   void SDL_OnApplicationWillTerminate() {
     return _SDL_OnApplicationWillTerminate();
   }
 
-  late final _SDL_OnApplicationWillTerminate_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationWillTerminate>>(
+  late final _SDL_OnApplicationWillTerminatePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationWillTerminate');
-  late final _dart_SDL_OnApplicationWillTerminate
-      _SDL_OnApplicationWillTerminate = _SDL_OnApplicationWillTerminate_ptr
-          .asFunction<_dart_SDL_OnApplicationWillTerminate>();
+  late final _SDL_OnApplicationWillTerminate =
+      _SDL_OnApplicationWillTerminatePtr.asFunction<void Function()>();
 
   void SDL_OnApplicationDidReceiveMemoryWarning() {
     return _SDL_OnApplicationDidReceiveMemoryWarning();
   }
 
-  late final _SDL_OnApplicationDidReceiveMemoryWarning_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationDidReceiveMemoryWarning>>(
+  late final _SDL_OnApplicationDidReceiveMemoryWarningPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationDidReceiveMemoryWarning');
-  late final _dart_SDL_OnApplicationDidReceiveMemoryWarning
-      _SDL_OnApplicationDidReceiveMemoryWarning =
-      _SDL_OnApplicationDidReceiveMemoryWarning_ptr.asFunction<
-          _dart_SDL_OnApplicationDidReceiveMemoryWarning>();
+  late final _SDL_OnApplicationDidReceiveMemoryWarning =
+      _SDL_OnApplicationDidReceiveMemoryWarningPtr.asFunction<
+          void Function()>();
 
   void SDL_OnApplicationWillResignActive() {
     return _SDL_OnApplicationWillResignActive();
   }
 
-  late final _SDL_OnApplicationWillResignActive_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationWillResignActive>>(
+  late final _SDL_OnApplicationWillResignActivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationWillResignActive');
-  late final _dart_SDL_OnApplicationWillResignActive
-      _SDL_OnApplicationWillResignActive =
-      _SDL_OnApplicationWillResignActive_ptr.asFunction<
-          _dart_SDL_OnApplicationWillResignActive>();
+  late final _SDL_OnApplicationWillResignActive =
+      _SDL_OnApplicationWillResignActivePtr.asFunction<void Function()>();
 
   void SDL_OnApplicationDidEnterBackground() {
     return _SDL_OnApplicationDidEnterBackground();
   }
 
-  late final _SDL_OnApplicationDidEnterBackground_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationDidEnterBackground>>(
+  late final _SDL_OnApplicationDidEnterBackgroundPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationDidEnterBackground');
-  late final _dart_SDL_OnApplicationDidEnterBackground
-      _SDL_OnApplicationDidEnterBackground =
-      _SDL_OnApplicationDidEnterBackground_ptr.asFunction<
-          _dart_SDL_OnApplicationDidEnterBackground>();
+  late final _SDL_OnApplicationDidEnterBackground =
+      _SDL_OnApplicationDidEnterBackgroundPtr.asFunction<void Function()>();
 
   void SDL_OnApplicationWillEnterForeground() {
     return _SDL_OnApplicationWillEnterForeground();
   }
 
-  late final _SDL_OnApplicationWillEnterForeground_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationWillEnterForeground>>(
+  late final _SDL_OnApplicationWillEnterForegroundPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationWillEnterForeground');
-  late final _dart_SDL_OnApplicationWillEnterForeground
-      _SDL_OnApplicationWillEnterForeground =
-      _SDL_OnApplicationWillEnterForeground_ptr.asFunction<
-          _dart_SDL_OnApplicationWillEnterForeground>();
+  late final _SDL_OnApplicationWillEnterForeground =
+      _SDL_OnApplicationWillEnterForegroundPtr.asFunction<void Function()>();
 
   void SDL_OnApplicationDidBecomeActive() {
     return _SDL_OnApplicationDidBecomeActive();
   }
 
-  late final _SDL_OnApplicationDidBecomeActive_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OnApplicationDidBecomeActive>>(
+  late final _SDL_OnApplicationDidBecomeActivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
           'SDL_OnApplicationDidBecomeActive');
-  late final _dart_SDL_OnApplicationDidBecomeActive
-      _SDL_OnApplicationDidBecomeActive = _SDL_OnApplicationDidBecomeActive_ptr
-          .asFunction<_dart_SDL_OnApplicationDidBecomeActive>();
+  late final _SDL_OnApplicationDidBecomeActive =
+      _SDL_OnApplicationDidBecomeActivePtr.asFunction<void Function()>();
 
   /// \brief Get the number of milliseconds since the SDL library initialization.
   ///
@@ -18029,34 +19372,31 @@ class DartSdl {
     return _SDL_GetTicks();
   }
 
-  late final _SDL_GetTicks_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetTicks>>('SDL_GetTicks');
-  late final _dart_SDL_GetTicks _SDL_GetTicks =
-      _SDL_GetTicks_ptr.asFunction<_dart_SDL_GetTicks>();
+  late final _SDL_GetTicksPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function()>>('SDL_GetTicks');
+  late final _SDL_GetTicks = _SDL_GetTicksPtr.asFunction<int Function()>();
 
   /// \brief Get the current value of the high resolution counter
   int SDL_GetPerformanceCounter() {
     return _SDL_GetPerformanceCounter();
   }
 
-  late final _SDL_GetPerformanceCounter_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPerformanceCounter>>(
+  late final _SDL_GetPerformanceCounterPtr =
+      _lookup<ffi.NativeFunction<Uint64 Function()>>(
           'SDL_GetPerformanceCounter');
-  late final _dart_SDL_GetPerformanceCounter _SDL_GetPerformanceCounter =
-      _SDL_GetPerformanceCounter_ptr.asFunction<
-          _dart_SDL_GetPerformanceCounter>();
+  late final _SDL_GetPerformanceCounter =
+      _SDL_GetPerformanceCounterPtr.asFunction<int Function()>();
 
   /// \brief Get the count per second of the high resolution counter
   int SDL_GetPerformanceFrequency() {
     return _SDL_GetPerformanceFrequency();
   }
 
-  late final _SDL_GetPerformanceFrequency_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPerformanceFrequency>>(
+  late final _SDL_GetPerformanceFrequencyPtr =
+      _lookup<ffi.NativeFunction<Uint64 Function()>>(
           'SDL_GetPerformanceFrequency');
-  late final _dart_SDL_GetPerformanceFrequency _SDL_GetPerformanceFrequency =
-      _SDL_GetPerformanceFrequency_ptr.asFunction<
-          _dart_SDL_GetPerformanceFrequency>();
+  late final _SDL_GetPerformanceFrequency =
+      _SDL_GetPerformanceFrequencyPtr.asFunction<int Function()>();
 
   /// \brief Wait a specified number of milliseconds before returning.
   void SDL_Delay(
@@ -18067,17 +19407,16 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Delay_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Delay>>('SDL_Delay');
-  late final _dart_SDL_Delay _SDL_Delay =
-      _SDL_Delay_ptr.asFunction<_dart_SDL_Delay>();
+  late final _SDL_DelayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(Uint32)>>('SDL_Delay');
+  late final _SDL_Delay = _SDL_DelayPtr.asFunction<void Function(int)>();
 
   /// \brief Add a new timer to the pool of timers already running.
   ///
   /// \return A timer ID, or 0 when an error occurs.
   int SDL_AddTimer(
     int interval,
-    ffi.Pointer<ffi.NativeFunction<SDL_TimerCallback>> callback,
+    SDL_TimerCallback callback,
     ffi.Pointer<ffi.Void> param,
   ) {
     return _SDL_AddTimer(
@@ -18087,10 +19426,12 @@ class DartSdl {
     );
   }
 
-  late final _SDL_AddTimer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_AddTimer>>('SDL_AddTimer');
-  late final _dart_SDL_AddTimer _SDL_AddTimer =
-      _SDL_AddTimer_ptr.asFunction<_dart_SDL_AddTimer>();
+  late final _SDL_AddTimerPtr = _lookup<
+      ffi.NativeFunction<
+          SDL_TimerID Function(Uint32, SDL_TimerCallback,
+              ffi.Pointer<ffi.Void>)>>('SDL_AddTimer');
+  late final _SDL_AddTimer = _SDL_AddTimerPtr.asFunction<
+      int Function(int, SDL_TimerCallback, ffi.Pointer<ffi.Void>)>();
 
   /// \brief Remove a timer knowing its ID.
   ///
@@ -18105,10 +19446,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_RemoveTimer_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_RemoveTimer>>('SDL_RemoveTimer');
-  late final _dart_SDL_RemoveTimer _SDL_RemoveTimer =
-      _SDL_RemoveTimer_ptr.asFunction<_dart_SDL_RemoveTimer>();
+  late final _SDL_RemoveTimerPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(SDL_TimerID)>>(
+          'SDL_RemoveTimer');
+  late final _SDL_RemoveTimer =
+      _SDL_RemoveTimerPtr.asFunction<int Function(int)>();
 
   /// \brief Get the version of SDL that is linked against your program.
   ///
@@ -18140,10 +19482,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_GetVersion_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetVersion>>('SDL_GetVersion');
-  late final _dart_SDL_GetVersion _SDL_GetVersion =
-      _SDL_GetVersion_ptr.asFunction<_dart_SDL_GetVersion>();
+  late final _SDL_GetVersionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<SDL_version>)>>(
+          'SDL_GetVersion');
+  late final _SDL_GetVersion =
+      _SDL_GetVersionPtr.asFunction<void Function(ffi.Pointer<SDL_version>)>();
 
   /// \brief Get the code revision of SDL that is linked against your program.
   ///
@@ -18154,10 +19497,11 @@ class DartSdl {
     return _SDL_GetRevision();
   }
 
-  late final _SDL_GetRevision_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRevision>>('SDL_GetRevision');
-  late final _dart_SDL_GetRevision _SDL_GetRevision =
-      _SDL_GetRevision_ptr.asFunction<_dart_SDL_GetRevision>();
+  late final _SDL_GetRevisionPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+          'SDL_GetRevision');
+  late final _SDL_GetRevision =
+      _SDL_GetRevisionPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
 
   /// \brief Get the revision number of SDL that is linked against your program.
   ///
@@ -18168,11 +19512,11 @@ class DartSdl {
     return _SDL_GetRevisionNumber();
   }
 
-  late final _SDL_GetRevisionNumber_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetRevisionNumber>>(
+  late final _SDL_GetRevisionNumberPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
           'SDL_GetRevisionNumber');
-  late final _dart_SDL_GetRevisionNumber _SDL_GetRevisionNumber =
-      _SDL_GetRevisionNumber_ptr.asFunction<_dart_SDL_GetRevisionNumber>();
+  late final _SDL_GetRevisionNumber =
+      _SDL_GetRevisionNumberPtr.asFunction<int Function()>();
 
   /// \brief Report the user's preferred locale.
   ///
@@ -18216,11 +19560,11 @@ class DartSdl {
     return _SDL_GetPreferredLocales();
   }
 
-  late final _SDL_GetPreferredLocales_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_GetPreferredLocales>>(
+  late final _SDL_GetPreferredLocalesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SDL_Locale> Function()>>(
           'SDL_GetPreferredLocales');
-  late final _dart_SDL_GetPreferredLocales _SDL_GetPreferredLocales =
-      _SDL_GetPreferredLocales_ptr.asFunction<_dart_SDL_GetPreferredLocales>();
+  late final _SDL_GetPreferredLocales = _SDL_GetPreferredLocalesPtr.asFunction<
+      ffi.Pointer<SDL_Locale> Function()>();
 
   /// \brief Open an URL / URI in the browser or other
   ///
@@ -18253,10 +19597,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_OpenURL_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_OpenURL>>('SDL_OpenURL');
-  late final _dart_SDL_OpenURL _SDL_OpenURL =
-      _SDL_OpenURL_ptr.asFunction<_dart_SDL_OpenURL>();
+  late final _SDL_OpenURLPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+          'SDL_OpenURL');
+  late final _SDL_OpenURL =
+      _SDL_OpenURLPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
 
   /// This function initializes  the subsystems specified by \c flags
   int SDL_Init(
@@ -18267,10 +19612,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_Init_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Init>>('SDL_Init');
-  late final _dart_SDL_Init _SDL_Init =
-      _SDL_Init_ptr.asFunction<_dart_SDL_Init>();
+  late final _SDL_InitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(Uint32)>>('SDL_Init');
+  late final _SDL_Init = _SDL_InitPtr.asFunction<int Function(int)>();
 
   /// This function initializes specific SDL subsystems
   ///
@@ -18287,10 +19631,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_InitSubSystem_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_InitSubSystem>>('SDL_InitSubSystem');
-  late final _dart_SDL_InitSubSystem _SDL_InitSubSystem =
-      _SDL_InitSubSystem_ptr.asFunction<_dart_SDL_InitSubSystem>();
+  late final _SDL_InitSubSystemPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(Uint32)>>(
+          'SDL_InitSubSystem');
+  late final _SDL_InitSubSystem =
+      _SDL_InitSubSystemPtr.asFunction<int Function(int)>();
 
   /// This function cleans up specific SDL subsystems
   void SDL_QuitSubSystem(
@@ -18301,10 +19646,11 @@ class DartSdl {
     );
   }
 
-  late final _SDL_QuitSubSystem_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_QuitSubSystem>>('SDL_QuitSubSystem');
-  late final _dart_SDL_QuitSubSystem _SDL_QuitSubSystem =
-      _SDL_QuitSubSystem_ptr.asFunction<_dart_SDL_QuitSubSystem>();
+  late final _SDL_QuitSubSystemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(Uint32)>>(
+          'SDL_QuitSubSystem');
+  late final _SDL_QuitSubSystem =
+      _SDL_QuitSubSystemPtr.asFunction<void Function(int)>();
 
   /// This function returns a mask of the specified subsystems which have
   /// previously been initialized.
@@ -18318,10 +19664,9 @@ class DartSdl {
     );
   }
 
-  late final _SDL_WasInit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_WasInit>>('SDL_WasInit');
-  late final _dart_SDL_WasInit _SDL_WasInit =
-      _SDL_WasInit_ptr.asFunction<_dart_SDL_WasInit>();
+  late final _SDL_WasInitPtr =
+      _lookup<ffi.NativeFunction<Uint32 Function(Uint32)>>('SDL_WasInit');
+  late final _SDL_WasInit = _SDL_WasInitPtr.asFunction<int Function(int)>();
 
   /// This function cleans up all initialized subsystems. You should
   /// call it upon all exit conditions.
@@ -18329,11 +19674,14 @@ class DartSdl {
     return _SDL_Quit();
   }
 
-  late final _SDL_Quit_ptr =
-      _lookup<ffi.NativeFunction<_c_SDL_Quit>>('SDL_Quit');
-  late final _dart_SDL_Quit _SDL_Quit =
-      _SDL_Quit_ptr.asFunction<_dart_SDL_Quit>();
+  late final _SDL_QuitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('SDL_Quit');
+  late final _SDL_Quit = _SDL_QuitPtr.asFunction<void Function()>();
 }
+
+typedef va_list = ffi.Pointer<ffi.Int8>;
+typedef uintptr_t = ffi.Uint64;
+typedef wchar_t = ffi.Uint16;
 
 class _crt_locale_data_public extends ffi.Struct {
   external ffi.Pointer<ffi.Uint16> locale_pctype;
@@ -18345,15 +19693,15 @@ class _crt_locale_data_public extends ffi.Struct {
   external int locale_lc_codepage;
 }
 
-class _crt_locale_data extends ffi.Opaque {}
-
-class _crt_multibyte_data extends ffi.Opaque {}
-
 class _crt_locale_pointers extends ffi.Struct {
   external ffi.Pointer<_crt_locale_data> locinfo;
 
   external ffi.Pointer<_crt_multibyte_data> mbcinfo;
 }
+
+class _crt_locale_data extends ffi.Opaque {}
+
+class _crt_multibyte_data extends ffi.Opaque {}
 
 class Mbstatet extends ffi.Struct {
   @ffi.Uint64()
@@ -18366,6 +19714,8 @@ class Mbstatet extends ffi.Struct {
   external int State;
 }
 
+typedef errno_t = ffi.Int32;
+
 abstract class SDL_bool {
   static const int SDL_FALSE = 0;
   static const int SDL_TRUE = 1;
@@ -18375,7 +19725,23 @@ abstract class SDL_DUMMY_ENUM {
   static const int DUMMY_ENUM_VALUE = 0;
 }
 
+typedef size_t = ffi.Uint64;
+typedef SDL_malloc_func
+    = ffi.Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(size_t)>>;
+typedef SDL_calloc_func = ffi.Pointer<
+    ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(size_t, size_t)>>;
+typedef SDL_realloc_func = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, size_t)>>;
+typedef SDL_free_func
+    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>;
+typedef Uint32 = ffi.Uint32;
+typedef Sint64 = ffi.Int64;
+typedef Uint64 = ffi.Uint64;
+
 class SDL_iconv_t extends ffi.Opaque {}
+
+typedef SDL_iconv_t1 = ffi.Pointer<SDL_iconv_t>;
 
 abstract class SDL_AssertState {
   /// < Retry the assert immediately.
@@ -18413,6 +19779,12 @@ class SDL_AssertData extends ffi.Struct {
   external ffi.Pointer<SDL_AssertData> next;
 }
 
+typedef SDL_AssertionHandler = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Int32 Function(
+            ffi.Pointer<SDL_AssertData>, ffi.Pointer<ffi.Void>)>>;
+typedef SDL_SpinLock = ffi.Int32;
+
 /// \brief A type representing an atomic integer value.  It is a struct
 /// so people don't accidentally use numeric operations on it.
 class SDL_atomic_t extends ffi.Struct {
@@ -18432,6 +19804,8 @@ abstract class SDL_errorcode {
 class SDL_mutex extends ffi.Opaque {}
 
 class SDL_semaphore extends ffi.Opaque {}
+
+typedef SDL_sem = SDL_semaphore;
 
 class SDL_cond extends ffi.Opaque {}
 
@@ -18496,6 +19870,8 @@ class _ldouble_val extends ffi.Opaque {}
 
 class _float_const extends ffi.Opaque {}
 
+typedef _locale_t = ffi.Pointer<_crt_locale_pointers>;
+
 abstract class _crt_argv_mode {
   static const int _crt_argv_no_arguments = 0;
   static const int _crt_argv_unexpanded_arguments = 1;
@@ -18521,88 +19897,139 @@ abstract class _crt_app_type {
   static const int _crt_gui_app = 2;
 }
 
+typedef _UserMathErrorFunctionPointer = ffi
+    .Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<exception>)>>;
+typedef _PVFV = ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
+typedef _PIFV = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
+
 class onexit_table_t extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> first;
+  external ffi.Pointer<_PVFV> first;
 
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> last;
+  external ffi.Pointer<_PVFV> last;
 
-  external ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> end;
+  external ffi.Pointer<_PVFV> end;
 }
 
-class unnamedStruct_2 extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> data;
+typedef _onexit_t = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
+typedef _tls_callback_type = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(
+            ffi.Pointer<ffi.Void>, ffi.Uint64, ffi.Pointer<ffi.Void>)>>;
+typedef _beginthread_proc_type
+    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>;
+typedef _beginthreadex_proc_type = ffi
+    .Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Pointer<ffi.Void>)>>;
+typedef _GetDllProcAddrProcType
+    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
 
-  @ffi.Uint64()
-  external int size;
-
-  @ffi.Uint64()
-  external int left;
-}
-
-class unnamedStruct_1 extends ffi.Struct {
-  @ffi.Int32()
-  external int append;
-
-  external ffi.Pointer<ffi.Void> h;
-
-  external unnamedStruct_2 buffer;
-}
-
-class unnamedStruct_3 extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> base;
-
-  external ffi.Pointer<ffi.Uint8> here;
-
-  external ffi.Pointer<ffi.Uint8> stop;
-}
-
-class unnamedStruct_4 extends ffi.Struct {
-  external ffi.Pointer<ffi.Void> data1;
-
-  external ffi.Pointer<ffi.Void> data2;
-}
-
-class unnamedUnion_1 extends ffi.Union {
-  external unnamedStruct_1 windowsio;
-
-  external unnamedStruct_3 mem;
-
-  external unnamedStruct_4 unknown;
-}
+/// The function passed to SDL_CreateThread().
+/// It is passed a void* user context parameter and returns an int.
+typedef SDL_ThreadFunction = ffi
+    .Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Void>)>>;
+typedef pfnSDL_CurrentBeginThread = ffi.Pointer<
+    ffi.NativeFunction<
+        uintptr_t Function(
+            ffi.Pointer<ffi.Void>,
+            ffi.Uint32,
+            ffi.Pointer<
+                ffi.NativeFunction<ffi.Uint32 Function(ffi.Pointer<ffi.Void>)>>,
+            ffi.Pointer<ffi.Void>,
+            ffi.Uint32,
+            ffi.Pointer<ffi.Uint32>)>>;
+typedef pfnSDL_CurrentEndThread
+    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>;
+typedef SDL_threadID = ffi.Uint64;
+typedef SDL_TLSID = ffi.Uint32;
 
 /// This is the read/write operation structure -- very basic.
 class SDL_RWops extends ffi.Struct {
   /// Return the size of the file in this rwops, or -1 if unknown
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_6>> size;
+  external ffi
+          .Pointer<ffi.NativeFunction<Sint64 Function(ffi.Pointer<SDL_RWops>)>>
+      size;
 
   /// Seek to \c offset relative to \c whence, one of stdio's whence values:
   /// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END
   ///
   /// \return the final offset in the data stream, or -1 on error.
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_7>> seek;
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          Sint64 Function(ffi.Pointer<SDL_RWops>, Sint64, ffi.Int32)>> seek;
 
   /// Read up to \c maxnum objects each of size \c size from the data
   /// stream to the area pointed at by \c ptr.
   ///
   /// \return the number of objects read, or 0 at error or end of file.
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_8>> read;
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, size_t,
+              size_t)>> read;
 
   /// Write exactly \c num objects each of size \c size from the area
   /// pointed at by \c ptr to data stream.
   ///
   /// \return the number of objects written, or 0 at error or end of file.
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_9>> write;
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          size_t Function(ffi.Pointer<SDL_RWops>, ffi.Pointer<ffi.Void>, size_t,
+              size_t)>> write;
 
   /// Close and free an allocated SDL_RWops structure.
   ///
   /// \return 0 if successful or -1 on write error when flushing data.
-  external ffi.Pointer<ffi.NativeFunction<_typedefC_10>> close;
+  external ffi.Pointer<
+      ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<SDL_RWops>)>> close;
 
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
-  external unnamedUnion_1 hidden;
+  external UnnamedUnion1 hidden;
 }
+
+class UnnamedUnion1 extends ffi.Union {
+  external UnnamedStruct1 windowsio;
+
+  external UnnamedStruct3 mem;
+
+  external UnnamedStruct4 unknown;
+}
+
+class UnnamedStruct1 extends ffi.Struct {
+  @ffi.Int32()
+  external int append;
+
+  external ffi.Pointer<ffi.Void> h;
+
+  external UnnamedStruct2 buffer;
+}
+
+class UnnamedStruct2 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> data;
+
+  @size_t()
+  external int size;
+
+  @size_t()
+  external int left;
+}
+
+class UnnamedStruct3 extends ffi.Struct {
+  external ffi.Pointer<Uint8> base;
+
+  external ffi.Pointer<Uint8> here;
+
+  external ffi.Pointer<Uint8> stop;
+}
+
+typedef Uint8 = ffi.Uint8;
+
+class UnnamedStruct4 extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> data1;
+
+  external ffi.Pointer<ffi.Void> data2;
+}
+
+typedef Uint16 = ffi.Uint16;
 
 /// The calculated values in this structure are calculated by SDL_OpenAudio().
 ///
@@ -18620,35 +20047,72 @@ class SDL_AudioSpec extends ffi.Struct {
   external int freq;
 
   /// < Audio data format
-  @ffi.Uint16()
+  @SDL_AudioFormat()
   external int format;
 
   /// < Number of channels: 1 mono, 2 stereo
-  @ffi.Uint8()
+  @Uint8()
   external int channels;
 
   /// < Audio buffer silence value (calculated)
-  @ffi.Uint8()
+  @Uint8()
   external int silence;
 
   /// < Audio buffer size in sample FRAMES (total samples divided by channel count)
-  @ffi.Uint16()
+  @Uint16()
   external int samples;
 
   /// < Necessary for some compile environments
-  @ffi.Uint16()
+  @Uint16()
   external int padding;
 
   /// < Audio buffer size in bytes (calculated)
-  @ffi.Uint32()
+  @Uint32()
   external int size;
 
   /// < Callback that feeds the audio device (NULL to use SDL_QueueAudio()).
-  external ffi.Pointer<ffi.NativeFunction<SDL_AudioCallback>> callback;
+  external SDL_AudioCallback callback;
 
   /// < Userdata passed to callback (ignored for NULL callbacks).
   external ffi.Pointer<ffi.Void> userdata;
 }
+
+/// \brief Audio format flags.
+///
+/// These are what the 16 bits in SDL_AudioFormat currently mean...
+/// (Unspecified bits are always zero).
+///
+/// \verbatim
+/// ++-----------------------sample is signed if set
+/// ||
+/// ||       ++-----------sample is bigendian if set
+/// ||       ||
+/// ||       ||          ++---sample is float if set
+/// ||       ||          ||
+/// ||       ||          || +---sample bit size---+
+/// ||       ||          || |                     |
+/// 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
+/// \endverbatim
+///
+/// There are macros in SDL 2.0 and later to query these bits.
+typedef SDL_AudioFormat = Uint16;
+
+/// This function is called when the audio device needs more data.
+///
+/// \param userdata An application-specific parameter saved in
+/// the SDL_AudioSpec structure
+/// \param stream A pointer to the audio data buffer.
+/// \param len    The length of that buffer in bytes.
+///
+/// Once the callback returns, the buffer will no longer be valid.
+/// Stereo samples are stored in a LRLRLR ordering.
+///
+/// You can choose to avoid callbacks and use SDL_QueueAudio() instead, if
+/// you like. Just open your audio device with a NULL callback.
+typedef SDL_AudioCallback = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(
+            ffi.Pointer<ffi.Void>, ffi.Pointer<Uint8>, ffi.Int32)>>;
 
 class SDL_AudioCVT extends ffi.Struct {
   /// < Set to 1 if conversion possible
@@ -18656,11 +20120,11 @@ class SDL_AudioCVT extends ffi.Struct {
   external int needed;
 
   /// < Source audio format
-  @ffi.Uint16()
+  @SDL_AudioFormat()
   external int src_format;
 
   /// < Target audio format
-  @ffi.Uint16()
+  @SDL_AudioFormat()
   external int dst_format;
 
   /// < Rate conversion increment
@@ -18668,7 +20132,7 @@ class SDL_AudioCVT extends ffi.Struct {
   external double rate_incr;
 
   /// < Buffer to hold entire audio data
-  external ffi.Pointer<ffi.Uint8> buf;
+  external ffi.Pointer<Uint8> buf;
 
   /// < Length of original audio buffer
   @ffi.Int32()
@@ -18687,12 +20151,25 @@ class SDL_AudioCVT extends ffi.Struct {
   external double len_ratio;
 
   @ffi.Array.multi([10])
-  external ffi.Array<ffi.Pointer<ffi.NativeFunction<SDL_AudioFilter>>> filters;
+  external ffi.Array<SDL_AudioFilter> filters;
 
   /// < Current audio conversion function
   @ffi.Int32()
   external int filter_index;
 }
+
+typedef SDL_AudioFilter = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(ffi.Pointer<SDL_AudioCVT>, SDL_AudioFormat)>>;
+
+/// SDL Audio Device IDs.
+///
+/// A successful call to SDL_OpenAudio() is always device id 1, and legacy
+/// SDL audio APIs assume you want this device ID. SDL_OpenAudioDevice() calls
+/// always returns devices >= 2 on success. The legacy calls are good both
+/// for backwards compatibility and when you don't care about multiple,
+/// specific, or capture devices.
+typedef SDL_AudioDeviceID = Uint32;
 
 abstract class SDL_AudioStatus {
   static const int SDL_AUDIO_STOPPED = 0;
@@ -18701,6 +20178,8 @@ abstract class SDL_AudioStatus {
 }
 
 class SDL_AudioStream extends ffi.Opaque {}
+
+typedef SDL_AudioStream1 = SDL_AudioStream;
 
 /// Pixel type.
 abstract class SDL_PixelType {
@@ -18832,16 +20311,16 @@ abstract class SDL_PixelFormatEnum {
 }
 
 class SDL_Color extends ffi.Struct {
-  @ffi.Uint8()
+  @Uint8()
   external int r;
 
-  @ffi.Uint8()
+  @Uint8()
   external int g;
 
-  @ffi.Uint8()
+  @Uint8()
   external int b;
 
-  @ffi.Uint8()
+  @Uint8()
   external int a;
 }
 
@@ -18851,7 +20330,7 @@ class SDL_Palette extends ffi.Struct {
 
   external ffi.Pointer<SDL_Color> colors;
 
-  @ffi.Uint32()
+  @Uint32()
   external int version;
 
   @ffi.Int32()
@@ -18860,54 +20339,54 @@ class SDL_Palette extends ffi.Struct {
 
 /// \note Everything in the pixel format structure is read-only.
 class SDL_PixelFormat extends ffi.Struct {
-  @ffi.Uint32()
+  @Uint32()
   external int format;
 
   external ffi.Pointer<SDL_Palette> palette;
 
-  @ffi.Uint8()
+  @Uint8()
   external int BitsPerPixel;
 
-  @ffi.Uint8()
+  @Uint8()
   external int BytesPerPixel;
 
   @ffi.Array.multi([2])
-  external ffi.Array<ffi.Uint8> padding;
+  external ffi.Array<Uint8> padding;
 
-  @ffi.Uint32()
+  @Uint32()
   external int Rmask;
 
-  @ffi.Uint32()
+  @Uint32()
   external int Gmask;
 
-  @ffi.Uint32()
+  @Uint32()
   external int Bmask;
 
-  @ffi.Uint32()
+  @Uint32()
   external int Amask;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Rloss;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Gloss;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Bloss;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Aloss;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Rshift;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Gshift;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Bshift;
 
-  @ffi.Uint8()
+  @Uint8()
   external int Ashift;
 
   @ffi.Int32()
@@ -19056,15 +20535,13 @@ abstract class SDL_BlendFactor {
   static const int SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA = 10;
 }
 
-class SDL_BlitMap extends ffi.Opaque {}
-
 /// \brief A collection of pixels used in software blitting.
 ///
 /// \note  This structure should be treated as read-only, except for \c pixels,
 /// which, if not NULL, contains the raw pixel data for the surface.
 class SDL_Surface extends ffi.Struct {
   /// < Read-only
-  @ffi.Uint32()
+  @Uint32()
   external int flags;
 
   /// < Read-only
@@ -19105,6 +20582,8 @@ class SDL_Surface extends ffi.Struct {
   external int refcount;
 }
 
+class SDL_BlitMap extends ffi.Opaque {}
+
 /// \brief The formula used for converting between YUV and RGB
 abstract class SDL_YUV_CONVERSION_MODE {
   /// < Full range JPEG
@@ -19131,7 +20610,7 @@ abstract class SDL_YUV_CONVERSION_MODE {
 /// \sa SDL_GetWindowDisplayMode()
 class SDL_DisplayMode extends ffi.Struct {
   /// < pixel format
-  @ffi.Uint32()
+  @Uint32()
   external int format;
 
   /// < width, in screen coordinates
@@ -19387,6 +20866,17 @@ abstract class SDL_HitTestResult {
   static const int SDL_HITTEST_RESIZE_BOTTOMLEFT = 8;
   static const int SDL_HITTEST_RESIZE_LEFT = 9;
 }
+
+/// \brief Callback used for hit-testing.
+///
+/// \sa SDL_SetWindowHitTest
+typedef SDL_HitTest = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Int32 Function(ffi.Pointer<SDL_Window>, ffi.Pointer<SDL_Point>,
+            ffi.Pointer<ffi.Void>)>>;
+
+/// \brief An opaque handle to an OpenGL context.
+typedef SDL_GLContext = ffi.Pointer<ffi.Void>;
 
 /// \brief The SDL keyboard scancode representation.
 ///
@@ -20026,16 +21516,28 @@ class SDL_Keysym extends ffi.Struct {
   external int scancode;
 
   /// < SDL virtual key code - see ::SDL_Keycode for details
-  @ffi.Int32()
+  @SDL_Keycode()
   external int sym;
 
   /// < current key modifiers
-  @ffi.Uint16()
+  @Uint16()
   external int mod;
 
-  @ffi.Uint32()
+  @Uint32()
   external int unused;
 }
+
+/// \brief The SDL virtual key representation.
+///
+/// Values of this type are used to represent keyboard keys using the current
+/// layout of the keyboard.  These values include Unicode values representing
+/// the unmodified character that would be generated by pressing the key, or
+/// an SDLK_* constant for those keys that do not generate characters.
+///
+/// A special exception is the number keys at the top of the keyboard which
+/// always map to SDLK_0...SDLK_9, regardless of layout.
+typedef SDL_Keycode = Sint32;
+typedef Sint32 = ffi.Int32;
 
 class SDL_Cursor extends ffi.Opaque {}
 
@@ -20093,7 +21595,7 @@ class SDL_Joystick extends ffi.Opaque {}
 
 class SDL_JoystickGUID extends ffi.Struct {
   @ffi.Array.multi([16])
-  external ffi.Array<ffi.Uint8> data;
+  external ffi.Array<Uint8> data;
 }
 
 abstract class SDL_JoystickType {
@@ -20119,6 +21621,15 @@ abstract class SDL_JoystickPowerLevel {
   static const int SDL_JOYSTICK_POWER_MAX = 5;
 }
 
+/// This is a unique ID for a joystick for the time it is connected to the system,
+/// and is never reused for the lifetime of the application. If the joystick is
+/// disconnected and reconnected, it will get a new ID.
+///
+/// The ID value starts at 0 and increments from there. The value -1 is an invalid ID.
+typedef SDL_JoystickID = Sint32;
+typedef SDL_Joystick1 = SDL_Joystick;
+typedef Sint16 = ffi.Int16;
+
 /// \brief SDL_sensor.h
 ///
 /// In order to use these functions, SDL_Init() must have been called
@@ -20139,6 +21650,13 @@ abstract class SDL_SensorType {
   /// < Gyroscope
   static const int SDL_SENSOR_GYRO = 2;
 }
+
+/// This is a unique ID for a sensor for the time it is connected to the system,
+/// and is never reused for the lifetime of the application.
+///
+/// The ID value starts at 0 and increments from there. The value -1 is an invalid ID.
+typedef SDL_SensorID = Sint32;
+typedef SDL_Sensor1 = SDL_Sensor;
 
 /// The gamecontroller structure used to identify an SDL game controller
 class SDL_GameController extends ffi.Opaque {}
@@ -20161,7 +21679,25 @@ abstract class SDL_GameControllerBindType {
   static const int SDL_CONTROLLER_BINDTYPE_HAT = 3;
 }
 
-class unnamedStruct_5 extends ffi.Struct {
+/// Get the SDL joystick layer binding for this controller button/axis mapping
+class SDL_GameControllerButtonBind extends ffi.Struct {
+  @ffi.Int32()
+  external int bindType;
+
+  external UnnamedUnion2 value;
+}
+
+class UnnamedUnion2 extends ffi.Union {
+  @ffi.Int32()
+  external int button;
+
+  @ffi.Int32()
+  external int axis;
+
+  external UnnamedStruct5 hat;
+}
+
+class UnnamedStruct5 extends ffi.Struct {
   @ffi.Int32()
   external int hat;
 
@@ -20169,23 +21705,7 @@ class unnamedStruct_5 extends ffi.Struct {
   external int hat_mask;
 }
 
-class unnamedUnion_2 extends ffi.Union {
-  @ffi.Int32()
-  external int button;
-
-  @ffi.Int32()
-  external int axis;
-
-  external unnamedStruct_5 hat;
-}
-
-/// Get the SDL joystick layer binding for this controller button/axis mapping
-class SDL_GameControllerButtonBind extends ffi.Struct {
-  @ffi.Int32()
-  external int bindType;
-
-  external unnamedUnion_2 value;
-}
+typedef SDL_GameController1 = SDL_GameController;
 
 /// The list of axes available from a controller
 ///
@@ -20240,7 +21760,7 @@ abstract class SDL_TouchDeviceType {
 }
 
 class SDL_Finger extends ffi.Struct {
-  @ffi.Int64()
+  @SDL_FingerID()
   external int id;
 
   @ffi.Float()
@@ -20252,6 +21772,10 @@ class SDL_Finger extends ffi.Struct {
   @ffi.Float()
   external double pressure;
 }
+
+typedef SDL_FingerID = Sint64;
+typedef SDL_TouchID = Sint64;
+typedef SDL_GestureID = Sint64;
 
 /// \brief The types of events that can be delivered.
 abstract class SDL_EventType {
@@ -20428,108 +21952,108 @@ abstract class SDL_EventType {
 
 /// \brief Fields shared by every event
 class SDL_CommonEvent extends ffi.Struct {
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 }
 
 /// \brief Display state change event data (event.display.*)
 class SDL_DisplayEvent extends ffi.Struct {
   /// < ::SDL_DISPLAYEVENT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The associated display index
-  @ffi.Uint32()
+  @Uint32()
   external int display;
 
   /// < ::SDL_DisplayEventID
-  @ffi.Uint8()
+  @Uint8()
   external int event;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < event dependent data
-  @ffi.Int32()
+  @Sint32()
   external int data1;
 }
 
 /// \brief Window state change event data (event.window.*)
 class SDL_WindowEvent extends ffi.Struct {
   /// < ::SDL_WINDOWEVENT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The associated window
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < ::SDL_WindowEventID
-  @ffi.Uint8()
+  @Uint8()
   external int event;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < event dependent data
-  @ffi.Int32()
+  @Sint32()
   external int data1;
 
   /// < event dependent data
-  @ffi.Int32()
+  @Sint32()
   external int data2;
 }
 
 /// \brief Keyboard button event structure (event.key.*)
 class SDL_KeyboardEvent extends ffi.Struct {
   /// < ::SDL_KEYDOWN or ::SDL_KEYUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with keyboard focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < ::SDL_PRESSED or ::SDL_RELEASED
-  @ffi.Uint8()
+  @Uint8()
   external int state;
 
   /// < Non-zero if this is a key repeat
-  @ffi.Uint8()
+  @Uint8()
   external int repeat;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < The key that was pressed or released
@@ -20539,41 +22063,41 @@ class SDL_KeyboardEvent extends ffi.Struct {
 /// \brief Keyboard text editing event structure (event.edit.*)
 class SDL_TextEditingEvent extends ffi.Struct {
   /// < ::SDL_TEXTEDITING
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with keyboard focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   @ffi.Array.multi([32])
   external ffi.Array<ffi.Int8> text;
 
   /// < The start cursor of selected editing text
-  @ffi.Int32()
+  @Sint32()
   external int start;
 
   /// < The length of selected editing text
-  @ffi.Int32()
+  @Sint32()
   external int length;
 }
 
 /// \brief Keyboard text input event structure (event.text.*)
 class SDL_TextInputEvent extends ffi.Struct {
   /// < ::SDL_TEXTINPUT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with keyboard focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   @ffi.Array.multi([32])
@@ -20583,202 +22107,202 @@ class SDL_TextInputEvent extends ffi.Struct {
 /// \brief Mouse motion event structure (event.motion.*)
 class SDL_MouseMotionEvent extends ffi.Struct {
   /// < ::SDL_MOUSEMOTION
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with mouse focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < The mouse instance id, or SDL_TOUCH_MOUSEID
-  @ffi.Uint32()
+  @Uint32()
   external int which;
 
   /// < The current button state
-  @ffi.Uint32()
+  @Uint32()
   external int state;
 
   /// < X coordinate, relative to window
-  @ffi.Int32()
+  @Sint32()
   external int x;
 
   /// < Y coordinate, relative to window
-  @ffi.Int32()
+  @Sint32()
   external int y;
 
   /// < The relative motion in the X direction
-  @ffi.Int32()
+  @Sint32()
   external int xrel;
 
   /// < The relative motion in the Y direction
-  @ffi.Int32()
+  @Sint32()
   external int yrel;
 }
 
 /// \brief Mouse button event structure (event.button.*)
 class SDL_MouseButtonEvent extends ffi.Struct {
   /// < ::SDL_MOUSEBUTTONDOWN or ::SDL_MOUSEBUTTONUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with mouse focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < The mouse instance id, or SDL_TOUCH_MOUSEID
-  @ffi.Uint32()
+  @Uint32()
   external int which;
 
   /// < The mouse button index
-  @ffi.Uint8()
+  @Uint8()
   external int button;
 
   /// < ::SDL_PRESSED or ::SDL_RELEASED
-  @ffi.Uint8()
+  @Uint8()
   external int state;
 
   /// < 1 for single-click, 2 for double-click, etc.
-  @ffi.Uint8()
+  @Uint8()
   external int clicks;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
   /// < X coordinate, relative to window
-  @ffi.Int32()
+  @Sint32()
   external int x;
 
   /// < Y coordinate, relative to window
-  @ffi.Int32()
+  @Sint32()
   external int y;
 }
 
 /// \brief Mouse wheel event structure (event.wheel.*)
 class SDL_MouseWheelEvent extends ffi.Struct {
   /// < ::SDL_MOUSEWHEEL
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The window with mouse focus, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < The mouse instance id, or SDL_TOUCH_MOUSEID
-  @ffi.Uint32()
+  @Uint32()
   external int which;
 
   /// < The amount scrolled horizontally, positive to the right and negative to the left
-  @ffi.Int32()
+  @Sint32()
   external int x;
 
   /// < The amount scrolled vertically, positive away from the user and negative toward the user
-  @ffi.Int32()
+  @Sint32()
   external int y;
 
   /// < Set to one of the SDL_MOUSEWHEEL_* defines. When FLIPPED the values in X and Y will be opposite. Multiply by -1 to change them back
-  @ffi.Uint32()
+  @Uint32()
   external int direction;
 }
 
 /// \brief Joystick axis motion event structure (event.jaxis.*)
 class SDL_JoyAxisEvent extends ffi.Struct {
   /// < ::SDL_JOYAXISMOTION
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The joystick axis index
-  @ffi.Uint8()
+  @Uint8()
   external int axis;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < The axis value (range: -32768 to 32767)
-  @ffi.Int16()
+  @Sint16()
   external int value;
 
-  @ffi.Uint16()
+  @Uint16()
   external int padding4;
 }
 
 /// \brief Joystick trackball motion event structure (event.jball.*)
 class SDL_JoyBallEvent extends ffi.Struct {
   /// < ::SDL_JOYBALLMOTION
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The joystick trackball index
-  @ffi.Uint8()
+  @Uint8()
   external int ball;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < The relative motion in the X direction
-  @ffi.Int16()
+  @Sint16()
   external int xrel;
 
   /// < The relative motion in the Y direction
-  @ffi.Int16()
+  @Sint16()
   external int yrel;
 }
 
 /// \brief Joystick hat position change event structure (event.jhat.*)
 class SDL_JoyHatEvent extends ffi.Struct {
   /// < ::SDL_JOYHATMOTION
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The joystick hat index
-  @ffi.Uint8()
+  @Uint8()
   external int hat;
 
   /// < The hat position value.
@@ -20787,159 +22311,159 @@ class SDL_JoyHatEvent extends ffi.Struct {
   /// \sa ::SDL_HAT_LEFTDOWN ::SDL_HAT_DOWN ::SDL_HAT_RIGHTDOWN
   ///
   /// Note that zero means the POV is centered.
-  @ffi.Uint8()
+  @Uint8()
   external int value;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 }
 
 /// \brief Joystick button event structure (event.jbutton.*)
 class SDL_JoyButtonEvent extends ffi.Struct {
   /// < ::SDL_JOYBUTTONDOWN or ::SDL_JOYBUTTONUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The joystick button index
-  @ffi.Uint8()
+  @Uint8()
   external int button;
 
   /// < ::SDL_PRESSED or ::SDL_RELEASED
-  @ffi.Uint8()
+  @Uint8()
   external int state;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 }
 
 /// \brief Joystick device event structure (event.jdevice.*)
 class SDL_JoyDeviceEvent extends ffi.Struct {
   /// < ::SDL_JOYDEVICEADDED or ::SDL_JOYDEVICEREMOVED
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick device index for the ADDED event, instance id for the REMOVED event
-  @ffi.Int32()
+  @Sint32()
   external int which;
 }
 
 /// \brief Game controller axis motion event structure (event.caxis.*)
 class SDL_ControllerAxisEvent extends ffi.Struct {
   /// < ::SDL_CONTROLLERAXISMOTION
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The controller axis (SDL_GameControllerAxis)
-  @ffi.Uint8()
+  @Uint8()
   external int axis;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 
   /// < The axis value (range: -32768 to 32767)
-  @ffi.Int16()
+  @Sint16()
   external int value;
 
-  @ffi.Uint16()
+  @Uint16()
   external int padding4;
 }
 
 /// \brief Game controller button event structure (event.cbutton.*)
 class SDL_ControllerButtonEvent extends ffi.Struct {
   /// < ::SDL_CONTROLLERBUTTONDOWN or ::SDL_CONTROLLERBUTTONUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The controller button (SDL_GameControllerButton)
-  @ffi.Uint8()
+  @Uint8()
   external int button;
 
   /// < ::SDL_PRESSED or ::SDL_RELEASED
-  @ffi.Uint8()
+  @Uint8()
   external int state;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 }
 
 /// \brief Controller device event structure (event.cdevice.*)
 class SDL_ControllerDeviceEvent extends ffi.Struct {
   /// < ::SDL_CONTROLLERDEVICEADDED, ::SDL_CONTROLLERDEVICEREMOVED, or ::SDL_CONTROLLERDEVICEREMAPPED
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick device index for the ADDED event, instance id for the REMOVED or REMAPPED event
-  @ffi.Int32()
+  @Sint32()
   external int which;
 }
 
 /// \brief Game controller touchpad event structure (event.ctouchpad.*)
 class SDL_ControllerTouchpadEvent extends ffi.Struct {
   /// < ::SDL_CONTROLLERTOUCHPADDOWN or ::SDL_CONTROLLERTOUCHPADMOTION or ::SDL_CONTROLLERTOUCHPADUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The index of the touchpad
-  @ffi.Int32()
+  @Sint32()
   external int touchpad;
 
   /// < The index of the finger on the touchpad
-  @ffi.Int32()
+  @Sint32()
   external int finger;
 
   /// < Normalized in the range 0...1 with 0 being on the left
@@ -20958,19 +22482,19 @@ class SDL_ControllerTouchpadEvent extends ffi.Struct {
 /// \brief Game controller sensor event structure (event.csensor.*)
 class SDL_ControllerSensorEvent extends ffi.Struct {
   /// < ::SDL_CONTROLLERSENSORUPDATE
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The joystick instance id
-  @ffi.Int32()
+  @SDL_JoystickID()
   external int which;
 
   /// < The type of the sensor, one of the values of ::SDL_SensorType
-  @ffi.Int32()
+  @Sint32()
   external int sensor;
 
   @ffi.Array.multi([3])
@@ -20980,46 +22504,46 @@ class SDL_ControllerSensorEvent extends ffi.Struct {
 /// \brief Audio device event structure (event.adevice.*)
 class SDL_AudioDeviceEvent extends ffi.Struct {
   /// < ::SDL_AUDIODEVICEADDED, or ::SDL_AUDIODEVICEREMOVED
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The audio device index for the ADDED event (valid until next SDL_GetNumAudioDevices() call), SDL_AudioDeviceID for the REMOVED event
-  @ffi.Uint32()
+  @Uint32()
   external int which;
 
   /// < zero if an output device, non-zero if a capture device.
-  @ffi.Uint8()
+  @Uint8()
   external int iscapture;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding1;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding2;
 
-  @ffi.Uint8()
+  @Uint8()
   external int padding3;
 }
 
 /// \brief Touch finger event structure (event.tfinger.*)
 class SDL_TouchFingerEvent extends ffi.Struct {
   /// < ::SDL_FINGERMOTION or ::SDL_FINGERDOWN or ::SDL_FINGERUP
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The touch device id
-  @ffi.Int64()
+  @SDL_TouchID()
   external int touchId;
 
-  @ffi.Int64()
+  @SDL_FingerID()
   external int fingerId;
 
   /// < Normalized in the range 0...1
@@ -21043,22 +22567,22 @@ class SDL_TouchFingerEvent extends ffi.Struct {
   external double pressure;
 
   /// < The window underneath the finger, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 }
 
 /// \brief Multiple Finger Gesture Event (event.mgesture.*)
 class SDL_MultiGestureEvent extends ffi.Struct {
   /// < ::SDL_MULTIGESTURE
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The touch device id
-  @ffi.Int64()
+  @SDL_TouchID()
   external int touchId;
 
   @ffi.Float()
@@ -21073,31 +22597,31 @@ class SDL_MultiGestureEvent extends ffi.Struct {
   @ffi.Float()
   external double y;
 
-  @ffi.Uint16()
+  @Uint16()
   external int numFingers;
 
-  @ffi.Uint16()
+  @Uint16()
   external int padding;
 }
 
 /// \brief Dollar Gesture Event (event.dgesture.*)
 class SDL_DollarGestureEvent extends ffi.Struct {
   /// < ::SDL_DOLLARGESTURE or ::SDL_DOLLARRECORD
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The touch device id
-  @ffi.Int64()
+  @SDL_TouchID()
   external int touchId;
 
-  @ffi.Int64()
+  @SDL_GestureID()
   external int gestureId;
 
-  @ffi.Uint32()
+  @Uint32()
   external int numFingers;
 
   @ffi.Float()
@@ -21117,33 +22641,33 @@ class SDL_DollarGestureEvent extends ffi.Struct {
 /// \note If this event is enabled, you must free the filename in the event.
 class SDL_DropEvent extends ffi.Struct {
   /// < ::SDL_DROPBEGIN or ::SDL_DROPFILE or ::SDL_DROPTEXT or ::SDL_DROPCOMPLETE
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The file name, which should be freed with SDL_free(), is NULL on begin/complete
   external ffi.Pointer<ffi.Int8> file;
 
   /// < The window that was dropped on, if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 }
 
 /// \brief Sensor event structure (event.sensor.*)
 class SDL_SensorEvent extends ffi.Struct {
   /// < ::SDL_SENSORUPDATE
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The instance ID of the sensor
-  @ffi.Int32()
+  @Sint32()
   external int which;
 
   @ffi.Array.multi([6])
@@ -21153,41 +22677,41 @@ class SDL_SensorEvent extends ffi.Struct {
 /// \brief The "quit requested" event
 class SDL_QuitEvent extends ffi.Struct {
   /// < ::SDL_QUIT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 }
 
 /// \brief OS Specific event
 class SDL_OSEvent extends ffi.Struct {
   /// < ::SDL_QUIT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 }
 
 /// \brief A user-defined event type (event.user.*)
 class SDL_UserEvent extends ffi.Struct {
   /// < ::SDL_USEREVENT through ::SDL_LASTEVENT-1
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < The associated window if any
-  @ffi.Uint32()
+  @Uint32()
   external int windowID;
 
   /// < User defined event code
-  @ffi.Int32()
+  @Sint32()
   external int code;
 
   /// < User defined data pointer
@@ -21205,11 +22729,11 @@ class SDL_SysWMmsg extends ffi.Opaque {}
 /// \note If you want to use this event, you should include SDL_syswm.h.
 class SDL_SysWMEvent extends ffi.Struct {
   /// < ::SDL_SYSWMEVENT
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < In milliseconds, populated using SDL_GetTicks()
-  @ffi.Uint32()
+  @Uint32()
   external int timestamp;
 
   /// < driver dependent data, defined in SDL_syswm.h
@@ -21219,7 +22743,7 @@ class SDL_SysWMEvent extends ffi.Struct {
 /// \brief General event structure
 class SDL_Event extends ffi.Union {
   /// < Event type, shared with all events
-  @ffi.Uint32()
+  @Uint32()
   external int type;
 
   /// < Common event data
@@ -21307,7 +22831,7 @@ class SDL_Event extends ffi.Union {
   external SDL_DropEvent drop;
 
   @ffi.Array.multi([56])
-  external ffi.Array<ffi.Uint8> padding;
+  external ffi.Array<Uint8> padding;
 }
 
 abstract class SDL_eventaction {
@@ -21315,6 +22839,10 @@ abstract class SDL_eventaction {
   static const int SDL_PEEKEVENT = 1;
   static const int SDL_GETEVENT = 2;
 }
+
+typedef SDL_EventFilter = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Int32 Function(ffi.Pointer<ffi.Void>, ffi.Pointer<SDL_Event>)>>;
 
 /// \typedef SDL_Haptic
 ///
@@ -21421,11 +22949,11 @@ class SDL_Haptic extends ffi.Opaque {}
 /// \sa SDL_HapticNumAxes
 class SDL_HapticDirection extends ffi.Struct {
   /// < The type of encoding.
-  @ffi.Uint8()
+  @Uint8()
   external int type;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Int32> dir;
+  external ffi.Array<Sint32> dir;
 }
 
 /// \brief A structure containing a template for a Constant effect.
@@ -21439,46 +22967,46 @@ class SDL_HapticDirection extends ffi.Struct {
 /// \sa SDL_HapticEffect
 class SDL_HapticConstant extends ffi.Struct {
   /// < ::SDL_HAPTIC_CONSTANT
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Direction of the effect.
   external SDL_HapticDirection direction;
 
   /// < Duration of the effect.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Delay before starting the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int delay;
 
   /// < Button that triggers the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int button;
 
   /// < How soon it can be triggered again after button.
-  @ffi.Uint16()
+  @Uint16()
   external int interval;
 
   /// < Strength of the constant effect.
-  @ffi.Int16()
+  @Sint16()
   external int level;
 
   /// < Duration of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_length;
 
   /// < Level at the start of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_level;
 
   /// < Duration of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_length;
 
   /// < Level at the end of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_level;
 }
 
@@ -21541,58 +23069,58 @@ class SDL_HapticPeriodic extends ffi.Struct {
   /// < ::SDL_HAPTIC_SINE, ::SDL_HAPTIC_LEFTRIGHT,
   /// ::SDL_HAPTIC_TRIANGLE, ::SDL_HAPTIC_SAWTOOTHUP or
   /// ::SDL_HAPTIC_SAWTOOTHDOWN
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Direction of the effect.
   external SDL_HapticDirection direction;
 
   /// < Duration of the effect.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Delay before starting the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int delay;
 
   /// < Button that triggers the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int button;
 
   /// < How soon it can be triggered again after button.
-  @ffi.Uint16()
+  @Uint16()
   external int interval;
 
   /// < Period of the wave.
-  @ffi.Uint16()
+  @Uint16()
   external int period;
 
   /// < Peak value; if negative, equivalent to 180 degrees extra phase shift.
-  @ffi.Int16()
+  @Sint16()
   external int magnitude;
 
   /// < Mean value of the wave.
-  @ffi.Int16()
+  @Sint16()
   external int offset;
 
   /// < Positive phase shift given by hundredth of a degree.
-  @ffi.Uint16()
+  @Uint16()
   external int phase;
 
   /// < Duration of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_length;
 
   /// < Level at the start of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_level;
 
   /// < Duration of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_length;
 
   /// < Level at the end of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_level;
 }
 
@@ -21621,45 +23149,45 @@ class SDL_HapticPeriodic extends ffi.Struct {
 class SDL_HapticCondition extends ffi.Struct {
   /// < ::SDL_HAPTIC_SPRING, ::SDL_HAPTIC_DAMPER,
   /// ::SDL_HAPTIC_INERTIA or ::SDL_HAPTIC_FRICTION
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Direction of the effect - Not used ATM.
   external SDL_HapticDirection direction;
 
   /// < Duration of the effect.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Delay before starting the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int delay;
 
   /// < Button that triggers the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int button;
 
   /// < How soon it can be triggered again after button.
-  @ffi.Uint16()
+  @Uint16()
   external int interval;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Uint16> right_sat;
+  external ffi.Array<Uint16> right_sat;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Uint16> left_sat;
+  external ffi.Array<Uint16> left_sat;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Int16> right_coeff;
+  external ffi.Array<Sint16> right_coeff;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Int16> left_coeff;
+  external ffi.Array<Sint16> left_coeff;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Uint16> deadband;
+  external ffi.Array<Uint16> deadband;
 
   @ffi.Array.multi([3])
-  external ffi.Array<ffi.Int16> center;
+  external ffi.Array<Sint16> center;
 }
 
 /// \brief A structure containing a template for a Ramp effect.
@@ -21675,50 +23203,50 @@ class SDL_HapticCondition extends ffi.Struct {
 /// \sa SDL_HapticEffect
 class SDL_HapticRamp extends ffi.Struct {
   /// < ::SDL_HAPTIC_RAMP
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Direction of the effect.
   external SDL_HapticDirection direction;
 
   /// < Duration of the effect.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Delay before starting the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int delay;
 
   /// < Button that triggers the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int button;
 
   /// < How soon it can be triggered again after button.
-  @ffi.Uint16()
+  @Uint16()
   external int interval;
 
   /// < Beginning strength level.
-  @ffi.Int16()
+  @Sint16()
   external int start;
 
   /// < Ending strength level.
-  @ffi.Int16()
+  @Sint16()
   external int end;
 
   /// < Duration of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_length;
 
   /// < Level at the start of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_level;
 
   /// < Duration of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_length;
 
   /// < Level at the end of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_level;
 }
 
@@ -21734,19 +23262,19 @@ class SDL_HapticRamp extends ffi.Struct {
 /// \sa SDL_HapticEffect
 class SDL_HapticLeftRight extends ffi.Struct {
   /// < ::SDL_HAPTIC_LEFTRIGHT
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Duration of the effect in milliseconds.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Control of the large controller motor.
-  @ffi.Uint16()
+  @Uint16()
   external int large_magnitude;
 
   /// < Control of the small controller motor.
-  @ffi.Uint16()
+  @Uint16()
   external int small_magnitude;
 }
 
@@ -21765,57 +23293,57 @@ class SDL_HapticLeftRight extends ffi.Struct {
 /// \sa SDL_HapticEffect
 class SDL_HapticCustom extends ffi.Struct {
   /// < ::SDL_HAPTIC_CUSTOM
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Direction of the effect.
   external SDL_HapticDirection direction;
 
   /// < Duration of the effect.
-  @ffi.Uint32()
+  @Uint32()
   external int length;
 
   /// < Delay before starting the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int delay;
 
   /// < Button that triggers the effect.
-  @ffi.Uint16()
+  @Uint16()
   external int button;
 
   /// < How soon it can be triggered again after button.
-  @ffi.Uint16()
+  @Uint16()
   external int interval;
 
   /// < Axes to use, minimum of one.
-  @ffi.Uint8()
+  @Uint8()
   external int channels;
 
   /// < Sample periods.
-  @ffi.Uint16()
+  @Uint16()
   external int period;
 
   /// < Amount of samples.
-  @ffi.Uint16()
+  @Uint16()
   external int samples;
 
   /// < Should contain channels*samples items.
-  external ffi.Pointer<ffi.Uint16> data;
+  external ffi.Pointer<Uint16> data;
 
   /// < Duration of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_length;
 
   /// < Level at the start of the attack.
-  @ffi.Uint16()
+  @Uint16()
   external int attack_level;
 
   /// < Duration of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_length;
 
   /// < Level at the end of the fade.
-  @ffi.Uint16()
+  @Uint16()
   external int fade_level;
 }
 
@@ -21888,7 +23416,7 @@ class SDL_HapticCustom extends ffi.Struct {
 /// \sa SDL_HapticCustom
 class SDL_HapticEffect extends ffi.Union {
   /// < Effect type.
-  @ffi.Uint16()
+  @Uint16()
   external int type;
 
   /// < Constant effect.
@@ -21910,12 +23438,20 @@ class SDL_HapticEffect extends ffi.Union {
   external SDL_HapticCustom custom;
 }
 
+typedef SDL_Haptic1 = SDL_Haptic;
+
 /// \brief  An enumeration of hint priorities
 abstract class SDL_HintPriority {
   static const int SDL_HINT_DEFAULT = 0;
   static const int SDL_HINT_NORMAL = 1;
   static const int SDL_HINT_OVERRIDE = 2;
 }
+
+/// \brief type definition of the hint callback function.
+typedef SDL_HintCallback = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Int8>,
+            ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>;
 
 /// \brief The predefined log categories
 ///
@@ -21957,6 +23493,12 @@ abstract class SDL_LogPriority {
   static const int SDL_NUM_LOG_PRIORITIES = 7;
 }
 
+/// \brief The prototype for the log output function
+typedef SDL_LogOutputFunction = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32,
+            ffi.Pointer<ffi.Int8>)>>;
+
 /// \brief SDL_MessageBox flags. If supported will display warning icon, etc.
 abstract class SDL_MessageBoxFlags {
   /// < error dialog
@@ -21987,7 +23529,7 @@ abstract class SDL_MessageBoxButtonFlags {
 /// \brief Individual button data.
 class SDL_MessageBoxButtonData extends ffi.Struct {
   /// < ::SDL_MessageBoxButtonFlags
-  @ffi.Uint32()
+  @Uint32()
   external int flags;
 
   /// < User defined button id (value returned via SDL_ShowMessageBox)
@@ -22000,13 +23542,13 @@ class SDL_MessageBoxButtonData extends ffi.Struct {
 
 /// \brief RGB value used in a message box color scheme
 class SDL_MessageBoxColor extends ffi.Struct {
-  @ffi.Uint8()
+  @Uint8()
   external int r;
 
-  @ffi.Uint8()
+  @Uint8()
   external int g;
 
-  @ffi.Uint8()
+  @Uint8()
   external int b;
 }
 
@@ -22028,7 +23570,7 @@ class SDL_MessageBoxColorScheme extends ffi.Struct {
 /// \brief MessageBox structure containing title, text, window, etc.
 class SDL_MessageBoxData extends ffi.Struct {
   /// < ::SDL_MessageBoxFlags
-  @ffi.Uint32()
+  @Uint32()
   external int flags;
 
   /// < Parent window, can be NULL
@@ -22048,6 +23590,11 @@ class SDL_MessageBoxData extends ffi.Struct {
   /// < ::SDL_MessageBoxColorScheme, can be NULL to use system settings
   external ffi.Pointer<SDL_MessageBoxColorScheme> colorScheme;
 }
+
+/// \brief A handle to a CAMetalLayer-backed NSView (macOS) or UIView (iOS/tvOS).
+///
+/// \note This can be cast directly to an NSView or UIView.
+typedef SDL_MetalView = ffi.Pointer<ffi.Void>;
 
 /// \brief The basic state for the system's power supply.
 abstract class SDL_PowerState {
@@ -22091,15 +23638,15 @@ class SDL_RendererInfo extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> name;
 
   /// < Supported ::SDL_RendererFlags
-  @ffi.Uint32()
+  @Uint32()
   external int flags;
 
   /// < The number of available texture formats
-  @ffi.Uint32()
+  @Uint32()
   external int num_texture_formats;
 
   @ffi.Array.multi([16])
-  external ffi.Array<ffi.Uint32> texture_formats;
+  external ffi.Array<Uint32> texture_formats;
 
   /// < The maximum texture width
   @ffi.Int32()
@@ -22182,7 +23729,7 @@ abstract class WindowShapeMode {
 /// \brief A union containing parameters for shaped windows.
 class SDL_WindowShapeParams extends ffi.Union {
   /// \brief A cutoff alpha value for binarization of the window shape's alpha channel.
-  @ffi.Uint8()
+  @Uint8()
   external int binarizationCutoff;
 
   external SDL_Color colorKey;
@@ -22198,7 +23745,25 @@ class SDL_WindowShapeMode extends ffi.Struct {
   external SDL_WindowShapeParams parameters;
 }
 
+/// \brief Set a function that is called for every windows message, before TranslateMessage()
+typedef SDL_WindowsMessageHook = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+            ffi.Uint32, Uint64, Sint64)>>;
+
 class IDirect3DDevice9 extends ffi.Opaque {}
+
+/// Definition of the timer ID type.
+typedef SDL_TimerID = ffi.Int32;
+
+/// Function prototype for the timer callback function.
+///
+/// The callback function is passed the current timer interval and returns
+/// the next timer interval.  If the returned value is the same as the one
+/// passed in, the periodic alarm continues, otherwise a new alarm is
+/// scheduled.  If the callback returns 0, the periodic alarm is cancelled.
+typedef SDL_TimerCallback = ffi.Pointer<
+    ffi.NativeFunction<Uint32 Function(Uint32, ffi.Pointer<ffi.Void>)>>;
 
 /// \brief Information the version of SDL in use.
 ///
@@ -22212,15 +23777,15 @@ class IDirect3DDevice9 extends ffi.Opaque {}
 /// \sa SDL_GetVersion
 class SDL_version extends ffi.Struct {
   /// < major version
-  @ffi.Uint8()
+  @Uint8()
   external int major;
 
   /// < minor version
-  @ffi.Uint8()
+  @Uint8()
   external int minor;
 
   /// < update version
-  @ffi.Uint8()
+  @Uint8()
   external int patch;
 }
 
@@ -22728,7 +24293,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 606;
+const int SDL_LINE = 622;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 
@@ -23413,9413 +24978,3 @@ const int SDL_INIT_EVERYTHING = 62001;
 const String SDL_REVISION = 'hg-14525:e52d96ea04fc';
 
 const int SDL_REVISION_NUMBER = 14525;
-
-typedef _c_SDL_GetPlatform = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetPlatform = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c___va_start = ffi.Void Function(
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> arg0,
-);
-
-typedef _dart___va_start = void Function(
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> arg0,
-);
-
-typedef _c___security_init_cookie = ffi.Void Function();
-
-typedef _dart___security_init_cookie = void Function();
-
-typedef _c___security_check_cookie = ffi.Void Function(
-  ffi.Uint64 _StackCookie,
-);
-
-typedef _dart___security_check_cookie = void Function(
-  int _StackCookie,
-);
-
-typedef _c___report_gsfailure = ffi.Void Function(
-  ffi.Uint64 _StackCookie,
-);
-
-typedef _dart___report_gsfailure = void Function(
-  int _StackCookie,
-);
-
-typedef _c__invalid_parameter_noinfo = ffi.Void Function();
-
-typedef _dart__invalid_parameter_noinfo = void Function();
-
-typedef _c__invalid_parameter_noinfo_noreturn = ffi.Void Function();
-
-typedef _dart__invalid_parameter_noinfo_noreturn = void Function();
-
-typedef _c__invoke_watson = ffi.Void Function(
-  ffi.Pointer<ffi.Uint16> _Expression,
-  ffi.Pointer<ffi.Uint16> _FunctionName,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Uint32 _LineNo,
-  ffi.Uint64 _Reserved,
-);
-
-typedef _dart__invoke_watson = void Function(
-  ffi.Pointer<ffi.Uint16> _Expression,
-  ffi.Pointer<ffi.Uint16> _FunctionName,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  int _LineNo,
-  int _Reserved,
-);
-
-typedef _c__errno = ffi.Pointer<ffi.Int32> Function();
-
-typedef _dart__errno = ffi.Pointer<ffi.Int32> Function();
-
-typedef _c__set_errno = ffi.Int32 Function(
-  ffi.Int32 _Value,
-);
-
-typedef _dart__set_errno = int Function(
-  int _Value,
-);
-
-typedef _c__get_errno = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int32> _Value,
-);
-
-typedef _dart__get_errno = int Function(
-  ffi.Pointer<ffi.Int32> _Value,
-);
-
-typedef _c___threadid = ffi.Uint64 Function();
-
-typedef _dart___threadid = int Function();
-
-typedef _c___threadhandle = ffi.Uint64 Function();
-
-typedef _dart___threadhandle = int Function();
-
-typedef _c_SDL_malloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint64 size,
-);
-
-typedef _dart_SDL_malloc = ffi.Pointer<ffi.Void> Function(
-  int size,
-);
-
-typedef _c_SDL_calloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint64 nmemb,
-  ffi.Uint64 size,
-);
-
-typedef _dart_SDL_calloc = ffi.Pointer<ffi.Void> Function(
-  int nmemb,
-  int size,
-);
-
-typedef _c_SDL_realloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> mem,
-  ffi.Uint64 size,
-);
-
-typedef _dart_SDL_realloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> mem,
-  int size,
-);
-
-typedef _c_SDL_free = ffi.Void Function(
-  ffi.Pointer<ffi.Void> mem,
-);
-
-typedef _dart_SDL_free = void Function(
-  ffi.Pointer<ffi.Void> mem,
-);
-
-typedef SDL_malloc_func = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint64,
-);
-
-typedef SDL_calloc_func = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint64,
-  ffi.Uint64,
-);
-
-typedef SDL_realloc_func = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint64,
-);
-
-typedef SDL_free_func = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_GetMemoryFunctions = ffi.Void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>>> malloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>>> calloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>>> realloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_free_func>>> free_func,
-);
-
-typedef _dart_SDL_GetMemoryFunctions = void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>>> malloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>>> calloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>>> realloc_func,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_free_func>>> free_func,
-);
-
-typedef _c_SDL_SetMemoryFunctions = ffi.Int32 Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>> malloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>> calloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>> realloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_free_func>> free_func,
-);
-
-typedef _dart_SDL_SetMemoryFunctions = int Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_malloc_func>> malloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_calloc_func>> calloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_realloc_func>> realloc_func,
-  ffi.Pointer<ffi.NativeFunction<SDL_free_func>> free_func,
-);
-
-typedef _c_SDL_GetNumAllocations = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumAllocations = int Function();
-
-typedef _c_SDL_getenv = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_getenv = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_setenv = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-  ffi.Int32 overwrite,
-);
-
-typedef _dart_SDL_setenv = int Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-  int overwrite,
-);
-
-typedef _typedefC_1 = ffi.Int32 Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_qsort = ffi.Void Function(
-  ffi.Pointer<ffi.Void> base,
-  ffi.Uint64 nmemb,
-  ffi.Uint64 size,
-  ffi.Pointer<ffi.NativeFunction<_typedefC_1>> compare,
-);
-
-typedef _dart_SDL_qsort = void Function(
-  ffi.Pointer<ffi.Void> base,
-  int nmemb,
-  int size,
-  ffi.Pointer<ffi.NativeFunction<_typedefC_1>> compare,
-);
-
-typedef _c_SDL_abs = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_abs = int Function(
-  int x,
-);
-
-typedef _c_SDL_isdigit = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_isdigit = int Function(
-  int x,
-);
-
-typedef _c_SDL_isspace = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_isspace = int Function(
-  int x,
-);
-
-typedef _c_SDL_isupper = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_isupper = int Function(
-  int x,
-);
-
-typedef _c_SDL_islower = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_islower = int Function(
-  int x,
-);
-
-typedef _c_SDL_toupper = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_toupper = int Function(
-  int x,
-);
-
-typedef _c_SDL_tolower = ffi.Int32 Function(
-  ffi.Int32 x,
-);
-
-typedef _dart_SDL_tolower = int Function(
-  int x,
-);
-
-typedef _c_SDL_crc32 = ffi.Uint32 Function(
-  ffi.Uint32 crc,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_crc32 = int Function(
-  int crc,
-  ffi.Pointer<ffi.Void> data,
-  int len,
-);
-
-typedef _c_SDL_memset = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Int32 c,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_memset = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  int c,
-  int len,
-);
-
-typedef _c_SDL_memcpy = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Pointer<ffi.Void> src,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_memcpy = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Pointer<ffi.Void> src,
-  int len,
-);
-
-typedef _c_SDL_memmove = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Pointer<ffi.Void> src,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_memmove = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Pointer<ffi.Void> src,
-  int len,
-);
-
-typedef _c_SDL_memcmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Void> s1,
-  ffi.Pointer<ffi.Void> s2,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_memcmp = int Function(
-  ffi.Pointer<ffi.Void> s1,
-  ffi.Pointer<ffi.Void> s2,
-  int len,
-);
-
-typedef _c_SDL_wcslen = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Uint16> wstr,
-);
-
-typedef _dart_SDL_wcslen = int Function(
-  ffi.Pointer<ffi.Uint16> wstr,
-);
-
-typedef _c_SDL_wcslcpy = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Uint16> dst,
-  ffi.Pointer<ffi.Uint16> src,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_wcslcpy = int Function(
-  ffi.Pointer<ffi.Uint16> dst,
-  ffi.Pointer<ffi.Uint16> src,
-  int maxlen,
-);
-
-typedef _c_SDL_wcslcat = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Uint16> dst,
-  ffi.Pointer<ffi.Uint16> src,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_wcslcat = int Function(
-  ffi.Pointer<ffi.Uint16> dst,
-  ffi.Pointer<ffi.Uint16> src,
-  int maxlen,
-);
-
-typedef _c_SDL_wcsdup = ffi.Pointer<ffi.Uint16> Function(
-  ffi.Pointer<ffi.Uint16> wstr,
-);
-
-typedef _dart_SDL_wcsdup = ffi.Pointer<ffi.Uint16> Function(
-  ffi.Pointer<ffi.Uint16> wstr,
-);
-
-typedef _c_SDL_wcsstr = ffi.Pointer<ffi.Uint16> Function(
-  ffi.Pointer<ffi.Uint16> haystack,
-  ffi.Pointer<ffi.Uint16> needle,
-);
-
-typedef _dart_SDL_wcsstr = ffi.Pointer<ffi.Uint16> Function(
-  ffi.Pointer<ffi.Uint16> haystack,
-  ffi.Pointer<ffi.Uint16> needle,
-);
-
-typedef _c_SDL_wcscmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-);
-
-typedef _dart_SDL_wcscmp = int Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-);
-
-typedef _c_SDL_wcsncmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_wcsncmp = int Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-  int maxlen,
-);
-
-typedef _c_SDL_wcscasecmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-);
-
-typedef _dart_SDL_wcscasecmp = int Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-);
-
-typedef _c_SDL_wcsncasecmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_wcsncasecmp = int Function(
-  ffi.Pointer<ffi.Uint16> str1,
-  ffi.Pointer<ffi.Uint16> str2,
-  int len,
-);
-
-typedef _c_SDL_strlen = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_strlen = int Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strlcpy = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_strlcpy = int Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  int maxlen,
-);
-
-typedef _c_SDL_utf8strlcpy = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  ffi.Uint64 dst_bytes,
-);
-
-typedef _dart_SDL_utf8strlcpy = int Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  int dst_bytes,
-);
-
-typedef _c_SDL_strlcat = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_strlcat = int Function(
-  ffi.Pointer<ffi.Int8> dst,
-  ffi.Pointer<ffi.Int8> src,
-  int maxlen,
-);
-
-typedef _c_SDL_strdup = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_strdup = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strrev = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_strrev = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strupr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_strupr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strlwr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_strlwr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strchr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 c,
-);
-
-typedef _dart_SDL_strchr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-  int c,
-);
-
-typedef _c_SDL_strrchr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 c,
-);
-
-typedef _dart_SDL_strrchr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> str,
-  int c,
-);
-
-typedef _c_SDL_strstr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> haystack,
-  ffi.Pointer<ffi.Int8> needle,
-);
-
-typedef _dart_SDL_strstr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> haystack,
-  ffi.Pointer<ffi.Int8> needle,
-);
-
-typedef _c_SDL_strtokr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> s1,
-  ffi.Pointer<ffi.Int8> s2,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> saveptr,
-);
-
-typedef _dart_SDL_strtokr = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> s1,
-  ffi.Pointer<ffi.Int8> s2,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> saveptr,
-);
-
-typedef _c_SDL_utf8strlen = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_utf8strlen = int Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_itoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_itoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_uitoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint32 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_uitoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_ltoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int64 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_ltoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_ultoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint64 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_ultoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_lltoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int64 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_lltoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_ulltoa = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint64 value,
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Int32 radix,
-);
-
-typedef _dart_SDL_ulltoa = ffi.Pointer<ffi.Int8> Function(
-  int value,
-  ffi.Pointer<ffi.Int8> str,
-  int radix,
-);
-
-typedef _c_SDL_atoi = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_atoi = int Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_atof = ffi.Double Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _dart_SDL_atof = double Function(
-  ffi.Pointer<ffi.Int8> str,
-);
-
-typedef _c_SDL_strtol = ffi.Int64 Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  ffi.Int32 base,
-);
-
-typedef _dart_SDL_strtol = int Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  int base,
-);
-
-typedef _c_SDL_strtoul = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  ffi.Int32 base,
-);
-
-typedef _dart_SDL_strtoul = int Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  int base,
-);
-
-typedef _c_SDL_strtoll = ffi.Int64 Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  ffi.Int32 base,
-);
-
-typedef _dart_SDL_strtoll = int Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  int base,
-);
-
-typedef _c_SDL_strtoull = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  ffi.Int32 base,
-);
-
-typedef _dart_SDL_strtoull = int Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-  int base,
-);
-
-typedef _c_SDL_strtod = ffi.Double Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-);
-
-typedef _dart_SDL_strtod = double Function(
-  ffi.Pointer<ffi.Int8> str,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> endp,
-);
-
-typedef _c_SDL_strcmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-);
-
-typedef _dart_SDL_strcmp = int Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-);
-
-typedef _c_SDL_strncmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-  ffi.Uint64 maxlen,
-);
-
-typedef _dart_SDL_strncmp = int Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-  int maxlen,
-);
-
-typedef _c_SDL_strcasecmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-);
-
-typedef _dart_SDL_strcasecmp = int Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-);
-
-typedef _c_SDL_strncasecmp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_strncasecmp = int Function(
-  ffi.Pointer<ffi.Int8> str1,
-  ffi.Pointer<ffi.Int8> str2,
-  int len,
-);
-
-typedef _c_SDL_sscanf = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_sscanf = int Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_vsscanf = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef _dart_SDL_vsscanf = int Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef _c_SDL_snprintf = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Uint64 maxlen,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_snprintf = int Function(
-  ffi.Pointer<ffi.Int8> text,
-  int maxlen,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_vsnprintf = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> text,
-  ffi.Uint64 maxlen,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef _dart_SDL_vsnprintf = int Function(
-  ffi.Pointer<ffi.Int8> text,
-  int maxlen,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef _c_SDL_acos = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_acos = double Function(
-  double x,
-);
-
-typedef _c_SDL_acosf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_acosf = double Function(
-  double x,
-);
-
-typedef _c_SDL_asin = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_asin = double Function(
-  double x,
-);
-
-typedef _c_SDL_asinf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_asinf = double Function(
-  double x,
-);
-
-typedef _c_SDL_atan = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_atan = double Function(
-  double x,
-);
-
-typedef _c_SDL_atanf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_atanf = double Function(
-  double x,
-);
-
-typedef _c_SDL_atan2 = ffi.Double Function(
-  ffi.Double x,
-  ffi.Double y,
-);
-
-typedef _dart_SDL_atan2 = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_atan2f = ffi.Float Function(
-  ffi.Float x,
-  ffi.Float y,
-);
-
-typedef _dart_SDL_atan2f = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_ceil = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_ceil = double Function(
-  double x,
-);
-
-typedef _c_SDL_ceilf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_ceilf = double Function(
-  double x,
-);
-
-typedef _c_SDL_copysign = ffi.Double Function(
-  ffi.Double x,
-  ffi.Double y,
-);
-
-typedef _dart_SDL_copysign = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_copysignf = ffi.Float Function(
-  ffi.Float x,
-  ffi.Float y,
-);
-
-typedef _dart_SDL_copysignf = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_cos = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_cos = double Function(
-  double x,
-);
-
-typedef _c_SDL_cosf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_cosf = double Function(
-  double x,
-);
-
-typedef _c_SDL_exp = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_exp = double Function(
-  double x,
-);
-
-typedef _c_SDL_expf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_expf = double Function(
-  double x,
-);
-
-typedef _c_SDL_fabs = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_fabs = double Function(
-  double x,
-);
-
-typedef _c_SDL_fabsf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_fabsf = double Function(
-  double x,
-);
-
-typedef _c_SDL_floor = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_floor = double Function(
-  double x,
-);
-
-typedef _c_SDL_floorf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_floorf = double Function(
-  double x,
-);
-
-typedef _c_SDL_trunc = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_trunc = double Function(
-  double x,
-);
-
-typedef _c_SDL_truncf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_truncf = double Function(
-  double x,
-);
-
-typedef _c_SDL_fmod = ffi.Double Function(
-  ffi.Double x,
-  ffi.Double y,
-);
-
-typedef _dart_SDL_fmod = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_fmodf = ffi.Float Function(
-  ffi.Float x,
-  ffi.Float y,
-);
-
-typedef _dart_SDL_fmodf = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_log = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_log = double Function(
-  double x,
-);
-
-typedef _c_SDL_logf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_logf = double Function(
-  double x,
-);
-
-typedef _c_SDL_log10 = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_log10 = double Function(
-  double x,
-);
-
-typedef _c_SDL_log10f = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_log10f = double Function(
-  double x,
-);
-
-typedef _c_SDL_pow = ffi.Double Function(
-  ffi.Double x,
-  ffi.Double y,
-);
-
-typedef _dart_SDL_pow = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_powf = ffi.Float Function(
-  ffi.Float x,
-  ffi.Float y,
-);
-
-typedef _dart_SDL_powf = double Function(
-  double x,
-  double y,
-);
-
-typedef _c_SDL_scalbn = ffi.Double Function(
-  ffi.Double x,
-  ffi.Int32 n,
-);
-
-typedef _dart_SDL_scalbn = double Function(
-  double x,
-  int n,
-);
-
-typedef _c_SDL_scalbnf = ffi.Float Function(
-  ffi.Float x,
-  ffi.Int32 n,
-);
-
-typedef _dart_SDL_scalbnf = double Function(
-  double x,
-  int n,
-);
-
-typedef _c_SDL_sin = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_sin = double Function(
-  double x,
-);
-
-typedef _c_SDL_sinf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_sinf = double Function(
-  double x,
-);
-
-typedef _c_SDL_sqrt = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_sqrt = double Function(
-  double x,
-);
-
-typedef _c_SDL_sqrtf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_sqrtf = double Function(
-  double x,
-);
-
-typedef _c_SDL_tan = ffi.Double Function(
-  ffi.Double x,
-);
-
-typedef _dart_SDL_tan = double Function(
-  double x,
-);
-
-typedef _c_SDL_tanf = ffi.Float Function(
-  ffi.Float x,
-);
-
-typedef _dart_SDL_tanf = double Function(
-  double x,
-);
-
-typedef _c_SDL_iconv_open = ffi.Pointer<SDL_iconv_t> Function(
-  ffi.Pointer<ffi.Int8> tocode,
-  ffi.Pointer<ffi.Int8> fromcode,
-);
-
-typedef _dart_SDL_iconv_open = ffi.Pointer<SDL_iconv_t> Function(
-  ffi.Pointer<ffi.Int8> tocode,
-  ffi.Pointer<ffi.Int8> fromcode,
-);
-
-typedef _c_SDL_iconv_close = ffi.Int32 Function(
-  ffi.Pointer<SDL_iconv_t> cd,
-);
-
-typedef _dart_SDL_iconv_close = int Function(
-  ffi.Pointer<SDL_iconv_t> cd,
-);
-
-typedef _c_SDL_iconv = ffi.Uint64 Function(
-  ffi.Pointer<SDL_iconv_t> cd,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
-  ffi.Pointer<ffi.Uint64> inbytesleft,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
-  ffi.Pointer<ffi.Uint64> outbytesleft,
-);
-
-typedef _dart_SDL_iconv = int Function(
-  ffi.Pointer<SDL_iconv_t> cd,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> inbuf,
-  ffi.Pointer<ffi.Uint64> inbytesleft,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> outbuf,
-  ffi.Pointer<ffi.Uint64> outbytesleft,
-);
-
-typedef _c_SDL_iconv_string = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> tocode,
-  ffi.Pointer<ffi.Int8> fromcode,
-  ffi.Pointer<ffi.Int8> inbuf,
-  ffi.Uint64 inbytesleft,
-);
-
-typedef _dart_SDL_iconv_string = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> tocode,
-  ffi.Pointer<ffi.Int8> fromcode,
-  ffi.Pointer<ffi.Int8> inbuf,
-  int inbytesleft,
-);
-
-typedef _c_SDL_main = ffi.Int32 Function(
-  ffi.Int32 argc,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> argv,
-);
-
-typedef _dart_SDL_main = int Function(
-  int argc,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> argv,
-);
-
-typedef _c_SDL_SetMainReady = ffi.Void Function();
-
-typedef _dart_SDL_SetMainReady = void Function();
-
-typedef _c_SDL_RegisterApp = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Uint32 style,
-  ffi.Pointer<ffi.Void> hInst,
-);
-
-typedef _dart_SDL_RegisterApp = int Function(
-  ffi.Pointer<ffi.Int8> name,
-  int style,
-  ffi.Pointer<ffi.Void> hInst,
-);
-
-typedef _c_SDL_UnregisterApp = ffi.Void Function();
-
-typedef _dart_SDL_UnregisterApp = void Function();
-
-typedef _c___debugbreak = ffi.Void Function();
-
-typedef _dart___debugbreak = void Function();
-
-typedef _c_SDL_ReportAssertion = ffi.Int32 Function(
-  ffi.Pointer<SDL_AssertData> arg0,
-  ffi.Pointer<ffi.Int8> arg1,
-  ffi.Pointer<ffi.Int8> arg2,
-  ffi.Int32 arg3,
-);
-
-typedef _dart_SDL_ReportAssertion = int Function(
-  ffi.Pointer<SDL_AssertData> arg0,
-  ffi.Pointer<ffi.Int8> arg1,
-  ffi.Pointer<ffi.Int8> arg2,
-  int arg3,
-);
-
-typedef SDL_AssertionHandler = ffi.Int32 Function(
-  ffi.Pointer<SDL_AssertData>,
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_SetAssertionHandler = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> handler,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_SetAssertionHandler = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> handler,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_GetDefaultAssertionHandler
-    = ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> Function();
-
-typedef _dart_SDL_GetDefaultAssertionHandler
-    = ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> Function();
-
-typedef _c_SDL_GetAssertionHandler
-    = ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> puserdata,
-);
-
-typedef _dart_SDL_GetAssertionHandler
-    = ffi.Pointer<ffi.NativeFunction<SDL_AssertionHandler>> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> puserdata,
-);
-
-typedef _c_SDL_GetAssertionReport = ffi.Pointer<SDL_AssertData> Function();
-
-typedef _dart_SDL_GetAssertionReport = ffi.Pointer<SDL_AssertData> Function();
-
-typedef _c_SDL_ResetAssertionReport = ffi.Void Function();
-
-typedef _dart_SDL_ResetAssertionReport = void Function();
-
-typedef _c_SDL_AtomicTryLock = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _dart_SDL_AtomicTryLock = int Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _c_SDL_AtomicLock = ffi.Void Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _dart_SDL_AtomicLock = void Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _c_SDL_AtomicUnlock = ffi.Void Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _dart_SDL_AtomicUnlock = void Function(
-  ffi.Pointer<ffi.Int32> lock,
-);
-
-typedef _c_SDL_MemoryBarrierReleaseFunction = ffi.Void Function();
-
-typedef _dart_SDL_MemoryBarrierReleaseFunction = void Function();
-
-typedef _c_SDL_MemoryBarrierAcquireFunction = ffi.Void Function();
-
-typedef _dart_SDL_MemoryBarrierAcquireFunction = void Function();
-
-typedef _c_SDL_AtomicCAS = ffi.Int32 Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  ffi.Int32 oldval,
-  ffi.Int32 newval,
-);
-
-typedef _dart_SDL_AtomicCAS = int Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  int oldval,
-  int newval,
-);
-
-typedef _c_SDL_AtomicSet = ffi.Int32 Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  ffi.Int32 v,
-);
-
-typedef _dart_SDL_AtomicSet = int Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  int v,
-);
-
-typedef _c_SDL_AtomicGet = ffi.Int32 Function(
-  ffi.Pointer<SDL_atomic_t> a,
-);
-
-typedef _dart_SDL_AtomicGet = int Function(
-  ffi.Pointer<SDL_atomic_t> a,
-);
-
-typedef _c_SDL_AtomicAdd = ffi.Int32 Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  ffi.Int32 v,
-);
-
-typedef _dart_SDL_AtomicAdd = int Function(
-  ffi.Pointer<SDL_atomic_t> a,
-  int v,
-);
-
-typedef _c_SDL_AtomicCASPtr = ffi.Int32 Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-  ffi.Pointer<ffi.Void> oldval,
-  ffi.Pointer<ffi.Void> newval,
-);
-
-typedef _dart_SDL_AtomicCASPtr = int Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-  ffi.Pointer<ffi.Void> oldval,
-  ffi.Pointer<ffi.Void> newval,
-);
-
-typedef _c_SDL_AtomicSetPtr = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-  ffi.Pointer<ffi.Void> v,
-);
-
-typedef _dart_SDL_AtomicSetPtr = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-  ffi.Pointer<ffi.Void> v,
-);
-
-typedef _c_SDL_AtomicGetPtr = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-);
-
-typedef _dart_SDL_AtomicGetPtr = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Pointer<ffi.Void>> a,
-);
-
-typedef _c_SDL_SetError = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_SetError = int Function(
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_GetError = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetError = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_GetErrorMsg = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> errstr,
-  ffi.Int32 maxlen,
-);
-
-typedef _dart_SDL_GetErrorMsg = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> errstr,
-  int maxlen,
-);
-
-typedef _c_SDL_ClearError = ffi.Void Function();
-
-typedef _dart_SDL_ClearError = void Function();
-
-typedef _c_SDL_Error = ffi.Int32 Function(
-  ffi.Int32 code,
-);
-
-typedef _dart_SDL_Error = int Function(
-  int code,
-);
-
-typedef _c_SDL_CreateMutex = ffi.Pointer<SDL_mutex> Function();
-
-typedef _dart_SDL_CreateMutex = ffi.Pointer<SDL_mutex> Function();
-
-typedef _c_SDL_LockMutex = ffi.Int32 Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _dart_SDL_LockMutex = int Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _c_SDL_TryLockMutex = ffi.Int32 Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _dart_SDL_TryLockMutex = int Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _c_SDL_UnlockMutex = ffi.Int32 Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _dart_SDL_UnlockMutex = int Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _c_SDL_DestroyMutex = ffi.Void Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _dart_SDL_DestroyMutex = void Function(
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _c_SDL_CreateSemaphore = ffi.Pointer<SDL_semaphore> Function(
-  ffi.Uint32 initial_value,
-);
-
-typedef _dart_SDL_CreateSemaphore = ffi.Pointer<SDL_semaphore> Function(
-  int initial_value,
-);
-
-typedef _c_SDL_DestroySemaphore = ffi.Void Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _dart_SDL_DestroySemaphore = void Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _c_SDL_SemWait = ffi.Int32 Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _dart_SDL_SemWait = int Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _c_SDL_SemTryWait = ffi.Int32 Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _dart_SDL_SemTryWait = int Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _c_SDL_SemWaitTimeout = ffi.Int32 Function(
-  ffi.Pointer<SDL_semaphore> sem,
-  ffi.Uint32 ms,
-);
-
-typedef _dart_SDL_SemWaitTimeout = int Function(
-  ffi.Pointer<SDL_semaphore> sem,
-  int ms,
-);
-
-typedef _c_SDL_SemPost = ffi.Int32 Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _dart_SDL_SemPost = int Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _c_SDL_SemValue = ffi.Uint32 Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _dart_SDL_SemValue = int Function(
-  ffi.Pointer<SDL_semaphore> sem,
-);
-
-typedef _c_SDL_CreateCond = ffi.Pointer<SDL_cond> Function();
-
-typedef _dart_SDL_CreateCond = ffi.Pointer<SDL_cond> Function();
-
-typedef _c_SDL_DestroyCond = ffi.Void Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _dart_SDL_DestroyCond = void Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _c_SDL_CondSignal = ffi.Int32 Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _dart_SDL_CondSignal = int Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _c_SDL_CondBroadcast = ffi.Int32 Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _dart_SDL_CondBroadcast = int Function(
-  ffi.Pointer<SDL_cond> cond,
-);
-
-typedef _c_SDL_CondWait = ffi.Int32 Function(
-  ffi.Pointer<SDL_cond> cond,
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _dart_SDL_CondWait = int Function(
-  ffi.Pointer<SDL_cond> cond,
-  ffi.Pointer<SDL_mutex> mutex,
-);
-
-typedef _c_SDL_CondWaitTimeout = ffi.Int32 Function(
-  ffi.Pointer<SDL_cond> cond,
-  ffi.Pointer<SDL_mutex> mutex,
-  ffi.Uint32 ms,
-);
-
-typedef _dart_SDL_CondWaitTimeout = int Function(
-  ffi.Pointer<SDL_cond> cond,
-  ffi.Pointer<SDL_mutex> mutex,
-  int ms,
-);
-
-typedef _c__fperrraise = ffi.Void Function(
-  ffi.Int32 _Except,
-);
-
-typedef _dart__fperrraise = void Function(
-  int _Except,
-);
-
-typedef _c__dclass = ffi.Int16 Function(
-  ffi.Double _X,
-);
-
-typedef _dart__dclass = int Function(
-  double _X,
-);
-
-typedef _c__fdclass = ffi.Int16 Function(
-  ffi.Float _X,
-);
-
-typedef _dart__fdclass = int Function(
-  double _X,
-);
-
-typedef _c__dsign = ffi.Int32 Function(
-  ffi.Double _X,
-);
-
-typedef _dart__dsign = int Function(
-  double _X,
-);
-
-typedef _c__fdsign = ffi.Int32 Function(
-  ffi.Float _X,
-);
-
-typedef _dart__fdsign = int Function(
-  double _X,
-);
-
-typedef _c__dpcomp = ffi.Int32 Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart__dpcomp = int Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c__fdpcomp = ffi.Int32 Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart__fdpcomp = int Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c__dtest = ffi.Int16 Function(
-  ffi.Pointer<ffi.Double> _Px,
-);
-
-typedef _dart__dtest = int Function(
-  ffi.Pointer<ffi.Double> _Px,
-);
-
-typedef _c__fdtest = ffi.Int16 Function(
-  ffi.Pointer<ffi.Float> _Px,
-);
-
-typedef _dart__fdtest = int Function(
-  ffi.Pointer<ffi.Float> _Px,
-);
-
-typedef _c__d_int = ffi.Int16 Function(
-  ffi.Pointer<ffi.Double> _Px,
-  ffi.Int16 _Xexp,
-);
-
-typedef _dart__d_int = int Function(
-  ffi.Pointer<ffi.Double> _Px,
-  int _Xexp,
-);
-
-typedef _c__fd_int = ffi.Int16 Function(
-  ffi.Pointer<ffi.Float> _Px,
-  ffi.Int16 _Xexp,
-);
-
-typedef _dart__fd_int = int Function(
-  ffi.Pointer<ffi.Float> _Px,
-  int _Xexp,
-);
-
-typedef _c__dscale = ffi.Int16 Function(
-  ffi.Pointer<ffi.Double> _Px,
-  ffi.Int64 _Lexp,
-);
-
-typedef _dart__dscale = int Function(
-  ffi.Pointer<ffi.Double> _Px,
-  int _Lexp,
-);
-
-typedef _c__fdscale = ffi.Int16 Function(
-  ffi.Pointer<ffi.Float> _Px,
-  ffi.Int64 _Lexp,
-);
-
-typedef _dart__fdscale = int Function(
-  ffi.Pointer<ffi.Float> _Px,
-  int _Lexp,
-);
-
-typedef _c__dunscale = ffi.Int16 Function(
-  ffi.Pointer<ffi.Int16> _Pex,
-  ffi.Pointer<ffi.Double> _Px,
-);
-
-typedef _dart__dunscale = int Function(
-  ffi.Pointer<ffi.Int16> _Pex,
-  ffi.Pointer<ffi.Double> _Px,
-);
-
-typedef _c__fdunscale = ffi.Int16 Function(
-  ffi.Pointer<ffi.Int16> _Pex,
-  ffi.Pointer<ffi.Float> _Px,
-);
-
-typedef _dart__fdunscale = int Function(
-  ffi.Pointer<ffi.Int16> _Pex,
-  ffi.Pointer<ffi.Float> _Px,
-);
-
-typedef _c__dexp = ffi.Int16 Function(
-  ffi.Pointer<ffi.Double> _Px,
-  ffi.Double _Y,
-  ffi.Int64 _Eoff,
-);
-
-typedef _dart__dexp = int Function(
-  ffi.Pointer<ffi.Double> _Px,
-  double _Y,
-  int _Eoff,
-);
-
-typedef _c__fdexp = ffi.Int16 Function(
-  ffi.Pointer<ffi.Float> _Px,
-  ffi.Float _Y,
-  ffi.Int64 _Eoff,
-);
-
-typedef _dart__fdexp = int Function(
-  ffi.Pointer<ffi.Float> _Px,
-  double _Y,
-  int _Eoff,
-);
-
-typedef _c__dnorm = ffi.Int16 Function(
-  ffi.Pointer<ffi.Uint16> _Ps,
-);
-
-typedef _dart__dnorm = int Function(
-  ffi.Pointer<ffi.Uint16> _Ps,
-);
-
-typedef _c__fdnorm = ffi.Int16 Function(
-  ffi.Pointer<ffi.Uint16> _Ps,
-);
-
-typedef _dart__fdnorm = int Function(
-  ffi.Pointer<ffi.Uint16> _Ps,
-);
-
-typedef _c__dpoly = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Pointer<ffi.Double> _Tab,
-  ffi.Int32 _N,
-);
-
-typedef _dart__dpoly = double Function(
-  double _X,
-  ffi.Pointer<ffi.Double> _Tab,
-  int _N,
-);
-
-typedef _c__fdpoly = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Pointer<ffi.Float> _Tab,
-  ffi.Int32 _N,
-);
-
-typedef _dart__fdpoly = double Function(
-  double _X,
-  ffi.Pointer<ffi.Float> _Tab,
-  int _N,
-);
-
-typedef _c__dlog = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Int32 _Baseflag,
-);
-
-typedef _dart__dlog = double Function(
-  double _X,
-  int _Baseflag,
-);
-
-typedef _c__fdlog = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Int32 _Baseflag,
-);
-
-typedef _dart__fdlog = double Function(
-  double _X,
-  int _Baseflag,
-);
-
-typedef _c__dsin = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Uint32 _Qoff,
-);
-
-typedef _dart__dsin = double Function(
-  double _X,
-  int _Qoff,
-);
-
-typedef _c__fdsin = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Uint32 _Qoff,
-);
-
-typedef _dart__fdsin = double Function(
-  double _X,
-  int _Qoff,
-);
-
-typedef _c_abs = ffi.Int32 Function(
-  ffi.Int32 _X,
-);
-
-typedef _dart_abs = int Function(
-  int _X,
-);
-
-typedef _c_labs = ffi.Int64 Function(
-  ffi.Int64 _X,
-);
-
-typedef _dart_labs = int Function(
-  int _X,
-);
-
-typedef _c_llabs = ffi.Int64 Function(
-  ffi.Int64 _X,
-);
-
-typedef _dart_llabs = int Function(
-  int _X,
-);
-
-typedef _c_acos = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_acos = double Function(
-  double _X,
-);
-
-typedef _c_asin = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_asin = double Function(
-  double _X,
-);
-
-typedef _c_atan = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_atan = double Function(
-  double _X,
-);
-
-typedef _c_atan2 = ffi.Double Function(
-  ffi.Double _Y,
-  ffi.Double _X,
-);
-
-typedef _dart_atan2 = double Function(
-  double _Y,
-  double _X,
-);
-
-typedef _c_cos = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_cos = double Function(
-  double _X,
-);
-
-typedef _c_cosh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_cosh = double Function(
-  double _X,
-);
-
-typedef _c_exp = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_exp = double Function(
-  double _X,
-);
-
-typedef _c_fabs = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_fabs = double Function(
-  double _X,
-);
-
-typedef _c_fmod = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_fmod = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_log = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_log = double Function(
-  double _X,
-);
-
-typedef _c_log10 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_log10 = double Function(
-  double _X,
-);
-
-typedef _c_pow = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_pow = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_sin = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_sin = double Function(
-  double _X,
-);
-
-typedef _c_sinh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_sinh = double Function(
-  double _X,
-);
-
-typedef _c_sqrt = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_sqrt = double Function(
-  double _X,
-);
-
-typedef _c_tan = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_tan = double Function(
-  double _X,
-);
-
-typedef _c_tanh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_tanh = double Function(
-  double _X,
-);
-
-typedef _c_acosh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_acosh = double Function(
-  double _X,
-);
-
-typedef _c_asinh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_asinh = double Function(
-  double _X,
-);
-
-typedef _c_atanh = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_atanh = double Function(
-  double _X,
-);
-
-typedef _c_atof = ffi.Double Function(
-  ffi.Pointer<ffi.Int8> _String,
-);
-
-typedef _dart_atof = double Function(
-  ffi.Pointer<ffi.Int8> _String,
-);
-
-typedef _c__atof_l = ffi.Double Function(
-  ffi.Pointer<ffi.Int8> _String,
-  ffi.Pointer<_crt_locale_pointers> _Locale,
-);
-
-typedef _dart__atof_l = double Function(
-  ffi.Pointer<ffi.Int8> _String,
-  ffi.Pointer<_crt_locale_pointers> _Locale,
-);
-
-typedef _c__cabs = ffi.Double Function(
-  complex _Complex_value,
-);
-
-typedef _dart__cabs = double Function(
-  complex _Complex_value,
-);
-
-typedef _c_cbrt = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_cbrt = double Function(
-  double _X,
-);
-
-typedef _c_ceil = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_ceil = double Function(
-  double _X,
-);
-
-typedef _c__chgsign = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart__chgsign = double Function(
-  double _X,
-);
-
-typedef _c_copysign = ffi.Double Function(
-  ffi.Double _Number,
-  ffi.Double _Sign,
-);
-
-typedef _dart_copysign = double Function(
-  double _Number,
-  double _Sign,
-);
-
-typedef _c__copysign = ffi.Double Function(
-  ffi.Double _Number,
-  ffi.Double _Sign,
-);
-
-typedef _dart__copysign = double Function(
-  double _Number,
-  double _Sign,
-);
-
-typedef _c_erf = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_erf = double Function(
-  double _X,
-);
-
-typedef _c_erfc = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_erfc = double Function(
-  double _X,
-);
-
-typedef _c_exp2 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_exp2 = double Function(
-  double _X,
-);
-
-typedef _c_expm1 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_expm1 = double Function(
-  double _X,
-);
-
-typedef _c_fdim = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_fdim = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_floor = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_floor = double Function(
-  double _X,
-);
-
-typedef _c_fma = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-  ffi.Double _Z,
-);
-
-typedef _dart_fma = double Function(
-  double _X,
-  double _Y,
-  double _Z,
-);
-
-typedef _c_fmax = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_fmax = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_fmin = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_fmin = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_frexp = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Pointer<ffi.Int32> _Y,
-);
-
-typedef _dart_frexp = double Function(
-  double _X,
-  ffi.Pointer<ffi.Int32> _Y,
-);
-
-typedef _c_hypot = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_hypot = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c__hypot = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart__hypot = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_ilogb = ffi.Int32 Function(
-  ffi.Double _X,
-);
-
-typedef _dart_ilogb = int Function(
-  double _X,
-);
-
-typedef _c_ldexp = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Int32 _Y,
-);
-
-typedef _dart_ldexp = double Function(
-  double _X,
-  int _Y,
-);
-
-typedef _c_lgamma = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_lgamma = double Function(
-  double _X,
-);
-
-typedef _c_llrint = ffi.Int64 Function(
-  ffi.Double _X,
-);
-
-typedef _dart_llrint = int Function(
-  double _X,
-);
-
-typedef _c_llround = ffi.Int64 Function(
-  ffi.Double _X,
-);
-
-typedef _dart_llround = int Function(
-  double _X,
-);
-
-typedef _c_log1p = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_log1p = double Function(
-  double _X,
-);
-
-typedef _c_log2 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_log2 = double Function(
-  double _X,
-);
-
-typedef _c_logb = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_logb = double Function(
-  double _X,
-);
-
-typedef _c_lrint = ffi.Int64 Function(
-  ffi.Double _X,
-);
-
-typedef _dart_lrint = int Function(
-  double _X,
-);
-
-typedef _c_lround = ffi.Int64 Function(
-  ffi.Double _X,
-);
-
-typedef _dart_lround = int Function(
-  double _X,
-);
-
-typedef _c__matherr = ffi.Int32 Function(
-  ffi.Pointer<exception> _Except,
-);
-
-typedef _dart__matherr = int Function(
-  ffi.Pointer<exception> _Except,
-);
-
-typedef _c_modf = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Pointer<ffi.Double> _Y,
-);
-
-typedef _dart_modf = double Function(
-  double _X,
-  ffi.Pointer<ffi.Double> _Y,
-);
-
-typedef _c_nan = ffi.Double Function(
-  ffi.Pointer<ffi.Int8> _X,
-);
-
-typedef _dart_nan = double Function(
-  ffi.Pointer<ffi.Int8> _X,
-);
-
-typedef _c_nearbyint = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_nearbyint = double Function(
-  double _X,
-);
-
-typedef _c_nextafter = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_nextafter = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_remainder = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_remainder = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_remquo = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Double _Y,
-  ffi.Pointer<ffi.Int32> _Z,
-);
-
-typedef _dart_remquo = double Function(
-  double _X,
-  double _Y,
-  ffi.Pointer<ffi.Int32> _Z,
-);
-
-typedef _c_rint = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_rint = double Function(
-  double _X,
-);
-
-typedef _c_round = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_round = double Function(
-  double _X,
-);
-
-typedef _c_scalbln = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Int64 _Y,
-);
-
-typedef _dart_scalbln = double Function(
-  double _X,
-  int _Y,
-);
-
-typedef _c_scalbn = ffi.Double Function(
-  ffi.Double _X,
-  ffi.Int32 _Y,
-);
-
-typedef _dart_scalbn = double Function(
-  double _X,
-  int _Y,
-);
-
-typedef _c_tgamma = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_tgamma = double Function(
-  double _X,
-);
-
-typedef _c_trunc = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_trunc = double Function(
-  double _X,
-);
-
-typedef _c__j0 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart__j0 = double Function(
-  double _X,
-);
-
-typedef _c__j1 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart__j1 = double Function(
-  double _X,
-);
-
-typedef _c__jn = ffi.Double Function(
-  ffi.Int32 _X,
-  ffi.Double _Y,
-);
-
-typedef _dart__jn = double Function(
-  int _X,
-  double _Y,
-);
-
-typedef _c__y0 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart__y0 = double Function(
-  double _X,
-);
-
-typedef _c__y1 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart__y1 = double Function(
-  double _X,
-);
-
-typedef _c__yn = ffi.Double Function(
-  ffi.Int32 _X,
-  ffi.Double _Y,
-);
-
-typedef _dart__yn = double Function(
-  int _X,
-  double _Y,
-);
-
-typedef _c_acoshf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_acoshf = double Function(
-  double _X,
-);
-
-typedef _c_asinhf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_asinhf = double Function(
-  double _X,
-);
-
-typedef _c_atanhf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_atanhf = double Function(
-  double _X,
-);
-
-typedef _c_cbrtf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_cbrtf = double Function(
-  double _X,
-);
-
-typedef _c__chgsignf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart__chgsignf = double Function(
-  double _X,
-);
-
-typedef _c_copysignf = ffi.Float Function(
-  ffi.Float _Number,
-  ffi.Float _Sign,
-);
-
-typedef _dart_copysignf = double Function(
-  double _Number,
-  double _Sign,
-);
-
-typedef _c__copysignf = ffi.Float Function(
-  ffi.Float _Number,
-  ffi.Float _Sign,
-);
-
-typedef _dart__copysignf = double Function(
-  double _Number,
-  double _Sign,
-);
-
-typedef _c_erff = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_erff = double Function(
-  double _X,
-);
-
-typedef _c_erfcf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_erfcf = double Function(
-  double _X,
-);
-
-typedef _c_expm1f = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_expm1f = double Function(
-  double _X,
-);
-
-typedef _c_exp2f = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_exp2f = double Function(
-  double _X,
-);
-
-typedef _c_fdimf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_fdimf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_fmaf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-  ffi.Float _Z,
-);
-
-typedef _dart_fmaf = double Function(
-  double _X,
-  double _Y,
-  double _Z,
-);
-
-typedef _c_fmaxf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_fmaxf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_fminf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_fminf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c__hypotf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart__hypotf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_ilogbf = ffi.Int32 Function(
-  ffi.Float _X,
-);
-
-typedef _dart_ilogbf = int Function(
-  double _X,
-);
-
-typedef _c_lgammaf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_lgammaf = double Function(
-  double _X,
-);
-
-typedef _c_llrintf = ffi.Int64 Function(
-  ffi.Float _X,
-);
-
-typedef _dart_llrintf = int Function(
-  double _X,
-);
-
-typedef _c_llroundf = ffi.Int64 Function(
-  ffi.Float _X,
-);
-
-typedef _dart_llroundf = int Function(
-  double _X,
-);
-
-typedef _c_log1pf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_log1pf = double Function(
-  double _X,
-);
-
-typedef _c_log2f = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_log2f = double Function(
-  double _X,
-);
-
-typedef _c_logbf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_logbf = double Function(
-  double _X,
-);
-
-typedef _c_lrintf = ffi.Int64 Function(
-  ffi.Float _X,
-);
-
-typedef _dart_lrintf = int Function(
-  double _X,
-);
-
-typedef _c_lroundf = ffi.Int64 Function(
-  ffi.Float _X,
-);
-
-typedef _dart_lroundf = int Function(
-  double _X,
-);
-
-typedef _c_nanf = ffi.Float Function(
-  ffi.Pointer<ffi.Int8> _X,
-);
-
-typedef _dart_nanf = double Function(
-  ffi.Pointer<ffi.Int8> _X,
-);
-
-typedef _c_nearbyintf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_nearbyintf = double Function(
-  double _X,
-);
-
-typedef _c_nextafterf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_nextafterf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_remainderf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_remainderf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_remquof = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-  ffi.Pointer<ffi.Int32> _Z,
-);
-
-typedef _dart_remquof = double Function(
-  double _X,
-  double _Y,
-  ffi.Pointer<ffi.Int32> _Z,
-);
-
-typedef _c_rintf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_rintf = double Function(
-  double _X,
-);
-
-typedef _c_roundf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_roundf = double Function(
-  double _X,
-);
-
-typedef _c_scalblnf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Int64 _Y,
-);
-
-typedef _dart_scalblnf = double Function(
-  double _X,
-  int _Y,
-);
-
-typedef _c_scalbnf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Int32 _Y,
-);
-
-typedef _dart_scalbnf = double Function(
-  double _X,
-  int _Y,
-);
-
-typedef _c_tgammaf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_tgammaf = double Function(
-  double _X,
-);
-
-typedef _c_truncf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_truncf = double Function(
-  double _X,
-);
-
-typedef _c__logbf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart__logbf = double Function(
-  double _X,
-);
-
-typedef _c__nextafterf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart__nextafterf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c__finitef = ffi.Int32 Function(
-  ffi.Float _X,
-);
-
-typedef _dart__finitef = int Function(
-  double _X,
-);
-
-typedef _c__isnanf = ffi.Int32 Function(
-  ffi.Float _X,
-);
-
-typedef _dart__isnanf = int Function(
-  double _X,
-);
-
-typedef _c__fpclassf = ffi.Int32 Function(
-  ffi.Float _X,
-);
-
-typedef _dart__fpclassf = int Function(
-  double _X,
-);
-
-typedef _c__set_FMA3_enable = ffi.Int32 Function(
-  ffi.Int32 _Flag,
-);
-
-typedef _dart__set_FMA3_enable = int Function(
-  int _Flag,
-);
-
-typedef _c__get_FMA3_enable = ffi.Int32 Function();
-
-typedef _dart__get_FMA3_enable = int Function();
-
-typedef _c_acosf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_acosf = double Function(
-  double _X,
-);
-
-typedef _c_asinf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_asinf = double Function(
-  double _X,
-);
-
-typedef _c_atan2f = ffi.Float Function(
-  ffi.Float _Y,
-  ffi.Float _X,
-);
-
-typedef _dart_atan2f = double Function(
-  double _Y,
-  double _X,
-);
-
-typedef _c_atanf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_atanf = double Function(
-  double _X,
-);
-
-typedef _c_ceilf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_ceilf = double Function(
-  double _X,
-);
-
-typedef _c_cosf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_cosf = double Function(
-  double _X,
-);
-
-typedef _c_coshf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_coshf = double Function(
-  double _X,
-);
-
-typedef _c_expf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_expf = double Function(
-  double _X,
-);
-
-typedef _c_floorf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_floorf = double Function(
-  double _X,
-);
-
-typedef _c_fmodf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_fmodf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_log10f = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_log10f = double Function(
-  double _X,
-);
-
-typedef _c_logf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_logf = double Function(
-  double _X,
-);
-
-typedef _c_modff = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Pointer<ffi.Float> _Y,
-);
-
-typedef _dart_modff = double Function(
-  double _X,
-  ffi.Pointer<ffi.Float> _Y,
-);
-
-typedef _c_powf = ffi.Float Function(
-  ffi.Float _X,
-  ffi.Float _Y,
-);
-
-typedef _dart_powf = double Function(
-  double _X,
-  double _Y,
-);
-
-typedef _c_sinf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_sinf = double Function(
-  double _X,
-);
-
-typedef _c_sinhf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_sinhf = double Function(
-  double _X,
-);
-
-typedef _c_sqrtf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_sqrtf = double Function(
-  double _X,
-);
-
-typedef _c_tanf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_tanf = double Function(
-  double _X,
-);
-
-typedef _c_tanhf = ffi.Float Function(
-  ffi.Float _X,
-);
-
-typedef _dart_tanhf = double Function(
-  double _X,
-);
-
-typedef _c_j0 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_j0 = double Function(
-  double _X,
-);
-
-typedef _c_j1 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_j1 = double Function(
-  double _X,
-);
-
-typedef _c_jn = ffi.Double Function(
-  ffi.Int32 _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_jn = double Function(
-  int _X,
-  double _Y,
-);
-
-typedef _c_y0 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_y0 = double Function(
-  double _X,
-);
-
-typedef _c_y1 = ffi.Double Function(
-  ffi.Double _X,
-);
-
-typedef _dart_y1 = double Function(
-  double _X,
-);
-
-typedef _c_yn = ffi.Double Function(
-  ffi.Int32 _X,
-  ffi.Double _Y,
-);
-
-typedef _dart_yn = double Function(
-  int _X,
-  double _Y,
-);
-
-typedef _c___vcrt_initialize = ffi.Uint8 Function();
-
-typedef _dart___vcrt_initialize = int Function();
-
-typedef _c___vcrt_uninitialize = ffi.Uint8 Function(
-  ffi.Uint8 _Terminating,
-);
-
-typedef _dart___vcrt_uninitialize = int Function(
-  int _Terminating,
-);
-
-typedef _c___vcrt_uninitialize_critical = ffi.Uint8 Function();
-
-typedef _dart___vcrt_uninitialize_critical = int Function();
-
-typedef _c___vcrt_thread_attach = ffi.Uint8 Function();
-
-typedef _dart___vcrt_thread_attach = int Function();
-
-typedef _c___vcrt_thread_detach = ffi.Uint8 Function();
-
-typedef _dart___vcrt_thread_detach = int Function();
-
-typedef _c___isa_available_init = ffi.Int32 Function();
-
-typedef _dart___isa_available_init = int Function();
-
-typedef _c__get_startup_argv_mode = ffi.Int32 Function();
-
-typedef _dart__get_startup_argv_mode = int Function();
-
-typedef _c__seh_filter_dll = ffi.Int32 Function(
-  ffi.Uint64 _ExceptionNum,
-  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
-);
-
-typedef _dart__seh_filter_dll = int Function(
-  int _ExceptionNum,
-  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
-);
-
-typedef _c__seh_filter_exe = ffi.Int32 Function(
-  ffi.Uint64 _ExceptionNum,
-  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
-);
-
-typedef _dart__seh_filter_exe = int Function(
-  int _ExceptionNum,
-  ffi.Pointer<EXCEPTION_POINTERS> _ExceptionPtr,
-);
-
-typedef _c__query_app_type = ffi.Int32 Function();
-
-typedef _dart__query_app_type = int Function();
-
-typedef _c__set_app_type = ffi.Void Function(
-  ffi.Int32 _Type,
-);
-
-typedef _dart__set_app_type = void Function(
-  int _Type,
-);
-
-typedef _UserMathErrorFunctionPointer = ffi.Int32 Function(
-  ffi.Pointer<exception>,
-);
-
-typedef _c___setusermatherr = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<_UserMathErrorFunctionPointer>>
-      _UserMathErrorFunction,
-);
-
-typedef _dart___setusermatherr = void Function(
-  ffi.Pointer<ffi.NativeFunction<_UserMathErrorFunctionPointer>>
-      _UserMathErrorFunction,
-);
-
-typedef _c__is_c_termination_complete = ffi.Int32 Function();
-
-typedef _dart__is_c_termination_complete = int Function();
-
-typedef _c__configure_narrow_argv = ffi.Int32 Function(
-  ffi.Int32 mode,
-);
-
-typedef _dart__configure_narrow_argv = int Function(
-  int mode,
-);
-
-typedef _c__configure_wide_argv = ffi.Int32 Function(
-  ffi.Int32 mode,
-);
-
-typedef _dart__configure_wide_argv = int Function(
-  int mode,
-);
-
-typedef _c__initialize_narrow_environment = ffi.Int32 Function();
-
-typedef _dart__initialize_narrow_environment = int Function();
-
-typedef _c__initialize_wide_environment = ffi.Int32 Function();
-
-typedef _dart__initialize_wide_environment = int Function();
-
-typedef _c__get_initial_narrow_environment = ffi.Pointer<ffi.Pointer<ffi.Int8>>
-    Function();
-
-typedef _dart__get_initial_narrow_environment
-    = ffi.Pointer<ffi.Pointer<ffi.Int8>> Function();
-
-typedef _c__get_initial_wide_environment = ffi.Pointer<ffi.Pointer<ffi.Uint16>>
-    Function();
-
-typedef _dart__get_initial_wide_environment
-    = ffi.Pointer<ffi.Pointer<ffi.Uint16>> Function();
-
-typedef _c__get_narrow_winmain_command_line = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart__get_narrow_winmain_command_line = ffi.Pointer<ffi.Int8>
-    Function();
-
-typedef _c__get_wide_winmain_command_line = ffi.Pointer<ffi.Uint16> Function();
-
-typedef _dart__get_wide_winmain_command_line = ffi.Pointer<ffi.Uint16>
-    Function();
-
-typedef _c___p__acmdln = ffi.Pointer<ffi.Pointer<ffi.Int8>> Function();
-
-typedef _dart___p__acmdln = ffi.Pointer<ffi.Pointer<ffi.Int8>> Function();
-
-typedef _c___p__wcmdln = ffi.Pointer<ffi.Pointer<ffi.Uint16>> Function();
-
-typedef _dart___p__wcmdln = ffi.Pointer<ffi.Pointer<ffi.Uint16>> Function();
-
-typedef _PVFV = ffi.Void Function();
-
-typedef _c__initterm = ffi.Void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _First,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _Last,
-);
-
-typedef _dart__initterm = void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _First,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PVFV>>> _Last,
-);
-
-typedef _PIFV = ffi.Int32 Function();
-
-typedef _c__initterm_e = ffi.Int32 Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _First,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _Last,
-);
-
-typedef _dart__initterm_e = int Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _First,
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<_PIFV>>> _Last,
-);
-
-typedef _c__initialize_onexit_table = ffi.Int32 Function(
-  ffi.Pointer<onexit_table_t> _Table,
-);
-
-typedef _dart__initialize_onexit_table = int Function(
-  ffi.Pointer<onexit_table_t> _Table,
-);
-
-typedef _onexit_t = ffi.Int32 Function();
-
-typedef _c__register_onexit_function = ffi.Int32 Function(
-  ffi.Pointer<onexit_table_t> _Table,
-  ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
-);
-
-typedef _dart__register_onexit_function = int Function(
-  ffi.Pointer<onexit_table_t> _Table,
-  ffi.Pointer<ffi.NativeFunction<_onexit_t>> _Function,
-);
-
-typedef _c__execute_onexit_table = ffi.Int32 Function(
-  ffi.Pointer<onexit_table_t> _Table,
-);
-
-typedef _dart__execute_onexit_table = int Function(
-  ffi.Pointer<onexit_table_t> _Table,
-);
-
-typedef _c__crt_atexit = ffi.Int32 Function(
-  ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
-);
-
-typedef _dart__crt_atexit = int Function(
-  ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
-);
-
-typedef _c__crt_at_quick_exit = ffi.Int32 Function(
-  ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
-);
-
-typedef _dart__crt_at_quick_exit = int Function(
-  ffi.Pointer<ffi.NativeFunction<_PVFV>> _Function,
-);
-
-typedef _c___acrt_initialize = ffi.Uint8 Function();
-
-typedef _dart___acrt_initialize = int Function();
-
-typedef _c___acrt_uninitialize = ffi.Uint8 Function(
-  ffi.Uint8 _Terminating,
-);
-
-typedef _dart___acrt_uninitialize = int Function(
-  int _Terminating,
-);
-
-typedef _c___acrt_uninitialize_critical = ffi.Uint8 Function(
-  ffi.Uint8 _Terminating,
-);
-
-typedef _dart___acrt_uninitialize_critical = int Function(
-  int _Terminating,
-);
-
-typedef _c___acrt_thread_attach = ffi.Uint8 Function();
-
-typedef _dart___acrt_thread_attach = int Function();
-
-typedef _c___acrt_thread_detach = ffi.Uint8 Function();
-
-typedef _dart___acrt_thread_detach = int Function();
-
-typedef _c__wexecl = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wexecl = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wexecle = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wexecle = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wexeclp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wexeclp = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wexeclpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wexeclpe = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wexecv = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _dart__wexecv = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _c__wexecve = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _dart__wexecve = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _c__wexecvp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _dart__wexecvp = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _c__wexecvpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _dart__wexecvpe = int Function(
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _c__wspawnl = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wspawnl = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wspawnle = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wspawnle = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wspawnlp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wspawnlp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wspawnlpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _dart__wspawnlpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Uint16> _ArgList,
-);
-
-typedef _c__wspawnv = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _dart__wspawnv = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _c__wspawnve = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _dart__wspawnve = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _c__wspawnvp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _dart__wspawnvp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-);
-
-typedef _c__wspawnvpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _dart__wspawnvpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Uint16> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _ArgList,
-  ffi.Pointer<ffi.Pointer<ffi.Uint16>> _Env,
-);
-
-typedef _c__wsystem = ffi.Int32 Function(
-  ffi.Pointer<ffi.Uint16> _Command,
-);
-
-typedef _dart__wsystem = int Function(
-  ffi.Pointer<ffi.Uint16> _Command,
-);
-
-typedef _c_exit1 = ffi.Void Function(
-  ffi.Int32 _Code,
-);
-
-typedef _dart_exit = void Function(
-  int _Code,
-);
-
-typedef _c__exit = ffi.Void Function(
-  ffi.Int32 _Code,
-);
-
-typedef _dart__exit = void Function(
-  int _Code,
-);
-
-typedef _c__Exit = ffi.Void Function(
-  ffi.Int32 _Code,
-);
-
-typedef _dart__Exit = void Function(
-  int _Code,
-);
-
-typedef _c_quick_exit = ffi.Void Function(
-  ffi.Int32 _Code,
-);
-
-typedef _dart_quick_exit = void Function(
-  int _Code,
-);
-
-typedef _c_abort = ffi.Void Function();
-
-typedef _dart_abort = void Function();
-
-typedef _c_system = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> _Command,
-);
-
-typedef _dart_system = int Function(
-  ffi.Pointer<ffi.Int8> _Command,
-);
-
-typedef _c__cexit = ffi.Void Function();
-
-typedef _dart__cexit = void Function();
-
-typedef _c__c_exit = ffi.Void Function();
-
-typedef _dart__c_exit = void Function();
-
-typedef _tls_callback_type = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint64,
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c__register_thread_local_exe_atexit_callback = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<_tls_callback_type>> _Callback,
-);
-
-typedef _dart__register_thread_local_exe_atexit_callback = void Function(
-  ffi.Pointer<ffi.NativeFunction<_tls_callback_type>> _Callback,
-);
-
-typedef _beginthread_proc_type = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c__beginthread = ffi.Uint64 Function(
-  ffi.Pointer<ffi.NativeFunction<_beginthread_proc_type>> _StartAddress,
-  ffi.Uint32 _StackSize,
-  ffi.Pointer<ffi.Void> _ArgList,
-);
-
-typedef _dart__beginthread = int Function(
-  ffi.Pointer<ffi.NativeFunction<_beginthread_proc_type>> _StartAddress,
-  int _StackSize,
-  ffi.Pointer<ffi.Void> _ArgList,
-);
-
-typedef _c__endthread = ffi.Void Function();
-
-typedef _dart__endthread = void Function();
-
-typedef _beginthreadex_proc_type = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c__beginthreadex = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Void> _Security,
-  ffi.Uint32 _StackSize,
-  ffi.Pointer<ffi.NativeFunction<_beginthreadex_proc_type>> _StartAddress,
-  ffi.Pointer<ffi.Void> _ArgList,
-  ffi.Uint32 _InitFlag,
-  ffi.Pointer<ffi.Uint32> _ThrdAddr,
-);
-
-typedef _dart__beginthreadex = int Function(
-  ffi.Pointer<ffi.Void> _Security,
-  int _StackSize,
-  ffi.Pointer<ffi.NativeFunction<_beginthreadex_proc_type>> _StartAddress,
-  ffi.Pointer<ffi.Void> _ArgList,
-  int _InitFlag,
-  ffi.Pointer<ffi.Uint32> _ThrdAddr,
-);
-
-typedef _c__endthreadex = ffi.Void Function(
-  ffi.Uint32 _ReturnCode,
-);
-
-typedef _dart__endthreadex = void Function(
-  int _ReturnCode,
-);
-
-typedef _c__getpid = ffi.Int32 Function();
-
-typedef _dart__getpid = int Function();
-
-typedef _c__cwait = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int32> _TermStat,
-  ffi.IntPtr _ProcHandle,
-  ffi.Int32 _Action,
-);
-
-typedef _dart__cwait = int Function(
-  ffi.Pointer<ffi.Int32> _TermStat,
-  int _ProcHandle,
-  int _Action,
-);
-
-typedef _c__execl = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__execl = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__execle = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__execle = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__execlp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__execlp = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__execlpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__execlpe = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__execv = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart__execv = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c__execve = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart__execve = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c__execvp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart__execvp = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c__execvpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart__execvpe = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c__spawnl = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__spawnl = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__spawnle = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__spawnle = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__spawnlp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__spawnlp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__spawnlpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart__spawnlpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c__spawnv = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart__spawnv = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c__spawnve = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart__spawnve = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c__spawnvp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart__spawnvp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c__spawnvpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart__spawnvpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c__loaddll = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-);
-
-typedef _dart__loaddll = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-);
-
-typedef _c__unloaddll = ffi.Int32 Function(
-  ffi.IntPtr _Handle,
-);
-
-typedef _dart__unloaddll = int Function(
-  int _Handle,
-);
-
-typedef _GetDllProcAddrProcType = ffi.Int32 Function();
-
-typedef _c__getdllprocaddr
-    = ffi.Pointer<ffi.NativeFunction<_GetDllProcAddrProcType>> Function(
-  ffi.IntPtr _Handle,
-  ffi.Pointer<ffi.Int8> _ProcedureName,
-  ffi.IntPtr _Ordinal,
-);
-
-typedef _dart__getdllprocaddr
-    = ffi.Pointer<ffi.NativeFunction<_GetDllProcAddrProcType>> Function(
-  int _Handle,
-  ffi.Pointer<ffi.Int8> _ProcedureName,
-  int _Ordinal,
-);
-
-typedef _c_cwait = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int32> _TermStat,
-  ffi.IntPtr _ProcHandle,
-  ffi.Int32 _Action,
-);
-
-typedef _dart_cwait = int Function(
-  ffi.Pointer<ffi.Int32> _TermStat,
-  int _ProcHandle,
-  int _Action,
-);
-
-typedef _c_execl = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_execl = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_execle = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_execle = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_execlp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_execlp = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_execlpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_execlpe = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_execv = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart_execv = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c_execve = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart_execve = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c_execvp = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart_execvp = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c_execvpe = ffi.IntPtr Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart_execvpe = int Function(
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c_spawnl = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_spawnl = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_spawnle = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_spawnle = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_spawnlp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_spawnlp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_spawnlpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _dart_spawnlpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Int8> _Arguments,
-);
-
-typedef _c_spawnv = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart_spawnv = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c_spawnve = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart_spawnve = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c_spawnvp = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _dart_spawnvp = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-);
-
-typedef _c_spawnvpe = ffi.IntPtr Function(
-  ffi.Int32 _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _dart_spawnvpe = int Function(
-  int _Mode,
-  ffi.Pointer<ffi.Int8> _FileName,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Arguments,
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> _Environment,
-);
-
-typedef _c_getpid = ffi.Int32 Function();
-
-typedef _dart_getpid = int Function();
-
-typedef SDL_ThreadFunction = ffi.Int32 Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _typedefC_2 = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef pfnSDL_CurrentBeginThread = ffi.Uint64 Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint32,
-  ffi.Pointer<ffi.NativeFunction<_typedefC_2>>,
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint32,
-  ffi.Pointer<ffi.Uint32>,
-);
-
-typedef pfnSDL_CurrentEndThread = ffi.Void Function(
-  ffi.Uint32,
-);
-
-typedef _c_SDL_CreateThread = ffi.Pointer<SDL_Thread> Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_ThreadFunction>> fn,
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
-);
-
-typedef _dart_SDL_CreateThread = ffi.Pointer<SDL_Thread> Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_ThreadFunction>> fn,
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
-);
-
-typedef _typedefC_3 = ffi.Int32 Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_CreateThreadWithStackSize = ffi.Pointer<SDL_Thread> Function(
-  ffi.Pointer<ffi.NativeFunction<_typedefC_3>> fn,
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Uint64 stacksize,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
-);
-
-typedef _dart_SDL_CreateThreadWithStackSize = ffi.Pointer<SDL_Thread> Function(
-  ffi.Pointer<ffi.NativeFunction<_typedefC_3>> fn,
-  ffi.Pointer<ffi.Int8> name,
-  int stacksize,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentBeginThread>> pfnBeginThread,
-  ffi.Pointer<ffi.NativeFunction<pfnSDL_CurrentEndThread>> pfnEndThread,
-);
-
-typedef _c_SDL_GetThreadName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _dart_SDL_GetThreadName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _c_SDL_ThreadID = ffi.Uint64 Function();
-
-typedef _dart_SDL_ThreadID = int Function();
-
-typedef _c_SDL_GetThreadID = ffi.Uint64 Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _dart_SDL_GetThreadID = int Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _c_SDL_SetThreadPriority = ffi.Int32 Function(
-  ffi.Int32 priority,
-);
-
-typedef _dart_SDL_SetThreadPriority = int Function(
-  int priority,
-);
-
-typedef _c_SDL_WaitThread = ffi.Void Function(
-  ffi.Pointer<SDL_Thread> thread,
-  ffi.Pointer<ffi.Int32> status,
-);
-
-typedef _dart_SDL_WaitThread = void Function(
-  ffi.Pointer<SDL_Thread> thread,
-  ffi.Pointer<ffi.Int32> status,
-);
-
-typedef _c_SDL_DetachThread = ffi.Void Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _dart_SDL_DetachThread = void Function(
-  ffi.Pointer<SDL_Thread> thread,
-);
-
-typedef _c_SDL_TLSCreate = ffi.Uint32 Function();
-
-typedef _dart_SDL_TLSCreate = int Function();
-
-typedef _c_SDL_TLSGet = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint32 id,
-);
-
-typedef _dart_SDL_TLSGet = ffi.Pointer<ffi.Void> Function(
-  int id,
-);
-
-typedef _typedefC_5 = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_TLSSet = ffi.Int32 Function(
-  ffi.Uint32 id,
-  ffi.Pointer<ffi.Void> value,
-  ffi.Pointer<ffi.NativeFunction<_typedefC_5>> destructor,
-);
-
-typedef _dart_SDL_TLSSet = int Function(
-  int id,
-  ffi.Pointer<ffi.Void> value,
-  ffi.Pointer<ffi.NativeFunction<_typedefC_5>> destructor,
-);
-
-typedef _c_SDL_RWFromFile = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Int8> file,
-  ffi.Pointer<ffi.Int8> mode,
-);
-
-typedef _dart_SDL_RWFromFile = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Int8> file,
-  ffi.Pointer<ffi.Int8> mode,
-);
-
-typedef _c_SDL_RWFromFP = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> fp,
-  ffi.Int32 autoclose,
-);
-
-typedef _dart_SDL_RWFromFP = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> fp,
-  int autoclose,
-);
-
-typedef _c_SDL_RWFromMem = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> mem,
-  ffi.Int32 size,
-);
-
-typedef _dart_SDL_RWFromMem = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> mem,
-  int size,
-);
-
-typedef _c_SDL_RWFromConstMem = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> mem,
-  ffi.Int32 size,
-);
-
-typedef _dart_SDL_RWFromConstMem = ffi.Pointer<SDL_RWops> Function(
-  ffi.Pointer<ffi.Void> mem,
-  int size,
-);
-
-typedef _c_SDL_AllocRW = ffi.Pointer<SDL_RWops> Function();
-
-typedef _dart_SDL_AllocRW = ffi.Pointer<SDL_RWops> Function();
-
-typedef _c_SDL_FreeRW = ffi.Void Function(
-  ffi.Pointer<SDL_RWops> area,
-);
-
-typedef _dart_SDL_FreeRW = void Function(
-  ffi.Pointer<SDL_RWops> area,
-);
-
-typedef _c_SDL_RWsize = ffi.Int64 Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _dart_SDL_RWsize = int Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _c_SDL_RWseek = ffi.Int64 Function(
-  ffi.Pointer<SDL_RWops> context,
-  ffi.Int64 offset,
-  ffi.Int32 whence,
-);
-
-typedef _dart_SDL_RWseek = int Function(
-  ffi.Pointer<SDL_RWops> context,
-  int offset,
-  int whence,
-);
-
-typedef _c_SDL_RWtell = ffi.Int64 Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _dart_SDL_RWtell = int Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _c_SDL_RWread = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> context,
-  ffi.Pointer<ffi.Void> ptr,
-  ffi.Uint64 size,
-  ffi.Uint64 maxnum,
-);
-
-typedef _dart_SDL_RWread = int Function(
-  ffi.Pointer<SDL_RWops> context,
-  ffi.Pointer<ffi.Void> ptr,
-  int size,
-  int maxnum,
-);
-
-typedef _c_SDL_RWwrite = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> context,
-  ffi.Pointer<ffi.Void> ptr,
-  ffi.Uint64 size,
-  ffi.Uint64 num,
-);
-
-typedef _dart_SDL_RWwrite = int Function(
-  ffi.Pointer<SDL_RWops> context,
-  ffi.Pointer<ffi.Void> ptr,
-  int size,
-  int num,
-);
-
-typedef _c_SDL_RWclose = ffi.Int32 Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _dart_SDL_RWclose = int Function(
-  ffi.Pointer<SDL_RWops> context,
-);
-
-typedef _c_SDL_LoadFile_RW = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_RWops> src,
-  ffi.Pointer<ffi.Uint64> datasize,
-  ffi.Int32 freesrc,
-);
-
-typedef _dart_SDL_LoadFile_RW = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_RWops> src,
-  ffi.Pointer<ffi.Uint64> datasize,
-  int freesrc,
-);
-
-typedef _c_SDL_LoadFile = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> file,
-  ffi.Pointer<ffi.Uint64> datasize,
-);
-
-typedef _dart_SDL_LoadFile = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> file,
-  ffi.Pointer<ffi.Uint64> datasize,
-);
-
-typedef _c_SDL_ReadU8 = ffi.Uint8 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadU8 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadLE16 = ffi.Uint16 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadLE16 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadBE16 = ffi.Uint16 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadBE16 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadLE32 = ffi.Uint32 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadLE32 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadBE32 = ffi.Uint32 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadBE32 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadLE64 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadLE64 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_ReadBE64 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_ReadBE64 = int Function(
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_WriteU8 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint8 value,
-);
-
-typedef _dart_SDL_WriteU8 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteLE16 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint16 value,
-);
-
-typedef _dart_SDL_WriteLE16 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteBE16 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint16 value,
-);
-
-typedef _dart_SDL_WriteBE16 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteLE32 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint32 value,
-);
-
-typedef _dart_SDL_WriteLE32 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteBE32 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint32 value,
-);
-
-typedef _dart_SDL_WriteBE32 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteLE64 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint64 value,
-);
-
-typedef _dart_SDL_WriteLE64 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_WriteBE64 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Uint64 value,
-);
-
-typedef _dart_SDL_WriteBE64 = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-  int value,
-);
-
-typedef _c_SDL_GetNumAudioDrivers = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumAudioDrivers = int Function();
-
-typedef _c_SDL_GetAudioDriver = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 index,
-);
-
-typedef _dart_SDL_GetAudioDriver = ffi.Pointer<ffi.Int8> Function(
-  int index,
-);
-
-typedef _c_SDL_AudioInit = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> driver_name,
-);
-
-typedef _dart_SDL_AudioInit = int Function(
-  ffi.Pointer<ffi.Int8> driver_name,
-);
-
-typedef _c_SDL_AudioQuit = ffi.Void Function();
-
-typedef _dart_SDL_AudioQuit = void Function();
-
-typedef _c_SDL_GetCurrentAudioDriver = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetCurrentAudioDriver = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_OpenAudio = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioSpec> desired,
-  ffi.Pointer<SDL_AudioSpec> obtained,
-);
-
-typedef _dart_SDL_OpenAudio = int Function(
-  ffi.Pointer<SDL_AudioSpec> desired,
-  ffi.Pointer<SDL_AudioSpec> obtained,
-);
-
-typedef _c_SDL_GetNumAudioDevices = ffi.Int32 Function(
-  ffi.Int32 iscapture,
-);
-
-typedef _dart_SDL_GetNumAudioDevices = int Function(
-  int iscapture,
-);
-
-typedef _c_SDL_GetAudioDeviceName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 index,
-  ffi.Int32 iscapture,
-);
-
-typedef _dart_SDL_GetAudioDeviceName = ffi.Pointer<ffi.Int8> Function(
-  int index,
-  int iscapture,
-);
-
-typedef _c_SDL_OpenAudioDevice = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Int8> device,
-  ffi.Int32 iscapture,
-  ffi.Pointer<SDL_AudioSpec> desired,
-  ffi.Pointer<SDL_AudioSpec> obtained,
-  ffi.Int32 allowed_changes,
-);
-
-typedef _dart_SDL_OpenAudioDevice = int Function(
-  ffi.Pointer<ffi.Int8> device,
-  int iscapture,
-  ffi.Pointer<SDL_AudioSpec> desired,
-  ffi.Pointer<SDL_AudioSpec> obtained,
-  int allowed_changes,
-);
-
-typedef _c_SDL_GetAudioStatus = ffi.Int32 Function();
-
-typedef _dart_SDL_GetAudioStatus = int Function();
-
-typedef _c_SDL_GetAudioDeviceStatus = ffi.Int32 Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_GetAudioDeviceStatus = int Function(
-  int dev,
-);
-
-typedef _c_SDL_PauseAudio = ffi.Void Function(
-  ffi.Int32 pause_on,
-);
-
-typedef _dart_SDL_PauseAudio = void Function(
-  int pause_on,
-);
-
-typedef _c_SDL_PauseAudioDevice = ffi.Void Function(
-  ffi.Uint32 dev,
-  ffi.Int32 pause_on,
-);
-
-typedef _dart_SDL_PauseAudioDevice = void Function(
-  int dev,
-  int pause_on,
-);
-
-typedef _c_SDL_LoadWAV_RW = ffi.Pointer<SDL_AudioSpec> Function(
-  ffi.Pointer<SDL_RWops> src,
-  ffi.Int32 freesrc,
-  ffi.Pointer<SDL_AudioSpec> spec,
-  ffi.Pointer<ffi.Pointer<ffi.Uint8>> audio_buf,
-  ffi.Pointer<ffi.Uint32> audio_len,
-);
-
-typedef _dart_SDL_LoadWAV_RW = ffi.Pointer<SDL_AudioSpec> Function(
-  ffi.Pointer<SDL_RWops> src,
-  int freesrc,
-  ffi.Pointer<SDL_AudioSpec> spec,
-  ffi.Pointer<ffi.Pointer<ffi.Uint8>> audio_buf,
-  ffi.Pointer<ffi.Uint32> audio_len,
-);
-
-typedef _c_SDL_FreeWAV = ffi.Void Function(
-  ffi.Pointer<ffi.Uint8> audio_buf,
-);
-
-typedef _dart_SDL_FreeWAV = void Function(
-  ffi.Pointer<ffi.Uint8> audio_buf,
-);
-
-typedef _c_SDL_BuildAudioCVT = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioCVT> cvt,
-  ffi.Uint16 src_format,
-  ffi.Uint8 src_channels,
-  ffi.Int32 src_rate,
-  ffi.Uint16 dst_format,
-  ffi.Uint8 dst_channels,
-  ffi.Int32 dst_rate,
-);
-
-typedef _dart_SDL_BuildAudioCVT = int Function(
-  ffi.Pointer<SDL_AudioCVT> cvt,
-  int src_format,
-  int src_channels,
-  int src_rate,
-  int dst_format,
-  int dst_channels,
-  int dst_rate,
-);
-
-typedef _c_SDL_ConvertAudio = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioCVT> cvt,
-);
-
-typedef _dart_SDL_ConvertAudio = int Function(
-  ffi.Pointer<SDL_AudioCVT> cvt,
-);
-
-typedef _c_SDL_NewAudioStream = ffi.Pointer<SDL_AudioStream> Function(
-  ffi.Uint16 src_format,
-  ffi.Uint8 src_channels,
-  ffi.Int32 src_rate,
-  ffi.Uint16 dst_format,
-  ffi.Uint8 dst_channels,
-  ffi.Int32 dst_rate,
-);
-
-typedef _dart_SDL_NewAudioStream = ffi.Pointer<SDL_AudioStream> Function(
-  int src_format,
-  int src_channels,
-  int src_rate,
-  int dst_format,
-  int dst_channels,
-  int dst_rate,
-);
-
-typedef _c_SDL_AudioStreamPut = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-  ffi.Pointer<ffi.Void> buf,
-  ffi.Int32 len,
-);
-
-typedef _dart_SDL_AudioStreamPut = int Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-  ffi.Pointer<ffi.Void> buf,
-  int len,
-);
-
-typedef _c_SDL_AudioStreamGet = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-  ffi.Pointer<ffi.Void> buf,
-  ffi.Int32 len,
-);
-
-typedef _dart_SDL_AudioStreamGet = int Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-  ffi.Pointer<ffi.Void> buf,
-  int len,
-);
-
-typedef _c_SDL_AudioStreamAvailable = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _dart_SDL_AudioStreamAvailable = int Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _c_SDL_AudioStreamFlush = ffi.Int32 Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _dart_SDL_AudioStreamFlush = int Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _c_SDL_AudioStreamClear = ffi.Void Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _dart_SDL_AudioStreamClear = void Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _c_SDL_FreeAudioStream = ffi.Void Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _dart_SDL_FreeAudioStream = void Function(
-  ffi.Pointer<SDL_AudioStream> stream,
-);
-
-typedef _c_SDL_MixAudio = ffi.Void Function(
-  ffi.Pointer<ffi.Uint8> dst,
-  ffi.Pointer<ffi.Uint8> src,
-  ffi.Uint32 len,
-  ffi.Int32 volume,
-);
-
-typedef _dart_SDL_MixAudio = void Function(
-  ffi.Pointer<ffi.Uint8> dst,
-  ffi.Pointer<ffi.Uint8> src,
-  int len,
-  int volume,
-);
-
-typedef _c_SDL_MixAudioFormat = ffi.Void Function(
-  ffi.Pointer<ffi.Uint8> dst,
-  ffi.Pointer<ffi.Uint8> src,
-  ffi.Uint16 format,
-  ffi.Uint32 len,
-  ffi.Int32 volume,
-);
-
-typedef _dart_SDL_MixAudioFormat = void Function(
-  ffi.Pointer<ffi.Uint8> dst,
-  ffi.Pointer<ffi.Uint8> src,
-  int format,
-  int len,
-  int volume,
-);
-
-typedef _c_SDL_QueueAudio = ffi.Int32 Function(
-  ffi.Uint32 dev,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Uint32 len,
-);
-
-typedef _dart_SDL_QueueAudio = int Function(
-  int dev,
-  ffi.Pointer<ffi.Void> data,
-  int len,
-);
-
-typedef _c_SDL_DequeueAudio = ffi.Uint32 Function(
-  ffi.Uint32 dev,
-  ffi.Pointer<ffi.Void> data,
-  ffi.Uint32 len,
-);
-
-typedef _dart_SDL_DequeueAudio = int Function(
-  int dev,
-  ffi.Pointer<ffi.Void> data,
-  int len,
-);
-
-typedef _c_SDL_GetQueuedAudioSize = ffi.Uint32 Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_GetQueuedAudioSize = int Function(
-  int dev,
-);
-
-typedef _c_SDL_ClearQueuedAudio = ffi.Void Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_ClearQueuedAudio = void Function(
-  int dev,
-);
-
-typedef _c_SDL_LockAudio = ffi.Void Function();
-
-typedef _dart_SDL_LockAudio = void Function();
-
-typedef _c_SDL_LockAudioDevice = ffi.Void Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_LockAudioDevice = void Function(
-  int dev,
-);
-
-typedef _c_SDL_UnlockAudio = ffi.Void Function();
-
-typedef _dart_SDL_UnlockAudio = void Function();
-
-typedef _c_SDL_UnlockAudioDevice = ffi.Void Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_UnlockAudioDevice = void Function(
-  int dev,
-);
-
-typedef _c_SDL_CloseAudio = ffi.Void Function();
-
-typedef _dart_SDL_CloseAudio = void Function();
-
-typedef _c_SDL_CloseAudioDevice = ffi.Void Function(
-  ffi.Uint32 dev,
-);
-
-typedef _dart_SDL_CloseAudioDevice = void Function(
-  int dev,
-);
-
-typedef _c_SDL_SetClipboardText = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> text,
-);
-
-typedef _dart_SDL_SetClipboardText = int Function(
-  ffi.Pointer<ffi.Int8> text,
-);
-
-typedef _c_SDL_GetClipboardText = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetClipboardText = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_HasClipboardText = ffi.Int32 Function();
-
-typedef _dart_SDL_HasClipboardText = int Function();
-
-typedef _c_SDL_GetCPUCount = ffi.Int32 Function();
-
-typedef _dart_SDL_GetCPUCount = int Function();
-
-typedef _c_SDL_GetCPUCacheLineSize = ffi.Int32 Function();
-
-typedef _dart_SDL_GetCPUCacheLineSize = int Function();
-
-typedef _c_SDL_HasRDTSC = ffi.Int32 Function();
-
-typedef _dart_SDL_HasRDTSC = int Function();
-
-typedef _c_SDL_HasAltiVec = ffi.Int32 Function();
-
-typedef _dart_SDL_HasAltiVec = int Function();
-
-typedef _c_SDL_HasMMX = ffi.Int32 Function();
-
-typedef _dart_SDL_HasMMX = int Function();
-
-typedef _c_SDL_Has3DNow = ffi.Int32 Function();
-
-typedef _dart_SDL_Has3DNow = int Function();
-
-typedef _c_SDL_HasSSE = ffi.Int32 Function();
-
-typedef _dart_SDL_HasSSE = int Function();
-
-typedef _c_SDL_HasSSE2 = ffi.Int32 Function();
-
-typedef _dart_SDL_HasSSE2 = int Function();
-
-typedef _c_SDL_HasSSE3 = ffi.Int32 Function();
-
-typedef _dart_SDL_HasSSE3 = int Function();
-
-typedef _c_SDL_HasSSE41 = ffi.Int32 Function();
-
-typedef _dart_SDL_HasSSE41 = int Function();
-
-typedef _c_SDL_HasSSE42 = ffi.Int32 Function();
-
-typedef _dart_SDL_HasSSE42 = int Function();
-
-typedef _c_SDL_HasAVX = ffi.Int32 Function();
-
-typedef _dart_SDL_HasAVX = int Function();
-
-typedef _c_SDL_HasAVX2 = ffi.Int32 Function();
-
-typedef _dart_SDL_HasAVX2 = int Function();
-
-typedef _c_SDL_HasAVX512F = ffi.Int32 Function();
-
-typedef _dart_SDL_HasAVX512F = int Function();
-
-typedef _c_SDL_HasARMSIMD = ffi.Int32 Function();
-
-typedef _dart_SDL_HasARMSIMD = int Function();
-
-typedef _c_SDL_HasNEON = ffi.Int32 Function();
-
-typedef _dart_SDL_HasNEON = int Function();
-
-typedef _c_SDL_GetSystemRAM = ffi.Int32 Function();
-
-typedef _dart_SDL_GetSystemRAM = int Function();
-
-typedef _c_SDL_SIMDGetAlignment = ffi.Uint64 Function();
-
-typedef _dart_SDL_SIMDGetAlignment = int Function();
-
-typedef _c_SDL_SIMDAlloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_SIMDAlloc = ffi.Pointer<ffi.Void> Function(
-  int len,
-);
-
-typedef _c_SDL_SIMDRealloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> mem,
-  ffi.Uint64 len,
-);
-
-typedef _dart_SDL_SIMDRealloc = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> mem,
-  int len,
-);
-
-typedef _c_SDL_SIMDFree = ffi.Void Function(
-  ffi.Pointer<ffi.Void> ptr,
-);
-
-typedef _dart_SDL_SIMDFree = void Function(
-  ffi.Pointer<ffi.Void> ptr,
-);
-
-typedef _c_SDL_GetPixelFormatName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Uint32 format,
-);
-
-typedef _dart_SDL_GetPixelFormatName = ffi.Pointer<ffi.Int8> Function(
-  int format,
-);
-
-typedef _c_SDL_PixelFormatEnumToMasks = ffi.Int32 Function(
-  ffi.Uint32 format,
-  ffi.Pointer<ffi.Int32> bpp,
-  ffi.Pointer<ffi.Uint32> Rmask,
-  ffi.Pointer<ffi.Uint32> Gmask,
-  ffi.Pointer<ffi.Uint32> Bmask,
-  ffi.Pointer<ffi.Uint32> Amask,
-);
-
-typedef _dart_SDL_PixelFormatEnumToMasks = int Function(
-  int format,
-  ffi.Pointer<ffi.Int32> bpp,
-  ffi.Pointer<ffi.Uint32> Rmask,
-  ffi.Pointer<ffi.Uint32> Gmask,
-  ffi.Pointer<ffi.Uint32> Bmask,
-  ffi.Pointer<ffi.Uint32> Amask,
-);
-
-typedef _c_SDL_MasksToPixelFormatEnum = ffi.Uint32 Function(
-  ffi.Int32 bpp,
-  ffi.Uint32 Rmask,
-  ffi.Uint32 Gmask,
-  ffi.Uint32 Bmask,
-  ffi.Uint32 Amask,
-);
-
-typedef _dart_SDL_MasksToPixelFormatEnum = int Function(
-  int bpp,
-  int Rmask,
-  int Gmask,
-  int Bmask,
-  int Amask,
-);
-
-typedef _c_SDL_AllocFormat = ffi.Pointer<SDL_PixelFormat> Function(
-  ffi.Uint32 pixel_format,
-);
-
-typedef _dart_SDL_AllocFormat = ffi.Pointer<SDL_PixelFormat> Function(
-  int pixel_format,
-);
-
-typedef _c_SDL_FreeFormat = ffi.Void Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-);
-
-typedef _dart_SDL_FreeFormat = void Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-);
-
-typedef _c_SDL_AllocPalette = ffi.Pointer<SDL_Palette> Function(
-  ffi.Int32 ncolors,
-);
-
-typedef _dart_SDL_AllocPalette = ffi.Pointer<SDL_Palette> Function(
-  int ncolors,
-);
-
-typedef _c_SDL_SetPixelFormatPalette = ffi.Int32 Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _dart_SDL_SetPixelFormatPalette = int Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _c_SDL_SetPaletteColors = ffi.Int32 Function(
-  ffi.Pointer<SDL_Palette> palette,
-  ffi.Pointer<SDL_Color> colors,
-  ffi.Int32 firstcolor,
-  ffi.Int32 ncolors,
-);
-
-typedef _dart_SDL_SetPaletteColors = int Function(
-  ffi.Pointer<SDL_Palette> palette,
-  ffi.Pointer<SDL_Color> colors,
-  int firstcolor,
-  int ncolors,
-);
-
-typedef _c_SDL_FreePalette = ffi.Void Function(
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _dart_SDL_FreePalette = void Function(
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _c_SDL_MapRGB = ffi.Uint32 Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Uint8 r,
-  ffi.Uint8 g,
-  ffi.Uint8 b,
-);
-
-typedef _dart_SDL_MapRGB = int Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  int r,
-  int g,
-  int b,
-);
-
-typedef _c_SDL_MapRGBA = ffi.Uint32 Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Uint8 r,
-  ffi.Uint8 g,
-  ffi.Uint8 b,
-  ffi.Uint8 a,
-);
-
-typedef _dart_SDL_MapRGBA = int Function(
-  ffi.Pointer<SDL_PixelFormat> format,
-  int r,
-  int g,
-  int b,
-  int a,
-);
-
-typedef _c_SDL_GetRGB = ffi.Void Function(
-  ffi.Uint32 pixel,
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _dart_SDL_GetRGB = void Function(
-  int pixel,
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _c_SDL_GetRGBA = ffi.Void Function(
-  ffi.Uint32 pixel,
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-  ffi.Pointer<ffi.Uint8> a,
-);
-
-typedef _dart_SDL_GetRGBA = void Function(
-  int pixel,
-  ffi.Pointer<SDL_PixelFormat> format,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-  ffi.Pointer<ffi.Uint8> a,
-);
-
-typedef _c_SDL_CalculateGammaRamp = ffi.Void Function(
-  ffi.Float gamma,
-  ffi.Pointer<ffi.Uint16> ramp,
-);
-
-typedef _dart_SDL_CalculateGammaRamp = void Function(
-  double gamma,
-  ffi.Pointer<ffi.Uint16> ramp,
-);
-
-typedef _c_SDL_HasIntersection = ffi.Int32 Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-);
-
-typedef _dart_SDL_HasIntersection = int Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-);
-
-typedef _c_SDL_IntersectRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _dart_SDL_IntersectRect = int Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _c_SDL_UnionRect = ffi.Void Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _dart_SDL_UnionRect = void Function(
-  ffi.Pointer<SDL_Rect> A,
-  ffi.Pointer<SDL_Rect> B,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _c_SDL_EnclosePoints = ffi.Int32 Function(
-  ffi.Pointer<SDL_Point> points,
-  ffi.Int32 count,
-  ffi.Pointer<SDL_Rect> clip,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _dart_SDL_EnclosePoints = int Function(
-  ffi.Pointer<SDL_Point> points,
-  int count,
-  ffi.Pointer<SDL_Rect> clip,
-  ffi.Pointer<SDL_Rect> result,
-);
-
-typedef _c_SDL_IntersectRectAndLine = ffi.Int32 Function(
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Int32> X1,
-  ffi.Pointer<ffi.Int32> Y1,
-  ffi.Pointer<ffi.Int32> X2,
-  ffi.Pointer<ffi.Int32> Y2,
-);
-
-typedef _dart_SDL_IntersectRectAndLine = int Function(
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Int32> X1,
-  ffi.Pointer<ffi.Int32> Y1,
-  ffi.Pointer<ffi.Int32> X2,
-  ffi.Pointer<ffi.Int32> Y2,
-);
-
-typedef _c_SDL_ComposeCustomBlendMode = ffi.Int32 Function(
-  ffi.Int32 srcColorFactor,
-  ffi.Int32 dstColorFactor,
-  ffi.Int32 colorOperation,
-  ffi.Int32 srcAlphaFactor,
-  ffi.Int32 dstAlphaFactor,
-  ffi.Int32 alphaOperation,
-);
-
-typedef _dart_SDL_ComposeCustomBlendMode = int Function(
-  int srcColorFactor,
-  int dstColorFactor,
-  int colorOperation,
-  int srcAlphaFactor,
-  int dstAlphaFactor,
-  int alphaOperation,
-);
-
-typedef _c_SDL_CreateRGBSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Uint32 flags,
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Int32 depth,
-  ffi.Uint32 Rmask,
-  ffi.Uint32 Gmask,
-  ffi.Uint32 Bmask,
-  ffi.Uint32 Amask,
-);
-
-typedef _dart_SDL_CreateRGBSurface = ffi.Pointer<SDL_Surface> Function(
-  int flags,
-  int width,
-  int height,
-  int depth,
-  int Rmask,
-  int Gmask,
-  int Bmask,
-  int Amask,
-);
-
-typedef _c_SDL_CreateRGBSurfaceWithFormat = ffi.Pointer<SDL_Surface> Function(
-  ffi.Uint32 flags,
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Int32 depth,
-  ffi.Uint32 format,
-);
-
-typedef _dart_SDL_CreateRGBSurfaceWithFormat = ffi.Pointer<SDL_Surface>
-    Function(
-  int flags,
-  int width,
-  int height,
-  int depth,
-  int format,
-);
-
-typedef _c_SDL_CreateRGBSurfaceFrom = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<ffi.Void> pixels,
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Int32 depth,
-  ffi.Int32 pitch,
-  ffi.Uint32 Rmask,
-  ffi.Uint32 Gmask,
-  ffi.Uint32 Bmask,
-  ffi.Uint32 Amask,
-);
-
-typedef _dart_SDL_CreateRGBSurfaceFrom = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<ffi.Void> pixels,
-  int width,
-  int height,
-  int depth,
-  int pitch,
-  int Rmask,
-  int Gmask,
-  int Bmask,
-  int Amask,
-);
-
-typedef _c_SDL_CreateRGBSurfaceWithFormatFrom = ffi.Pointer<SDL_Surface>
-    Function(
-  ffi.Pointer<ffi.Void> pixels,
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Int32 depth,
-  ffi.Int32 pitch,
-  ffi.Uint32 format,
-);
-
-typedef _dart_SDL_CreateRGBSurfaceWithFormatFrom = ffi.Pointer<SDL_Surface>
-    Function(
-  ffi.Pointer<ffi.Void> pixels,
-  int width,
-  int height,
-  int depth,
-  int pitch,
-  int format,
-);
-
-typedef _c_SDL_FreeSurface = ffi.Void Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_FreeSurface = void Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_SetSurfacePalette = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _dart_SDL_SetSurfacePalette = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Palette> palette,
-);
-
-typedef _c_SDL_LockSurface = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_LockSurface = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_UnlockSurface = ffi.Void Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_UnlockSurface = void Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_LoadBMP_RW = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_RWops> src,
-  ffi.Int32 freesrc,
-);
-
-typedef _dart_SDL_LoadBMP_RW = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_RWops> src,
-  int freesrc,
-);
-
-typedef _c_SDL_SaveBMP_RW = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_RWops> dst,
-  ffi.Int32 freedst,
-);
-
-typedef _dart_SDL_SaveBMP_RW = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_RWops> dst,
-  int freedst,
-);
-
-typedef _c_SDL_SetSurfaceRLE = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Int32 flag,
-);
-
-typedef _dart_SDL_SetSurfaceRLE = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int flag,
-);
-
-typedef _c_SDL_HasSurfaceRLE = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_HasSurfaceRLE = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_SetColorKey = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Int32 flag,
-  ffi.Uint32 key,
-);
-
-typedef _dart_SDL_SetColorKey = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int flag,
-  int key,
-);
-
-typedef _c_SDL_HasColorKey = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_HasColorKey = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_GetColorKey = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint32> key,
-);
-
-typedef _dart_SDL_GetColorKey = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint32> key,
-);
-
-typedef _c_SDL_SetSurfaceColorMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Uint8 r,
-  ffi.Uint8 g,
-  ffi.Uint8 b,
-);
-
-typedef _dart_SDL_SetSurfaceColorMod = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int r,
-  int g,
-  int b,
-);
-
-typedef _c_SDL_GetSurfaceColorMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _dart_SDL_GetSurfaceColorMod = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _c_SDL_SetSurfaceAlphaMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Uint8 alpha,
-);
-
-typedef _dart_SDL_SetSurfaceAlphaMod = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int alpha,
-);
-
-typedef _c_SDL_GetSurfaceAlphaMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint8> alpha,
-);
-
-typedef _dart_SDL_GetSurfaceAlphaMod = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Uint8> alpha,
-);
-
-typedef _c_SDL_SetSurfaceBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Int32 blendMode,
-);
-
-typedef _dart_SDL_SetSurfaceBlendMode = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int blendMode,
-);
-
-typedef _c_SDL_GetSurfaceBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _dart_SDL_GetSurfaceBlendMode = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _c_SDL_SetClipRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_SetClipRect = int Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_GetClipRect = ffi.Void Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_GetClipRect = void Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_DuplicateSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_DuplicateSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_ConvertSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_PixelFormat> fmt,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_ConvertSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_PixelFormat> fmt,
-  int flags,
-);
-
-typedef _c_SDL_ConvertSurfaceFormat = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Uint32 pixel_format,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_ConvertSurfaceFormat = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Surface> src,
-  int pixel_format,
-  int flags,
-);
-
-typedef _c_SDL_ConvertPixels = ffi.Int32 Function(
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Uint32 src_format,
-  ffi.Pointer<ffi.Void> src,
-  ffi.Int32 src_pitch,
-  ffi.Uint32 dst_format,
-  ffi.Pointer<ffi.Void> dst,
-  ffi.Int32 dst_pitch,
-);
-
-typedef _dart_SDL_ConvertPixels = int Function(
-  int width,
-  int height,
-  int src_format,
-  ffi.Pointer<ffi.Void> src,
-  int src_pitch,
-  int dst_format,
-  ffi.Pointer<ffi.Void> dst,
-  int dst_pitch,
-);
-
-typedef _c_SDL_FillRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Uint32 color,
-);
-
-typedef _dart_SDL_FillRect = int Function(
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> rect,
-  int color,
-);
-
-typedef _c_SDL_FillRects = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> rects,
-  ffi.Int32 count,
-  ffi.Uint32 color,
-);
-
-typedef _dart_SDL_FillRects = int Function(
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> rects,
-  int count,
-  int color,
-);
-
-typedef _c_SDL_UpperBlit = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_UpperBlit = int Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_LowerBlit = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_LowerBlit = int Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_SoftStretch = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_SoftStretch = int Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_UpperBlitScaled = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_UpperBlitScaled = int Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_LowerBlitScaled = ffi.Int32 Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_LowerBlitScaled = int Function(
-  ffi.Pointer<SDL_Surface> src,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Surface> dst,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_SetYUVConversionMode = ffi.Void Function(
-  ffi.Int32 mode,
-);
-
-typedef _dart_SDL_SetYUVConversionMode = void Function(
-  int mode,
-);
-
-typedef _c_SDL_GetYUVConversionMode = ffi.Int32 Function();
-
-typedef _dart_SDL_GetYUVConversionMode = int Function();
-
-typedef _c_SDL_GetYUVConversionModeForResolution = ffi.Int32 Function(
-  ffi.Int32 width,
-  ffi.Int32 height,
-);
-
-typedef _dart_SDL_GetYUVConversionModeForResolution = int Function(
-  int width,
-  int height,
-);
-
-typedef _c_SDL_GetNumVideoDrivers = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumVideoDrivers = int Function();
-
-typedef _c_SDL_GetVideoDriver = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 index,
-);
-
-typedef _dart_SDL_GetVideoDriver = ffi.Pointer<ffi.Int8> Function(
-  int index,
-);
-
-typedef _c_SDL_VideoInit = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> driver_name,
-);
-
-typedef _dart_SDL_VideoInit = int Function(
-  ffi.Pointer<ffi.Int8> driver_name,
-);
-
-typedef _c_SDL_VideoQuit = ffi.Void Function();
-
-typedef _dart_SDL_VideoQuit = void Function();
-
-typedef _c_SDL_GetCurrentVideoDriver = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetCurrentVideoDriver = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_GetNumVideoDisplays = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumVideoDisplays = int Function();
-
-typedef _c_SDL_GetDisplayName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 displayIndex,
-);
-
-typedef _dart_SDL_GetDisplayName = ffi.Pointer<ffi.Int8> Function(
-  int displayIndex,
-);
-
-typedef _c_SDL_GetDisplayBounds = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_GetDisplayBounds = int Function(
-  int displayIndex,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_GetDisplayUsableBounds = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_GetDisplayUsableBounds = int Function(
-  int displayIndex,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_GetDisplayDPI = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<ffi.Float> ddpi,
-  ffi.Pointer<ffi.Float> hdpi,
-  ffi.Pointer<ffi.Float> vdpi,
-);
-
-typedef _dart_SDL_GetDisplayDPI = int Function(
-  int displayIndex,
-  ffi.Pointer<ffi.Float> ddpi,
-  ffi.Pointer<ffi.Float> hdpi,
-  ffi.Pointer<ffi.Float> vdpi,
-);
-
-typedef _c_SDL_GetDisplayOrientation = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-);
-
-typedef _dart_SDL_GetDisplayOrientation = int Function(
-  int displayIndex,
-);
-
-typedef _c_SDL_GetNumDisplayModes = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-);
-
-typedef _dart_SDL_GetNumDisplayModes = int Function(
-  int displayIndex,
-);
-
-typedef _c_SDL_GetDisplayMode = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Int32 modeIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _dart_SDL_GetDisplayMode = int Function(
-  int displayIndex,
-  int modeIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _c_SDL_GetDesktopDisplayMode = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _dart_SDL_GetDesktopDisplayMode = int Function(
-  int displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _c_SDL_GetCurrentDisplayMode = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _dart_SDL_GetCurrentDisplayMode = int Function(
-  int displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _c_SDL_GetClosestDisplayMode = ffi.Pointer<SDL_DisplayMode> Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-  ffi.Pointer<SDL_DisplayMode> closest,
-);
-
-typedef _dart_SDL_GetClosestDisplayMode = ffi.Pointer<SDL_DisplayMode> Function(
-  int displayIndex,
-  ffi.Pointer<SDL_DisplayMode> mode,
-  ffi.Pointer<SDL_DisplayMode> closest,
-);
-
-typedef _c_SDL_GetWindowDisplayIndex = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowDisplayIndex = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowDisplayMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _dart_SDL_SetWindowDisplayMode = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _c_SDL_GetWindowDisplayMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _dart_SDL_GetWindowDisplayMode = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_DisplayMode> mode,
-);
-
-typedef _c_SDL_GetWindowPixelFormat = ffi.Uint32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowPixelFormat = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_CreateWindow = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Int8> title,
-  ffi.Int32 x,
-  ffi.Int32 y,
-  ffi.Int32 w,
-  ffi.Int32 h,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_CreateWindow = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Int8> title,
-  int x,
-  int y,
-  int w,
-  int h,
-  int flags,
-);
-
-typedef _c_SDL_CreateWindowFrom = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Void> data,
-);
-
-typedef _dart_SDL_CreateWindowFrom = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Void> data,
-);
-
-typedef _c_SDL_GetWindowID = ffi.Uint32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowID = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GetWindowFromID = ffi.Pointer<SDL_Window> Function(
-  ffi.Uint32 id,
-);
-
-typedef _dart_SDL_GetWindowFromID = ffi.Pointer<SDL_Window> Function(
-  int id,
-);
-
-typedef _c_SDL_GetWindowFlags = ffi.Uint32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowFlags = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowTitle = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> title,
-);
-
-typedef _dart_SDL_SetWindowTitle = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> title,
-);
-
-typedef _c_SDL_GetWindowTitle = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowTitle = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowIcon = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Surface> icon,
-);
-
-typedef _dart_SDL_SetWindowIcon = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Surface> icon,
-);
-
-typedef _c_SDL_SetWindowData = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_SetWindowData = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_GetWindowData = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_GetWindowData = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_SetWindowPosition = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 x,
-  ffi.Int32 y,
-);
-
-typedef _dart_SDL_SetWindowPosition = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int x,
-  int y,
-);
-
-typedef _c_SDL_GetWindowPosition = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _dart_SDL_GetWindowPosition = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _c_SDL_SetWindowSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 w,
-  ffi.Int32 h,
-);
-
-typedef _dart_SDL_SetWindowSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int w,
-  int h,
-);
-
-typedef _c_SDL_GetWindowSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_GetWindowSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_GetWindowBordersSize = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> top,
-  ffi.Pointer<ffi.Int32> left,
-  ffi.Pointer<ffi.Int32> bottom,
-  ffi.Pointer<ffi.Int32> right,
-);
-
-typedef _dart_SDL_GetWindowBordersSize = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> top,
-  ffi.Pointer<ffi.Int32> left,
-  ffi.Pointer<ffi.Int32> bottom,
-  ffi.Pointer<ffi.Int32> right,
-);
-
-typedef _c_SDL_SetWindowMinimumSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 min_w,
-  ffi.Int32 min_h,
-);
-
-typedef _dart_SDL_SetWindowMinimumSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int min_w,
-  int min_h,
-);
-
-typedef _c_SDL_GetWindowMinimumSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_GetWindowMinimumSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_SetWindowMaximumSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 max_w,
-  ffi.Int32 max_h,
-);
-
-typedef _dart_SDL_SetWindowMaximumSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int max_w,
-  int max_h,
-);
-
-typedef _c_SDL_GetWindowMaximumSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_GetWindowMaximumSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_SetWindowBordered = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 bordered,
-);
-
-typedef _dart_SDL_SetWindowBordered = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int bordered,
-);
-
-typedef _c_SDL_SetWindowResizable = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 resizable,
-);
-
-typedef _dart_SDL_SetWindowResizable = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int resizable,
-);
-
-typedef _c_SDL_ShowWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_ShowWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_HideWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_HideWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_RaiseWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_RaiseWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_MaximizeWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_MaximizeWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_MinimizeWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_MinimizeWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_RestoreWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_RestoreWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowFullscreen = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_SetWindowFullscreen = int Function(
-  ffi.Pointer<SDL_Window> window,
-  int flags,
-);
-
-typedef _c_SDL_GetWindowSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowSurface = ffi.Pointer<SDL_Surface> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_UpdateWindowSurface = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_UpdateWindowSurface = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_UpdateWindowSurfaceRects = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Rect> rects,
-  ffi.Int32 numrects,
-);
-
-typedef _dart_SDL_UpdateWindowSurfaceRects = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Rect> rects,
-  int numrects,
-);
-
-typedef _c_SDL_SetWindowGrab = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 grabbed,
-);
-
-typedef _dart_SDL_SetWindowGrab = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int grabbed,
-);
-
-typedef _c_SDL_GetWindowGrab = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowGrab = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GetGrabbedWindow = ffi.Pointer<SDL_Window> Function();
-
-typedef _dart_SDL_GetGrabbedWindow = ffi.Pointer<SDL_Window> Function();
-
-typedef _c_SDL_SetWindowBrightness = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Float brightness,
-);
-
-typedef _dart_SDL_SetWindowBrightness = int Function(
-  ffi.Pointer<SDL_Window> window,
-  double brightness,
-);
-
-typedef _c_SDL_GetWindowBrightness = ffi.Float Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetWindowBrightness = double Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowOpacity = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Float opacity,
-);
-
-typedef _dart_SDL_SetWindowOpacity = int Function(
-  ffi.Pointer<SDL_Window> window,
-  double opacity,
-);
-
-typedef _c_SDL_GetWindowOpacity = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Float> out_opacity,
-);
-
-typedef _dart_SDL_GetWindowOpacity = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Float> out_opacity,
-);
-
-typedef _c_SDL_SetWindowModalFor = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> modal_window,
-  ffi.Pointer<SDL_Window> parent_window,
-);
-
-typedef _dart_SDL_SetWindowModalFor = int Function(
-  ffi.Pointer<SDL_Window> modal_window,
-  ffi.Pointer<SDL_Window> parent_window,
-);
-
-typedef _c_SDL_SetWindowInputFocus = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_SetWindowInputFocus = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowGammaRamp = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Uint16> red,
-  ffi.Pointer<ffi.Uint16> green,
-  ffi.Pointer<ffi.Uint16> blue,
-);
-
-typedef _dart_SDL_SetWindowGammaRamp = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Uint16> red,
-  ffi.Pointer<ffi.Uint16> green,
-  ffi.Pointer<ffi.Uint16> blue,
-);
-
-typedef _c_SDL_GetWindowGammaRamp = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Uint16> red,
-  ffi.Pointer<ffi.Uint16> green,
-  ffi.Pointer<ffi.Uint16> blue,
-);
-
-typedef _dart_SDL_GetWindowGammaRamp = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Uint16> red,
-  ffi.Pointer<ffi.Uint16> green,
-  ffi.Pointer<ffi.Uint16> blue,
-);
-
-typedef SDL_HitTest = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window>,
-  ffi.Pointer<SDL_Point>,
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_SetWindowHitTest = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.NativeFunction<SDL_HitTest>> callback,
-  ffi.Pointer<ffi.Void> callback_data,
-);
-
-typedef _dart_SDL_SetWindowHitTest = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.NativeFunction<SDL_HitTest>> callback,
-  ffi.Pointer<ffi.Void> callback_data,
-);
-
-typedef _c_SDL_DestroyWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_DestroyWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_IsScreenSaverEnabled = ffi.Int32 Function();
-
-typedef _dart_SDL_IsScreenSaverEnabled = int Function();
-
-typedef _c_SDL_EnableScreenSaver = ffi.Void Function();
-
-typedef _dart_SDL_EnableScreenSaver = void Function();
-
-typedef _c_SDL_DisableScreenSaver = ffi.Void Function();
-
-typedef _dart_SDL_DisableScreenSaver = void Function();
-
-typedef _c_SDL_GL_LoadLibrary = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> path,
-);
-
-typedef _dart_SDL_GL_LoadLibrary = int Function(
-  ffi.Pointer<ffi.Int8> path,
-);
-
-typedef _c_SDL_GL_GetProcAddress = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> proc,
-);
-
-typedef _dart_SDL_GL_GetProcAddress = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> proc,
-);
-
-typedef _c_SDL_GL_UnloadLibrary = ffi.Void Function();
-
-typedef _dart_SDL_GL_UnloadLibrary = void Function();
-
-typedef _c_SDL_GL_ExtensionSupported = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> extension_1,
-);
-
-typedef _dart_SDL_GL_ExtensionSupported = int Function(
-  ffi.Pointer<ffi.Int8> extension_1,
-);
-
-typedef _c_SDL_GL_ResetAttributes = ffi.Void Function();
-
-typedef _dart_SDL_GL_ResetAttributes = void Function();
-
-typedef _c_SDL_GL_SetAttribute = ffi.Int32 Function(
-  ffi.Int32 attr,
-  ffi.Int32 value,
-);
-
-typedef _dart_SDL_GL_SetAttribute = int Function(
-  int attr,
-  int value,
-);
-
-typedef _c_SDL_GL_GetAttribute = ffi.Int32 Function(
-  ffi.Int32 attr,
-  ffi.Pointer<ffi.Int32> value,
-);
-
-typedef _dart_SDL_GL_GetAttribute = int Function(
-  int attr,
-  ffi.Pointer<ffi.Int32> value,
-);
-
-typedef _c_SDL_GL_CreateContext = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GL_CreateContext = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GL_MakeCurrent = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Void> context,
-);
-
-typedef _dart_SDL_GL_MakeCurrent = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Void> context,
-);
-
-typedef _c_SDL_GL_GetCurrentWindow = ffi.Pointer<SDL_Window> Function();
-
-typedef _dart_SDL_GL_GetCurrentWindow = ffi.Pointer<SDL_Window> Function();
-
-typedef _c_SDL_GL_GetCurrentContext = ffi.Pointer<ffi.Void> Function();
-
-typedef _dart_SDL_GL_GetCurrentContext = ffi.Pointer<ffi.Void> Function();
-
-typedef _c_SDL_GL_GetDrawableSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_GL_GetDrawableSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_GL_SetSwapInterval = ffi.Int32 Function(
-  ffi.Int32 interval,
-);
-
-typedef _dart_SDL_GL_SetSwapInterval = int Function(
-  int interval,
-);
-
-typedef _c_SDL_GL_GetSwapInterval = ffi.Int32 Function();
-
-typedef _dart_SDL_GL_GetSwapInterval = int Function();
-
-typedef _c_SDL_GL_SwapWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GL_SwapWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GL_DeleteContext = ffi.Void Function(
-  ffi.Pointer<ffi.Void> context,
-);
-
-typedef _dart_SDL_GL_DeleteContext = void Function(
-  ffi.Pointer<ffi.Void> context,
-);
-
-typedef _c_SDL_GetKeyboardFocus = ffi.Pointer<SDL_Window> Function();
-
-typedef _dart_SDL_GetKeyboardFocus = ffi.Pointer<SDL_Window> Function();
-
-typedef _c_SDL_GetKeyboardState = ffi.Pointer<ffi.Uint8> Function(
-  ffi.Pointer<ffi.Int32> numkeys,
-);
-
-typedef _dart_SDL_GetKeyboardState = ffi.Pointer<ffi.Uint8> Function(
-  ffi.Pointer<ffi.Int32> numkeys,
-);
-
-typedef _c_SDL_GetModState = ffi.Int32 Function();
-
-typedef _dart_SDL_GetModState = int Function();
-
-typedef _c_SDL_SetModState = ffi.Void Function(
-  ffi.Int32 modstate,
-);
-
-typedef _dart_SDL_SetModState = void Function(
-  int modstate,
-);
-
-typedef _c_SDL_GetKeyFromScancode = ffi.Int32 Function(
-  ffi.Int32 scancode,
-);
-
-typedef _dart_SDL_GetKeyFromScancode = int Function(
-  int scancode,
-);
-
-typedef _c_SDL_GetScancodeFromKey = ffi.Int32 Function(
-  ffi.Int32 key,
-);
-
-typedef _dart_SDL_GetScancodeFromKey = int Function(
-  int key,
-);
-
-typedef _c_SDL_GetScancodeName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 scancode,
-);
-
-typedef _dart_SDL_GetScancodeName = ffi.Pointer<ffi.Int8> Function(
-  int scancode,
-);
-
-typedef _c_SDL_GetScancodeFromName = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_GetScancodeFromName = int Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_GetKeyName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 key,
-);
-
-typedef _dart_SDL_GetKeyName = ffi.Pointer<ffi.Int8> Function(
-  int key,
-);
-
-typedef _c_SDL_GetKeyFromName = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_GetKeyFromName = int Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_StartTextInput = ffi.Void Function();
-
-typedef _dart_SDL_StartTextInput = void Function();
-
-typedef _c_SDL_IsTextInputActive = ffi.Int32 Function();
-
-typedef _dart_SDL_IsTextInputActive = int Function();
-
-typedef _c_SDL_StopTextInput = ffi.Void Function();
-
-typedef _dart_SDL_StopTextInput = void Function();
-
-typedef _c_SDL_SetTextInputRect = ffi.Void Function(
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_SetTextInputRect = void Function(
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_HasScreenKeyboardSupport = ffi.Int32 Function();
-
-typedef _dart_SDL_HasScreenKeyboardSupport = int Function();
-
-typedef _c_SDL_IsScreenKeyboardShown = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_IsScreenKeyboardShown = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GetMouseFocus = ffi.Pointer<SDL_Window> Function();
-
-typedef _dart_SDL_GetMouseFocus = ffi.Pointer<SDL_Window> Function();
-
-typedef _c_SDL_GetMouseState = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _dart_SDL_GetMouseState = int Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _c_SDL_GetGlobalMouseState = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _dart_SDL_GetGlobalMouseState = int Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _c_SDL_GetRelativeMouseState = ffi.Uint32 Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _dart_SDL_GetRelativeMouseState = int Function(
-  ffi.Pointer<ffi.Int32> x,
-  ffi.Pointer<ffi.Int32> y,
-);
-
-typedef _c_SDL_WarpMouseInWindow = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 x,
-  ffi.Int32 y,
-);
-
-typedef _dart_SDL_WarpMouseInWindow = void Function(
-  ffi.Pointer<SDL_Window> window,
-  int x,
-  int y,
-);
-
-typedef _c_SDL_WarpMouseGlobal = ffi.Int32 Function(
-  ffi.Int32 x,
-  ffi.Int32 y,
-);
-
-typedef _dart_SDL_WarpMouseGlobal = int Function(
-  int x,
-  int y,
-);
-
-typedef _c_SDL_SetRelativeMouseMode = ffi.Int32 Function(
-  ffi.Int32 enabled,
-);
-
-typedef _dart_SDL_SetRelativeMouseMode = int Function(
-  int enabled,
-);
-
-typedef _c_SDL_CaptureMouse = ffi.Int32 Function(
-  ffi.Int32 enabled,
-);
-
-typedef _dart_SDL_CaptureMouse = int Function(
-  int enabled,
-);
-
-typedef _c_SDL_GetRelativeMouseMode = ffi.Int32 Function();
-
-typedef _dart_SDL_GetRelativeMouseMode = int Function();
-
-typedef _c_SDL_CreateCursor = ffi.Pointer<SDL_Cursor> Function(
-  ffi.Pointer<ffi.Uint8> data,
-  ffi.Pointer<ffi.Uint8> mask,
-  ffi.Int32 w,
-  ffi.Int32 h,
-  ffi.Int32 hot_x,
-  ffi.Int32 hot_y,
-);
-
-typedef _dart_SDL_CreateCursor = ffi.Pointer<SDL_Cursor> Function(
-  ffi.Pointer<ffi.Uint8> data,
-  ffi.Pointer<ffi.Uint8> mask,
-  int w,
-  int h,
-  int hot_x,
-  int hot_y,
-);
-
-typedef _c_SDL_CreateColorCursor = ffi.Pointer<SDL_Cursor> Function(
-  ffi.Pointer<SDL_Surface> surface,
-  ffi.Int32 hot_x,
-  ffi.Int32 hot_y,
-);
-
-typedef _dart_SDL_CreateColorCursor = ffi.Pointer<SDL_Cursor> Function(
-  ffi.Pointer<SDL_Surface> surface,
-  int hot_x,
-  int hot_y,
-);
-
-typedef _c_SDL_CreateSystemCursor = ffi.Pointer<SDL_Cursor> Function(
-  ffi.Int32 id,
-);
-
-typedef _dart_SDL_CreateSystemCursor = ffi.Pointer<SDL_Cursor> Function(
-  int id,
-);
-
-typedef _c_SDL_SetCursor = ffi.Void Function(
-  ffi.Pointer<SDL_Cursor> cursor,
-);
-
-typedef _dart_SDL_SetCursor = void Function(
-  ffi.Pointer<SDL_Cursor> cursor,
-);
-
-typedef _c_SDL_GetCursor = ffi.Pointer<SDL_Cursor> Function();
-
-typedef _dart_SDL_GetCursor = ffi.Pointer<SDL_Cursor> Function();
-
-typedef _c_SDL_GetDefaultCursor = ffi.Pointer<SDL_Cursor> Function();
-
-typedef _dart_SDL_GetDefaultCursor = ffi.Pointer<SDL_Cursor> Function();
-
-typedef _c_SDL_FreeCursor = ffi.Void Function(
-  ffi.Pointer<SDL_Cursor> cursor,
-);
-
-typedef _dart_SDL_FreeCursor = void Function(
-  ffi.Pointer<SDL_Cursor> cursor,
-);
-
-typedef _c_SDL_ShowCursor = ffi.Int32 Function(
-  ffi.Int32 toggle,
-);
-
-typedef _dart_SDL_ShowCursor = int Function(
-  int toggle,
-);
-
-typedef _c_SDL_LockJoysticks = ffi.Void Function();
-
-typedef _dart_SDL_LockJoysticks = void Function();
-
-typedef _c_SDL_UnlockJoysticks = ffi.Void Function();
-
-typedef _dart_SDL_UnlockJoysticks = void Function();
-
-typedef _c_SDL_NumJoysticks = ffi.Int32 Function();
-
-typedef _dart_SDL_NumJoysticks = int Function();
-
-typedef _c_SDL_JoystickNameForIndex = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickNameForIndex = ffi.Pointer<ffi.Int8> Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDevicePlayerIndex = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDevicePlayerIndex = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceGUID = SDL_JoystickGUID Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceGUID = SDL_JoystickGUID Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceVendor = ffi.Uint16 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceVendor = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceProduct = ffi.Uint16 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceProduct = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceProductVersion = ffi.Uint16 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceProductVersion = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceType = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceType = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickGetDeviceInstanceID = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickGetDeviceInstanceID = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickOpen = ffi.Pointer<SDL_Joystick> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickOpen = ffi.Pointer<SDL_Joystick> Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickFromInstanceID = ffi.Pointer<SDL_Joystick> Function(
-  ffi.Int32 instance_id,
-);
-
-typedef _dart_SDL_JoystickFromInstanceID = ffi.Pointer<SDL_Joystick> Function(
-  int instance_id,
-);
-
-typedef _c_SDL_JoystickFromPlayerIndex = ffi.Pointer<SDL_Joystick> Function(
-  ffi.Int32 player_index,
-);
-
-typedef _dart_SDL_JoystickFromPlayerIndex = ffi.Pointer<SDL_Joystick> Function(
-  int player_index,
-);
-
-typedef _c_SDL_JoystickAttachVirtual = ffi.Int32 Function(
-  ffi.Int32 type,
-  ffi.Int32 naxes,
-  ffi.Int32 nbuttons,
-  ffi.Int32 nhats,
-);
-
-typedef _dart_SDL_JoystickAttachVirtual = int Function(
-  int type,
-  int naxes,
-  int nbuttons,
-  int nhats,
-);
-
-typedef _c_SDL_JoystickDetachVirtual = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickDetachVirtual = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickIsVirtual = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_JoystickIsVirtual = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_JoystickSetVirtualAxis = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 axis,
-  ffi.Int16 value,
-);
-
-typedef _dart_SDL_JoystickSetVirtualAxis = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int axis,
-  int value,
-);
-
-typedef _c_SDL_JoystickSetVirtualButton = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 button,
-  ffi.Uint8 value,
-);
-
-typedef _dart_SDL_JoystickSetVirtualButton = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int button,
-  int value,
-);
-
-typedef _c_SDL_JoystickSetVirtualHat = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 hat,
-  ffi.Uint8 value,
-);
-
-typedef _dart_SDL_JoystickSetVirtualHat = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int hat,
-  int value,
-);
-
-typedef _c_SDL_JoystickName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetPlayerIndex = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetPlayerIndex = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickSetPlayerIndex = ffi.Void Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 player_index,
-);
-
-typedef _dart_SDL_JoystickSetPlayerIndex = void Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int player_index,
-);
-
-typedef _c_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetGUID = SDL_JoystickGUID Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetVendor = ffi.Uint16 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetVendor = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetProduct = ffi.Uint16 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetProduct = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetProductVersion = ffi.Uint16 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetProductVersion = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetType = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetType = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickGetGUIDString = ffi.Void Function(
-  SDL_JoystickGUID guid,
-  ffi.Pointer<ffi.Int8> pszGUID,
-  ffi.Int32 cbGUID,
-);
-
-typedef _dart_SDL_JoystickGetGUIDString = void Function(
-  SDL_JoystickGUID guid,
-  ffi.Pointer<ffi.Int8> pszGUID,
-  int cbGUID,
-);
-
-typedef _c_SDL_JoystickGetGUIDFromString = SDL_JoystickGUID Function(
-  ffi.Pointer<ffi.Int8> pchGUID,
-);
-
-typedef _dart_SDL_JoystickGetGUIDFromString = SDL_JoystickGUID Function(
-  ffi.Pointer<ffi.Int8> pchGUID,
-);
-
-typedef _c_SDL_JoystickGetAttached = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickGetAttached = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickInstanceID = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickInstanceID = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickNumAxes = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickNumAxes = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickNumBalls = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickNumBalls = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickNumHats = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickNumHats = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickNumButtons = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickNumButtons = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickUpdate = ffi.Void Function();
-
-typedef _dart_SDL_JoystickUpdate = void Function();
-
-typedef _c_SDL_JoystickEventState = ffi.Int32 Function(
-  ffi.Int32 state,
-);
-
-typedef _dart_SDL_JoystickEventState = int Function(
-  int state,
-);
-
-typedef _c_SDL_JoystickGetAxis = ffi.Int16 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 axis,
-);
-
-typedef _dart_SDL_JoystickGetAxis = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int axis,
-);
-
-typedef _c_SDL_JoystickGetAxisInitialState = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 axis,
-  ffi.Pointer<ffi.Int16> state,
-);
-
-typedef _dart_SDL_JoystickGetAxisInitialState = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int axis,
-  ffi.Pointer<ffi.Int16> state,
-);
-
-typedef _c_SDL_JoystickGetHat = ffi.Uint8 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 hat,
-);
-
-typedef _dart_SDL_JoystickGetHat = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int hat,
-);
-
-typedef _c_SDL_JoystickGetBall = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 ball,
-  ffi.Pointer<ffi.Int32> dx,
-  ffi.Pointer<ffi.Int32> dy,
-);
-
-typedef _dart_SDL_JoystickGetBall = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int ball,
-  ffi.Pointer<ffi.Int32> dx,
-  ffi.Pointer<ffi.Int32> dy,
-);
-
-typedef _c_SDL_JoystickGetButton = ffi.Uint8 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Int32 button,
-);
-
-typedef _dart_SDL_JoystickGetButton = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int button,
-);
-
-typedef _c_SDL_JoystickRumble = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Uint16 low_frequency_rumble,
-  ffi.Uint16 high_frequency_rumble,
-  ffi.Uint32 duration_ms,
-);
-
-typedef _dart_SDL_JoystickRumble = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int low_frequency_rumble,
-  int high_frequency_rumble,
-  int duration_ms,
-);
-
-typedef _c_SDL_JoystickRumbleTriggers = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Uint16 left_rumble,
-  ffi.Uint16 right_rumble,
-  ffi.Uint32 duration_ms,
-);
-
-typedef _dart_SDL_JoystickRumbleTriggers = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int left_rumble,
-  int right_rumble,
-  int duration_ms,
-);
-
-typedef _c_SDL_JoystickHasLED = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickHasLED = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickSetLED = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  ffi.Uint8 red,
-  ffi.Uint8 green,
-  ffi.Uint8 blue,
-);
-
-typedef _dart_SDL_JoystickSetLED = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-  int red,
-  int green,
-  int blue,
-);
-
-typedef _c_SDL_JoystickClose = ffi.Void Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickClose = void Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_JoystickCurrentPowerLevel = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickCurrentPowerLevel = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_LockSensors = ffi.Void Function();
-
-typedef _dart_SDL_LockSensors = void Function();
-
-typedef _c_SDL_UnlockSensors = ffi.Void Function();
-
-typedef _dart_SDL_UnlockSensors = void Function();
-
-typedef _c_SDL_NumSensors = ffi.Int32 Function();
-
-typedef _dart_SDL_NumSensors = int Function();
-
-typedef _c_SDL_SensorGetDeviceName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_SensorGetDeviceName = ffi.Pointer<ffi.Int8> Function(
-  int device_index,
-);
-
-typedef _c_SDL_SensorGetDeviceType = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_SensorGetDeviceType = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_SensorGetDeviceNonPortableType = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_SensorGetDeviceNonPortableType = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_SensorGetDeviceInstanceID = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_SensorGetDeviceInstanceID = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_SensorOpen = ffi.Pointer<SDL_Sensor> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_SensorOpen = ffi.Pointer<SDL_Sensor> Function(
-  int device_index,
-);
-
-typedef _c_SDL_SensorFromInstanceID = ffi.Pointer<SDL_Sensor> Function(
-  ffi.Int32 instance_id,
-);
-
-typedef _dart_SDL_SensorFromInstanceID = ffi.Pointer<SDL_Sensor> Function(
-  int instance_id,
-);
-
-typedef _c_SDL_SensorGetName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _dart_SDL_SensorGetName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _c_SDL_SensorGetType = ffi.Int32 Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _dart_SDL_SensorGetType = int Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _c_SDL_SensorGetNonPortableType = ffi.Int32 Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _dart_SDL_SensorGetNonPortableType = int Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _c_SDL_SensorGetInstanceID = ffi.Int32 Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _dart_SDL_SensorGetInstanceID = int Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _c_SDL_SensorGetData = ffi.Int32 Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-  ffi.Pointer<ffi.Float> data,
-  ffi.Int32 num_values,
-);
-
-typedef _dart_SDL_SensorGetData = int Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-  ffi.Pointer<ffi.Float> data,
-  int num_values,
-);
-
-typedef _c_SDL_SensorClose = ffi.Void Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _dart_SDL_SensorClose = void Function(
-  ffi.Pointer<SDL_Sensor> sensor,
-);
-
-typedef _c_SDL_SensorUpdate = ffi.Void Function();
-
-typedef _dart_SDL_SensorUpdate = void Function();
-
-typedef _c_SDL_GameControllerAddMappingsFromRW = ffi.Int32 Function(
-  ffi.Pointer<SDL_RWops> rw,
-  ffi.Int32 freerw,
-);
-
-typedef _dart_SDL_GameControllerAddMappingsFromRW = int Function(
-  ffi.Pointer<SDL_RWops> rw,
-  int freerw,
-);
-
-typedef _c_SDL_GameControllerAddMapping = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> mappingString,
-);
-
-typedef _dart_SDL_GameControllerAddMapping = int Function(
-  ffi.Pointer<ffi.Int8> mappingString,
-);
-
-typedef _c_SDL_GameControllerNumMappings = ffi.Int32 Function();
-
-typedef _dart_SDL_GameControllerNumMappings = int Function();
-
-typedef _c_SDL_GameControllerMappingForIndex = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 mapping_index,
-);
-
-typedef _dart_SDL_GameControllerMappingForIndex = ffi.Pointer<ffi.Int8>
-    Function(
-  int mapping_index,
-);
-
-typedef _c_SDL_GameControllerMappingForGUID = ffi.Pointer<ffi.Int8> Function(
-  SDL_JoystickGUID guid,
-);
-
-typedef _dart_SDL_GameControllerMappingForGUID = ffi.Pointer<ffi.Int8> Function(
-  SDL_JoystickGUID guid,
-);
-
-typedef _c_SDL_GameControllerMapping = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerMapping = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_IsGameController = ffi.Int32 Function(
-  ffi.Int32 joystick_index,
-);
-
-typedef _dart_SDL_IsGameController = int Function(
-  int joystick_index,
-);
-
-typedef _c_SDL_GameControllerNameForIndex = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 joystick_index,
-);
-
-typedef _dart_SDL_GameControllerNameForIndex = ffi.Pointer<ffi.Int8> Function(
-  int joystick_index,
-);
-
-typedef _c_SDL_GameControllerTypeForIndex = ffi.Int32 Function(
-  ffi.Int32 joystick_index,
-);
-
-typedef _dart_SDL_GameControllerTypeForIndex = int Function(
-  int joystick_index,
-);
-
-typedef _c_SDL_GameControllerMappingForDeviceIndex = ffi.Pointer<ffi.Int8>
-    Function(
-  ffi.Int32 joystick_index,
-);
-
-typedef _dart_SDL_GameControllerMappingForDeviceIndex = ffi.Pointer<ffi.Int8>
-    Function(
-  int joystick_index,
-);
-
-typedef _c_SDL_GameControllerOpen = ffi.Pointer<SDL_GameController> Function(
-  ffi.Int32 joystick_index,
-);
-
-typedef _dart_SDL_GameControllerOpen = ffi.Pointer<SDL_GameController> Function(
-  int joystick_index,
-);
-
-typedef _c_SDL_GameControllerFromInstanceID = ffi.Pointer<SDL_GameController>
-    Function(
-  ffi.Int32 joyid,
-);
-
-typedef _dart_SDL_GameControllerFromInstanceID = ffi.Pointer<SDL_GameController>
-    Function(
-  int joyid,
-);
-
-typedef _c_SDL_GameControllerFromPlayerIndex = ffi.Pointer<SDL_GameController>
-    Function(
-  ffi.Int32 player_index,
-);
-
-typedef _dart_SDL_GameControllerFromPlayerIndex
-    = ffi.Pointer<SDL_GameController> Function(
-  int player_index,
-);
-
-typedef _c_SDL_GameControllerName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetType = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetType = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetPlayerIndex = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetPlayerIndex = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerSetPlayerIndex = ffi.Void Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 player_index,
-);
-
-typedef _dart_SDL_GameControllerSetPlayerIndex = void Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int player_index,
-);
-
-typedef _c_SDL_GameControllerGetVendor = ffi.Uint16 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetVendor = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetProduct = ffi.Uint16 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetProduct = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetProductVersion = ffi.Uint16 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetProductVersion = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetSerial = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetAttached = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetAttached = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetJoystick = ffi.Pointer<SDL_Joystick> Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetJoystick = ffi.Pointer<SDL_Joystick>
-    Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerEventState = ffi.Int32 Function(
-  ffi.Int32 state,
-);
-
-typedef _dart_SDL_GameControllerEventState = int Function(
-  int state,
-);
-
-typedef _c_SDL_GameControllerUpdate = ffi.Void Function();
-
-typedef _dart_SDL_GameControllerUpdate = void Function();
-
-typedef _c_SDL_GameControllerGetAxisFromString = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> pchString,
-);
-
-typedef _dart_SDL_GameControllerGetAxisFromString = int Function(
-  ffi.Pointer<ffi.Int8> pchString,
-);
-
-typedef _c_SDL_GameControllerGetStringForAxis = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 axis,
-);
-
-typedef _dart_SDL_GameControllerGetStringForAxis = ffi.Pointer<ffi.Int8>
-    Function(
-  int axis,
-);
-
-typedef _c_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
-    Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 axis,
-);
-
-typedef _dart_SDL_GameControllerGetBindForAxis = SDL_GameControllerButtonBind
-    Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int axis,
-);
-
-typedef _c_SDL_GameControllerHasAxis = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 axis,
-);
-
-typedef _dart_SDL_GameControllerHasAxis = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int axis,
-);
-
-typedef _c_SDL_GameControllerGetAxis = ffi.Int16 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 axis,
-);
-
-typedef _dart_SDL_GameControllerGetAxis = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int axis,
-);
-
-typedef _c_SDL_GameControllerGetButtonFromString = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> pchString,
-);
-
-typedef _dart_SDL_GameControllerGetButtonFromString = int Function(
-  ffi.Pointer<ffi.Int8> pchString,
-);
-
-typedef _c_SDL_GameControllerGetStringForButton = ffi.Pointer<ffi.Int8>
-    Function(
-  ffi.Int32 button,
-);
-
-typedef _dart_SDL_GameControllerGetStringForButton = ffi.Pointer<ffi.Int8>
-    Function(
-  int button,
-);
-
-typedef _c_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
-    Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 button,
-);
-
-typedef _dart_SDL_GameControllerGetBindForButton = SDL_GameControllerButtonBind
-    Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int button,
-);
-
-typedef _c_SDL_GameControllerHasButton = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 button,
-);
-
-typedef _dart_SDL_GameControllerHasButton = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int button,
-);
-
-typedef _c_SDL_GameControllerGetButton = ffi.Uint8 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 button,
-);
-
-typedef _dart_SDL_GameControllerGetButton = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int button,
-);
-
-typedef _c_SDL_GameControllerGetNumTouchpads = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerGetNumTouchpads = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerGetNumTouchpadFingers = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 touchpad,
-);
-
-typedef _dart_SDL_GameControllerGetNumTouchpadFingers = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int touchpad,
-);
-
-typedef _c_SDL_GameControllerGetTouchpadFinger = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 touchpad,
-  ffi.Int32 finger,
-  ffi.Pointer<ffi.Uint8> state,
-  ffi.Pointer<ffi.Float> x,
-  ffi.Pointer<ffi.Float> y,
-  ffi.Pointer<ffi.Float> pressure,
-);
-
-typedef _dart_SDL_GameControllerGetTouchpadFinger = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int touchpad,
-  int finger,
-  ffi.Pointer<ffi.Uint8> state,
-  ffi.Pointer<ffi.Float> x,
-  ffi.Pointer<ffi.Float> y,
-  ffi.Pointer<ffi.Float> pressure,
-);
-
-typedef _c_SDL_GameControllerHasSensor = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 type,
-);
-
-typedef _dart_SDL_GameControllerHasSensor = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int type,
-);
-
-typedef _c_SDL_GameControllerSetSensorEnabled = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 type,
-  ffi.Int32 enabled,
-);
-
-typedef _dart_SDL_GameControllerSetSensorEnabled = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int type,
-  int enabled,
-);
-
-typedef _c_SDL_GameControllerIsSensorEnabled = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 type,
-);
-
-typedef _dart_SDL_GameControllerIsSensorEnabled = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int type,
-);
-
-typedef _c_SDL_GameControllerGetSensorData = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Int32 type,
-  ffi.Pointer<ffi.Float> data,
-  ffi.Int32 num_values,
-);
-
-typedef _dart_SDL_GameControllerGetSensorData = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int type,
-  ffi.Pointer<ffi.Float> data,
-  int num_values,
-);
-
-typedef _c_SDL_GameControllerRumble = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Uint16 low_frequency_rumble,
-  ffi.Uint16 high_frequency_rumble,
-  ffi.Uint32 duration_ms,
-);
-
-typedef _dart_SDL_GameControllerRumble = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int low_frequency_rumble,
-  int high_frequency_rumble,
-  int duration_ms,
-);
-
-typedef _c_SDL_GameControllerRumbleTriggers = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Uint16 left_rumble,
-  ffi.Uint16 right_rumble,
-  ffi.Uint32 duration_ms,
-);
-
-typedef _dart_SDL_GameControllerRumbleTriggers = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int left_rumble,
-  int right_rumble,
-  int duration_ms,
-);
-
-typedef _c_SDL_GameControllerHasLED = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerHasLED = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GameControllerSetLED = ffi.Int32 Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  ffi.Uint8 red,
-  ffi.Uint8 green,
-  ffi.Uint8 blue,
-);
-
-typedef _dart_SDL_GameControllerSetLED = int Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-  int red,
-  int green,
-  int blue,
-);
-
-typedef _c_SDL_GameControllerClose = ffi.Void Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _dart_SDL_GameControllerClose = void Function(
-  ffi.Pointer<SDL_GameController> gamecontroller,
-);
-
-typedef _c_SDL_GetNumTouchDevices = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumTouchDevices = int Function();
-
-typedef _c_SDL_GetTouchDevice = ffi.Int64 Function(
-  ffi.Int32 index,
-);
-
-typedef _dart_SDL_GetTouchDevice = int Function(
-  int index,
-);
-
-typedef _c_SDL_GetTouchDeviceType = ffi.Int32 Function(
-  ffi.Int64 touchID,
-);
-
-typedef _dart_SDL_GetTouchDeviceType = int Function(
-  int touchID,
-);
-
-typedef _c_SDL_GetNumTouchFingers = ffi.Int32 Function(
-  ffi.Int64 touchID,
-);
-
-typedef _dart_SDL_GetNumTouchFingers = int Function(
-  int touchID,
-);
-
-typedef _c_SDL_GetTouchFinger = ffi.Pointer<SDL_Finger> Function(
-  ffi.Int64 touchID,
-  ffi.Int32 index,
-);
-
-typedef _dart_SDL_GetTouchFinger = ffi.Pointer<SDL_Finger> Function(
-  int touchID,
-  int index,
-);
-
-typedef _c_SDL_RecordGesture = ffi.Int32 Function(
-  ffi.Int64 touchId,
-);
-
-typedef _dart_SDL_RecordGesture = int Function(
-  int touchId,
-);
-
-typedef _c_SDL_SaveAllDollarTemplates = ffi.Int32 Function(
-  ffi.Pointer<SDL_RWops> dst,
-);
-
-typedef _dart_SDL_SaveAllDollarTemplates = int Function(
-  ffi.Pointer<SDL_RWops> dst,
-);
-
-typedef _c_SDL_SaveDollarTemplate = ffi.Int32 Function(
-  ffi.Int64 gestureId,
-  ffi.Pointer<SDL_RWops> dst,
-);
-
-typedef _dart_SDL_SaveDollarTemplate = int Function(
-  int gestureId,
-  ffi.Pointer<SDL_RWops> dst,
-);
-
-typedef _c_SDL_LoadDollarTemplates = ffi.Int32 Function(
-  ffi.Int64 touchId,
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _dart_SDL_LoadDollarTemplates = int Function(
-  int touchId,
-  ffi.Pointer<SDL_RWops> src,
-);
-
-typedef _c_SDL_PumpEvents = ffi.Void Function();
-
-typedef _dart_SDL_PumpEvents = void Function();
-
-typedef _c_SDL_PeepEvents = ffi.Int32 Function(
-  ffi.Pointer<SDL_Event> events,
-  ffi.Int32 numevents,
-  ffi.Int32 action,
-  ffi.Uint32 minType,
-  ffi.Uint32 maxType,
-);
-
-typedef _dart_SDL_PeepEvents = int Function(
-  ffi.Pointer<SDL_Event> events,
-  int numevents,
-  int action,
-  int minType,
-  int maxType,
-);
-
-typedef _c_SDL_HasEvent = ffi.Int32 Function(
-  ffi.Uint32 type,
-);
-
-typedef _dart_SDL_HasEvent = int Function(
-  int type,
-);
-
-typedef _c_SDL_HasEvents = ffi.Int32 Function(
-  ffi.Uint32 minType,
-  ffi.Uint32 maxType,
-);
-
-typedef _dart_SDL_HasEvents = int Function(
-  int minType,
-  int maxType,
-);
-
-typedef _c_SDL_FlushEvent = ffi.Void Function(
-  ffi.Uint32 type,
-);
-
-typedef _dart_SDL_FlushEvent = void Function(
-  int type,
-);
-
-typedef _c_SDL_FlushEvents = ffi.Void Function(
-  ffi.Uint32 minType,
-  ffi.Uint32 maxType,
-);
-
-typedef _dart_SDL_FlushEvents = void Function(
-  int minType,
-  int maxType,
-);
-
-typedef _c_SDL_PollEvent = ffi.Int32 Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef _dart_SDL_PollEvent = int Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef _c_SDL_WaitEvent = ffi.Int32 Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef _dart_SDL_WaitEvent = int Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef _c_SDL_WaitEventTimeout = ffi.Int32 Function(
-  ffi.Pointer<SDL_Event> event,
-  ffi.Int32 timeout,
-);
-
-typedef _dart_SDL_WaitEventTimeout = int Function(
-  ffi.Pointer<SDL_Event> event,
-  int timeout,
-);
-
-typedef _c_SDL_PushEvent = ffi.Int32 Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef _dart_SDL_PushEvent = int Function(
-  ffi.Pointer<SDL_Event> event,
-);
-
-typedef SDL_EventFilter = ffi.Int32 Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Pointer<SDL_Event>,
-);
-
-typedef _c_SDL_SetEventFilter = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_SetEventFilter = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_GetEventFilter = ffi.Int32 Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
-);
-
-typedef _dart_SDL_GetEventFilter = int Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>>> filter,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
-);
-
-typedef _c_SDL_AddEventWatch = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_AddEventWatch = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_DelEventWatch = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_DelEventWatch = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_FilterEvents = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_FilterEvents = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_EventFilter>> filter,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_EventState = ffi.Uint8 Function(
-  ffi.Uint32 type,
-  ffi.Int32 state,
-);
-
-typedef _dart_SDL_EventState = int Function(
-  int type,
-  int state,
-);
-
-typedef _c_SDL_RegisterEvents = ffi.Uint32 Function(
-  ffi.Int32 numevents,
-);
-
-typedef _dart_SDL_RegisterEvents = int Function(
-  int numevents,
-);
-
-typedef _c_SDL_GetBasePath = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetBasePath = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_GetPrefPath = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> org,
-  ffi.Pointer<ffi.Int8> app,
-);
-
-typedef _dart_SDL_GetPrefPath = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> org,
-  ffi.Pointer<ffi.Int8> app,
-);
-
-typedef _c_SDL_NumHaptics = ffi.Int32 Function();
-
-typedef _dart_SDL_NumHaptics = int Function();
-
-typedef _c_SDL_HapticName = ffi.Pointer<ffi.Int8> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_HapticName = ffi.Pointer<ffi.Int8> Function(
-  int device_index,
-);
-
-typedef _c_SDL_HapticOpen = ffi.Pointer<SDL_Haptic> Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_HapticOpen = ffi.Pointer<SDL_Haptic> Function(
-  int device_index,
-);
-
-typedef _c_SDL_HapticOpened = ffi.Int32 Function(
-  ffi.Int32 device_index,
-);
-
-typedef _dart_SDL_HapticOpened = int Function(
-  int device_index,
-);
-
-typedef _c_SDL_HapticIndex = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticIndex = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_MouseIsHaptic = ffi.Int32 Function();
-
-typedef _dart_SDL_MouseIsHaptic = int Function();
-
-typedef _c_SDL_HapticOpenFromMouse = ffi.Pointer<SDL_Haptic> Function();
-
-typedef _dart_SDL_HapticOpenFromMouse = ffi.Pointer<SDL_Haptic> Function();
-
-typedef _c_SDL_JoystickIsHaptic = ffi.Int32 Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_JoystickIsHaptic = int Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_HapticOpenFromJoystick = ffi.Pointer<SDL_Haptic> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _dart_SDL_HapticOpenFromJoystick = ffi.Pointer<SDL_Haptic> Function(
-  ffi.Pointer<SDL_Joystick> joystick,
-);
-
-typedef _c_SDL_HapticClose = ffi.Void Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticClose = void Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticNumEffects = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticNumEffects = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticNumEffectsPlaying = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticNumEffectsPlaying = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticQuery = ffi.Uint32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticQuery = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticNumAxes = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticNumAxes = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticEffectSupported = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Pointer<SDL_HapticEffect> effect,
-);
-
-typedef _dart_SDL_HapticEffectSupported = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Pointer<SDL_HapticEffect> effect,
-);
-
-typedef _c_SDL_HapticNewEffect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Pointer<SDL_HapticEffect> effect,
-);
-
-typedef _dart_SDL_HapticNewEffect = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Pointer<SDL_HapticEffect> effect,
-);
-
-typedef _c_SDL_HapticUpdateEffect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 effect,
-  ffi.Pointer<SDL_HapticEffect> data,
-);
-
-typedef _dart_SDL_HapticUpdateEffect = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int effect,
-  ffi.Pointer<SDL_HapticEffect> data,
-);
-
-typedef _c_SDL_HapticRunEffect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 effect,
-  ffi.Uint32 iterations,
-);
-
-typedef _dart_SDL_HapticRunEffect = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int effect,
-  int iterations,
-);
-
-typedef _c_SDL_HapticStopEffect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 effect,
-);
-
-typedef _dart_SDL_HapticStopEffect = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int effect,
-);
-
-typedef _c_SDL_HapticDestroyEffect = ffi.Void Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 effect,
-);
-
-typedef _dart_SDL_HapticDestroyEffect = void Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int effect,
-);
-
-typedef _c_SDL_HapticGetEffectStatus = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 effect,
-);
-
-typedef _dart_SDL_HapticGetEffectStatus = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int effect,
-);
-
-typedef _c_SDL_HapticSetGain = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 gain,
-);
-
-typedef _dart_SDL_HapticSetGain = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int gain,
-);
-
-typedef _c_SDL_HapticSetAutocenter = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Int32 autocenter,
-);
-
-typedef _dart_SDL_HapticSetAutocenter = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  int autocenter,
-);
-
-typedef _c_SDL_HapticPause = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticPause = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticUnpause = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticUnpause = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticStopAll = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticStopAll = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticRumbleSupported = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticRumbleSupported = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticRumbleInit = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticRumbleInit = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_HapticRumblePlay = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  ffi.Float strength,
-  ffi.Uint32 length,
-);
-
-typedef _dart_SDL_HapticRumblePlay = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-  double strength,
-  int length,
-);
-
-typedef _c_SDL_HapticRumbleStop = ffi.Int32 Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _dart_SDL_HapticRumbleStop = int Function(
-  ffi.Pointer<SDL_Haptic> haptic,
-);
-
-typedef _c_SDL_SetHintWithPriority = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-  ffi.Int32 priority,
-);
-
-typedef _dart_SDL_SetHintWithPriority = int Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-  int priority,
-);
-
-typedef _c_SDL_SetHint = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-);
-
-typedef _dart_SDL_SetHint = int Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.Int8> value,
-);
-
-typedef _c_SDL_GetHint = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_GetHint = ffi.Pointer<ffi.Int8> Function(
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_GetHintBoolean = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Int32 default_value,
-);
-
-typedef _dart_SDL_GetHintBoolean = int Function(
-  ffi.Pointer<ffi.Int8> name,
-  int default_value,
-);
-
-typedef SDL_HintCallback = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Pointer<ffi.Int8>,
-  ffi.Pointer<ffi.Int8>,
-  ffi.Pointer<ffi.Int8>,
-);
-
-typedef _c_SDL_AddHintCallback = ffi.Void Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_AddHintCallback = void Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_DelHintCallback = ffi.Void Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_DelHintCallback = void Function(
-  ffi.Pointer<ffi.Int8> name,
-  ffi.Pointer<ffi.NativeFunction<SDL_HintCallback>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_ClearHints = ffi.Void Function();
-
-typedef _dart_SDL_ClearHints = void Function();
-
-typedef _c_SDL_LoadObject = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> sofile,
-);
-
-typedef _dart_SDL_LoadObject = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Int8> sofile,
-);
-
-typedef _c_SDL_LoadFunction = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> handle,
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _dart_SDL_LoadFunction = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> handle,
-  ffi.Pointer<ffi.Int8> name,
-);
-
-typedef _c_SDL_UnloadObject = ffi.Void Function(
-  ffi.Pointer<ffi.Void> handle,
-);
-
-typedef _dart_SDL_UnloadObject = void Function(
-  ffi.Pointer<ffi.Void> handle,
-);
-
-typedef _c_SDL_LogSetAllPriority = ffi.Void Function(
-  ffi.Int32 priority,
-);
-
-typedef _dart_SDL_LogSetAllPriority = void Function(
-  int priority,
-);
-
-typedef _c_SDL_LogSetPriority = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Int32 priority,
-);
-
-typedef _dart_SDL_LogSetPriority = void Function(
-  int category,
-  int priority,
-);
-
-typedef _c_SDL_LogGetPriority = ffi.Int32 Function(
-  ffi.Int32 category,
-);
-
-typedef _dart_SDL_LogGetPriority = int Function(
-  int category,
-);
-
-typedef _c_SDL_LogResetPriorities = ffi.Void Function();
-
-typedef _dart_SDL_LogResetPriorities = void Function();
-
-typedef _c_SDL_Log = ffi.Void Function(
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_Log = void Function(
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogVerbose = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogVerbose = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogDebug = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogDebug = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogInfo = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogInfo = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogWarn = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogWarn = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogError = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogError = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogCritical = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogCritical = void Function(
-  int category,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogMessage = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Int32 priority,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _dart_SDL_LogMessage = void Function(
-  int category,
-  int priority,
-  ffi.Pointer<ffi.Int8> fmt,
-);
-
-typedef _c_SDL_LogMessageV = ffi.Void Function(
-  ffi.Int32 category,
-  ffi.Int32 priority,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef _dart_SDL_LogMessageV = void Function(
-  int category,
-  int priority,
-  ffi.Pointer<ffi.Int8> fmt,
-  ffi.Pointer<ffi.Int8> ap,
-);
-
-typedef SDL_LogOutputFunction = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Int32,
-  ffi.Int32,
-  ffi.Pointer<ffi.Int8>,
-);
-
-typedef _c_SDL_LogGetOutputFunction = ffi.Void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>>> callback,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
-);
-
-typedef _dart_SDL_LogGetOutputFunction = void Function(
-  ffi.Pointer<ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>>> callback,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> userdata,
-);
-
-typedef _c_SDL_LogSetOutputFunction = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_LogSetOutputFunction = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_LogOutputFunction>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_ShowMessageBox = ffi.Int32 Function(
-  ffi.Pointer<SDL_MessageBoxData> messageboxdata,
-  ffi.Pointer<ffi.Int32> buttonid,
-);
-
-typedef _dart_SDL_ShowMessageBox = int Function(
-  ffi.Pointer<SDL_MessageBoxData> messageboxdata,
-  ffi.Pointer<ffi.Int32> buttonid,
-);
-
-typedef _c_SDL_ShowSimpleMessageBox = ffi.Int32 Function(
-  ffi.Uint32 flags,
-  ffi.Pointer<ffi.Int8> title,
-  ffi.Pointer<ffi.Int8> message,
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_ShowSimpleMessageBox = int Function(
-  int flags,
-  ffi.Pointer<ffi.Int8> title,
-  ffi.Pointer<ffi.Int8> message,
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_Metal_CreateView = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_Metal_CreateView = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_Metal_DestroyView = ffi.Void Function(
-  ffi.Pointer<ffi.Void> view,
-);
-
-typedef _dart_SDL_Metal_DestroyView = void Function(
-  ffi.Pointer<ffi.Void> view,
-);
-
-typedef _c_SDL_Metal_GetLayer = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> view,
-);
-
-typedef _dart_SDL_Metal_GetLayer = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<ffi.Void> view,
-);
-
-typedef _c_SDL_Metal_GetDrawableSize = ffi.Void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_Metal_GetDrawableSize = void Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_GetPowerInfo = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int32> secs,
-  ffi.Pointer<ffi.Int32> pct,
-);
-
-typedef _dart_SDL_GetPowerInfo = int Function(
-  ffi.Pointer<ffi.Int32> secs,
-  ffi.Pointer<ffi.Int32> pct,
-);
-
-typedef _c_SDL_GetNumRenderDrivers = ffi.Int32 Function();
-
-typedef _dart_SDL_GetNumRenderDrivers = int Function();
-
-typedef _c_SDL_GetRenderDriverInfo = ffi.Int32 Function(
-  ffi.Int32 index,
-  ffi.Pointer<SDL_RendererInfo> info,
-);
-
-typedef _dart_SDL_GetRenderDriverInfo = int Function(
-  int index,
-  ffi.Pointer<SDL_RendererInfo> info,
-);
-
-typedef _c_SDL_CreateWindowAndRenderer = ffi.Int32 Function(
-  ffi.Int32 width,
-  ffi.Int32 height,
-  ffi.Uint32 window_flags,
-  ffi.Pointer<ffi.Pointer<SDL_Window>> window,
-  ffi.Pointer<ffi.Pointer<SDL_Renderer>> renderer,
-);
-
-typedef _dart_SDL_CreateWindowAndRenderer = int Function(
-  int width,
-  int height,
-  int window_flags,
-  ffi.Pointer<ffi.Pointer<SDL_Window>> window,
-  ffi.Pointer<ffi.Pointer<SDL_Renderer>> renderer,
-);
-
-typedef _c_SDL_CreateRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Int32 index,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_CreateRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Window> window,
-  int index,
-  int flags,
-);
-
-typedef _c_SDL_CreateSoftwareRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_CreateSoftwareRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_GetRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_GetRenderer = ffi.Pointer<SDL_Renderer> Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_GetRendererInfo = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_RendererInfo> info,
-);
-
-typedef _dart_SDL_GetRendererInfo = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_RendererInfo> info,
-);
-
-typedef _c_SDL_GetRendererOutputSize = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_GetRendererOutputSize = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_CreateTexture = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Uint32 format,
-  ffi.Int32 access,
-  ffi.Int32 w,
-  ffi.Int32 h,
-);
-
-typedef _dart_SDL_CreateTexture = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int format,
-  int access,
-  int w,
-  int h,
-);
-
-typedef _c_SDL_CreateTextureFromSurface = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _dart_SDL_CreateTextureFromSurface = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Surface> surface,
-);
-
-typedef _c_SDL_QueryTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint32> format,
-  ffi.Pointer<ffi.Int32> access,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_QueryTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint32> format,
-  ffi.Pointer<ffi.Int32> access,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_SetTextureColorMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Uint8 r,
-  ffi.Uint8 g,
-  ffi.Uint8 b,
-);
-
-typedef _dart_SDL_SetTextureColorMod = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  int r,
-  int g,
-  int b,
-);
-
-typedef _c_SDL_GetTextureColorMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _dart_SDL_GetTextureColorMod = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-);
-
-typedef _c_SDL_SetTextureAlphaMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Uint8 alpha,
-);
-
-typedef _dart_SDL_SetTextureAlphaMod = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  int alpha,
-);
-
-typedef _c_SDL_GetTextureAlphaMod = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint8> alpha,
-);
-
-typedef _dart_SDL_GetTextureAlphaMod = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Uint8> alpha,
-);
-
-typedef _c_SDL_SetTextureBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Int32 blendMode,
-);
-
-typedef _dart_SDL_SetTextureBlendMode = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  int blendMode,
-);
-
-typedef _c_SDL_GetTextureBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _dart_SDL_GetTextureBlendMode = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _c_SDL_SetTextureScaleMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Int32 scaleMode,
-);
-
-typedef _dart_SDL_SetTextureScaleMode = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  int scaleMode,
-);
-
-typedef _c_SDL_GetTextureScaleMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Int32> scaleMode,
-);
-
-typedef _dart_SDL_GetTextureScaleMode = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Int32> scaleMode,
-);
-
-typedef _c_SDL_UpdateTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Void> pixels,
-  ffi.Int32 pitch,
-);
-
-typedef _dart_SDL_UpdateTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Void> pixels,
-  int pitch,
-);
-
-typedef _c_SDL_UpdateYUVTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Uint8> Yplane,
-  ffi.Int32 Ypitch,
-  ffi.Pointer<ffi.Uint8> Uplane,
-  ffi.Int32 Upitch,
-  ffi.Pointer<ffi.Uint8> Vplane,
-  ffi.Int32 Vpitch,
-);
-
-typedef _dart_SDL_UpdateYUVTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Uint8> Yplane,
-  int Ypitch,
-  ffi.Pointer<ffi.Uint8> Uplane,
-  int Upitch,
-  ffi.Pointer<ffi.Uint8> Vplane,
-  int Vpitch,
-);
-
-typedef _c_SDL_LockTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> pixels,
-  ffi.Pointer<ffi.Int32> pitch,
-);
-
-typedef _dart_SDL_LockTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Pointer<ffi.Void>> pixels,
-  ffi.Pointer<ffi.Int32> pitch,
-);
-
-typedef _c_SDL_LockTextureToSurface = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Pointer<SDL_Surface>> surface,
-);
-
-typedef _dart_SDL_LockTextureToSurface = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Pointer<ffi.Pointer<SDL_Surface>> surface,
-);
-
-typedef _c_SDL_UnlockTexture = ffi.Void Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _dart_SDL_UnlockTexture = void Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _c_SDL_RenderTargetSupported = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderTargetSupported = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_SetRenderTarget = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _dart_SDL_SetRenderTarget = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _c_SDL_GetRenderTarget = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_GetRenderTarget = ffi.Pointer<SDL_Texture> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderSetLogicalSize = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Int32 w,
-  ffi.Int32 h,
-);
-
-typedef _dart_SDL_RenderSetLogicalSize = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int w,
-  int h,
-);
-
-typedef _c_SDL_RenderGetLogicalSize = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _dart_SDL_RenderGetLogicalSize = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> w,
-  ffi.Pointer<ffi.Int32> h,
-);
-
-typedef _c_SDL_RenderSetIntegerScale = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Int32 enable,
-);
-
-typedef _dart_SDL_RenderSetIntegerScale = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int enable,
-);
-
-typedef _c_SDL_RenderGetIntegerScale = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderGetIntegerScale = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderSetViewport = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderSetViewport = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderGetViewport = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderGetViewport = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderSetClipRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderSetClipRect = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderGetClipRect = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderGetClipRect = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderIsClipEnabled = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderIsClipEnabled = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderSetScale = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Float scaleX,
-  ffi.Float scaleY,
-);
-
-typedef _dart_SDL_RenderSetScale = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  double scaleX,
-  double scaleY,
-);
-
-typedef _c_SDL_RenderGetScale = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Float> scaleX,
-  ffi.Pointer<ffi.Float> scaleY,
-);
-
-typedef _dart_SDL_RenderGetScale = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Float> scaleX,
-  ffi.Pointer<ffi.Float> scaleY,
-);
-
-typedef _c_SDL_SetRenderDrawColor = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Uint8 r,
-  ffi.Uint8 g,
-  ffi.Uint8 b,
-  ffi.Uint8 a,
-);
-
-typedef _dart_SDL_SetRenderDrawColor = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int r,
-  int g,
-  int b,
-  int a,
-);
-
-typedef _c_SDL_GetRenderDrawColor = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-  ffi.Pointer<ffi.Uint8> a,
-);
-
-typedef _dart_SDL_GetRenderDrawColor = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Uint8> r,
-  ffi.Pointer<ffi.Uint8> g,
-  ffi.Pointer<ffi.Uint8> b,
-  ffi.Pointer<ffi.Uint8> a,
-);
-
-typedef _c_SDL_SetRenderDrawBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Int32 blendMode,
-);
-
-typedef _dart_SDL_SetRenderDrawBlendMode = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int blendMode,
-);
-
-typedef _c_SDL_GetRenderDrawBlendMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _dart_SDL_GetRenderDrawBlendMode = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<ffi.Int32> blendMode,
-);
-
-typedef _c_SDL_RenderClear = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderClear = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderDrawPoint = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Int32 x,
-  ffi.Int32 y,
-);
-
-typedef _dart_SDL_RenderDrawPoint = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int x,
-  int y,
-);
-
-typedef _c_SDL_RenderDrawPoints = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Point> points,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawPoints = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Point> points,
-  int count,
-);
-
-typedef _c_SDL_RenderDrawLine = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Int32 x1,
-  ffi.Int32 y1,
-  ffi.Int32 x2,
-  ffi.Int32 y2,
-);
-
-typedef _dart_SDL_RenderDrawLine = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  int x1,
-  int y1,
-  int x2,
-  int y2,
-);
-
-typedef _c_SDL_RenderDrawLines = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Point> points,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawLines = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Point> points,
-  int count,
-);
-
-typedef _c_SDL_RenderDrawRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderDrawRect = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderDrawRects = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rects,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawRects = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rects,
-  int count,
-);
-
-typedef _c_SDL_RenderFillRect = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _dart_SDL_RenderFillRect = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-);
-
-typedef _c_SDL_RenderFillRects = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rects,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderFillRects = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rects,
-  int count,
-);
-
-typedef _c_SDL_RenderCopy = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _dart_SDL_RenderCopy = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Rect> dstrect,
-);
-
-typedef _c_SDL_RenderCopyEx = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Rect> dstrect,
-  ffi.Double angle,
-  ffi.Pointer<SDL_Point> center,
-  ffi.Int32 flip,
-);
-
-typedef _dart_SDL_RenderCopyEx = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_Rect> dstrect,
-  double angle,
-  ffi.Pointer<SDL_Point> center,
-  int flip,
-);
-
-typedef _c_SDL_RenderDrawPointF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Float x,
-  ffi.Float y,
-);
-
-typedef _dart_SDL_RenderDrawPointF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  double x,
-  double y,
-);
-
-typedef _c_SDL_RenderDrawPointsF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FPoint> points,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawPointsF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FPoint> points,
-  int count,
-);
-
-typedef _c_SDL_RenderDrawLineF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Float x1,
-  ffi.Float y1,
-  ffi.Float x2,
-  ffi.Float y2,
-);
-
-typedef _dart_SDL_RenderDrawLineF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  double x1,
-  double y1,
-  double x2,
-  double y2,
-);
-
-typedef _c_SDL_RenderDrawLinesF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FPoint> points,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawLinesF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FPoint> points,
-  int count,
-);
-
-typedef _c_SDL_RenderDrawRectF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rect,
-);
-
-typedef _dart_SDL_RenderDrawRectF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rect,
-);
-
-typedef _c_SDL_RenderDrawRectsF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rects,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderDrawRectsF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rects,
-  int count,
-);
-
-typedef _c_SDL_RenderFillRectF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rect,
-);
-
-typedef _dart_SDL_RenderFillRectF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rect,
-);
-
-typedef _c_SDL_RenderFillRectsF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rects,
-  ffi.Int32 count,
-);
-
-typedef _dart_SDL_RenderFillRectsF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_FRect> rects,
-  int count,
-);
-
-typedef _c_SDL_RenderCopyF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_FRect> dstrect,
-);
-
-typedef _dart_SDL_RenderCopyF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_FRect> dstrect,
-);
-
-typedef _c_SDL_RenderCopyExF = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_FRect> dstrect,
-  ffi.Double angle,
-  ffi.Pointer<SDL_FPoint> center,
-  ffi.Int32 flip,
-);
-
-typedef _dart_SDL_RenderCopyExF = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<SDL_Rect> srcrect,
-  ffi.Pointer<SDL_FRect> dstrect,
-  double angle,
-  ffi.Pointer<SDL_FPoint> center,
-  int flip,
-);
-
-typedef _c_SDL_RenderReadPixels = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-  ffi.Uint32 format,
-  ffi.Pointer<ffi.Void> pixels,
-  ffi.Int32 pitch,
-);
-
-typedef _dart_SDL_RenderReadPixels = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-  ffi.Pointer<SDL_Rect> rect,
-  int format,
-  ffi.Pointer<ffi.Void> pixels,
-  int pitch,
-);
-
-typedef _c_SDL_RenderPresent = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderPresent = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_DestroyTexture = ffi.Void Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _dart_SDL_DestroyTexture = void Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _c_SDL_DestroyRenderer = ffi.Void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_DestroyRenderer = void Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderFlush = ffi.Int32 Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderFlush = int Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_GL_BindTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Float> texw,
-  ffi.Pointer<ffi.Float> texh,
-);
-
-typedef _dart_SDL_GL_BindTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-  ffi.Pointer<ffi.Float> texw,
-  ffi.Pointer<ffi.Float> texh,
-);
-
-typedef _c_SDL_GL_UnbindTexture = ffi.Int32 Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _dart_SDL_GL_UnbindTexture = int Function(
-  ffi.Pointer<SDL_Texture> texture,
-);
-
-typedef _c_SDL_RenderGetMetalLayer = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderGetMetalLayer = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_RenderGetMetalCommandEncoder = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderGetMetalCommandEncoder = ffi.Pointer<ffi.Void> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_CreateShapedWindow = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Int8> title,
-  ffi.Uint32 x,
-  ffi.Uint32 y,
-  ffi.Uint32 w,
-  ffi.Uint32 h,
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_CreateShapedWindow = ffi.Pointer<SDL_Window> Function(
-  ffi.Pointer<ffi.Int8> title,
-  int x,
-  int y,
-  int w,
-  int h,
-  int flags,
-);
-
-typedef _c_SDL_IsShapedWindow = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _dart_SDL_IsShapedWindow = int Function(
-  ffi.Pointer<SDL_Window> window,
-);
-
-typedef _c_SDL_SetWindowShape = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Surface> shape,
-  ffi.Pointer<SDL_WindowShapeMode> shape_mode,
-);
-
-typedef _dart_SDL_SetWindowShape = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_Surface> shape,
-  ffi.Pointer<SDL_WindowShapeMode> shape_mode,
-);
-
-typedef _c_SDL_GetShapedWindowMode = ffi.Int32 Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_WindowShapeMode> shape_mode,
-);
-
-typedef _dart_SDL_GetShapedWindowMode = int Function(
-  ffi.Pointer<SDL_Window> window,
-  ffi.Pointer<SDL_WindowShapeMode> shape_mode,
-);
-
-typedef SDL_WindowsMessageHook = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint32,
-  ffi.Uint64,
-  ffi.Int64,
-);
-
-typedef _c_SDL_SetWindowsMessageHook = ffi.Void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_WindowsMessageHook>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _dart_SDL_SetWindowsMessageHook = void Function(
-  ffi.Pointer<ffi.NativeFunction<SDL_WindowsMessageHook>> callback,
-  ffi.Pointer<ffi.Void> userdata,
-);
-
-typedef _c_SDL_Direct3D9GetAdapterIndex = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-);
-
-typedef _dart_SDL_Direct3D9GetAdapterIndex = int Function(
-  int displayIndex,
-);
-
-typedef _c_SDL_RenderGetD3D9Device = ffi.Pointer<IDirect3DDevice9> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _dart_SDL_RenderGetD3D9Device = ffi.Pointer<IDirect3DDevice9> Function(
-  ffi.Pointer<SDL_Renderer> renderer,
-);
-
-typedef _c_SDL_DXGIGetOutputInfo = ffi.Int32 Function(
-  ffi.Int32 displayIndex,
-  ffi.Pointer<ffi.Int32> adapterIndex,
-  ffi.Pointer<ffi.Int32> outputIndex,
-);
-
-typedef _dart_SDL_DXGIGetOutputInfo = int Function(
-  int displayIndex,
-  ffi.Pointer<ffi.Int32> adapterIndex,
-  ffi.Pointer<ffi.Int32> outputIndex,
-);
-
-typedef _c_SDL_IsTablet = ffi.Int32 Function();
-
-typedef _dart_SDL_IsTablet = int Function();
-
-typedef _c_SDL_OnApplicationWillTerminate = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationWillTerminate = void Function();
-
-typedef _c_SDL_OnApplicationDidReceiveMemoryWarning = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationDidReceiveMemoryWarning = void Function();
-
-typedef _c_SDL_OnApplicationWillResignActive = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationWillResignActive = void Function();
-
-typedef _c_SDL_OnApplicationDidEnterBackground = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationDidEnterBackground = void Function();
-
-typedef _c_SDL_OnApplicationWillEnterForeground = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationWillEnterForeground = void Function();
-
-typedef _c_SDL_OnApplicationDidBecomeActive = ffi.Void Function();
-
-typedef _dart_SDL_OnApplicationDidBecomeActive = void Function();
-
-typedef _c_SDL_GetTicks = ffi.Uint32 Function();
-
-typedef _dart_SDL_GetTicks = int Function();
-
-typedef _c_SDL_GetPerformanceCounter = ffi.Uint64 Function();
-
-typedef _dart_SDL_GetPerformanceCounter = int Function();
-
-typedef _c_SDL_GetPerformanceFrequency = ffi.Uint64 Function();
-
-typedef _dart_SDL_GetPerformanceFrequency = int Function();
-
-typedef _c_SDL_Delay = ffi.Void Function(
-  ffi.Uint32 ms,
-);
-
-typedef _dart_SDL_Delay = void Function(
-  int ms,
-);
-
-typedef SDL_TimerCallback = ffi.Uint32 Function(
-  ffi.Uint32,
-  ffi.Pointer<ffi.Void>,
-);
-
-typedef _c_SDL_AddTimer = ffi.Int32 Function(
-  ffi.Uint32 interval,
-  ffi.Pointer<ffi.NativeFunction<SDL_TimerCallback>> callback,
-  ffi.Pointer<ffi.Void> param,
-);
-
-typedef _dart_SDL_AddTimer = int Function(
-  int interval,
-  ffi.Pointer<ffi.NativeFunction<SDL_TimerCallback>> callback,
-  ffi.Pointer<ffi.Void> param,
-);
-
-typedef _c_SDL_RemoveTimer = ffi.Int32 Function(
-  ffi.Int32 id,
-);
-
-typedef _dart_SDL_RemoveTimer = int Function(
-  int id,
-);
-
-typedef _c_SDL_GetVersion = ffi.Void Function(
-  ffi.Pointer<SDL_version> ver,
-);
-
-typedef _dart_SDL_GetVersion = void Function(
-  ffi.Pointer<SDL_version> ver,
-);
-
-typedef _c_SDL_GetRevision = ffi.Pointer<ffi.Int8> Function();
-
-typedef _dart_SDL_GetRevision = ffi.Pointer<ffi.Int8> Function();
-
-typedef _c_SDL_GetRevisionNumber = ffi.Int32 Function();
-
-typedef _dart_SDL_GetRevisionNumber = int Function();
-
-typedef _c_SDL_GetPreferredLocales = ffi.Pointer<SDL_Locale> Function();
-
-typedef _dart_SDL_GetPreferredLocales = ffi.Pointer<SDL_Locale> Function();
-
-typedef _c_SDL_OpenURL = ffi.Int32 Function(
-  ffi.Pointer<ffi.Int8> url,
-);
-
-typedef _dart_SDL_OpenURL = int Function(
-  ffi.Pointer<ffi.Int8> url,
-);
-
-typedef _c_SDL_Init = ffi.Int32 Function(
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_Init = int Function(
-  int flags,
-);
-
-typedef _c_SDL_InitSubSystem = ffi.Int32 Function(
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_InitSubSystem = int Function(
-  int flags,
-);
-
-typedef _c_SDL_QuitSubSystem = ffi.Void Function(
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_QuitSubSystem = void Function(
-  int flags,
-);
-
-typedef _c_SDL_WasInit = ffi.Uint32 Function(
-  ffi.Uint32 flags,
-);
-
-typedef _dart_SDL_WasInit = int Function(
-  int flags,
-);
-
-typedef _c_SDL_Quit = ffi.Void Function();
-
-typedef _dart_SDL_Quit = void Function();
-
-typedef _typedefC_6 = ffi.Int64 Function(
-  ffi.Pointer<SDL_RWops>,
-);
-
-typedef _typedefC_7 = ffi.Int64 Function(
-  ffi.Pointer<SDL_RWops>,
-  ffi.Int64,
-  ffi.Int32,
-);
-
-typedef _typedefC_8 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops>,
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint64,
-  ffi.Uint64,
-);
-
-typedef _typedefC_9 = ffi.Uint64 Function(
-  ffi.Pointer<SDL_RWops>,
-  ffi.Pointer<ffi.Void>,
-  ffi.Uint64,
-  ffi.Uint64,
-);
-
-typedef _typedefC_10 = ffi.Int32 Function(
-  ffi.Pointer<SDL_RWops>,
-);
-
-typedef SDL_AudioCallback = ffi.Void Function(
-  ffi.Pointer<ffi.Void>,
-  ffi.Pointer<ffi.Uint8>,
-  ffi.Int32,
-);
-
-typedef SDL_AudioFilter = ffi.Void Function(
-  ffi.Pointer<SDL_AudioCVT>,
-  ffi.Uint16,
-);

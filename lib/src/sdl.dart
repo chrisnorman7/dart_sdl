@@ -15,6 +15,7 @@ import 'error.dart';
 import 'events/application.dart';
 import 'events/base.dart';
 import 'events/game_controller.dart';
+import 'events/gestures.dart';
 import 'events/joystick.dart';
 import 'events/keyboard.dart';
 import 'events/mouse.dart';
@@ -791,6 +792,25 @@ class Sdl {
           break;
         case SDL_EventType.SDL_FINGERMOTION:
           event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
+          break;
+
+        // Gesture events
+        case SDL_EventType.SDL_DOLLARGESTURE:
+          event = DollarGestureEvent.fromSdlEvent(this, e.dgesture);
+          break;
+        case SDL_EventType.SDL_DOLLARRECORD:
+          event = DollarGestureEvent.fromSdlEvent(this, e.dgesture);
+          break;
+        case SDL_EventType.SDL_MULTIGESTURE:
+          event = MultiGestureEvent(
+              this,
+              e.mgesture.timestamp,
+              e.mgesture.touchId,
+              e.mgesture.dTheta,
+              e.mgesture.dDist,
+              e.mgesture.numFingers,
+              e.mgesture.x,
+              e.mgesture.y);
           break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');

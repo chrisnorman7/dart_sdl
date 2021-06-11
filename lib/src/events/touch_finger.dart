@@ -10,7 +10,8 @@ import 'base.dart';
 /// A touch event.
 ///
 /// [SDL Docs](https://wiki.libsdl.org/SDL_TouchFingerEvent)
-class TouchFingerEvent extends Event with WindowedEvent {
+class TouchFingerEvent extends Event
+    with WindowMixin, CoordinatesMixin<double> {
   /// Create an event.
   TouchFingerEvent(
       Sdl sdl,
@@ -18,14 +19,16 @@ class TouchFingerEvent extends Event with WindowedEvent {
       this.type,
       this.touchId,
       this.fingerId,
-      this.x,
-      this.y,
+      double x,
+      double y,
       this.distanceX,
       this.distanceY,
       this.pressure,
-      int wndId)
+      int windowId)
       : super(sdl, timestamp) {
-    windowId = wndId;
+    this.windowId = windowId;
+    this.x = x;
+    this.y = y;
   }
 
   /// Create an instance from an SDL event.
@@ -51,15 +54,6 @@ class TouchFingerEvent extends Event with WindowedEvent {
 
   /// The finger ID.
   final int fingerId;
-
-  /// The x-axis location of the touch event, normalized (0...1).
-  final double x;
-
-  /// The y-axis location of the touch event, normalized (0...1).
-  final double y;
-
-  /// The coordinates of the touch.
-  Point<double> get coordinates => Point<double>(x, y);
 
   /// The distance moved in the x-axis, normalized (-1...1).
   final double distanceX;

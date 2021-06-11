@@ -1,4 +1,6 @@
 /// Provides various enumerations for use with SDL.
+import 'events/gestures.dart';
+import 'events/touch_finger.dart';
 
 /// Hint priorities.
 ///
@@ -341,7 +343,7 @@ enum GameControllerButton {
   max,
 }
 
-/// The type of a [TouchFingerEventType].
+/// The type of a [TouchFingerEvent].
 enum TouchFingerEventType {
   /// SDL_FINGERMOTION
   motion,
@@ -351,4 +353,13 @@ enum TouchFingerEventType {
 
   /// SDL_FINGERUP
   up,
+}
+
+/// The type of a [DollarGestureEvent].
+enum DollarGestureEventType {
+  /// SDL_DOLLARGESTURE
+  gesture,
+
+  /// SDL_DOLLARRECORD
+  record,
 }

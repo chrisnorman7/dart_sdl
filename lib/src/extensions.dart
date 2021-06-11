@@ -200,6 +200,19 @@ extension SdlLogCategoryValues on LogCategory {
   }
 }
 
+/// An extension for converting to an SDL flag.
+extension SdlDollarGestureEventTypeValues on DollarGestureEventType {
+  /// Return an SDL flag.
+  int toSdlFlag() {
+    switch (this) {
+      case DollarGestureEventType.gesture:
+        return SDL_EventType.SDL_DOLLARGESTURE;
+      case DollarGestureEventType.record:
+        return SDL_EventType.SDL_DOLLARRECORD;
+    }
+  }
+}
+
 /// An extension for converting SDL flags to `dart_sdl` values.
 extension DartSdlValues on int {
   /// Get a mouse wheel direction.
@@ -441,6 +454,18 @@ extension DartSdlValues on int {
         return TouchFingerEventType.up;
       default:
         throw SdlError(this, 'Invalid touch event type.');
+    }
+  }
+
+  /// Convert to a dollar gesture event type.
+  DollarGestureEventType toDollarGestureEventType() {
+    switch (this) {
+      case SDL_EventType.SDL_DOLLARGESTURE:
+        return DollarGestureEventType.gesture;
+      case SDL_EventType.SDL_DOLLARRECORD:
+        return DollarGestureEventType.record;
+      default:
+        throw SdlError(this, 'Invalid gesture type.');
     }
   }
 }

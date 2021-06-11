@@ -8,24 +8,17 @@ import '../sdl_bindings.dart';
 import 'base.dart';
 
 /// The base class for all mouse events.
-class MouseEvent extends Event with WindowedEvent {
+class MouseEvent extends Event with WindowMixin, CoordinatesMixin<int> {
   /// Create an event.
-  MouseEvent(Sdl sdl, int timestamp, int wndId, this.which, this.x, this.y)
+  MouseEvent(Sdl sdl, int timestamp, int windowId, this.which, int x, int y)
       : super(sdl, timestamp) {
-    windowId = wndId;
+    this.windowId = windowId;
+    this.x = x;
+    this.y = y;
   }
 
   /// The mouse instance ID.
   final int which;
-
-  /// X coordinate.
-  final int x;
-
-  /// Y coordinate.
-  final int y;
-
-  /// Coordinates.
-  Point<int> get coordinates => Point<int>(x, y);
 }
 
 /// A mouse has moved in the window.
@@ -87,9 +80,9 @@ class MouseButtonEvent extends MouseEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseWheelEvent)
 class MouseWheelEvent extends MouseEvent {
   /// Create an event.
-  MouseWheelEvent(Sdl sdl, int timestamp, int wndId, int which, int x, int y,
+  MouseWheelEvent(Sdl sdl, int timestamp, int windowId, int which, int x, int y,
       this.direction)
-      : super(sdl, timestamp, wndId, which, x, y);
+      : super(sdl, timestamp, windowId, which, x, y);
 
   /// The direction the wheel was moved.
   final MouseWheelDirection direction;

@@ -5,7 +5,7 @@ import 'base.dart';
 /// Keyboard text input.
 ///
 /// [SDL_TEXTINPUT](https://wiki.libsdl.org/SDL_TextInputEvent)
-class TextInputEvent extends Event with WindowedEvent {
+class TextInputEvent extends Event with WindowMixin {
   /// Create an event.
   TextInputEvent(Sdl sdl, int timestamp, this.text) : super(sdl, timestamp);
 
