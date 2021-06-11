@@ -1,4 +1,5 @@
 /// Provides various enumerations for use with SDL.
+import 'events/drop.dart';
 import 'events/gestures.dart';
 import 'events/touch_finger.dart';
 
@@ -362,4 +363,19 @@ enum DollarGestureEventType {
 
   /// SDL_DOLLARRECORD
   record,
+}
+
+/// The type of a [DropEvent].
+enum DropEventType {
+  /// SDL_DROPFILE
+  file,
+
+  /// SDL_DROPTEXT
+  text,
+
+  /// SDL_DROPBEGIN
+  begin,
+
+  /// SDL_DROPCOMPLETE
+  complete,
 }

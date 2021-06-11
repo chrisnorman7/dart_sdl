@@ -213,6 +213,23 @@ extension SdlDollarGestureEventTypeValues on DollarGestureEventType {
   }
 }
 
+/// An extension for converting to an SDL flag.
+extension SdlDropEventTypeValues on DropEventType {
+  /// Return an SDL flag.
+  int toSdlFlag() {
+    switch (this) {
+      case DropEventType.file:
+        return SDL_EventType.SDL_DROPFILE;
+      case DropEventType.text:
+        return SDL_EventType.SDL_DROPTEXT;
+      case DropEventType.begin:
+        return SDL_EventType.SDL_DROPBEGIN;
+      case DropEventType.complete:
+        return SDL_EventType.SDL_DROPCOMPLETE;
+    }
+  }
+}
+
 /// An extension for converting SDL flags to `dart_sdl` values.
 extension DartSdlValues on int {
   /// Get a mouse wheel direction.
@@ -466,6 +483,22 @@ extension DartSdlValues on int {
         return DollarGestureEventType.record;
       default:
         throw SdlError(this, 'Invalid gesture type.');
+    }
+  }
+
+  /// Convert to a drop event type.
+  DropEventType toDropEventType() {
+    switch (this) {
+      case SDL_EventType.SDL_DROPFILE:
+        return DropEventType.file;
+      case SDL_EventType.SDL_DROPTEXT:
+        return DropEventType.text;
+      case SDL_EventType.SDL_DROPBEGIN:
+        return DropEventType.begin;
+      case SDL_EventType.SDL_DROPCOMPLETE:
+        return DropEventType.complete;
+      default:
+        throw SdlError(this, 'Invalid drop event type.');
     }
   }
 }

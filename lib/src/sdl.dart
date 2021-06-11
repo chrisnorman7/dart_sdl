@@ -15,6 +15,7 @@ import 'error.dart';
 import 'events/application.dart';
 import 'events/base.dart';
 import 'events/clipboard.dart';
+import 'events/drop.dart';
 import 'events/game_controller.dart';
 import 'events/gestures.dart';
 import 'events/joystick.dart';
@@ -817,6 +818,20 @@ class Sdl {
         // Clipboard events
         case SDL_EventType.SDL_CLIPBOARDUPDATE:
           event = ClipboardChangedEvent(this, e.common.timestamp);
+          break;
+
+        // Drag and drop events
+        case SDL_EventType.SDL_DROPFILE:
+          event = DropEvent.fromSdlEvent(this, e.drop);
+          break;
+        case SDL_EventType.SDL_DROPTEXT:
+          event = DropEvent.fromSdlEvent(this, e.drop);
+          break;
+        case SDL_EventType.SDL_DROPBEGIN:
+          event = DropEvent.fromSdlEvent(this, e.drop);
+          break;
+        case SDL_EventType.SDL_DROPCOMPLETE:
+          event = DropEvent.fromSdlEvent(this, e.drop);
           break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');

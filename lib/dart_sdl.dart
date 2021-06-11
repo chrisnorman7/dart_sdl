@@ -29,6 +29,7 @@ export 'src/error.dart';
 export 'src/events/application.dart';
 export 'src/events/base.dart';
 export 'src/events/clipboard.dart';
+export 'src/events/drop.dart';
 export 'src/events/game_controller.dart';
 export 'src/events/gestures.dart';
 export 'src/events/joystick.dart';
