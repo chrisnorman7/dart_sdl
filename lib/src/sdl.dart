@@ -14,6 +14,7 @@ import 'enumerations.dart';
 import 'error.dart';
 import 'events/application.dart';
 import 'events/base.dart';
+import 'events/clipboard.dart';
 import 'events/game_controller.dart';
 import 'events/gestures.dart';
 import 'events/joystick.dart';
@@ -811,6 +812,11 @@ class Sdl {
               e.mgesture.numFingers,
               e.mgesture.x,
               e.mgesture.y);
+          break;
+
+        // Clipboard events
+        case SDL_EventType.SDL_CLIPBOARDUPDATE:
+          event = ClipboardChangedEvent(this, e.common.timestamp);
           break;
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
