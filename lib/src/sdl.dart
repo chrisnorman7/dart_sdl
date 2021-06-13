@@ -833,6 +833,8 @@ class Sdl {
         case SDL_EventType.SDL_DROPCOMPLETE:
           event = DropEvent.fromSdlEvent(this, e.drop);
           break;
+
+        // Audio hotplug events
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }
