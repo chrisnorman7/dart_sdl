@@ -13,6 +13,7 @@ import 'display.dart';
 import 'enumerations.dart';
 import 'error.dart';
 import 'events/application.dart';
+import 'events/audio.dart';
 import 'events/base.dart';
 import 'events/clipboard.dart';
 import 'events/drop.dart';
@@ -618,7 +619,7 @@ class Sdl {
           final windowEvent = e.window;
           final timestamp = windowEvent.timestamp;
           final windowId = windowEvent.windowID;
-          switch (windowEvent.type) {
+          switch (windowEvent.event) {
             case SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
               event = WindowShownEvent(this, timestamp, windowId);
               break;
@@ -835,6 +836,14 @@ class Sdl {
           break;
 
         // Audio hotplug events
+        case SDL_EventType.SDL_AUDIODEVICEADDED:
+          event = AudioDeviceEvent.fromSdlEvent(this, e.adevice);
+          break;
+        case SDL_EventType.SDL_AUDIODEVICEREMOVED:
+          event = AudioDeviceEvent.fromSdlEvent(this, e.adevice);
+          break;
+
+        // Render events
         default:
           throw SdlError(e.type, 'Unrecognised event type.');
       }

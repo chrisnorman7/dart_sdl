@@ -24101,7 +24101,9 @@ const int NTDDI_WIN10_RS5 = 167772166;
 
 const int NTDDI_WIN10_19H1 = 167772167;
 
-const int WDK_NTDDI_VERSION = 167772167;
+const int NTDDI_WIN10_VB = 167772168;
+
+const int WDK_NTDDI_VERSION = 167772168;
 
 const int OSVERSION_MASK = 4294901760;
 
@@ -24111,7 +24113,7 @@ const int SUBVERSION_MASK = 255;
 
 const int _WIN32_WINNT = 2560;
 
-const int NTDDI_VERSION = 167772167;
+const int NTDDI_VERSION = 167772168;
 
 const int WINVER = 2560;
 
@@ -24200,6 +24202,8 @@ const int _HAS_CXX17 = 0;
 const int _HAS_CXX20 = 0;
 
 const int _HAS_NODISCARD = 1;
+
+const int _UCRT_DISABLED_WARNINGS = 4324;
 
 const int _ARGMAX = 100;
 
@@ -24293,7 +24297,7 @@ const int SDL_ASSERT_LEVEL = 1;
 
 const String SDL_FILE = 'temp_for_macros.hpp';
 
-const int SDL_LINE = 622;
+const int SDL_LINE = 628;
 
 const int SDL_NULL_WHILE_LOOP_CONDITION = 0;
 

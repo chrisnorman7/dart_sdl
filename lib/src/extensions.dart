@@ -326,13 +326,12 @@ extension DartSdlValues on int {
 
   /// Convert [SDL_PRESSED] or [SDL_RELEASED] to a proper pressed state.
   PressedState toPressedState() {
-    switch (this) {
-      case SDL_PRESSED:
-        return PressedState.pressed;
-      case SDL_RELEASED:
-        return PressedState.released;
-      default:
-        throw SdlError(this, 'Invalid pressed state.');
+    if (this == SDL_EventType.SDL_KEYDOWN || this == SDL_PRESSED) {
+      return PressedState.pressed;
+    } else if (this == SDL_EventType.SDL_KEYUP || this == SDL_RELEASED) {
+      return PressedState.released;
+    } else {
+      throw SdlError(this, 'Invalid pressed state.');
     }
   }
 

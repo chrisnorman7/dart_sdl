@@ -6,6 +6,15 @@ void main() {
   final sdl = Sdl()
     ..init()
     ..createWindow('Events Example');
-  print(sdl.pollEvent());
+  while (true) {
+    final event = sdl.pollEvent();
+    if (event == null) {
+      continue;
+    } else if (event is QuitEvent) {
+      break;
+    } else {
+      print(event);
+    }
+  }
   sdl.quit();
 }
