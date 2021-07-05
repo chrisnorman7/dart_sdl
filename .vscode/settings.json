@@ -143,4 +143,5 @@
       "source.fixAll": true
     }
   }
+  "python.sortImports.path": "${workspaceFolder}/env/scripts/isort",
 }

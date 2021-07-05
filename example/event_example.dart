@@ -12,6 +12,8 @@ void main() {
       continue;
     } else if (event is QuitEvent) {
       break;
+    } else if (event is KeyboardEvent) {
+      print(event.key.keycode);
     } else {
       print(event);
     }
