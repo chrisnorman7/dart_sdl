@@ -851,6 +851,16 @@ class Sdl {
     }
   }
 
+  /// Get a stream of all SDL events.
+  Stream<Event> events() async* {
+    while (true) {
+      final event = pollEvent();
+      if (event != null) {
+        yield event;
+      }
+    }
+  }
+
   /// Register user-defined event types.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PumpEvents)

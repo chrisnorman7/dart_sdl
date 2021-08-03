@@ -2,25 +2,20 @@
 
 import 'package:dart_sdl/dart_sdl.dart';
 
-void main() {
+Future<void> main() async {
   final sdl = Sdl()..init();
   final window = sdl.createWindow('Events Example');
-  while (true) {
-    final event = sdl.pollEvent();
-    if (event == null) {
-      continue;
-    } else if (event is QuitEvent) {
+  await for (final event in sdl.events()) {
+    print(event);
+    if (event is QuitEvent) {
       break;
     } else if (event is KeyboardEvent) {
       print(event.key.keycode);
-      print(event.key.scancode);
-      if (event.key.keycode == KeyCode.keycode_q ||
+      if (event.key.keycode == KeyCode.keycode_q && event.key.modifiers == 0 ||
           event.key.keycode == KeyCode.keycode_ESCAPE) {
         window.destroy();
         break;
       }
-    } else {
-      print(event);
     }
   }
   sdl.quit();
