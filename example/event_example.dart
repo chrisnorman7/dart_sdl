@@ -3,9 +3,8 @@
 import 'package:dart_sdl/dart_sdl.dart';
 
 void main() {
-  final sdl = Sdl()
-    ..init()
-    ..createWindow('Events Example');
+  final sdl = Sdl()..init();
+  final window = sdl.createWindow('Events Example');
   while (true) {
     final event = sdl.pollEvent();
     if (event == null) {
@@ -14,6 +13,12 @@ void main() {
       break;
     } else if (event is KeyboardEvent) {
       print(event.key.keycode);
+      print(event.key.scancode);
+      if (event.key.keycode == KeyCode.keycode_q ||
+          event.key.keycode == KeyCode.keycode_ESCAPE) {
+        window.destroy();
+        break;
+      }
     } else {
       print(event);
     }

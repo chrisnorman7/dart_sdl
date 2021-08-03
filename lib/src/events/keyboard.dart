@@ -1,6 +1,7 @@
 /// Keyboard events:
 import '../enumerations.dart';
 import '../extensions.dart';
+import '../keycodes.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
@@ -11,10 +12,10 @@ class KeyboardKey {
   KeyboardKey(this.scancode, this.keycode, this.modifiers);
 
   /// The scancode for this key.
-  final int scancode;
+  final ScanCode scancode;
 
   /// The keycode of the key.
-  final int keycode;
+  final KeyCode keycode;
 
   /// All pressed modifiers.
   final int modifiers;
@@ -79,7 +80,8 @@ class KeyboardEvent extends Event with WindowMixin {
   /// Create an instance from an SDL event.
   factory KeyboardEvent.fromSdlEvent(Sdl sdl, SDL_KeyboardEvent event) {
     final sim = event.keysym;
-    final key = KeyboardKey(sim.scancode, sim.sym, sim.mod);
+    final key =
+        KeyboardKey(sim.scancode.toScanCode(), sim.sym.toKeyCode(), sim.mod);
     return KeyboardEvent(sdl, event.timestamp, event.windowID,
         event.state.toPressedState(), event.repeat, key);
   }
