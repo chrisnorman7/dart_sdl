@@ -5,7 +5,7 @@ import 'package:dart_sdl/dart_sdl.dart';
 Future<void> main() async {
   final sdl = Sdl()..init();
   final window = sdl.createWindow('Events Example');
-  await for (final event in sdl.events()) {
+  await for (final event in sdl.events) {
     print(event);
     if (event is QuitEvent) {
       break;

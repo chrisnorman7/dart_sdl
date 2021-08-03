@@ -852,7 +852,7 @@ class Sdl {
   }
 
   /// Get a stream of all SDL events.
-  Stream<Event> events() async* {
+  Stream<Event> get events async* {
     while (true) {
       final event = pollEvent();
       if (event != null) {
