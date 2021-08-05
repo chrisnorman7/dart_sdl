@@ -28,7 +28,7 @@ class GameController {
 
   /// Get the current state of an axis control on this game controller.
   ///
-  /// [SDL Docs]([SDL_GameControllerAxis](https://wiki.libsdl.org/SDL_GameControllerAxis))
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerAxis)
   int getAxis(GameControllerAxis axis) =>
       sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlFlag());
 
