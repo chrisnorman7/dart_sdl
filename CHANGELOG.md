@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0]
+
+### Changed
+
+* Make `KeyboardEvent.repeat` a boolean value.
+
 ## [0.2.0]
 
 ### Added

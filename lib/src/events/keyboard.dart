@@ -83,14 +83,14 @@ class KeyboardEvent extends Event with WindowMixin {
     final key =
         KeyboardKey(sim.scancode.toScanCode(), sim.sym.toKeyCode(), sim.mod);
     return KeyboardEvent(sdl, event.timestamp, event.windowID,
-        event.state.toPressedState(), event.repeat, key);
+        event.state.toPressedState(), sdl.getBool(event.repeat), key);
   }
 
   /// Whether [key] has been pressed or released.
   final PressedState state;
 
   /// Non-0 if this is a repeated key.
-  final int repeat;
+  final bool repeat;
 
   /// The keyboard key that was pressed or released.
   final KeyboardKey key;
