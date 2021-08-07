@@ -36,10 +36,7 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl()
-      : windows = <int, Window>{},
-        joysticks = <Pointer<SDL_Joystick>, Joystick>{},
-        gameControllers = <Pointer<SDL_GameController>, GameController>{} {
+  Sdl() {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -52,15 +49,6 @@ class Sdl {
 
   /// The SDL bindings to use.
   late final DartSdl sdl;
-
-  /// All the created windows.
-  final Map<int, Window> windows;
-
-  /// All the opened joysticks.
-  final Map<Pointer<SDL_Joystick>, Joystick> joysticks;
-
-  /// All the open game controllers.
-  final Map<Pointer<SDL_GameController>, GameController> gameControllers;
 
   /// Get a Dart boolean from an SDL one.
   bool getBool(int value) => value == SDL_bool.SDL_TRUE;
@@ -269,7 +257,6 @@ class Sdl {
     final window = Window(
         this, sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags));
     calloc.free(titlePtr);
-    windows[window.id] = window;
     return window;
   }
 
@@ -548,7 +535,6 @@ class Sdl {
       throw SdlError(0, getError());
     }
     final j = Joystick(this, handle);
-    joysticks[handle] = j;
     return j;
   }
 
@@ -574,7 +560,6 @@ class Sdl {
       throw SdlError(0, getError());
     }
     final controller = GameController(this, handle);
-    gameControllers[handle] = controller;
     return controller;
   }
 

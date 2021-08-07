@@ -30,7 +30,7 @@ mixin WindowMixin on Event {
   late final int windowId;
 
   /// The window that emitted this event.
-  Window? get window => sdl.windows[windowId];
+  Window? get window => Window.fromId(sdl, windowId);
 }
 
 /// Add coordinates to any event type.

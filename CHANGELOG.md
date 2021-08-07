@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0]
+
+### Added
+
+* Added a binding for [SDL_GetWindowFromID](https://wiki.libsdl.org/SDL_GetWindowFromID) as `Window.fromId`.
+
+### Changed
+
+* Changed the return type of `Joystick.controller` to `GameController?`, to
+  account for the controller not being open, and an empty error string being
+  present.
+
+### Removed
+
+* No longer cache objects.
+
 ## [0.1.3]
 
 ### Added

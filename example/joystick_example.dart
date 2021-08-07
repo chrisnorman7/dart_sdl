@@ -11,8 +11,13 @@ void main() {
       print('Failed to open joystick #$i.');
       continue;
     }
-    print('#$i: ${j.name}.');
-    print('Is a game controller: ${sdl.isGameController(i)}.');
+    print('$i: ${j.name} (#${j.instanceId}).');
+    if (sdl.isGameController(i)) {
+      final controller = j.controller ?? sdl.openGameController(j.instanceId);
+      print('Controller: ${controller.name}.');
+    } else {
+      print('Not a controller.');
+    }
     print('Power level: ${j.powerLevel}.');
     print('Number of axes: ${j.numAxes}.');
     print('Number of balls: ${j.numBalls}.');

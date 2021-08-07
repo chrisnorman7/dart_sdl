@@ -42,12 +42,7 @@ class GameController {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetJoystick)
   Joystick get joystick {
     final ptr = sdl.sdl.SDL_GameControllerGetJoystick(handle);
-    var j = sdl.joysticks[ptr];
-    if (j == null) {
-      j = Joystick(sdl, ptr);
-      sdl.joysticks[ptr] = j;
-    }
-    return j;
+    return Joystick(sdl, ptr);
   }
 
   /// Get the name of this controller.
@@ -61,6 +56,5 @@ class GameController {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerClose)
   void close() {
     sdl.sdl.SDL_GameControllerClose(handle);
-    sdl.gameControllers.remove(handle);
   }
 }

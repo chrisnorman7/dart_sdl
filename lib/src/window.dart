@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import 'display.dart';
 import 'enumerations.dart';
+import 'error.dart';
 import 'extensions.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
@@ -46,6 +47,15 @@ class Window {
   /// Create a window.
   Window(this.sdl, this.handle);
 
+  /// Get a window from a stored ID.
+  factory Window.fromId(Sdl sdl, int id) {
+    final handle = sdl.sdl.SDL_GetWindowFromID(id);
+    if (handle == nullptr) {
+      throw SdlError(id, sdl.getError());
+    }
+    return Window(sdl, handle);
+  }
+
   /// The main SDL object.
   final Sdl sdl;
 
@@ -56,7 +66,6 @@ class Window {
   @mustCallSuper
   void destroy() {
     sdl.destroyWindow(this);
-    sdl.windows.remove(id);
   }
 
   /// The title of this window.

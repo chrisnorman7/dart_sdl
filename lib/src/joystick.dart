@@ -112,22 +112,19 @@ class Joystick {
   /// Get a controller associated with this joystick.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerFromInstanceID)
-  GameController get controller {
+  ///
+  /// If this method returns `null`, use the [Sdl.openGameController] to open
+  /// the controller, using [instanceId].
+  GameController? get controller {
     final handle = sdl.sdl.SDL_GameControllerFromInstanceID(instanceId);
     if (handle == nullptr) {
-      throw SdlError(instanceId, sdl.getError());
+      return null;
     }
-    var controller = sdl.gameControllers[handle];
-    if (controller == null) {
-      controller = GameController(sdl, handle);
-      sdl.gameControllers[handle] = controller;
-    }
-    return controller;
+    return GameController(sdl, handle);
   }
 
   /// Close this joystick.
   void close() {
     sdl.sdl.SDL_JoystickClose(handle);
-    sdl.joysticks.remove(handle);
   }
 }

@@ -21,7 +21,7 @@ class WindowEvent extends Event {
   final int windowId;
 
   /// Get the window which emitted this event.
-  Window? get window => sdl.windows[windowId];
+  Window? get window => Window.fromId(sdl, windowId);
 }
 
 /// A window has been shown.

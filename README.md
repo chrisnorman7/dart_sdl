@@ -184,6 +184,7 @@ https://wiki.libsdl.org/SDL_GetWindowDisplayIndex)
 * [SDL_SetWindowSize](https://wiki.libsdl.org/SDL_SetWindowSize)
 * [SDL_SetWindowTitle](https://wiki.libsdl.org/SDL_SetWindowTitle)
 * [SDL_ShowWindow](https://wiki.libsdl.org/SDL_ShowWindow)
+* [SDL_GetWindowFromID](https://wiki.libsdl.org/SDL_GetWindowFromID)
 
 ### [Clipboard Handling](https://wiki.libsdl.org/CategoryClipboard)
 
