@@ -871,4 +871,21 @@ class Sdl {
     }
     return r;
   }
+
+  /// Get the state of game controller events.
+  bool get gameControllerEventsEnabled {
+    final value = sdl.SDL_GameControllerEventState(SDL_QUERY);
+    switch (value) {
+      case SDL_IGNORE:
+        return false;
+      case SDL_ENABLE:
+        return true;
+      default:
+        throw SdlError(value, 'Unknown result.');
+    }
+  }
+
+  /// Set whether or not game controller events are enabled.
+  set gameControllerEventsEnabled(bool value) =>
+      sdl.SDL_GameControllerEventState(value ? SDL_ENABLE : SDL_IGNORE);
 }

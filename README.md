@@ -304,6 +304,7 @@ Classes have been created to reflect every member of the
 * [SDL_GameControllerNameForIndex](https://wiki.libsdl.org/SDL_GameControllerNameForIndex)
 * [SDL_GameControllerOpen](https://wiki.libsdl.org/SDL_GameControllerOpen)
 * [SDL_IsGameController](https://wiki.libsdl.org/SDL_IsGameController)
+* [SDL_GameControllerEventState](https://wiki.libsdl.org/SDL_GameControllerEventState)
 
 ##### `SdlGameControllerAxisValues` extension
 

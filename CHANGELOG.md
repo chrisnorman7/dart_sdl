@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.3]
+
+### Added
+
+* Added bindings for [SDL_GameControllerEventState](https://wiki.libsdl.org/SDL_GameControllerEventState).
+
 ## [0.1.2]
 
 ### Changed
