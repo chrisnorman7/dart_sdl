@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1]
+
+### Changed
+
+* Fixed the doc string for `KeyboardEvent.repeat`.
+
 ## [0.3.0]
 
 ### Changed

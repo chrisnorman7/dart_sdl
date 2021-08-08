@@ -89,7 +89,7 @@ class KeyboardEvent extends Event with WindowMixin {
   /// Whether [key] has been pressed or released.
   final PressedState state;
 
-  /// Non-0 if this is a repeated key.
+  /// Whether or not this event is a repeat.
   final bool repeat;
 
   /// The keyboard key that was pressed or released.
