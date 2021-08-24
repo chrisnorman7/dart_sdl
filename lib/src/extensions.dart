@@ -501,6 +501,17 @@ extension DartSdlValues on int {
         throw SdlError(this, 'Invalid drop event type.');
     }
   }
+
+  /// Return a list of modifiers.
+  List<KeyMod> toModifiersList() {
+    final mods = <KeyMod>[];
+    for (final modifier in KeyMod.values) {
+      if (this & modifier.toSdlValue() != 0) {
+        mods.add(modifier);
+      }
+    }
+    return mods;
+  }
 }
 
 /// An extension for converting strings to `dart_sdl` values.
@@ -534,5 +545,48 @@ extension SdlStringValues on String {
       throw SdlError(0, 'Invalid game controller button "$this".');
     }
     return v;
+  }
+}
+
+/// An extension for converting to an SDL flag.
+extension SdlKeyModValues on KeyMod {
+  /// Return an SDL value.
+  int toSdlValue() {
+    switch (this) {
+      case KeyMod.none:
+        return SDL_Keymod.KMOD_NONE;
+      case KeyMod.lShift:
+        return SDL_Keymod.KMOD_LSHIFT;
+      case KeyMod.rShift:
+        return SDL_Keymod.KMOD_RSHIFT;
+      case KeyMod.lCtrl:
+        return SDL_Keymod.KMOD_LCTRL;
+      case KeyMod.rCtrl:
+        return SDL_Keymod.KMOD_RCTRL;
+      case KeyMod.lAlt:
+        return SDL_Keymod.KMOD_LALT;
+      case KeyMod.rAlt:
+        return SDL_Keymod.KMOD_RALT;
+      case KeyMod.lGui:
+        return SDL_Keymod.KMOD_LGUI;
+      case KeyMod.rGui:
+        return SDL_Keymod.KMOD_RGUI;
+      case KeyMod.num:
+        return SDL_Keymod.KMOD_NUM;
+      case KeyMod.caps:
+        return SDL_Keymod.KMOD_CAPS;
+      case KeyMod.mode:
+        return SDL_Keymod.KMOD_MODE;
+      case KeyMod.ctrl:
+        return SDL_Keymod.KMOD_CTRL;
+      case KeyMod.shift:
+        return SDL_Keymod.KMOD_SHIFT;
+      case KeyMod.alt:
+        return SDL_Keymod.KMOD_ALT;
+      case KeyMod.gui:
+        return SDL_Keymod.KMOD_GUI;
+      case KeyMod.reserved:
+        return SDL_Keymod.KMOD_RESERVED;
+    }
   }
 }

@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.3.2]
+
+### Added
+
+* [SDL_Delay](https://wiki.libsdl.org/SDL_Delay)
+* [SDL_GetKeyboardFocus](https://wiki.libsdl.org/SDL_GetKeyboardFocus)
+* [SDL_GetKeyboardState](https://wiki.libsdl.org/SDL_GetKeyboardState)
+* [SDL_GetKeyFromName](https://wiki.libsdl.org/SDL_GetKeyFromName)
+* [SDL_GetKeyFromScancode](https://wiki.libsdl.org/SDL_GetKeyFromScancode)
+* [SDL_GetKeyName](https://wiki.libsdl.org/SDL_GetKeyName)
+* [SDL_GetModState](https://wiki.libsdl.org/SDL_GetModState)
+* [SDL_GetScancodeFromKey](https://wiki.libsdl.org/SDL_GetScancodeFromKey)
+* [SDL_GetScancodeFromName](https://wiki.libsdl.org/SDL_GetScancodeFromName)
+* [SDL_GetScancodeName](https://wiki.libsdl.org/SDL_GetScancodeName)
+* [SDL_HasScreenKeyboardSupport](https://wiki.libsdl.org/SDL_HasScreenKeyboardSupport)
+* [SDL_IsScreenKeyboardShown](https://wiki.libsdl.org/SDL_IsScreenKeyboardShown)
+* [SDL_IsTextInputActive](https://wiki.libsdl.org/SDL_IsTextInputActive)
+* [SDL_Keymod](https://wiki.libsdl.org/SDL_Keymod)
+* [SDL_SetModState](https://wiki.libsdl.org/SDL_SetModState)
+* [SDL_StartTextInput](https://wiki.libsdl.org/SDL_StartTextInput)
+* [SDL_StopTextInput](https://wiki.libsdl.org/SDL_StopTextInput)
+
+### Changed
+
+* Changed the constructor for the `KeyboardKey` class.
+* Changed `KeyboardKey.modifiers` to a list of `KeyMod` values.
+
 ## [0.3.1]
 
 ### Changed

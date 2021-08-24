@@ -9,7 +9,8 @@ import 'base.dart';
 /// A keyboard key.
 class KeyboardKey {
   /// Create a key.
-  KeyboardKey(this.scancode, this.keycode, this.modifiers);
+  KeyboardKey(
+      {required this.scancode, required this.keycode, required this.modifiers});
 
   /// The scancode for this key.
   final ScanCode scancode;
@@ -18,52 +19,7 @@ class KeyboardKey {
   final KeyCode keycode;
 
   /// All pressed modifiers.
-  final int modifiers;
-
-  /// Whether or not the left shift key is down.
-  bool get lShift => modifiers & SDL_Keymod.KMOD_LSHIFT != 0;
-
-  /// Whether or not the right shift key is down.
-  bool get rShift => modifiers & SDL_Keymod.KMOD_RSHIFT != 0;
-
-  /// Whether or not the left control key is down.
-  bool get lCtrl => modifiers & SDL_Keymod.KMOD_LCTRL != 0;
-
-  /// Whether or not the right control key is down.
-  bool get rCtrl => modifiers & SDL_Keymod.KMOD_RCTRL != 0;
-
-  /// Whether or not the left alt key is down.
-  bool get lAlt => modifiers & SDL_Keymod.KMOD_LALT != 0;
-
-  /// Whether or not the right alt key is down.
-  bool get rAlt => modifiers & SDL_Keymod.KMOD_RALT != 0;
-
-  /// Whether or not the left GUI key is down.
-  bool get lGui => modifiers & SDL_Keymod.KMOD_LGUI != 0;
-
-  /// Whether or not the right alt key is down.
-  bool get rGui => modifiers & SDL_Keymod.KMOD_RGUI != 0;
-
-  /// Whether or not the number lock is on or off.
-  bool get numlock => modifiers & SDL_Keymod.KMOD_NUM != 0;
-
-  /// Whether or not the capslock is on or off.
-  bool get capslock => modifiers & SDL_Keymod.KMOD_CAPS != 0;
-
-  /// Whether or not the Alt GR key is down.
-  bool get altGr => modifiers & SDL_Keymod.KMOD_MODE != 0;
-
-  /// Whether or not either control key is down.
-  bool get ctrl => modifiers & SDL_Keymod.KMOD_CTRL != 0;
-
-  /// Whether or not either shift key is down.
-  bool get shift => modifiers & SDL_Keymod.KMOD_SHIFT != 0;
-
-  /// Whether or not either alt key is down.
-  bool get alt => modifiers & SDL_Keymod.KMOD_ALT != 0;
-
-  /// Whether or not either GUI key is down.
-  bool get gui => modifiers & SDL_Keymod.KMOD_GUI != 0;
+  final List<KeyMod> modifiers;
 }
 
 /// A keyboard event.
@@ -80,8 +36,10 @@ class KeyboardEvent extends Event with WindowMixin {
   /// Create an instance from an SDL event.
   factory KeyboardEvent.fromSdlEvent(Sdl sdl, SDL_KeyboardEvent event) {
     final sim = event.keysym;
-    final key =
-        KeyboardKey(sim.scancode.toScanCode(), sim.sym.toKeyCode(), sim.mod);
+    final key = KeyboardKey(
+        scancode: sim.scancode.toScanCode(),
+        keycode: sim.sym.toKeyCode(),
+        modifiers: sim.mod.toModifiersList());
     return KeyboardEvent(sdl, event.timestamp, event.windowID,
         event.state.toPressedState(), sdl.getBool(event.repeat), key);
   }

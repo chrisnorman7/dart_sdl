@@ -379,3 +379,59 @@ enum DropEventType {
   /// SDL_DROPCOMPLETE
   complete,
 }
+
+/// An enumeration of key modifier masks.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_Keymod)
+enum KeyMod {
+  /// 0 (no modifier is applicable)
+  none,
+
+  /// the left Shift key is down
+  lShift,
+
+  /// the right Shift key is down
+  rShift,
+
+  /// the left Ctrl (Control) key is down
+  lCtrl,
+
+  /// the right Ctrl (Control) key is down
+  rCtrl,
+
+  /// the left Alt key is down
+  lAlt,
+
+  /// the right Alt key is down
+  rAlt,
+
+  /// the left GUI key (often the Windows key) is down
+  lGui,
+
+  /// the right GUI key (often the Windows key) is down
+  rGui,
+
+  /// the Num Lock key (may be located on an extended keypad) is down
+  num,
+
+  /// the Caps Lock key is down
+  caps,
+
+  /// the !AltGr key is down
+  mode,
+
+  /// [lCtrl] || [rCtrl]
+  ctrl,
+
+  /// [lShift] || [rShift]
+  shift,
+
+  /// [lAlt] || [rAlt]
+  alt,
+
+  /// [lGui] || [rGui]
+  gui,
+
+  /// reserved for future use
+  reserved,
+}

@@ -321,4 +321,10 @@ class Window {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowResizable)
   set resizeable(bool value) =>
       sdl.sdl.SDL_SetWindowResizable(handle, sdl.boolToValue(value));
+
+  /// Check whether the screen keyboard is shown for given window.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_IsScreenKeyboardShown)
+  bool get isScreenKeyboardShown =>
+      sdl.getBool(sdl.sdl.SDL_IsScreenKeyboardShown(handle));
 }

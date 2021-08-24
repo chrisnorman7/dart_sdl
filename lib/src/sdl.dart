@@ -29,6 +29,7 @@ import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
 import 'joystick.dart';
+import 'keycodes.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
 import 'window.dart';
@@ -873,4 +874,119 @@ class Sdl {
   /// Set whether or not game controller events are enabled.
   set gameControllerEventsEnabled(bool value) =>
       sdl.SDL_GameControllerEventState(value ? SDL_ENABLE : SDL_IGNORE);
+
+  /// Wait a specified number of milliseconds before returning.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_Delay)
+  void delay(int ms) => sdl.SDL_Delay(ms);
+
+  /// Query the window which currently has keyboard focus.
+  ///
+  /// [SDL Docs]([SDL_GetKeyboardFocus](https://wiki.libsdl.org/SDL_GetKeyboardFocus))
+  Window? getKeyboardFocus() {
+    final pointer = sdl.SDL_GetKeyboardFocus();
+    if (pointer == nullptr) {
+      return null;
+    }
+    return Window(this, pointer);
+  }
+
+  /// Get a snapshot of the current state of the keyboard.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyboardState)
+  List<PressedState> get keyboardState {
+    final numKeys = calloc<Int32>();
+    final array = sdl.SDL_GetKeyboardState(numKeys);
+    return [
+      for (var i = 0; i < numKeys.value; i++)
+        array[i] == 1 ? PressedState.pressed : PressedState.released
+    ];
+  }
+
+  /// Get a key code from a human-readable name.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyFromName)
+  KeyCode getKeyFromName(String name) {
+    final key = sdl.SDL_GetKeyFromName(name.toInt8Pointer());
+    if (key == SDL_KeyCode.SDLK_UNKNOWN) {
+      throw SdlError(key, getError());
+    }
+    return key.toKeyCode();
+  }
+
+  /// Get the key code corresponding to the given scancode according to the
+  /// current keyboard layout.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyFromScancode)
+  KeyCode getKeyFromScanCode(ScanCode scanCode) =>
+      sdl.SDL_GetKeyFromScancode(scanCode.toSdlValue()).toKeyCode();
+
+  /// Get a human-readable name for a key.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyName)
+  String getKeyName(KeyCode keyCode) =>
+      sdl.SDL_GetKeyName(keyCode.toSdlValue()).cast<Utf8>().toDartString();
+
+  /// Get the current key modifier state for the keyboard.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetModState)
+  List<KeyMod> get modState => sdl.SDL_GetModState().toModifiersList();
+
+  /// Set the current key modifier state for the keyboard.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_SetModState)
+  set modState(List<KeyMod> modifiers) {
+    var mod = 0;
+    for (final modifier in modifiers) {
+      mod |= modifier.toSdlValue();
+    }
+    sdl.SDL_SetModState(mod);
+  }
+
+  /// Get the scancode corresponding to the given key code according to the
+  /// current keyboard layout.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeFromKey)
+  ScanCode getScanCodeFromKey(KeyCode key) =>
+      sdl.SDL_GetScancodeFromKey(key.toSdlValue()).toScanCode();
+
+  /// Get a scancode from a human-readable name.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeFromName)
+  ScanCode getScanCodeFromName(String name) {
+    final scanCode = sdl.SDL_GetScancodeFromName(name.toInt8Pointer());
+    if (scanCode == SDL_Scancode.SDL_SCANCODE_UNKNOWN) {
+      throw SdlError(scanCode, getError());
+    }
+    return scanCode.toScanCode();
+  }
+
+  /// Get a human-readable name for a scancode.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeName)
+  String getScanCodeName(ScanCode scanCode) =>
+      sdl.SDL_GetScancodeName(scanCode.toSdlValue())
+          .cast<Utf8>()
+          .toDartString();
+
+  /// Check whether the platform has screen keyboard support.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HasScreenKeyboardSupport)
+  bool get hasScreenKeyboardSupport =>
+      getBool(sdl.SDL_HasScreenKeyboardSupport());
+
+  /// Check whether or not Unicode text input events are enabled.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_IsTextInputActive)
+  bool get isTextInputActive => getBool(sdl.SDL_IsTextInputActive());
+
+  /// Start accepting Unicode text input events.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_StartTextInput)
+  void startTextInput() => sdl.SDL_StartTextInput();
+
+  /// Stop receiving any text input events.
+  ///
+  /// [SDL Docs](URL)
+  void stopTextInput() => sdl.SDL_StopTextInput();
 }

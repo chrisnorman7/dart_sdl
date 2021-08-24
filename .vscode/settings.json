@@ -146,6 +146,7 @@
     "Verticalbar",
     "Volumedown",
     "Volumeup",
+    "Vulkan",
     "WILLENTERBACKGROUND",
     "WILLENTERFOREGROUND",
     "WINDOWEVENT",
@@ -203,6 +204,7 @@
     "tr",
     "videomode",
     "wnd",
+    "writeln",
     "xrel",
     "yrel"
   ],

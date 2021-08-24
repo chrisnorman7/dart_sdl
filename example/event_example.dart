@@ -11,7 +11,9 @@ Future<void> main() async {
       break;
     } else if (event is KeyboardEvent) {
       print(event.key.keycode);
-      if (event.key.keycode == KeyCode.keycode_q && event.key.modifiers == 0 ||
+      print(event.key.modifiers);
+      if (event.key.keycode == KeyCode.keycode_q &&
+              event.key.modifiers.isEmpty ||
           event.key.keycode == KeyCode.keycode_ESCAPE) {
         window.destroy();
         break;
