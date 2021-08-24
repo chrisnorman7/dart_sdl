@@ -69,7 +69,8 @@ Future<void> main() async {
         if (dartName.startsWith('_')) {
           dartName = dartName.substring(1);
         }
-        if (dartName.startsWith(scancodePrefix) == false) {
+        if (dartName.startsWith(scancodePrefix) == false &&
+            dartName.endsWith('NUM_SCANCODES') == false) {
           dartName = 'keycode_$dartName';
         }
         final conversion = CodeConversion(sdlName, dartName);
@@ -125,7 +126,36 @@ Future<void> main() async {
   sink
     ..write('      default:\n')
     ..write("        throw SdlError(this, 'Unknown keycode.');\n")
-    ..write('    }\n  }\n}\n');
+    ..write('    }\n  }\n}\n')
+    ..writeln(
+        '\n/// An extension to return an integer from a [ScanCode] value.')
+    ..writeln('extension SdlScancodeValueExtension on ScanCode {')
+    ..writeln('  /// Convert this value to an SDL value.')
+    ..writeln('  int toSdlValue() {')
+    ..writeln('    switch (this) {');
+  for (final conversion in scancodes) {
+    sink
+      ..writeln('      case ScanCode.${conversion.dartName}:')
+      ..writeln('        return SDL_Scancode.${conversion.sdlName};');
+  }
+  sink
+    ..writeln('    }')
+    ..writeln('  }')
+    ..writeln('}')
+    ..writeln('\n/// An extension to return an integer from a [KeyCode] value.')
+    ..writeln('extension SdlKeyCodeValueExtension on KeyCode {')
+    ..writeln('  /// Convert this value to an SDL value.')
+    ..writeln('  int toSdlValue() {')
+    ..writeln('    switch (this) {');
+  for (final conversion in keycodes) {
+    sink
+      ..writeln('      case KeyCode.${conversion.dartName}:')
+      ..writeln('        return SDL_KeyCode.${conversion.sdlName};');
+  }
+  sink
+    ..writeln('    }')
+    ..writeln('  }')
+    ..writeln('}');
   await sink.close();
   print('Scancodes: ${scancodes.length}.');
   print('Keycodes: ${keycodes.length}.');
