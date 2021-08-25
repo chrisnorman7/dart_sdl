@@ -1,8 +1,9 @@
 /// Provides the [Haptic] class.
 import 'dart:ffi';
 
-import 'sdl.dart';
-import 'sdl_bindings.dart';
+import '../sdl.dart';
+import '../sdl_bindings.dart';
+import 'haptic_effect.dart';
 
 /// A haptic device.
 class Haptic {
@@ -96,4 +97,56 @@ class Haptic {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticUnpause)
   void unpause() => sdl.checkReturnValue(sdl.sdl.SDL_HapticUnpause(handle));
+
+  /// Returns `true` if the given [effect] is supported by this device.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticEffectSupported)
+  bool isSupported(HapticEffect effect) => sdl.getBool(sdl.checkReturnValue(
+      sdl.sdl.SDL_HapticEffectSupported(handle, effect.handle)));
+
+  /// Upload the given [effect] to this device.
+  ///
+  /// The returned index can be used with [runEffect] or [destroyEffect].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticNewEffect)
+  int newEffect(HapticEffect effect) =>
+      sdl.checkReturnValue(sdl.sdl.SDL_HapticNewEffect(handle, effect.handle));
+
+  /// Run the effect referenced by the given [effectId].
+  ///
+  /// The index can be obtained from the [newEffect] method.
+  ///
+  /// If [iterations] is `null`, the effect will run forever.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticRunEffect)
+  void runEffect(int effectId, {int? iterations}) =>
+      sdl.checkReturnValue(sdl.sdl.SDL_HapticRunEffect(
+          handle, effectId, iterations ?? SDL_HAPTIC_INFINITY));
+
+  /// Destroy the effect referenced by the given [effectId].
+  ///
+  /// The index can be obtained from [newEffect].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticDestroyEffect)
+  void destroyEffect(int effectId) =>
+      sdl.sdl.SDL_HapticDestroyEffect(handle, effectId);
+
+  /// Return `true` if the effect represented by [effectId] is currently
+  /// playing.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticGetEffectStatus)
+  bool getEffectPlaying(int effectId) => sdl.getBool(sdl
+      .checkReturnValue(sdl.sdl.SDL_HapticGetEffectStatus(handle, effectId)));
+
+  /// Stop the effect referenced by [effectId].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticStopEffect)
+  void stopEffect(int effectId) =>
+      sdl.checkReturnValue(sdl.sdl.SDL_HapticStopEffect(handle, effectId));
+
+  /// Update the effect referenced by [effectId] with [effect].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticUpdateEffect)
+  void updateEffect(int effectId, HapticEffect effect) => sdl.checkReturnValue(
+      sdl.sdl.SDL_HapticUpdateEffect(handle, effectId, effect.handle));
 }

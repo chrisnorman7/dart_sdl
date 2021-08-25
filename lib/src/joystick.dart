@@ -8,7 +8,7 @@ import 'enumerations.dart';
 import 'error.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
-import 'haptic.dart';
+import 'haptic/haptic.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 

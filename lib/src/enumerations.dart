@@ -435,3 +435,63 @@ enum KeyMod {
   /// reserved for future use
   reserved,
 }
+
+/// Haptic directions.
+///
+/// The page in the link below is not for an enumeration, but the values of
+/// this enum are taken from constants mentioned by that page.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_HapticDirection)
+enum HapticDirectionType {
+  /// SDL_HAPTIC_POLAR
+  polar,
+
+  /// SDL_HAPTIC_CARTESIAN
+  cartesian,
+
+  /// SDL_HAPTIC_SPHERICAL
+  spherical,
+}
+
+/// The type of a haptic effect.
+///
+/// This link below does not point to an enum, but the values of this enum are
+/// taken from that page.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_HapticPeriodic)
+enum HapticPeriodicType {
+  /// SDL_HAPTIC_SINE
+  sine,
+
+  /// SDL_HAPTIC_LEFTRIGHT
+  leftRight,
+
+  /// SDL_HAPTIC_TRIANGLE
+  triangle,
+
+  /// SDL_HAPTIC_SAWTOOTHUP
+  sawToothUp,
+
+  /// SDL_HAPTIC_SAWTOOTHDOWN
+  sawToothDown,
+}
+
+/// The type of a conditional haptic effect.
+///
+/// The below link does not point to an enum, but the values of this enum are
+/// taken from that page.
+///
+/// [SDL Docs](https://wiki.libsdl.org/SDL_HapticPeriodic)
+enum HapticConditionType {
+  /// SDL_HAPTIC_SPRING: effect based on axis position
+  spring,
+
+  /// SDL_HAPTIC_DAMPER: effect based on axis velocity
+  damper,
+
+  /// SDL_HAPTIC_INERTIA: effect based on axis acceleration
+  inertia,
+
+  /// SDL_HAPTIC_FRICTION: effect based on axis movement
+  friction,
+}

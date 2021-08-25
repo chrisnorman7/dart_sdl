@@ -28,7 +28,7 @@ import 'events/touch_finger.dart';
 import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
-import 'haptic.dart';
+import 'haptic/haptic.dart';
 import 'joystick.dart';
 import 'keycodes.dart';
 import 'sdl_bindings.dart';

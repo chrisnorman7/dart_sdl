@@ -346,6 +346,16 @@ Classes have been created to reflect every member of the
 
 ### [Force Feedback Support](https://wiki.libsdl.org/CategoryForceFeedback)
 
+#### Classes
+
+* [SDL_HapticCondition](https://wiki.libsdl.org/SDL_HapticCondition)
+* [SDL_HapticConstant](https://wiki.libsdl.org/SDL_HapticConstant)
+* [SDL_HapticEffect](https://wiki.libsdl.org/SDL_HapticEffect)
+
+#### Enums
+
+* [SDL_HapticDirection](https://wiki.libsdl.org/SDL_HapticDirection)
+
 #### Functions
 
 ##### `Sdl` class
@@ -359,8 +369,12 @@ Classes have been created to reflect every member of the
 ##### `Haptic` class
 
 * [SDL_HapticClose](https://wiki.libsdl.org/SDL_HapticClose)
+* [SDL_HapticDestroyEffect](https://wiki.libsdl.org/SDL_HapticDestroyEffect)
+* [SDL_HapticGetEffectStatus](https://wiki.libsdl.org/SDL_HapticGetEffectStatus)
+* [SDL_HapticEffectSupported](https://wiki.libsdl.org/SDL_HapticEffectSupported)
 * [SDL_HapticIndex](https://wiki.libsdl.org/SDL_HapticIndex)
 * [SDL_HapticName](https://wiki.libsdl.org/SDL_HapticName)
+* [SDL_HapticNewEffect](https://wiki.libsdl.org/SDL_HapticNewEffect)
 * [SDL_HapticNumAxes](https://wiki.libsdl.org/SDL_HapticNumAxes)
 * [SDL_HapticNumEffects](https://wiki.libsdl.org/SDL_HapticNumEffects)
 * [SDL_HapticNumEffectsPlaying](https://wiki.libsdl.org/SDL_HapticNumEffectsPlaying)
@@ -369,10 +383,13 @@ Classes have been created to reflect every member of the
 * [SDL_HapticRumblePlay](https://wiki.libsdl.org/SDL_HapticRumblePlay)
 * [SDL_HapticRumbleStop](https://wiki.libsdl.org/SDL_HapticRumbleStop)
 * [SDL_HapticRumbleSupported](https://wiki.libsdl.org/SDL_HapticRumbleSupported)
+* [SDL_HapticRunEffect](https://wiki.libsdl.org/SDL_HapticRunEffect)
 * [SDL_HapticSetAutocenter](https://wiki.libsdl.org/SDL_HapticSetAutocenter)
 * [SDL_HapticSetGain](https://wiki.libsdl.org/SDL_HapticSetGain)
 * [SDL_HapticStopAll](https://wiki.libsdl.org/SDL_HapticStopAll)
+* [SDL_HapticStopEffect](https://wiki.libsdl.org/SDL_HapticStopEffect)
 * [SDL_HapticUnpause](https://wiki.libsdl.org/SDL_HapticUnpause)
+* [SDL_HapticUpdateEffect](https://wiki.libsdl.org/SDL_HapticUpdateEffect)
 
 ##### `Joystick` class
 

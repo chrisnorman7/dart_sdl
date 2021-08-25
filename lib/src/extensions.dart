@@ -590,3 +590,54 @@ extension SdlKeyModValues on KeyMod {
     }
   }
 }
+
+/// An extension for converting to an SDL flag.
+extension SdlHapticDirectionTypeValues on HapticDirectionType {
+  /// Return an SDL value.
+  int toSdlValue() {
+    switch (this) {
+      case HapticDirectionType.polar:
+        return SDL_HAPTIC_POLAR;
+      case HapticDirectionType.cartesian:
+        return SDL_HAPTIC_CARTESIAN;
+      case HapticDirectionType.spherical:
+        return SDL_HAPTIC_SPHERICAL;
+    }
+  }
+}
+
+/// An extension for converting to an SDL flag.
+extension SdlHapticEffectTypeValues on HapticPeriodicType {
+  /// Return an SDL value.
+  int toSdlValue() {
+    switch (this) {
+      case HapticPeriodicType.sine:
+        return SDL_HAPTIC_SINE;
+      case HapticPeriodicType.leftRight:
+        return SDL_HAPTIC_LEFTRIGHT;
+      case HapticPeriodicType.triangle:
+        return SDL_HAPTIC_TRIANGLE;
+      case HapticPeriodicType.sawToothUp:
+        return SDL_HAPTIC_SAWTOOTHUP;
+      case HapticPeriodicType.sawToothDown:
+        return SDL_HAPTIC_SAWTOOTHDOWN;
+    }
+  }
+}
+
+/// An extension for converting to an SDL flag.
+extension SdlHapticConstantEffectTypeValues on HapticConditionType {
+  /// Return an SDL value.
+  int toSdlValue() {
+    switch (this) {
+      case HapticConditionType.spring:
+        return SDL_HAPTIC_SPRING;
+      case HapticConditionType.damper:
+        return SDL_HAPTIC_DAMPER;
+      case HapticConditionType.inertia:
+        return SDL_HAPTIC_INERTIA;
+      case HapticConditionType.friction:
+        return SDL_HAPTIC_FRICTION;
+    }
+  }
+}
