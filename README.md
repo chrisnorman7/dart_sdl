@@ -251,6 +251,23 @@ Classes have been created to reflect every member of the
 
 * [SDL_IsScreenKeyboardShown](https://wiki.libsdl.org/SDL_IsScreenKeyboardShown)
 
+### [Mouse Support](https://wiki.libsdl.org/CategoryMouse)
+
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_CaptureMouse](https://wiki.libsdl.org/SDL_CaptureMouse)
+* [SDL_GetMouseFocus](https://wiki.libsdl.org/SDL_GetMouseFocus)
+* [SDL_GetRelativeMouseMode](https://wiki.libsdl.org/SDL_GetRelativeMouseMode)
+* [SDL_SetRelativeMouseMode](https://wiki.libsdl.org/SDL_SetRelativeMouseMode)
+* [SDL_ShowCursor](https://wiki.libsdl.org/SDL_ShowCursor)
+* [SDL_WarpMouseGlobal](https://wiki.libsdl.org/SDL_WarpMouseGlobal)
+
+##### `Window` class
+
+* [SDL_WarpMouseInWindow](https://wiki.libsdl.org/SDL_WarpMouseInWindow)
+
 ### [Audio Device Management, Playing and Recording](https://wiki.libsdl.org/CategoryAudio)
 
 #### Classes

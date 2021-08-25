@@ -327,4 +327,9 @@ class Window {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_IsScreenKeyboardShown)
   bool get isScreenKeyboardShown =>
       sdl.getBool(sdl.sdl.SDL_IsScreenKeyboardShown(handle));
+
+  /// Move the mouse cursor to the given position within the window.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_WarpMouseInWindow)
+  void warpMouse(int x, int y) => sdl.sdl.SDL_WarpMouseInWindow(handle, x, y);
 }

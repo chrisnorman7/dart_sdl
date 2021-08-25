@@ -989,4 +989,44 @@ class Sdl {
   ///
   /// [SDL Docs](URL)
   void stopTextInput() => sdl.SDL_StopTextInput();
+
+  /// Capture the mouse and to track input outside an SDL window.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_CaptureMouse)
+  void captureMouse(bool enabled) =>
+      checkReturnValue(sdl.SDL_CaptureMouse(boolToValue(enabled)));
+
+  /// Get the window which currently has mouse focus.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetMouseFocus)
+  Window getMouseFocus() => Window(this, sdl.SDL_GetMouseFocus());
+
+  /// Query whether relative mouse mode is enabled.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetRelativeMouseMode)
+  bool get relativeMouseMode => getBool(sdl.SDL_GetRelativeMouseMode());
+
+  /// Set relative mouse mode.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_SetRelativeMouseMode)
+  set relativeMouseMode(bool enabled) =>
+      checkReturnValue(sdl.SDL_SetRelativeMouseMode(boolToValue(enabled)));
+
+  /// Returns `true` if the cursor is shown, `false` otherwise.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowCursor)
+  bool get showCursor =>
+      getBool(checkReturnValue(sdl.SDL_ShowCursor(SDL_QUERY)));
+
+  /// Toggle whether or not the cursor is shown.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowCursor)
+  set showCursor(bool enabled) =>
+      checkReturnValue(sdl.SDL_ShowCursor(boolToValue(enabled)));
+
+  /// Move the mouse to the given position in global screen space.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_WarpMouseGlobal)
+  void warpMouse(int x, int y) =>
+      checkReturnValue(sdl.SDL_WarpMouseGlobal(x, y));
 }
