@@ -8,6 +8,7 @@ import 'enumerations.dart';
 import 'error.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
+import 'haptic.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
 
@@ -126,5 +127,22 @@ class Joystick {
   /// Close this joystick.
   void close() {
     sdl.sdl.SDL_JoystickClose(handle);
+  }
+
+  /// Query if a joystick has haptic features.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickIsHaptic)
+  bool get isHaptic =>
+      sdl.getBool(sdl.checkReturnValue(sdl.sdl.SDL_JoystickIsHaptic(handle)));
+
+  /// Open a haptic device for use from a joystick device.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpenFromJoystick)
+  Haptic openHaptic() {
+    final pointer = sdl.sdl.SDL_HapticOpenFromJoystick(handle);
+    if (pointer == nullptr) {
+      throw SdlError(-1, sdl.getError());
+    }
+    return Haptic(sdl, pointer);
   }
 }

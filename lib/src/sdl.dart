@@ -28,6 +28,7 @@ import 'events/touch_finger.dart';
 import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
+import 'haptic.dart';
 import 'joystick.dart';
 import 'keycodes.dart';
 import 'sdl_bindings.dart';
@@ -1034,4 +1035,52 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_NumSensors)
   int get numSensors => sdl.SDL_NumSensors();
+
+  /// Count the number of haptic devices attached to the system.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_NumHaptics)
+  int get numHaptics => sdl.SDL_NumHaptics();
+
+  /// Check if the haptic device at the designated [index] has been opened.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpened)
+  bool hapticOpened(int index) => getBool(sdl.SDL_HapticOpened(index));
+
+  /// Open a haptic device for use.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpen)
+  Haptic openHaptic(int index) {
+    final handle = sdl.SDL_HapticOpen(index);
+    if (handle == nullptr) {
+      throw SdlError(-1, getError());
+    }
+    return Haptic(this, handle);
+  }
+
+  /// Get the implementation dependent name of a haptic device.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticName)
+  String getHapticName(int index) {
+    final pointer = sdl.SDL_HapticName(index);
+    if (pointer == nullptr) {
+      throw SdlError(index, getError());
+    }
+    return pointer.cast<Utf8>().toDartString();
+  }
+
+  /// Try to open a haptic device from the current mouse.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpenFromMouse)
+  Haptic openHapticFromMouse() {
+    final pointer = sdl.SDL_HapticOpenFromMouse();
+    if (pointer == nullptr) {
+      throw SdlError(-1, getError());
+    }
+    return Haptic(this, pointer);
+  }
+
+  /// Query whether or not the current mouse has haptic capabilities.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseIsHaptic)
+  bool get mouseIsHaptic => getBool(checkReturnValue(sdl.SDL_MouseIsHaptic()));
 }
