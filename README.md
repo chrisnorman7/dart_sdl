@@ -268,57 +268,6 @@ Classes have been created to reflect every member of the
 
 * [SDL_WarpMouseInWindow](https://wiki.libsdl.org/SDL_WarpMouseInWindow)
 
-### [Audio Device Management, Playing and Recording](https://wiki.libsdl.org/CategoryAudio)
-
-#### Classes
-
-* `AudioDriver`
-* `AudioDevice`
-* `OpenAudioDevice`
-* [SDL_AudioSpec](https://wiki.libsdl.org/SDL_AudioSpec)
-* `WaveFile`
-
-#### Enumerations
-
-* [SDL_AudioStatus](https://wiki.libsdl.org/SDL_AudioStatus)
-
-#### Functions
-
-##### `Sdl` class
-
-* [SDL_GetNumAudioDrivers](https://wiki.libsdl.org/SDL_GetNumAudioDrivers)
-* [SDL_GetCurrentAudioDriver](https://wiki.libsdl.org/SDL_GetCurrentAudioDriver)
-* [SDL_GetNumAudioDevices](https://wiki.libsdl.org/SDL_GetNumAudioDevices)
-* `outputAudioDevices`
-* `inputAudioDevices`
-* [SDL_OpenAudioDevice](https://wiki.libsdl.org/SDL_OpenAudioDevice)
-
-##### `AudioDriver` class
-
-* [SDL_GetAudioDriver](https://wiki.libsdl.org/SDL_GetAudioDriver)
-
-##### `AudioDevice` class
-
-* [SDL_GetAudioDeviceName](https://wiki.libsdl.org/SDL_GetAudioDeviceName)
-* [SDL_OpenAudioDevice](https://wiki.libsdl.org/SDL_OpenAudioDevice)
-
-##### `OpenAudioDevice` class
-
-* [SDL_ClearQueuedAudio](https://wiki.libsdl.org/SDL_ClearQueuedAudio)
-* [SDL_CloseAudioDevice](https://wiki.libsdl.org/SDL_CloseAudioDevice)
-* [SDL_GetAudioDeviceStatus](https://wiki.libsdl.org/SDL_GetAudioDeviceStatus)
-* [SDL_GetQueuedAudioSize](https://wiki.libsdl.org/SDL_GetQueuedAudioSize)
-* [SDL_LockAudioDevice](https://wiki.libsdl.org/SDL_LockAudioDevice)
-* [SDL_UnlockAudioDevice](https://wiki.libsdl.org/SDL_UnlockAudioDevice)
-* [SDL_PauseAudioDevice](https://wiki.libsdl.org/SDL_PauseAudioDevice)
-* [SDL_QueueAudio](https://wiki.libsdl.org/SDL_QueueAudio)
-
-##### `WaveFile` class
-
-* [SDL_LoadWAV_RW](https://wiki.libsdl.org/SDL_LoadWAV_RW)
-
-### [Force Feedback Support](https://wiki.libsdl.org/CategoryForceFeedback)
-
 ### [Joystick Support](https://wiki.libsdl.org/CategoryJoystick)
 
 #### Classes
@@ -386,3 +335,62 @@ Classes have been created to reflect every member of the
 * [SDL_GameControllerGetButton](https://wiki.libsdl.org/SDL_GameControllerGetButton)
 * [SDL_GameControllerGetJoystick](https://wiki.libsdl.org/SDL_GameControllerGetJoystick)
 * [SDL_GameControllerName](https://wiki.libsdl.org/SDL_GameControllerName)
+
+### [Sensors](https://wiki.libsdl.org/CategorySensor)
+
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_NumSensors](https://wiki.libsdl.org/SDL_NumSensors)
+
+### [Force Feedback Support](https://wiki.libsdl.org/CategoryForceFeedback)
+
+### [Audio Device Management, Playing and Recording](https://wiki.libsdl.org/CategoryAudio)
+
+#### Classes
+
+* `AudioDriver`
+* `AudioDevice`
+* `OpenAudioDevice`
+* [SDL_AudioSpec](https://wiki.libsdl.org/SDL_AudioSpec)
+* `WaveFile`
+
+#### Enumerations
+
+* [SDL_AudioStatus](https://wiki.libsdl.org/SDL_AudioStatus)
+
+#### Functions
+
+##### `Sdl` class
+
+* [SDL_GetNumAudioDrivers](https://wiki.libsdl.org/SDL_GetNumAudioDrivers)
+* [SDL_GetCurrentAudioDriver](https://wiki.libsdl.org/SDL_GetCurrentAudioDriver)
+* [SDL_GetNumAudioDevices](https://wiki.libsdl.org/SDL_GetNumAudioDevices)
+* `outputAudioDevices`
+* `inputAudioDevices`
+* [SDL_OpenAudioDevice](https://wiki.libsdl.org/SDL_OpenAudioDevice)
+
+##### `AudioDriver` class
+
+* [SDL_GetAudioDriver](https://wiki.libsdl.org/SDL_GetAudioDriver)
+
+##### `AudioDevice` class
+
+* [SDL_GetAudioDeviceName](https://wiki.libsdl.org/SDL_GetAudioDeviceName)
+* [SDL_OpenAudioDevice](https://wiki.libsdl.org/SDL_OpenAudioDevice)
+
+##### `OpenAudioDevice` class
+
+* [SDL_ClearQueuedAudio](https://wiki.libsdl.org/SDL_ClearQueuedAudio)
+* [SDL_CloseAudioDevice](https://wiki.libsdl.org/SDL_CloseAudioDevice)
+* [SDL_GetAudioDeviceStatus](https://wiki.libsdl.org/SDL_GetAudioDeviceStatus)
+* [SDL_GetQueuedAudioSize](https://wiki.libsdl.org/SDL_GetQueuedAudioSize)
+* [SDL_LockAudioDevice](https://wiki.libsdl.org/SDL_LockAudioDevice)
+* [SDL_UnlockAudioDevice](https://wiki.libsdl.org/SDL_UnlockAudioDevice)
+* [SDL_PauseAudioDevice](https://wiki.libsdl.org/SDL_PauseAudioDevice)
+* [SDL_QueueAudio](https://wiki.libsdl.org/SDL_QueueAudio)
+
+##### `WaveFile` class
+
+* [SDL_LoadWAV_RW](https://wiki.libsdl.org/SDL_LoadWAV_RW)

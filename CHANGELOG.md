@@ -28,6 +28,7 @@
 * [SDL_ShowCursor](https://wiki.libsdl.org/SDL_ShowCursor)
 * [SDL_WarpMouseGlobal](https://wiki.libsdl.org/SDL_WarpMouseGlobal)
 * [SDL_WarpMouseInWindow](https://wiki.libsdl.org/SDL_WarpMouseInWindow)
+* [SDL_NumSensors](https://wiki.libsdl.org/SDL_NumSensors)
 
 ### Changed
 

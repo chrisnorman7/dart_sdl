@@ -1029,4 +1029,9 @@ class Sdl {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_WarpMouseGlobal)
   void warpMouse(int x, int y) =>
       checkReturnValue(sdl.SDL_WarpMouseGlobal(x, y));
+
+  /// Count the number of sensors attached to the system right now.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_NumSensors)
+  int get numSensors => sdl.SDL_NumSensors();
 }
