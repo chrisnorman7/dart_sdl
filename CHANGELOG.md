@@ -1,6 +1,14 @@
 # Changelog
 
+## [0.3.5]
+
+### Added
+
+* Added a `smallValue` member to the `JoyAxisEvent` and `ControllerAxisEvent` classes.
+
 ## [0.3.4]
+
+### Added
 
 * [SDL_HapticQuery](https://wiki.libsdl.org/SDL_HapticQuery)
 

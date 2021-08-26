@@ -19,13 +19,26 @@ class ControllerAxisEvent extends GameControllerEvent {
   /// Create an event.
   ControllerAxisEvent(
       Sdl sdl, int timestamp, int joystickId, this.axis, this.value)
-      : super(sdl, timestamp, joystickId);
+      : super(sdl, timestamp, joystickId) {
+    if (value < 0) {
+      smallValue = value / 32768;
+    } else if (value > 0) {
+      smallValue = value / 32767;
+    } else {
+      smallValue = 0.0;
+    }
+  }
 
   /// The axis which moved.
   final GameControllerAxis axis;
 
   /// The new position.
+  ///
+  /// This value will be between -32768 and 32767.
   final int value;
+
+  /// The value normalised to between -1.0 and 1.0 (0.0 is centre).
+  late final double smallValue;
 }
 
 /// A controller button was pressed or released.

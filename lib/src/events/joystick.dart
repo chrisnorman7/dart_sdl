@@ -23,13 +23,26 @@ class JoystickEvent extends Event {
 class JoyAxisEvent extends JoystickEvent {
   /// Create an event.
   JoyAxisEvent(Sdl sdl, int timestamp, int joystickId, this.axis, this.value)
-      : super(sdl, timestamp, joystickId);
+      : super(sdl, timestamp, joystickId) {
+    if (value < 0) {
+      smallValue = value / 32768;
+    } else if (value > 0) {
+      smallValue = value / 32767;
+    } else {
+      smallValue = 0.0;
+    }
+  }
 
   /// The axis that changed.
   final int axis;
 
   /// The new value of the axis.
+  ///
+  /// This value will be between -32768 and 32767.
   final int value;
+
+  /// The value normalised to between -1.0 and 1.0 (0.0 is centre).
+  late final double smallValue;
 }
 
 /// A trackball was moved.
