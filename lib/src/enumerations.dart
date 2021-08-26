@@ -2,6 +2,7 @@
 import 'events/drop.dart';
 import 'events/gestures.dart';
 import 'events/touch_finger.dart';
+import 'haptic/haptic.dart';
 
 /// Hint priorities.
 ///
@@ -494,4 +495,60 @@ enum HapticConditionType {
 
   /// SDL_HAPTIC_FRICTION: effect based on axis movement
   friction,
+}
+
+/// The possible features of a [Haptic] device.
+///
+/// I have included all the constants I could find, since
+/// [SDL_HapticQuery](https://wiki.libsdl.org/SDL_HapticQuery) isn't very
+/// forthcoming about which values will be supported, and the code sample only
+/// uses [constant].
+enum HapticFeature {
+  /// SDL_HAPTIC_CONSTANT
+  constant,
+
+  /// SDL_HAPTIC_SINE
+  sine,
+
+  /// SDL_HAPTIC_LEFTRIGHT
+  leftRight,
+
+  /// SDL_HAPTIC_TRIANGLE
+  triangle,
+
+  /// SDL_HAPTIC_SAWTOOTHUP
+  sawToothUp,
+
+  /// SDL_HAPTIC_SAWTOOTHDOWN
+  sawToothDown,
+
+  /// SDL_HAPTIC_RAMP
+  ramp,
+
+  /// SDL_HAPTIC_SPRING
+  spring,
+
+  /// SDL_HAPTIC_DAMPER
+  damper,
+
+  /// SDL_HAPTIC_INERTIA
+  inertia,
+
+  /// SDL_HAPTIC_FRICTION
+  friction,
+
+  /// SDL_HAPTIC_CUSTOM
+  custom,
+
+  /// SDL_HAPTIC_GAIN
+  gain,
+
+  /// SDL_HAPTIC_AUTOCENTER
+  autocenter,
+
+  /// SDL_HAPTIC_STATUS = 16384;
+  status,
+
+  /// SDL_HAPTIC_PAUSE
+  pause,
 }

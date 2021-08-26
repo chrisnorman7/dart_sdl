@@ -1,6 +1,7 @@
 /// Provides the [Haptic] class.
 import 'dart:ffi';
 
+import '../enumerations.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'haptic_effect.dart';
@@ -149,4 +150,33 @@ class Haptic {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticUpdateEffect)
   void updateEffect(int effectId, HapticEffect effect) => sdl.checkReturnValue(
       sdl.sdl.SDL_HapticUpdateEffect(handle, effectId, effect.handle));
+
+  /// Get the features supported by this device.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticQuery)
+  List<HapticFeature> get features {
+    final possibleFeatures = <int, HapticFeature>{
+      SDL_HAPTIC_CONSTANT: HapticFeature.constant,
+      SDL_HAPTIC_SINE: HapticFeature.sine,
+      SDL_HAPTIC_LEFTRIGHT: HapticFeature.leftRight,
+      SDL_HAPTIC_TRIANGLE: HapticFeature.triangle,
+      SDL_HAPTIC_SAWTOOTHUP: HapticFeature.sawToothUp,
+      SDL_HAPTIC_SAWTOOTHDOWN: HapticFeature.sawToothDown,
+      SDL_HAPTIC_RAMP: HapticFeature.ramp,
+      SDL_HAPTIC_SPRING: HapticFeature.spring,
+      SDL_HAPTIC_DAMPER: HapticFeature.damper,
+      SDL_HAPTIC_INERTIA: HapticFeature.inertia,
+      SDL_HAPTIC_FRICTION: HapticFeature.friction,
+      SDL_HAPTIC_CUSTOM: HapticFeature.custom,
+      SDL_HAPTIC_GAIN: HapticFeature.gain,
+      SDL_HAPTIC_AUTOCENTER: HapticFeature.autocenter,
+      SDL_HAPTIC_STATUS: HapticFeature.status,
+      SDL_HAPTIC_PAUSE: HapticFeature.pause,
+    };
+    final value = sdl.checkReturnValue(sdl.sdl.SDL_HapticQuery(handle));
+    return [
+      for (final element in possibleFeatures.entries)
+        if (value & element.key != 0) element.value
+    ];
+  }
 }

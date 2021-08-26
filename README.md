@@ -379,6 +379,7 @@ Classes have been created to reflect every member of the
 * [SDL_HapticNumEffects](https://wiki.libsdl.org/SDL_HapticNumEffects)
 * [SDL_HapticNumEffectsPlaying](https://wiki.libsdl.org/SDL_HapticNumEffectsPlaying)
 * [SDL_HapticPause](https://wiki.libsdl.org/SDL_HapticPause)
+* [SDL_HapticQuery](https://wiki.libsdl.org/SDL_HapticQuery)
 * [SDL_HapticRumbleInit](https://wiki.libsdl.org/SDL_HapticRumbleInit)
 * [SDL_HapticRumblePlay](https://wiki.libsdl.org/SDL_HapticRumblePlay)
 * [SDL_HapticRumbleStop](https://wiki.libsdl.org/SDL_HapticRumbleStop)

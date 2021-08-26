@@ -16,6 +16,7 @@ Future<void> main() async {
       final haptic = sdl.openHaptic(i)..init();
       haptics[i] = haptic;
       print('${haptic.name} (#${haptic.index})');
+      print('Features: ${haptic.features}');
       print('Number of simultaneous effects: ${haptic.numEffectsPlaying}');
       print('Number of effects can store: ${haptic.numEffects}');
       print('Number of axes: ${haptic.numAxes}');
@@ -59,6 +60,10 @@ Future<void> main() async {
             fadeLength: 500,
             fadeLevel: 100);
         final supported = haptics.values.first.isSupported(effect);
+        if (supported) {
+          haptics.values.first
+              .runEffect(haptics.values.first.newEffect(effect));
+        }
         window.title = 'Ramp effect supported: $supported';
       } else if (event.button == GameControllerButton.b) {
         final effect = HapticConstant(
@@ -74,12 +79,25 @@ Future<void> main() async {
             fadeLength: 500,
             fadeLevel: 100);
         final supported = haptics.values.first.isSupported(effect);
+        if (supported) {
+          haptics.values.first
+              .runEffect(haptics.values.first.newEffect(effect));
+        }
         window.title = 'Constant effect supported: $supported';
       } else if (event.button == GameControllerButton.x) {
         for (var i = 0; i < 3; i++) {
           haptics.values.first.rumblePlay(1, 100);
           sdl.delay(400);
         }
+      } else if (event.button == GameControllerButton.y) {
+        final effect = HapticLeftRight(
+            length: 500, largeMagnitude: 1000, smallMagnitude: 800);
+        final supported = haptics.values.first.isSupported(effect);
+        if (supported) {
+          haptics.values.first
+              .runEffect(haptics.values.first.newEffect(effect));
+        }
+        window.title = 'Left/right effect supported: $supported';
       }
     }
   }

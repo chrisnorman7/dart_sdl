@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.4]
+
+* [SDL_HapticQuery](https://wiki.libsdl.org/SDL_HapticQuery)
+
 ## [0.3.3]
 
 ### Added
