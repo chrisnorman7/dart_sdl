@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.6]
+
+### Added
+
+* Added the `getAxisSmall` method to the `GameController` class.
+
 ## [0.3.5]
 
 ### Added

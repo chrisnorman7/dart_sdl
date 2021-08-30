@@ -32,6 +32,18 @@ class GameController {
   int getAxis(GameControllerAxis axis) =>
       sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlFlag());
 
+  /// Get the value of [axis], as a number between -1.0 and 1.0.
+  double getAxisSmall(GameControllerAxis axis) {
+    final value = getAxis(axis);
+    if (value < 0) {
+      return value / 32768;
+    } else if (value > 0) {
+      return value / 32767;
+    } else {
+      return 0.0;
+    }
+  }
+
   /// Return `true` if [button] is pressed.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButton)
