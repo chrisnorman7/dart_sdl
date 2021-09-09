@@ -9,6 +9,8 @@ Future<void> main() async {
     print('${j.name} is haptic: ${j.isHaptic}');
   }
   final haptics = <int, Haptic>{};
+  final numHaptics = sdl.numHaptics;
+  print('Number of haptic devices: $numHaptics.');
   for (var i = 0; i < sdl.numHaptics; i++) {
     if (sdl.hapticOpened(i) == true) {
       print('#${sdl.getHapticName(i)} has already been opened.');
@@ -34,14 +36,26 @@ Future<void> main() async {
       break;
     } else if (event is ControllerDeviceEvent) {
       if (event.state == DeviceState.added) {
-        sdl.openGameController(event.joystickId);
+        final controller = sdl.openGameController(event.joystickId);
+        window.title = 'Opened device ${controller.name}.';
+        if (controller.joystick.isHaptic) {
+          haptics[event.joystickId] = sdl.openHaptic(event.joystickId);
+        }
+      } else if (event.state == DeviceState.removed) {
+        haptics.remove(event.joystickId);
+        window.title = 'Controller removed.';
       }
     } else if (event is ControllerAxisEvent) {
       final haptic = haptics[event.joystickId];
       if (haptic != null) {
         if (event.value == 0) {
           haptic.rumbleStop();
-        } else {
+        } else if ([
+          GameControllerAxis.leftY,
+          GameControllerAxis.rightY,
+          GameControllerAxis.triggerLeft,
+          GameControllerAxis.triggerRight
+        ].contains(event.axis)) {
           haptic.rumblePlay(event.value.abs() / 32767, 0);
         }
       }
