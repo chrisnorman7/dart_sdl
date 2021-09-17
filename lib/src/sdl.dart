@@ -38,7 +38,7 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl() {
+  Sdl() : _eventHandle = calloc<SDL_Event>() {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -48,6 +48,9 @@ class Sdl {
     }
     sdl = DartSdl(DynamicLibrary.open(libName));
   }
+
+  /// The event handle to use.
+  final Pointer<SDL_Event> _eventHandle;
 
   /// The SDL bindings to use.
   late final DartSdl sdl;
@@ -569,10 +572,9 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PollEvent)
   Event? pollEvent() {
-    final ptr = calloc<SDL_Event>();
-    final n = sdl.SDL_PollEvent(ptr);
+    final n = sdl.SDL_PollEvent(_eventHandle);
     if (n != 0) {
-      final e = ptr.ref;
+      final e = _eventHandle.ref;
       Event event;
       switch (e.type) {
 
@@ -839,14 +841,22 @@ class Sdl {
   }
 
   /// Get a stream of all SDL events.
-  Stream<Event> get events async* {
+  ///
+  /// A pause of [duration] will be awaited between calls to [pollEvent].
+  Stream<Event> getEvents({Duration duration = Duration.zero}) async* {
     while (true) {
       final event = pollEvent();
       if (event != null) {
         yield event;
       }
+      await Future<void>.delayed(duration);
     }
   }
+
+  ///Stream all events.
+  ///
+  ///This stream uses the [getEvents] method with the default duration.
+  Stream<Event> get events => getEvents();
 
   /// Register user-defined event types.
   ///

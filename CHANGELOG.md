@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.1]
+
+### Added
+
+* Added the `Sdl.getEvents` stream, which allows you to specify a delay between polling for events.
+
+## [0.4.0]
+
+### Changed
+
+* Increased the minimum SDK value.
+
 ## [0.3.6]
 
 ### Added
