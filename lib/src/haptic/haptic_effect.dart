@@ -3,6 +3,7 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 
+import '../../dart_sdl.dart';
 import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl_bindings.dart';
@@ -13,7 +14,10 @@ import 'haptic_direction.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticEffect)
 class HapticEffect {
   /// Create an instance.
-  HapticEffect() : handle = calloc<SDL_HapticEffect>();
+  HapticEffect(this.sdl) : handle = calloc<SDL_HapticEffect>();
+
+  /// The SDL bindings to use.
+  final Sdl sdl;
 
   /// The pointer to use.
   final Pointer<SDL_HapticEffect> handle;
@@ -25,7 +29,8 @@ class HapticEffect {
 class HapticConstant extends HapticEffect {
   /// Create a constant effect.
   HapticConstant(
-      {required this.direction,
+      {required Sdl sdl,
+      required this.direction,
       required this.length,
       required this.delay,
       required this.button,
@@ -34,10 +39,12 @@ class HapticConstant extends HapticEffect {
       required this.attackLength,
       required this.attackLevel,
       required this.fadeLength,
-      required this.fadeLevel}) {
+      required this.fadeLevel})
+      : super(sdl) {
+    sdl.loadHapticDirection(direction);
     handle.ref.type = SDL_HAPTIC_CONSTANT;
     handle.ref.constant
-      ..direction = direction.getPointer().ref
+      ..direction = sdl.hapticDirectionPointer.ref
       ..length = length
       ..delay = delay
       ..button = button
@@ -85,7 +92,8 @@ class HapticConstant extends HapticEffect {
 class HapticPeriodic extends HapticEffect {
   /// Create an instance.
   HapticPeriodic(
-      {required this.type,
+      {required Sdl sdl,
+      required this.type,
       required this.direction,
       required this.length,
       required this.delay,
@@ -98,12 +106,14 @@ class HapticPeriodic extends HapticEffect {
       required this.attackLength,
       required this.attackLevel,
       required this.fadeLength,
-      required this.fadeLevel}) {
+      required this.fadeLevel})
+      : super(sdl) {
+    sdl.loadHapticDirection(direction);
     handle.ref
       ..type = type.toSdlValue()
       ..periodic.type = type.toSdlValue();
     handle.ref.periodic
-      ..direction = direction.getPointer().ref
+      ..direction = sdl.hapticDirectionPointer.ref
       ..length = length
       ..delay = delay
       ..button = button
@@ -182,7 +192,8 @@ class ConditionEffect {
 class HapticCondition extends HapticEffect {
   /// Create an instance.
   HapticCondition(
-      {required this.type,
+      {required Sdl sdl,
+      required this.type,
       required this.length,
       required this.delay,
       required this.button,
@@ -192,7 +203,8 @@ class HapticCondition extends HapticEffect {
       required this.rightCoeff,
       required this.leftCoeff,
       required this.deadband,
-      required this.center}) {
+      required this.center})
+      : super(sdl) {
     handle.ref.type = type.toSdlValue();
     handle.ref.condition
       ..type = type.toSdlValue()
@@ -260,7 +272,8 @@ class HapticCondition extends HapticEffect {
 class HapticRamp extends HapticEffect {
   /// Create an instance.
   HapticRamp(
-      {required this.direction,
+      {required Sdl sdl,
+      required this.direction,
       required this.length,
       required this.delay,
       required this.button,
@@ -270,10 +283,12 @@ class HapticRamp extends HapticEffect {
       required this.attackLength,
       required this.attackLevel,
       required this.fadeLength,
-      required this.fadeLevel}) {
+      required this.fadeLevel})
+      : super(sdl) {
+    sdl.loadHapticDirection(direction);
     handle.ref.type = SDL_HAPTIC_RAMP;
     handle.ref.ramp
-      ..direction = direction.getPointer().ref
+      ..direction = sdl.hapticDirectionPointer.ref
       ..length = length
       ..delay = delay
       ..button = button
@@ -326,9 +341,11 @@ class HapticRamp extends HapticEffect {
 class HapticLeftRight extends HapticEffect {
   /// Create an instance.
   HapticLeftRight(
-      {required this.length,
+      {required Sdl sdl,
+      required this.length,
       required this.largeMagnitude,
-      required this.smallMagnitude}) {
+      required this.smallMagnitude})
+      : super(sdl) {
     handle.ref.type = SDL_HAPTIC_LEFTRIGHT;
     handle.ref.leftright
       ..length = length

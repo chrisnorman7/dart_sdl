@@ -29,6 +29,7 @@ import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
 import 'haptic/haptic.dart';
+import 'haptic/haptic_direction.dart';
 import 'joystick.dart';
 import 'keycodes.dart';
 import 'sdl_bindings.dart';
@@ -38,7 +39,20 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl() : _eventHandle = calloc<SDL_Event>() {
+  Sdl()
+      : xPointer = calloc<Int32>(),
+        yPointer = calloc<Int32>(),
+        x2Pointer = calloc<Int32>(),
+        y2Pointer = calloc<Int32>(),
+        floatPointer = calloc<Float>(),
+        displayModePointer = calloc<SDL_DisplayMode>(),
+        _audioSpecDesiredPointer = calloc<SDL_AudioSpec>(),
+        _audioSpecObtainedPointer = calloc<SDL_AudioSpec>(),
+        _messageBoxDataPointer = calloc<SDL_MessageBoxData>(),
+        _versionPointer = calloc<SDL_version>(),
+        hapticDirectionPointer = calloc<SDL_HapticDirection>(),
+        rectPointer = calloc<SDL_Rect>(),
+        _eventHandle = calloc<SDL_Event>() {
     String libName;
     if (Platform.isWindows) {
       libName = 'SDL2.dll';
@@ -48,6 +62,42 @@ class Sdl {
     }
     sdl = DartSdl(DynamicLibrary.open(libName));
   }
+
+  /// The x [Int32] pointer.
+  final Pointer<Int32> xPointer;
+
+  /// The y [Int32] pointer.
+  final Pointer<Int32> yPointer;
+
+  /// An extra [Int32] pointer.
+  final Pointer<Int32> x2Pointer;
+
+  /// Another [Int32] pointer.
+  final Pointer<Int32> y2Pointer;
+
+  /// The [Float] pointer.
+  final Pointer<Float> floatPointer;
+
+  /// The display pointer.
+  final Pointer<SDL_DisplayMode> displayModePointer;
+
+  /// The desired audio spec pointer.
+  final Pointer<SDL_AudioSpec> _audioSpecDesiredPointer;
+
+  /// The obtained audio spec pointer.
+  final Pointer<SDL_AudioSpec> _audioSpecObtainedPointer;
+
+  /// The message box data pointer.
+  final Pointer<SDL_MessageBoxData> _messageBoxDataPointer;
+
+  /// The SDL version pointer to use.
+  final Pointer<SDL_version> _versionPointer;
+
+  /// The haptic direction pointer.
+  final Pointer<SDL_HapticDirection> hapticDirectionPointer;
+
+  /// The rectangle pointer.
+  final Pointer<SDL_Rect> rectPointer;
 
   /// The event handle to use.
   final Pointer<SDL_Event> _eventHandle;
@@ -81,7 +131,23 @@ class Sdl {
   /// Shutdown SDL.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Quit)
-  void quit() => sdl.SDL_Quit();
+  void quit() {
+    [
+      xPointer,
+      yPointer,
+      x2Pointer,
+      y2Pointer,
+      floatPointer,
+      displayModePointer,
+      _audioSpecDesiredPointer,
+      _audioSpecObtainedPointer,
+      _messageBoxDataPointer,
+      _versionPointer,
+      rectPointer,
+      _eventHandle,
+    ].forEach(calloc.free);
+    sdl.SDL_Quit();
+  }
 
   /// Set main ready.
   ///
@@ -232,10 +298,8 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetVersion)
   SdlVersion get version {
-    final ptr = calloc<SDL_version>();
-    sdl.SDL_GetVersion(ptr);
-    final v = ptr.ref;
-    calloc.free(ptr);
+    sdl.SDL_GetVersion(_versionPointer);
+    final v = _versionPointer.ref;
     return SdlVersion(v.major, v.minor, v.patch);
   }
 
@@ -332,7 +396,6 @@ class Sdl {
     Window? window,
     int? flags,
   }) {
-    final data = calloc<SDL_MessageBoxData>();
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
     final a = calloc<SDL_MessageBoxButtonData>(buttons.length);
@@ -344,16 +407,15 @@ class Sdl {
         ..flags = button.flags.toSdlFlag()
         ..text = textPointer;
     }
-    data.ref
+    _messageBoxDataPointer.ref
       ..title = titlePointer
       ..message = messagePointer
       ..window = window?.handle ?? nullptr
       ..numbuttons = buttons.length
       ..buttons = a;
-    final buttonPointer = calloc<Int32>();
-    checkReturnValue(sdl.SDL_ShowMessageBox(data, buttonPointer));
-    final buttonId = buttonPointer.value;
-    [a, buttonPointer, titlePointer, messagePointer].forEach(calloc.free);
+    checkReturnValue(sdl.SDL_ShowMessageBox(_messageBoxDataPointer, xPointer));
+    final buttonId = xPointer.value;
+    [a, titlePointer].forEach(calloc.free);
     return buttonId;
   }
 
@@ -474,9 +536,8 @@ class Sdl {
         namePointer = nullptr;
       }
     }
-    final desiredPointer = calloc<SDL_AudioSpec>();
     if (settings != null) {
-      desiredPointer.ref
+      _audioSpecDesiredPointer.ref
         ..channels = settings.channels
         ..format = settings.audioFormat
         ..freq = settings.freq
@@ -484,14 +545,17 @@ class Sdl {
         ..silence = settings.silence
         ..size = settings.size;
     }
-    final obtainedPointer = calloc<SDL_AudioSpec>();
-    final id = checkReturnValue(sdl.SDL_OpenAudioDevice(namePointer,
-        boolToValue(isCapture), desiredPointer, obtainedPointer, 0));
+    final id = checkReturnValue(sdl.SDL_OpenAudioDevice(
+        namePointer,
+        boolToValue(isCapture),
+        _audioSpecDesiredPointer,
+        _audioSpecObtainedPointer,
+        0));
     if (id <= 0) {
       throw SdlError(id, getError());
     }
-    final spec = AudioSpec.fromPointer(obtainedPointer);
-    [namePointer, desiredPointer, obtainedPointer].forEach(calloc.free);
+    final spec = AudioSpec.fromPointer(_audioSpecObtainedPointer);
+    calloc.free(namePointer);
     return OpenAudioDevice(this, device, id, spec);
   }
 
@@ -906,10 +970,9 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyboardState)
   List<PressedState> get keyboardState {
-    final numKeys = calloc<Int32>();
-    final array = sdl.SDL_GetKeyboardState(numKeys);
+    final array = sdl.SDL_GetKeyboardState(xPointer);
     return [
-      for (var i = 0; i < numKeys.value; i++)
+      for (var i = 0; i < xPointer.value; i++)
         array[i] == 1 ? PressedState.pressed : PressedState.released
     ];
   }
@@ -1093,4 +1156,27 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseIsHaptic)
   bool get mouseIsHaptic => getBool(checkReturnValue(sdl.SDL_MouseIsHaptic()));
+
+  /// Load [direction] onto [hapticDirectionPointer].
+  void loadHapticDirection(HapticDirection direction) {
+    hapticDirectionPointer.ref.type = direction.type.toSdlValue();
+    var value = direction.x;
+    if (value != null) {
+      hapticDirectionPointer.ref.dir[0] = value;
+    } else {
+      hapticDirectionPointer.ref.dir[0] = 0;
+    }
+    value = direction.y;
+    if (value != null) {
+      hapticDirectionPointer.ref.dir[1] = value;
+    } else {
+      hapticDirectionPointer.ref.dir[1] = 0;
+    }
+    value = direction.z;
+    if (value != null) {
+      hapticDirectionPointer.ref.dir[2] = value;
+    } else {
+      hapticDirectionPointer.ref.dir[2] = 0;
+    }
+  }
 }

@@ -5,7 +5,6 @@ import 'package:ffi/ffi.dart';
 
 import 'rectangle.dart';
 import 'sdl.dart';
-import 'sdl_bindings.dart';
 
 /// A display mode.
 ///
@@ -55,10 +54,8 @@ class Display {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDisplayBounds)
   Rectangle get bounds {
-    final ptr = calloc<SDL_Rect>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetDisplayBounds(index, ptr));
-    final r = ptr.ref;
-    calloc.free(ptr);
+    sdl.checkReturnValue(sdl.sdl.SDL_GetDisplayBounds(index, sdl.rectPointer));
+    final r = sdl.rectPointer.ref;
     return Rectangle(r.x, r.y, r.w, r.h);
   }
 
@@ -66,10 +63,9 @@ class Display {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDisplayUsableBounds)
   Rectangle get usableBounds {
-    final ptr = calloc<SDL_Rect>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetDisplayUsableBounds(index, ptr));
-    final r = ptr.ref;
-    calloc.free(ptr);
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_GetDisplayUsableBounds(index, sdl.rectPointer));
+    final r = sdl.rectPointer.ref;
     return Rectangle(r.x, r.y, r.w, r.h);
   }
 
@@ -77,10 +73,9 @@ class Display {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDesktopDisplayMode)
   DisplayMode get desktopMode {
-    final ptr = calloc<SDL_DisplayMode>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetDesktopDisplayMode(index, ptr));
-    final m = ptr.ref;
-    calloc.free(ptr);
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_GetDesktopDisplayMode(index, sdl.displayModePointer));
+    final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }
 
@@ -88,10 +83,9 @@ class Display {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDisplayMode)
   DisplayMode getMode(int modeIndex) {
-    final ptr = calloc<SDL_DisplayMode>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetDisplayMode(index, modeIndex, ptr));
-    final m = ptr.ref;
-    calloc.free(ptr);
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_GetDisplayMode(index, modeIndex, sdl.displayModePointer));
+    final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }
 

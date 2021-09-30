@@ -2,6 +2,7 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
+import 'package:meta/meta.dart';
 
 import '../extensions.dart';
 import '../sdl.dart';
@@ -39,4 +40,10 @@ class WaveFile {
 
   /// Get the actual length from [lengthPointer].
   int get length => lengthPointer.value;
+
+  /// Destroy this instance.
+  @mustCallSuper
+  void destroy() {
+    [specPointer, bufferPointer, lengthPointer].forEach(calloc.free);
+  }
 }

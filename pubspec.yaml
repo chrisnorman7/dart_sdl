@@ -1,5 +1,5 @@
 name: dart_sdl
-version: 0.4.1
+version: 0.5.0
 description: Dart bindings for SDL.
 homepage: https://github.com/chrisnorman7/dart_sdl
 

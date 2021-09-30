@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0]
+
+### Changed
+
+* Changed the signature for the haptic effects constructors.
+* Hopefully plugged a load of memory leaks.
+
 ## [0.4.1]
 
 ### Added

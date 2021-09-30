@@ -141,16 +141,10 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowBordersSize)
   BordersSize get bordersSize {
-    final topPointer = calloc<Int32>();
-    final leftPointer = calloc<Int32>();
-    final bottomPointer = calloc<Int32>();
-    final rightPointer = calloc<Int32>();
     sdl.checkReturnValue(sdl.sdl.SDL_GetWindowBordersSize(
-        handle, topPointer, leftPointer, bottomPointer, rightPointer));
-    final b = BordersSize(topPointer.value, leftPointer.value,
-        bottomPointer.value, rightPointer.value);
-    [topPointer, leftPointer, bottomPointer, rightPointer].forEach(calloc.free);
-    return b;
+        handle, sdl.xPointer, sdl.yPointer, sdl.x2Pointer, sdl.y2Pointer));
+    return BordersSize(sdl.xPointer.value, sdl.yPointer.value,
+        sdl.x2Pointer.value, sdl.y2Pointer.value);
   }
 
   /// Get the index of the display this window is associated with.
@@ -168,10 +162,9 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowDisplayMode)
   DisplayMode get displayMode {
-    final ptr = calloc<SDL_DisplayMode>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetWindowDisplayMode(handle, ptr));
-    final m = ptr.ref;
-    calloc.free(ptr);
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_GetWindowDisplayMode(handle, sdl.displayModePointer));
+    final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }
 
@@ -179,13 +172,12 @@ class Window {
   ///
   ///
   set displayMode(DisplayMode mode) {
-    final ptr = calloc<SDL_DisplayMode>();
-    ptr.ref
+    sdl.displayModePointer.ref
       ..refresh_rate = mode.refreshRate
       ..w = mode.width
       ..h = mode.height;
-    sdl.checkReturnValue(sdl.sdl.SDL_SetWindowDisplayMode(handle, ptr));
-    calloc.free(ptr);
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_SetWindowDisplayMode(handle, sdl.displayModePointer));
   }
 
   /// Get the flags for this window.
@@ -213,12 +205,8 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowMaximumSize)
   WindowSize get maximumSize {
-    final widthPointer = calloc<Int32>();
-    final heightPointer = calloc<Int32>();
-    sdl.sdl.SDL_GetWindowMaximumSize(handle, widthPointer, heightPointer);
-    final s = WindowSize(widthPointer.value, heightPointer.value);
-    [widthPointer, heightPointer].forEach(calloc.free);
-    return s;
+    sdl.sdl.SDL_GetWindowMaximumSize(handle, sdl.xPointer, sdl.yPointer);
+    return WindowSize(sdl.xPointer.value, sdl.yPointer.value);
   }
 
   /// Set the maximum size of the client area.
@@ -231,12 +219,8 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowMinimumSize)
   WindowSize get minimumSize {
-    final widthPointer = calloc<Int32>();
-    final heightPointer = calloc<Int32>();
-    sdl.sdl.SDL_GetWindowMinimumSize(handle, widthPointer, heightPointer);
-    final s = WindowSize(widthPointer.value, heightPointer.value);
-    [widthPointer, heightPointer].forEach(calloc.free);
-    return s;
+    sdl.sdl.SDL_GetWindowMinimumSize(handle, sdl.xPointer, sdl.yPointer);
+    return WindowSize(sdl.xPointer.value, sdl.yPointer.value);
   }
 
   /// Set the minimum size of this client area.
@@ -249,11 +233,9 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowOpacity)
   double get opacity {
-    final ptr = calloc<Float>();
-    sdl.checkReturnValue(sdl.sdl.SDL_GetWindowOpacity(handle, ptr));
-    final f = ptr.value;
-    calloc.free(ptr);
-    return f;
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_GetWindowOpacity(handle, sdl.floatPointer));
+    return sdl.floatPointer.value;
   }
 
   /// Set the opacity for this window.
@@ -266,11 +248,8 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowPosition)
   Point<int> get position {
-    final xPointer = calloc<Int32>();
-    final yPointer = calloc<Int32>();
-    sdl.sdl.SDL_GetWindowPosition(handle, xPointer, yPointer);
-    final pos = Point(xPointer.value, yPointer.value);
-    [xPointer, yPointer].forEach(calloc.free);
+    sdl.sdl.SDL_GetWindowPosition(handle, sdl.xPointer, sdl.yPointer);
+    final pos = Point(sdl.xPointer.value, sdl.yPointer.value);
     return pos;
   }
 
@@ -284,12 +263,8 @@ class Window {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowSize)
   WindowSize get size {
-    final widthPointer = calloc<Int32>();
-    final heightPointer = calloc<Int32>();
-    sdl.sdl.SDL_GetWindowSize(handle, widthPointer, heightPointer);
-    final s = WindowSize(widthPointer.value, heightPointer.value);
-    [widthPointer, heightPointer].forEach(calloc.free);
-    return s;
+    sdl.sdl.SDL_GetWindowSize(handle, sdl.xPointer, sdl.yPointer);
+    return WindowSize(sdl.xPointer.value, sdl.yPointer.value);
   }
 
   /// Set the size of this window.

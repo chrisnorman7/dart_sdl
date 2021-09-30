@@ -47,14 +47,9 @@ class Joystick {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetBall)
   Point<int> getBall(int ball) {
-    final dx = calloc<Int32>();
-    final dy = calloc<Int32>();
-    try {
-      sdl.checkReturnValue(sdl.sdl.SDL_JoystickGetBall(handle, ball, dx, dy));
-      return Point<int>(dx.value, dy.value);
-    } finally {
-      [dx, dy].forEach(calloc.free);
-    }
+    sdl.checkReturnValue(
+        sdl.sdl.SDL_JoystickGetBall(handle, ball, sdl.xPointer, sdl.yPointer));
+    return Point(sdl.xPointer.value, sdl.yPointer.value);
   }
 
   /// Get the current state of a button.
