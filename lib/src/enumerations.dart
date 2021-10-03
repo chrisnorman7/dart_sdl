@@ -122,7 +122,8 @@ enum ButtonFlags {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MessageBoxFlags)
 enum MessageBoxFlags {
   /// error dialog
-  ///error,
+  error,
+
   /// warning dialog
   warning,
 

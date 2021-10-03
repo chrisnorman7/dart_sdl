@@ -394,7 +394,7 @@ class Sdl {
     String message,
     List<Button> buttons, {
     Window? window,
-    int? flags,
+    List<MessageBoxFlags>? flags,
   }) {
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
@@ -412,7 +412,9 @@ class Sdl {
       ..message = messagePointer
       ..window = window?.handle ?? nullptr
       ..numbuttons = buttons.length
-      ..buttons = a;
+      ..buttons = a
+      ..flags =
+          [for (final f in flags ?? <MessageBoxFlags>[]) f.toSdlFlag()].xor();
     checkReturnValue(sdl.SDL_ShowMessageBox(_messageBoxDataPointer, xPointer));
     final buttonId = xPointer.value;
     [a, titlePointer].forEach(calloc.free);
@@ -423,15 +425,18 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowSimpleMessageBox)
   void showSimpleMessageBox(
-    MessageBoxFlags type,
+    List<MessageBoxFlags> types,
     String title,
     String message, {
     Window? window,
   }) {
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
-    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(type.toSdlFlag(),
-        titlePointer, messagePointer, window?.handle ?? nullptr));
+    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(
+        [for (final t in types) t.toSdlFlag()].xor(),
+        titlePointer,
+        messagePointer,
+        window?.handle ?? nullptr));
     [titlePointer, messagePointer].forEach(calloc.free);
   }
 

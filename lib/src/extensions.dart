@@ -112,6 +112,8 @@ extension SdlMessageBoxFlagsValues on MessageBoxFlags {
   /// Return an SDL flag.
   int toSdlFlag() {
     switch (this) {
+      case MessageBoxFlags.error:
+        return SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR;
       case MessageBoxFlags.warning:
         return SDL_MessageBoxFlags.SDL_MESSAGEBOX_WARNING;
       case MessageBoxFlags.information:
@@ -639,5 +641,15 @@ extension SdlHapticConstantEffectTypeValues on HapticConditionType {
       case HapticConditionType.friction:
         return SDL_HAPTIC_FRICTION;
     }
+  }
+}
+
+/// Various list methods used by this package.
+extension SdlListMethods on List<int> {
+  /// Iterate over every element, and xor the values.
+  int xor() {
+    var result = 0;
+    forEach((e) => result |= e);
+    return result;
   }
 }

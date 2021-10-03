@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1]
+
+### Added
+
+* Expose `MessageBoxFlags.error` (thanks to Mohamed Sulaiman for reporting that oversight).
+
 ## [0.5.0]
 
 ### Changed

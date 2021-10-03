@@ -40,6 +40,7 @@ export 'src/events/platform.dart';
 export 'src/events/text.dart';
 export 'src/events/touch_finger.dart';
 export 'src/events/window.dart';
+export 'src/extensions.dart';
 export 'src/game_controller.dart';
 export 'src/haptic/haptic.dart';
 export 'src/haptic/haptic_direction.dart';
