@@ -5,6 +5,7 @@
 ### Added
 
 * Expose `MessageBoxFlags.error` (thanks to Mohamed Sulaiman for reporting that oversight).
+* Added the `List<int>.xor` extension method.
 
 ## [0.5.0]
 

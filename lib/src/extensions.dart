@@ -647,9 +647,5 @@ extension SdlHapticConstantEffectTypeValues on HapticConditionType {
 /// Various list methods used by this package.
 extension SdlListMethods on List<int> {
   /// Iterate over every element, and xor the values.
-  int xor() {
-    var result = 0;
-    forEach((e) => result |= e);
-    return result;
-  }
+  int xor() => fold(0, (previousValue, element) => previousValue | element);
 }
