@@ -15,8 +15,10 @@ void main() {
       'SDL Example',
       'See the clipboard contents?',
       [
-        Button('Yes', id: yesButtonId, flags: ButtonFlags.returnKeyDefault),
-        Button('No', id: noButtonId, flags: ButtonFlags.escapeKeyDefault)
+        Button('Yes',
+            id: yesButtonId, flags: [MessageBoxButtonFlags.returnkeyDefault]),
+        Button('No',
+            id: noButtonId, flags: [MessageBoxButtonFlags.escapekeyDefault])
       ],
       window: window);
   if (id == yesButtonId) {

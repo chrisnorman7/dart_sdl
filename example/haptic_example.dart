@@ -51,10 +51,10 @@ Future<void> main() async {
         if (event.value == 0) {
           haptic.rumbleStop();
         } else if ([
-          GameControllerAxis.leftY,
-          GameControllerAxis.rightY,
-          GameControllerAxis.triggerLeft,
-          GameControllerAxis.triggerRight
+          GameControllerAxis.lefty,
+          GameControllerAxis.righty,
+          GameControllerAxis.triggerleft,
+          GameControllerAxis.triggerright
         ].contains(event.axis)) {
           haptic.rumblePlay(event.value.abs() / 32767, 0);
         }

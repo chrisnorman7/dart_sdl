@@ -1,7 +1,6 @@
 /// Provides joystick events.
 import 'dart:math';
 
-import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
@@ -10,7 +9,8 @@ import 'base.dart';
 /// The base class for all joystick events.
 class JoystickEvent extends Event {
   /// Create an event.
-  JoystickEvent(Sdl sdl, int timestamp, this.joystickId)
+  JoystickEvent(
+      {required Sdl sdl, required int timestamp, required this.joystickId})
       : super(sdl, timestamp);
 
   /// The id of the joystick that generated this event.
@@ -22,8 +22,13 @@ class JoystickEvent extends Event {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyAxisEvent)
 class JoyAxisEvent extends JoystickEvent {
   /// Create an event.
-  JoyAxisEvent(Sdl sdl, int timestamp, int joystickId, this.axis, this.value)
-      : super(sdl, timestamp, joystickId) {
+  JoyAxisEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required int joystickId,
+      required this.axis,
+      required this.value})
+      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId) {
     if (value < 0) {
       smallValue = value / 32768;
     } else if (value > 0) {
@@ -50,9 +55,14 @@ class JoyAxisEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyBallEvent)
 class JoyBallEvent extends JoystickEvent {
   /// Create an event.
-  JoyBallEvent(Sdl sdl, int timestamp, int joystickId, this.ball,
-      this.relativeX, this.relativeY)
-      : super(sdl, timestamp, joystickId);
+  JoyBallEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required int joystickId,
+      required this.ball,
+      required this.relativeX,
+      required this.relativeY})
+      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
   /// The ball that was moved.
   final int ball;
@@ -72,12 +82,19 @@ class JoyBallEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyHatEvent)
 class JoyHatEvent extends JoystickEvent {
   /// Create an event.
-  JoyHatEvent(Sdl sdl, int timestamp, int joystickId, this.hat, this.value)
-      : super(sdl, timestamp, joystickId);
+  JoyHatEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required int joystickId,
+      required this.hat,
+      required this.value})
+      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
   /// Create an instance from an event.
-  factory JoyHatEvent.fromSdlEvent(Sdl sdl, SDL_JoyHatEvent e) =>
-      JoyHatEvent(sdl, e.timestamp, e.which, e.hat, e.value.toJoyHatValue());
+  JoyHatEvent.fromSdlEvent(Sdl sdl, SDL_JoyHatEvent e)
+      : value = e.value.toJoyHatValue(),
+        hat = e.hat,
+        super(joystickId: e.which, sdl: sdl, timestamp: e.timestamp);
 
   /// The hat that has changed.
   final int hat;
@@ -93,12 +110,13 @@ class JoyButtonEvent extends JoystickEvent {
   /// Create an event.
   JoyButtonEvent(
       Sdl sdl, int timestamp, int joystickId, this.button, this.state)
-      : super(sdl, timestamp, joystickId);
+      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
   /// Create an instance from an event.
-  factory JoyButtonEvent.fromSdlEvent(Sdl sdl, SDL_JoyButtonEvent e) =>
-      JoyButtonEvent(
-          sdl, e.timestamp, e.which, e.button, e.state.toPressedState());
+  JoyButtonEvent.fromSdlEvent(Sdl sdl, SDL_JoyButtonEvent e)
+      : button = e.button,
+        state = e.state.toPressedState(),
+        super(joystickId: e.which, sdl: sdl, timestamp: e.timestamp);
 
   /// The button that was pressed.
   final int button;
@@ -112,12 +130,17 @@ class JoyButtonEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyDeviceEvent)
 class JoyDeviceEvent extends JoystickEvent {
   /// Create an event.
-  JoyDeviceEvent(Sdl sdl, int timestamp, int joystickId, this.state)
-      : super(sdl, timestamp, joystickId);
+  JoyDeviceEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required int joystickId,
+      required this.state})
+      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
   /// Create an instance from an event.
-  factory JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e) =>
-      JoyDeviceEvent(sdl, e.timestamp, e.which, e.type.toJoystickDeviceState());
+  JoyDeviceEvent.fromSdlEvent(Sdl sdl, SDL_JoyDeviceEvent e)
+      : state = e.type.toJoystickDeviceState(),
+        super(joystickId: e.which, sdl: sdl, timestamp: e.timestamp);
 
   /// Whether or not the device was added ore removed.
   final DeviceState state;

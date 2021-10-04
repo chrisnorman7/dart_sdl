@@ -8,17 +8,17 @@ void main() {
         MessageBoxFlags.error,
         MessageBoxFlags.warning
       ];
-      final results = [for (final f in flags) f.toSdlFlag()];
+      final results = [for (final f in flags) f.toInt()];
       expect(
           results,
           equals(<int>[
-            MessageBoxFlags.error.toSdlFlag(),
-            MessageBoxFlags.warning.toSdlFlag()
+            MessageBoxFlags.error.toInt(),
+            MessageBoxFlags.warning.toInt()
           ]));
       expect(
           results.xor(),
-          equals(MessageBoxFlags.error.toSdlFlag() |
-              MessageBoxFlags.warning.toSdlFlag()));
+          equals(
+              MessageBoxFlags.error.toInt() | MessageBoxFlags.warning.toInt()));
     });
   });
 }

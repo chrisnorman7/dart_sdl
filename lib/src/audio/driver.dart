@@ -8,7 +8,7 @@ class AudioDriver {
   /// Initialise the driver.
   AudioDriver(this.sdl, this.index);
 
-  /// The bindings to use.
+  /// The SDL bindings to use.
   final Sdl sdl;
 
   /// The index of the device driver.

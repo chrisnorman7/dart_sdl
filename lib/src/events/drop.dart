@@ -3,7 +3,6 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 
-import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';

@@ -11,19 +11,14 @@ import 'game_controller.dart';
 import 'haptic/haptic.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
+import 'sdl_object.dart';
 
 /// A joystick device.
 ///
 /// [SDL Docs](https://wiki.libsdl.org/SDL_Joystick)
-class Joystick {
+class Joystick extends SdlObject<SDL_Joystick> {
   /// Create an opened joystick.
-  Joystick(this.sdl, this.handle);
-
-  /// The bindings to use.
-  final Sdl sdl;
-
-  /// The handle for this joystick.
-  final Pointer<SDL_Joystick> handle;
+  Joystick(Sdl sdl, Pointer<SDL_Joystick> handle) : super(sdl, handle);
 
   /// Get the power level for this joystick.
   JoystickPowerLevel get powerLevel =>
@@ -140,4 +135,7 @@ class Joystick {
     }
     return Haptic(sdl, pointer);
   }
+
+  /// Get the type of this joystick.
+  JoystickType get type => sdl.sdl.SDL_JoystickGetType(handle).toJoystickType();
 }

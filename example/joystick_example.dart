@@ -18,12 +18,15 @@ void main() {
     } else {
       print('Not a controller.');
     }
+    print('Type: ${j.type}.');
     print('Power level: ${j.powerLevel}.');
     print('Number of axes: ${j.numAxes}.');
     print('Number of balls: ${j.numBalls}.');
     print('Number of buttons: ${j.numButtons}.');
     print('Number of hats: ${j.numHats}.');
-    j.close();
+    j
+      ..close()
+      ..destroy();
   }
   sdl.quit();
 }

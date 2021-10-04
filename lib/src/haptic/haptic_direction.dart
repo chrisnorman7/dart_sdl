@@ -1,6 +1,5 @@
 /// Provides the [HapticDirection] class.
-
-import '../enumerations.dart';
+import '../extensions.dart';
 
 /// A structure that contains a haptic direction.
 class HapticDirection {

@@ -1,26 +1,24 @@
 /// Provides the [Haptic] class.
 import 'dart:ffi';
 
-import '../enumerations.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
+import '../sdl_object.dart';
 import 'haptic_effect.dart';
+import 'haptic_features.dart';
 
 /// A haptic device.
-class Haptic {
+class Haptic extends SdlObject<SDL_Haptic> {
   /// Create an instance.
-  Haptic(this.sdl, this.handle);
-
-  /// The SDL instance to use.
-  final Sdl sdl;
-
-  /// The handle to use.
-  final Pointer<SDL_Haptic> handle;
+  Haptic(Sdl sdl, Pointer<SDL_Haptic> handle) : super(sdl, handle);
 
   /// Close this device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticClose)
-  void close() => sdl.sdl.SDL_HapticClose(handle);
+  void close() {
+    sdl.sdl.SDL_HapticClose(handle);
+    destroy();
+  }
 
   /// Get the number of effects a haptic device can play at the same time.
   ///

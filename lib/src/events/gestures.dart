@@ -1,5 +1,4 @@
 /// Provides gesture events.
-import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
@@ -10,26 +9,29 @@ import 'base.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_DollarGestureEvent)
 class DollarGestureEvent extends Event with CoordinatesMixin<double> {
   /// Create an event.
-  DollarGestureEvent(Sdl sdl, int timestamp, this.type, this.touchId,
-      this.gestureId, this.numFingers, this.error, double x, double y)
+  DollarGestureEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required this.type,
+      required this.touchId,
+      required this.gestureId,
+      required this.numFingers,
+      required this.error,
+      required double x,
+      required double y})
       : super(sdl, timestamp) {
     this.x = x;
     this.y = y;
   }
 
   /// Create an instance from an SDL event.
-  factory DollarGestureEvent.fromSdlEvent(
-          Sdl sdl, SDL_DollarGestureEvent event) =>
-      DollarGestureEvent(
-          sdl,
-          event.timestamp,
-          event.type.toDollarGestureEventType(),
-          event.touchId,
-          event.gestureId,
-          event.numFingers,
-          event.error,
-          event.x,
-          event.y);
+  DollarGestureEvent.fromSdlEvent(Sdl sdl, SDL_DollarGestureEvent event)
+      : error = event.error,
+        gestureId = event.gestureId,
+        numFingers = event.numFingers,
+        touchId = event.touchId,
+        type = event.type.toDollarGestureEventType(),
+        super(sdl, event.timestamp);
 
   /// The type of this event.
   final DollarGestureEventType type;
@@ -53,8 +55,15 @@ class DollarGestureEvent extends Event with CoordinatesMixin<double> {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MultiGestureEvent)
 class MultiGestureEvent extends Event with CoordinatesMixin<double> {
   /// Create an event.
-  MultiGestureEvent(Sdl sdl, int timestamp, this.touchId, this.dTheta,
-      this.dDist, this.numFingers, double x, double y)
+  MultiGestureEvent(
+      {required Sdl sdl,
+      required int timestamp,
+      required this.touchId,
+      required this.dTheta,
+      required this.dDist,
+      required this.numFingers,
+      required double x,
+      required double y})
       : super(sdl, timestamp) {
     this.x = x;
     this.y = y;

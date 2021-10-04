@@ -1,7 +1,6 @@
 /// Provides various touch events.
 import 'dart:math';
 
-import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';

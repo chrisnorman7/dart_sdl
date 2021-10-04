@@ -6,11 +6,11 @@ import 'package:ffi/ffi.dart';
 import 'package:meta/meta.dart';
 
 import 'display.dart';
-import 'enumerations.dart';
 import 'error.dart';
 import 'extensions.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
+import 'sdl_object.dart';
 
 /// A class to represent the size of a window's borders.
 class BordersSize {
@@ -43,9 +43,9 @@ class WindowSize {
 }
 
 /// An SDL Window.
-class Window {
+class Window extends SdlObject<SDL_Window> {
   /// Create a window.
-  Window(this.sdl, this.handle);
+  Window(Sdl sdl, Pointer<SDL_Window> handle) : super(sdl, handle);
 
   /// Get a window from a stored ID.
   factory Window.fromId(Sdl sdl, int id) {
@@ -56,16 +56,11 @@ class Window {
     return Window(sdl, handle);
   }
 
-  /// The main SDL object.
-  final Sdl sdl;
-
-  /// The Handle for this instance.
-  Pointer<SDL_Window> handle;
-
   /// Destroy this window.
-  @mustCallSuper
+  @override
   void destroy() {
     sdl.destroyWindow(this);
+    super.destroy();
   }
 
   /// The title of this window.
@@ -276,8 +271,8 @@ class Window {
   /// Set this window full screen.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowFullscreen)
-  set fullscreen(FullScreenMode mode) => sdl.checkReturnValue(
-      sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toSdlFlag()));
+  set fullscreen(FullScreenMode mode) => sdl
+      .checkReturnValue(sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toInt()));
 
   /// Set input focus.
   ///

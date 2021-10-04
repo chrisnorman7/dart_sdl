@@ -4,7 +4,6 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
 import '../enumerations.dart';
-import '../extensions.dart';
 import '../sdl.dart';
 import 'spec.dart';
 import 'wave_file.dart';
@@ -98,9 +97,6 @@ class OpenAudioDevice {
   void unlock() => sdl.sdl.SDL_UnlockAudioDevice(id);
 
   /// Returns `true` if this device is paused.
-  ///
-  /// This method is largely unnecessary, it seems wrong to have a setter
-  /// without a getter.
   bool get paused => status == AudioStatus.paused;
 
   /// Set Whether or not this device is paused.

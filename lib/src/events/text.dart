@@ -19,7 +19,12 @@ class TextInputEvent extends Event with WindowMixin {
 class TextEditingEvent extends TextInputEvent {
   /// Create an event.
   TextEditingEvent(
-      Sdl sdl, int timestamp, int wndId, String text, this.start, this.length)
+      {required Sdl sdl,
+      required int timestamp,
+      required int wndId,
+      required String text,
+      required this.start,
+      required this.length})
       : super(sdl, timestamp, text) {
     windowId = wndId;
   }

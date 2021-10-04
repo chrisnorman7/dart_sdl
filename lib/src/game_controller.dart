@@ -4,21 +4,16 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
 import 'enumerations.dart';
-import 'extensions.dart';
 import 'joystick.dart';
 import 'sdl.dart';
 import 'sdl_bindings.dart';
+import 'sdl_object.dart';
 
 /// A game controller.
-class GameController {
+class GameController extends SdlObject<SDL_GameController> {
   /// Create an instance.
-  GameController(this.sdl, this.handle);
-
-  /// The bindings to use.
-  final Sdl sdl;
-
-  /// The handle for communicating with the bindings.
-  final Pointer<SDL_GameController> handle;
+  GameController(Sdl sdl, Pointer<SDL_GameController> handle)
+      : super(sdl, handle);
 
   /// Return `true` if this controller is open and attached.
   ///
@@ -30,7 +25,7 @@ class GameController {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerAxis)
   int getAxis(GameControllerAxis axis) =>
-      sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toSdlFlag());
+      sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toInt());
 
   /// Get the value of [axis], as a number between -1.0 and 1.0.
   double getAxisSmall(GameControllerAxis axis) {
@@ -47,8 +42,8 @@ class GameController {
   /// Return `true` if [button] is pressed.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButton)
-  bool getButton(GameControllerButton button) => sdl
-      .getBool(sdl.sdl.SDL_GameControllerGetButton(handle, button.toSdlFlag()));
+  bool getButton(GameControllerButton button) =>
+      sdl.getBool(sdl.sdl.SDL_GameControllerGetButton(handle, button.toInt()));
 
   /// Get the value of a joystick on this controller.
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetJoystick)

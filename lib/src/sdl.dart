@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:ffi/ffi.dart';
 
+import '../dart_sdl.dart';
 import 'audio/device.dart';
 import 'audio/driver.dart';
 import 'audio/spec.dart';
@@ -16,6 +17,7 @@ import 'events/application.dart';
 import 'events/audio.dart';
 import 'events/base.dart';
 import 'events/clipboard.dart';
+import 'events/display.dart';
 import 'events/drop.dart';
 import 'events/game_controller.dart';
 import 'events/gestures.dart';
@@ -25,6 +27,7 @@ import 'events/mouse.dart';
 import 'events/platform.dart';
 import 'events/text.dart';
 import 'events/touch_finger.dart';
+import 'events/user.dart';
 import 'events/window.dart';
 import 'extensions.dart';
 import 'game_controller.dart';
@@ -32,6 +35,7 @@ import 'haptic/haptic.dart';
 import 'haptic/haptic_direction.dart';
 import 'joystick.dart';
 import 'keycodes.dart';
+import 'modifiers.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
 import 'window.dart';
@@ -186,7 +190,7 @@ class Sdl {
     final hintPointer = hint.toInt8Pointer();
     final valuePointer = value.toInt8Pointer();
     final retval = sdl.SDL_SetHintWithPriority(
-        hintPointer, valuePointer, priority.toSdlFlag());
+        hintPointer, valuePointer, priority.toInt());
     [hintPointer, valuePointer].forEach(calloc.free);
     return getBool(retval);
   }
@@ -218,7 +222,7 @@ class Sdl {
   void _log(LogCategory category, String message,
       void Function(int, Pointer<Int8>) func) {
     final messagePointer = message.toInt8Pointer();
-    func(category.toSdlFlag(), messagePointer);
+    func(category.toInt(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -251,8 +255,7 @@ class Sdl {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogMessage)
   void logMessage(LogCategory category, LogPriority priority, String message) {
     final messagePointer = message.toInt8Pointer();
-    sdl.SDL_LogMessage(
-        category.toSdlFlag(), priority.toSdlFlag(), messagePointer);
+    sdl.SDL_LogMessage(category.toInt(), priority.toInt(), messagePointer);
     calloc.free(messagePointer);
   }
 
@@ -270,7 +273,7 @@ class Sdl {
 
   /// Get log priority.
   LogPriority getLogPriority(LogCategory category) =>
-      sdl.SDL_LogGetPriority(category.toSdlFlag()).toLogPriority();
+      sdl.SDL_LogGetPriority(category.toInt()).toLogPriority();
 
   /// Reset log priorities.
   ///
@@ -281,13 +284,13 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetAllPriority)
   void setAllLogPriorities(LogPriority priority) =>
-      sdl.SDL_LogSetAllPriority(priority.toSdlFlag());
+      sdl.SDL_LogSetAllPriority(priority.toInt());
 
   /// Set log priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
   void setLogPriority(LogCategory category, LogPriority priority) =>
-      sdl.SDL_LogSetPriority(category.toSdlFlag(), priority.toSdlFlag());
+      sdl.SDL_LogSetPriority(category.toInt(), priority.toInt());
 
   /// Get the compiled version.
   ///
@@ -404,7 +407,8 @@ class Sdl {
       final textPointer = button.text.toInt8Pointer();
       a[i]
         ..buttonid = button.id
-        ..flags = button.flags.toSdlFlag()
+        ..flags = button.flags.fold(
+            0, (previousValue, element) => previousValue | element.toInt())
         ..text = textPointer;
     }
     _messageBoxDataPointer.ref
@@ -413,8 +417,7 @@ class Sdl {
       ..window = window?.handle ?? nullptr
       ..numbuttons = buttons.length
       ..buttons = a
-      ..flags =
-          [for (final f in flags ?? <MessageBoxFlags>[]) f.toSdlFlag()].xor();
+      ..flags = [for (final f in flags ?? <MessageBoxFlags>[]) f.toInt()].xor();
     checkReturnValue(sdl.SDL_ShowMessageBox(_messageBoxDataPointer, xPointer));
     final buttonId = xPointer.value;
     [a, titlePointer].forEach(calloc.free);
@@ -433,7 +436,7 @@ class Sdl {
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
     checkReturnValue(sdl.SDL_ShowSimpleMessageBox(
-        [for (final t in types) t.toSdlFlag()].xor(),
+        [for (final t in types) t.toInt()].xor(),
         titlePointer,
         messagePointer,
         window?.handle ?? nullptr));
@@ -637,6 +640,10 @@ class Sdl {
     return controller;
   }
 
+  /// Throw an error to show that an event was unhandled.
+  Never throwInvalidEvent(EventType type) =>
+      throw SdlError(type.toInt(), 'Invalid event type $type.');
+
   /// Poll events.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PollEvent)
@@ -645,265 +652,318 @@ class Sdl {
     if (n != 0) {
       final e = _eventHandle.ref;
       Event event;
-      switch (e.type) {
-
-        // Application events
-        case SDL_EventType.SDL_QUIT:
-          event = QuitEvent(this, e.common.timestamp);
+      final type = e.type.toEventType();
+      switch (type) {
+        case EventType.firstevent:
+          throwInvalidEvent(type);
+        case EventType.quit:
+          event = QuitEvent(this, e.quit.timestamp);
           break;
-
-        // Android, iOS and WinRT events
-        case SDL_EventType.SDL_APP_TERMINATING:
+        case EventType.appTerminating:
           event = AppTerminatingEvent(this, e.common.timestamp);
           break;
-        case SDL_EventType.SDL_APP_LOWMEMORY:
+        case EventType.appLowmemory:
           event = AppLowMemoryEvent(this, e.common.timestamp);
           break;
-        case SDL_EventType.SDL_APP_WILLENTERBACKGROUND:
+        case EventType.appWillenterbackground:
           event = AppWillEnterBackgroundEvent(this, e.common.timestamp);
           break;
-        case SDL_EventType.SDL_APP_DIDENTERBACKGROUND:
+        case EventType.appDidenterbackground:
           event = AppDidEnterBackgroundEvent(this, e.common.timestamp);
           break;
-        case SDL_EventType.SDL_APP_WILLENTERFOREGROUND:
+        case EventType.appWillenterforeground:
           event = AppWillEnterForegroundEvent(this, e.common.timestamp);
           break;
-        case SDL_EventType.SDL_APP_DIDENTERFOREGROUND:
+        case EventType.appDidenterforeground:
           event = AppDidEnterForegroundEvent(this, e.common.timestamp);
           break;
-
-        // Window events
-        case SDL_EventType.SDL_WINDOWEVENT:
+        case EventType.localechanged:
+          event = LocaleChanged(this, e.common.timestamp);
+          break;
+        case EventType.displayevent:
+          event = DisplayEvent.fromEvent(this, e);
+          break;
+        case EventType.windowevent:
           final windowEvent = e.window;
           final timestamp = windowEvent.timestamp;
           final windowId = windowEvent.windowID;
-          switch (windowEvent.event) {
-            case SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
+          switch (windowEvent.event.toWindowEventID()) {
+            case WindowEventID.none:
+              throw SdlError(windowEvent.event, 'No event ID.');
+            case WindowEventID.shown:
               event = WindowShownEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_HIDDEN:
+            case WindowEventID.hidden:
               event = WindowHiddenEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_EXPOSED:
+            case WindowEventID.exposed:
               event = WindowExposedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_MOVED:
+            case WindowEventID.moved:
               event = WindowMovedEvent(this, timestamp, windowId,
                   Point<int>(windowEvent.data1, windowEvent.data2));
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
+            case WindowEventID.resized:
               event = WindowResizedEvent(this, timestamp, windowId,
                   WindowSize(windowEvent.data1, windowEvent.data2));
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
+            case WindowEventID.sizeChanged:
               event = WindowSizeChangedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_MINIMIZED:
+            case WindowEventID.minimized:
               event = WindowMinimizedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_MAXIMIZED:
+            case WindowEventID.maximized:
               event = WindowMaximizedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_RESTORED:
+            case WindowEventID.restored:
               event = WindowRestoredEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_ENTER:
+            case WindowEventID.enter:
               event = WindowEnterEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_LEAVE:
+            case WindowEventID.leave:
               event = WindowLeaveEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+            case WindowEventID.focusGained:
               event = WindowFocusGainedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+            case WindowEventID.focusLost:
               event = WindowFocusLostEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
+            case WindowEventID.close:
               event = WindowClosedEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS:
+            case WindowEventID.takeFocus:
               event = WindowTakeFocusEvent(this, timestamp, windowId);
               break;
-            case SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
+            case WindowEventID.hitTest:
               event = WindowHitTestEvent(this, timestamp, windowId);
               break;
-            default:
-              throw SdlError(windowEvent.type, 'Unknown window event type.');
           }
           break;
-        case SDL_EventType.SDL_SYSWMEVENT:
+        case EventType.syswmevent:
           final msg = e.syswm.msg;
           event = SysWmEvent(this, e.syswm.timestamp, msg);
           break;
-
-        // Keyboard events
-        case SDL_EventType.SDL_KEYDOWN:
+        case EventType.keydown:
           event = KeyboardEvent.fromSdlEvent(this, e.key);
           break;
-        case SDL_EventType.SDL_KEYUP:
+        case EventType.keyup:
           event = KeyboardEvent.fromSdlEvent(this, e.key);
           break;
-        case SDL_EventType.SDL_TEXTEDITING:
+        case EventType.textediting:
           final s = String.fromCharCodes(
               [for (var i = 0; i < e.edit.length; i++) e.edit.text[i]]);
-          event = TextEditingEvent(this, e.edit.timestamp, e.edit.windowID, s,
-              e.edit.start, e.edit.length);
+          event = TextEditingEvent(
+              sdl: this,
+              timestamp: e.edit.timestamp,
+              wndId: e.edit.windowID,
+              text: s,
+              start: e.edit.start,
+              length: e.edit.length);
           break;
-        case SDL_EventType.SDL_TEXTINPUT:
-          var s = '';
+        case EventType.textinput:
+          final b = StringBuffer();
           var i = 0;
           while (true) {
             final c = e.text.text[i];
             if (c == 0) {
               break;
             } else {
-              s += String.fromCharCode(c);
+              b.writeCharCode(c);
               i++;
             }
           }
-          event = TextInputEvent(this, e.text.timestamp, s);
+          event = TextInputEvent(this, e.text.timestamp, b.toString());
           break;
-        case SDL_EventType.SDL_KEYMAPCHANGED:
+        case EventType.keymapchanged:
           event = KeymapChangedEvent(this, e.common.timestamp);
           break;
-
-        // Mouse events
-        case SDL_EventType.SDL_MOUSEMOTION:
+        case EventType.mousemotion:
+          final motion = e.motion;
           event = MouseMotionEvent(
-              this,
-              e.motion.timestamp,
-              e.motion.windowID,
-              e.motion.which,
-              e.motion.state,
-              e.motion.x,
-              e.motion.y,
-              e.motion.xrel,
-              e.motion.yrel);
+              sdl: this,
+              timestamp: motion.timestamp,
+              wndId: motion.windowID,
+              which: motion.which,
+              state: motion.state,
+              x: motion.x,
+              y: motion.y,
+              relativeX: motion.xrel,
+              relativeY: motion.yrel);
           break;
-        case SDL_EventType.SDL_MOUSEBUTTONDOWN:
+        case EventType.mousebuttondown:
           event = MouseButtonEvent.fromSdlEvent(this, e.button);
           break;
-        case SDL_EventType.SDL_MOUSEBUTTONUP:
+        case EventType.mousebuttonup:
           event = MouseButtonEvent.fromSdlEvent(this, e.button);
           break;
-        case SDL_EventType.SDL_MOUSEWHEEL:
+        case EventType.mousewheel:
+          final wheel = e.wheel;
           event = MouseWheelEvent(
-              this,
-              e.wheel.timestamp,
-              e.wheel.windowID,
-              e.wheel.which,
-              e.wheel.x,
-              e.wheel.y,
-              e.wheel.direction.toMouseWheelDirection());
+              sdl: this,
+              timestamp: wheel.timestamp,
+              windowId: wheel.windowID,
+              which: wheel.which,
+              x: wheel.x,
+              y: wheel.y,
+              direction: wheel.direction.toMouseWheelDirection());
           break;
-
-        // Joystick events
-        case SDL_EventType.SDL_JOYAXISMOTION:
-          event = JoyAxisEvent(this, e.jaxis.timestamp, e.jaxis.which,
-              e.jaxis.axis, e.jaxis.value);
+        case EventType.joyaxismotion:
+          final axis = e.jaxis;
+          event = JoyAxisEvent(
+              sdl: this,
+              timestamp: axis.timestamp,
+              joystickId: axis.which,
+              axis: axis.axis,
+              value: axis.value);
           break;
-        case SDL_EventType.SDL_JOYBALLMOTION:
-          event = JoyBallEvent(this, e.jball.timestamp, e.jball.which,
-              e.jball.ball, e.jball.xrel, e.jball.yrel);
+        case EventType.joyballmotion:
+          final ball = e.jball;
+          event = JoyBallEvent(
+              sdl: this,
+              timestamp: ball.timestamp,
+              joystickId: ball.which,
+              ball: ball.ball,
+              relativeX: ball.xrel,
+              relativeY: ball.yrel);
           break;
-        case SDL_EventType.SDL_JOYHATMOTION:
-          event = JoyHatEvent.fromSdlEvent(this, e.jhat);
+        case EventType.joyhatmotion:
+          final hat = e.jhat;
+          event = JoyHatEvent(
+              sdl: this,
+              timestamp: hat.timestamp,
+              joystickId: hat.which,
+              hat: hat.hat,
+              value: hat.value.toJoyHatValue());
           break;
-        case SDL_EventType.SDL_JOYBUTTONDOWN:
+        case EventType.joybuttondown:
           event = JoyButtonEvent.fromSdlEvent(this, e.jbutton);
           break;
-        case SDL_EventType.SDL_JOYBUTTONUP:
+        case EventType.joybuttonup:
           event = JoyButtonEvent.fromSdlEvent(this, e.jbutton);
           break;
-        case SDL_EventType.SDL_JOYDEVICEADDED:
+        case EventType.joydeviceadded:
           event = JoyDeviceEvent.fromSdlEvent(this, e.jdevice);
           break;
-        case SDL_EventType.SDL_JOYDEVICEREMOVED:
+        case EventType.joydeviceremoved:
           event = JoyDeviceEvent.fromSdlEvent(this, e.jdevice);
           break;
-
-        // Controller events
-        case SDL_EventType.SDL_CONTROLLERAXISMOTION:
-          event = ControllerAxisEvent(this, e.caxis.timestamp, e.caxis.which,
-              e.caxis.axis.toGameControllerAxis(), e.caxis.value);
+        case EventType.controlleraxismotion:
+          final axis = e.caxis;
+          event = ControllerAxisEvent(
+              sdl: this,
+              timestamp: axis.timestamp,
+              joystickId: axis.which,
+              axis: axis.axis.toGameControllerAxis(),
+              value: axis.value);
           break;
-        case SDL_EventType.SDL_CONTROLLERBUTTONDOWN:
+        case EventType.controllerbuttondown:
           event = ControllerButtonEvent.fromSdlEvent(this, e.cbutton);
           break;
-        case SDL_EventType.SDL_CONTROLLERBUTTONUP:
+        case EventType.controllerbuttonup:
           event = ControllerButtonEvent.fromSdlEvent(this, e.cbutton);
           break;
-        case SDL_EventType.SDL_CONTROLLERDEVICEADDED:
+        case EventType.controllerdeviceadded:
           event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
           break;
-        case SDL_EventType.SDL_CONTROLLERDEVICEREMOVED:
+        case EventType.controllerdeviceremoved:
           event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
           break;
-        case SDL_EventType.SDL_CONTROLLERDEVICEREMAPPED:
+        case EventType.controllerdeviceremapped:
           event = ControllerDeviceEvent.fromSdlEvent(this, e.cdevice);
           break;
-
-        // Touch events
-        case SDL_EventType.SDL_FINGERDOWN:
+        case EventType.controllertouchpaddown:
+          event = ControllerTouchpadEvent.fromSdlEvent(this, e.ctouchpad);
+          break;
+        case EventType.controllertouchpadmotion:
+          event = ControllerTouchpadEvent.fromSdlEvent(this, e.ctouchpad);
+          break;
+        case EventType.controllertouchpadup:
+          event = ControllerTouchpadEvent.fromSdlEvent(this, e.ctouchpad);
+          break;
+        case EventType.controllersensorupdate:
+          event = ControllerSensorEvent.fromSdlEvent(this, e.csensor);
+          break;
+        case EventType.fingerdown:
           event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
           break;
-        case SDL_EventType.SDL_FINGERUP:
+        case EventType.fingerup:
           event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
           break;
-        case SDL_EventType.SDL_FINGERMOTION:
+        case EventType.fingermotion:
           event = TouchFingerEvent.fromSdlEvent(this, e.tfinger);
           break;
-
-        // Gesture events
-        case SDL_EventType.SDL_DOLLARGESTURE:
+        case EventType.dollargesture:
           event = DollarGestureEvent.fromSdlEvent(this, e.dgesture);
           break;
-        case SDL_EventType.SDL_DOLLARRECORD:
+        case EventType.dollarrecord:
           event = DollarGestureEvent.fromSdlEvent(this, e.dgesture);
           break;
-        case SDL_EventType.SDL_MULTIGESTURE:
+        case EventType.multigesture:
+          final gesture = e.mgesture;
           event = MultiGestureEvent(
-              this,
-              e.mgesture.timestamp,
-              e.mgesture.touchId,
-              e.mgesture.dTheta,
-              e.mgesture.dDist,
-              e.mgesture.numFingers,
-              e.mgesture.x,
-              e.mgesture.y);
+              sdl: this,
+              timestamp: gesture.timestamp,
+              touchId: gesture.touchId,
+              dTheta: gesture.dTheta,
+              dDist: gesture.dDist,
+              numFingers: gesture.numFingers,
+              x: gesture.x,
+              y: gesture.y);
           break;
-
-        // Clipboard events
-        case SDL_EventType.SDL_CLIPBOARDUPDATE:
+        case EventType.clipboardupdate:
           event = ClipboardChangedEvent(this, e.common.timestamp);
           break;
-
-        // Drag and drop events
-        case SDL_EventType.SDL_DROPFILE:
+        case EventType.dropfile:
           event = DropEvent.fromSdlEvent(this, e.drop);
           break;
-        case SDL_EventType.SDL_DROPTEXT:
+        case EventType.droptext:
           event = DropEvent.fromSdlEvent(this, e.drop);
           break;
-        case SDL_EventType.SDL_DROPBEGIN:
+        case EventType.dropbegin:
           event = DropEvent.fromSdlEvent(this, e.drop);
           break;
-        case SDL_EventType.SDL_DROPCOMPLETE:
+        case EventType.dropcomplete:
           event = DropEvent.fromSdlEvent(this, e.drop);
           break;
-
-        // Audio hotplug events
-        case SDL_EventType.SDL_AUDIODEVICEADDED:
+        case EventType.audiodeviceadded:
           event = AudioDeviceEvent.fromSdlEvent(this, e.adevice);
           break;
-        case SDL_EventType.SDL_AUDIODEVICEREMOVED:
+        case EventType.audiodeviceremoved:
           event = AudioDeviceEvent.fromSdlEvent(this, e.adevice);
           break;
-
-        // Render events
-        default:
-          throw SdlError(e.type, 'Unrecognised event type.');
+        case EventType.sensorupdate:
+          final sensor = e.sensor;
+          event = SensorEvent(
+              sdl: this,
+              timestamp: sensor.timestamp,
+              sensor: sensor.which,
+              data1: sensor.data[0],
+              data2: sensor.data[1],
+              data3: sensor.data[2],
+              data4: sensor.data[3],
+              data5: sensor.data[4],
+              data6: sensor.data[5]);
+          break;
+        case EventType.renderTargetsReset:
+          event = RenderTargetsResetEvent(this, e.common.timestamp);
+          break;
+        case EventType.renderDeviceReset:
+          event = RenderDeviceReset(this, e.common.timestamp);
+          break;
+        case EventType.userevent:
+          final user = e.user;
+          event = UserEvent(
+              sdl: this,
+              timestamp: user.timestamp,
+              type: user.type,
+              windowId: user.windowID == 0 ? null : user.windowID,
+              code: user.code);
+          break;
+        case EventType.lastevent:
+          throw SdlError(e.type, 'Last event type.');
       }
       return event;
     }
@@ -1017,7 +1077,7 @@ class Sdl {
   set modState(List<KeyMod> modifiers) {
     var mod = 0;
     for (final modifier in modifiers) {
-      mod |= modifier.toSdlValue();
+      mod |= modifier.toInt();
     }
     sdl.SDL_SetModState(mod);
   }
@@ -1164,7 +1224,7 @@ class Sdl {
 
   /// Load [direction] onto [hapticDirectionPointer].
   void loadHapticDirection(HapticDirection direction) {
-    hapticDirectionPointer.ref.type = direction.type.toSdlValue();
+    hapticDirectionPointer.ref.type = direction.type.toInt();
     var value = direction.x;
     if (value != null) {
       hapticDirectionPointer.ref.dir[0] = value;
@@ -1184,4 +1244,7 @@ class Sdl {
       hapticDirectionPointer.ref.dir[2] = 0;
     }
   }
+
+  /// Get the number of ticks.
+  int get ticks => sdl.SDL_GetTicks();
 }

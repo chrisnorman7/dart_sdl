@@ -1,11 +1,18 @@
 # Changelog
 
-## [0.5.1]
+## [0.6.0]
 
 ### Added
 
-* Expose `MessageBoxFlags.error` (thanks to Mohamed Sulaiman for reporting that oversight).
+* Start using `MessageBoxFlags.error` (thanks to Mohamed Sulaiman for reporting that oversight).
 * Added the `List<int>.xor` extension method.
+* Added `SdlObject.destroy`, which must be overridden for any new dsl object.
+
+### Changed
+
+* Made *most* SDL objects subclasses of `SdlObject`.
+* Use code generation to generate enums.
+* Changed API to be in line with the generated enums.
 
 ## [0.5.0]
 

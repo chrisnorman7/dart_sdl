@@ -3,9 +3,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 
-import '../../dart_sdl.dart';
-import '../enumerations.dart';
 import '../extensions.dart';
+import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'haptic_direction.dart';
 
@@ -110,8 +109,8 @@ class HapticPeriodic extends HapticEffect {
       : super(sdl) {
     sdl.loadHapticDirection(direction);
     handle.ref
-      ..type = type.toSdlValue()
-      ..periodic.type = type.toSdlValue();
+      ..type = type.toInt()
+      ..periodic.type = type.toInt();
     handle.ref.periodic
       ..direction = sdl.hapticDirectionPointer.ref
       ..length = length
@@ -205,9 +204,9 @@ class HapticCondition extends HapticEffect {
       required this.deadband,
       required this.center})
       : super(sdl) {
-    handle.ref.type = type.toSdlValue();
+    handle.ref.type = type.toInt();
     handle.ref.condition
-      ..type = type.toSdlValue()
+      ..type = type.toInt()
       ..length = length
       ..delay = delay
       ..button = button

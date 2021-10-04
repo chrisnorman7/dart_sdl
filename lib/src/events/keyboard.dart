@@ -1,7 +1,7 @@
 /// Keyboard events:
-import '../enumerations.dart';
 import '../extensions.dart';
 import '../keycodes.dart';
+import '../modifiers.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
