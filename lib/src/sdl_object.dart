@@ -2,7 +2,6 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 
 import 'sdl.dart';
 
@@ -18,6 +17,5 @@ class SdlObject<T extends NativeType> {
   final Pointer<T> handle;
 
   /// How this object should be destroyed.
-  @mustCallSuper
   void destroy() => calloc.free(handle);
 }

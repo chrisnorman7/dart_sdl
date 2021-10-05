@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.1]
+
+### Added
+
+* Added a window example.
+
+### Changed
+
+* New `SdlObject` instances no longer need to call `super.destroy`.
+* Fixed a bug with `Window.destroy`.
+
 ## [0.6.0]
 
 ### Added

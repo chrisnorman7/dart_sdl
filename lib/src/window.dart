@@ -60,7 +60,6 @@ class Window extends SdlObject<SDL_Window> {
   @override
   void destroy() {
     sdl.destroyWindow(this);
-    super.destroy();
   }
 
   /// The title of this window.
