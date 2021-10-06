@@ -1,13 +1,6 @@
-# Defines a default set of lint rules enforced for projects at Google. For
-# details and rationale, see
-# https://github.com/dart-lang/pedantic#enabled-lints.
-
-include: package:pedantic/analysis_options.yaml
-
 analyzer:
   exclude:
-    - lib/json/*.g.dart
-    - lib/src/sdl_bindings.dart
+    - "lib/src/sdl_bindings.dart"
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0]
+
+### Changed
+
+* Renamed `Button` to `SdlButton`.
+
 ## [0.6.1]
 
 ### Added
