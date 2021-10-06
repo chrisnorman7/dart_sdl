@@ -395,7 +395,7 @@ class Sdl {
   int showMessageBox(
     String title,
     String message,
-    List<Button> buttons, {
+    List<SdlButton> buttons, {
     Window? window,
     List<MessageBoxFlags>? flags,
   }) {
