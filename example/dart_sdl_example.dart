@@ -15,9 +15,9 @@ void main() {
       'SDL Example',
       'See the clipboard contents?',
       [
-        SdlButton('Yes',
+        MessageBoxButton('Yes',
             id: yesButtonId, flags: [MessageBoxButtonFlags.returnkeyDefault]),
-        SdlButton('No',
+        MessageBoxButton('No',
             id: noButtonId, flags: [MessageBoxButtonFlags.escapekeyDefault])
       ],
       window: window);

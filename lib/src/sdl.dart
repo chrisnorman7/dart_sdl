@@ -9,7 +9,6 @@ import '../dart_sdl.dart';
 import 'audio/device.dart';
 import 'audio/driver.dart';
 import 'audio/spec.dart';
-import 'button.dart';
 import 'display.dart';
 import 'enumerations.dart';
 import 'error.dart';
@@ -35,6 +34,7 @@ import 'haptic/haptic.dart';
 import 'haptic/haptic_direction.dart';
 import 'joystick.dart';
 import 'keycodes.dart';
+import 'message_box_button.dart';
 import 'modifiers.dart';
 import 'sdl_bindings.dart';
 import 'version.dart';
@@ -395,7 +395,7 @@ class Sdl {
   int showMessageBox(
     String title,
     String message,
-    List<SdlButton> buttons, {
+    List<MessageBoxButton> buttons, {
     Window? window,
     List<MessageBoxFlags>? flags,
   }) {

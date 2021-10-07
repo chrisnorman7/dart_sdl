@@ -1,4 +1,4 @@
-/// Provides the [SdlButton] class.
+/// Provides the [MessageBoxButton] class.
 import 'enumerations.dart';
 import 'sdl_bindings.dart';
 
@@ -7,9 +7,9 @@ import 'sdl_bindings.dart';
 /// This is a more friendly interface to [SDL_MessageBoxButtonData].
 ///
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MessageBoxButtonData)
-class SdlButton {
+class MessageBoxButton {
   /// Create a button.
-  SdlButton(this.text, {this.id = 0, List<MessageBoxButtonFlags>? flags})
+  MessageBoxButton(this.text, {this.id = 0, List<MessageBoxButtonFlags>? flags})
       : flags = flags ?? [];
 
   /// Flags for this button.

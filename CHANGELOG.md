@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0]
+
+### Changed
+
+* Renamed `SdlButton` to `MessageBoxButton` to bring it (almost) in line with the [SDL docs](https://wiki.libsdl.org/SDL_MessageBoxButtonData).
+
 ## [0.7.0]
 
 ### Changed
