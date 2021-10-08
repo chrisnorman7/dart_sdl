@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.1]
+
+### Fixed
+
+* Fixed some broken doc links.
+
 ## [0.8.0]
 
 ### Changed

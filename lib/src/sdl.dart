@@ -1022,7 +1022,7 @@ class Sdl {
 
   /// Query the window which currently has keyboard focus.
   ///
-  /// [SDL Docs]([SDL_GetKeyboardFocus](https://wiki.libsdl.org/SDL_GetKeyboardFocus))
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyboardFocus)
   Window? getKeyboardFocus() {
     final pointer = sdl.SDL_GetKeyboardFocus();
     if (pointer == nullptr) {
@@ -1126,7 +1126,7 @@ class Sdl {
 
   /// Stop receiving any text input events.
   ///
-  /// [SDL Docs](URL)
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_StopTextInput)
   void stopTextInput() => sdl.SDL_StopTextInput();
 
   /// Capture the mouse and to track input outside an SDL window.
