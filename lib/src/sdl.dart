@@ -43,7 +43,7 @@ import 'window.dart';
 /// The main SDL class.
 class Sdl {
   /// Create an object.
-  Sdl()
+  Sdl({String? libName})
       : xPointer = calloc<Int32>(),
         yPointer = calloc<Int32>(),
         x2Pointer = calloc<Int32>(),
@@ -57,12 +57,17 @@ class Sdl {
         hapticDirectionPointer = calloc<SDL_HapticDirection>(),
         rectPointer = calloc<SDL_Rect>(),
         _eventHandle = calloc<SDL_Event>() {
-    String libName;
-    if (Platform.isWindows) {
-      libName = 'SDL2.dll';
-    } else {
-      throw Exception(
-          'Unimplemented operating system: ${Platform.operatingSystem}.');
+    if (libName == null) {
+      if (Platform.isWindows) {
+        libName = 'SDL2.dll';
+      } else if (Platform.isLinux) {
+        libName = 'libSDL2-2.0.so.0.16.0';
+      } else if (Platform.isMacOS) {
+        libName = 'SDL2.framework';
+      } else {
+        throw Exception(
+            'Unimplemented operating system: ${Platform.operatingSystem}.');
+      }
     }
     sdl = DartSdl(DynamicLibrary.open(libName));
   }

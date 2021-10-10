@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2]
+
+### Changed
+
+* You can now specify the path to the SDL library.
+* Library names for Linux and Mac OS X can now be automatically inferred.
+
 ## [0.8.1]
 
 ### Fixed
