@@ -1,11 +1,11 @@
 /// Provides game controller events.
 import 'dart:ffi';
 
-import '../../dart_sdl.dart';
 import '../enumerations.dart';
 import '../extensions.dart';
 import '../sdl.dart';
 import '../sdl_bindings.dart';
+import 'base.dart';
 import 'joystick.dart';
 
 /// The base for all game controller events.

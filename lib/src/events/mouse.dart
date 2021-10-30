@@ -1,7 +1,6 @@
 /// Provides mouse-related events.
 import 'dart:math';
 
-import '../../dart_sdl.dart';
 import '../enumerations.dart';
 import '../error.dart';
 import '../extensions.dart';

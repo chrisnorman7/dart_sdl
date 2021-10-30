@@ -5,7 +5,6 @@ import 'dart:math';
 
 import 'package:ffi/ffi.dart';
 
-import '../dart_sdl.dart';
 import 'audio/device.dart';
 import 'audio/driver.dart';
 import 'audio/spec.dart';
@@ -24,6 +23,8 @@ import 'events/joystick.dart';
 import 'events/keyboard.dart';
 import 'events/mouse.dart';
 import 'events/platform.dart';
+import 'events/renderer.dart';
+import 'events/sensor.dart';
 import 'events/text.dart';
 import 'events/touch_finger.dart';
 import 'events/user.dart';
@@ -1252,4 +1253,33 @@ class Sdl {
 
   /// Get the number of ticks.
   int get ticks => sdl.SDL_GetTicks();
+
+  /// Get the base path.
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetBasePath)
+  String get basePath {
+    final ptr = sdl.SDL_GetBasePath();
+    if (ptr == nullptr) {
+      throw SdlError(-1, getError());
+    }
+    final string = ptr.cast<Utf8>().toDartString();
+    sdl.SDL_free(ptr.cast<Void>());
+    return string;
+  }
+
+  /// Get the preferences path for your [org] and [app].
+  ///
+  /// [SDL Docs](https://wiki.libsdl.org/SDL_GetPrefPath)
+  String getPrefPath(String org, String app) {
+    final orgPointer = org.toInt8Pointer();
+    final appPointer = app.toInt8Pointer();
+    final ptr = sdl.SDL_GetPrefPath(orgPointer, appPointer);
+    [orgPointer, appPointer].forEach(calloc.free);
+    if (ptr == nullptr) {
+      throw SdlError(-1, getError());
+    }
+    final string = ptr.cast<Utf8>().toDartString();
+    sdl.SDL_free(ptr.cast<Void>());
+    return string;
+  }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3]
+
+### Added
+
+* Bound [sdl_GetPrefPath](https://wiki.libsdl.org/SDL_GetPrefPath).
+* Bound [SDL_GetBasePath](https://wiki.libsdl.org/SDL_GetBasePath).
+
 ## [0.8.2]
 
 ### Changed
