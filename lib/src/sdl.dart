@@ -1,4 +1,5 @@
 /// Provides the main [Sdl] class.
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:math';
@@ -770,18 +771,22 @@ class Sdl {
               length: e.edit.length);
           break;
         case EventType.textinput:
-          final b = StringBuffer();
+          final charCodes = <int>[];
           var i = 0;
           while (true) {
-            final c = e.text.text[i];
+            var c = e.text.text[i];
             if (c == 0) {
               break;
             } else {
-              b.writeCharCode(c);
+              if (c < 0) {
+                c += 256;
+              }
+              charCodes.add(c);
               i++;
             }
           }
-          event = TextInputEvent(this, e.text.timestamp, b.toString());
+          event =
+              TextInputEvent(this, e.text.timestamp, utf8.decode(charCodes));
           break;
         case EventType.keymapchanged:
           event = KeymapChangedEvent(this, e.common.timestamp);

@@ -15,6 +15,8 @@ Future<void> main() async {
         window.destroy();
         break;
       }
+    } else if (event is TextInputEvent) {
+      window.title = event.text;
     }
   }
   sdl.quit();

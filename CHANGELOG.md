@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.4]
+
+### Fixed
+
+* Fixed overflow in the handling of the text input event.
+
 ## [0.8.3]
 
 ### Added
