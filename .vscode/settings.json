@@ -90,6 +90,7 @@
     "DROPFILE",
     "DROPTEXT",
     "dx",
+    "dylib",
     "Eaze",
     "efread",
     "EFSEEK",
