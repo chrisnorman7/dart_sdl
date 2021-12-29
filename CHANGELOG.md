@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.5]
+
+### Fixed
+
+* Changed the library name for OS X.
+
 ## [0.8.4]
 
 ### Fixed
