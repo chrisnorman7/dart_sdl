@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.6]
+
+### Added
+
+* Autodetect home brew library name for OS X.
+
 ## [0.8.5]
 
 ### Fixed
