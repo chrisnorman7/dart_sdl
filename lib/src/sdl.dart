@@ -65,7 +65,7 @@ class Sdl {
       } else if (Platform.isLinux) {
         libName = 'libSDL2-2.0.so.0.16.0';
       } else if (Platform.isMacOS) {
-        libName = 'SDL2.framework';
+        libName = 'SDL2.framework/SDL2';
       } else {
         throw Exception(
             'Unimplemented operating system: ${Platform.operatingSystem}.');
