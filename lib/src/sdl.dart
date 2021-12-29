@@ -978,6 +978,7 @@ class Sdl {
       }
       return event;
     }
+    return null;
   }
 
   /// Get a stream of all SDL events.

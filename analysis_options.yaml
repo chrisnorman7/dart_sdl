@@ -1,6 +1,8 @@
+include: package:lints/recommended.yaml
+
 analyzer:
   exclude:
-    - "lib/src/sdl_bindings.dart"
+    - lib/src/sdl_bindings.dart
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false

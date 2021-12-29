@@ -25,8 +25,8 @@ Future<void> main() async {
     }
   }
   if (sdl.mouseIsHaptic) {
-    final Haptic = sdl.openHapticFromMouse();
-    print('Mouse is haptic: ${Haptic.name}');
+    final haptic = sdl.openHapticFromMouse();
+    print('Mouse is haptic: ${haptic.name}');
   } else {
     print('Mouse is not haptic.');
   }

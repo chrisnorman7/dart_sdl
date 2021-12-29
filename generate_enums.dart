@@ -146,19 +146,19 @@ const memberNameReplacements = <String, String>{};
 class EnumMember {
   /// Create an instance.
   EnumMember(
-      {required this.dartName, required this.CName, required this.value});
+      {required this.dartName, required this.cName, required this.value});
 
   /// The Dart name for this member.
   final String dartName;
 
   /// The name of the C enum member.
-  final String CName;
+  final String cName;
 
   /// The C value for this member.
   final String value;
 
   /// Get the fully qualified enum member name.
-  String getEnumMemberName(CEnum e) => '${e.CName}.$cPrefix$CName';
+  String getEnumMemberName(CEnum e) => '${e.cName}.$cPrefix$cName';
 
   /// Get the fully qualified Dart member name.
   String getDartMemberName(CEnum e) => '${e.dartName}.$dartName';
@@ -173,7 +173,7 @@ class CEnum {
   final String name;
 
   /// The C name of this enum.
-  String get CName => '$cPrefix$name';
+  String get cName => '$cPrefix$name';
 
   /// The Dart name for this enum.
   String get dartName =>
@@ -229,7 +229,7 @@ Future<void> main() async {
     } else if (line.startsWith('}')) {
       if (currentEnum.members.isNotEmpty) {
         enums.add(currentEnum);
-        print('Parsed ${currentEnum.CName} (${currentEnum.dartName}).');
+        print('Parsed ${currentEnum.cName} (${currentEnum.dartName}).');
       } else {
         print('Skipping empty enum ${currentEnum.name}.');
       }
@@ -267,8 +267,8 @@ Future<void> main() async {
           dartMemberName = getDartName(dartMemberName);
         }
         final enumMember = EnumMember(
-            dartName: dartMemberName, CName: memberName, value: memberValue);
-        print('${enumMember.CName} -> ${enumMember.dartName}.');
+            dartName: dartMemberName, cName: memberName, value: memberValue);
+        print('${enumMember.cName} -> ${enumMember.dartName}.');
         currentEnum.members.add(enumMember);
       }
     }
@@ -279,11 +279,11 @@ Future<void> main() async {
     ..writeln("import '${path.basename(bindingsFilename)}';");
   for (final e in enums) {
     buffer
-      ..writeln('/// ${e.CName}.')
+      ..writeln('/// ${e.cName}.')
       ..writeln('enum ${e.dartName} {');
     for (final m in e.members) {
       buffer
-        ..writeln('/// $cPrefix${m.CName} = ${m.value}')
+        ..writeln('/// $cPrefix${m.cName} = ${m.value}')
         ..writeln('${m.dartName},');
     }
     buffer
@@ -305,7 +305,7 @@ Future<void> main() async {
     ..writeln('extension IntToC on int {');
   for (final e in enums) {
     buffer
-      ..writeln('/// Convert from a [${e.CName}] member.')
+      ..writeln('/// Convert from a [${e.cName}] member.')
       ..writeln('${e.dartName} to${e.dartName}() {')
       ..writeln('switch(this) {');
     final values = <String>[];
@@ -321,7 +321,7 @@ Future<void> main() async {
     buffer
       ..writeln('default:')
       ..writeln('throw $errorClassName(')
-      ..writeln("this, 'Unrecognised `${e.CName}` member.');")
+      ..writeln("this, 'Unrecognised `${e.cName}` member.');")
       ..writeln('}}');
   }
   buffer.writeln('}');

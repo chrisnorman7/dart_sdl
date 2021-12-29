@@ -8,13 +8,13 @@ environment:
 
 dependencies:
   ffi: ^1.0.0
+  lints: ^1.0.1
   meta: ^1.7.0
 
 dev_dependencies:
   dart_style: ^2.2.0
   ffigen: ^4.0.0
   path: ^1.8.0
-  pedantic: ^1.10.0
   test: ^1.16.0
 
 ffigen:
