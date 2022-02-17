@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.7]
+
+### Changed
+
+* Updated the package description.
+
 ## [0.8.6]
 
 ### Added

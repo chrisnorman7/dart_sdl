@@ -1,6 +1,6 @@
 name: dart_sdl
-version: 0.8.6
-description: Dart bindings for SDL.
+version: 0.8.7
+description: Dart bindings for [SDL2](https://www.libsdl.org/).
 homepage: https://github.com/chrisnorman7/dart_sdl
 
 environment:
