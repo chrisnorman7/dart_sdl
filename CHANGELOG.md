@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.8]
+
+### Changed
+
+* Use the more generic library name "libSDL2.so" under Linux.
+
 ## [0.8.7]
 
 ### Changed

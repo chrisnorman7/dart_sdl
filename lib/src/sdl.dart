@@ -63,7 +63,7 @@ class Sdl {
       if (Platform.isWindows) {
         libName = 'SDL2.dll';
       } else if (Platform.isLinux) {
-        libName = 'libSDL2-2.0.so.0.16.0';
+        libName = 'libSDL2.so';
       } else if (Platform.isMacOS) {
         if (File('libSDL2.dylib').existsSync()) {
           libName = 'libSDL2.dylib';
