@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:ffi/ffi.dart';
+import 'package:path/path.dart' as path;
 
 import 'audio/device.dart';
 import 'audio/driver.dart';
@@ -63,7 +64,7 @@ class Sdl {
       if (Platform.isWindows) {
         libName = 'SDL2.dll';
       } else if (Platform.isLinux) {
-        libName = 'libSDL2.so';
+        libName = path.join(Directory.current.path, 'libSDL2.so');
       } else if (Platform.isMacOS) {
         if (File('libSDL2.dylib').existsSync()) {
           libName = 'libSDL2.dylib';

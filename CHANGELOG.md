@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.9]
+
+### Changed
+
+* Use an absolute path when loading the dynamic library on Linux.
+
 ## [0.8.8]
 
 ### Changed

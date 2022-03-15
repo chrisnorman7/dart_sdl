@@ -1,5 +1,5 @@
 name: dart_sdl
-version: 0.8.8
+version: 0.8.9
 description: Dart bindings for [SDL2](https://www.libsdl.org/).
 homepage: https://github.com/chrisnorman7/dart_sdl
 
@@ -10,11 +10,11 @@ dependencies:
   ffi: ^1.0.0
   lints: ^1.0.1
   meta: ^1.7.0
+  path: ^1.8.1
 
 dev_dependencies:
   dart_style: ^2.2.0
   ffigen: ^4.0.0
-  path: ^1.8.0
   test: ^1.16.0
 
 ffigen:
