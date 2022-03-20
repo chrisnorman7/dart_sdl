@@ -19,6 +19,7 @@ void main() {
       print('Not a controller.');
     }
     print('Type: ${j.type}.');
+    print('Has LED: ${j.hasLed}');
     print('Power level: ${j.powerLevel}.');
     print('Number of axes: ${j.numAxes}.');
     print('Number of balls: ${j.numBalls}.');

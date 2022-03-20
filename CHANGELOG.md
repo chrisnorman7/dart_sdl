@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.3]
+
+### Added
+
+* Bound some more rumble functions.
+
 ## [0.9.2]
 
 ### Fixed
