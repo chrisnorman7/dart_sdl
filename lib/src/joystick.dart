@@ -117,6 +117,7 @@ class Joystick extends SdlObject<SDL_Joystick> {
   /// Close this joystick.
   void close() {
     sdl.sdl.SDL_JoystickClose(handle);
+    destroy();
   }
 
   /// Query if a joystick has haptic features.
