@@ -77,10 +77,15 @@ class Sdl {
           'You must specify your own `libName`.',
         );
       }
-      libName = path.join(
+      final libPath = path.join(
         path.dirname(Platform.script.toFilePath()),
         libName,
       );
+      if (File(libPath).existsSync() == true) {
+        libName = libPath;
+      } else {
+        libName = path.join(Directory.current.path, libName);
+      }
     }
     sdl = DartSdl(DynamicLibrary.open(libName));
   }
