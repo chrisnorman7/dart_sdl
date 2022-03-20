@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.1]
+
+### Fixed
+
+* Resolve script name properly.
+
 ## [0.9.0]
 
 ### Changed

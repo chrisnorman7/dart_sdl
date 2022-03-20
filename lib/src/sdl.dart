@@ -78,7 +78,7 @@ class Sdl {
         );
       }
       libName = path.join(
-        path.dirname(Platform.resolvedExecutable),
+        path.dirname(Platform.script.toFilePath()),
         libName,
       );
     }
