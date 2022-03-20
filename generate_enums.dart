@@ -21,7 +21,7 @@ const errorClassName = 'SdlError';
 const enumsFilename = 'lib/src/enumerations.dart';
 
 /// A map of enum names that don't match the prefix of their member names.
-final unmatchedPrefixes = <String, String>{};
+const unmatchedPrefixes = <String, String>{};
 
 /// A map of enum names to member prefixes which should be removed.
 const enumMemberPrefixes = <String, String>{
@@ -145,8 +145,11 @@ const memberNameReplacements = <String, String>{};
 /// A member of a [CEnum].
 class EnumMember {
   /// Create an instance.
-  EnumMember(
-      {required this.dartName, required this.cName, required this.value});
+  const EnumMember({
+    required this.dartName,
+    required this.cName,
+    required this.value,
+  });
 
   /// The Dart name for this member.
   final String dartName;
@@ -167,7 +170,7 @@ class EnumMember {
 /// An enum to be written to disk.
 class CEnum {
   /// Create an instance.
-  CEnum(this.name) : members = <EnumMember>[];
+  const CEnum(this.name, this.members);
 
   /// The truncated name of this enum.
   final String name;
@@ -212,8 +215,9 @@ Future<void> main() async {
   final bindings = File(bindingsFilename);
   final enums = <CEnum>[];
   final classNamePattern = RegExp('^abstract class $cPrefix([^ ]+) [{]\$');
-  final classMemberPattern =
-      RegExp('^  static const int $cPrefix([^ ]+) = ([^;]+);\$');
+  final classMemberPattern = RegExp(
+    '^  static const int $cPrefix([^ ]+) = ([^;]+);\$',
+  );
   CEnum? currentEnum;
   for (final line in await bindings.readAsLines()) {
     if (currentEnum == null) {
@@ -224,7 +228,7 @@ Future<void> main() async {
           print('Ignoring $cPrefix$name.');
           continue;
         }
-        currentEnum = CEnum(name);
+        currentEnum = CEnum(name, []);
       }
     } else if (line.startsWith('}')) {
       if (currentEnum.members.isNotEmpty) {
