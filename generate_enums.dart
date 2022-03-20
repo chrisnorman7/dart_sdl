@@ -199,7 +199,7 @@ String getDartName(String cName,
   }
   final name = names.join();
   if (reservedKeywords.contains(name)) {
-    return name + '_';
+    return '${name}_';
   }
   final replacement = enumNameReplacements[name];
   if (replacement == null) {
