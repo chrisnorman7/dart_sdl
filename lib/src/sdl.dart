@@ -691,7 +691,7 @@ class Sdl {
           event = AppDidEnterForegroundEvent(this, e.common.timestamp);
           break;
         case EventType.localechanged:
-          event = LocaleChanged(this, e.common.timestamp);
+          event = LocaleChangedEvent(this, e.common.timestamp);
           break;
         case EventType.displayevent:
           event = DisplayEvent.fromEvent(this, e);
@@ -752,6 +752,13 @@ class Sdl {
               break;
             case WindowEventID.hitTest:
               event = WindowHitTestEvent(this, timestamp, windowId);
+              break;
+            case WindowEventID.iccprofChanged:
+              event = IccprofChangedEvent(this, timestamp, windowId);
+              break;
+            case WindowEventID.displayChanged:
+              event = DisplayChangedEvent(
+                  this, timestamp, windowId, windowEvent.data1);
               break;
           }
           break;
@@ -981,6 +988,9 @@ class Sdl {
           break;
         case EventType.lastevent:
           throw SdlError(e.type, 'Last event type.');
+        case EventType.pollsentinel:
+          event = PollSentinelEvent(this, e.common.timestamp);
+          break;
       }
       return event;
     }

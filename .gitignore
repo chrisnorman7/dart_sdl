@@ -9,7 +9,5 @@ build/
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 pubspec.lock
 SDL2.dll
-SDL2-2.0.14
+SDL2-2.0.20
 README-SDL.txt
-env
-typings

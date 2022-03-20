@@ -9,7 +9,13 @@ class QuitEvent extends Event {
 }
 
 /// Locale changed.
-class LocaleChanged extends Event {
+class LocaleChangedEvent extends Event {
   /// Create an event.
-  LocaleChanged(Sdl sdl, int timestamp) : super(sdl, timestamp);
+  LocaleChangedEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
+}
+
+/// SDL_POLLSENTINEL.
+class PollSentinelEvent extends Event {
+  /// Create an instance.
+  PollSentinelEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
 }

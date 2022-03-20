@@ -883,8 +883,8 @@ enum WindowFlags {
   /// SDL_WINDOW_MAXIMIZED = 128
   maximized,
 
-  /// SDL_WINDOW_INPUT_GRABBED = 256
-  inputGrabbed,
+  /// SDL_WINDOW_MOUSE_GRABBED = 256
+  mouseGrabbed,
 
   /// SDL_WINDOW_INPUT_FOCUS = 512
   inputFocus,
@@ -919,11 +919,17 @@ enum WindowFlags {
   /// SDL_WINDOW_POPUP_MENU = 524288
   popupMenu,
 
+  /// SDL_WINDOW_KEYBOARD_GRABBED = 1048576
+  keyboardGrabbed,
+
   /// SDL_WINDOW_VULKAN = 268435456
   vulkan,
 
   /// SDL_WINDOW_METAL = 536870912
   metal,
+
+  /// SDL_WINDOW_INPUT_GRABBED = 256
+  inputGrabbed,
 }
 
 /// An extension for converting Dart to C values.
@@ -947,8 +953,8 @@ extension WindowFlagsToInt on WindowFlags {
         return SDL_WindowFlags.SDL_WINDOW_MINIMIZED;
       case WindowFlags.maximized:
         return SDL_WindowFlags.SDL_WINDOW_MAXIMIZED;
-      case WindowFlags.inputGrabbed:
-        return SDL_WindowFlags.SDL_WINDOW_INPUT_GRABBED;
+      case WindowFlags.mouseGrabbed:
+        return SDL_WindowFlags.SDL_WINDOW_MOUSE_GRABBED;
       case WindowFlags.inputFocus:
         return SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS;
       case WindowFlags.mouseFocus:
@@ -971,10 +977,14 @@ extension WindowFlagsToInt on WindowFlags {
         return SDL_WindowFlags.SDL_WINDOW_TOOLTIP;
       case WindowFlags.popupMenu:
         return SDL_WindowFlags.SDL_WINDOW_POPUP_MENU;
+      case WindowFlags.keyboardGrabbed:
+        return SDL_WindowFlags.SDL_WINDOW_KEYBOARD_GRABBED;
       case WindowFlags.vulkan:
         return SDL_WindowFlags.SDL_WINDOW_VULKAN;
       case WindowFlags.metal:
         return SDL_WindowFlags.SDL_WINDOW_METAL;
+      case WindowFlags.inputGrabbed:
+        return SDL_WindowFlags.SDL_WINDOW_INPUT_GRABBED;
     }
   }
 }
@@ -1031,6 +1041,12 @@ enum WindowEventID {
 
   /// SDL_WINDOWEVENT_HIT_TEST = 16
   hitTest,
+
+  /// SDL_WINDOWEVENT_ICCPROF_CHANGED = 17
+  iccprofChanged,
+
+  /// SDL_WINDOWEVENT_DISPLAY_CHANGED = 18
+  displayChanged,
 }
 
 /// An extension for converting Dart to C values.
@@ -1072,6 +1088,10 @@ extension WindowEventIDToInt on WindowEventID {
         return SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS;
       case WindowEventID.hitTest:
         return SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST;
+      case WindowEventID.iccprofChanged:
+        return SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED;
+      case WindowEventID.displayChanged:
+        return SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED;
     }
   }
 }
@@ -1141,6 +1161,33 @@ extension DisplayOrientationToInt on DisplayOrientation {
         return SDL_DisplayOrientation.SDL_ORIENTATION_PORTRAIT;
       case DisplayOrientation.portraitFlipped:
         return SDL_DisplayOrientation.SDL_ORIENTATION_PORTRAIT_FLIPPED;
+    }
+  }
+}
+
+/// SDL_FlashOperation.
+enum FlashOperation {
+  /// SDL_FLASH_CANCEL = 0
+  flashCancel,
+
+  /// SDL_FLASH_BRIEFLY = 1
+  flashBriefly,
+
+  /// SDL_FLASH_UNTIL_FOCUSED = 2
+  flashUntilFocused,
+}
+
+/// An extension for converting Dart to C values.
+extension FlashOperationToInt on FlashOperation {
+  /// Return an integer.
+  int toInt() {
+    switch (this) {
+      case FlashOperation.flashCancel:
+        return SDL_FlashOperation.SDL_FLASH_CANCEL;
+      case FlashOperation.flashBriefly:
+        return SDL_FlashOperation.SDL_FLASH_BRIEFLY;
+      case FlashOperation.flashUntilFocused:
+        return SDL_FlashOperation.SDL_FLASH_UNTIL_FOCUSED;
     }
   }
 }
@@ -1723,6 +1770,12 @@ enum GameControllerType {
 
   /// SDL_CONTROLLER_TYPE_PS5 = 7
   ps5,
+
+  /// SDL_CONTROLLER_TYPE_AMAZON_LUNA = 8
+  amazonLuna,
+
+  /// SDL_CONTROLLER_TYPE_GOOGLE_STADIA = 9
+  googleStadia,
 }
 
 /// An extension for converting Dart to C values.
@@ -1746,6 +1799,10 @@ extension GameControllerTypeToInt on GameControllerType {
         return SDL_GameControllerType.SDL_CONTROLLER_TYPE_VIRTUAL;
       case GameControllerType.ps5:
         return SDL_GameControllerType.SDL_CONTROLLER_TYPE_PS5;
+      case GameControllerType.amazonLuna:
+        return SDL_GameControllerType.SDL_CONTROLLER_TYPE_AMAZON_LUNA;
+      case GameControllerType.googleStadia:
+        return SDL_GameControllerType.SDL_CONTROLLER_TYPE_GOOGLE_STADIA;
     }
   }
 }
@@ -2157,6 +2214,9 @@ enum EventType {
   /// SDL_RENDER_DEVICE_RESET = 8193
   renderDeviceReset,
 
+  /// SDL_POLLSENTINEL = 32512
+  pollsentinel,
+
   /// SDL_USEREVENT = 32768
   userevent,
 
@@ -2277,6 +2337,8 @@ extension EventTypeToInt on EventType {
         return SDL_EventType.SDL_RENDER_TARGETS_RESET;
       case EventType.renderDeviceReset:
         return SDL_EventType.SDL_RENDER_DEVICE_RESET;
+      case EventType.pollsentinel:
+        return SDL_EventType.SDL_POLLSENTINEL;
       case EventType.userevent:
         return SDL_EventType.SDL_USEREVENT;
       case EventType.lastevent:
@@ -3169,8 +3231,8 @@ extension IntToC on int {
         return WindowFlags.minimized;
       case SDL_WindowFlags.SDL_WINDOW_MAXIMIZED:
         return WindowFlags.maximized;
-      case SDL_WindowFlags.SDL_WINDOW_INPUT_GRABBED:
-        return WindowFlags.inputGrabbed;
+      case SDL_WindowFlags.SDL_WINDOW_MOUSE_GRABBED:
+        return WindowFlags.mouseGrabbed;
       case SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS:
         return WindowFlags.inputFocus;
       case SDL_WindowFlags.SDL_WINDOW_MOUSE_FOCUS:
@@ -3193,6 +3255,8 @@ extension IntToC on int {
         return WindowFlags.tooltip;
       case SDL_WindowFlags.SDL_WINDOW_POPUP_MENU:
         return WindowFlags.popupMenu;
+      case SDL_WindowFlags.SDL_WINDOW_KEYBOARD_GRABBED:
+        return WindowFlags.keyboardGrabbed;
       case SDL_WindowFlags.SDL_WINDOW_VULKAN:
         return WindowFlags.vulkan;
       case SDL_WindowFlags.SDL_WINDOW_METAL:
@@ -3239,6 +3303,10 @@ extension IntToC on int {
         return WindowEventID.takeFocus;
       case SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
         return WindowEventID.hitTest;
+      case SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED:
+        return WindowEventID.iccprofChanged;
+      case SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED:
+        return WindowEventID.displayChanged;
       default:
         throw SdlError(this, 'Unrecognised `SDL_WindowEventID` member.');
     }
@@ -3275,6 +3343,20 @@ extension IntToC on int {
         return DisplayOrientation.portraitFlipped;
       default:
         throw SdlError(this, 'Unrecognised `SDL_DisplayOrientation` member.');
+    }
+  }
+
+  /// Convert from a [SDL_FlashOperation] member.
+  FlashOperation toFlashOperation() {
+    switch (this) {
+      case SDL_FlashOperation.SDL_FLASH_CANCEL:
+        return FlashOperation.flashCancel;
+      case SDL_FlashOperation.SDL_FLASH_BRIEFLY:
+        return FlashOperation.flashBriefly;
+      case SDL_FlashOperation.SDL_FLASH_UNTIL_FOCUSED:
+        return FlashOperation.flashUntilFocused;
+      default:
+        throw SdlError(this, 'Unrecognised `SDL_FlashOperation` member.');
     }
   }
 
@@ -3554,6 +3636,10 @@ extension IntToC on int {
         return GameControllerType.virtual;
       case SDL_GameControllerType.SDL_CONTROLLER_TYPE_PS5:
         return GameControllerType.ps5;
+      case SDL_GameControllerType.SDL_CONTROLLER_TYPE_AMAZON_LUNA:
+        return GameControllerType.amazonLuna;
+      case SDL_GameControllerType.SDL_CONTROLLER_TYPE_GOOGLE_STADIA:
+        return GameControllerType.googleStadia;
       default:
         throw SdlError(this, 'Unrecognised `SDL_GameControllerType` member.');
     }
@@ -3781,6 +3867,8 @@ extension IntToC on int {
         return EventType.renderTargetsReset;
       case SDL_EventType.SDL_RENDER_DEVICE_RESET:
         return EventType.renderDeviceReset;
+      case SDL_EventType.SDL_POLLSENTINEL:
+        return EventType.pollsentinel;
       case SDL_EventType.SDL_USEREVENT:
         return EventType.userevent;
       case SDL_EventType.SDL_LASTEVENT:

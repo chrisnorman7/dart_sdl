@@ -142,6 +142,23 @@ class WindowHitTestEvent extends WindowEvent {
       : super(sdl, timestamp, windowId);
 }
 
+/// SDL_WINDOWEVENT_ICCPROF_CHANGED.
+class IccprofChangedEvent extends WindowEvent {
+  /// Create an instance.
+  IccprofChangedEvent(Sdl sdl, int timestamp, int windowId)
+      : super(sdl, timestamp, windowId);
+}
+
+/// SDL_WINDOWEVENT_DISPLAY_CHANGED.
+class DisplayChangedEvent extends WindowEvent {
+  /// Create an instance.
+  DisplayChangedEvent(Sdl sdl, int timestamp, int windowId, this.displayId)
+      : super(sdl, timestamp, windowId);
+
+  /// The ID of the new display (presumably).
+  final int displayId;
+}
+
 /// A system specific event.
 ///
 /// [SDL_SYSWMEVENT](https://wiki.libsdl.org/SDL_SysWMEvent)
