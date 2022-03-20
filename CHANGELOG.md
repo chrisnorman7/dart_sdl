@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.0]
+
+### Changed
+
+* Inferred library names are always anchored at the directory where the main script is running.
+* Updated SDL2 to 2.0.20 ([#3](https://github.com/chrisnorman7/dart_sdl/issues/3)).
+* Shortened key code and scan code member names ([#4](https://github.com/chrisnorman7/dart_sdl/issues/4)).
+
 ## [0.8.9]
 
 ### Changed

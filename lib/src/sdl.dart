@@ -64,7 +64,7 @@ class Sdl {
       if (Platform.isWindows) {
         libName = 'SDL2.dll';
       } else if (Platform.isLinux) {
-        libName = path.join(Directory.current.path, 'libSDL2.so');
+        libName = 'libSDL2.so';
       } else if (Platform.isMacOS) {
         if (File('libSDL2.dylib').existsSync()) {
           libName = 'libSDL2.dylib';
@@ -73,9 +73,14 @@ class Sdl {
         }
       } else {
         throw Exception(
-            'Unimplemented operating system: ${Platform.operatingSystem}. '
-            'You must specify your own `libName`.');
+          'Unimplemented operating system: ${Platform.operatingSystem}. '
+          'You must specify your own `libName`.',
+        );
       }
+      libName = path.join(
+        path.dirname(Platform.resolvedExecutable),
+        libName,
+      );
     }
     sdl = DartSdl(DynamicLibrary.open(libName));
   }
