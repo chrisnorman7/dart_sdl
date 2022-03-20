@@ -11,7 +11,7 @@ import 'joystick.dart';
 /// The base for all game controller events.
 class GameControllerEvent extends JoystickEvent {
   /// Create an event.
-  GameControllerEvent(
+  const GameControllerEvent(
       {required Sdl sdl, required int timestamp, required int controllerId})
       : super(sdl: sdl, timestamp: timestamp, joystickId: controllerId);
 }
@@ -21,21 +21,15 @@ class GameControllerEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_ControllerAxisEvent)
 class ControllerAxisEvent extends GameControllerEvent {
   /// Create an event.
-  ControllerAxisEvent(
+  const ControllerAxisEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,
       required this.axis,
       required this.value})
-      : super(sdl: sdl, timestamp: timestamp, controllerId: joystickId) {
-    if (value < 0) {
-      smallValue = value / 32768;
-    } else if (value > 0) {
-      smallValue = value / 32767;
-    } else {
-      smallValue = 0.0;
-    }
-  }
+      : smallValue =
+            value < 0 ? (value / 32768) : (value == 0 ? 0.0 : (value / 32767)),
+        super(sdl: sdl, timestamp: timestamp, controllerId: joystickId);
 
   /// The axis which moved.
   final GameControllerAxis axis;
@@ -46,7 +40,7 @@ class ControllerAxisEvent extends GameControllerEvent {
   final int value;
 
   /// The value normalised to between -1.0 and 1.0 (0.0 is centre).
-  late final double smallValue;
+  final double smallValue;
 }
 
 /// A controller button was pressed or released.
@@ -54,7 +48,7 @@ class ControllerAxisEvent extends GameControllerEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_ControllerButtonEvent)
 class ControllerButtonEvent extends GameControllerEvent {
   /// Create an event.
-  ControllerButtonEvent(
+  const ControllerButtonEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,
@@ -80,7 +74,7 @@ class ControllerButtonEvent extends GameControllerEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_ControllerDeviceEvent)
 class ControllerDeviceEvent extends GameControllerEvent {
   /// Create an event.
-  ControllerDeviceEvent(
+  const ControllerDeviceEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,

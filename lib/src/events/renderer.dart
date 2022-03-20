@@ -1,4 +1,4 @@
-/// Provides rendrer events.
+/// Provides renderer events.
 import '../sdl.dart';
 import '../sdl_bindings.dart';
 import 'base.dart';
@@ -8,7 +8,7 @@ import 'base.dart';
 /// Exposes events of type [SDL_EventType.SDL_RENDER_TARGETS_RESET].
 class RenderTargetsResetEvent extends Event {
   /// Create an event.
-  RenderTargetsResetEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
+  const RenderTargetsResetEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
 }
 
 /// The device has been reset and all textures need to be recreated.
@@ -16,5 +16,5 @@ class RenderTargetsResetEvent extends Event {
 /// Exposes events of type [SDL_EventType.SDL_RENDER_DEVICE_RESET].
 class RenderDeviceReset extends Event {
   /// Create an instance.
-  RenderDeviceReset(Sdl sdl, int timestamp) : super(sdl, timestamp);
+  const RenderDeviceReset(Sdl sdl, int timestamp) : super(sdl, timestamp);
 }

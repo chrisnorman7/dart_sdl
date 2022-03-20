@@ -15,7 +15,7 @@ import '../window.dart';
 /// All Dart-side SDL events should inherit from this class.
 class Event {
   /// Create an event.
-  Event(this.sdl, this.timestamp);
+  const Event(this.sdl, this.timestamp);
 
   /// The SDL bindings to use for this event.
   final Sdl sdl;

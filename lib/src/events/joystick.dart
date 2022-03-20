@@ -9,7 +9,7 @@ import 'base.dart';
 /// The base class for all joystick events.
 class JoystickEvent extends Event {
   /// Create an event.
-  JoystickEvent(
+  const JoystickEvent(
       {required Sdl sdl, required int timestamp, required this.joystickId})
       : super(sdl, timestamp);
 
@@ -22,21 +22,15 @@ class JoystickEvent extends Event {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyAxisEvent)
 class JoyAxisEvent extends JoystickEvent {
   /// Create an event.
-  JoyAxisEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int joystickId,
-      required this.axis,
-      required this.value})
-      : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId) {
-    if (value < 0) {
-      smallValue = value / 32768;
-    } else if (value > 0) {
-      smallValue = value / 32767;
-    } else {
-      smallValue = 0.0;
-    }
-  }
+  const JoyAxisEvent({
+    required Sdl sdl,
+    required int timestamp,
+    required int joystickId,
+    required this.axis,
+    required this.value,
+  })  : smallValue =
+            value < 0 ? (value / 32768) : (value == 0 ? 0.0 : (value / 32767)),
+        super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
   /// The axis that changed.
   final int axis;
@@ -47,7 +41,7 @@ class JoyAxisEvent extends JoystickEvent {
   final int value;
 
   /// The value normalised to between -1.0 and 1.0 (0.0 is centre).
-  late final double smallValue;
+  final double smallValue;
 }
 
 /// A trackball was moved.
@@ -55,7 +49,7 @@ class JoyAxisEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyBallEvent)
 class JoyBallEvent extends JoystickEvent {
   /// Create an event.
-  JoyBallEvent(
+  const JoyBallEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,
@@ -82,7 +76,7 @@ class JoyBallEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyHatEvent)
 class JoyHatEvent extends JoystickEvent {
   /// Create an event.
-  JoyHatEvent(
+  const JoyHatEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,
@@ -108,7 +102,7 @@ class JoyHatEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyButtonEvent)
 class JoyButtonEvent extends JoystickEvent {
   /// Create an event.
-  JoyButtonEvent(
+  const JoyButtonEvent(
       Sdl sdl, int timestamp, int joystickId, this.button, this.state)
       : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
 
@@ -130,7 +124,7 @@ class JoyButtonEvent extends JoystickEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_JoyDeviceEvent)
 class JoyDeviceEvent extends JoystickEvent {
   /// Create an event.
-  JoyDeviceEvent(
+  const JoyDeviceEvent(
       {required Sdl sdl,
       required int timestamp,
       required int joystickId,

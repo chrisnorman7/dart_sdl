@@ -7,7 +7,7 @@ import 'base.dart';
 /// A generic display event.
 class DisplayEvent extends Event {
   /// Create an event.
-  DisplayEvent(
+  const DisplayEvent(
       {required Sdl sdl,
       required int timestamp,
       required this.displayIndex,

@@ -9,7 +9,7 @@ import 'base.dart';
 /// A keyboard key.
 class KeyboardKey {
   /// Create a key.
-  KeyboardKey(
+  const KeyboardKey(
       {required this.scancode, required this.keycode, required this.modifiers});
 
   /// The scancode for this key.
@@ -58,5 +58,5 @@ class KeyboardEvent extends Event with WindowMixin {
 /// keyboard layout change (>= SDL 2.0.4).
 class KeymapChangedEvent extends Event {
   /// Create an event.
-  KeymapChangedEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
+  const KeymapChangedEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
 }

@@ -7,7 +7,7 @@ import 'base.dart';
 /// An audio device event.
 class AudioDeviceEvent extends Event {
   /// Create an event.
-  AudioDeviceEvent(
+  const AudioDeviceEvent(
       {required Sdl sdl,
       required int timestamp,
       required this.index,
@@ -45,7 +45,7 @@ class AudioDeviceEvent extends Event {
 /// A device was added.
 class AudioDeviceAddedEvent extends AudioDeviceEvent {
   /// Create an event.
-  AudioDeviceAddedEvent(
+  const AudioDeviceAddedEvent(
       {required Sdl sdl,
       required int timestamp,
       required int index,
@@ -57,7 +57,7 @@ class AudioDeviceAddedEvent extends AudioDeviceEvent {
 /// A device was removed.
 class AudioDeviceRemovedEvent extends AudioDeviceEvent {
   /// Create an event.
-  AudioDeviceRemovedEvent(
+  const AudioDeviceRemovedEvent(
       {required Sdl sdl,
       required int timestamp,
       required int index,
