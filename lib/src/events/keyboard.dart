@@ -19,7 +19,7 @@ class KeyboardKey {
   final KeyCode keycode;
 
   /// All pressed modifiers.
-  final List<KeyMod> modifiers;
+  final Set<KeyMod> modifiers;
 }
 
 /// A keyboard event.
@@ -39,7 +39,7 @@ class KeyboardEvent extends Event with WindowMixin {
     final key = KeyboardKey(
         scancode: sim.scancode.toScanCode(),
         keycode: sim.sym.toKeyCode(),
-        modifiers: sim.mod.toModifiersList());
+        modifiers: sim.mod.toModifiersSet());
     return KeyboardEvent(sdl, event.timestamp, event.windowID,
         event.state.toPressedState(), sdl.getBool(event.repeat), key);
   }

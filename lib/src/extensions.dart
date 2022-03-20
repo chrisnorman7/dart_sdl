@@ -398,8 +398,8 @@ extension DartSdlIntExtension on int {
   }
 
   /// Return a list of modifiers.
-  List<KeyMod> toModifiersList() {
-    final mods = <KeyMod>[];
+  Set<KeyMod> toModifiersSet() {
+    final mods = <KeyMod>{};
     for (final modifier in KeyMod.values) {
       if (this & modifier.toInt() != 0) {
         mods.add(modifier);

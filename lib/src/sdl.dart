@@ -1087,12 +1087,12 @@ class Sdl {
   /// Get the current key modifier state for the keyboard.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetModState)
-  List<KeyMod> get modState => sdl.SDL_GetModState().toModifiersList();
+  Set<KeyMod> get modState => sdl.SDL_GetModState().toModifiersSet();
 
   /// Set the current key modifier state for the keyboard.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetModState)
-  set modState(List<KeyMod> modifiers) {
+  set modState(Set<KeyMod> modifiers) {
     var mod = 0;
     for (final modifier in modifiers) {
       mod |= modifier.toInt();

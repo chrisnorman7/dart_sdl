@@ -113,6 +113,7 @@
     "FRAMEBUFFER",
     "FULLSCREEN",
     "GAMECONTROLLER",
+    "GETEVENT",
     "GL",
     "Hangul",
     "Hanja",
