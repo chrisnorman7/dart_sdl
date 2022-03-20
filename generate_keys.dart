@@ -27,7 +27,7 @@ enum CurrentState {
 /// A conversion.
 class CodeConversion {
   /// Create a conversion.
-  CodeConversion(this.sdlName, this.dartName);
+  const CodeConversion(this.sdlName, this.dartName);
 
   /// The SDL name.
   final String sdlName;
@@ -69,9 +69,16 @@ Future<void> main() async {
         if (dartName.startsWith('_')) {
           dartName = dartName.substring(1);
         }
-        if (dartName.startsWith(scancodePrefix) == false &&
-            dartName.endsWith('NUM_SCANCODES') == false) {
-          dartName = 'keycode_$dartName';
+        if (dartName.startsWith(scancodePrefix)) {
+          dartName = dartName.substring(scancodePrefix.length);
+          print(dartName);
+        }
+        if (int.tryParse(dartName.substring(0, 1)) != null) {
+          dartName = 'digit$dartName';
+        } else if (dartName == 'RETURN') {
+          dartName = 'return_';
+        } else {
+          dartName = dartName.toLowerCase();
         }
         final conversion = CodeConversion(sdlName, dartName);
         if (state == CurrentState.scancodes) {

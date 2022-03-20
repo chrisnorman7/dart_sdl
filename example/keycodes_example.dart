@@ -11,12 +11,11 @@ Future<void> main() async {
       event = sdl.pollEvent();
     } while (event != null);
     final keyState = sdl.keyboardState;
-    if (keyState[ScanCode.SCANCODE_ESCAPE.toSdlValue()] ==
-        PressedState.pressed) {
+    if (keyState[ScanCode.escape.toSdlValue()] == PressedState.pressed) {
       break;
     } else {
       for (final scanCode in ScanCode.values) {
-        if (scanCode == ScanCode.NUM_SCANCODES) {
+        if (scanCode == ScanCode.num_scancodes) {
           continue;
         }
         if (keyState[scanCode.toSdlValue()] == PressedState.pressed) {

@@ -12,7 +12,7 @@ void main() {
   // this script.
   sdl.pumpEvents();
   for (final scanCode in ScanCode.values) {
-    if (scanCode == ScanCode.NUM_SCANCODES) {
+    if (scanCode == ScanCode.num_scancodes) {
       continue;
     }
     if (state[scanCode.toSdlValue()] == PressedState.pressed) {
@@ -22,9 +22,9 @@ void main() {
   // Note: The next line doesn't seem to print anything in this example.
   print('Modifiers: ${sdl.modState}.');
   window.destroy();
-  print(sdl.getKeyFromName(sdl.getKeyName(KeyCode.keycode_LEFTBRACKET)));
-  print(sdl.getKeyFromScanCode(ScanCode.SCANCODE_BRIGHTNESSDOWN));
-  print(sdl.getScanCodeFromName(sdl.getScanCodeName(ScanCode.SCANCODE_SLASH)));
+  print(sdl.getKeyFromName(sdl.getKeyName(KeyCode.leftbracket)));
+  print(sdl.getKeyFromScanCode(ScanCode.brightnessdown));
+  print(sdl.getScanCodeFromName(sdl.getScanCodeName(ScanCode.slash)));
   print('Screen keyboard support: ${sdl.hasScreenKeyboardSupport}');
   sdl.quit();
 }

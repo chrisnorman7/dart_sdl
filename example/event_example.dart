@@ -9,9 +9,8 @@ Future<void> main() async {
       break;
     } else if (event is KeyboardEvent) {
       window.title = '${event.key.keycode} (${event.key.modifiers}';
-      if (event.key.keycode == KeyCode.keycode_q &&
-              event.key.modifiers.isEmpty ||
-          event.key.keycode == KeyCode.keycode_ESCAPE) {
+      if (event.key.keycode == KeyCode.q && event.key.modifiers.isEmpty ||
+          event.key.keycode == KeyCode.escape) {
         window.destroy();
         break;
       }
