@@ -126,6 +126,10 @@ class Joystick extends SdlObject<SDL_Joystick> {
   bool get isHaptic =>
       sdl.getBool(sdl.checkReturnValue(sdl.sdl.SDL_JoystickIsHaptic(handle)));
 
+  /// Whether this joystick supports rumble.
+  bool get hasRumble =>
+      sdl.getBool(sdl.checkReturnValue(sdl.sdl.SDL_JoystickHasRumble(handle)));
+
   /// Open a haptic device for use from a joystick device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpenFromJoystick)
@@ -139,4 +143,14 @@ class Joystick extends SdlObject<SDL_Joystick> {
 
   /// Get the type of this joystick.
   JoystickType get type => sdl.sdl.SDL_JoystickGetType(handle).toJoystickType();
+
+  /// Start a rumble effect.
+  bool rumble({
+    required int duration,
+    int lowFrequency = 65535,
+    int highFrequency = 65535,
+  }) =>
+      sdl.sdl
+          .SDL_JoystickRumble(handle, lowFrequency, highFrequency, duration) ==
+      0;
 }

@@ -6,7 +6,9 @@ Future<void> main() async {
   final sdl = Sdl()..init();
   for (var i = 0; i < sdl.numJoysticks; i++) {
     final j = sdl.openJoystick(i);
-    print('${j.name} is haptic: ${j.isHaptic}');
+    print('${j.name}:');
+    print('Is haptic: ${j.isHaptic}');
+    print('Has rumble: ${j.hasRumble}');
   }
   final haptics = <int, Haptic>{};
   final numHaptics = sdl.numHaptics;
@@ -31,97 +33,102 @@ Future<void> main() async {
     print('Mouse is not haptic.');
   }
   final window = sdl.createWindow('Haptic Example');
-  await for (final event in sdl.events) {
-    if (event is QuitEvent) {
-      break;
-    } else if (event is ControllerDeviceEvent) {
-      if (event.state == DeviceState.added) {
-        final controller = sdl.openGameController(event.joystickId);
-        window.title = 'Opened device ${controller.name}.';
-        if (controller.joystick.isHaptic) {
-          haptics[event.joystickId] = sdl.openHaptic(event.joystickId);
+  try {
+    await for (final event in sdl.events) {
+      if (event is QuitEvent) {
+        break;
+      } else if (event is ControllerDeviceEvent) {
+        if (event.state == DeviceState.added) {
+          final controller = sdl.openGameController(event.joystickId);
+          window.title = 'Opened device ${controller.name}.';
+          if (controller.joystick.isHaptic) {
+            haptics[event.joystickId] = sdl.openHaptic(event.joystickId)
+              ..init();
+          }
+        } else if (event.state == DeviceState.removed) {
+          haptics.remove(event.joystickId);
+          window.title = 'Controller removed.';
         }
-      } else if (event.state == DeviceState.removed) {
-        haptics.remove(event.joystickId);
-        window.title = 'Controller removed.';
-      }
-    } else if (event is ControllerAxisEvent) {
-      final haptic = haptics[event.joystickId];
-      if (haptic != null) {
-        if (event.value == 0) {
-          haptic.rumbleStop();
-        } else if ([
-          GameControllerAxis.lefty,
-          GameControllerAxis.righty,
-          GameControllerAxis.triggerleft,
-          GameControllerAxis.triggerright
-        ].contains(event.axis)) {
-          haptic.rumblePlay(event.value.abs() / 32767, 0);
+      } else if (event is ControllerAxisEvent) {
+        final haptic = haptics[event.joystickId];
+        if (haptic != null) {
+          if (event.value == 0) {
+            haptic.rumbleStop();
+          } else if ([
+            GameControllerAxis.lefty,
+            GameControllerAxis.righty,
+            GameControllerAxis.triggerleft,
+            GameControllerAxis.triggerright
+          ].contains(event.axis)) {
+            window.title = '"Rumble ${event.smallValue}';
+            haptic.rumblePlay(event.smallValue, 0);
+          }
         }
-      }
-    } else if (event is ControllerButtonEvent) {
-      if (event.button == GameControllerButton.a) {
-        final effect = HapticRamp(
-            sdl: sdl,
-            direction: HapticDirection(HapticDirectionType.cartesian),
-            length: 200,
-            delay: 0,
-            button: 0,
-            interval: 500,
-            start: 0,
-            end: 65535,
-            attackLength: 200,
-            attackLevel: 100,
-            fadeLength: 500,
-            fadeLevel: 100);
-        final supported = haptics.values.first.isSupported(effect);
-        if (supported) {
-          haptics.values.first
-              .runEffect(haptics.values.first.newEffect(effect));
+      } else if (event is ControllerButtonEvent) {
+        if (event.button == GameControllerButton.a) {
+          final effect = HapticRamp(
+              sdl: sdl,
+              direction: HapticDirection(HapticDirectionType.cartesian),
+              length: 200,
+              delay: 0,
+              button: 0,
+              interval: 500,
+              start: 0,
+              end: 65535,
+              attackLength: 200,
+              attackLevel: 100,
+              fadeLength: 500,
+              fadeLevel: 100);
+          final supported = haptics.values.first.isSupported(effect);
+          if (supported) {
+            haptics.values.first
+                .runEffect(haptics.values.first.newEffect(effect));
+          }
+          window.title = 'Ramp effect supported: $supported';
+        } else if (event.button == GameControllerButton.b) {
+          final effect = HapticConstant(
+              sdl: sdl,
+              direction: HapticDirection(HapticDirectionType.cartesian,
+                  x: 0, y: 1, z: 0),
+              length: 500,
+              delay: 200,
+              button: 0,
+              interval: 500,
+              level: 65535,
+              attackLength: 500,
+              attackLevel: 100,
+              fadeLength: 500,
+              fadeLevel: 100);
+          final supported = haptics.values.first.isSupported(effect);
+          if (supported) {
+            haptics.values.first
+                .runEffect(haptics.values.first.newEffect(effect));
+          }
+          window.title = 'Constant effect supported: $supported';
+        } else if (event.button == GameControllerButton.x) {
+          for (var i = 0; i < 3; i++) {
+            haptics.values.first.rumblePlay(1, 100);
+            sdl.delay(400);
+          }
+        } else if (event.button == GameControllerButton.y) {
+          final effect = HapticLeftRight(
+              sdl: sdl, length: 500, largeMagnitude: 1000, smallMagnitude: 800);
+          final supported = haptics.values.first.isSupported(effect);
+          if (supported) {
+            haptics.values.first
+                .runEffect(haptics.values.first.newEffect(effect));
+          }
+          window.title = 'Left/right effect supported: $supported';
         }
-        window.title = 'Ramp effect supported: $supported';
-      } else if (event.button == GameControllerButton.b) {
-        final effect = HapticConstant(
-            sdl: sdl,
-            direction: HapticDirection(HapticDirectionType.cartesian,
-                x: 0, y: 1, z: 0),
-            length: 500,
-            delay: 200,
-            button: 0,
-            interval: 500,
-            level: 65535,
-            attackLength: 500,
-            attackLevel: 100,
-            fadeLength: 500,
-            fadeLevel: 100);
-        final supported = haptics.values.first.isSupported(effect);
-        if (supported) {
-          haptics.values.first
-              .runEffect(haptics.values.first.newEffect(effect));
-        }
-        window.title = 'Constant effect supported: $supported';
-      } else if (event.button == GameControllerButton.x) {
-        for (var i = 0; i < 3; i++) {
-          haptics.values.first.rumblePlay(1, 100);
-          sdl.delay(400);
-        }
-      } else if (event.button == GameControllerButton.y) {
-        final effect = HapticLeftRight(
-            sdl: sdl, length: 500, largeMagnitude: 1000, smallMagnitude: 800);
-        final supported = haptics.values.first.isSupported(effect);
-        if (supported) {
-          haptics.values.first
-              .runEffect(haptics.values.first.newEffect(effect));
-        }
-        window.title = 'Left/right effect supported: $supported';
       }
     }
+  } finally {
+    window.destroy();
+    for (final haptic in haptics.values) {
+      print('Closing ${haptic.name}.');
+      haptic.close();
+    }
+    print('Done.');
+    sdl.quit();
   }
-  window.destroy();
-  for (final haptic in haptics.values) {
-    print('Closing ${haptic.name}.');
-    haptic.close();
-  }
-  print('Done.');
-  sdl.quit();
 }
