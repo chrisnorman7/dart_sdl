@@ -24,9 +24,7 @@ void main() {
     print('Number of balls: ${j.numBalls}.');
     print('Number of buttons: ${j.numButtons}.');
     print('Number of hats: ${j.numHats}.');
-    j
-      ..close()
-      ..destroy();
+    j.close();
   }
   sdl.quit();
 }
