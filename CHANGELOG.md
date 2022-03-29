@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.4]
+
+### Changed
+
+* `TextEditingEvent` no longer inherits from `TextInput event` ([#6](https://github.com/chrisnorman7/dart_sdl/issues/6)).
+
 ## [0.9.3]
 
 ### Added

@@ -16,18 +16,21 @@ class TextInputEvent extends Event with WindowMixin {
 /// Keyboard text editing (composition).
 ///
 /// [SDL_TEXTEDITING](https://wiki.libsdl.org/SDL_TextEditingEvent)
-class TextEditingEvent extends TextInputEvent {
+class TextEditingEvent extends Event with WindowMixin {
   /// Create an event.
   TextEditingEvent(
       {required Sdl sdl,
       required int timestamp,
       required int wndId,
-      required String text,
+      required this.text,
       required this.start,
       required this.length})
-      : super(sdl, timestamp, text) {
+      : super(sdl, timestamp) {
     windowId = wndId;
   }
+
+  /// The text of the event.
+  final String text;
 
   /// The location where edits start.
   int start;
