@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.5]
+
+### Added
+
+* Added the `InitFlags` class.
+
 ## [0.9.4]
 
 ### Changed
