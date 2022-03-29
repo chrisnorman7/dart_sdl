@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="dart_sdl library API docs, for the Dart programming language.">
+  <title>dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">dart_sdl</a></li>
+    <li class="self-crumb">dart_sdl library</li>
+  </ol>
+  <div class="self-name">dart_sdl</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-library">dart_sdl</span> library 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Dart bindings for sdl.</p>
+<p>Start by creating an <a href="../dart_sdl/Sdl-class.html">Sdl</a> instance:</p>
+<pre class="language-dart"><code>final sdl = Sdl(DynamicLibrary.open('sdl2.dll'));
+</code></pre>
+<p>Next, you need to initialise the library:</p>
+<pre class="language-dart"><code>sdl.init();
+</code></pre>
+<p>For more information, see the
+<a href="https://wiki.libsdl.org/APIByCategory">SDL API docs</a>.</p>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+
+      <dl>
+        <dt id="AppDidEnterBackgroundEvent">
+  <span class="name "><a href="../dart_sdl/AppDidEnterBackgroundEvent-class.html">AppDidEnterBackgroundEvent</a></span> 
+
+</dt>
+<dd>
+  The application entered background. 
+</dd>
+
+        <dt id="AppDidEnterForegroundEvent">
+  <span class="name "><a href="../dart_sdl/AppDidEnterForegroundEvent-class.html">AppDidEnterForegroundEvent</a></span> 
+
+</dt>
+<dd>
+  The application entered foreground. 
+</dd>
+
+        <dt id="AppLowMemoryEvent">
+  <span class="name "><a href="../dart_sdl/AppLowMemoryEvent-class.html">AppLowMemoryEvent</a></span> 
+
+</dt>
+<dd>
+  The OS is low on memory. 
+</dd>
+
+        <dt id="AppTerminatingEvent">
+  <span class="name "><a href="../dart_sdl/AppTerminatingEvent-class.html">AppTerminatingEvent</a></span> 
+
+</dt>
+<dd>
+  The OS is terminating the application. 
+</dd>
+
+        <dt id="AppWillEnterBackgroundEvent">
+  <span class="name "><a href="../dart_sdl/AppWillEnterBackgroundEvent-class.html">AppWillEnterBackgroundEvent</a></span> 
+
+</dt>
+<dd>
+  The application is entering background. 
+</dd>
+
+        <dt id="AppWillEnterForegroundEvent">
+  <span class="name "><a href="../dart_sdl/AppWillEnterForegroundEvent-class.html">AppWillEnterForegroundEvent</a></span> 
+
+</dt>
+<dd>
+  The application is entering foreground. 
+</dd>
+
+        <dt id="AudioDevice">
+  <span class="name "><a href="../dart_sdl/AudioDevice-class.html">AudioDevice</a></span> 
+
+</dt>
+<dd>
+  An audio device on the system. 
+</dd>
+
+        <dt id="AudioDeviceAddedEvent">
+  <span class="name "><a href="../dart_sdl/AudioDeviceAddedEvent-class.html">AudioDeviceAddedEvent</a></span> 
+
+</dt>
+<dd>
+  A device was added. 
+</dd>
+
+        <dt id="AudioDeviceEvent">
+  <span class="name "><a href="../dart_sdl/AudioDeviceEvent-class.html">AudioDeviceEvent</a></span> 
+
+</dt>
+<dd>
+  An audio device event. 
+</dd>
+
+        <dt id="AudioDeviceRemovedEvent">
+  <span class="name "><a href="../dart_sdl/AudioDeviceRemovedEvent-class.html">AudioDeviceRemovedEvent</a></span> 
+
+</dt>
+<dd>
+  A device was removed. 
+</dd>
+
+        <dt id="AudioDriver">
+  <span class="name "><a href="../dart_sdl/AudioDriver-class.html">AudioDriver</a></span> 
+
+</dt>
+<dd>
+  An audio driver on the system. 
+</dd>
+
+        <dt id="AudioSpec">
+  <span class="name "><a href="../dart_sdl/AudioSpec-class.html">AudioSpec</a></span> 
+
+</dt>
+<dd>
+  Audio specification. <a href="../dart_sdl/AudioSpec-class.html">[...]</a>
+</dd>
+
+        <dt id="BordersSize">
+  <span class="name "><a href="../dart_sdl/BordersSize-class.html">BordersSize</a></span> 
+
+</dt>
+<dd>
+  A class to represent the size of a window's borders. 
+</dd>
+
+        <dt id="ClipboardChangedEvent">
+  <span class="name "><a href="../dart_sdl/ClipboardChangedEvent-class.html">ClipboardChangedEvent</a></span> 
+
+</dt>
+<dd>
+  The clipboard changed. 
+</dd>
+
+        <dt id="ConditionEffect">
+  <span class="name "><a href="../dart_sdl/ConditionEffect-class.html">ConditionEffect</a></span> 
+
+</dt>
+<dd>
+  A 3-part number for use with <a href="../dart_sdl/HapticCondition-class.html">HapticCondition</a> members. 
+</dd>
+
+        <dt id="ControllerAxisEvent">
+  <span class="name "><a href="../dart_sdl/ControllerAxisEvent-class.html">ControllerAxisEvent</a></span> 
+
+</dt>
+<dd>
+  A controller axis moved. <a href="../dart_sdl/ControllerAxisEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="ControllerButtonEvent">
+  <span class="name "><a href="../dart_sdl/ControllerButtonEvent-class.html">ControllerButtonEvent</a></span> 
+
+</dt>
+<dd>
+  A controller button was pressed or released. <a href="../dart_sdl/ControllerButtonEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="ControllerDeviceEvent">
+  <span class="name "><a href="../dart_sdl/ControllerDeviceEvent-class.html">ControllerDeviceEvent</a></span> 
+
+</dt>
+<dd>
+  A device was added, removed, or remapped. <a href="../dart_sdl/ControllerDeviceEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="ControllerSensorEvent">
+  <span class="name "><a href="../dart_sdl/ControllerSensorEvent-class.html">ControllerSensorEvent</a></span> 
+
+</dt>
+<dd>
+  A controller sensor event. <a href="../dart_sdl/ControllerSensorEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="ControllerTouchpadEvent">
+  <span class="name "><a href="../dart_sdl/ControllerTouchpadEvent-class.html">ControllerTouchpadEvent</a></span> 
+
+</dt>
+<dd>
+  A controller touch device event. 
+</dd>
+
+        <dt id="Display">
+  <span class="name "><a href="../dart_sdl/Display-class.html">Display</a></span> 
+
+</dt>
+<dd>
+  The display class. 
+</dd>
+
+        <dt id="DisplayChangedEvent">
+  <span class="name "><a href="../dart_sdl/DisplayChangedEvent-class.html">DisplayChangedEvent</a></span> 
+
+</dt>
+<dd>
+  SDL_WINDOWEVENT_DISPLAY_CHANGED. 
+</dd>
+
+        <dt id="DisplayEvent">
+  <span class="name "><a href="../dart_sdl/DisplayEvent-class.html">DisplayEvent</a></span> 
+
+</dt>
+<dd>
+  A generic display event. 
+</dd>
+
+        <dt id="DisplayMode">
+  <span class="name "><a href="../dart_sdl/DisplayMode-class.html">DisplayMode</a></span> 
+
+</dt>
+<dd>
+  A display mode. <a href="../dart_sdl/DisplayMode-class.html">[...]</a>
+</dd>
+
+        <dt id="DollarGestureEvent">
+  <span class="name "><a href="../dart_sdl/DollarGestureEvent-class.html">DollarGestureEvent</a></span> 
+
+</dt>
+<dd>
+  A gesture event. <a href="../dart_sdl/DollarGestureEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="DropEvent">
+  <span class="name "><a href="../dart_sdl/DropEvent-class.html">DropEvent</a></span> 
+
+</dt>
+<dd>
+  A drag and drop event. <a href="../dart_sdl/DropEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="Event">
+  <span class="name "><a href="../dart_sdl/Event-class.html">Event</a></span> 
+
+</dt>
+<dd>
+  The base event class. <a href="../dart_sdl/Event-class.html">[...]</a>
+</dd>
+
+        <dt id="GameController">
+  <span class="name "><a href="../dart_sdl/GameController-class.html">GameController</a></span> 
+
+</dt>
+<dd>
+  A game controller. 
+</dd>
+
+        <dt id="GameControllerEvent">
+  <span class="name "><a href="../dart_sdl/GameControllerEvent-class.html">GameControllerEvent</a></span> 
+
+</dt>
+<dd>
+  The base for all game controller events. 
+</dd>
+
+        <dt id="Haptic">
+  <span class="name "><a href="../dart_sdl/Haptic-class.html">Haptic</a></span> 
+
+</dt>
+<dd>
+  A haptic device. 
+</dd>
+
+        <dt id="HapticCondition">
+  <span class="name "><a href="../dart_sdl/HapticCondition-class.html">HapticCondition</a></span> 
+
+</dt>
+<dd>
+  A conditional haptic effect. <a href="../dart_sdl/HapticCondition-class.html">[...]</a>
+</dd>
+
+        <dt id="HapticConstant">
+  <span class="name "><a href="../dart_sdl/HapticConstant-class.html">HapticConstant</a></span> 
+
+</dt>
+<dd>
+  A constant haptic effect. <a href="../dart_sdl/HapticConstant-class.html">[...]</a>
+</dd>
+
+        <dt id="HapticDirection">
+  <span class="name "><a href="../dart_sdl/HapticDirection-class.html">HapticDirection</a></span> 
+
+</dt>
+<dd>
+  A structure that contains a haptic direction. 
+</dd>
+
+        <dt id="HapticEffect">
+  <span class="name "><a href="../dart_sdl/HapticEffect-class.html">HapticEffect</a></span> 
+
+</dt>
+<dd>
+  A haptic effect. <a href="../dart_sdl/HapticEffect-class.html">[...]</a>
+</dd>
+
+        <dt id="HapticLeftRight">
+  <span class="name "><a href="../dart_sdl/HapticLeftRight-class.html">HapticLeftRight</a></span> 
+
+</dt>
+<dd>
+  A left/right effect. <a href="../dart_sdl/HapticLeftRight-class.html">[...]</a>
+</dd>
+
+        <dt id="HapticPeriodic">
+  <span class="name "><a href="../dart_sdl/HapticPeriodic-class.html">HapticPeriodic</a></span> 
+
+</dt>
+<dd>
+  A periodic haptic effect. <a href="../dart_sdl/HapticPeriodic-class.html">[...]</a>
+</dd>
+
+        <dt id="HapticRamp">
+  <span class="name "><a href="../dart_sdl/HapticRamp-class.html">HapticRamp</a></span> 
+
+</dt>
+<dd>
+  A ramp effect. <a href="../dart_sdl/HapticRamp-class.html">[...]</a>
+</dd>
+
+        <dt id="IccprofChangedEvent">
+  <span class="name "><a href="../dart_sdl/IccprofChangedEvent-class.html">IccprofChangedEvent</a></span> 
+
+</dt>
+<dd>
+  SDL_WINDOWEVENT_ICCPROF_CHANGED. 
+</dd>
+
+        <dt id="JoyAxisEvent">
+  <span class="name "><a href="../dart_sdl/JoyAxisEvent-class.html">JoyAxisEvent</a></span> 
+
+</dt>
+<dd>
+  An axis on a joystick was moved. <a href="../dart_sdl/JoyAxisEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="JoyBallEvent">
+  <span class="name "><a href="../dart_sdl/JoyBallEvent-class.html">JoyBallEvent</a></span> 
+
+</dt>
+<dd>
+  A trackball was moved. <a href="../dart_sdl/JoyBallEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="JoyButtonEvent">
+  <span class="name "><a href="../dart_sdl/JoyButtonEvent-class.html">JoyButtonEvent</a></span> 
+
+</dt>
+<dd>
+  A button was pressed or released. <a href="../dart_sdl/JoyButtonEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="JoyDeviceEvent">
+  <span class="name "><a href="../dart_sdl/JoyDeviceEvent-class.html">JoyDeviceEvent</a></span> 
+
+</dt>
+<dd>
+  A joystick device was connected or disconnected. <a href="../dart_sdl/JoyDeviceEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="JoyHatEvent">
+  <span class="name "><a href="../dart_sdl/JoyHatEvent-class.html">JoyHatEvent</a></span> 
+
+</dt>
+<dd>
+  A hat on a joystick has moved. <a href="../dart_sdl/JoyHatEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="Joystick">
+  <span class="name "><a href="../dart_sdl/Joystick-class.html">Joystick</a></span> 
+
+</dt>
+<dd>
+  A joystick device. <a href="../dart_sdl/Joystick-class.html">[...]</a>
+</dd>
+
+        <dt id="JoystickEvent">
+  <span class="name "><a href="../dart_sdl/JoystickEvent-class.html">JoystickEvent</a></span> 
+
+</dt>
+<dd>
+  The base class for all joystick events. 
+</dd>
+
+        <dt id="KeyboardEvent">
+  <span class="name "><a href="../dart_sdl/KeyboardEvent-class.html">KeyboardEvent</a></span> 
+
+</dt>
+<dd>
+  A keyboard event. <a href="../dart_sdl/KeyboardEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="KeyboardKey">
+  <span class="name "><a href="../dart_sdl/KeyboardKey-class.html">KeyboardKey</a></span> 
+
+</dt>
+<dd>
+  A keyboard key. 
+</dd>
+
+        <dt id="KeymapChangedEvent">
+  <span class="name "><a href="../dart_sdl/KeymapChangedEvent-class.html">KeymapChangedEvent</a></span> 
+
+</dt>
+<dd>
+  The keymap changed due to a system event such as an input language or
+keyboard layout change (&gt;= SDL 2.0.4). 
+</dd>
+
+        <dt id="LocaleChangedEvent">
+  <span class="name "><a href="../dart_sdl/LocaleChangedEvent-class.html">LocaleChangedEvent</a></span> 
+
+</dt>
+<dd>
+  Locale changed. 
+</dd>
+
+        <dt id="MessageBoxButton">
+  <span class="name "><a href="../dart_sdl/MessageBoxButton-class.html">MessageBoxButton</a></span> 
+
+</dt>
+<dd>
+  A button for use in an SDL message box. <a href="../dart_sdl/MessageBoxButton-class.html">[...]</a>
+</dd>
+
+        <dt id="MouseButtonEvent">
+  <span class="name "><a href="../dart_sdl/MouseButtonEvent-class.html">MouseButtonEvent</a></span> 
+
+</dt>
+<dd>
+  A mouse button has been pressed or released. <a href="../dart_sdl/MouseButtonEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="MouseEvent">
+  <span class="name "><a href="../dart_sdl/MouseEvent-class.html">MouseEvent</a></span> 
+
+</dt>
+<dd>
+  The base class for all mouse events. 
+</dd>
+
+        <dt id="MouseMotionEvent">
+  <span class="name "><a href="../dart_sdl/MouseMotionEvent-class.html">MouseMotionEvent</a></span> 
+
+</dt>
+<dd>
+  A mouse has moved in the window. <a href="../dart_sdl/MouseMotionEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="MouseWheelEvent">
+  <span class="name "><a href="../dart_sdl/MouseWheelEvent-class.html">MouseWheelEvent</a></span> 
+
+</dt>
+<dd>
+  A mouse wheel event. <a href="../dart_sdl/MouseWheelEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="MultiGestureEvent">
+  <span class="name "><a href="../dart_sdl/MultiGestureEvent-class.html">MultiGestureEvent</a></span> 
+
+</dt>
+<dd>
+  A multifinger gesture was made. <a href="../dart_sdl/MultiGestureEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="OpenAudioDevice">
+  <span class="name "><a href="../dart_sdl/OpenAudioDevice-class.html">OpenAudioDevice</a></span> 
+
+</dt>
+<dd>
+  An open device. <a href="../dart_sdl/OpenAudioDevice-class.html">[...]</a>
+</dd>
+
+        <dt id="PollSentinelEvent">
+  <span class="name "><a href="../dart_sdl/PollSentinelEvent-class.html">PollSentinelEvent</a></span> 
+
+</dt>
+<dd>
+  SDL_POLLSENTINEL. 
+</dd>
+
+        <dt id="QuitEvent">
+  <span class="name "><a href="../dart_sdl/QuitEvent-class.html">QuitEvent</a></span> 
+
+</dt>
+<dd>
+  User requested quit. 
+</dd>
+
+        <dt id="RenderDeviceReset">
+  <span class="name "><a href="../dart_sdl/RenderDeviceReset-class.html">RenderDeviceReset</a></span> 
+
+</dt>
+<dd>
+  The device has been reset and all textures need to be recreated. <a href="../dart_sdl/RenderDeviceReset-class.html">[...]</a>
+</dd>
+
+        <dt id="RenderTargetsResetEvent">
+  <span class="name "><a href="../dart_sdl/RenderTargetsResetEvent-class.html">RenderTargetsResetEvent</a></span> 
+
+</dt>
+<dd>
+  The render targets have been reset and their contents need to be updated. <a href="../dart_sdl/RenderTargetsResetEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="Sdl">
+  <span class="name "><a href="../dart_sdl/Sdl-class.html">Sdl</a></span> 
+
+</dt>
+<dd>
+  The main SDL class. 
+</dd>
+
+        <dt id="SensorEvent">
+  <span class="name "><a href="../dart_sdl/SensorEvent-class.html">SensorEvent</a></span> 
+
+</dt>
+<dd>
+  A sensor update event. <a href="../dart_sdl/SensorEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="SysWmEvent">
+  <span class="name "><a href="../dart_sdl/SysWmEvent-class.html">SysWmEvent</a></span> 
+
+</dt>
+<dd>
+  A system specific event. <a href="../dart_sdl/SysWmEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="TextEditingEvent">
+  <span class="name "><a href="../dart_sdl/TextEditingEvent-class.html">TextEditingEvent</a></span> 
+
+</dt>
+<dd>
+  Keyboard text editing (composition). <a href="../dart_sdl/TextEditingEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="TextInputEvent">
+  <span class="name "><a href="../dart_sdl/TextInputEvent-class.html">TextInputEvent</a></span> 
+
+</dt>
+<dd>
+  Keyboard text input. <a href="../dart_sdl/TextInputEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="TouchFingerEvent">
+  <span class="name "><a href="../dart_sdl/TouchFingerEvent-class.html">TouchFingerEvent</a></span> 
+
+</dt>
+<dd>
+  A touch event. <a href="../dart_sdl/TouchFingerEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="UserEvent">
+  <span class="name "><a href="../dart_sdl/UserEvent-class.html">UserEvent</a></span> 
+
+</dt>
+<dd>
+  A user event. <a href="../dart_sdl/UserEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="WaveFile">
+  <span class="name "><a href="../dart_sdl/WaveFile-class.html">WaveFile</a></span> 
+
+</dt>
+<dd>
+  A class representing a wave file. 
+</dd>
+
+        <dt id="Window">
+  <span class="name "><a href="../dart_sdl/Window-class.html">Window</a></span> 
+
+</dt>
+<dd>
+  An SDL Window. 
+</dd>
+
+        <dt id="WindowClosedEvent">
+  <span class="name "><a href="../dart_sdl/WindowClosedEvent-class.html">WindowClosedEvent</a></span> 
+
+</dt>
+<dd>
+  The window manager requests that the window be closed. 
+</dd>
+
+        <dt id="WindowEnterEvent">
+  <span class="name "><a href="../dart_sdl/WindowEnterEvent-class.html">WindowEnterEvent</a></span> 
+
+</dt>
+<dd>
+  A window has gained focus. 
+</dd>
+
+        <dt id="WindowEvent">
+  <span class="name "><a href="../dart_sdl/WindowEvent-class.html">WindowEvent</a></span> 
+
+</dt>
+<dd>
+  A window state change. <a href="../dart_sdl/WindowEvent-class.html">[...]</a>
+</dd>
+
+        <dt id="WindowExposedEvent">
+  <span class="name "><a href="../dart_sdl/WindowExposedEvent-class.html">WindowExposedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been exposed and should be redrawn. 
+</dd>
+
+        <dt id="WindowFocusGainedEvent">
+  <span class="name "><a href="../dart_sdl/WindowFocusGainedEvent-class.html">WindowFocusGainedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has gained keyboard focus. 
+</dd>
+
+        <dt id="WindowFocusLostEvent">
+  <span class="name "><a href="../dart_sdl/WindowFocusLostEvent-class.html">WindowFocusLostEvent</a></span> 
+
+</dt>
+<dd>
+  A window has lost keyboard focus. 
+</dd>
+
+        <dt id="WindowHiddenEvent">
+  <span class="name "><a href="../dart_sdl/WindowHiddenEvent-class.html">WindowHiddenEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been hidden. 
+</dd>
+
+        <dt id="WindowHitTestEvent">
+  <span class="name "><a href="../dart_sdl/WindowHitTestEvent-class.html">WindowHitTestEvent</a></span> 
+
+</dt>
+<dd>
+  A window had an abnormal hit test. 
+</dd>
+
+        <dt id="WindowLeaveEvent">
+  <span class="name "><a href="../dart_sdl/WindowLeaveEvent-class.html">WindowLeaveEvent</a></span> 
+
+</dt>
+<dd>
+  A window has lost mouse focus. 
+</dd>
+
+        <dt id="WindowMaximizedEvent">
+  <span class="name "><a href="../dart_sdl/WindowMaximizedEvent-class.html">WindowMaximizedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been maximised. 
+</dd>
+
+        <dt id="WindowMinimizedEvent">
+  <span class="name "><a href="../dart_sdl/WindowMinimizedEvent-class.html">WindowMinimizedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been minimised. 
+</dd>
+
+        <dt id="WindowMovedEvent">
+  <span class="name "><a href="../dart_sdl/WindowMovedEvent-class.html">WindowMovedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been moved. 
+</dd>
+
+        <dt id="WindowResizedEvent">
+  <span class="name "><a href="../dart_sdl/WindowResizedEvent-class.html">WindowResizedEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been resized. 
+</dd>
+
+        <dt id="WindowRestoredEvent">
+  <span class="name "><a href="../dart_sdl/WindowRestoredEvent-class.html">WindowRestoredEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been restored. 
+</dd>
+
+        <dt id="WindowShownEvent">
+  <span class="name "><a href="../dart_sdl/WindowShownEvent-class.html">WindowShownEvent</a></span> 
+
+</dt>
+<dd>
+  A window has been shown. 
+</dd>
+
+        <dt id="WindowSize">
+  <span class="name "><a href="../dart_sdl/WindowSize-class.html">WindowSize</a></span> 
+
+</dt>
+<dd>
+  The size of a window. 
+</dd>
+
+        <dt id="WindowSizeChangedEvent">
+  <span class="name "><a href="../dart_sdl/WindowSizeChangedEvent-class.html">WindowSizeChangedEvent</a></span> 
+
+</dt>
+<dd>
+  The size of a window has changed. 
+</dd>
+
+        <dt id="WindowTakeFocusEvent">
+  <span class="name "><a href="../dart_sdl/WindowTakeFocusEvent-class.html">WindowTakeFocusEvent</a></span> 
+
+</dt>
+<dd>
+  A window is being offered focus. 
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="mixins">
+      <h2>Mixins</h2>
+
+      <dl>
+        <dt id="CoordinatesMixin">
+  <span class="name "><a href="../dart_sdl/CoordinatesMixin-mixin.html">CoordinatesMixin</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Add coordinates to any event type. 
+</dd>
+
+        <dt id="WindowMixin">
+  <span class="name "><a href="../dart_sdl/WindowMixin-mixin.html">WindowMixin</a></span> 
+
+</dt>
+<dd>
+  For events which have window IDs. 
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+
+      <dl>
+        <dt id="ArrayOrderToInt">
+    <span class="name "><a href="../dart_sdl/ArrayOrderToInt.html">ArrayOrderToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="AssertStateToInt">
+    <span class="name "><a href="../dart_sdl/AssertStateToInt.html">AssertStateToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="AudioStatusToInt">
+    <span class="name "><a href="../dart_sdl/AudioStatusToInt.html">AudioStatusToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="BitmapOrderToInt">
+    <span class="name "><a href="../dart_sdl/BitmapOrderToInt.html">BitmapOrderToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="BlendFactorToInt">
+    <span class="name "><a href="../dart_sdl/BlendFactorToInt.html">BlendFactorToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="BlendModeToInt">
+    <span class="name "><a href="../dart_sdl/BlendModeToInt.html">BlendModeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="BlendOperationToInt">
+    <span class="name "><a href="../dart_sdl/BlendOperationToInt.html">BlendOperationToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="DartSdlIntExtension">
+    <span class="name "><a href="../dart_sdl/DartSdlIntExtension.html">DartSdlIntExtension</a></span> 
+
+</dt>
+<dd>
+    Various extension methods for integers. 
+</dd>
+
+
+        <dt id="DartSdlKeyCodeMethods">
+    <span class="name "><a href="../dart_sdl/DartSdlKeyCodeMethods.html">DartSdlKeyCodeMethods</a></span> 
+
+</dt>
+<dd>
+    An extension to return a <a href="../dart_sdl/KeyCode.html">KeyCode</a> from an integer. 
+</dd>
+
+
+        <dt id="DartSdlScanCodeMethods">
+    <span class="name "><a href="../dart_sdl/DartSdlScanCodeMethods.html">DartSdlScanCodeMethods</a></span> 
+
+</dt>
+<dd>
+    An extension to return a <a href="../dart_sdl/ScanCode.html">ScanCode</a> from an integer. 
+</dd>
+
+
+        <dt id="DisplayEventIDToInt">
+    <span class="name "><a href="../dart_sdl/DisplayEventIDToInt.html">DisplayEventIDToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="DisplayOrientationToInt">
+    <span class="name "><a href="../dart_sdl/DisplayOrientationToInt.html">DisplayOrientationToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="ErrorCodeToInt">
+    <span class="name "><a href="../dart_sdl/ErrorCodeToInt.html">ErrorCodeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="EventActionToInt">
+    <span class="name "><a href="../dart_sdl/EventActionToInt.html">EventActionToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="EventTypeToInt">
+    <span class="name "><a href="../dart_sdl/EventTypeToInt.html">EventTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="FlashOperationToInt">
+    <span class="name "><a href="../dart_sdl/FlashOperationToInt.html">FlashOperationToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GameControllerAxisToInt">
+    <span class="name "><a href="../dart_sdl/GameControllerAxisToInt.html">GameControllerAxisToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GameControllerBindTypeToInt">
+    <span class="name "><a href="../dart_sdl/GameControllerBindTypeToInt.html">GameControllerBindTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GameControllerButtonToInt">
+    <span class="name "><a href="../dart_sdl/GameControllerButtonToInt.html">GameControllerButtonToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GameControllerTypeToInt">
+    <span class="name "><a href="../dart_sdl/GameControllerTypeToInt.html">GameControllerTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GLattrToInt">
+    <span class="name "><a href="../dart_sdl/GLattrToInt.html">GLattrToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GLcontextFlagToInt">
+    <span class="name "><a href="../dart_sdl/GLcontextFlagToInt.html">GLcontextFlagToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GLcontextReleaseFlagToInt">
+    <span class="name "><a href="../dart_sdl/GLcontextReleaseFlagToInt.html">GLcontextReleaseFlagToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GLContextResetNotificationToInt">
+    <span class="name "><a href="../dart_sdl/GLContextResetNotificationToInt.html">GLContextResetNotificationToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="GLprofileToInt">
+    <span class="name "><a href="../dart_sdl/GLprofileToInt.html">GLprofileToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="HintPriorityToInt">
+    <span class="name "><a href="../dart_sdl/HintPriorityToInt.html">HintPriorityToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="HitTestResultToInt">
+    <span class="name "><a href="../dart_sdl/HitTestResultToInt.html">HitTestResultToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="IntToC">
+    <span class="name "><a href="../dart_sdl/IntToC.html">IntToC</a></span> 
+
+</dt>
+<dd>
+    An extension for converting integers to Dart values. 
+</dd>
+
+
+        <dt id="JoystickPowerLevelToInt">
+    <span class="name "><a href="../dart_sdl/JoystickPowerLevelToInt.html">JoystickPowerLevelToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="JoystickTypeToInt">
+    <span class="name "><a href="../dart_sdl/JoystickTypeToInt.html">JoystickTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="LogCategoryToInt">
+    <span class="name "><a href="../dart_sdl/LogCategoryToInt.html">LogCategoryToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="LogPriorityToInt">
+    <span class="name "><a href="../dart_sdl/LogPriorityToInt.html">LogPriorityToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="MessageBoxButtonFlagsToInt">
+    <span class="name "><a href="../dart_sdl/MessageBoxButtonFlagsToInt.html">MessageBoxButtonFlagsToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="MessageBoxColorTypeToInt">
+    <span class="name "><a href="../dart_sdl/MessageBoxColorTypeToInt.html">MessageBoxColorTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="MessageBoxFlagsToInt">
+    <span class="name "><a href="../dart_sdl/MessageBoxFlagsToInt.html">MessageBoxFlagsToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="MouseButtonPressedStateExtension">
+    <span class="name "><a href="../dart_sdl/MouseButtonPressedStateExtension.html">MouseButtonPressedStateExtension</a></span> 
+
+</dt>
+<dd>
+    Add conversions to mouse structures. 
+</dd>
+
+
+        <dt id="MouseWheelDirectionToInt">
+    <span class="name "><a href="../dart_sdl/MouseWheelDirectionToInt.html">MouseWheelDirectionToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="PackedLayoutToInt">
+    <span class="name "><a href="../dart_sdl/PackedLayoutToInt.html">PackedLayoutToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="PackedOrderToInt">
+    <span class="name "><a href="../dart_sdl/PackedOrderToInt.html">PackedOrderToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="PixelFormatToInt">
+    <span class="name "><a href="../dart_sdl/PixelFormatToInt.html">PixelFormatToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="PixelTypeToInt">
+    <span class="name "><a href="../dart_sdl/PixelTypeToInt.html">PixelTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="PowerStateToInt">
+    <span class="name "><a href="../dart_sdl/PowerStateToInt.html">PowerStateToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="RendererFlagsToInt">
+    <span class="name "><a href="../dart_sdl/RendererFlagsToInt.html">RendererFlagsToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="RendererFlipToInt">
+    <span class="name "><a href="../dart_sdl/RendererFlipToInt.html">RendererFlipToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="ScaleModeToInt">
+    <span class="name "><a href="../dart_sdl/ScaleModeToInt.html">ScaleModeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="SdlBoolToInt">
+    <span class="name "><a href="../dart_sdl/SdlBoolToInt.html">SdlBoolToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="SdlFullScreenModeValues">
+    <span class="name "><a href="../dart_sdl/SdlFullScreenModeValues.html">SdlFullScreenModeValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting to an SDL flag. 
+</dd>
+
+
+        <dt id="SdlHapticConstantEffectTypeValues">
+    <span class="name "><a href="../dart_sdl/SdlHapticConstantEffectTypeValues.html">SdlHapticConstantEffectTypeValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting to an SDL flag. 
+</dd>
+
+
+        <dt id="SdlHapticDirectionTypeValues">
+    <span class="name "><a href="../dart_sdl/SdlHapticDirectionTypeValues.html">SdlHapticDirectionTypeValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting to an SDL flag. 
+</dd>
+
+
+        <dt id="SdlHapticEffectTypeValues">
+    <span class="name "><a href="../dart_sdl/SdlHapticEffectTypeValues.html">SdlHapticEffectTypeValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting to an SDL flag. 
+</dd>
+
+
+        <dt id="SdlKeyCodeValueExtension">
+    <span class="name "><a href="../dart_sdl/SdlKeyCodeValueExtension.html">SdlKeyCodeValueExtension</a></span> 
+
+</dt>
+<dd>
+    An extension to return an integer from a <a href="../dart_sdl/KeyCode.html">KeyCode</a> value. 
+</dd>
+
+
+        <dt id="SdlKeyModValues">
+    <span class="name "><a href="../dart_sdl/SdlKeyModValues.html">SdlKeyModValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting to an SDL flag. 
+</dd>
+
+
+        <dt id="SdlListMethods">
+    <span class="name "><a href="../dart_sdl/SdlListMethods.html">SdlListMethods</a></span> 
+
+</dt>
+<dd>
+    Various list methods used by this package. 
+</dd>
+
+
+        <dt id="SdlScancodeValueExtension">
+    <span class="name "><a href="../dart_sdl/SdlScancodeValueExtension.html">SdlScancodeValueExtension</a></span> 
+
+</dt>
+<dd>
+    An extension to return an integer from a <a href="../dart_sdl/ScanCode.html">ScanCode</a> value. 
+</dd>
+
+
+        <dt id="SdlStringValues">
+    <span class="name "><a href="../dart_sdl/SdlStringValues.html">SdlStringValues</a></span> 
+
+</dt>
+<dd>
+    An extension for converting strings to <code>dart_sdl</code> values. 
+</dd>
+
+
+        <dt id="SensorTypeToInt">
+    <span class="name "><a href="../dart_sdl/SensorTypeToInt.html">SensorTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="SystemCursorToInt">
+    <span class="name "><a href="../dart_sdl/SystemCursorToInt.html">SystemCursorToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="TextureAccessToInt">
+    <span class="name "><a href="../dart_sdl/TextureAccessToInt.html">TextureAccessToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="TextureModulateToInt">
+    <span class="name "><a href="../dart_sdl/TextureModulateToInt.html">TextureModulateToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="ThreadPriorityToInt">
+    <span class="name "><a href="../dart_sdl/ThreadPriorityToInt.html">ThreadPriorityToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="TouchDeviceTypeToInt">
+    <span class="name "><a href="../dart_sdl/TouchDeviceTypeToInt.html">TouchDeviceTypeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="WindowEventIDToInt">
+    <span class="name "><a href="../dart_sdl/WindowEventIDToInt.html">WindowEventIDToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="WindowFlagsToInt">
+    <span class="name "><a href="../dart_sdl/WindowFlagsToInt.html">WindowFlagsToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+        <dt id="YuvConversionModeToInt">
+    <span class="name "><a href="../dart_sdl/YuvConversionModeToInt.html">YuvConversionModeToInt</a></span> 
+
+</dt>
+<dd>
+    An extension for converting Dart to C values. 
+</dd>
+
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="enums">
+      <h2>Enums</h2>
+
+      <dl>
+        <dt id="ArrayOrder">
+  <span class="name "><a href="../dart_sdl/ArrayOrder.html">ArrayOrder</a></span> 
+
+</dt>
+<dd>
+  SDL_ArrayOrder. 
+</dd>
+
+        <dt id="AssertState">
+  <span class="name "><a href="../dart_sdl/AssertState.html">AssertState</a></span> 
+
+</dt>
+<dd>
+  SDL_AssertState. 
+</dd>
+
+        <dt id="AudioStatus">
+  <span class="name "><a href="../dart_sdl/AudioStatus.html">AudioStatus</a></span> 
+
+</dt>
+<dd>
+  SDL_AudioStatus. 
+</dd>
+
+        <dt id="BitmapOrder">
+  <span class="name "><a href="../dart_sdl/BitmapOrder.html">BitmapOrder</a></span> 
+
+</dt>
+<dd>
+  SDL_BitmapOrder. 
+</dd>
+
+        <dt id="BlendFactor">
+  <span class="name "><a href="../dart_sdl/BlendFactor.html">BlendFactor</a></span> 
+
+</dt>
+<dd>
+  SDL_BlendFactor. 
+</dd>
+
+        <dt id="BlendMode">
+  <span class="name "><a href="../dart_sdl/BlendMode.html">BlendMode</a></span> 
+
+</dt>
+<dd>
+  SDL_BlendMode. 
+</dd>
+
+        <dt id="BlendOperation">
+  <span class="name "><a href="../dart_sdl/BlendOperation.html">BlendOperation</a></span> 
+
+</dt>
+<dd>
+  SDL_BlendOperation. 
+</dd>
+
+        <dt id="ControllerTouchpadEventType">
+  <span class="name "><a href="../dart_sdl/ControllerTouchpadEventType.html">ControllerTouchpadEventType</a></span> 
+
+</dt>
+<dd>
+  Types for a <a href="../dart_sdl/ControllerTouchpadEvent-class.html">ControllerTouchpadEvent</a>. 
+</dd>
+
+        <dt id="DeviceState">
+  <span class="name "><a href="../dart_sdl/DeviceState.html">DeviceState</a></span> 
+
+</dt>
+<dd>
+  Whether a device was added or removed. 
+</dd>
+
+        <dt id="DisplayEventID">
+  <span class="name "><a href="../dart_sdl/DisplayEventID.html">DisplayEventID</a></span> 
+
+</dt>
+<dd>
+  SDL_DisplayEventID. 
+</dd>
+
+        <dt id="DisplayOrientation">
+  <span class="name "><a href="../dart_sdl/DisplayOrientation.html">DisplayOrientation</a></span> 
+
+</dt>
+<dd>
+  SDL_DisplayOrientation. 
+</dd>
+
+        <dt id="DollarGestureEventType">
+  <span class="name "><a href="../dart_sdl/DollarGestureEventType.html">DollarGestureEventType</a></span> 
+
+</dt>
+<dd>
+  Dollar event types. 
+</dd>
+
+        <dt id="DropEventType">
+  <span class="name "><a href="../dart_sdl/DropEventType.html">DropEventType</a></span> 
+
+</dt>
+<dd>
+  The types for <a href="../dart_sdl/DropEvent-class.html">DropEvent</a> instances. 
+</dd>
+
+        <dt id="ErrorCode">
+  <span class="name "><a href="../dart_sdl/ErrorCode.html">ErrorCode</a></span> 
+
+</dt>
+<dd>
+  SDL_errorcode. 
+</dd>
+
+        <dt id="EventAction">
+  <span class="name "><a href="../dart_sdl/EventAction.html">EventAction</a></span> 
+
+</dt>
+<dd>
+  SDL_eventaction. 
+</dd>
+
+        <dt id="EventType">
+  <span class="name "><a href="../dart_sdl/EventType.html">EventType</a></span> 
+
+</dt>
+<dd>
+  SDL_EventType. 
+</dd>
+
+        <dt id="FlashOperation">
+  <span class="name "><a href="../dart_sdl/FlashOperation.html">FlashOperation</a></span> 
+
+</dt>
+<dd>
+  SDL_FlashOperation. 
+</dd>
+
+        <dt id="FullScreenMode">
+  <span class="name "><a href="../dart_sdl/FullScreenMode.html">FullScreenMode</a></span> 
+
+</dt>
+<dd>
+  Full screen modes. 
+</dd>
+
+        <dt id="GameControllerAxis">
+  <span class="name "><a href="../dart_sdl/GameControllerAxis.html">GameControllerAxis</a></span> 
+
+</dt>
+<dd>
+  SDL_GameControllerAxis. 
+</dd>
+
+        <dt id="GameControllerBindType">
+  <span class="name "><a href="../dart_sdl/GameControllerBindType.html">GameControllerBindType</a></span> 
+
+</dt>
+<dd>
+  SDL_GameControllerBindType. 
+</dd>
+
+        <dt id="GameControllerButton">
+  <span class="name "><a href="../dart_sdl/GameControllerButton.html">GameControllerButton</a></span> 
+
+</dt>
+<dd>
+  SDL_GameControllerButton. 
+</dd>
+
+        <dt id="GameControllerType">
+  <span class="name "><a href="../dart_sdl/GameControllerType.html">GameControllerType</a></span> 
+
+</dt>
+<dd>
+  SDL_GameControllerType. 
+</dd>
+
+        <dt id="GLattr">
+  <span class="name "><a href="../dart_sdl/GLattr.html">GLattr</a></span> 
+
+</dt>
+<dd>
+  SDL_GLattr. 
+</dd>
+
+        <dt id="GLcontextFlag">
+  <span class="name "><a href="../dart_sdl/GLcontextFlag.html">GLcontextFlag</a></span> 
+
+</dt>
+<dd>
+  SDL_GLcontextFlag. 
+</dd>
+
+        <dt id="GLcontextReleaseFlag">
+  <span class="name "><a href="../dart_sdl/GLcontextReleaseFlag.html">GLcontextReleaseFlag</a></span> 
+
+</dt>
+<dd>
+  SDL_GLcontextReleaseFlag. 
+</dd>
+
+        <dt id="GLContextResetNotification">
+  <span class="name "><a href="../dart_sdl/GLContextResetNotification.html">GLContextResetNotification</a></span> 
+
+</dt>
+<dd>
+  SDL_GLContextResetNotification. 
+</dd>
+
+        <dt id="GLprofile">
+  <span class="name "><a href="../dart_sdl/GLprofile.html">GLprofile</a></span> 
+
+</dt>
+<dd>
+  SDL_GLprofile. 
+</dd>
+
+        <dt id="HapticConditionType">
+  <span class="name "><a href="../dart_sdl/HapticConditionType.html">HapticConditionType</a></span> 
+
+</dt>
+<dd>
+  The type of a conditional haptic effect. <a href="../dart_sdl/HapticConditionType.html">[...]</a>
+</dd>
+
+        <dt id="HapticDirectionType">
+  <span class="name "><a href="../dart_sdl/HapticDirectionType.html">HapticDirectionType</a></span> 
+
+</dt>
+<dd>
+  Haptic directions. <a href="../dart_sdl/HapticDirectionType.html">[...]</a>
+</dd>
+
+        <dt id="HapticFeature">
+  <span class="name "><a href="../dart_sdl/HapticFeature.html">HapticFeature</a></span> 
+
+</dt>
+<dd>
+  An enumeration of SDL haptic types. 
+</dd>
+
+        <dt id="HapticPeriodicType">
+  <span class="name "><a href="../dart_sdl/HapticPeriodicType.html">HapticPeriodicType</a></span> 
+
+</dt>
+<dd>
+  The type of a haptic effect. <a href="../dart_sdl/HapticPeriodicType.html">[...]</a>
+</dd>
+
+        <dt id="HintPriority">
+  <span class="name "><a href="../dart_sdl/HintPriority.html">HintPriority</a></span> 
+
+</dt>
+<dd>
+  SDL_HintPriority. 
+</dd>
+
+        <dt id="HitTestResult">
+  <span class="name "><a href="../dart_sdl/HitTestResult.html">HitTestResult</a></span> 
+
+</dt>
+<dd>
+  SDL_HitTestResult. 
+</dd>
+
+        <dt id="JoyHatValue">
+  <span class="name "><a href="../dart_sdl/JoyHatValue.html">JoyHatValue</a></span> 
+
+</dt>
+<dd>
+  Possible joystick hat values. 
+</dd>
+
+        <dt id="JoystickPowerLevel">
+  <span class="name "><a href="../dart_sdl/JoystickPowerLevel.html">JoystickPowerLevel</a></span> 
+
+</dt>
+<dd>
+  SDL_JoystickPowerLevel. 
+</dd>
+
+        <dt id="JoystickType">
+  <span class="name "><a href="../dart_sdl/JoystickType.html">JoystickType</a></span> 
+
+</dt>
+<dd>
+  SDL_JoystickType. 
+</dd>
+
+        <dt id="KeyCode">
+  <span class="name "><a href="../dart_sdl/KeyCode.html">KeyCode</a></span> 
+
+</dt>
+<dd>
+  Keycodes. <a href="../dart_sdl/KeyCode.html">[...]</a>
+</dd>
+
+        <dt id="KeyMod">
+  <span class="name "><a href="../dart_sdl/KeyMod.html">KeyMod</a></span> 
+
+</dt>
+<dd>
+  Binds <code>SDL_Keymod</code>. 
+</dd>
+
+        <dt id="LogCategory">
+  <span class="name "><a href="../dart_sdl/LogCategory.html">LogCategory</a></span> 
+
+</dt>
+<dd>
+  SDL_LogCategory. 
+</dd>
+
+        <dt id="LogPriority">
+  <span class="name "><a href="../dart_sdl/LogPriority.html">LogPriority</a></span> 
+
+</dt>
+<dd>
+  SDL_LogPriority. 
+</dd>
+
+        <dt id="MessageBoxButtonFlags">
+  <span class="name "><a href="../dart_sdl/MessageBoxButtonFlags.html">MessageBoxButtonFlags</a></span> 
+
+</dt>
+<dd>
+  SDL_MessageBoxButtonFlags. 
+</dd>
+
+        <dt id="MessageBoxColorType">
+  <span class="name "><a href="../dart_sdl/MessageBoxColorType.html">MessageBoxColorType</a></span> 
+
+</dt>
+<dd>
+  SDL_MessageBoxColorType. 
+</dd>
+
+        <dt id="MessageBoxFlags">
+  <span class="name "><a href="../dart_sdl/MessageBoxFlags.html">MessageBoxFlags</a></span> 
+
+</dt>
+<dd>
+  SDL_MessageBoxFlags. 
+</dd>
+
+        <dt id="MouseButton">
+  <span class="name "><a href="../dart_sdl/MouseButton.html">MouseButton</a></span> 
+
+</dt>
+<dd>
+  Which mouse button was used. 
+</dd>
+
+        <dt id="MouseWheelDirection">
+  <span class="name "><a href="../dart_sdl/MouseWheelDirection.html">MouseWheelDirection</a></span> 
+
+</dt>
+<dd>
+  SDL_MouseWheelDirection. 
+</dd>
+
+        <dt id="PackedLayout">
+  <span class="name "><a href="../dart_sdl/PackedLayout.html">PackedLayout</a></span> 
+
+</dt>
+<dd>
+  SDL_PackedLayout. 
+</dd>
+
+        <dt id="PackedOrder">
+  <span class="name "><a href="../dart_sdl/PackedOrder.html">PackedOrder</a></span> 
+
+</dt>
+<dd>
+  SDL_PackedOrder. 
+</dd>
+
+        <dt id="PixelFormat">
+  <span class="name "><a href="../dart_sdl/PixelFormat.html">PixelFormat</a></span> 
+
+</dt>
+<dd>
+  SDL_PixelFormatEnum. 
+</dd>
+
+        <dt id="PixelType">
+  <span class="name "><a href="../dart_sdl/PixelType.html">PixelType</a></span> 
+
+</dt>
+<dd>
+  SDL_PixelType. 
+</dd>
+
+        <dt id="PowerState">
+  <span class="name "><a href="../dart_sdl/PowerState.html">PowerState</a></span> 
+
+</dt>
+<dd>
+  SDL_PowerState. 
+</dd>
+
+        <dt id="PressedState">
+  <span class="name "><a href="../dart_sdl/PressedState.html">PressedState</a></span> 
+
+</dt>
+<dd>
+  Pressed state. 
+</dd>
+
+        <dt id="RendererFlags">
+  <span class="name "><a href="../dart_sdl/RendererFlags.html">RendererFlags</a></span> 
+
+</dt>
+<dd>
+  SDL_RendererFlags. 
+</dd>
+
+        <dt id="RendererFlip">
+  <span class="name "><a href="../dart_sdl/RendererFlip.html">RendererFlip</a></span> 
+
+</dt>
+<dd>
+  SDL_RendererFlip. 
+</dd>
+
+        <dt id="ScaleMode">
+  <span class="name "><a href="../dart_sdl/ScaleMode.html">ScaleMode</a></span> 
+
+</dt>
+<dd>
+  SDL_ScaleMode. 
+</dd>
+
+        <dt id="ScanCode">
+  <span class="name "><a href="../dart_sdl/ScanCode.html">ScanCode</a></span> 
+
+</dt>
+<dd>
+  Scancodes. <a href="../dart_sdl/ScanCode.html">[...]</a>
+</dd>
+
+        <dt id="SdlBool">
+  <span class="name "><a href="../dart_sdl/SdlBool.html">SdlBool</a></span> 
+
+</dt>
+<dd>
+  SDL_bool. 
+</dd>
+
+        <dt id="SensorType">
+  <span class="name "><a href="../dart_sdl/SensorType.html">SensorType</a></span> 
+
+</dt>
+<dd>
+  SDL_SensorType. 
+</dd>
+
+        <dt id="SystemCursor">
+  <span class="name "><a href="../dart_sdl/SystemCursor.html">SystemCursor</a></span> 
+
+</dt>
+<dd>
+  SDL_SystemCursor. 
+</dd>
+
+        <dt id="TextureAccess">
+  <span class="name "><a href="../dart_sdl/TextureAccess.html">TextureAccess</a></span> 
+
+</dt>
+<dd>
+  SDL_TextureAccess. 
+</dd>
+
+        <dt id="TextureModulate">
+  <span class="name "><a href="../dart_sdl/TextureModulate.html">TextureModulate</a></span> 
+
+</dt>
+<dd>
+  SDL_TextureModulate. 
+</dd>
+
+        <dt id="ThreadPriority">
+  <span class="name "><a href="../dart_sdl/ThreadPriority.html">ThreadPriority</a></span> 
+
+</dt>
+<dd>
+  SDL_ThreadPriority. 
+</dd>
+
+        <dt id="TouchDeviceType">
+  <span class="name "><a href="../dart_sdl/TouchDeviceType.html">TouchDeviceType</a></span> 
+
+</dt>
+<dd>
+  SDL_TouchDeviceType. 
+</dd>
+
+        <dt id="TouchFingerEventType">
+  <span class="name "><a href="../dart_sdl/TouchFingerEventType.html">TouchFingerEventType</a></span> 
+
+</dt>
+<dd>
+  Touch finger event types. 
+</dd>
+
+        <dt id="WindowEventID">
+  <span class="name "><a href="../dart_sdl/WindowEventID.html">WindowEventID</a></span> 
+
+</dt>
+<dd>
+  SDL_WindowEventID. 
+</dd>
+
+        <dt id="WindowFlags">
+  <span class="name "><a href="../dart_sdl/WindowFlags.html">WindowFlags</a></span> 
+
+</dt>
+<dd>
+  SDL_WindowFlags. 
+</dd>
+
+        <dt id="YuvConversionMode">
+  <span class="name "><a href="../dart_sdl/YuvConversionMode.html">YuvConversionMode</a></span> 
+
+</dt>
+<dd>
+  SDL_YUV_CONVERSION_MODE. 
+</dd>
+
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+
+      <dl>
+        <dt id="SdlError">
+  <span class="name "><a href="../dart_sdl/SdlError-class.html">SdlError</a></span> 
+
+</dt>
+<dd>
+  Provides the <a href="../dart_sdl/SdlError-class.html">SdlError</a> class.
+The base class for all exceptions. 
+</dd>
+
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">dart_sdl</a></li>
+  <li class="self-crumb">dart_sdl library</li>
+</ol>
+
+
+    <h5><span class="package-name">dart_sdl</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>dart_sdl library</h5>
+    <ol>
+  <li class="section-title"><a href="../dart_sdl/dart_sdl-library.html#classes">Classes</a></li>
+  <li><a href="../dart_sdl/AppDidEnterBackgroundEvent-class.html">AppDidEnterBackgroundEvent</a></li>
+  <li><a href="../dart_sdl/AppDidEnterForegroundEvent-class.html">AppDidEnterForegroundEvent</a></li>
+  <li><a href="../dart_sdl/AppLowMemoryEvent-class.html">AppLowMemoryEvent</a></li>
+  <li><a href="../dart_sdl/AppTerminatingEvent-class.html">AppTerminatingEvent</a></li>
+  <li><a href="../dart_sdl/AppWillEnterBackgroundEvent-class.html">AppWillEnterBackgroundEvent</a></li>
+  <li><a href="../dart_sdl/AppWillEnterForegroundEvent-class.html">AppWillEnterForegroundEvent</a></li>
+  <li><a href="../dart_sdl/AudioDevice-class.html">AudioDevice</a></li>
+  <li><a href="../dart_sdl/AudioDeviceAddedEvent-class.html">AudioDeviceAddedEvent</a></li>
+  <li><a href="../dart_sdl/AudioDeviceEvent-class.html">AudioDeviceEvent</a></li>
+  <li><a href="../dart_sdl/AudioDeviceRemovedEvent-class.html">AudioDeviceRemovedEvent</a></li>
+  <li><a href="../dart_sdl/AudioDriver-class.html">AudioDriver</a></li>
+  <li><a href="../dart_sdl/AudioSpec-class.html">AudioSpec</a></li>
+  <li><a href="../dart_sdl/BordersSize-class.html">BordersSize</a></li>
+  <li><a href="../dart_sdl/ClipboardChangedEvent-class.html">ClipboardChangedEvent</a></li>
+  <li><a href="../dart_sdl/ConditionEffect-class.html">ConditionEffect</a></li>
+  <li><a href="../dart_sdl/ControllerAxisEvent-class.html">ControllerAxisEvent</a></li>
+  <li><a href="../dart_sdl/ControllerButtonEvent-class.html">ControllerButtonEvent</a></li>
+  <li><a href="../dart_sdl/ControllerDeviceEvent-class.html">ControllerDeviceEvent</a></li>
+  <li><a href="../dart_sdl/ControllerSensorEvent-class.html">ControllerSensorEvent</a></li>
+  <li><a href="../dart_sdl/ControllerTouchpadEvent-class.html">ControllerTouchpadEvent</a></li>
+  <li><a href="../dart_sdl/Display-class.html">Display</a></li>
+  <li><a href="../dart_sdl/DisplayChangedEvent-class.html">DisplayChangedEvent</a></li>
+  <li><a href="../dart_sdl/DisplayEvent-class.html">DisplayEvent</a></li>
+  <li><a href="../dart_sdl/DisplayMode-class.html">DisplayMode</a></li>
+  <li><a href="../dart_sdl/DollarGestureEvent-class.html">DollarGestureEvent</a></li>
+  <li><a href="../dart_sdl/DropEvent-class.html">DropEvent</a></li>
+  <li><a href="../dart_sdl/Event-class.html">Event</a></li>
+  <li><a href="../dart_sdl/GameController-class.html">GameController</a></li>
+  <li><a href="../dart_sdl/GameControllerEvent-class.html">GameControllerEvent</a></li>
+  <li><a href="../dart_sdl/Haptic-class.html">Haptic</a></li>
+  <li><a href="../dart_sdl/HapticCondition-class.html">HapticCondition</a></li>
+  <li><a href="../dart_sdl/HapticConstant-class.html">HapticConstant</a></li>
+  <li><a href="../dart_sdl/HapticDirection-class.html">HapticDirection</a></li>
+  <li><a href="../dart_sdl/HapticEffect-class.html">HapticEffect</a></li>
+  <li><a href="../dart_sdl/HapticLeftRight-class.html">HapticLeftRight</a></li>
+  <li><a href="../dart_sdl/HapticPeriodic-class.html">HapticPeriodic</a></li>
+  <li><a href="../dart_sdl/HapticRamp-class.html">HapticRamp</a></li>
+  <li><a href="../dart_sdl/IccprofChangedEvent-class.html">IccprofChangedEvent</a></li>
+  <li><a href="../dart_sdl/JoyAxisEvent-class.html">JoyAxisEvent</a></li>
+  <li><a href="../dart_sdl/JoyBallEvent-class.html">JoyBallEvent</a></li>
+  <li><a href="../dart_sdl/JoyButtonEvent-class.html">JoyButtonEvent</a></li>
+  <li><a href="../dart_sdl/JoyDeviceEvent-class.html">JoyDeviceEvent</a></li>
+  <li><a href="../dart_sdl/JoyHatEvent-class.html">JoyHatEvent</a></li>
+  <li><a href="../dart_sdl/Joystick-class.html">Joystick</a></li>
+  <li><a href="../dart_sdl/JoystickEvent-class.html">JoystickEvent</a></li>
+  <li><a href="../dart_sdl/KeyboardEvent-class.html">KeyboardEvent</a></li>
+  <li><a href="../dart_sdl/KeyboardKey-class.html">KeyboardKey</a></li>
+  <li><a href="../dart_sdl/KeymapChangedEvent-class.html">KeymapChangedEvent</a></li>
+  <li><a href="../dart_sdl/LocaleChangedEvent-class.html">LocaleChangedEvent</a></li>
+  <li><a href="../dart_sdl/MessageBoxButton-class.html">MessageBoxButton</a></li>
+  <li><a href="../dart_sdl/MouseButtonEvent-class.html">MouseButtonEvent</a></li>
+  <li><a href="../dart_sdl/MouseEvent-class.html">MouseEvent</a></li>
+  <li><a href="../dart_sdl/MouseMotionEvent-class.html">MouseMotionEvent</a></li>
+  <li><a href="../dart_sdl/MouseWheelEvent-class.html">MouseWheelEvent</a></li>
+  <li><a href="../dart_sdl/MultiGestureEvent-class.html">MultiGestureEvent</a></li>
+  <li><a href="../dart_sdl/OpenAudioDevice-class.html">OpenAudioDevice</a></li>
+  <li><a href="../dart_sdl/PollSentinelEvent-class.html">PollSentinelEvent</a></li>
+  <li><a href="../dart_sdl/QuitEvent-class.html">QuitEvent</a></li>
+  <li><a href="../dart_sdl/RenderDeviceReset-class.html">RenderDeviceReset</a></li>
+  <li><a href="../dart_sdl/RenderTargetsResetEvent-class.html">RenderTargetsResetEvent</a></li>
+  <li><a href="../dart_sdl/Sdl-class.html">Sdl</a></li>
+  <li><a href="../dart_sdl/SensorEvent-class.html">SensorEvent</a></li>
+  <li><a href="../dart_sdl/SysWmEvent-class.html">SysWmEvent</a></li>
+  <li><a href="../dart_sdl/TextEditingEvent-class.html">TextEditingEvent</a></li>
+  <li><a href="../dart_sdl/TextInputEvent-class.html">TextInputEvent</a></li>
+  <li><a href="../dart_sdl/TouchFingerEvent-class.html">TouchFingerEvent</a></li>
+  <li><a href="../dart_sdl/UserEvent-class.html">UserEvent</a></li>
+  <li><a href="../dart_sdl/WaveFile-class.html">WaveFile</a></li>
+  <li><a href="../dart_sdl/Window-class.html">Window</a></li>
+  <li><a href="../dart_sdl/WindowClosedEvent-class.html">WindowClosedEvent</a></li>
+  <li><a href="../dart_sdl/WindowEnterEvent-class.html">WindowEnterEvent</a></li>
+  <li><a href="../dart_sdl/WindowEvent-class.html">WindowEvent</a></li>
+  <li><a href="../dart_sdl/WindowExposedEvent-class.html">WindowExposedEvent</a></li>
+  <li><a href="../dart_sdl/WindowFocusGainedEvent-class.html">WindowFocusGainedEvent</a></li>
+  <li><a href="../dart_sdl/WindowFocusLostEvent-class.html">WindowFocusLostEvent</a></li>
+  <li><a href="../dart_sdl/WindowHiddenEvent-class.html">WindowHiddenEvent</a></li>
+  <li><a href="../dart_sdl/WindowHitTestEvent-class.html">WindowHitTestEvent</a></li>
+  <li><a href="../dart_sdl/WindowLeaveEvent-class.html">WindowLeaveEvent</a></li>
+  <li><a href="../dart_sdl/WindowMaximizedEvent-class.html">WindowMaximizedEvent</a></li>
+  <li><a href="../dart_sdl/WindowMinimizedEvent-class.html">WindowMinimizedEvent</a></li>
+  <li><a href="../dart_sdl/WindowMovedEvent-class.html">WindowMovedEvent</a></li>
+  <li><a href="../dart_sdl/WindowResizedEvent-class.html">WindowResizedEvent</a></li>
+  <li><a href="../dart_sdl/WindowRestoredEvent-class.html">WindowRestoredEvent</a></li>
+  <li><a href="../dart_sdl/WindowShownEvent-class.html">WindowShownEvent</a></li>
+  <li><a href="../dart_sdl/WindowSize-class.html">WindowSize</a></li>
+  <li><a href="../dart_sdl/WindowSizeChangedEvent-class.html">WindowSizeChangedEvent</a></li>
+  <li><a href="../dart_sdl/WindowTakeFocusEvent-class.html">WindowTakeFocusEvent</a></li>
+
+  <li class="section-title"><a href="../dart_sdl/dart_sdl-library.html#extensions">Extensions</a></li>
+  <li><a href="../dart_sdl/ArrayOrderToInt.html">ArrayOrderToInt</a></li>
+  <li><a href="../dart_sdl/AssertStateToInt.html">AssertStateToInt</a></li>
+  <li><a href="../dart_sdl/AudioStatusToInt.html">AudioStatusToInt</a></li>
+  <li><a href="../dart_sdl/BitmapOrderToInt.html">BitmapOrderToInt</a></li>
+  <li><a href="../dart_sdl/BlendFactorToInt.html">BlendFactorToInt</a></li>
+  <li><a href="../dart_sdl/BlendModeToInt.html">BlendModeToInt</a></li>
+  <li><a href="../dart_sdl/BlendOperationToInt.html">BlendOperationToInt</a></li>
+  <li><a href="../dart_sdl/DartSdlIntExtension.html">DartSdlIntExtension</a></li>
+  <li><a href="../dart_sdl/DartSdlKeyCodeMethods.html">DartSdlKeyCodeMethods</a></li>
+  <li><a href="../dart_sdl/DartSdlScanCodeMethods.html">DartSdlScanCodeMethods</a></li>
+  <li><a href="../dart_sdl/DisplayEventIDToInt.html">DisplayEventIDToInt</a></li>
+  <li><a href="../dart_sdl/DisplayOrientationToInt.html">DisplayOrientationToInt</a></li>
+  <li><a href="../dart_sdl/ErrorCodeToInt.html">ErrorCodeToInt</a></li>
+  <li><a href="../dart_sdl/EventActionToInt.html">EventActionToInt</a></li>
+  <li><a href="../dart_sdl/EventTypeToInt.html">EventTypeToInt</a></li>
+  <li><a href="../dart_sdl/FlashOperationToInt.html">FlashOperationToInt</a></li>
+  <li><a href="../dart_sdl/GameControllerAxisToInt.html">GameControllerAxisToInt</a></li>
+  <li><a href="../dart_sdl/GameControllerBindTypeToInt.html">GameControllerBindTypeToInt</a></li>
+  <li><a href="../dart_sdl/GameControllerButtonToInt.html">GameControllerButtonToInt</a></li>
+  <li><a href="../dart_sdl/GameControllerTypeToInt.html">GameControllerTypeToInt</a></li>
+  <li><a href="../dart_sdl/GLattrToInt.html">GLattrToInt</a></li>
+  <li><a href="../dart_sdl/GLcontextFlagToInt.html">GLcontextFlagToInt</a></li>
+  <li><a href="../dart_sdl/GLcontextReleaseFlagToInt.html">GLcontextReleaseFlagToInt</a></li>
+  <li><a href="../dart_sdl/GLContextResetNotificationToInt.html">GLContextResetNotificationToInt</a></li>
+  <li><a href="../dart_sdl/GLprofileToInt.html">GLprofileToInt</a></li>
+  <li><a href="../dart_sdl/HintPriorityToInt.html">HintPriorityToInt</a></li>
+  <li><a href="../dart_sdl/HitTestResultToInt.html">HitTestResultToInt</a></li>
+  <li><a href="../dart_sdl/IntToC.html">IntToC</a></li>
+  <li><a href="../dart_sdl/JoystickPowerLevelToInt.html">JoystickPowerLevelToInt</a></li>
+  <li><a href="../dart_sdl/JoystickTypeToInt.html">JoystickTypeToInt</a></li>
+  <li><a href="../dart_sdl/LogCategoryToInt.html">LogCategoryToInt</a></li>
+  <li><a href="../dart_sdl/LogPriorityToInt.html">LogPriorityToInt</a></li>
+  <li><a href="../dart_sdl/MessageBoxButtonFlagsToInt.html">MessageBoxButtonFlagsToInt</a></li>
+  <li><a href="../dart_sdl/MessageBoxColorTypeToInt.html">MessageBoxColorTypeToInt</a></li>
+  <li><a href="../dart_sdl/MessageBoxFlagsToInt.html">MessageBoxFlagsToInt</a></li>
+  <li><a href="../dart_sdl/MouseButtonPressedStateExtension.html">MouseButtonPressedStateExtension</a></li>
+  <li><a href="../dart_sdl/MouseWheelDirectionToInt.html">MouseWheelDirectionToInt</a></li>
+  <li><a href="../dart_sdl/PackedLayoutToInt.html">PackedLayoutToInt</a></li>
+  <li><a href="../dart_sdl/PackedOrderToInt.html">PackedOrderToInt</a></li>
+  <li><a href="../dart_sdl/PixelFormatToInt.html">PixelFormatToInt</a></li>
+  <li><a href="../dart_sdl/PixelTypeToInt.html">PixelTypeToInt</a></li>
+  <li><a href="../dart_sdl/PowerStateToInt.html">PowerStateToInt</a></li>
+  <li><a href="../dart_sdl/RendererFlagsToInt.html">RendererFlagsToInt</a></li>
+  <li><a href="../dart_sdl/RendererFlipToInt.html">RendererFlipToInt</a></li>
+  <li><a href="../dart_sdl/ScaleModeToInt.html">ScaleModeToInt</a></li>
+  <li><a href="../dart_sdl/SdlBoolToInt.html">SdlBoolToInt</a></li>
+  <li><a href="../dart_sdl/SdlFullScreenModeValues.html">SdlFullScreenModeValues</a></li>
+  <li><a href="../dart_sdl/SdlHapticConstantEffectTypeValues.html">SdlHapticConstantEffectTypeValues</a></li>
+  <li><a href="../dart_sdl/SdlHapticDirectionTypeValues.html">SdlHapticDirectionTypeValues</a></li>
+  <li><a href="../dart_sdl/SdlHapticEffectTypeValues.html">SdlHapticEffectTypeValues</a></li>
+  <li><a href="../dart_sdl/SdlKeyCodeValueExtension.html">SdlKeyCodeValueExtension</a></li>
+  <li><a href="../dart_sdl/SdlKeyModValues.html">SdlKeyModValues</a></li>
+  <li><a href="../dart_sdl/SdlListMethods.html">SdlListMethods</a></li>
+  <li><a href="../dart_sdl/SdlScancodeValueExtension.html">SdlScancodeValueExtension</a></li>
+  <li><a href="../dart_sdl/SdlStringValues.html">SdlStringValues</a></li>
+  <li><a href="../dart_sdl/SensorTypeToInt.html">SensorTypeToInt</a></li>
+  <li><a href="../dart_sdl/SystemCursorToInt.html">SystemCursorToInt</a></li>
+  <li><a href="../dart_sdl/TextureAccessToInt.html">TextureAccessToInt</a></li>
+  <li><a href="../dart_sdl/TextureModulateToInt.html">TextureModulateToInt</a></li>
+  <li><a href="../dart_sdl/ThreadPriorityToInt.html">ThreadPriorityToInt</a></li>
+  <li><a href="../dart_sdl/TouchDeviceTypeToInt.html">TouchDeviceTypeToInt</a></li>
+  <li><a href="../dart_sdl/WindowEventIDToInt.html">WindowEventIDToInt</a></li>
+  <li><a href="../dart_sdl/WindowFlagsToInt.html">WindowFlagsToInt</a></li>
+  <li><a href="../dart_sdl/YuvConversionModeToInt.html">YuvConversionModeToInt</a></li>
+
+  <li class="section-title"><a href="../dart_sdl/dart_sdl-library.html#mixins">Mixins</a></li>
+  <li><a href="../dart_sdl/CoordinatesMixin-mixin.html">CoordinatesMixin</a></li>
+  <li><a href="../dart_sdl/WindowMixin-mixin.html">WindowMixin</a></li>
+
+
+
+
+  <li class="section-title"><a href="../dart_sdl/dart_sdl-library.html#enums">Enums</a></li>
+  <li><a href="../dart_sdl/ArrayOrder.html">ArrayOrder</a></li>
+  <li><a href="../dart_sdl/AssertState.html">AssertState</a></li>
+  <li><a href="../dart_sdl/AudioStatus.html">AudioStatus</a></li>
+  <li><a href="../dart_sdl/BitmapOrder.html">BitmapOrder</a></li>
+  <li><a href="../dart_sdl/BlendFactor.html">BlendFactor</a></li>
+  <li><a href="../dart_sdl/BlendMode.html">BlendMode</a></li>
+  <li><a href="../dart_sdl/BlendOperation.html">BlendOperation</a></li>
+  <li><a href="../dart_sdl/ControllerTouchpadEventType.html">ControllerTouchpadEventType</a></li>
+  <li><a href="../dart_sdl/DeviceState.html">DeviceState</a></li>
+  <li><a href="../dart_sdl/DisplayEventID.html">DisplayEventID</a></li>
+  <li><a href="../dart_sdl/DisplayOrientation.html">DisplayOrientation</a></li>
+  <li><a href="../dart_sdl/DollarGestureEventType.html">DollarGestureEventType</a></li>
+  <li><a href="../dart_sdl/DropEventType.html">DropEventType</a></li>
+  <li><a href="../dart_sdl/ErrorCode.html">ErrorCode</a></li>
+  <li><a href="../dart_sdl/EventAction.html">EventAction</a></li>
+  <li><a href="../dart_sdl/EventType.html">EventType</a></li>
+  <li><a href="../dart_sdl/FlashOperation.html">FlashOperation</a></li>
+  <li><a href="../dart_sdl/FullScreenMode.html">FullScreenMode</a></li>
+  <li><a href="../dart_sdl/GameControllerAxis.html">GameControllerAxis</a></li>
+  <li><a href="../dart_sdl/GameControllerBindType.html">GameControllerBindType</a></li>
+  <li><a href="../dart_sdl/GameControllerButton.html">GameControllerButton</a></li>
+  <li><a href="../dart_sdl/GameControllerType.html">GameControllerType</a></li>
+  <li><a href="../dart_sdl/GLattr.html">GLattr</a></li>
+  <li><a href="../dart_sdl/GLcontextFlag.html">GLcontextFlag</a></li>
+  <li><a href="../dart_sdl/GLcontextReleaseFlag.html">GLcontextReleaseFlag</a></li>
+  <li><a href="../dart_sdl/GLContextResetNotification.html">GLContextResetNotification</a></li>
+  <li><a href="../dart_sdl/GLprofile.html">GLprofile</a></li>
+  <li><a href="../dart_sdl/HapticConditionType.html">HapticConditionType</a></li>
+  <li><a href="../dart_sdl/HapticDirectionType.html">HapticDirectionType</a></li>
+  <li><a href="../dart_sdl/HapticFeature.html">HapticFeature</a></li>
+  <li><a href="../dart_sdl/HapticPeriodicType.html">HapticPeriodicType</a></li>
+  <li><a href="../dart_sdl/HintPriority.html">HintPriority</a></li>
+  <li><a href="../dart_sdl/HitTestResult.html">HitTestResult</a></li>
+  <li><a href="../dart_sdl/JoyHatValue.html">JoyHatValue</a></li>
+  <li><a href="../dart_sdl/JoystickPowerLevel.html">JoystickPowerLevel</a></li>
+  <li><a href="../dart_sdl/JoystickType.html">JoystickType</a></li>
+  <li><a href="../dart_sdl/KeyCode.html">KeyCode</a></li>
+  <li><a href="../dart_sdl/KeyMod.html">KeyMod</a></li>
+  <li><a href="../dart_sdl/LogCategory.html">LogCategory</a></li>
+  <li><a href="../dart_sdl/LogPriority.html">LogPriority</a></li>
+  <li><a href="../dart_sdl/MessageBoxButtonFlags.html">MessageBoxButtonFlags</a></li>
+  <li><a href="../dart_sdl/MessageBoxColorType.html">MessageBoxColorType</a></li>
+  <li><a href="../dart_sdl/MessageBoxFlags.html">MessageBoxFlags</a></li>
+  <li><a href="../dart_sdl/MouseButton.html">MouseButton</a></li>
+  <li><a href="../dart_sdl/MouseWheelDirection.html">MouseWheelDirection</a></li>
+  <li><a href="../dart_sdl/PackedLayout.html">PackedLayout</a></li>
+  <li><a href="../dart_sdl/PackedOrder.html">PackedOrder</a></li>
+  <li><a href="../dart_sdl/PixelFormat.html">PixelFormat</a></li>
+  <li><a href="../dart_sdl/PixelType.html">PixelType</a></li>
+  <li><a href="../dart_sdl/PowerState.html">PowerState</a></li>
+  <li><a href="../dart_sdl/PressedState.html">PressedState</a></li>
+  <li><a href="../dart_sdl/RendererFlags.html">RendererFlags</a></li>
+  <li><a href="../dart_sdl/RendererFlip.html">RendererFlip</a></li>
+  <li><a href="../dart_sdl/ScaleMode.html">ScaleMode</a></li>
+  <li><a href="../dart_sdl/ScanCode.html">ScanCode</a></li>
+  <li><a href="../dart_sdl/SdlBool.html">SdlBool</a></li>
+  <li><a href="../dart_sdl/SensorType.html">SensorType</a></li>
+  <li><a href="../dart_sdl/SystemCursor.html">SystemCursor</a></li>
+  <li><a href="../dart_sdl/TextureAccess.html">TextureAccess</a></li>
+  <li><a href="../dart_sdl/TextureModulate.html">TextureModulate</a></li>
+  <li><a href="../dart_sdl/ThreadPriority.html">ThreadPriority</a></li>
+  <li><a href="../dart_sdl/TouchDeviceType.html">TouchDeviceType</a></li>
+  <li><a href="../dart_sdl/TouchFingerEventType.html">TouchFingerEventType</a></li>
+  <li><a href="../dart_sdl/WindowEventID.html">WindowEventID</a></li>
+  <li><a href="../dart_sdl/WindowFlags.html">WindowFlags</a></li>
+  <li><a href="../dart_sdl/YuvConversionMode.html">YuvConversionMode</a></li>
+
+
+  <li class="section-title"><a href="../dart_sdl/dart_sdl-library.html#exceptions">Exceptions</a></li>
+  <li><a href="../dart_sdl/SdlError-class.html">SdlError</a></li>
+</ol>
+
+  </div><!--/sidebar-offcanvas-right-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

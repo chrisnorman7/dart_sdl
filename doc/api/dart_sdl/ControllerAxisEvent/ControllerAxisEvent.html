@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the ControllerAxisEvent constructor from the Class ControllerAxisEvent class from the dart_sdl library, for the Dart programming language.">
+  <title>ControllerAxisEvent constructor - ControllerAxisEvent class - dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/ControllerAxisEvent-class.html">ControllerAxisEvent</a></li>
+    <li class="self-crumb">ControllerAxisEvent const constructor</li>
+  </ol>
+  <div class="self-name">ControllerAxisEvent</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-constructor">ControllerAxisEvent</span> constructor 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">const
+      <span class="name ">ControllerAxisEvent</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-sdl">{<span>required</span> <span class="type-annotation"><a href="../../dart_sdl/Sdl-class.html">Sdl</a></span> <span class="parameter-name">sdl</span>, </span></li>
+<li><span class="parameter" id="-param-timestamp"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">timestamp</span>, </span></li>
+<li><span class="parameter" id="-param-joystickId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">joystickId</span>, </span></li>
+<li><span class="parameter" id="-param-axis"><span>required</span> <span class="type-annotation"><a href="../../dart_sdl/GameControllerAxis.html">GameControllerAxis</a></span> <span class="parameter-name">axis</span>, </span></li>
+<li><span class="parameter" id="-param-value"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">value</span>}</span></li>
+</ol>)
+    </section>
+
+    
+<section class="desc markdown">
+  <p>Create an event.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">const ControllerAxisEvent(
+    {required Sdl sdl,
+    required int timestamp,
+    required int joystickId,
+    required this.axis,
+    required this.value})
+    : smallValue =
+          value &lt; 0 ? (value &#47; 32768) : (value == 0 ? 0.0 : (value &#47; 32767)),
+      super(sdl: sdl, timestamp: timestamp, controllerId: joystickId);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/ControllerAxisEvent-class.html">ControllerAxisEvent</a></li>
+  <li class="self-crumb">ControllerAxisEvent const constructor</li>
+</ol>
+
+
+    <h5>ControllerAxisEvent class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../dart_sdl/ControllerAxisEvent-class.html#constructors">Constructors</a></li>
+    <li><a href="../../dart_sdl/ControllerAxisEvent/ControllerAxisEvent.html">ControllerAxisEvent</a></li>
+
+
+    <li class="section-title">
+      <a href="../../dart_sdl/ControllerAxisEvent-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../../dart_sdl/ControllerAxisEvent/axis.html">axis</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="../../dart_sdl/JoystickEvent/joystickId.html">joystickId</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li class="inherited"><a href="../../dart_sdl/Event/sdl.html">sdl</a></li>
+    <li><a href="../../dart_sdl/ControllerAxisEvent/smallValue.html">smallValue</a></li>
+    <li class="inherited"><a href="../../dart_sdl/Event/timestamp.html">timestamp</a></li>
+    <li><a href="../../dart_sdl/ControllerAxisEvent/value.html">value</a></li>
+
+    <li class="section-title inherited"><a href="../../dart_sdl/ControllerAxisEvent-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../../dart_sdl/ControllerAxisEvent-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

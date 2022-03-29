@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the toJoyHatValue method from the DartSdlIntExtension extension, for the Dart programming language.">
+  <title>toJoyHatValue method - DartSdlIntExtension extension - dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension.html">DartSdlIntExtension</a></li>
+    <li class="self-crumb">toJoyHatValue method</li>
+  </ol>
+  <div class="self-name">toJoyHatValue</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">toJoyHatValue</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="../../dart_sdl/JoyHatValue.html">JoyHatValue</a></span>
+<span class="name ">toJoyHatValue</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Get a joy hat value.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">JoyHatValue toJoyHatValue() {
+  switch (this) {
+    case SDL_HAT_LEFTUP:
+      return JoyHatValue.leftUp;
+    case SDL_HAT_UP:
+      return JoyHatValue.up;
+    case SDL_HAT_RIGHTUP:
+      return JoyHatValue.rightUp;
+    case SDL_HAT_LEFT:
+      return JoyHatValue.left;
+    case SDL_HAT_CENTERED:
+      return JoyHatValue.centered;
+    case SDL_HAT_RIGHT:
+      return JoyHatValue.right;
+    case SDL_HAT_LEFTDOWN:
+      return JoyHatValue.leftDown;
+    case SDL_HAT_DOWN:
+      return JoyHatValue.down;
+    case SDL_HAT_RIGHTDOWN:
+      return JoyHatValue.rightDown;
+    default:
+      throw SdlError(this, &#39;Invalid joy hat value.&#39;);
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/DartSdlIntExtension.html">DartSdlIntExtension</a></li>
+  <li class="self-crumb">toJoyHatValue method</li>
+</ol>
+
+
+    <h5>DartSdlIntExtension extension</h5>
+    <ol>
+
+
+
+
+
+    <li class="section-title"><a href="../../dart_sdl/DartSdlIntExtension.html#instance-methods">Methods</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toControllerTouchpadEventType.html">toControllerTouchpadEventType</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toDollarGestureEventType.html">toDollarGestureEventType</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toDropEventType.html">toDropEventType</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toGameControllerDeviceState.html">toGameControllerDeviceState</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toJoyHatValue.html">toJoyHatValue</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toJoystickDeviceState.html">toJoystickDeviceState</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toModifiersSet.html">toModifiersSet</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toPressedState.html">toPressedState</a></li>
+    <li><a href="../../dart_sdl/DartSdlIntExtension/toTouchEventType.html">toTouchEventType</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

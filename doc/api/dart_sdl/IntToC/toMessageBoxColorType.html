@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the toMessageBoxColorType method from the IntToC extension, for the Dart programming language.">
+  <title>toMessageBoxColorType method - IntToC extension - dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/IntToC.html">IntToC</a></li>
+    <li class="self-crumb">toMessageBoxColorType method</li>
+  </ol>
+  <div class="self-name">toMessageBoxColorType</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">toMessageBoxColorType</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="../../dart_sdl/MessageBoxColorType.html">MessageBoxColorType</a></span>
+<span class="name ">toMessageBoxColorType</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Convert from a <code>SDL_MessageBoxColorType</code> member.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">MessageBoxColorType toMessageBoxColorType() {
+  switch (this) {
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BACKGROUND:
+      return MessageBoxColorType.background;
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_TEXT:
+      return MessageBoxColorType.text;
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_BORDER:
+      return MessageBoxColorType.buttonBorder;
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND:
+      return MessageBoxColorType.buttonBackground;
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED:
+      return MessageBoxColorType.buttonSelected;
+    case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_MAX:
+      return MessageBoxColorType.max;
+    default:
+      throw SdlError(this, &#39;Unrecognised `SDL_MessageBoxColorType` member.&#39;);
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/IntToC.html">IntToC</a></li>
+  <li class="self-crumb">toMessageBoxColorType method</li>
+</ol>
+
+
+    <h5>IntToC extension</h5>
+    <ol>
+
+
+
+
+
+    <li class="section-title"><a href="../../dart_sdl/IntToC.html#instance-methods">Methods</a></li>
+    <li><a href="../../dart_sdl/IntToC/toArrayOrder.html">toArrayOrder</a></li>
+    <li><a href="../../dart_sdl/IntToC/toAssertState.html">toAssertState</a></li>
+    <li><a href="../../dart_sdl/IntToC/toAudioStatus.html">toAudioStatus</a></li>
+    <li><a href="../../dart_sdl/IntToC/toBitmapOrder.html">toBitmapOrder</a></li>
+    <li><a href="../../dart_sdl/IntToC/toBlendFactor.html">toBlendFactor</a></li>
+    <li><a href="../../dart_sdl/IntToC/toBlendMode.html">toBlendMode</a></li>
+    <li><a href="../../dart_sdl/IntToC/toBlendOperation.html">toBlendOperation</a></li>
+    <li><a href="../../dart_sdl/IntToC/toDisplayEventID.html">toDisplayEventID</a></li>
+    <li><a href="../../dart_sdl/IntToC/toDisplayOrientation.html">toDisplayOrientation</a></li>
+    <li><a href="../../dart_sdl/IntToC/toErrorCode.html">toErrorCode</a></li>
+    <li><a href="../../dart_sdl/IntToC/toEventAction.html">toEventAction</a></li>
+    <li><a href="../../dart_sdl/IntToC/toEventType.html">toEventType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toFlashOperation.html">toFlashOperation</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGameControllerAxis.html">toGameControllerAxis</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGameControllerBindType.html">toGameControllerBindType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGameControllerButton.html">toGameControllerButton</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGameControllerType.html">toGameControllerType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGLattr.html">toGLattr</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGLcontextFlag.html">toGLcontextFlag</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGLcontextReleaseFlag.html">toGLcontextReleaseFlag</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGLContextResetNotification.html">toGLContextResetNotification</a></li>
+    <li><a href="../../dart_sdl/IntToC/toGLprofile.html">toGLprofile</a></li>
+    <li><a href="../../dart_sdl/IntToC/toHintPriority.html">toHintPriority</a></li>
+    <li><a href="../../dart_sdl/IntToC/toHitTestResult.html">toHitTestResult</a></li>
+    <li><a href="../../dart_sdl/IntToC/toJoystickPowerLevel.html">toJoystickPowerLevel</a></li>
+    <li><a href="../../dart_sdl/IntToC/toJoystickType.html">toJoystickType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toLogCategory.html">toLogCategory</a></li>
+    <li><a href="../../dart_sdl/IntToC/toLogPriority.html">toLogPriority</a></li>
+    <li><a href="../../dart_sdl/IntToC/toMessageBoxButtonFlags.html">toMessageBoxButtonFlags</a></li>
+    <li><a href="../../dart_sdl/IntToC/toMessageBoxColorType.html">toMessageBoxColorType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toMessageBoxFlags.html">toMessageBoxFlags</a></li>
+    <li><a href="../../dart_sdl/IntToC/toMouseWheelDirection.html">toMouseWheelDirection</a></li>
+    <li><a href="../../dart_sdl/IntToC/toPackedLayout.html">toPackedLayout</a></li>
+    <li><a href="../../dart_sdl/IntToC/toPackedOrder.html">toPackedOrder</a></li>
+    <li><a href="../../dart_sdl/IntToC/toPixelFormat.html">toPixelFormat</a></li>
+    <li><a href="../../dart_sdl/IntToC/toPixelType.html">toPixelType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toPowerState.html">toPowerState</a></li>
+    <li><a href="../../dart_sdl/IntToC/toRendererFlags.html">toRendererFlags</a></li>
+    <li><a href="../../dart_sdl/IntToC/toRendererFlip.html">toRendererFlip</a></li>
+    <li><a href="../../dart_sdl/IntToC/toScaleMode.html">toScaleMode</a></li>
+    <li><a href="../../dart_sdl/IntToC/toSdlBool.html">toSdlBool</a></li>
+    <li><a href="../../dart_sdl/IntToC/toSensorType.html">toSensorType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toSystemCursor.html">toSystemCursor</a></li>
+    <li><a href="../../dart_sdl/IntToC/toTextureAccess.html">toTextureAccess</a></li>
+    <li><a href="../../dart_sdl/IntToC/toTextureModulate.html">toTextureModulate</a></li>
+    <li><a href="../../dart_sdl/IntToC/toThreadPriority.html">toThreadPriority</a></li>
+    <li><a href="../../dart_sdl/IntToC/toTouchDeviceType.html">toTouchDeviceType</a></li>
+    <li><a href="../../dart_sdl/IntToC/toWindowEventID.html">toWindowEventID</a></li>
+    <li><a href="../../dart_sdl/IntToC/toWindowFlags.html">toWindowFlags</a></li>
+    <li><a href="../../dart_sdl/IntToC/toYuvConversionMode.html">toYuvConversionMode</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

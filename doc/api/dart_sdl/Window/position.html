@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the position property from the Window class, for the Dart programming language.">
+  <title>position property - Window class - dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/Window-class.html">Window</a></li>
+    <li class="self-crumb">position property</li>
+  </ol>
+  <div class="self-name">position</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-property">position</span> property 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+
+        
+<section id="getter">
+
+<section class="multi-line-signature">
+  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-math/Point-class.html">Point</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  <span class="name ">position</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>Get the position of this window.</p>
+<p><a href="https://wiki.libsdl.org/SDL_GetWindowPosition">SDL Docs</a></p>
+</section>
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Point&lt;int&gt; get position {
+  sdl.sdl.SDL_GetWindowPosition(handle, sdl.xPointer, sdl.yPointer);
+  final pos = Point(sdl.xPointer.value, sdl.yPointer.value);
+  return pos;
+}</code></pre>
+</section>
+
+</section>
+
+
+        
+<section id="setter">
+
+<section class="multi-line-signature">
+  <span class="returntype">void</span>
+  <span class="name ">position=</span><span class="signature">(<wbr><span class="parameter" id="position=-param-pos"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-math/Point-class.html">Point</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">pos</span></span>)</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>Set the position of this window.</p>
+<p><a href="https://wiki.libsdl.org/SDL_SetWindowPosition">SDL Docs</a></p>
+</section>
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">set position(Point&lt;int&gt; pos) =&gt;
+    sdl.sdl.SDL_SetWindowPosition(handle, pos.x, pos.y);</code></pre>
+</section>
+
+</section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/Window-class.html">Window</a></li>
+  <li class="self-crumb">position property</li>
+</ol>
+
+
+    <h5>Window class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../dart_sdl/Window-class.html#constructors">Constructors</a></li>
+    <li><a href="../../dart_sdl/Window/Window.html">Window</a></li>
+    <li><a href="../../dart_sdl/Window/Window.fromId.html">fromId</a></li>
+
+
+    <li class="section-title">
+      <a href="../../dart_sdl/Window-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../../dart_sdl/Window/bordered.html">bordered</a></li>
+    <li><a href="../../dart_sdl/Window/bordersSize.html">bordersSize</a></li>
+    <li><a href="../../dart_sdl/Window/brightness.html">brightness</a></li>
+    <li><a href="../../dart_sdl/Window/display.html">display</a></li>
+    <li><a href="../../dart_sdl/Window/displayIndex.html">displayIndex</a></li>
+    <li><a href="../../dart_sdl/Window/displayMode.html">displayMode</a></li>
+    <li><a href="../../dart_sdl/Window/flags.html">flags</a></li>
+    <li><a href="../../dart_sdl/Window/fullscreen.html">fullscreen</a></li>
+    <li><a href="../../dart_sdl/Window/grab.html">grab</a></li>
+    <li class="inherited"><a href="../../dart_sdl/Window/handle.html">handle</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li><a href="../../dart_sdl/Window/id.html">id</a></li>
+    <li><a href="../../dart_sdl/Window/isScreenKeyboardShown.html">isScreenKeyboardShown</a></li>
+    <li><a href="../../dart_sdl/Window/maximumSize.html">maximumSize</a></li>
+    <li><a href="../../dart_sdl/Window/minimumSize.html">minimumSize</a></li>
+    <li><a href="../../dart_sdl/Window/modalFor.html">modalFor</a></li>
+    <li><a href="../../dart_sdl/Window/opacity.html">opacity</a></li>
+    <li><a href="../../dart_sdl/Window/position.html">position</a></li>
+    <li><a href="../../dart_sdl/Window/resizeable.html">resizeable</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li class="inherited"><a href="../../dart_sdl/Window/sdl.html">sdl</a></li>
+    <li><a href="../../dart_sdl/Window/size.html">size</a></li>
+    <li><a href="../../dart_sdl/Window/title.html">title</a></li>
+
+    <li class="section-title"><a href="../../dart_sdl/Window-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../dart_sdl/Window/destroy.html">destroy</a></li>
+    <li><a href="../../dart_sdl/Window/hide.html">hide</a></li>
+    <li><a href="../../dart_sdl/Window/maximise.html">maximise</a></li>
+    <li><a href="../../dart_sdl/Window/minimise.html">minimise</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../../dart_sdl/Window/raise.html">raise</a></li>
+    <li><a href="../../dart_sdl/Window/restoreWindow.html">restoreWindow</a></li>
+    <li><a href="../../dart_sdl/Window/setInputFocus.html">setInputFocus</a></li>
+    <li><a href="../../dart_sdl/Window/show.html">show</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+    <li><a href="../../dart_sdl/Window/warpMouse.html">warpMouse</a></li>
+
+    <li class="section-title inherited"><a href="../../dart_sdl/Window-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

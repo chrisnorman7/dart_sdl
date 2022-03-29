@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the toSdlValue method from the SdlScancodeValueExtension extension, for the Dart programming language.">
+  <title>toSdlValue method - SdlScancodeValueExtension extension - dart_sdl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+    <li><a href="../../dart_sdl/SdlScancodeValueExtension.html">SdlScancodeValueExtension</a></li>
+    <li class="self-crumb">toSdlValue method</li>
+  </ol>
+  <div class="self-name">toSdlValue</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">toSdlValue</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+<span class="name ">toSdlValue</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Convert this value to an SDL value.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">int toSdlValue() {
+  switch (this) {
+    case ScanCode.unknown:
+      return SDL_Scancode.SDL_SCANCODE_UNKNOWN;
+    case ScanCode.a:
+      return SDL_Scancode.SDL_SCANCODE_A;
+    case ScanCode.b:
+      return SDL_Scancode.SDL_SCANCODE_B;
+    case ScanCode.c:
+      return SDL_Scancode.SDL_SCANCODE_C;
+    case ScanCode.d:
+      return SDL_Scancode.SDL_SCANCODE_D;
+    case ScanCode.e:
+      return SDL_Scancode.SDL_SCANCODE_E;
+    case ScanCode.f:
+      return SDL_Scancode.SDL_SCANCODE_F;
+    case ScanCode.g:
+      return SDL_Scancode.SDL_SCANCODE_G;
+    case ScanCode.h:
+      return SDL_Scancode.SDL_SCANCODE_H;
+    case ScanCode.i:
+      return SDL_Scancode.SDL_SCANCODE_I;
+    case ScanCode.j:
+      return SDL_Scancode.SDL_SCANCODE_J;
+    case ScanCode.k:
+      return SDL_Scancode.SDL_SCANCODE_K;
+    case ScanCode.l:
+      return SDL_Scancode.SDL_SCANCODE_L;
+    case ScanCode.m:
+      return SDL_Scancode.SDL_SCANCODE_M;
+    case ScanCode.n:
+      return SDL_Scancode.SDL_SCANCODE_N;
+    case ScanCode.o:
+      return SDL_Scancode.SDL_SCANCODE_O;
+    case ScanCode.p:
+      return SDL_Scancode.SDL_SCANCODE_P;
+    case ScanCode.q:
+      return SDL_Scancode.SDL_SCANCODE_Q;
+    case ScanCode.r:
+      return SDL_Scancode.SDL_SCANCODE_R;
+    case ScanCode.s:
+      return SDL_Scancode.SDL_SCANCODE_S;
+    case ScanCode.t:
+      return SDL_Scancode.SDL_SCANCODE_T;
+    case ScanCode.u:
+      return SDL_Scancode.SDL_SCANCODE_U;
+    case ScanCode.v:
+      return SDL_Scancode.SDL_SCANCODE_V;
+    case ScanCode.w:
+      return SDL_Scancode.SDL_SCANCODE_W;
+    case ScanCode.x:
+      return SDL_Scancode.SDL_SCANCODE_X;
+    case ScanCode.y:
+      return SDL_Scancode.SDL_SCANCODE_Y;
+    case ScanCode.z:
+      return SDL_Scancode.SDL_SCANCODE_Z;
+    case ScanCode.digit1:
+      return SDL_Scancode.SDL_SCANCODE_1;
+    case ScanCode.digit2:
+      return SDL_Scancode.SDL_SCANCODE_2;
+    case ScanCode.digit3:
+      return SDL_Scancode.SDL_SCANCODE_3;
+    case ScanCode.digit4:
+      return SDL_Scancode.SDL_SCANCODE_4;
+    case ScanCode.digit5:
+      return SDL_Scancode.SDL_SCANCODE_5;
+    case ScanCode.digit6:
+      return SDL_Scancode.SDL_SCANCODE_6;
+    case ScanCode.digit7:
+      return SDL_Scancode.SDL_SCANCODE_7;
+    case ScanCode.digit8:
+      return SDL_Scancode.SDL_SCANCODE_8;
+    case ScanCode.digit9:
+      return SDL_Scancode.SDL_SCANCODE_9;
+    case ScanCode.digit0:
+      return SDL_Scancode.SDL_SCANCODE_0;
+    case ScanCode.return_:
+      return SDL_Scancode.SDL_SCANCODE_RETURN;
+    case ScanCode.escape:
+      return SDL_Scancode.SDL_SCANCODE_ESCAPE;
+    case ScanCode.backspace:
+      return SDL_Scancode.SDL_SCANCODE_BACKSPACE;
+    case ScanCode.tab:
+      return SDL_Scancode.SDL_SCANCODE_TAB;
+    case ScanCode.space:
+      return SDL_Scancode.SDL_SCANCODE_SPACE;
+    case ScanCode.minus:
+      return SDL_Scancode.SDL_SCANCODE_MINUS;
+    case ScanCode.equals:
+      return SDL_Scancode.SDL_SCANCODE_EQUALS;
+    case ScanCode.leftbracket:
+      return SDL_Scancode.SDL_SCANCODE_LEFTBRACKET;
+    case ScanCode.rightbracket:
+      return SDL_Scancode.SDL_SCANCODE_RIGHTBRACKET;
+    case ScanCode.backslash:
+      return SDL_Scancode.SDL_SCANCODE_BACKSLASH;
+    case ScanCode.nonushash:
+      return SDL_Scancode.SDL_SCANCODE_NONUSHASH;
+    case ScanCode.semicolon:
+      return SDL_Scancode.SDL_SCANCODE_SEMICOLON;
+    case ScanCode.apostrophe:
+      return SDL_Scancode.SDL_SCANCODE_APOSTROPHE;
+    case ScanCode.grave:
+      return SDL_Scancode.SDL_SCANCODE_GRAVE;
+    case ScanCode.comma:
+      return SDL_Scancode.SDL_SCANCODE_COMMA;
+    case ScanCode.period:
+      return SDL_Scancode.SDL_SCANCODE_PERIOD;
+    case ScanCode.slash:
+      return SDL_Scancode.SDL_SCANCODE_SLASH;
+    case ScanCode.capslock:
+      return SDL_Scancode.SDL_SCANCODE_CAPSLOCK;
+    case ScanCode.f1:
+      return SDL_Scancode.SDL_SCANCODE_F1;
+    case ScanCode.f2:
+      return SDL_Scancode.SDL_SCANCODE_F2;
+    case ScanCode.f3:
+      return SDL_Scancode.SDL_SCANCODE_F3;
+    case ScanCode.f4:
+      return SDL_Scancode.SDL_SCANCODE_F4;
+    case ScanCode.f5:
+      return SDL_Scancode.SDL_SCANCODE_F5;
+    case ScanCode.f6:
+      return SDL_Scancode.SDL_SCANCODE_F6;
+    case ScanCode.f7:
+      return SDL_Scancode.SDL_SCANCODE_F7;
+    case ScanCode.f8:
+      return SDL_Scancode.SDL_SCANCODE_F8;
+    case ScanCode.f9:
+      return SDL_Scancode.SDL_SCANCODE_F9;
+    case ScanCode.f10:
+      return SDL_Scancode.SDL_SCANCODE_F10;
+    case ScanCode.f11:
+      return SDL_Scancode.SDL_SCANCODE_F11;
+    case ScanCode.f12:
+      return SDL_Scancode.SDL_SCANCODE_F12;
+    case ScanCode.printscreen:
+      return SDL_Scancode.SDL_SCANCODE_PRINTSCREEN;
+    case ScanCode.scrolllock:
+      return SDL_Scancode.SDL_SCANCODE_SCROLLLOCK;
+    case ScanCode.pause:
+      return SDL_Scancode.SDL_SCANCODE_PAUSE;
+    case ScanCode.insert:
+      return SDL_Scancode.SDL_SCANCODE_INSERT;
+    case ScanCode.home:
+      return SDL_Scancode.SDL_SCANCODE_HOME;
+    case ScanCode.pageup:
+      return SDL_Scancode.SDL_SCANCODE_PAGEUP;
+    case ScanCode.delete:
+      return SDL_Scancode.SDL_SCANCODE_DELETE;
+    case ScanCode.end:
+      return SDL_Scancode.SDL_SCANCODE_END;
+    case ScanCode.pagedown:
+      return SDL_Scancode.SDL_SCANCODE_PAGEDOWN;
+    case ScanCode.right:
+      return SDL_Scancode.SDL_SCANCODE_RIGHT;
+    case ScanCode.left:
+      return SDL_Scancode.SDL_SCANCODE_LEFT;
+    case ScanCode.down:
+      return SDL_Scancode.SDL_SCANCODE_DOWN;
+    case ScanCode.up:
+      return SDL_Scancode.SDL_SCANCODE_UP;
+    case ScanCode.numlockclear:
+      return SDL_Scancode.SDL_SCANCODE_NUMLOCKCLEAR;
+    case ScanCode.kp_divide:
+      return SDL_Scancode.SDL_SCANCODE_KP_DIVIDE;
+    case ScanCode.kp_multiply:
+      return SDL_Scancode.SDL_SCANCODE_KP_MULTIPLY;
+    case ScanCode.kp_minus:
+      return SDL_Scancode.SDL_SCANCODE_KP_MINUS;
+    case ScanCode.kp_plus:
+      return SDL_Scancode.SDL_SCANCODE_KP_PLUS;
+    case ScanCode.kp_enter:
+      return SDL_Scancode.SDL_SCANCODE_KP_ENTER;
+    case ScanCode.kp_1:
+      return SDL_Scancode.SDL_SCANCODE_KP_1;
+    case ScanCode.kp_2:
+      return SDL_Scancode.SDL_SCANCODE_KP_2;
+    case ScanCode.kp_3:
+      return SDL_Scancode.SDL_SCANCODE_KP_3;
+    case ScanCode.kp_4:
+      return SDL_Scancode.SDL_SCANCODE_KP_4;
+    case ScanCode.kp_5:
+      return SDL_Scancode.SDL_SCANCODE_KP_5;
+    case ScanCode.kp_6:
+      return SDL_Scancode.SDL_SCANCODE_KP_6;
+    case ScanCode.kp_7:
+      return SDL_Scancode.SDL_SCANCODE_KP_7;
+    case ScanCode.kp_8:
+      return SDL_Scancode.SDL_SCANCODE_KP_8;
+    case ScanCode.kp_9:
+      return SDL_Scancode.SDL_SCANCODE_KP_9;
+    case ScanCode.kp_0:
+      return SDL_Scancode.SDL_SCANCODE_KP_0;
+    case ScanCode.kp_period:
+      return SDL_Scancode.SDL_SCANCODE_KP_PERIOD;
+    case ScanCode.nonusbackslash:
+      return SDL_Scancode.SDL_SCANCODE_NONUSBACKSLASH;
+    case ScanCode.application:
+      return SDL_Scancode.SDL_SCANCODE_APPLICATION;
+    case ScanCode.power:
+      return SDL_Scancode.SDL_SCANCODE_POWER;
+    case ScanCode.kp_equals:
+      return SDL_Scancode.SDL_SCANCODE_KP_EQUALS;
+    case ScanCode.f13:
+      return SDL_Scancode.SDL_SCANCODE_F13;
+    case ScanCode.f14:
+      return SDL_Scancode.SDL_SCANCODE_F14;
+    case ScanCode.f15:
+      return SDL_Scancode.SDL_SCANCODE_F15;
+    case ScanCode.f16:
+      return SDL_Scancode.SDL_SCANCODE_F16;
+    case ScanCode.f17:
+      return SDL_Scancode.SDL_SCANCODE_F17;
+    case ScanCode.f18:
+      return SDL_Scancode.SDL_SCANCODE_F18;
+    case ScanCode.f19:
+      return SDL_Scancode.SDL_SCANCODE_F19;
+    case ScanCode.f20:
+      return SDL_Scancode.SDL_SCANCODE_F20;
+    case ScanCode.f21:
+      return SDL_Scancode.SDL_SCANCODE_F21;
+    case ScanCode.f22:
+      return SDL_Scancode.SDL_SCANCODE_F22;
+    case ScanCode.f23:
+      return SDL_Scancode.SDL_SCANCODE_F23;
+    case ScanCode.f24:
+      return SDL_Scancode.SDL_SCANCODE_F24;
+    case ScanCode.execute:
+      return SDL_Scancode.SDL_SCANCODE_EXECUTE;
+    case ScanCode.help:
+      return SDL_Scancode.SDL_SCANCODE_HELP;
+    case ScanCode.menu:
+      return SDL_Scancode.SDL_SCANCODE_MENU;
+    case ScanCode.select:
+      return SDL_Scancode.SDL_SCANCODE_SELECT;
+    case ScanCode.stop:
+      return SDL_Scancode.SDL_SCANCODE_STOP;
+    case ScanCode.again:
+      return SDL_Scancode.SDL_SCANCODE_AGAIN;
+    case ScanCode.undo:
+      return SDL_Scancode.SDL_SCANCODE_UNDO;
+    case ScanCode.cut:
+      return SDL_Scancode.SDL_SCANCODE_CUT;
+    case ScanCode.copy:
+      return SDL_Scancode.SDL_SCANCODE_COPY;
+    case ScanCode.paste:
+      return SDL_Scancode.SDL_SCANCODE_PASTE;
+    case ScanCode.find:
+      return SDL_Scancode.SDL_SCANCODE_FIND;
+    case ScanCode.mute:
+      return SDL_Scancode.SDL_SCANCODE_MUTE;
+    case ScanCode.volumeup:
+      return SDL_Scancode.SDL_SCANCODE_VOLUMEUP;
+    case ScanCode.volumedown:
+      return SDL_Scancode.SDL_SCANCODE_VOLUMEDOWN;
+    case ScanCode.kp_comma:
+      return SDL_Scancode.SDL_SCANCODE_KP_COMMA;
+    case ScanCode.kp_equalsas400:
+      return SDL_Scancode.SDL_SCANCODE_KP_EQUALSAS400;
+    case ScanCode.international1:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL1;
+    case ScanCode.international2:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL2;
+    case ScanCode.international3:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL3;
+    case ScanCode.international4:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL4;
+    case ScanCode.international5:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL5;
+    case ScanCode.international6:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL6;
+    case ScanCode.international7:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL7;
+    case ScanCode.international8:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL8;
+    case ScanCode.international9:
+      return SDL_Scancode.SDL_SCANCODE_INTERNATIONAL9;
+    case ScanCode.lang1:
+      return SDL_Scancode.SDL_SCANCODE_LANG1;
+    case ScanCode.lang2:
+      return SDL_Scancode.SDL_SCANCODE_LANG2;
+    case ScanCode.lang3:
+      return SDL_Scancode.SDL_SCANCODE_LANG3;
+    case ScanCode.lang4:
+      return SDL_Scancode.SDL_SCANCODE_LANG4;
+    case ScanCode.lang5:
+      return SDL_Scancode.SDL_SCANCODE_LANG5;
+    case ScanCode.lang6:
+      return SDL_Scancode.SDL_SCANCODE_LANG6;
+    case ScanCode.lang7:
+      return SDL_Scancode.SDL_SCANCODE_LANG7;
+    case ScanCode.lang8:
+      return SDL_Scancode.SDL_SCANCODE_LANG8;
+    case ScanCode.lang9:
+      return SDL_Scancode.SDL_SCANCODE_LANG9;
+    case ScanCode.alterase:
+      return SDL_Scancode.SDL_SCANCODE_ALTERASE;
+    case ScanCode.sysreq:
+      return SDL_Scancode.SDL_SCANCODE_SYSREQ;
+    case ScanCode.cancel:
+      return SDL_Scancode.SDL_SCANCODE_CANCEL;
+    case ScanCode.clear:
+      return SDL_Scancode.SDL_SCANCODE_CLEAR;
+    case ScanCode.prior:
+      return SDL_Scancode.SDL_SCANCODE_PRIOR;
+    case ScanCode.return2:
+      return SDL_Scancode.SDL_SCANCODE_RETURN2;
+    case ScanCode.separator:
+      return SDL_Scancode.SDL_SCANCODE_SEPARATOR;
+    case ScanCode.out:
+      return SDL_Scancode.SDL_SCANCODE_OUT;
+    case ScanCode.oper:
+      return SDL_Scancode.SDL_SCANCODE_OPER;
+    case ScanCode.clearagain:
+      return SDL_Scancode.SDL_SCANCODE_CLEARAGAIN;
+    case ScanCode.crsel:
+      return SDL_Scancode.SDL_SCANCODE_CRSEL;
+    case ScanCode.exsel:
+      return SDL_Scancode.SDL_SCANCODE_EXSEL;
+    case ScanCode.kp_00:
+      return SDL_Scancode.SDL_SCANCODE_KP_00;
+    case ScanCode.kp_000:
+      return SDL_Scancode.SDL_SCANCODE_KP_000;
+    case ScanCode.thousandsseparator:
+      return SDL_Scancode.SDL_SCANCODE_THOUSANDSSEPARATOR;
+    case ScanCode.decimalseparator:
+      return SDL_Scancode.SDL_SCANCODE_DECIMALSEPARATOR;
+    case ScanCode.currencyunit:
+      return SDL_Scancode.SDL_SCANCODE_CURRENCYUNIT;
+    case ScanCode.currencysubunit:
+      return SDL_Scancode.SDL_SCANCODE_CURRENCYSUBUNIT;
+    case ScanCode.kp_leftparen:
+      return SDL_Scancode.SDL_SCANCODE_KP_LEFTPAREN;
+    case ScanCode.kp_rightparen:
+      return SDL_Scancode.SDL_SCANCODE_KP_RIGHTPAREN;
+    case ScanCode.kp_leftbrace:
+      return SDL_Scancode.SDL_SCANCODE_KP_LEFTBRACE;
+    case ScanCode.kp_rightbrace:
+      return SDL_Scancode.SDL_SCANCODE_KP_RIGHTBRACE;
+    case ScanCode.kp_tab:
+      return SDL_Scancode.SDL_SCANCODE_KP_TAB;
+    case ScanCode.kp_backspace:
+      return SDL_Scancode.SDL_SCANCODE_KP_BACKSPACE;
+    case ScanCode.kp_a:
+      return SDL_Scancode.SDL_SCANCODE_KP_A;
+    case ScanCode.kp_b:
+      return SDL_Scancode.SDL_SCANCODE_KP_B;
+    case ScanCode.kp_c:
+      return SDL_Scancode.SDL_SCANCODE_KP_C;
+    case ScanCode.kp_d:
+      return SDL_Scancode.SDL_SCANCODE_KP_D;
+    case ScanCode.kp_e:
+      return SDL_Scancode.SDL_SCANCODE_KP_E;
+    case ScanCode.kp_f:
+      return SDL_Scancode.SDL_SCANCODE_KP_F;
+    case ScanCode.kp_xor:
+      return SDL_Scancode.SDL_SCANCODE_KP_XOR;
+    case ScanCode.kp_power:
+      return SDL_Scancode.SDL_SCANCODE_KP_POWER;
+    case ScanCode.kp_percent:
+      return SDL_Scancode.SDL_SCANCODE_KP_PERCENT;
+    case ScanCode.kp_less:
+      return SDL_Scancode.SDL_SCANCODE_KP_LESS;
+    case ScanCode.kp_greater:
+      return SDL_Scancode.SDL_SCANCODE_KP_GREATER;
+    case ScanCode.kp_ampersand:
+      return SDL_Scancode.SDL_SCANCODE_KP_AMPERSAND;
+    case ScanCode.kp_dblampersand:
+      return SDL_Scancode.SDL_SCANCODE_KP_DBLAMPERSAND;
+    case ScanCode.kp_verticalbar:
+      return SDL_Scancode.SDL_SCANCODE_KP_VERTICALBAR;
+    case ScanCode.kp_dblverticalbar:
+      return SDL_Scancode.SDL_SCANCODE_KP_DBLVERTICALBAR;
+    case ScanCode.kp_colon:
+      return SDL_Scancode.SDL_SCANCODE_KP_COLON;
+    case ScanCode.kp_hash:
+      return SDL_Scancode.SDL_SCANCODE_KP_HASH;
+    case ScanCode.kp_space:
+      return SDL_Scancode.SDL_SCANCODE_KP_SPACE;
+    case ScanCode.kp_at:
+      return SDL_Scancode.SDL_SCANCODE_KP_AT;
+    case ScanCode.kp_exclam:
+      return SDL_Scancode.SDL_SCANCODE_KP_EXCLAM;
+    case ScanCode.kp_memstore:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMSTORE;
+    case ScanCode.kp_memrecall:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMRECALL;
+    case ScanCode.kp_memclear:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMCLEAR;
+    case ScanCode.kp_memadd:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMADD;
+    case ScanCode.kp_memsubtract:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMSUBTRACT;
+    case ScanCode.kp_memmultiply:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMMULTIPLY;
+    case ScanCode.kp_memdivide:
+      return SDL_Scancode.SDL_SCANCODE_KP_MEMDIVIDE;
+    case ScanCode.kp_plusminus:
+      return SDL_Scancode.SDL_SCANCODE_KP_PLUSMINUS;
+    case ScanCode.kp_clear:
+      return SDL_Scancode.SDL_SCANCODE_KP_CLEAR;
+    case ScanCode.kp_clearentry:
+      return SDL_Scancode.SDL_SCANCODE_KP_CLEARENTRY;
+    case ScanCode.kp_binary:
+      return SDL_Scancode.SDL_SCANCODE_KP_BINARY;
+    case ScanCode.kp_octal:
+      return SDL_Scancode.SDL_SCANCODE_KP_OCTAL;
+    case ScanCode.kp_decimal:
+      return SDL_Scancode.SDL_SCANCODE_KP_DECIMAL;
+    case ScanCode.kp_hexadecimal:
+      return SDL_Scancode.SDL_SCANCODE_KP_HEXADECIMAL;
+    case ScanCode.lctrl:
+      return SDL_Scancode.SDL_SCANCODE_LCTRL;
+    case ScanCode.lshift:
+      return SDL_Scancode.SDL_SCANCODE_LSHIFT;
+    case ScanCode.lalt:
+      return SDL_Scancode.SDL_SCANCODE_LALT;
+    case ScanCode.lgui:
+      return SDL_Scancode.SDL_SCANCODE_LGUI;
+    case ScanCode.rctrl:
+      return SDL_Scancode.SDL_SCANCODE_RCTRL;
+    case ScanCode.rshift:
+      return SDL_Scancode.SDL_SCANCODE_RSHIFT;
+    case ScanCode.ralt:
+      return SDL_Scancode.SDL_SCANCODE_RALT;
+    case ScanCode.rgui:
+      return SDL_Scancode.SDL_SCANCODE_RGUI;
+    case ScanCode.mode:
+      return SDL_Scancode.SDL_SCANCODE_MODE;
+    case ScanCode.audionext:
+      return SDL_Scancode.SDL_SCANCODE_AUDIONEXT;
+    case ScanCode.audioprev:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOPREV;
+    case ScanCode.audiostop:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOSTOP;
+    case ScanCode.audioplay:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOPLAY;
+    case ScanCode.audiomute:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOMUTE;
+    case ScanCode.mediaselect:
+      return SDL_Scancode.SDL_SCANCODE_MEDIASELECT;
+    case ScanCode.www:
+      return SDL_Scancode.SDL_SCANCODE_WWW;
+    case ScanCode.mail:
+      return SDL_Scancode.SDL_SCANCODE_MAIL;
+    case ScanCode.calculator:
+      return SDL_Scancode.SDL_SCANCODE_CALCULATOR;
+    case ScanCode.computer:
+      return SDL_Scancode.SDL_SCANCODE_COMPUTER;
+    case ScanCode.ac_search:
+      return SDL_Scancode.SDL_SCANCODE_AC_SEARCH;
+    case ScanCode.ac_home:
+      return SDL_Scancode.SDL_SCANCODE_AC_HOME;
+    case ScanCode.ac_back:
+      return SDL_Scancode.SDL_SCANCODE_AC_BACK;
+    case ScanCode.ac_forward:
+      return SDL_Scancode.SDL_SCANCODE_AC_FORWARD;
+    case ScanCode.ac_stop:
+      return SDL_Scancode.SDL_SCANCODE_AC_STOP;
+    case ScanCode.ac_refresh:
+      return SDL_Scancode.SDL_SCANCODE_AC_REFRESH;
+    case ScanCode.ac_bookmarks:
+      return SDL_Scancode.SDL_SCANCODE_AC_BOOKMARKS;
+    case ScanCode.brightnessdown:
+      return SDL_Scancode.SDL_SCANCODE_BRIGHTNESSDOWN;
+    case ScanCode.brightnessup:
+      return SDL_Scancode.SDL_SCANCODE_BRIGHTNESSUP;
+    case ScanCode.displayswitch:
+      return SDL_Scancode.SDL_SCANCODE_DISPLAYSWITCH;
+    case ScanCode.kbdillumtoggle:
+      return SDL_Scancode.SDL_SCANCODE_KBDILLUMTOGGLE;
+    case ScanCode.kbdillumdown:
+      return SDL_Scancode.SDL_SCANCODE_KBDILLUMDOWN;
+    case ScanCode.kbdillumup:
+      return SDL_Scancode.SDL_SCANCODE_KBDILLUMUP;
+    case ScanCode.eject:
+      return SDL_Scancode.SDL_SCANCODE_EJECT;
+    case ScanCode.sleep:
+      return SDL_Scancode.SDL_SCANCODE_SLEEP;
+    case ScanCode.app1:
+      return SDL_Scancode.SDL_SCANCODE_APP1;
+    case ScanCode.app2:
+      return SDL_Scancode.SDL_SCANCODE_APP2;
+    case ScanCode.audiorewind:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOREWIND;
+    case ScanCode.audiofastforward:
+      return SDL_Scancode.SDL_SCANCODE_AUDIOFASTFORWARD;
+    case ScanCode.num_scancodes:
+      return SDL_Scancode.SDL_NUM_SCANCODES;
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/dart_sdl-library.html">dart_sdl</a></li>
+  <li><a href="../../dart_sdl/SdlScancodeValueExtension.html">SdlScancodeValueExtension</a></li>
+  <li class="self-crumb">toSdlValue method</li>
+</ol>
+
+
+    <h5>SdlScancodeValueExtension extension</h5>
+    <ol>
+
+
+
+
+
+    <li class="section-title"><a href="../../dart_sdl/SdlScancodeValueExtension.html#instance-methods">Methods</a></li>
+    <li><a href="../../dart_sdl/SdlScancodeValueExtension/toSdlValue.html">toSdlValue</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    dart_sdl
+      0.9.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
