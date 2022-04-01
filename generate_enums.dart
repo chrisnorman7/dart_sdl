@@ -161,10 +161,10 @@ class EnumMember {
   final String value;
 
   /// Get the fully qualified enum member name.
-  String getEnumMemberName(CEnum e) => '${e.cName}.$cPrefix$cName';
+  String getEnumMemberName(final CEnum e) => '${e.cName}.$cPrefix$cName';
 
   /// Get the fully qualified Dart member name.
-  String getDartMemberName(CEnum e) => '${e.dartName}.$dartName';
+  String getDartMemberName(final CEnum e) => '${e.dartName}.$dartName';
 }
 
 /// An enum to be written to disk.
@@ -187,8 +187,11 @@ class CEnum {
 }
 
 /// Generate a dart name from [cName].
-String getDartName(String cName,
-    {bool capitaliseFirst = false, bool lowerCaseRest = true}) {
+String getDartName(
+  final String cName, {
+  final bool capitaliseFirst = false,
+  final bool lowerCaseRest = true,
+}) {
   final names = <String>[];
   for (final name in cName.split('_')) {
     var rest = name.substring(1);
@@ -271,7 +274,10 @@ Future<void> main() async {
           dartMemberName = getDartName(dartMemberName);
         }
         final enumMember = EnumMember(
-            dartName: dartMemberName, cName: memberName, value: memberValue);
+          dartName: dartMemberName,
+          cName: memberName,
+          value: memberValue,
+        );
         print('${enumMember.cName} -> ${enumMember.dartName}.');
         currentEnum.members.add(enumMember);
       }
@@ -325,7 +331,7 @@ Future<void> main() async {
     buffer
       ..writeln('default:')
       ..writeln('throw $errorClassName(')
-      ..writeln("this, 'Unrecognised `${e.cName}` member.');")
+      ..writeln("this, 'Unrecognised `${e.cName}` member.',);")
       ..writeln('}}');
   }
   buffer.writeln('}');

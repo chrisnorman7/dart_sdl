@@ -9,24 +9,26 @@ import 'base.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_DollarGestureEvent)
 class DollarGestureEvent extends Event with CoordinatesMixin<double> {
   /// Create an event.
-  DollarGestureEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.type,
-      required this.touchId,
-      required this.gestureId,
-      required this.numFingers,
-      required this.error,
-      required double x,
-      required double y})
-      : super(sdl, timestamp) {
+  DollarGestureEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.type,
+    required this.touchId,
+    required this.gestureId,
+    required this.numFingers,
+    required this.error,
+    required final double x,
+    required final double y,
+  }) : super(sdl, timestamp) {
     this.x = x;
     this.y = y;
   }
 
   /// Create an instance from an SDL event.
-  DollarGestureEvent.fromSdlEvent(Sdl sdl, SDL_DollarGestureEvent event)
-      : error = event.error,
+  DollarGestureEvent.fromSdlEvent(
+    final Sdl sdl,
+    final SDL_DollarGestureEvent event,
+  )   : error = event.error,
         gestureId = event.gestureId,
         numFingers = event.numFingers,
         touchId = event.touchId,
@@ -55,16 +57,16 @@ class DollarGestureEvent extends Event with CoordinatesMixin<double> {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MultiGestureEvent)
 class MultiGestureEvent extends Event with CoordinatesMixin<double> {
   /// Create an event.
-  MultiGestureEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.touchId,
-      required this.dTheta,
-      required this.dDist,
-      required this.numFingers,
-      required double x,
-      required double y})
-      : super(sdl, timestamp) {
+  MultiGestureEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.touchId,
+    required this.dTheta,
+    required this.dDist,
+    required this.numFingers,
+    required final double x,
+    required final double y,
+  }) : super(sdl, timestamp) {
     this.x = x;
     this.y = y;
   }

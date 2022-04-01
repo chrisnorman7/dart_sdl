@@ -64,7 +64,8 @@ class Display {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDisplayUsableBounds)
   Rectangle get usableBounds {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_GetDisplayUsableBounds(index, sdl.rectPointer));
+      sdl.sdl.SDL_GetDisplayUsableBounds(index, sdl.rectPointer),
+    );
     final r = sdl.rectPointer.ref;
     return Rectangle(r.x, r.y, r.w, r.h);
   }
@@ -74,7 +75,8 @@ class Display {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDesktopDisplayMode)
   DisplayMode get desktopMode {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_GetDesktopDisplayMode(index, sdl.displayModePointer));
+      sdl.sdl.SDL_GetDesktopDisplayMode(index, sdl.displayModePointer),
+    );
     final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }
@@ -82,9 +84,10 @@ class Display {
   /// Get display mode.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetDisplayMode)
-  DisplayMode getMode(int modeIndex) {
+  DisplayMode getMode(final int modeIndex) {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_GetDisplayMode(index, modeIndex, sdl.displayModePointer));
+      sdl.sdl.SDL_GetDisplayMode(index, modeIndex, sdl.displayModePointer),
+    );
     final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }

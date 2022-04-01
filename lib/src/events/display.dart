@@ -7,19 +7,19 @@ import 'base.dart';
 /// A generic display event.
 class DisplayEvent extends Event {
   /// Create an event.
-  const DisplayEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.displayIndex,
-      required this.eventID,
-      required this.padding1,
-      required this.padding2,
-      required this.padding3,
-      required this.data1})
-      : super(sdl, timestamp);
+  const DisplayEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.displayIndex,
+    required this.eventID,
+    required this.padding1,
+    required this.padding2,
+    required this.padding3,
+    required this.data1,
+  }) : super(sdl, timestamp);
 
   /// Create an instance from [event].
-  DisplayEvent.fromEvent(Sdl sdl, SDL_Event event)
+  DisplayEvent.fromEvent(final Sdl sdl, final SDL_Event event)
       : data1 = event.display.data1,
         displayIndex = event.display.display,
         eventID = event.display.event.toDisplayEventID(),

@@ -13,37 +13,41 @@ class TouchFingerEvent extends Event
     with WindowMixin, CoordinatesMixin<double> {
   /// Create an event.
   TouchFingerEvent(
-      Sdl sdl,
-      int timestamp,
-      this.type,
-      this.touchId,
-      this.fingerId,
-      double x,
-      double y,
-      this.distanceX,
-      this.distanceY,
-      this.pressure,
-      int windowId)
-      : super(sdl, timestamp) {
+    final Sdl sdl,
+    final int timestamp,
+    this.type,
+    this.touchId,
+    this.fingerId,
+    final double x,
+    final double y,
+    this.distanceX,
+    this.distanceY,
+    this.pressure,
+    final int windowId,
+  ) : super(sdl, timestamp) {
     this.windowId = windowId;
     this.x = x;
     this.y = y;
   }
 
   /// Create an instance from an SDL event.
-  factory TouchFingerEvent.fromSdlEvent(Sdl sdl, SDL_TouchFingerEvent event) =>
+  factory TouchFingerEvent.fromSdlEvent(
+    final Sdl sdl,
+    final SDL_TouchFingerEvent event,
+  ) =>
       TouchFingerEvent(
-          sdl,
-          event.timestamp,
-          event.type.toTouchEventType(),
-          event.touchId,
-          event.fingerId,
-          event.x,
-          event.y,
-          event.dx,
-          event.dy,
-          event.pressure,
-          event.windowID);
+        sdl,
+        event.timestamp,
+        event.type.toTouchEventType(),
+        event.touchId,
+        event.fingerId,
+        event.x,
+        event.y,
+        event.dx,
+        event.dy,
+        event.pressure,
+        event.windowID,
+      );
 
   /// The type of this event.
   final TouchFingerEventType type;

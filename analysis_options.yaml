@@ -14,58 +14,104 @@ linter:
     - always_put_required_named_parameters_first
     - always_require_non_null_named_parameters
     - annotate_overrides
+    - avoid_catches_without_on_clauses
+    - avoid_catching_errors
+    - avoid_double_and_int_checks
     - avoid_dynamic_calls
     - avoid_empty_else
     - avoid_escaping_inner_quotes
     - avoid_init_to_null
+    - avoid_positional_boolean_parameters
     - avoid_print
     - avoid_redundant_argument_values
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
+    - avoid_returning_null_for_future
+    - avoid_shadowing_type_parameters
     - avoid_slow_async_io
+    - avoid_type_to_string
     - avoid_types_as_parameter_names
+    - avoid_types_on_closure_parameters
     - avoid_unused_constructor_parameters
+    - avoid_void_async
     - camel_case_types
     - cancel_subscriptions
     - cascade_invocations
     - close_sinks
     - comment_references
     - constant_identifier_names
+    - control_flow_in_finally
+    - depend_on_referenced_packages
+    - deprecated_consistency
     - directives_ordering
     - empty_statements
+    - eol_at_end_of_file
     - exhaustive_cases
     - file_names
+    - flutter_style_todos
     - hash_and_equals
+    - implementation_imports
+    - invariant_booleans
+    - iterable_contains_unrelated_type
     - join_return_with_assignment
+    - library_private_types_in_public_api
     - lines_longer_than_80_chars
+    - list_remove_unrelated_type
+    - no_leading_underscores_for_library_prefixes
+    - no_logic_in_create_state
+    - noop_primitive_operations
+    - null_check_on_nullable_type_parameter
     - one_member_abstracts
     - only_throw_errors
+    - omit_local_variable_types
     - overridden_fields
     - package_api_docs
+    - package_names
+    - package_prefixed_library_names
+    - parameter_assignments
+    - prefer_asserts_in_initializer_lists
     - prefer_asserts_with_message
+    - prefer_const_constructors
     - prefer_const_constructors_in_immutables
     - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_constructors_over_static_methods
     - prefer_expression_function_bodies
     - prefer_final_in_for_each
     - prefer_final_locals
+    - prefer_final_parameters
     - prefer_foreach
     - prefer_function_declarations_over_variables
+    - prefer_if_elements_to_conditional_expressions
     - prefer_initializing_formals
+    - prefer_interpolation_to_compose_strings
+    - prefer_is_not_operator
     - prefer_mixin
+    - prefer_null_aware_method_calls
     - prefer_null_aware_operators
     - prefer_relative_imports
     - prefer_single_quotes
     - prefer_typing_uninitialized_variables
+    - provide_deprecation_message
     - public_member_api_docs
+    - require_trailing_commas
+    - secure_pubspec_urls
+    - slash_for_doc_comments
     - sort_constructors_first
     - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
+    - throw_in_finally
     - tighten_type_of_initializing_formals
     - type_annotate_public_apis
+    - unawaited_futures
     - unnecessary_await_in_return
+    - unnecessary_constructor_name
     - unnecessary_lambdas
+    - unnecessary_late
     - unnecessary_null_aware_assignments
+    - unnecessary_null_checks
+    - unnecessary_nullable_for_final_variable_declarations
     - unnecessary_overrides
     - unnecessary_parenthesis
     - unnecessary_raw_strings
@@ -74,8 +120,14 @@ linter:
     - unnecessary_string_interpolations
     - unrelated_type_equality_checks
     - unsafe_html
+    - use_enums
+    - use_if_null_to_convert_nulls_to_bools
     - use_is_even_rather_than_modulo
+    - use_late_for_private_fields_and_variables
     - use_named_constants
     - use_raw_strings
+    - use_setters_to_change_properties
     - use_string_buffers
+    - use_super_parameters
     - valid_regexps
+    - void_checks

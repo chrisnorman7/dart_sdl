@@ -8,24 +8,26 @@ import '../sdl_bindings.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_AudioSpec)
 class AudioSpec {
   /// Create an instance.
-  AudioSpec(
-      {required this.freq,
-      required this.audioFormat,
-      required this.channels,
-      required this.silence,
-      required this.samples,
-      required this.size});
+  const AudioSpec({
+    required this.freq,
+    required this.audioFormat,
+    required this.channels,
+    required this.silence,
+    required this.samples,
+    required this.size,
+  });
 
   /// Create an instance from a pointer.
-  factory AudioSpec.fromPointer(Pointer<SDL_AudioSpec> ptr) {
+  factory AudioSpec.fromPointer(final Pointer<SDL_AudioSpec> ptr) {
     final o = ptr.ref;
     return AudioSpec(
-        freq: o.freq,
-        audioFormat: o.format,
-        channels: o.channels,
-        silence: o.silence,
-        samples: o.samples,
-        size: o.size);
+      freq: o.freq,
+      audioFormat: o.format,
+      channels: o.channels,
+      silence: o.silence,
+      samples: o.samples,
+      size: o.size,
+    );
   }
 
   /// DSP frequency.

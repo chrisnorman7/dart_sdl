@@ -9,8 +9,11 @@ import 'sdl_bindings.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MessageBoxButtonData)
 class MessageBoxButton {
   /// Create a button.
-  MessageBoxButton(this.text, {this.id = 0, List<MessageBoxButtonFlags>? flags})
-      : flags = flags ?? [];
+  MessageBoxButton(
+    this.text, {
+    this.id = 0,
+    final List<MessageBoxButtonFlags>? flags,
+  }) : flags = flags ?? [];
 
   /// Flags for this button.
   final List<MessageBoxButtonFlags> flags;

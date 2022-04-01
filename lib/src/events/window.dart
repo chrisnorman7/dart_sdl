@@ -15,7 +15,7 @@ import 'base.dart';
 /// [SDL_WindowEventId](https://wiki.libsdl.org/SDL_WindowEventID).
 class WindowEvent extends Event {
   /// Create the event.
-  const WindowEvent(Sdl sdl, int timestamp, this.windowId)
+  const WindowEvent(final Sdl sdl, final int timestamp, this.windowId)
       : super(sdl, timestamp);
 
   /// The ID of the window which emitted this event.
@@ -28,29 +28,39 @@ class WindowEvent extends Event {
 /// A window has been shown.
 class WindowShownEvent extends WindowEvent {
   /// Create an event.
-  const WindowShownEvent(Sdl sdl, int timestamp, int windowId)
+  const WindowShownEvent(final Sdl sdl, final int timestamp, final int windowId)
       : super(sdl, timestamp, windowId);
 }
 
 /// A window has been hidden.
 class WindowHiddenEvent extends WindowEvent {
   /// Create an event.
-  const WindowHiddenEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowHiddenEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has been exposed and should be redrawn.
 class WindowExposedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowExposedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowExposedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has been moved.
 class WindowMovedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowMovedEvent(Sdl sdl, int timestamp, int windowId, this.position)
-      : super(sdl, timestamp, windowId);
+  const WindowMovedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+    this.position,
+  ) : super(sdl, timestamp, windowId);
 
   /// The new position of the window.
   final Point<int> position;
@@ -59,8 +69,12 @@ class WindowMovedEvent extends WindowEvent {
 /// A window has been resized.
 class WindowResizedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowResizedEvent(Sdl sdl, int timestamp, int windowId, this.size)
-      : super(sdl, timestamp, windowId);
+  const WindowResizedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+    this.size,
+  ) : super(sdl, timestamp, windowId);
 
   /// The new size of the window.
   final WindowSize size;
@@ -69,93 +83,126 @@ class WindowResizedEvent extends WindowEvent {
 /// The size of a window has changed.
 class WindowSizeChangedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowSizeChangedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowSizeChangedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has been minimised.
 class WindowMinimizedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowMinimizedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowMinimizedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has been maximised.
 class WindowMaximizedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowMaximizedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowMaximizedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has been restored.
 class WindowRestoredEvent extends WindowEvent {
   /// Create a new event.
-  const WindowRestoredEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowRestoredEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has gained focus.
 class WindowEnterEvent extends WindowEvent {
   /// Create a new event.
-  const WindowEnterEvent(Sdl sdl, int timestamp, int windowId)
+  const WindowEnterEvent(final Sdl sdl, final int timestamp, final int windowId)
       : super(sdl, timestamp, windowId);
 }
 
 /// A window has lost mouse focus.
 class WindowLeaveEvent extends WindowEvent {
   /// Create a new event.
-  const WindowLeaveEvent(Sdl sdl, int timestamp, int windowId)
+  const WindowLeaveEvent(final Sdl sdl, final int timestamp, final int windowId)
       : super(sdl, timestamp, windowId);
 }
 
 /// A window has gained keyboard focus.
 class WindowFocusGainedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowFocusGainedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowFocusGainedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window has lost keyboard focus.
 class WindowFocusLostEvent extends WindowEvent {
   /// Create a new event.
-  const WindowFocusLostEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowFocusLostEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// The window manager requests that the window be closed.
 class WindowClosedEvent extends WindowEvent {
   /// Create a new event.
-  const WindowClosedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowClosedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window is being offered focus.
 class WindowTakeFocusEvent extends WindowEvent {
   /// Create a new event.
-  const WindowTakeFocusEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowTakeFocusEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// A window had an abnormal hit test.
 class WindowHitTestEvent extends WindowEvent {
   /// Create a new event.
-  const WindowHitTestEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const WindowHitTestEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// SDL_WINDOWEVENT_ICCPROF_CHANGED.
 class IccprofChangedEvent extends WindowEvent {
   /// Create an instance.
-  const IccprofChangedEvent(Sdl sdl, int timestamp, int windowId)
-      : super(sdl, timestamp, windowId);
+  const IccprofChangedEvent(
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+  ) : super(sdl, timestamp, windowId);
 }
 
 /// SDL_WINDOWEVENT_DISPLAY_CHANGED.
 class DisplayChangedEvent extends WindowEvent {
   /// Create an instance.
   const DisplayChangedEvent(
-      Sdl sdl, int timestamp, int windowId, this.displayId)
-      : super(sdl, timestamp, windowId);
+    final Sdl sdl,
+    final int timestamp,
+    final int windowId,
+    this.displayId,
+  ) : super(sdl, timestamp, windowId);
 
   /// The ID of the new display (presumably).
   final int displayId;
@@ -166,7 +213,8 @@ class DisplayChangedEvent extends WindowEvent {
 /// [SDL_SYSWMEVENT](https://wiki.libsdl.org/SDL_SysWMEvent)
 class SysWmEvent extends Event {
   /// Create an event.
-  const SysWmEvent(Sdl sdl, int timestamp, this.msg) : super(sdl, timestamp);
+  const SysWmEvent(final Sdl sdl, final int timestamp, this.msg)
+      : super(sdl, timestamp);
 
   /// Some platform-dependant data.
   final Pointer<SDL_SysWMmsg> msg;

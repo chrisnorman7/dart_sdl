@@ -12,7 +12,7 @@ import 'sdl_object.dart';
 /// A game controller.
 class GameController extends SdlObject<SDL_GameController> {
   /// Create an instance.
-  GameController(Sdl sdl, Pointer<SDL_GameController> handle)
+  GameController(final Sdl sdl, final Pointer<SDL_GameController> handle)
       : super(sdl, handle);
 
   /// Return `true` if this controller is open and attached.
@@ -24,11 +24,11 @@ class GameController extends SdlObject<SDL_GameController> {
   /// Get the current state of an axis control on this game controller.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerAxis)
-  int getAxis(GameControllerAxis axis) =>
+  int getAxis(final GameControllerAxis axis) =>
       sdl.sdl.SDL_GameControllerGetAxis(handle, axis.toInt());
 
   /// Get the value of [axis], as a number between -1.0 and 1.0.
-  double getAxisSmall(GameControllerAxis axis) {
+  double getAxisSmall(final GameControllerAxis axis) {
     final value = getAxis(axis);
     if (value < 0) {
       return value / 32768;
@@ -42,7 +42,7 @@ class GameController extends SdlObject<SDL_GameController> {
   /// Return `true` if [button] is pressed.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButton)
-  bool getButton(GameControllerButton button) =>
+  bool getButton(final GameControllerButton button) =>
       sdl.getBool(sdl.sdl.SDL_GameControllerGetButton(handle, button.toInt()));
 
   /// Get the value of a joystick on this controller.

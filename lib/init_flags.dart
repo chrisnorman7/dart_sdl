@@ -60,7 +60,7 @@ class InitFlags {
 
   /// Get the flags as an integer.
   int get flags {
-    int f = 0;
+    var f = 0;
     if (audio) {
       f |= SDL_INIT_AUDIO;
     }

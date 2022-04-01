@@ -18,7 +18,8 @@ import 'sdl_object.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_Joystick)
 class Joystick extends SdlObject<SDL_Joystick> {
   /// Create an opened joystick.
-  Joystick(Sdl sdl, Pointer<SDL_Joystick> handle) : super(sdl, handle);
+  Joystick(final Sdl sdl, final Pointer<SDL_Joystick> handle)
+      : super(sdl, handle);
 
   /// Get the power level for this joystick.
   JoystickPowerLevel get powerLevel =>
@@ -30,7 +31,7 @@ class Joystick extends SdlObject<SDL_Joystick> {
   /// Get the current state of an axis control.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetAxis)
-  int getAxis(int axis) {
+  int getAxis(final int axis) {
     final value = sdl.sdl.SDL_JoystickGetAxis(handle, axis);
     if (value == 0) {
       throw SdlError(0, sdl.getError());
@@ -41,9 +42,10 @@ class Joystick extends SdlObject<SDL_Joystick> {
   /// Get the ball axis change since the last poll.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetBall)
-  Point<int> getBall(int ball) {
+  Point<int> getBall(final int ball) {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_JoystickGetBall(handle, ball, sdl.xPointer, sdl.yPointer));
+      sdl.sdl.SDL_JoystickGetBall(handle, ball, sdl.xPointer, sdl.yPointer),
+    );
     return Point(sdl.xPointer.value, sdl.yPointer.value);
   }
 
@@ -52,13 +54,13 @@ class Joystick extends SdlObject<SDL_Joystick> {
   /// Returns `true` if the button is currently pressed, `false` otherwise.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetButton)
-  bool getButton(int button) =>
+  bool getButton(final int button) =>
       sdl.getBool(sdl.sdl.SDL_JoystickGetButton(handle, button));
 
   /// Get the position of a hat.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetHat)
-  JoyHatValue getHat(int hat) =>
+  JoyHatValue getHat(final int hat) =>
       sdl.sdl.SDL_JoystickGetHat(handle, hat).toJoyHatValue();
 
   /// Get the name of this joystick.
@@ -132,7 +134,8 @@ class Joystick extends SdlObject<SDL_Joystick> {
 
   /// Check if this joystick has rumble triggers.
   bool get hasRumbleTriggers => sdl.getBool(
-      sdl.checkReturnValue(sdl.sdl.SDL_JoystickHasRumbleTriggers(handle)));
+        sdl.checkReturnValue(sdl.sdl.SDL_JoystickHasRumbleTriggers(handle)),
+      );
 
   /// Check if this joystick has an LED.
   bool get hasLed =>
@@ -154,9 +157,9 @@ class Joystick extends SdlObject<SDL_Joystick> {
 
   /// Start a rumble effect.
   bool rumble({
-    required int duration,
-    int lowFrequency = 65535,
-    int highFrequency = 65535,
+    required final int duration,
+    final int lowFrequency = 65535,
+    final int highFrequency = 65535,
   }) =>
       sdl.sdl
           .SDL_JoystickRumble(handle, lowFrequency, highFrequency, duration) ==
@@ -164,11 +167,15 @@ class Joystick extends SdlObject<SDL_Joystick> {
 
   /// Start a rumble trigger effect.
   bool rumbleTriggers({
-    required int duration,
-    int lowFrequency = 65535,
-    int highFrequency = 65535,
+    required final int duration,
+    final int lowFrequency = 65535,
+    final int highFrequency = 65535,
   }) =>
       sdl.sdl.SDL_JoystickRumbleTriggers(
-          handle, lowFrequency, highFrequency, duration) ==
+        handle,
+        lowFrequency,
+        highFrequency,
+        duration,
+      ) ==
       0;
 }

@@ -16,11 +16,12 @@ class WaveFile {
         bufferPointer = calloc<Pointer<Uint8>>(),
         lengthPointer = calloc<Uint32>() {
     sdl.sdl.SDL_LoadWAV_RW(
-        sdl.sdl.SDL_RWFromFile(filename.toInt8Pointer(), 'rb'.toInt8Pointer()),
-        1,
-        specPointer,
-        bufferPointer,
-        lengthPointer);
+      sdl.sdl.SDL_RWFromFile(filename.toInt8Pointer(), 'rb'.toInt8Pointer()),
+      1,
+      specPointer,
+      bufferPointer,
+      lengthPointer,
+    );
   }
 
   /// The SDL bindings to use.

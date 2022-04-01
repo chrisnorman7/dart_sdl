@@ -24,7 +24,7 @@ Future<void> main() async {
     ..queueAudio(waveFile)
     ..play();
   print('Queue size is ${device.queueSize}.');
-  await Future<void>.delayed(Duration(seconds: 2));
+  await Future<void>.delayed(const Duration(seconds: 2));
   device.close();
   sdl.quit();
   print('Done.');

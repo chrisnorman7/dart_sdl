@@ -99,7 +99,8 @@ Future<void> main() async {
   sink
     ..write('}\n\n/// Keycodes.\n///\n')
     ..write(
-        '/// [SDL Docs](https://wiki.libsdl.org/SDL_Keycode)\nenum KeyCode {');
+      '/// [SDL Docs](https://wiki.libsdl.org/SDL_Keycode)\nenum KeyCode {',
+    );
   for (final keycode in keycodes) {
     sink
       ..write('\n  /// ${keycode.sdlName}\n')
@@ -135,7 +136,8 @@ Future<void> main() async {
     ..write("        throw SdlError(this, 'Unknown keycode.');\n")
     ..write('    }\n  }\n}\n')
     ..writeln(
-        '\n/// An extension to return an integer from a [ScanCode] value.')
+      '\n/// An extension to return an integer from a [ScanCode] value.',
+    )
     ..writeln('extension SdlScancodeValueExtension on ScanCode {')
     ..writeln('  /// Convert this value to an SDL value.')
     ..writeln('  int toSdlValue() {')

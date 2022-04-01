@@ -50,14 +50,14 @@ extension MouseButtonPressedStateExtension on int {
 /// The base class for all mouse events.
 class MouseEvent extends Event with WindowMixin, CoordinatesMixin<int> {
   /// Create an event.
-  MouseEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int windowId,
-      required this.which,
-      required int x,
-      required int y})
-      : super(sdl, timestamp) {
+  MouseEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int windowId,
+    required this.which,
+    required final int x,
+    required final int y,
+  }) : super(sdl, timestamp) {
     this.windowId = windowId;
     this.x = x;
     this.y = y;
@@ -75,23 +75,24 @@ class MouseEvent extends Event with WindowMixin, CoordinatesMixin<int> {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseMotionEvent)
 class MouseMotionEvent extends MouseEvent {
   /// Create a motion event.
-  MouseMotionEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int wndId,
-      required int which,
-      required this.state,
-      required int x,
-      required int y,
-      required this.relativeX,
-      required this.relativeY})
-      : super(
-            sdl: sdl,
-            timestamp: timestamp,
-            windowId: wndId,
-            which: which,
-            x: x,
-            y: y);
+  MouseMotionEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int wndId,
+    required final int which,
+    required this.state,
+    required final int x,
+    required final int y,
+    required this.relativeX,
+    required this.relativeY,
+  }) : super(
+          sdl: sdl,
+          timestamp: timestamp,
+          windowId: wndId,
+          which: which,
+          x: x,
+          y: y,
+        );
 
   /// The state of the mouse button.
   final int state;
@@ -111,36 +112,38 @@ class MouseMotionEvent extends MouseEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseButtonEvent)
 class MouseButtonEvent extends MouseEvent {
   /// Create an event.
-  MouseButtonEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int wndId,
-      required int which,
-      required this.button,
-      required this.state,
-      required this.clicks,
-      required int x,
-      required int y})
-      : super(
-            sdl: sdl,
-            timestamp: timestamp,
-            windowId: wndId,
-            which: which,
-            x: x,
-            y: y);
+  MouseButtonEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int wndId,
+    required final int which,
+    required this.button,
+    required this.state,
+    required this.clicks,
+    required final int x,
+    required final int y,
+  }) : super(
+          sdl: sdl,
+          timestamp: timestamp,
+          windowId: wndId,
+          which: which,
+          x: x,
+          y: y,
+        );
 
   /// Create an instance from an event.
-  MouseButtonEvent.fromSdlEvent(Sdl sdl, SDL_MouseButtonEvent e)
+  MouseButtonEvent.fromSdlEvent(final Sdl sdl, final SDL_MouseButtonEvent e)
       : button = e.button.toMouseButton(),
         clicks = e.clicks,
         state = e.state.toPressedState(),
         super(
-            sdl: sdl,
-            timestamp: e.timestamp,
-            which: e.which,
-            windowId: e.windowID,
-            x: e.x,
-            y: e.y);
+          sdl: sdl,
+          timestamp: e.timestamp,
+          which: e.which,
+          windowId: e.windowID,
+          x: e.x,
+          y: e.y,
+        );
 
   /// The button which was pressed.
   final MouseButton button;
@@ -157,21 +160,22 @@ class MouseButtonEvent extends MouseEvent {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_MouseWheelEvent)
 class MouseWheelEvent extends MouseEvent {
   /// Create an event.
-  MouseWheelEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int windowId,
-      required int which,
-      required int x,
-      required int y,
-      required this.direction})
-      : super(
-            sdl: sdl,
-            timestamp: timestamp,
-            windowId: windowId,
-            which: which,
-            x: x,
-            y: y);
+  MouseWheelEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int windowId,
+    required final int which,
+    required final int x,
+    required final int y,
+    required this.direction,
+  }) : super(
+          sdl: sdl,
+          timestamp: timestamp,
+          windowId: windowId,
+          which: which,
+          x: x,
+          y: y,
+        );
 
   /// The direction the wheel was moved.
   final MouseWheelDirection direction;

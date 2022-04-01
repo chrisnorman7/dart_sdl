@@ -8,13 +8,13 @@ import 'base.dart';
 /// Exposes events of type [SDL_EventType.SDL_USEREVENT].
 class UserEvent extends Event {
   /// Create an instance.
-  const UserEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.type,
-      required this.windowId,
-      required this.code})
-      : super(sdl, timestamp);
+  const UserEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.type,
+    required this.windowId,
+    required this.code,
+  }) : super(sdl, timestamp);
 
   /// The type of this event.
   ///

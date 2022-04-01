@@ -10,15 +10,15 @@ void main() {
       ];
       final results = [for (final f in flags) f.toInt()];
       expect(
-          results,
-          equals(<int>[
-            MessageBoxFlags.error.toInt(),
-            MessageBoxFlags.warning.toInt()
-          ]));
+        results,
+        <int>[MessageBoxFlags.error.toInt(), MessageBoxFlags.warning.toInt()],
+      );
       expect(
-          results.xor(),
-          equals(
-              MessageBoxFlags.error.toInt() | MessageBoxFlags.warning.toInt()));
+        results.xor(),
+        equals(
+          MessageBoxFlags.error.toInt() | MessageBoxFlags.warning.toInt(),
+        ),
+      );
     });
   });
 }

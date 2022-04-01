@@ -13,6 +13,7 @@ class AudioDevice {
   /// Create a device.
   ///
   /// To open the device, use [open].
+  // ignore: avoid_positional_boolean_parameters
   AudioDevice(this.sdl, this.index, this.isCapture);
 
   /// The SDL bindings to use.
@@ -35,7 +36,7 @@ class AudioDevice {
   /// Open this device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_OpenAudioDevice)
-  OpenAudioDevice open({AudioSpec? settings}) =>
+  OpenAudioDevice open({final AudioSpec? settings}) =>
       sdl.openAudioDevice(device: this, settings: settings);
 }
 
@@ -105,7 +106,7 @@ class OpenAudioDevice {
   /// will resume.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PauseAudioDevice)
-  set paused(bool value) =>
+  set paused(final bool value) =>
       sdl.sdl.SDL_PauseAudioDevice(id, sdl.boolToValue(value));
 
   /// Pause this device.
@@ -117,6 +118,6 @@ class OpenAudioDevice {
   /// Queue a wave file.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_QueueAudio)
-  void queueAudio(WaveFile file) => sdl.sdl
+  void queueAudio(final WaveFile file) => sdl.sdl
       .SDL_QueueAudio(id, file.bufferPointer.value.cast<Void>(), file.length);
 }

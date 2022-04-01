@@ -7,7 +7,8 @@ import 'base.dart';
 /// [SDL_TEXTINPUT](https://wiki.libsdl.org/SDL_TextInputEvent)
 class TextInputEvent extends Event with WindowMixin {
   /// Create an event.
-  TextInputEvent(Sdl sdl, int timestamp, this.text) : super(sdl, timestamp);
+  TextInputEvent(final Sdl sdl, final int timestamp, this.text)
+      : super(sdl, timestamp);
 
   /// The text of this event.
   String text;
@@ -18,14 +19,14 @@ class TextInputEvent extends Event with WindowMixin {
 /// [SDL_TEXTEDITING](https://wiki.libsdl.org/SDL_TextEditingEvent)
 class TextEditingEvent extends Event with WindowMixin {
   /// Create an event.
-  TextEditingEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int wndId,
-      required this.text,
-      required this.start,
-      required this.length})
-      : super(sdl, timestamp) {
+  TextEditingEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int wndId,
+    required this.text,
+    required this.start,
+    required this.length,
+  }) : super(sdl, timestamp) {
     windowId = wndId;
   }
 

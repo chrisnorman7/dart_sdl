@@ -8,17 +8,17 @@ import 'base.dart';
 /// Exposes [SDL_SensorEvent].
 class SensorEvent extends Event {
   /// Create an event.
-  const SensorEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.sensor,
-      required this.data1,
-      required this.data2,
-      required this.data3,
-      required this.data4,
-      required this.data5,
-      required this.data6})
-      : super(sdl, timestamp);
+  const SensorEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.sensor,
+    required this.data1,
+    required this.data2,
+    required this.data3,
+    required this.data4,
+    required this.data5,
+    required this.data6,
+  }) : super(sdl, timestamp);
 
   /// The ID of the sensor that was used.
   final int sensor;

@@ -9,8 +9,11 @@ import 'base.dart';
 /// A keyboard key.
 class KeyboardKey {
   /// Create a key.
-  const KeyboardKey(
-      {required this.scancode, required this.keycode, required this.modifiers});
+  const KeyboardKey({
+    required this.scancode,
+    required this.keycode,
+    required this.modifiers,
+  });
 
   /// The scancode for this key.
   final ScanCode scancode;
@@ -28,20 +31,36 @@ class KeyboardKey {
 class KeyboardEvent extends Event with WindowMixin {
   /// Create an event.
   KeyboardEvent(
-      Sdl sdl, int timestamp, int wndId, this.state, this.repeat, this.key)
-      : super(sdl, timestamp) {
+    final Sdl sdl,
+    final int timestamp,
+    final int wndId,
+    this.state,
+    // ignore: avoid_positional_boolean_parameters
+    this.repeat,
+    this.key,
+  ) : super(sdl, timestamp) {
     windowId = wndId;
   }
 
   /// Create an instance from an SDL event.
-  factory KeyboardEvent.fromSdlEvent(Sdl sdl, SDL_KeyboardEvent event) {
+  factory KeyboardEvent.fromSdlEvent(
+    final Sdl sdl,
+    final SDL_KeyboardEvent event,
+  ) {
     final sim = event.keysym;
     final key = KeyboardKey(
-        scancode: sim.scancode.toScanCode(),
-        keycode: sim.sym.toKeyCode(),
-        modifiers: sim.mod.toModifiersSet());
-    return KeyboardEvent(sdl, event.timestamp, event.windowID,
-        event.state.toPressedState(), sdl.getBool(event.repeat), key);
+      scancode: sim.scancode.toScanCode(),
+      keycode: sim.sym.toKeyCode(),
+      modifiers: sim.mod.toModifiersSet(),
+    );
+    return KeyboardEvent(
+      sdl,
+      event.timestamp,
+      event.windowID,
+      event.state.toPressedState(),
+      sdl.getBool(event.repeat),
+      key,
+    );
   }
 
   /// Whether [key] has been pressed or released.
@@ -58,5 +77,6 @@ class KeyboardEvent extends Event with WindowMixin {
 /// keyboard layout change (>= SDL 2.0.4).
 class KeymapChangedEvent extends Event {
   /// Create an event.
-  const KeymapChangedEvent(Sdl sdl, int timestamp) : super(sdl, timestamp);
+  const KeymapChangedEvent(final Sdl sdl, final int timestamp)
+      : super(sdl, timestamp);
 }

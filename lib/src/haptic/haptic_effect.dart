@@ -27,19 +27,19 @@ class HapticEffect {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticConstant)
 class HapticConstant extends HapticEffect {
   /// Create a constant effect.
-  HapticConstant(
-      {required Sdl sdl,
-      required this.direction,
-      required this.length,
-      required this.delay,
-      required this.button,
-      required this.interval,
-      required this.level,
-      required this.attackLength,
-      required this.attackLevel,
-      required this.fadeLength,
-      required this.fadeLevel})
-      : super(sdl) {
+  HapticConstant({
+    required final Sdl sdl,
+    required this.direction,
+    required this.length,
+    required this.delay,
+    required this.button,
+    required this.interval,
+    required this.level,
+    required this.attackLength,
+    required this.attackLevel,
+    required this.fadeLength,
+    required this.fadeLevel,
+  }) : super(sdl) {
     sdl.loadHapticDirection(direction);
     handle.ref.type = SDL_HAPTIC_CONSTANT;
     handle.ref.constant
@@ -90,23 +90,23 @@ class HapticConstant extends HapticEffect {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticPeriodic)
 class HapticPeriodic extends HapticEffect {
   /// Create an instance.
-  HapticPeriodic(
-      {required Sdl sdl,
-      required this.type,
-      required this.direction,
-      required this.length,
-      required this.delay,
-      required this.button,
-      required this.interval,
-      required this.period,
-      required this.magnitude,
-      required this.offset,
-      required this.phase,
-      required this.attackLength,
-      required this.attackLevel,
-      required this.fadeLength,
-      required this.fadeLevel})
-      : super(sdl) {
+  HapticPeriodic({
+    required final Sdl sdl,
+    required this.type,
+    required this.direction,
+    required this.length,
+    required this.delay,
+    required this.button,
+    required this.interval,
+    required this.period,
+    required this.magnitude,
+    required this.offset,
+    required this.phase,
+    required this.attackLength,
+    required this.attackLevel,
+    required this.fadeLength,
+    required this.fadeLevel,
+  }) : super(sdl) {
     sdl.loadHapticDirection(direction);
     handle.ref
       ..type = type.toInt()
@@ -190,20 +190,20 @@ class ConditionEffect {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticCondition)
 class HapticCondition extends HapticEffect {
   /// Create an instance.
-  HapticCondition(
-      {required Sdl sdl,
-      required this.type,
-      required this.length,
-      required this.delay,
-      required this.button,
-      required this.interval,
-      required this.rightSat,
-      required this.leftSat,
-      required this.rightCoeff,
-      required this.leftCoeff,
-      required this.deadband,
-      required this.center})
-      : super(sdl) {
+  HapticCondition({
+    required final Sdl sdl,
+    required this.type,
+    required this.length,
+    required this.delay,
+    required this.button,
+    required this.interval,
+    required this.rightSat,
+    required this.leftSat,
+    required this.rightCoeff,
+    required this.leftCoeff,
+    required this.deadband,
+    required this.center,
+  }) : super(sdl) {
     handle.ref.type = type.toInt();
     handle.ref.condition
       ..type = type.toInt()
@@ -270,20 +270,20 @@ class HapticCondition extends HapticEffect {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticRamp)
 class HapticRamp extends HapticEffect {
   /// Create an instance.
-  HapticRamp(
-      {required Sdl sdl,
-      required this.direction,
-      required this.length,
-      required this.delay,
-      required this.button,
-      required this.interval,
-      required this.start,
-      required this.end,
-      required this.attackLength,
-      required this.attackLevel,
-      required this.fadeLength,
-      required this.fadeLevel})
-      : super(sdl) {
+  HapticRamp({
+    required final Sdl sdl,
+    required this.direction,
+    required this.length,
+    required this.delay,
+    required this.button,
+    required this.interval,
+    required this.start,
+    required this.end,
+    required this.attackLength,
+    required this.attackLevel,
+    required this.fadeLength,
+    required this.fadeLevel,
+  }) : super(sdl) {
     sdl.loadHapticDirection(direction);
     handle.ref.type = SDL_HAPTIC_RAMP;
     handle.ref.ramp
@@ -339,12 +339,12 @@ class HapticRamp extends HapticEffect {
 /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticLeftRight)
 class HapticLeftRight extends HapticEffect {
   /// Create an instance.
-  HapticLeftRight(
-      {required Sdl sdl,
-      required this.length,
-      required this.largeMagnitude,
-      required this.smallMagnitude})
-      : super(sdl) {
+  HapticLeftRight({
+    required final Sdl sdl,
+    required this.length,
+    required this.largeMagnitude,
+    required this.smallMagnitude,
+  }) : super(sdl) {
     handle.ref.type = SDL_HAPTIC_LEFTRIGHT;
     handle.ref.leftright
       ..length = length

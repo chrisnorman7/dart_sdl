@@ -7,29 +7,34 @@ import 'base.dart';
 /// An audio device event.
 class AudioDeviceEvent extends Event {
   /// Create an event.
-  const AudioDeviceEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required this.index,
-      required this.isCapture})
-      : super(sdl, timestamp);
+  const AudioDeviceEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required this.index,
+    required this.isCapture,
+  }) : super(sdl, timestamp);
 
   /// Create an instance from an SDL event.
-  factory AudioDeviceEvent.fromSdlEvent(Sdl sdl, SDL_AudioDeviceEvent event) {
+  factory AudioDeviceEvent.fromSdlEvent(
+    final Sdl sdl,
+    final SDL_AudioDeviceEvent event,
+  ) {
     final type = event.type;
     switch (type) {
       case SDL_EventType.SDL_AUDIODEVICEADDED:
         return AudioDeviceAddedEvent(
-            sdl: sdl,
-            timestamp: event.timestamp,
-            index: event.which,
-            isCapture: sdl.getBool(event.iscapture));
+          sdl: sdl,
+          timestamp: event.timestamp,
+          index: event.which,
+          isCapture: sdl.getBool(event.iscapture),
+        );
       case SDL_EventType.SDL_AUDIODEVICEREMOVED:
         return AudioDeviceRemovedEvent(
-            sdl: sdl,
-            timestamp: event.timestamp,
-            index: event.which,
-            isCapture: sdl.getBool(event.iscapture));
+          sdl: sdl,
+          timestamp: event.timestamp,
+          index: event.which,
+          isCapture: sdl.getBool(event.iscapture),
+        );
       default:
         throw SdlError(type, 'Invalid audio device state.');
     }
@@ -45,23 +50,31 @@ class AudioDeviceEvent extends Event {
 /// A device was added.
 class AudioDeviceAddedEvent extends AudioDeviceEvent {
   /// Create an event.
-  const AudioDeviceAddedEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int index,
-      required bool isCapture})
-      : super(
-            sdl: sdl, index: index, isCapture: isCapture, timestamp: timestamp);
+  const AudioDeviceAddedEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int index,
+    required final bool isCapture,
+  }) : super(
+          sdl: sdl,
+          index: index,
+          isCapture: isCapture,
+          timestamp: timestamp,
+        );
 }
 
 /// A device was removed.
 class AudioDeviceRemovedEvent extends AudioDeviceEvent {
   /// Create an event.
-  const AudioDeviceRemovedEvent(
-      {required Sdl sdl,
-      required int timestamp,
-      required int index,
-      required bool isCapture})
-      : super(
-            sdl: sdl, index: index, isCapture: isCapture, timestamp: timestamp);
+  const AudioDeviceRemovedEvent({
+    required final Sdl sdl,
+    required final int timestamp,
+    required final int index,
+    required final bool isCapture,
+  }) : super(
+          sdl: sdl,
+          index: index,
+          isCapture: isCapture,
+          timestamp: timestamp,
+        );
 }

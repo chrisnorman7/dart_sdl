@@ -6,21 +6,31 @@ void main() {
   print('SDL version ${sdl.version}.');
   final window = sdl.createWindow('Test Window');
   print(window.displayMode);
-  sdl.showSimpleMessageBox([
-    MessageBoxFlags.information
-  ], 'Window Creation', 'Created window ${window.title}.', window: window);
+  sdl.showSimpleMessageBox(
+    [MessageBoxFlags.information],
+    'Window Creation',
+    'Created window ${window.title}.',
+    window: window,
+  );
   const yesButtonId = 1;
   const noButtonId = 2;
   final id = sdl.showMessageBox(
-      'SDL Example',
-      'See the clipboard contents?',
-      [
-        MessageBoxButton('Yes',
-            id: yesButtonId, flags: [MessageBoxButtonFlags.returnkeyDefault]),
-        MessageBoxButton('No',
-            id: noButtonId, flags: [MessageBoxButtonFlags.escapekeyDefault])
-      ],
-      window: window);
+    'SDL Example',
+    'See the clipboard contents?',
+    [
+      MessageBoxButton(
+        'Yes',
+        id: yesButtonId,
+        flags: [MessageBoxButtonFlags.returnkeyDefault],
+      ),
+      MessageBoxButton(
+        'No',
+        id: noButtonId,
+        flags: [MessageBoxButtonFlags.escapekeyDefault],
+      )
+    ],
+    window: window,
+  );
   if (id == yesButtonId) {
     print('The clipboard contains: ${sdl.getClipboardText()}');
   } else {

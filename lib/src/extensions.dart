@@ -256,7 +256,7 @@ extension SdlStringValues on String {
   /// Convert to a game controller axis.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetAxisFromString)
-  GameControllerAxis toGameControllerAxis(Sdl sdl) {
+  GameControllerAxis toGameControllerAxis(final Sdl sdl) {
     final ptr = toInt8Pointer();
     final i = sdl.sdl.SDL_GameControllerGetAxisFromString(ptr);
     calloc.free(ptr);
@@ -270,7 +270,7 @@ extension SdlStringValues on String {
   /// Get a game controller button.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButtonFromString)
-  GameControllerButton toGameControllerButton(Sdl sdl) {
+  GameControllerButton toGameControllerButton(final Sdl sdl) {
     final ptr = toInt8Pointer();
     final i = sdl.sdl.SDL_GameControllerGetButtonFromString(ptr);
     calloc.free(ptr);
@@ -328,7 +328,8 @@ extension SdlKeyModValues on KeyMod {
 /// Various list methods used by this package.
 extension SdlListMethods on List<int> {
   /// Iterate over every element, and xor the values.
-  int xor() => fold(0, (previousValue, element) => previousValue | element);
+  int xor() =>
+      fold(0, (final previousValue, final element) => previousValue | element);
 }
 
 /// Various extension methods for integers.

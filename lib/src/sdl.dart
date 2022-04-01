@@ -133,15 +133,17 @@ class Sdl {
   late final DartSdl sdl;
 
   /// Get a Dart boolean from an SDL one.
-  bool getBool(int value) => value == SDL_bool.SDL_TRUE;
+  bool getBool(final int value) => value == SDL_bool.SDL_TRUE;
 
   /// Convert a boolean to one of the members of [SDL_bool].
-  int boolToValue(bool value) => value ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE;
+  // ignore: avoid_positional_boolean_parameters
+  int boolToValue(final bool value) =>
+      value ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE;
 
   /// Throw an error if return value is non-null.
   ///
   /// If [value] is >= 0, it will be returned.
-  int checkReturnValue(int value) {
+  int checkReturnValue(final int value) {
     if (value >= 0) {
       return value;
     }
@@ -152,7 +154,7 @@ class Sdl {
   /// Initialise SDL.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Init)
-  void init({int flags = SDL_INIT_EVERYTHING}) =>
+  void init({final int flags = SDL_INIT_EVERYTHING}) =>
       checkReturnValue(sdl.SDL_Init(flags));
 
   /// Shutdown SDL.
@@ -184,7 +186,7 @@ class Sdl {
   /// Get the systems which are currently initialised.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_WasInit)
-  int wasInit({int flags = 0}) => sdl.SDL_WasInit(flags);
+  int wasInit({final int flags = 0}) => sdl.SDL_WasInit(flags);
 
   /// Get the most recent SDL error for this thread.
   ///
@@ -198,7 +200,7 @@ class Sdl {
   /// Set a hint at normal priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHint)
-  bool setHint(String hint, String value) {
+  bool setHint(final String hint, final String value) {
     final hintPointer = hint.toInt8Pointer();
     final valuePointer = value.toInt8Pointer();
     final retval = sdl.SDL_SetHint(hintPointer, valuePointer);
@@ -209,11 +211,18 @@ class Sdl {
   /// Set hint with priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHintWithPriority)
-  bool setHintPriority(String hint, String value, HintPriority priority) {
+  bool setHintPriority(
+    final String hint,
+    final String value,
+    final HintPriority priority,
+  ) {
     final hintPointer = hint.toInt8Pointer();
     final valuePointer = value.toInt8Pointer();
     final retval = sdl.SDL_SetHintWithPriority(
-        hintPointer, valuePointer, priority.toInt());
+      hintPointer,
+      valuePointer,
+      priority.toInt(),
+    );
     [hintPointer, valuePointer].forEach(calloc.free);
     return getBool(retval);
   }
@@ -226,7 +235,7 @@ class Sdl {
   /// Set the error message.
   ///
   ///[SDL Docs](https://wiki.libsdl.org/SDL_SetError)
-  void setError(String message) {
+  void setError(final String message) {
     final messagePointer = message.toInt8Pointer();
     sdl.SDL_SetError(messagePointer);
     calloc.free(messagePointer);
@@ -235,15 +244,18 @@ class Sdl {
   /// Log a message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Log)
-  void log(String message) {
+  void log(final String message) {
     final messagePointer = message.toInt8Pointer();
     sdl.SDL_Log(messagePointer);
     calloc.free(messagePointer);
   }
 
   /// Log anything.
-  void _log(LogCategory category, String message,
-      void Function(int, Pointer<Int8>) func) {
+  void _log(
+    final LogCategory category,
+    final String message,
+    final void Function(int, Pointer<Int8>) func,
+  ) {
     final messagePointer = message.toInt8Pointer();
     func(category.toInt(), messagePointer);
     calloc.free(messagePointer);
@@ -252,31 +264,35 @@ class Sdl {
   /// Log a critical message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogCritical)
-  void logCritical(LogCategory category, String message) =>
+  void logCritical(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogCritical);
 
   /// Log a debug message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogDebug)
-  void logDebug(LogCategory category, String message) =>
+  void logDebug(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogDebug);
 
   /// Log an error message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogError)
-  void logError(LogCategory category, String message) =>
+  void logError(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogError);
 
   /// Log an informational message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogInfo)
-  void logInfo(LogCategory category, String message) =>
+  void logInfo(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogInfo);
 
   /// Log a message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogMessage)
-  void logMessage(LogCategory category, LogPriority priority, String message) {
+  void logMessage(
+    final LogCategory category,
+    final LogPriority priority,
+    final String message,
+  ) {
     final messagePointer = message.toInt8Pointer();
     sdl.SDL_LogMessage(category.toInt(), priority.toInt(), messagePointer);
     calloc.free(messagePointer);
@@ -285,17 +301,17 @@ class Sdl {
   /// Log a verbose message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogVerbose)
-  void logVerbose(LogCategory category, String message) =>
+  void logVerbose(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogVerbose);
 
   /// Log a warning message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogWarn)
-  void logWarn(LogCategory category, String message) =>
+  void logWarn(final LogCategory category, final String message) =>
       _log(category, message, sdl.SDL_LogWarn);
 
   /// Get log priority.
-  LogPriority getLogPriority(LogCategory category) =>
+  LogPriority getLogPriority(final LogCategory category) =>
       sdl.SDL_LogGetPriority(category.toInt()).toLogPriority();
 
   /// Reset log priorities.
@@ -306,13 +322,13 @@ class Sdl {
   /// Set the priority of all log categories.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetAllPriority)
-  void setAllLogPriorities(LogPriority priority) =>
+  void setAllLogPriorities(final LogPriority priority) =>
       sdl.SDL_LogSetAllPriority(priority.toInt());
 
   /// Set log priority.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_LogSetPriority)
-  void setLogPriority(LogCategory category, LogPriority priority) =>
+  void setLogPriority(final LogCategory category, final LogPriority priority) =>
       sdl.SDL_LogSetPriority(category.toInt(), priority.toInt());
 
   /// Get the compiled version.
@@ -342,15 +358,19 @@ class Sdl {
   /// Create a window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_CreateWindow)
-  Window createWindow(String title,
-      {int x = SDL_WINDOWPOS_CENTERED,
-      int y = SDL_WINDOWPOS_CENTERED,
-      int width = 1024,
-      int height = 648,
-      int flags = 0}) {
+  Window createWindow(
+    final String title, {
+    final int x = SDL_WINDOWPOS_CENTERED,
+    final int y = SDL_WINDOWPOS_CENTERED,
+    final int width = 1024,
+    final int height = 648,
+    final int flags = 0,
+  }) {
     final titlePtr = title.toInt8Pointer();
     final window = Window(
-        this, sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags));
+      this,
+      sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags),
+    );
     calloc.free(titlePtr);
     return window;
   }
@@ -358,7 +378,8 @@ class Sdl {
   /// Destroy a window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_DestroyWindow)
-  void destroyWindow(Window window) => sdl.SDL_DestroyWindow(window.handle);
+  void destroyWindow(final Window window) =>
+      sdl.SDL_DestroyWindow(window.handle);
 
   /// Get the current window.
   ///
@@ -382,7 +403,7 @@ class Sdl {
   /// SDL Links:
   /// [SDL_EnableScreenSaver](https://wiki.libsdl.org/SDL_EnableScreenSaver)
   /// [SDL_DisableScreenSaver](https://wiki.libsdl.org/SDL_DisableScreenSaver)
-  set screenSaverEnabled(bool value) {
+  set screenSaverEnabled(final bool value) {
     if (value) {
       sdl.SDL_EnableScreenSaver();
     } else {
@@ -403,11 +424,11 @@ class Sdl {
   /// Get the name of a video driver.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetVideoDriver)
-  String getVideoDriver(int index) =>
+  String getVideoDriver(final int index) =>
       sdl.SDL_GetVideoDriver(index).cast<Utf8>().toDartString();
 
   /// Create a display.
-  Display createDisplay(int index) => Display(this, index);
+  Display createDisplay(final int index) => Display(this, index);
 
   /// Create a display with index 0.
   Display createFirstDisplay() => createDisplay(0);
@@ -416,11 +437,11 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowMessageBox)
   int showMessageBox(
-    String title,
-    String message,
-    List<MessageBoxButton> buttons, {
-    Window? window,
-    List<MessageBoxFlags>? flags,
+    final String title,
+    final String message,
+    final List<MessageBoxButton> buttons, {
+    final Window? window,
+    final List<MessageBoxFlags>? flags,
   }) {
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
@@ -431,7 +452,10 @@ class Sdl {
       a[i]
         ..buttonid = button.id
         ..flags = button.flags.fold(
-            0, (previousValue, element) => previousValue | element.toInt())
+          0,
+          (final previousValue, final element) =>
+              previousValue | element.toInt(),
+        )
         ..text = textPointer;
     }
     _messageBoxDataPointer.ref
@@ -451,18 +475,21 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowSimpleMessageBox)
   void showSimpleMessageBox(
-    List<MessageBoxFlags> types,
-    String title,
-    String message, {
-    Window? window,
+    final List<MessageBoxFlags> types,
+    final String title,
+    final String message, {
+    final Window? window,
   }) {
     final titlePointer = title.toInt8Pointer();
     final messagePointer = message.toInt8Pointer();
-    checkReturnValue(sdl.SDL_ShowSimpleMessageBox(
+    checkReturnValue(
+      sdl.SDL_ShowSimpleMessageBox(
         [for (final t in types) t.toInt()].xor(),
         titlePointer,
         messagePointer,
-        window?.handle ?? nullptr));
+        window?.handle ?? nullptr,
+      ),
+    );
     [titlePointer, messagePointer].forEach(calloc.free);
   }
 
@@ -488,7 +515,7 @@ class Sdl {
   /// Set clipboard text.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetClipboardText)
-  void setClipboardText(String value) {
+  void setClipboardText(final String value) {
     final valuePointer = value.toInt8Pointer();
     checkReturnValue(sdl.SDL_SetClipboardText(valuePointer));
     calloc.free(valuePointer);
@@ -518,7 +545,7 @@ class Sdl {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetCurrentAudioDriver)
   AudioDriver get audioDriver {
     final name = sdl.SDL_GetCurrentAudioDriver().cast<Utf8>().toDartString();
-    return audioDrivers.firstWhere((element) => element.name == name);
+    return audioDrivers.firstWhere((final element) => element.name == name);
   }
 
   /// Get all the audio devices on this system.
@@ -526,7 +553,8 @@ class Sdl {
   /// Under the hood, uses the
   ///[SDL_GetNumAudioDevices](https://wiki.libsdl.org/SDL_GetNumAudioDevices)
   ///function.
-  List<AudioDevice> getAudioDevices(bool isCapture) {
+  // ignore: avoid_positional_boolean_parameters
+  List<AudioDevice> getAudioDevices(final bool isCapture) {
     final numDevices = sdl.SDL_GetNumAudioDevices(boolToValue(isCapture));
     final l = <AudioDevice>[];
     for (var i = 0; i < numDevices; i++) {
@@ -548,21 +576,29 @@ class Sdl {
   /// If [isCapture] is `null`, then `device.isCapture` will be used.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_OpenAudioDevice)
-  OpenAudioDevice openAudioDevice(
-      {AudioDevice? device, bool? isCapture, AudioSpec? settings}) {
+  OpenAudioDevice openAudioDevice({
+    final AudioDevice? device,
+    final bool? isCapture,
+    final AudioSpec? settings,
+  }) {
+    var capture = isCapture;
     Pointer<Int8> namePointer;
     if (device != null) {
-      if (isCapture == null) {
-        isCapture = device.isCapture;
+      if (capture == null) {
+        capture = device.isCapture;
         namePointer = device.name.toInt8Pointer();
       } else {
-        throw SdlError(-1,
-            'You must specify either `device` or `isCapture`, but not both.');
+        throw SdlError(
+          -1,
+          'You must specify either `device` or `isCapture`, but not both.',
+        );
       }
     } else {
-      if (isCapture == null) {
+      if (capture == null) {
         throw SdlError(
-            -1, 'When `device == null`, `isCapture` must be specified.');
+          -1,
+          'When `device == null`, `isCapture` must be specified.',
+        );
       } else {
         namePointer = nullptr;
       }
@@ -576,12 +612,15 @@ class Sdl {
         ..silence = settings.silence
         ..size = settings.size;
     }
-    final id = checkReturnValue(sdl.SDL_OpenAudioDevice(
+    final id = checkReturnValue(
+      sdl.SDL_OpenAudioDevice(
         namePointer,
-        boolToValue(isCapture),
+        boolToValue(capture),
         _audioSpecDesiredPointer,
         _audioSpecObtainedPointer,
-        0));
+        0,
+      ),
+    );
     if (id <= 0) {
       throw SdlError(id, getError());
     }
@@ -599,7 +638,7 @@ class Sdl {
   /// [index].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickGetDeviceGUID)
-  SDL_JoystickGUID getJoystickDeviceGuid(int index) {
+  SDL_JoystickGUID getJoystickDeviceGuid(final int index) {
     final g = sdl.SDL_JoystickGetDeviceGUID(index);
     if (g.data[0] == 0) {
       throw SdlError(0, getError());
@@ -612,7 +651,7 @@ class Sdl {
   /// Returns the name of the joystick with the given [index].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickNameForIndex)
-  String getJoystickName(int index) {
+  String getJoystickName(final int index) {
     final name = sdl.SDL_JoystickNameForIndex(index);
     if (name == nullptr) {
       throw SdlError(0, getError());
@@ -623,13 +662,13 @@ class Sdl {
   /// Get the instance ID of the joystick at index [index].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickInstanceID)
-  int getJoystickInstanceId(int index) =>
+  int getJoystickInstanceId(final int index) =>
       checkReturnValue(sdl.SDL_JoystickGetDeviceInstanceID(index));
 
   /// Open a joystick with the given [index] for use.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_JoystickOpen)
-  Joystick openJoystick(int index) {
+  Joystick openJoystick(final int index) {
     final handle = sdl.SDL_JoystickOpen(index);
     if (handle == nullptr) {
       throw SdlError(0, getError());
@@ -641,20 +680,21 @@ class Sdl {
   /// Returns `true` if the joystick at [index] is a game controller.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_IsGameController)
-  bool isGameController(int index) => getBool(sdl.SDL_IsGameController(index));
+  bool isGameController(final int index) =>
+      getBool(sdl.SDL_IsGameController(index));
 
   /// Get the implementation dependent name for the game controller.
   ///
   /// Returns the name of the game controller with the given [index].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerNameForIndex)
-  String getGameControllerName(int index) =>
+  String getGameControllerName(final int index) =>
       sdl.SDL_GameControllerNameForIndex(index).cast<Utf8>().toDartString();
 
   /// Open a game controller.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerOpen)
-  GameController openGameController(int index) {
+  GameController openGameController(final int index) {
     final handle = sdl.SDL_GameControllerOpen(index);
     if (handle == nullptr) {
       throw SdlError(0, getError());
@@ -664,7 +704,7 @@ class Sdl {
   }
 
   /// Throw an error to show that an event was unhandled.
-  Never throwInvalidEvent(EventType type) =>
+  Never throwInvalidEvent(final EventType type) =>
       throw SdlError(type.toInt(), 'Invalid event type $type.');
 
   /// Poll events.
@@ -723,12 +763,20 @@ class Sdl {
               event = WindowExposedEvent(this, timestamp, windowId);
               break;
             case WindowEventID.moved:
-              event = WindowMovedEvent(this, timestamp, windowId,
-                  Point<int>(windowEvent.data1, windowEvent.data2));
+              event = WindowMovedEvent(
+                this,
+                timestamp,
+                windowId,
+                Point<int>(windowEvent.data1, windowEvent.data2),
+              );
               break;
             case WindowEventID.resized:
-              event = WindowResizedEvent(this, timestamp, windowId,
-                  WindowSize(windowEvent.data1, windowEvent.data2));
+              event = WindowResizedEvent(
+                this,
+                timestamp,
+                windowId,
+                WindowSize(windowEvent.data1, windowEvent.data2),
+              );
               break;
             case WindowEventID.sizeChanged:
               event = WindowSizeChangedEvent(this, timestamp, windowId);
@@ -768,7 +816,11 @@ class Sdl {
               break;
             case WindowEventID.displayChanged:
               event = DisplayChangedEvent(
-                  this, timestamp, windowId, windowEvent.data1);
+                this,
+                timestamp,
+                windowId,
+                windowEvent.data1,
+              );
               break;
           }
           break;
@@ -784,14 +836,16 @@ class Sdl {
           break;
         case EventType.textediting:
           final s = String.fromCharCodes(
-              [for (var i = 0; i < e.edit.length; i++) e.edit.text[i]]);
+            [for (var i = 0; i < e.edit.length; i++) e.edit.text[i]],
+          );
           event = TextEditingEvent(
-              sdl: this,
-              timestamp: e.edit.timestamp,
-              wndId: e.edit.windowID,
-              text: s,
-              start: e.edit.start,
-              length: e.edit.length);
+            sdl: this,
+            timestamp: e.edit.timestamp,
+            wndId: e.edit.windowID,
+            text: s,
+            start: e.edit.start,
+            length: e.edit.length,
+          );
           break;
         case EventType.textinput:
           final charCodes = <int>[];
@@ -817,15 +871,16 @@ class Sdl {
         case EventType.mousemotion:
           final motion = e.motion;
           event = MouseMotionEvent(
-              sdl: this,
-              timestamp: motion.timestamp,
-              wndId: motion.windowID,
-              which: motion.which,
-              state: motion.state,
-              x: motion.x,
-              y: motion.y,
-              relativeX: motion.xrel,
-              relativeY: motion.yrel);
+            sdl: this,
+            timestamp: motion.timestamp,
+            wndId: motion.windowID,
+            which: motion.which,
+            state: motion.state,
+            x: motion.x,
+            y: motion.y,
+            relativeX: motion.xrel,
+            relativeY: motion.yrel,
+          );
           break;
         case EventType.mousebuttondown:
           event = MouseButtonEvent.fromSdlEvent(this, e.button);
@@ -836,41 +891,45 @@ class Sdl {
         case EventType.mousewheel:
           final wheel = e.wheel;
           event = MouseWheelEvent(
-              sdl: this,
-              timestamp: wheel.timestamp,
-              windowId: wheel.windowID,
-              which: wheel.which,
-              x: wheel.x,
-              y: wheel.y,
-              direction: wheel.direction.toMouseWheelDirection());
+            sdl: this,
+            timestamp: wheel.timestamp,
+            windowId: wheel.windowID,
+            which: wheel.which,
+            x: wheel.x,
+            y: wheel.y,
+            direction: wheel.direction.toMouseWheelDirection(),
+          );
           break;
         case EventType.joyaxismotion:
           final axis = e.jaxis;
           event = JoyAxisEvent(
-              sdl: this,
-              timestamp: axis.timestamp,
-              joystickId: axis.which,
-              axis: axis.axis,
-              value: axis.value);
+            sdl: this,
+            timestamp: axis.timestamp,
+            joystickId: axis.which,
+            axis: axis.axis,
+            value: axis.value,
+          );
           break;
         case EventType.joyballmotion:
           final ball = e.jball;
           event = JoyBallEvent(
-              sdl: this,
-              timestamp: ball.timestamp,
-              joystickId: ball.which,
-              ball: ball.ball,
-              relativeX: ball.xrel,
-              relativeY: ball.yrel);
+            sdl: this,
+            timestamp: ball.timestamp,
+            joystickId: ball.which,
+            ball: ball.ball,
+            relativeX: ball.xrel,
+            relativeY: ball.yrel,
+          );
           break;
         case EventType.joyhatmotion:
           final hat = e.jhat;
           event = JoyHatEvent(
-              sdl: this,
-              timestamp: hat.timestamp,
-              joystickId: hat.which,
-              hat: hat.hat,
-              value: hat.value.toJoyHatValue());
+            sdl: this,
+            timestamp: hat.timestamp,
+            joystickId: hat.which,
+            hat: hat.hat,
+            value: hat.value.toJoyHatValue(),
+          );
           break;
         case EventType.joybuttondown:
           event = JoyButtonEvent.fromSdlEvent(this, e.jbutton);
@@ -887,11 +946,12 @@ class Sdl {
         case EventType.controlleraxismotion:
           final axis = e.caxis;
           event = ControllerAxisEvent(
-              sdl: this,
-              timestamp: axis.timestamp,
-              joystickId: axis.which,
-              axis: axis.axis.toGameControllerAxis(),
-              value: axis.value);
+            sdl: this,
+            timestamp: axis.timestamp,
+            joystickId: axis.which,
+            axis: axis.axis.toGameControllerAxis(),
+            value: axis.value,
+          );
           break;
         case EventType.controllerbuttondown:
           event = ControllerButtonEvent.fromSdlEvent(this, e.cbutton);
@@ -938,14 +998,15 @@ class Sdl {
         case EventType.multigesture:
           final gesture = e.mgesture;
           event = MultiGestureEvent(
-              sdl: this,
-              timestamp: gesture.timestamp,
-              touchId: gesture.touchId,
-              dTheta: gesture.dTheta,
-              dDist: gesture.dDist,
-              numFingers: gesture.numFingers,
-              x: gesture.x,
-              y: gesture.y);
+            sdl: this,
+            timestamp: gesture.timestamp,
+            touchId: gesture.touchId,
+            dTheta: gesture.dTheta,
+            dDist: gesture.dDist,
+            numFingers: gesture.numFingers,
+            x: gesture.x,
+            y: gesture.y,
+          );
           break;
         case EventType.clipboardupdate:
           event = ClipboardChangedEvent(this, e.common.timestamp);
@@ -971,15 +1032,16 @@ class Sdl {
         case EventType.sensorupdate:
           final sensor = e.sensor;
           event = SensorEvent(
-              sdl: this,
-              timestamp: sensor.timestamp,
-              sensor: sensor.which,
-              data1: sensor.data[0],
-              data2: sensor.data[1],
-              data3: sensor.data[2],
-              data4: sensor.data[3],
-              data5: sensor.data[4],
-              data6: sensor.data[5]);
+            sdl: this,
+            timestamp: sensor.timestamp,
+            sensor: sensor.which,
+            data1: sensor.data[0],
+            data2: sensor.data[1],
+            data3: sensor.data[2],
+            data4: sensor.data[3],
+            data5: sensor.data[4],
+            data6: sensor.data[5],
+          );
           break;
         case EventType.renderTargetsReset:
           event = RenderTargetsResetEvent(this, e.common.timestamp);
@@ -990,11 +1052,12 @@ class Sdl {
         case EventType.userevent:
           final user = e.user;
           event = UserEvent(
-              sdl: this,
-              timestamp: user.timestamp,
-              type: user.type,
-              windowId: user.windowID == 0 ? null : user.windowID,
-              code: user.code);
+            sdl: this,
+            timestamp: user.timestamp,
+            type: user.type,
+            windowId: user.windowID == 0 ? null : user.windowID,
+            code: user.code,
+          );
           break;
         case EventType.lastevent:
           throw SdlError(e.type, 'Last event type.');
@@ -1010,7 +1073,7 @@ class Sdl {
   /// Get a stream of all SDL events.
   ///
   /// A pause of [duration] will be awaited between calls to [pollEvent].
-  Stream<Event> getEvents({Duration duration = Duration.zero}) async* {
+  Stream<Event> getEvents({final Duration duration = Duration.zero}) async* {
     while (true) {
       final event = pollEvent();
       if (event != null) {
@@ -1028,7 +1091,7 @@ class Sdl {
   /// Register user-defined event types.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_PumpEvents)
-  int registerEvents(int n) {
+  int registerEvents(final int n) {
     final r = sdl.SDL_RegisterEvents(n);
     if (r == 0xFFFFFFFF) {
       throw SdlError(r, 'Not enough user-defined events left.');
@@ -1050,13 +1113,13 @@ class Sdl {
   }
 
   /// Set whether or not game controller events are enabled.
-  set gameControllerEventsEnabled(bool value) =>
+  set gameControllerEventsEnabled(final bool value) =>
       sdl.SDL_GameControllerEventState(value ? SDL_ENABLE : SDL_IGNORE);
 
   /// Wait a specified number of milliseconds before returning.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Delay)
-  void delay(int ms) => sdl.SDL_Delay(ms);
+  void delay(final int ms) => sdl.SDL_Delay(ms);
 
   /// Query the window which currently has keyboard focus.
   ///
@@ -1083,7 +1146,7 @@ class Sdl {
   /// Get a key code from a human-readable name.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyFromName)
-  KeyCode getKeyFromName(String name) {
+  KeyCode getKeyFromName(final String name) {
     final key = sdl.SDL_GetKeyFromName(name.toInt8Pointer());
     if (key == SDL_KeyCode.SDLK_UNKNOWN) {
       throw SdlError(key, getError());
@@ -1095,13 +1158,13 @@ class Sdl {
   /// current keyboard layout.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyFromScancode)
-  KeyCode getKeyFromScanCode(ScanCode scanCode) =>
+  KeyCode getKeyFromScanCode(final ScanCode scanCode) =>
       sdl.SDL_GetKeyFromScancode(scanCode.toSdlValue()).toKeyCode();
 
   /// Get a human-readable name for a key.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyName)
-  String getKeyName(KeyCode keyCode) =>
+  String getKeyName(final KeyCode keyCode) =>
       sdl.SDL_GetKeyName(keyCode.toSdlValue()).cast<Utf8>().toDartString();
 
   /// Get the current key modifier state for the keyboard.
@@ -1112,7 +1175,7 @@ class Sdl {
   /// Set the current key modifier state for the keyboard.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetModState)
-  set modState(Set<KeyMod> modifiers) {
+  set modState(final Set<KeyMod> modifiers) {
     var mod = 0;
     for (final modifier in modifiers) {
       mod |= modifier.toInt();
@@ -1124,13 +1187,13 @@ class Sdl {
   /// current keyboard layout.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeFromKey)
-  ScanCode getScanCodeFromKey(KeyCode key) =>
+  ScanCode getScanCodeFromKey(final KeyCode key) =>
       sdl.SDL_GetScancodeFromKey(key.toSdlValue()).toScanCode();
 
   /// Get a scancode from a human-readable name.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeFromName)
-  ScanCode getScanCodeFromName(String name) {
+  ScanCode getScanCodeFromName(final String name) {
     final scanCode = sdl.SDL_GetScancodeFromName(name.toInt8Pointer());
     if (scanCode == SDL_Scancode.SDL_SCANCODE_UNKNOWN) {
       throw SdlError(scanCode, getError());
@@ -1141,7 +1204,7 @@ class Sdl {
   /// Get a human-readable name for a scancode.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeName)
-  String getScanCodeName(ScanCode scanCode) =>
+  String getScanCodeName(final ScanCode scanCode) =>
       sdl.SDL_GetScancodeName(scanCode.toSdlValue())
           .cast<Utf8>()
           .toDartString();
@@ -1170,7 +1233,8 @@ class Sdl {
   /// Capture the mouse and to track input outside an SDL window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_CaptureMouse)
-  void captureMouse(bool enabled) =>
+  // ignore: avoid_positional_boolean_parameters
+  void captureMouse(final bool enabled) =>
       checkReturnValue(sdl.SDL_CaptureMouse(boolToValue(enabled)));
 
   /// Get the window which currently has mouse focus.
@@ -1186,7 +1250,7 @@ class Sdl {
   /// Set relative mouse mode.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetRelativeMouseMode)
-  set relativeMouseMode(bool enabled) =>
+  set relativeMouseMode(final bool enabled) =>
       checkReturnValue(sdl.SDL_SetRelativeMouseMode(boolToValue(enabled)));
 
   /// Returns `true` if the cursor is shown, `false` otherwise.
@@ -1198,13 +1262,13 @@ class Sdl {
   /// Toggle whether or not the cursor is shown.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_ShowCursor)
-  set showCursor(bool enabled) =>
+  set showCursor(final bool enabled) =>
       checkReturnValue(sdl.SDL_ShowCursor(boolToValue(enabled)));
 
   /// Move the mouse to the given position in global screen space.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_WarpMouseGlobal)
-  void warpMouse(int x, int y) =>
+  void warpMouse(final int x, final int y) =>
       checkReturnValue(sdl.SDL_WarpMouseGlobal(x, y));
 
   /// Count the number of sensors attached to the system right now.
@@ -1220,12 +1284,12 @@ class Sdl {
   /// Check if the haptic device at the designated [index] has been opened.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpened)
-  bool hapticOpened(int index) => getBool(sdl.SDL_HapticOpened(index));
+  bool hapticOpened(final int index) => getBool(sdl.SDL_HapticOpened(index));
 
   /// Open a haptic device for use.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticOpen)
-  Haptic openHaptic(int index) {
+  Haptic openHaptic(final int index) {
     final handle = sdl.SDL_HapticOpen(index);
     if (handle == nullptr) {
       throw SdlError(-1, getError());
@@ -1236,7 +1300,7 @@ class Sdl {
   /// Get the implementation dependent name of a haptic device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticName)
-  String getHapticName(int index) {
+  String getHapticName(final int index) {
     final pointer = sdl.SDL_HapticName(index);
     if (pointer == nullptr) {
       throw SdlError(index, getError());
@@ -1261,7 +1325,7 @@ class Sdl {
   bool get mouseIsHaptic => getBool(checkReturnValue(sdl.SDL_MouseIsHaptic()));
 
   /// Load [direction] onto [hapticDirectionPointer].
-  void loadHapticDirection(HapticDirection direction) {
+  void loadHapticDirection(final HapticDirection direction) {
     hapticDirectionPointer.ref.type = direction.type.toInt();
     var value = direction.x;
     if (value != null) {
@@ -1302,7 +1366,7 @@ class Sdl {
   /// Get the preferences path for your [org] and [app].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetPrefPath)
-  String getPrefPath(String org, String app) {
+  String getPrefPath(final String org, final String app) {
     final orgPointer = org.toInt8Pointer();
     final appPointer = app.toInt8Pointer();
     final ptr = sdl.SDL_GetPrefPath(orgPointer, appPointer);

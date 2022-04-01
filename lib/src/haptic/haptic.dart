@@ -10,7 +10,7 @@ import 'haptic_features.dart';
 /// A haptic device.
 class Haptic extends SdlObject<SDL_Haptic> {
   /// Create an instance.
-  Haptic(Sdl sdl, Pointer<SDL_Haptic> handle) : super(sdl, handle);
+  Haptic(final Sdl sdl, final Pointer<SDL_Haptic> handle) : super(sdl, handle);
 
   /// Close this device.
   ///
@@ -60,7 +60,7 @@ class Haptic extends SdlObject<SDL_Haptic> {
   /// Run a simple rumble effect on a haptic device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticRumblePlay)
-  void rumblePlay(double strength, int length) => sdl
+  void rumblePlay(final double strength, final int length) => sdl
       .checkReturnValue(sdl.sdl.SDL_HapticRumblePlay(handle, strength, length));
 
   /// Stop the simple rumble on a haptic device.
@@ -78,13 +78,13 @@ class Haptic extends SdlObject<SDL_Haptic> {
   /// Set the global autocenter of the device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticSetAutocenter)
-  set autocenter(int value) =>
+  set autocenter(final int value) =>
       sdl.checkReturnValue(sdl.sdl.SDL_HapticSetAutocenter(handle, value));
 
   /// Set the global gain of the specified haptic device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticSetGain)
-  set gain(int value) =>
+  set gain(final int value) =>
       sdl.checkReturnValue(sdl.sdl.SDL_HapticSetGain(handle, value));
 
   /// Stop all the currently playing effects on a haptic device.
@@ -100,15 +100,18 @@ class Haptic extends SdlObject<SDL_Haptic> {
   /// Returns `true` if the given [effect] is supported by this device.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticEffectSupported)
-  bool isSupported(HapticEffect effect) => sdl.getBool(sdl.checkReturnValue(
-      sdl.sdl.SDL_HapticEffectSupported(handle, effect.handle)));
+  bool isSupported(final HapticEffect effect) => sdl.getBool(
+        sdl.checkReturnValue(
+          sdl.sdl.SDL_HapticEffectSupported(handle, effect.handle),
+        ),
+      );
 
   /// Upload the given [effect] to this device.
   ///
   /// The returned index can be used with [runEffect] or [destroyEffect].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticNewEffect)
-  int newEffect(HapticEffect effect) =>
+  int newEffect(final HapticEffect effect) =>
       sdl.checkReturnValue(sdl.sdl.SDL_HapticNewEffect(handle, effect.handle));
 
   /// Run the effect referenced by the given [effectId].
@@ -118,36 +121,46 @@ class Haptic extends SdlObject<SDL_Haptic> {
   /// If [iterations] is `null`, the effect will run forever.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticRunEffect)
-  void runEffect(int effectId, {int? iterations}) =>
-      sdl.checkReturnValue(sdl.sdl.SDL_HapticRunEffect(
-          handle, effectId, iterations ?? SDL_HAPTIC_INFINITY));
+  void runEffect(final int effectId, {final int? iterations}) =>
+      sdl.checkReturnValue(
+        sdl.sdl.SDL_HapticRunEffect(
+          handle,
+          effectId,
+          iterations ?? SDL_HAPTIC_INFINITY,
+        ),
+      );
 
   /// Destroy the effect referenced by the given [effectId].
   ///
   /// The index can be obtained from [newEffect].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticDestroyEffect)
-  void destroyEffect(int effectId) =>
+  void destroyEffect(final int effectId) =>
       sdl.sdl.SDL_HapticDestroyEffect(handle, effectId);
 
   /// Return `true` if the effect represented by [effectId] is currently
   /// playing.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticGetEffectStatus)
-  bool getEffectPlaying(int effectId) => sdl.getBool(sdl
-      .checkReturnValue(sdl.sdl.SDL_HapticGetEffectStatus(handle, effectId)));
+  bool getEffectPlaying(final int effectId) => sdl.getBool(
+        sdl.checkReturnValue(
+          sdl.sdl.SDL_HapticGetEffectStatus(handle, effectId),
+        ),
+      );
 
   /// Stop the effect referenced by [effectId].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticStopEffect)
-  void stopEffect(int effectId) =>
+  void stopEffect(final int effectId) =>
       sdl.checkReturnValue(sdl.sdl.SDL_HapticStopEffect(handle, effectId));
 
   /// Update the effect referenced by [effectId] with [effect].
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_HapticUpdateEffect)
-  void updateEffect(int effectId, HapticEffect effect) => sdl.checkReturnValue(
-      sdl.sdl.SDL_HapticUpdateEffect(handle, effectId, effect.handle));
+  void updateEffect(final int effectId, final HapticEffect effect) =>
+      sdl.checkReturnValue(
+        sdl.sdl.SDL_HapticUpdateEffect(handle, effectId, effect.handle),
+      );
 
   /// Get the features supported by this device.
   ///

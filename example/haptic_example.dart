@@ -67,18 +67,19 @@ Future<void> main() async {
       } else if (event is ControllerButtonEvent) {
         if (event.button == GameControllerButton.a) {
           final effect = HapticRamp(
-              sdl: sdl,
-              direction: HapticDirection(HapticDirectionType.cartesian),
-              length: 200,
-              delay: 0,
-              button: 0,
-              interval: 500,
-              start: 0,
-              end: 65535,
-              attackLength: 200,
-              attackLevel: 100,
-              fadeLength: 500,
-              fadeLevel: 100);
+            sdl: sdl,
+            direction: HapticDirection(HapticDirectionType.cartesian),
+            length: 200,
+            delay: 0,
+            button: 0,
+            interval: 500,
+            start: 0,
+            end: 65535,
+            attackLength: 200,
+            attackLevel: 100,
+            fadeLength: 500,
+            fadeLevel: 100,
+          );
           final supported = haptics.values.first.isSupported(effect);
           if (supported) {
             haptics.values.first
@@ -87,18 +88,23 @@ Future<void> main() async {
           window.title = 'Ramp effect supported: $supported';
         } else if (event.button == GameControllerButton.b) {
           final effect = HapticConstant(
-              sdl: sdl,
-              direction: HapticDirection(HapticDirectionType.cartesian,
-                  x: 0, y: 1, z: 0),
-              length: 500,
-              delay: 200,
-              button: 0,
-              interval: 500,
-              level: 65535,
-              attackLength: 500,
-              attackLevel: 100,
-              fadeLength: 500,
-              fadeLevel: 100);
+            sdl: sdl,
+            direction: HapticDirection(
+              HapticDirectionType.cartesian,
+              x: 0,
+              y: 1,
+              z: 0,
+            ),
+            length: 500,
+            delay: 200,
+            button: 0,
+            interval: 500,
+            level: 65535,
+            attackLength: 500,
+            attackLevel: 100,
+            fadeLength: 500,
+            fadeLevel: 100,
+          );
           final supported = haptics.values.first.isSupported(effect);
           if (supported) {
             haptics.values.first
@@ -112,7 +118,11 @@ Future<void> main() async {
           }
         } else if (event.button == GameControllerButton.y) {
           final effect = HapticLeftRight(
-              sdl: sdl, length: 500, largeMagnitude: 1000, smallMagnitude: 800);
+            sdl: sdl,
+            length: 500,
+            largeMagnitude: 1000,
+            smallMagnitude: 800,
+          );
           final supported = haptics.values.first.isSupported(effect);
           if (supported) {
             haptics.values.first

@@ -45,10 +45,10 @@ class WindowSize {
 /// An SDL Window.
 class Window extends SdlObject<SDL_Window> {
   /// Create a window.
-  Window(Sdl sdl, Pointer<SDL_Window> handle) : super(sdl, handle);
+  Window(final Sdl sdl, final Pointer<SDL_Window> handle) : super(sdl, handle);
 
   /// Get a window from a stored ID.
-  factory Window.fromId(Sdl sdl, int id) {
+  factory Window.fromId(final Sdl sdl, final int id) {
     final handle = sdl.sdl.SDL_GetWindowFromID(id);
     if (handle == nullptr) {
       throw SdlError(id, sdl.getError());
@@ -71,7 +71,7 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the title of the window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowTitle)
-  set title(String value) {
+  set title(final String value) {
     final ptr = value.toInt8Pointer();
     sdl.sdl.SDL_SetWindowTitle(handle, ptr);
     calloc.free(ptr);
@@ -117,7 +117,7 @@ class Window extends SdlObject<SDL_Window> {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowBordered)
   @mustCallSuper
-  set bordered(bool value) =>
+  set bordered(final bool value) =>
       sdl.sdl.SDL_SetWindowBordered(handle, sdl.boolToValue(value));
 
   /// Get the brightness of this window.
@@ -128,17 +128,28 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the brightness of this window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowBrightness)
-  set brightness(double value) =>
+  set brightness(final double value) =>
       sdl.checkReturnValue(sdl.sdl.SDL_SetWindowBrightness(handle, value));
 
   /// Get the size of the window's borders.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowBordersSize)
   BordersSize get bordersSize {
-    sdl.checkReturnValue(sdl.sdl.SDL_GetWindowBordersSize(
-        handle, sdl.xPointer, sdl.yPointer, sdl.x2Pointer, sdl.y2Pointer));
-    return BordersSize(sdl.xPointer.value, sdl.yPointer.value,
-        sdl.x2Pointer.value, sdl.y2Pointer.value);
+    sdl.checkReturnValue(
+      sdl.sdl.SDL_GetWindowBordersSize(
+        handle,
+        sdl.xPointer,
+        sdl.yPointer,
+        sdl.x2Pointer,
+        sdl.y2Pointer,
+      ),
+    );
+    return BordersSize(
+      sdl.xPointer.value,
+      sdl.yPointer.value,
+      sdl.x2Pointer.value,
+      sdl.y2Pointer.value,
+    );
   }
 
   /// Get the index of the display this window is associated with.
@@ -157,7 +168,8 @@ class Window extends SdlObject<SDL_Window> {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowDisplayMode)
   DisplayMode get displayMode {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_GetWindowDisplayMode(handle, sdl.displayModePointer));
+      sdl.sdl.SDL_GetWindowDisplayMode(handle, sdl.displayModePointer),
+    );
     final m = sdl.displayModePointer.ref;
     return DisplayMode(m.format, m.w, m.h, m.refresh_rate);
   }
@@ -165,13 +177,14 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the display mode for this window.
   ///
   ///
-  set displayMode(DisplayMode mode) {
+  set displayMode(final DisplayMode mode) {
     sdl.displayModePointer.ref
       ..refresh_rate = mode.refreshRate
       ..w = mode.width
       ..h = mode.height;
     sdl.checkReturnValue(
-        sdl.sdl.SDL_SetWindowDisplayMode(handle, sdl.displayModePointer));
+      sdl.sdl.SDL_SetWindowDisplayMode(handle, sdl.displayModePointer),
+    );
   }
 
   /// Get the flags for this window.
@@ -187,7 +200,7 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the grab mode of this window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowGrab)
-  set grab(bool value) =>
+  set grab(final bool value) =>
       sdl.sdl.SDL_SetWindowGrab(handle, sdl.boolToValue(value));
 
   /// Get the ID of this window.
@@ -206,7 +219,7 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the maximum size of the client area.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowMaximumSize)
-  set maximumSize(WindowSize size) =>
+  set maximumSize(final WindowSize size) =>
       sdl.sdl.SDL_SetWindowMaximumSize(handle, size.width, size.height);
 
   /// Get the minimum size of a window's client area.
@@ -220,7 +233,7 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the minimum size of this client area.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowMinimumSize)
-  set minimumSize(WindowSize size) =>
+  set minimumSize(final WindowSize size) =>
       sdl.sdl.SDL_SetWindowMinimumSize(handle, size.width, size.height);
 
   /// Get the opacity of this window.
@@ -228,14 +241,15 @@ class Window extends SdlObject<SDL_Window> {
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetWindowOpacity)
   double get opacity {
     sdl.checkReturnValue(
-        sdl.sdl.SDL_GetWindowOpacity(handle, sdl.floatPointer));
+      sdl.sdl.SDL_GetWindowOpacity(handle, sdl.floatPointer),
+    );
     return sdl.floatPointer.value;
   }
 
   /// Set the opacity for this window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowOpacity)
-  set opacity(double value) =>
+  set opacity(final double value) =>
       sdl.checkReturnValue(sdl.sdl.SDL_SetWindowOpacity(handle, value));
 
   /// Get the position of this window.
@@ -250,7 +264,7 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the position of this window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowPosition)
-  set position(Point<int> pos) =>
+  set position(final Point<int> pos) =>
       sdl.sdl.SDL_SetWindowPosition(handle, pos.x, pos.y);
 
   /// Get the size of this window.
@@ -264,13 +278,13 @@ class Window extends SdlObject<SDL_Window> {
   /// Set the size of this window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowSize)
-  set size(WindowSize value) =>
+  set size(final WindowSize value) =>
       sdl.sdl.SDL_SetWindowSize(handle, value.width, value.height);
 
   /// Set this window full screen.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowFullscreen)
-  set fullscreen(FullScreenMode mode) => sdl
+  set fullscreen(final FullScreenMode mode) => sdl
       .checkReturnValue(sdl.sdl.SDL_SetWindowFullscreen(handle, mode.toInt()));
 
   /// Set input focus.
@@ -282,13 +296,13 @@ class Window extends SdlObject<SDL_Window> {
   /// Set this window as modal for another window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowModalFor)
-  set modalFor(Window other) =>
+  set modalFor(final Window other) =>
       sdl.checkReturnValue(sdl.sdl.SDL_SetWindowModalFor(handle, other.handle));
 
   /// Set the window resizeable.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowResizable)
-  set resizeable(bool value) =>
+  set resizeable(final bool value) =>
       sdl.sdl.SDL_SetWindowResizable(handle, sdl.boolToValue(value));
 
   /// Check whether the screen keyboard is shown for given window.
@@ -300,5 +314,6 @@ class Window extends SdlObject<SDL_Window> {
   /// Move the mouse cursor to the given position within the window.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_WarpMouseInWindow)
-  void warpMouse(int x, int y) => sdl.sdl.SDL_WarpMouseInWindow(handle, x, y);
+  void warpMouse(final int x, final int y) =>
+      sdl.sdl.SDL_WarpMouseInWindow(handle, x, y);
 }

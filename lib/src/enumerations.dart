@@ -2850,7 +2850,10 @@ extension IntToC on int {
       case SDL_bool.SDL_TRUE:
         return SdlBool.true_;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_bool` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_bool` member.',
+        );
     }
   }
 
@@ -2868,7 +2871,10 @@ extension IntToC on int {
       case SDL_AssertState.SDL_ASSERTION_ALWAYS_IGNORE:
         return AssertState.assertionAlwaysIgnore;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_AssertState` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_AssertState` member.',
+        );
     }
   }
 
@@ -2888,7 +2894,10 @@ extension IntToC on int {
       case SDL_errorcode.SDL_LASTERROR:
         return ErrorCode.lasterror;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_errorcode` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_errorcode` member.',
+        );
     }
   }
 
@@ -2904,7 +2913,10 @@ extension IntToC on int {
       case SDL_ThreadPriority.SDL_THREAD_PRIORITY_TIME_CRITICAL:
         return ThreadPriority.threadPriorityTimeCritical;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_ThreadPriority` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_ThreadPriority` member.',
+        );
     }
   }
 
@@ -2918,7 +2930,10 @@ extension IntToC on int {
       case SDL_AudioStatus.SDL_AUDIO_PAUSED:
         return AudioStatus.paused;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_AudioStatus` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_AudioStatus` member.',
+        );
     }
   }
 
@@ -2950,7 +2965,10 @@ extension IntToC on int {
       case SDL_PixelType.SDL_PIXELTYPE_ARRAYF32:
         return PixelType.arrayf32;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_PixelType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_PixelType` member.',
+        );
     }
   }
 
@@ -2964,7 +2982,10 @@ extension IntToC on int {
       case SDL_BitmapOrder.SDL_BITMAPORDER_1234:
         return BitmapOrder.bitmapOrder1234;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_BitmapOrder` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_BitmapOrder` member.',
+        );
     }
   }
 
@@ -2990,7 +3011,10 @@ extension IntToC on int {
       case SDL_PackedOrder.SDL_PACKEDORDER_BGRA:
         return PackedOrder.bgra;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_PackedOrder` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_PackedOrder` member.',
+        );
     }
   }
 
@@ -3012,7 +3036,10 @@ extension IntToC on int {
       case SDL_ArrayOrder.SDL_ARRAYORDER_ABGR:
         return ArrayOrder.abgr;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_ArrayOrder` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_ArrayOrder` member.',
+        );
     }
   }
 
@@ -3038,7 +3065,10 @@ extension IntToC on int {
       case SDL_PackedLayout.SDL_PACKEDLAYOUT_1010102:
         return PackedLayout.packedLayout1010102;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_PackedLayout` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_PackedLayout` member.',
+        );
     }
   }
 
@@ -3126,7 +3156,10 @@ extension IntToC on int {
       case SDL_PixelFormatEnum.SDL_PIXELFORMAT_EXTERNAL_OES:
         return PixelFormat.externalOes;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_PixelFormatEnum` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_PixelFormatEnum` member.',
+        );
     }
   }
 
@@ -3146,7 +3179,10 @@ extension IntToC on int {
       case SDL_BlendMode.SDL_BLENDMODE_INVALID:
         return BlendMode.invalid;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_BlendMode` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_BlendMode` member.',
+        );
     }
   }
 
@@ -3164,7 +3200,10 @@ extension IntToC on int {
       case SDL_BlendOperation.SDL_BLENDOPERATION_MAXIMUM:
         return BlendOperation.maximum;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_BlendOperation` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_BlendOperation` member.',
+        );
     }
   }
 
@@ -3192,7 +3231,10 @@ extension IntToC on int {
       case SDL_BlendFactor.SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA:
         return BlendFactor.oneMinusDstAlpha;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_BlendFactor` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_BlendFactor` member.',
+        );
     }
   }
 
@@ -3208,7 +3250,10 @@ extension IntToC on int {
       case SDL_YUV_CONVERSION_MODE.SDL_YUV_CONVERSION_AUTOMATIC:
         return YuvConversionMode.automatic;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_YUV_CONVERSION_MODE` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_YUV_CONVERSION_MODE` member.',
+        );
     }
   }
 
@@ -3262,7 +3307,10 @@ extension IntToC on int {
       case SDL_WindowFlags.SDL_WINDOW_METAL:
         return WindowFlags.metal;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_WindowFlags` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_WindowFlags` member.',
+        );
     }
   }
 
@@ -3308,7 +3356,10 @@ extension IntToC on int {
       case SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED:
         return WindowEventID.displayChanged;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_WindowEventID` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_WindowEventID` member.',
+        );
     }
   }
 
@@ -3324,7 +3375,10 @@ extension IntToC on int {
       case SDL_DisplayEventID.SDL_DISPLAYEVENT_DISCONNECTED:
         return DisplayEventID.disconnected;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_DisplayEventID` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_DisplayEventID` member.',
+        );
     }
   }
 
@@ -3342,7 +3396,10 @@ extension IntToC on int {
       case SDL_DisplayOrientation.SDL_ORIENTATION_PORTRAIT_FLIPPED:
         return DisplayOrientation.portraitFlipped;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_DisplayOrientation` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_DisplayOrientation` member.',
+        );
     }
   }
 
@@ -3356,7 +3413,10 @@ extension IntToC on int {
       case SDL_FlashOperation.SDL_FLASH_UNTIL_FOCUSED:
         return FlashOperation.flashUntilFocused;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_FlashOperation` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_FlashOperation` member.',
+        );
     }
   }
 
@@ -3418,7 +3478,10 @@ extension IntToC on int {
       case SDL_GLattr.SDL_GL_CONTEXT_NO_ERROR:
         return GLattr.contextNoError;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GLattr` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GLattr` member.',
+        );
     }
   }
 
@@ -3432,7 +3495,10 @@ extension IntToC on int {
       case SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_ES:
         return GLprofile.es;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GLprofile` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GLprofile` member.',
+        );
     }
   }
 
@@ -3448,7 +3514,10 @@ extension IntToC on int {
       case SDL_GLcontextFlag.SDL_GL_CONTEXT_RESET_ISOLATION_FLAG:
         return GLcontextFlag.glContextResetIsolationFlag;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GLcontextFlag` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GLcontextFlag` member.',
+        );
     }
   }
 
@@ -3460,7 +3529,10 @@ extension IntToC on int {
       case SDL_GLcontextReleaseFlag.SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH:
         return GLcontextReleaseFlag.flush;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GLcontextReleaseFlag` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GLcontextReleaseFlag` member.',
+        );
     }
   }
 
@@ -3473,7 +3545,9 @@ extension IntToC on int {
         return GLContextResetNotification.loseContext;
       default:
         throw SdlError(
-            this, 'Unrecognised `SDL_GLContextResetNotification` member.');
+          this,
+          'Unrecognised `SDL_GLContextResetNotification` member.',
+        );
     }
   }
 
@@ -3501,7 +3575,10 @@ extension IntToC on int {
       case SDL_HitTestResult.SDL_HITTEST_RESIZE_LEFT:
         return HitTestResult.resizeLeft;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_HitTestResult` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_HitTestResult` member.',
+        );
     }
   }
 
@@ -3535,7 +3612,10 @@ extension IntToC on int {
       case SDL_SystemCursor.SDL_NUM_SYSTEM_CURSORS:
         return SystemCursor.numSystemCursors;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_SystemCursor` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_SystemCursor` member.',
+        );
     }
   }
 
@@ -3547,7 +3627,10 @@ extension IntToC on int {
       case SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED:
         return MouseWheelDirection.flipped;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_MouseWheelDirection` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_MouseWheelDirection` member.',
+        );
     }
   }
 
@@ -3575,7 +3658,10 @@ extension IntToC on int {
       case SDL_JoystickType.SDL_JOYSTICK_TYPE_THROTTLE:
         return JoystickType.throttle;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_JoystickType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_JoystickType` member.',
+        );
     }
   }
 
@@ -3597,7 +3683,10 @@ extension IntToC on int {
       case SDL_JoystickPowerLevel.SDL_JOYSTICK_POWER_MAX:
         return JoystickPowerLevel.max;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_JoystickPowerLevel` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_JoystickPowerLevel` member.',
+        );
     }
   }
 
@@ -3613,7 +3702,10 @@ extension IntToC on int {
       case SDL_SensorType.SDL_SENSOR_GYRO:
         return SensorType.gyro;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_SensorType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_SensorType` member.',
+        );
     }
   }
 
@@ -3641,7 +3733,10 @@ extension IntToC on int {
       case SDL_GameControllerType.SDL_CONTROLLER_TYPE_GOOGLE_STADIA:
         return GameControllerType.googleStadia;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GameControllerType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GameControllerType` member.',
+        );
     }
   }
 
@@ -3658,7 +3753,9 @@ extension IntToC on int {
         return GameControllerBindType.hat;
       default:
         throw SdlError(
-            this, 'Unrecognised `SDL_GameControllerBindType` member.');
+          this,
+          'Unrecognised `SDL_GameControllerBindType` member.',
+        );
     }
   }
 
@@ -3682,7 +3779,10 @@ extension IntToC on int {
       case SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_MAX:
         return GameControllerAxis.max;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GameControllerAxis` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GameControllerAxis` member.',
+        );
     }
   }
 
@@ -3736,7 +3836,10 @@ extension IntToC on int {
       case SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_MAX:
         return GameControllerButton.max;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_GameControllerButton` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_GameControllerButton` member.',
+        );
     }
   }
 
@@ -3752,7 +3855,10 @@ extension IntToC on int {
       case SDL_TouchDeviceType.SDL_TOUCH_DEVICE_INDIRECT_RELATIVE:
         return TouchDeviceType.indirectRelative;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_TouchDeviceType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_TouchDeviceType` member.',
+        );
     }
   }
 
@@ -3874,7 +3980,10 @@ extension IntToC on int {
       case SDL_EventType.SDL_LASTEVENT:
         return EventType.lastevent;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_EventType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_EventType` member.',
+        );
     }
   }
 
@@ -3888,7 +3997,10 @@ extension IntToC on int {
       case SDL_eventaction.SDL_GETEVENT:
         return EventAction.getevent;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_eventaction` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_eventaction` member.',
+        );
     }
   }
 
@@ -3902,7 +4014,10 @@ extension IntToC on int {
       case SDL_HintPriority.SDL_HINT_OVERRIDE:
         return HintPriority.override;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_HintPriority` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_HintPriority` member.',
+        );
     }
   }
 
@@ -3950,7 +4065,10 @@ extension IntToC on int {
       case SDL_LogCategory.SDL_LOG_CATEGORY_CUSTOM:
         return LogCategory.custom;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_LogCategory` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_LogCategory` member.',
+        );
     }
   }
 
@@ -3972,7 +4090,10 @@ extension IntToC on int {
       case SDL_LogPriority.SDL_NUM_LOG_PRIORITIES:
         return LogPriority.numLogPriorities;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_LogPriority` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_LogPriority` member.',
+        );
     }
   }
 
@@ -3990,7 +4111,10 @@ extension IntToC on int {
       case SDL_MessageBoxFlags.SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT:
         return MessageBoxFlags.buttonsRightToLeft;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_MessageBoxFlags` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_MessageBoxFlags` member.',
+        );
     }
   }
 
@@ -4003,7 +4127,9 @@ extension IntToC on int {
         return MessageBoxButtonFlags.escapekeyDefault;
       default:
         throw SdlError(
-            this, 'Unrecognised `SDL_MessageBoxButtonFlags` member.');
+          this,
+          'Unrecognised `SDL_MessageBoxButtonFlags` member.',
+        );
     }
   }
 
@@ -4023,7 +4149,10 @@ extension IntToC on int {
       case SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_MAX:
         return MessageBoxColorType.max;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_MessageBoxColorType` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_MessageBoxColorType` member.',
+        );
     }
   }
 
@@ -4041,7 +4170,10 @@ extension IntToC on int {
       case SDL_PowerState.SDL_POWERSTATE_CHARGED:
         return PowerState.charged;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_PowerState` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_PowerState` member.',
+        );
     }
   }
 
@@ -4057,7 +4189,10 @@ extension IntToC on int {
       case SDL_RendererFlags.SDL_RENDERER_TARGETTEXTURE:
         return RendererFlags.targettexture;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_RendererFlags` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_RendererFlags` member.',
+        );
     }
   }
 
@@ -4071,7 +4206,10 @@ extension IntToC on int {
       case SDL_ScaleMode.SDL_ScaleModeBest:
         return ScaleMode.best;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_ScaleMode` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_ScaleMode` member.',
+        );
     }
   }
 
@@ -4085,7 +4223,10 @@ extension IntToC on int {
       case SDL_TextureAccess.SDL_TEXTUREACCESS_TARGET:
         return TextureAccess.target;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_TextureAccess` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_TextureAccess` member.',
+        );
     }
   }
 
@@ -4099,7 +4240,10 @@ extension IntToC on int {
       case SDL_TextureModulate.SDL_TEXTUREMODULATE_ALPHA:
         return TextureModulate.alpha;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_TextureModulate` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_TextureModulate` member.',
+        );
     }
   }
 
@@ -4113,7 +4257,10 @@ extension IntToC on int {
       case SDL_RendererFlip.SDL_FLIP_VERTICAL:
         return RendererFlip.vertical;
       default:
-        throw SdlError(this, 'Unrecognised `SDL_RendererFlip` member.');
+        throw SdlError(
+          this,
+          'Unrecognised `SDL_RendererFlip` member.',
+        );
     }
   }
 }
