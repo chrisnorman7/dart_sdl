@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.7]
+
+### Changed
+
+* Updated the minimum SDK constraint.
+
 ## [0.9.6]
 
 ### Changed
