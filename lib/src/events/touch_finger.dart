@@ -13,8 +13,8 @@ class TouchFingerEvent extends Event
     with WindowMixin, CoordinatesMixin<double> {
   /// Create an event.
   TouchFingerEvent(
-    final Sdl sdl,
-    final int timestamp,
+    super.sdl,
+    super.timestamp,
     this.type,
     this.touchId,
     this.fingerId,
@@ -24,7 +24,7 @@ class TouchFingerEvent extends Event
     this.distanceY,
     this.pressure,
     final int windowId,
-  ) : super(sdl, timestamp) {
+  ) {
     this.windowId = windowId;
     this.x = x;
     this.y = y;

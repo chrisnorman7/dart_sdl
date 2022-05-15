@@ -7,8 +7,7 @@ import 'base.dart';
 /// [SDL_TEXTINPUT](https://wiki.libsdl.org/SDL_TextInputEvent)
 class TextInputEvent extends Event with WindowMixin {
   /// Create an event.
-  TextInputEvent(final Sdl sdl, final int timestamp, this.text)
-      : super(sdl, timestamp);
+  TextInputEvent(super.sdl, super.timestamp, this.text);
 
   /// The text of this event.
   String text;

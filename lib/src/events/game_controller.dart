@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_final_parameters
 /// Provides game controller events.
 import 'dart:ffi';
 
@@ -12,10 +13,10 @@ import 'joystick.dart';
 class GameControllerEvent extends JoystickEvent {
   /// Create an event.
   const GameControllerEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int controllerId,
-  }) : super(sdl: sdl, timestamp: timestamp, joystickId: controllerId);
+  }) : super(joystickId: controllerId);
 }
 
 /// A controller axis moved.
@@ -24,14 +25,14 @@ class GameControllerEvent extends JoystickEvent {
 class ControllerAxisEvent extends GameControllerEvent {
   /// Create an event.
   const ControllerAxisEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int joystickId,
     required this.axis,
     required this.value,
   })  : smallValue =
             value < 0 ? (value / 32768) : (value == 0 ? 0.0 : (value / 32767)),
-        super(sdl: sdl, timestamp: timestamp, controllerId: joystickId);
+        super(controllerId: joystickId);
 
   /// The axis which moved.
   final GameControllerAxis axis;
@@ -51,12 +52,12 @@ class ControllerAxisEvent extends GameControllerEvent {
 class ControllerButtonEvent extends GameControllerEvent {
   /// Create an event.
   const ControllerButtonEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int joystickId,
     required this.button,
     required this.state,
-  }) : super(sdl: sdl, timestamp: timestamp, controllerId: joystickId);
+  }) : super(controllerId: joystickId);
 
   /// Create an instance from an SDL event.
   ControllerButtonEvent.fromSdlEvent(
@@ -79,11 +80,11 @@ class ControllerButtonEvent extends GameControllerEvent {
 class ControllerDeviceEvent extends GameControllerEvent {
   /// Create an event.
   const ControllerDeviceEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int joystickId,
     required this.state,
-  }) : super(sdl: sdl, timestamp: timestamp, controllerId: joystickId);
+  }) : super(controllerId: joystickId);
 
   /// Create an instance from an SDL event.
   ControllerDeviceEvent.fromSdlEvent(
@@ -101,16 +102,16 @@ class ControllerTouchpadEvent extends GameControllerEvent
     with CoordinatesMixin<double> {
   /// Create an event.
   ControllerTouchpadEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int controllerId,
+    required super.sdl,
+    required super.timestamp,
+    required super.controllerId,
     required this.type,
     required this.touchpad,
     required this.finger,
     required final double x,
     required final double y,
     required this.pressure,
-  }) : super(controllerId: controllerId, sdl: sdl, timestamp: timestamp) {
+  }) {
     this.x = x;
     this.y = y;
   }
@@ -148,14 +149,14 @@ class ControllerSensorEvent extends GameControllerEvent
     with CoordinatesMixin<double> {
   /// Create an event.
   ControllerSensorEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int controllerId,
+    required super.sdl,
+    required super.timestamp,
+    required super.controllerId,
     required this.sensor,
     required final double x,
     required final double y,
     required this.z,
-  }) : super(controllerId: controllerId, sdl: sdl, timestamp: timestamp) {
+  }) {
     this.x = x;
     this.y = y;
   }

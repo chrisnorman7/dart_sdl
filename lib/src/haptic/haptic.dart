@@ -1,7 +1,4 @@
 /// Provides the [Haptic] class.
-import 'dart:ffi';
-
-import '../sdl.dart';
 import '../sdl_bindings.dart';
 import '../sdl_object.dart';
 import 'haptic_effect.dart';
@@ -10,7 +7,7 @@ import 'haptic_features.dart';
 /// A haptic device.
 class Haptic extends SdlObject<SDL_Haptic> {
   /// Create an instance.
-  Haptic(final Sdl sdl, final Pointer<SDL_Haptic> handle) : super(sdl, handle);
+  Haptic(super.sdl, super.handle);
 
   /// Close this device.
   ///

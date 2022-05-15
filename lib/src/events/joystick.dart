@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_final_parameters
 /// Provides joystick events.
 import 'dart:math';
 
@@ -25,14 +26,13 @@ class JoystickEvent extends Event {
 class JoyAxisEvent extends JoystickEvent {
   /// Create an event.
   const JoyAxisEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int joystickId,
+    required super.sdl,
+    required super.timestamp,
+    required super.joystickId,
     required this.axis,
     required this.value,
-  })  : smallValue =
-            value < 0 ? (value / 32768) : (value == 0 ? 0.0 : (value / 32767)),
-        super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
+  }) : smallValue =
+            value < 0 ? (value / 32768) : (value == 0 ? 0.0 : (value / 32767));
 
   /// The axis that changed.
   final int axis;
@@ -52,13 +52,13 @@ class JoyAxisEvent extends JoystickEvent {
 class JoyBallEvent extends JoystickEvent {
   /// Create an event.
   const JoyBallEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int joystickId,
+    required super.sdl,
+    required super.timestamp,
+    required super.joystickId,
     required this.ball,
     required this.relativeX,
     required this.relativeY,
-  }) : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
+  });
 
   /// The ball that was moved.
   final int ball;
@@ -79,12 +79,12 @@ class JoyBallEvent extends JoystickEvent {
 class JoyHatEvent extends JoystickEvent {
   /// Create an event.
   const JoyHatEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int joystickId,
+    required super.sdl,
+    required super.timestamp,
+    required super.joystickId,
     required this.hat,
     required this.value,
-  }) : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
+  });
 
   /// Create an instance from an event.
   JoyHatEvent.fromSdlEvent(final Sdl sdl, final SDL_JoyHatEvent e)
@@ -131,11 +131,11 @@ class JoyButtonEvent extends JoystickEvent {
 class JoyDeviceEvent extends JoystickEvent {
   /// Create an event.
   const JoyDeviceEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int joystickId,
+    required super.sdl,
+    required super.timestamp,
+    required super.joystickId,
     required this.state,
-  }) : super(sdl: sdl, timestamp: timestamp, joystickId: joystickId);
+  });
 
   /// Create an instance from an event.
   JoyDeviceEvent.fromSdlEvent(final Sdl sdl, final SDL_JoyDeviceEvent e)

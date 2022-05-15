@@ -18,8 +18,7 @@ import 'sdl_object.dart';
 /// [SDL Docs](https://wiki.libsdl.org/SDL_Joystick)
 class Joystick extends SdlObject<SDL_Joystick> {
   /// Create an opened joystick.
-  Joystick(final Sdl sdl, final Pointer<SDL_Joystick> handle)
-      : super(sdl, handle);
+  Joystick(super.sdl, super.handle);
 
   /// Get the power level for this joystick.
   JoystickPowerLevel get powerLevel =>

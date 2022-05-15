@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_final_parameters
 /// Provides audio related events.
 import '../error.dart';
 import '../sdl.dart';
@@ -51,30 +52,20 @@ class AudioDeviceEvent extends Event {
 class AudioDeviceAddedEvent extends AudioDeviceEvent {
   /// Create an event.
   const AudioDeviceAddedEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int index,
-    required final bool isCapture,
-  }) : super(
-          sdl: sdl,
-          index: index,
-          isCapture: isCapture,
-          timestamp: timestamp,
-        );
+    required super.sdl,
+    required super.timestamp,
+    required super.index,
+    required super.isCapture,
+  });
 }
 
 /// A device was removed.
 class AudioDeviceRemovedEvent extends AudioDeviceEvent {
   /// Create an event.
   const AudioDeviceRemovedEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int index,
-    required final bool isCapture,
-  }) : super(
-          sdl: sdl,
-          index: index,
-          isCapture: isCapture,
-          timestamp: timestamp,
-        );
+    required super.sdl,
+    required super.timestamp,
+    required super.index,
+    required super.isCapture,
+  });
 }

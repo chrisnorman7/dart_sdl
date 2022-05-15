@@ -1,19 +1,15 @@
 /// Provides the [GameController] class.
-import 'dart:ffi';
-
 import 'package:ffi/ffi.dart';
 
 import 'enumerations.dart';
 import 'joystick.dart';
-import 'sdl.dart';
 import 'sdl_bindings.dart';
 import 'sdl_object.dart';
 
 /// A game controller.
 class GameController extends SdlObject<SDL_GameController> {
   /// Create an instance.
-  GameController(final Sdl sdl, final Pointer<SDL_GameController> handle)
-      : super(sdl, handle);
+  GameController(super.sdl, super.handle);
 
   /// Return `true` if this controller is open and attached.
   ///

@@ -31,14 +31,14 @@ class KeyboardKey {
 class KeyboardEvent extends Event with WindowMixin {
   /// Create an event.
   KeyboardEvent(
-    final Sdl sdl,
-    final int timestamp,
+    super.sdl,
+    super.timestamp,
     final int wndId,
     this.state,
     // ignore: avoid_positional_boolean_parameters
     this.repeat,
     this.key,
-  ) : super(sdl, timestamp) {
+  ) {
     windowId = wndId;
   }
 
@@ -77,6 +77,5 @@ class KeyboardEvent extends Event with WindowMixin {
 /// keyboard layout change (>= SDL 2.0.4).
 class KeymapChangedEvent extends Event {
   /// Create an event.
-  const KeymapChangedEvent(final Sdl sdl, final int timestamp)
-      : super(sdl, timestamp);
+  const KeymapChangedEvent(super.sdl, super.timestamp);
 }

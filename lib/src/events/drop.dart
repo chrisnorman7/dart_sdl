@@ -14,12 +14,12 @@ import 'base.dart';
 class DropEvent extends Event with WindowMixin {
   /// Create an event.
   DropEvent(
-    final Sdl sdl,
-    final int timestamp,
+    super.sdl,
+    super.timestamp,
     this.type,
     this.file,
     final int windowId,
-  ) : super(sdl, timestamp) {
+  ) {
     this.windowId = windowId;
   }
 

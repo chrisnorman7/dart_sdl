@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_final_parameters
 /// Provides mouse-related events.
 import 'dart:math';
 
@@ -76,22 +77,17 @@ class MouseEvent extends Event with WindowMixin, CoordinatesMixin<int> {
 class MouseMotionEvent extends MouseEvent {
   /// Create a motion event.
   MouseMotionEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int wndId,
-    required final int which,
+    required super.which,
     required this.state,
-    required final int x,
-    required final int y,
+    required super.x,
+    required super.y,
     required this.relativeX,
     required this.relativeY,
   }) : super(
-          sdl: sdl,
-          timestamp: timestamp,
           windowId: wndId,
-          which: which,
-          x: x,
-          y: y,
         );
 
   /// The state of the mouse button.
@@ -113,22 +109,17 @@ class MouseMotionEvent extends MouseEvent {
 class MouseButtonEvent extends MouseEvent {
   /// Create an event.
   MouseButtonEvent({
-    required final Sdl sdl,
-    required final int timestamp,
+    required super.sdl,
+    required super.timestamp,
     required final int wndId,
-    required final int which,
+    required super.which,
     required this.button,
     required this.state,
     required this.clicks,
-    required final int x,
-    required final int y,
+    required super.x,
+    required super.y,
   }) : super(
-          sdl: sdl,
-          timestamp: timestamp,
           windowId: wndId,
-          which: which,
-          x: x,
-          y: y,
         );
 
   /// Create an instance from an event.
@@ -161,21 +152,14 @@ class MouseButtonEvent extends MouseEvent {
 class MouseWheelEvent extends MouseEvent {
   /// Create an event.
   MouseWheelEvent({
-    required final Sdl sdl,
-    required final int timestamp,
-    required final int windowId,
-    required final int which,
-    required final int x,
-    required final int y,
+    required super.sdl,
+    required super.timestamp,
+    required super.windowId,
+    required super.which,
+    required super.x,
+    required super.y,
     required this.direction,
-  }) : super(
-          sdl: sdl,
-          timestamp: timestamp,
-          windowId: windowId,
-          which: which,
-          x: x,
-          y: y,
-        );
+  });
 
   /// The direction the wheel was moved.
   final MouseWheelDirection direction;

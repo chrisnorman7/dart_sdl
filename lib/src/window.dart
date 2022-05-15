@@ -45,7 +45,7 @@ class WindowSize {
 /// An SDL Window.
 class Window extends SdlObject<SDL_Window> {
   /// Create a window.
-  Window(final Sdl sdl, final Pointer<SDL_Window> handle) : super(sdl, handle);
+  Window(super.sdl, super.handle);
 
   /// Get a window from a stored ID.
   factory Window.fromId(final Sdl sdl, final int id) {

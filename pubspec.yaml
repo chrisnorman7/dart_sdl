@@ -4,18 +4,18 @@ description: Dart bindings for [SDL2](https://www.libsdl.org/).
 homepage: https://github.com/chrisnorman7/dart_sdl
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  ffi: ^1.0.0
-  lints: ^1.0.1
+  ffi: ^1.2.1
   meta: ^1.7.0
   path: ^1.8.1
 
 dev_dependencies:
-  dart_style: ^2.2.0
-  ffigen: ^4.0.0
-  test: ^1.16.0
+  dart_style: ^2.2.3
+  ffigen: ^5.0.0
+  lints: ^2.0.0
+  test: ^1.21.1
 
 ffigen:
   output: "lib/src/sdl_bindings.dart"
