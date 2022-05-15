@@ -47,10 +47,10 @@ import 'window.dart';
 class Sdl {
   /// Create an object.
   Sdl({String? libName})
-      : xPointer = calloc<Int32>(),
-        yPointer = calloc<Int32>(),
-        x2Pointer = calloc<Int32>(),
-        y2Pointer = calloc<Int32>(),
+      : xPointer = calloc<Int>(),
+        yPointer = calloc<Int>(),
+        x2Pointer = calloc<Int>(),
+        y2Pointer = calloc<Int>(),
         floatPointer = calloc<Float>(),
         displayModePointer = calloc<SDL_DisplayMode>(),
         _audioSpecDesiredPointer = calloc<SDL_AudioSpec>(),
@@ -91,16 +91,16 @@ class Sdl {
   }
 
   /// The x [Int32] pointer.
-  final Pointer<Int32> xPointer;
+  final Pointer<Int> xPointer;
 
   /// The y [Int32] pointer.
-  final Pointer<Int32> yPointer;
+  final Pointer<Int> yPointer;
 
   /// An extra [Int32] pointer.
-  final Pointer<Int32> x2Pointer;
+  final Pointer<Int> x2Pointer;
 
   /// Another [Int32] pointer.
-  final Pointer<Int32> y2Pointer;
+  final Pointer<Int> y2Pointer;
 
   /// The [Float] pointer.
   final Pointer<Float> floatPointer;
@@ -201,10 +201,10 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetHint)
   bool setHint(final String hint, final String value) {
-    final hintPointer = hint.toInt8Pointer();
-    final valuePointer = value.toInt8Pointer();
+    final hintPointer = hint.toCharPointer();
+    final valuePointer = value.toCharPointer();
     final retval = sdl.SDL_SetHint(hintPointer, valuePointer);
-    [hintPointer, valuePointer].forEach(calloc.free);
+    [hintPointer, valuePointer].forEach(malloc.free);
     return getBool(retval);
   }
 
@@ -216,14 +216,14 @@ class Sdl {
     final String value,
     final HintPriority priority,
   ) {
-    final hintPointer = hint.toInt8Pointer();
-    final valuePointer = value.toInt8Pointer();
+    final hintPointer = hint.toCharPointer();
+    final valuePointer = value.toCharPointer();
     final retval = sdl.SDL_SetHintWithPriority(
       hintPointer,
       valuePointer,
       priority.toInt(),
     );
-    [hintPointer, valuePointer].forEach(calloc.free);
+    [hintPointer, valuePointer].forEach(malloc.free);
     return getBool(retval);
   }
 
@@ -236,29 +236,29 @@ class Sdl {
   ///
   ///[SDL Docs](https://wiki.libsdl.org/SDL_SetError)
   void setError(final String message) {
-    final messagePointer = message.toInt8Pointer();
+    final messagePointer = message.toCharPointer();
     sdl.SDL_SetError(messagePointer);
-    calloc.free(messagePointer);
+    malloc.free(messagePointer);
   }
 
   /// Log a message.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_Log)
   void log(final String message) {
-    final messagePointer = message.toInt8Pointer();
+    final messagePointer = message.toCharPointer();
     sdl.SDL_Log(messagePointer);
-    calloc.free(messagePointer);
+    malloc.free(messagePointer);
   }
 
   /// Log anything.
   void _log(
     final LogCategory category,
     final String message,
-    final void Function(int, Pointer<Int8>) func,
+    final void Function(int, Pointer<Char>) func,
   ) {
-    final messagePointer = message.toInt8Pointer();
+    final messagePointer = message.toCharPointer();
     func(category.toInt(), messagePointer);
-    calloc.free(messagePointer);
+    malloc.free(messagePointer);
   }
 
   /// Log a critical message.
@@ -293,9 +293,9 @@ class Sdl {
     final LogPriority priority,
     final String message,
   ) {
-    final messagePointer = message.toInt8Pointer();
+    final messagePointer = message.toCharPointer();
     sdl.SDL_LogMessage(category.toInt(), priority.toInt(), messagePointer);
-    calloc.free(messagePointer);
+    malloc.free(messagePointer);
   }
 
   /// Log a verbose message.
@@ -366,12 +366,12 @@ class Sdl {
     final int height = 648,
     final int flags = 0,
   }) {
-    final titlePtr = title.toInt8Pointer();
+    final titlePtr = title.toCharPointer();
     final window = Window(
       this,
       sdl.SDL_CreateWindow(titlePtr, x, y, width, height, flags),
     );
-    calloc.free(titlePtr);
+    malloc.free(titlePtr);
     return window;
   }
 
@@ -389,7 +389,6 @@ class Sdl {
   Window get currentWindow {
     final ptr = sdl.SDL_GL_GetCurrentWindow();
     if (ptr == nullptr) {
-      calloc.free(ptr);
       throw SdlError(0, getError());
     }
     return Window(this, ptr);
@@ -443,12 +442,12 @@ class Sdl {
     final Window? window,
     final List<MessageBoxFlags>? flags,
   }) {
-    final titlePointer = title.toInt8Pointer();
-    final messagePointer = message.toInt8Pointer();
-    final a = calloc<SDL_MessageBoxButtonData>(buttons.length);
+    final titlePointer = title.toCharPointer();
+    final messagePointer = message.toCharPointer();
+    final a = malloc<SDL_MessageBoxButtonData>(buttons.length);
     for (var i = 0; i < buttons.length; i++) {
       final button = buttons[i];
-      final textPointer = button.text.toInt8Pointer();
+      final textPointer = button.text.toCharPointer();
       a[i]
         ..buttonid = button.id
         ..flags = button.flags.fold(
@@ -467,7 +466,7 @@ class Sdl {
       ..flags = [for (final f in flags ?? <MessageBoxFlags>[]) f.toInt()].xor();
     checkReturnValue(sdl.SDL_ShowMessageBox(_messageBoxDataPointer, xPointer));
     final buttonId = xPointer.value;
-    [a, titlePointer].forEach(calloc.free);
+    [a, titlePointer].forEach(malloc.free);
     return buttonId;
   }
 
@@ -480,8 +479,8 @@ class Sdl {
     final String message, {
     final Window? window,
   }) {
-    final titlePointer = title.toInt8Pointer();
-    final messagePointer = message.toInt8Pointer();
+    final titlePointer = title.toCharPointer();
+    final messagePointer = message.toCharPointer();
     checkReturnValue(
       sdl.SDL_ShowSimpleMessageBox(
         [for (final t in types) t.toInt()].xor(),
@@ -490,7 +489,7 @@ class Sdl {
         window?.handle ?? nullptr,
       ),
     );
-    [titlePointer, messagePointer].forEach(calloc.free);
+    [titlePointer, messagePointer].forEach(malloc.free);
   }
 
   /// Returns `true` if the clipboard contains text.
@@ -516,9 +515,9 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetClipboardText)
   void setClipboardText(final String value) {
-    final valuePointer = value.toInt8Pointer();
+    final valuePointer = value.toCharPointer();
     checkReturnValue(sdl.SDL_SetClipboardText(valuePointer));
-    calloc.free(valuePointer);
+    malloc.free(valuePointer);
   }
 
   /// Pump events.
@@ -582,11 +581,11 @@ class Sdl {
     final AudioSpec? settings,
   }) {
     var capture = isCapture;
-    Pointer<Int8> namePointer;
+    Pointer<Char> namePointer;
     if (device != null) {
       if (capture == null) {
         capture = device.isCapture;
-        namePointer = device.name.toInt8Pointer();
+        namePointer = device.name.toCharPointer();
       } else {
         throw SdlError(
           -1,
@@ -625,7 +624,7 @@ class Sdl {
       throw SdlError(id, getError());
     }
     final spec = AudioSpec.fromPointer(_audioSpecObtainedPointer);
-    calloc.free(namePointer);
+    malloc.free(namePointer);
     return OpenAudioDevice(this, device, id, spec);
   }
 
@@ -1147,7 +1146,7 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetKeyFromName)
   KeyCode getKeyFromName(final String name) {
-    final key = sdl.SDL_GetKeyFromName(name.toInt8Pointer());
+    final key = sdl.SDL_GetKeyFromName(name.toCharPointer());
     if (key == SDL_KeyCode.SDLK_UNKNOWN) {
       throw SdlError(key, getError());
     }
@@ -1194,7 +1193,7 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetScancodeFromName)
   ScanCode getScanCodeFromName(final String name) {
-    final scanCode = sdl.SDL_GetScancodeFromName(name.toInt8Pointer());
+    final scanCode = sdl.SDL_GetScancodeFromName(name.toCharPointer());
     if (scanCode == SDL_Scancode.SDL_SCANCODE_UNKNOWN) {
       throw SdlError(scanCode, getError());
     }
@@ -1367,10 +1366,10 @@ class Sdl {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GetPrefPath)
   String getPrefPath(final String org, final String app) {
-    final orgPointer = org.toInt8Pointer();
-    final appPointer = app.toInt8Pointer();
+    final orgPointer = org.toCharPointer();
+    final appPointer = app.toCharPointer();
     final ptr = sdl.SDL_GetPrefPath(orgPointer, appPointer);
-    [orgPointer, appPointer].forEach(calloc.free);
+    [orgPointer, appPointer].forEach(malloc.free);
     if (ptr == nullptr) {
       throw SdlError(-1, getError());
     }

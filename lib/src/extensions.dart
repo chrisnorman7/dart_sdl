@@ -250,16 +250,16 @@ extension SdlFullScreenModeValues on FullScreenMode {
 
 /// An extension for converting strings to `dart_sdl` values.
 extension SdlStringValues on String {
-  /// Return a pointer.
-  Pointer<Int8> toInt8Pointer() => toNativeUtf8().cast<Int8>();
+  /// Return a char pointer.
+  Pointer<Char> toCharPointer() => toNativeUtf8().cast<Char>();
 
   /// Convert to a game controller axis.
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetAxisFromString)
   GameControllerAxis toGameControllerAxis(final Sdl sdl) {
-    final ptr = toInt8Pointer();
+    final ptr = toCharPointer();
     final i = sdl.sdl.SDL_GameControllerGetAxisFromString(ptr);
-    calloc.free(ptr);
+    malloc.free(ptr);
     final v = i.toGameControllerAxis();
     if (v == GameControllerAxis.invalid) {
       throw SdlError(0, 'Invalid axis string "$this".');
@@ -271,9 +271,9 @@ extension SdlStringValues on String {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_GameControllerGetButtonFromString)
   GameControllerButton toGameControllerButton(final Sdl sdl) {
-    final ptr = toInt8Pointer();
+    final ptr = toCharPointer();
     final i = sdl.sdl.SDL_GameControllerGetButtonFromString(ptr);
-    calloc.free(ptr);
+    malloc.free(ptr);
     final v = i.toGameControllerButton();
     if (v == GameControllerButton.invalid) {
       throw SdlError(0, 'Invalid game controller button "$this".');

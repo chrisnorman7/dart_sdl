@@ -72,9 +72,9 @@ class Window extends SdlObject<SDL_Window> {
   ///
   /// [SDL Docs](https://wiki.libsdl.org/SDL_SetWindowTitle)
   set title(final String value) {
-    final ptr = value.toInt8Pointer();
+    final ptr = value.toCharPointer();
     sdl.sdl.SDL_SetWindowTitle(handle, ptr);
-    calloc.free(ptr);
+    malloc.free(ptr);
   }
 
   /// Hide this window.
