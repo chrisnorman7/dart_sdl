@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0]
+
+### Changed
+
+* Updated the minimum SDK constraint.
+* Updated all dependencies.
+* Regenerated the bindings.
+
 ## [0.9.7]
 
 ### Changed
