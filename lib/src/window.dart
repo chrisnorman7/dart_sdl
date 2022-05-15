@@ -40,6 +40,10 @@ class WindowSize {
 
   /// Window height.
   final int height;
+
+  /// Describe this object.
+  @override
+  String toString() => '<$runtimeType $width x $height>';
 }
 
 /// An SDL Window.
