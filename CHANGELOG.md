@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.1]
+
+### Changed
+
+* Updated dependencies.
+
 ## [0.10.0]
 
 ### Changed
